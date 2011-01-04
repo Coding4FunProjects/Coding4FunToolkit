@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Coding4Fun.Phone.Controls
@@ -72,14 +73,20 @@ namespace Coding4Fun.Phone.Controls
             OnCompleted(new PopUpEventArgs<object> { PopUpResult=PopUpResult.OK });
         }
 
-        public void Show(string authorName, string twitterName, string emailAddress, string websiteUrl)
+        public void Show(string authorName, string twitterName = null, string emailAddress = null, string websiteUrl = null)
         {
-            Show(new[] { 
-                new AboutPersonItem { Role="me", AuthorName=authorName},
-                new AboutPersonItem { Role="twitter", WebSiteUrl="http://www.twitter.com/" + twitterName.TrimStart('@')},
-                new AboutPersonItem { Role="web", WebSiteUrl=websiteUrl},
-                new AboutPersonItem { Role="email", EmailAddress=emailAddress},
-            });
+			var aboutItems = new List<AboutPersonItem> {new AboutPersonItem {Role = "me", AuthorName = authorName}};
+
+        	if(!string.IsNullOrEmpty(twitterName))
+        		aboutItems.Add(new AboutPersonItem { Role="twitter", WebSiteUrl="http://www.twitter.com/" + twitterName.TrimStart('@')});
+
+			if(!string.IsNullOrEmpty(websiteUrl))
+        		aboutItems.Add(new AboutPersonItem { Role="web", WebSiteUrl=websiteUrl});
+			
+			if(!string.IsNullOrEmpty(emailAddress))
+        		aboutItems.Add(new AboutPersonItem { Role="email", EmailAddress=emailAddress});
+
+			Show(aboutItems.ToArray());
         }
 
         public void Show(params AboutPersonItem[] people)
