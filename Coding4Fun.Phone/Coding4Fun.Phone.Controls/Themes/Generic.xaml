@@ -10,7 +10,7 @@
     <Converters:ThemedInverseImageConverter x:Key="ThemedInverseImageConverter" />
     <Converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
 
-    <Style x:Name="AppBarText" TargetType="TextBlock">
+    <Style x:Name="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Margin" Value="0,7,0,0" />
@@ -83,18 +83,17 @@
 								Fill="{TemplateBinding Background}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}" />
                             <Image 
+                                DataContext="{TemplateBinding ImagePath}"
 								x:Name="imageNormal" 
 								Stretch="None" 
 								Source="{Binding Converter={StaticResource ThemedImageConverter}}" />
                             <Image 
-									x:Name="imageInversed"
+                                DataContext="{TemplateBinding ImagePath}"
+							    x:Name="imageInversed"
 								Stretch="None" 
 								Source="{Binding Converter={StaticResource ThemedInverseImageConverter}}" />
                         </Grid>
-                        <TextBlock 
-                            Visibility="{Binding Converter={StaticResource StringToVisibilityConverter}}"
-                            Style="{StaticResource AppBarText}" 
-							Text="{TemplateBinding Content}" />
+                        <ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
                     </StackPanel>
 
                 </ControlTemplate>
@@ -181,16 +180,15 @@
                             <Image 
 								x:Name="imageNormal" 
 								Stretch="None" 
-								Source="{Binding Converter={StaticResource ThemedImageConverter}}" />
+                                DataContext="{TemplateBinding ImagePath}"
+                                Source="{Binding Converter={StaticResource ThemedImageConverter}}" />
                             <Image 
 								x:Name="imageInversed"
 								Stretch="None" 
+                                DataContext="{TemplateBinding ImagePath}"
 								Source="{Binding Converter={StaticResource ThemedInverseImageConverter}}" />
                         </Grid>
-                        <TextBlock 
-                            Visibility="{Binding Converter={StaticResource StringToVisibilityConverter}}"
-                            Style="{StaticResource AppBarText}" 
-							Text="{TemplateBinding Content}" />
+                        <ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
                     </StackPanel>
 
                 </ControlTemplate>
@@ -230,7 +228,7 @@
                                 <local:RoundButton 
                                     HorizontalAlignment="Center"
                                     x:Name="okButton"
-                                    DataContext="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
+                                    ImagePath="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -322,7 +320,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Bottom"
                                         x:Name="okButton"
-                                        DataContext="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
+                                        ImagePath="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
                                 </Grid>
                             </Grid>
                         </Border>

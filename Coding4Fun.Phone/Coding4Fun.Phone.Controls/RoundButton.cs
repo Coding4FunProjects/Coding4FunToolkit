@@ -1,13 +1,5 @@
-﻿using System;
-using System.Net;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -18,5 +10,15 @@ namespace Coding4Fun.Phone.Controls
             DefaultStyleKey = typeof(RoundButton);
             DataContext = this;
         }
+
+        public string ImagePath
+        {
+            get { return (string)GetValue(ImagePathProperty); }
+            set { SetValue(ImagePathProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ImagePath.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ImagePathProperty =
+            DependencyProperty.Register("ImagePath", typeof(string), typeof(RoundButton), new PropertyMetadata(null));
     }
 }

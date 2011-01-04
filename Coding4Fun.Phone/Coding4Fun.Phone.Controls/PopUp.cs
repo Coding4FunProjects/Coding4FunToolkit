@@ -1,12 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+
 using Clarity.Phone.Extensions;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -43,9 +39,12 @@ namespace Coding4Fun.Phone.Controls
 
         public virtual void Show()
         {
-            _popUp = new DialogService();
-            _popUp.Child = this;
-            _popUp.BackgroundBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            _popUp = new DialogService
+                         {
+                             Child = this,
+                             BackgroundBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
+                         };
+
             _popUp.Show();
 
             _popUp.Closed += _popUp_Closed;
