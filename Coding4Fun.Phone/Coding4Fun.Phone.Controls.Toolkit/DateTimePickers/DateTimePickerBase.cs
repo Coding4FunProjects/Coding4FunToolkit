@@ -82,7 +82,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         public string ValueString
         {
             get { return (string)GetValue(ValueStringProperty); }
-            private set { SetValue(ValueStringProperty, value); }
+            protected set { SetValue(ValueStringProperty, value); }
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             OpenPickerPage();
         }
 
-        private void UpdateValueString()
+        protected internal virtual void UpdateValueString()
         {
             ValueString = string.Format(CultureInfo.CurrentCulture, ValueStringFormat ?? ValueStringFormatFallback, Value);
         }

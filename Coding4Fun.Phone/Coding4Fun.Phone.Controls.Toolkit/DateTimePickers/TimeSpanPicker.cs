@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 
 using Coding4Fun.Phone.Controls.Primitives;
+using Coding4Fun.Phone.Controls.Toolkit.Common;
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
@@ -16,6 +18,22 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             Value = TimeSpan.FromMinutes(30);
             Max = TimeSpan.FromHours(24);
             Step = TimeSpan.FromSeconds(1);
+        }
+
+        protected internal override void UpdateValueString()
+        {
+            if (Value.HasValue)
+            {
+                var ts = Value.Value;
+
+                if (!string.IsNullOrEmpty(ValueStringFormat))
+                {
+                    ValueString = TimeSpanFormat.Format(ts, ValueStringFormat);
+                    return;
+                }
+            }
+
+            ValueString = string.Format(CultureInfo.CurrentCulture, ValueStringFormat ?? ValueStringFormatFallback, Value);
         }
 
         /// <summary>

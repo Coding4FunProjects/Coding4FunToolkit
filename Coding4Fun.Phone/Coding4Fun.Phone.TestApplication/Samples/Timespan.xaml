@@ -31,7 +31,9 @@
             <StackPanel>
                 <TextBlock TextWrapping="Wrap">Based off the Silverlight Toolkit and modified by Stéphanie Hertrich</TextBlock>
                 <TextBlock>Basic</TextBlock>
-                <c4fToolkit:TimeSpanPicker />
+                <c4fToolkit:TimeSpanPicker
+                    ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
+                    />
                    
                 <TextBlock>Max 2 hours, Steps 10 min</TextBlock>
                 <c4fToolkit:TimeSpanPicker 

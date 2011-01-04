@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Common\PhysicsConstants.cs" />
     <Compile Include="Common\SafeRaise.cs" />
+    <Compile Include="Common\TimeSpanFormat.cs" />
     <Compile Include="Common\Tuple.cs" />
     <Compile Include="DateTimePickers\DataSource.cs" />
     <Compile Include="DateTimePickers\DateTimePickerBase.cs" />
