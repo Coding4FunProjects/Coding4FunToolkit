@@ -30,8 +30,8 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <Button Content="Show About" Click="About_Click" />
-                <Button Content="Show Input" Click="Input_Click" />
-                <Button Content="Show Input Email" Click="InputEmail_Click" />
+                <Button Content="Show Input (Basic)" Click="Input_Click" />
+                <Button Content="Show Input with InputScope" Click="InputEmail_Click" />
 
                 <TextBlock>More complex version of about prompt</TextBlock>
                 <Button Content="Show C4F About" Click="C4F_Click" />
