@@ -1,21 +1,25 @@
-﻿using System;
+﻿
 using System.Windows;
 using System.Windows.Controls;
+
+#if DEBUG
+using System;
 using System.Windows.Threading;
 
 using Microsoft.Phone.Info;
+#endif
 
 namespace Coding4Fun.Phone.Controls
 {
     public class MemoryCounter : Control
     {
-        private const long ByteToMega = 1024 * 1024;
 #if DEBUG
+        private const long ByteToMega = 1024 * 1024;
         private readonly DispatcherTimer _timer;
-#endif
+
         public MemoryCounter()
         {
-#if DEBUG
+
             DefaultStyleKey = typeof(MemoryCounter);
             DataContext = this;
 
@@ -27,9 +31,9 @@ namespace Coding4Fun.Phone.Controls
             }
             else
                 Visibility = Visibility.Collapsed;
-#endif
-        }
 
+        }
+#endif
         public int UpdateInterval
         {
             get { return (int)GetValue(UpdateIntervalProperty); }
@@ -68,13 +72,14 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for PeakMemory.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PeakMemoryProperty =
             DependencyProperty.Register("PeakMemory", typeof(string), typeof(MemoryCounter), new PropertyMetadata("0"));
-
+#if DEBUG
         void timer_Tick(object sender, EventArgs e)
         {
-#if DEBUG
+
             CurrentMemory = ((long)DeviceExtendedProperties.GetValue("ApplicationCurrentMemoryUsage") / ByteToMega).ToString();
             PeakMemory = ((long)DeviceExtendedProperties.GetValue("ApplicationPeakMemoryUsage") / ByteToMega).ToString();
-#endif
+
         }
+#endif
     }
 }

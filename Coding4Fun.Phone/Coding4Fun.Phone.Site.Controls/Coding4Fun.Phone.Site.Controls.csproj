@@ -59,7 +59,7 @@
     <Resource Include="Media\icons\dark\head.png" />
     <Resource Include="Media\icons\light\coding4funLogo.png" />
     <Resource Include="Media\icons\light\head.png" />
-    <Content Include="ReadMe.txt" />
+    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
