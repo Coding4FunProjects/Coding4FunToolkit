@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Coding4Fun.Phone.Controls;
 
-namespace Coding4Fun.Phone.Controls
+namespace Coding4Fun.Phone.Site.Controls
 {
     public class Coding4FunAboutPrompt : AboutPrompt
     {
@@ -12,6 +11,5 @@ namespace Coding4Fun.Phone.Controls
             WaterMark = new Coding4FunWaterMark();
             Footer = new Coding4FunFooter();
         }
-
     }
 }

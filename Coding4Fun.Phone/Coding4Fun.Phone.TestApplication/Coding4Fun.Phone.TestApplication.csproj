@@ -135,14 +135,6 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Media\icons\dark\appbar.check.rest.png" />
-    <Content Include="Toolkit.Content\light\appbar.check.rest.png" />
-    <Content Include="Toolkit.Content\dark\appbar.check.rest.png" />
-    <Resource Include="Media\icons\dark\coding4funLogo.png" />
-    <Resource Include="Media\icons\dark\head.png" />
-    <Resource Include="Media\icons\light\appbar.check.rest.png" />
-    <Resource Include="Media\icons\light\coding4funLogo.png" />
-    <Resource Include="Media\icons\light\head.png" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -155,6 +147,10 @@
     <ProjectReference Include="..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.csproj">
       <Project>{09AC45C7-27E8-4A39-B2C4-0031111595D5}</Project>
       <Name>Coding4Fun.Phone.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.csproj">
+      <Project>{B5067622-7764-488C-AABE-FBE0D3BE9F65}</Project>
+      <Name>Coding4Fun.Phone.Site.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

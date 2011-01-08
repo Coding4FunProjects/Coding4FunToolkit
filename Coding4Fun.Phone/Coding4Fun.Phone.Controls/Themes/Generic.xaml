@@ -534,48 +534,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style TargetType="local:Coding4FunFooter">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:Coding4FunFooter">
-                    <StackPanel>
-                        <TextBlock 
-                            TextWrapping="Wrap"
-							Margin="0">
-							    Application has been open source by
-                        </TextBlock>
-                        <Image 
-                            Name="c4fLogo"
-							Margin="0,5,10,10"
-							DataContext="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/coding4funLogo.png"
-							Source="{Binding Converter={StaticResource ThemedImageConverter}}"
-							Stretch="None"
-							HorizontalAlignment="Right" />
-                    </StackPanel>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="local:Coding4FunWaterMark">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:Coding4FunWaterMark">
-                    <Image 
-						Opacity=".05"  
-						Stretch="None"
-						VerticalAlignment="Bottom"
-						HorizontalAlignment="Right"
-						DataContext="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/head.png"
-						Source="{Binding Converter={StaticResource ThemedImageConverter}}"
-						Margin="-20, -20">
-                        <Image.Clip>
-                            <RectangleGeometry Rect="0,0,255,274" />
-                        </Image.Clip>
-                    </Image>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

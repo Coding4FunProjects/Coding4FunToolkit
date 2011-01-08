@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Coding4Fun.Phone.Controls;
+using Coding4Fun.Phone.Site.Controls;
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Coding4Fun.Phone.Controls
+namespace Coding4Fun.Phone.Site.Controls
 {
     public class Coding4FunWaterMark : Control
     {
