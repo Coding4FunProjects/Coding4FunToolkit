@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Coding4Fun.Phone.Controls.Data;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -18,6 +19,14 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for WaterMark.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WaterMarkProperty =
             DependencyProperty.Register("WaterMark", typeof(object), typeof(AboutPrompt), new PropertyMetadata(null));
+
+        public string VersionNumber
+        {
+            get { return (string)GetValue(VersionNumberProperty); }
+            set { SetValue(VersionNumberProperty, value); }
+        }
+        public static readonly DependencyProperty VersionNumberProperty =
+            DependencyProperty.Register("VersionNumber", typeof(object), typeof(AboutPrompt), new PropertyMetadata("v" + PhoneHelper.GetAppAttribute("Version").Replace(".0.0", "")));
 
         public object Body
         {
@@ -47,7 +56,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(AboutPrompt), new PropertyMetadata("About"));
+            DependencyProperty.Register("Title", typeof(string), typeof(AboutPrompt), new PropertyMetadata(PhoneHelper.GetAppAttribute("Title")));
 
         public AboutPrompt()
         {
