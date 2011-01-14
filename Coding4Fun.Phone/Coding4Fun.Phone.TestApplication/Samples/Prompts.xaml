@@ -5,8 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
@@ -35,8 +34,16 @@
                 <TextBlock>More complex version of about prompt</TextBlock>
                 <Button Content="Show C4F About" Click="C4F_Click" />
             </StackPanel>
-            <Button  VerticalAlignment="Bottom" Content="Do I work?"
-                    Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" />
+            <StackPanel Orientation="Horizontal">
+                <Button  VerticalAlignment="Bottom" Content="Test if I work?"
+                    Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" Height="269" />
+                <Button  VerticalAlignment="Bottom"
+                    Background="Red" BorderBrush="#FFD11E1E" Height="269" Content="Test With Gestures">
+                    <Controls:GestureService.GestureListener>
+                        <Controls:GestureListener Tap="GestureListener_Tap"/>
+                    </Controls:GestureService.GestureListener>
+                </Button>
+            </StackPanel>
         </Grid>
     </Grid>
  

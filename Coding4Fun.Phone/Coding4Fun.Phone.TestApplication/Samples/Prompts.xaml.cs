@@ -68,16 +68,22 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             else
                 MessageBox.Show("meh?  " + e.Result);
         }
-
-        private void Ding_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("DING!", "dong", MessageBoxButton.OKCancel);
-        }
-
+        
         private void C4F_Click(object sender, RoutedEventArgs e)
         {
             var about = new Coding4FunAboutPrompt();
             about.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
+        }
+
+
+        private void Ding_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
+        }
+
+        private void GestureListener_Tap(object sender, GestureEventArgs e)
+        {
+            MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
         }
      }
 }
