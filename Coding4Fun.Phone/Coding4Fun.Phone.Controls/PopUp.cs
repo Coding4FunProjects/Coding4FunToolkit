@@ -24,12 +24,16 @@ namespace Coding4Fun.Phone.Controls
     public abstract class PopUp<T> : Control
     {
         private DialogService _popUp;
+
         private bool _alreadyFired;
+        private bool _hasHookedUpGestureWatcher;
+
         public event EventHandler<PopUpEventArgs<T>> Completed;
-        private bool _hasHookedUpGestureWatcher = false;
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
             if(!_hasHookedUpGestureWatcher)
                 WireUpGestureEvents(HasGesturesDisabled);
         }
@@ -120,7 +124,6 @@ namespace Coding4Fun.Phone.Controls
                 gesture.PinchStarted -= gesture_Cancel;
                 gesture.Tap -= gesture_Cancel;
             }
-
         }
 
         void gesture_Cancel(object sender, GestureEventArgs e)

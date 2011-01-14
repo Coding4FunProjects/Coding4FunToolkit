@@ -242,7 +242,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ProgressOverlay">
-                    <Grid Name="LayoutGrid" Visibility="{TemplateBinding Visibility}">
+                    <Grid Name="LayoutGrid" Visibility="{TemplateBinding Visibility}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.Resources>
                             <Storyboard x:Name="fadeOut">
                                 <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />

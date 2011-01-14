@@ -22,7 +22,12 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void Ding_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("DING!", "dong", MessageBoxButton.OKCancel);
+            MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
+        }
+
+        private void GestureListener_Tap(object sender, GestureEventArgs e)
+        {
+            MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
         }
 
         private void ShowOverlay(object sender, RoutedEventArgs e)
