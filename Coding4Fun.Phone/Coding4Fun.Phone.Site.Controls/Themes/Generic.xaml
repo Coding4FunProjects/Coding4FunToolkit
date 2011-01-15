@@ -16,7 +16,7 @@
                         <TextBlock 
                             TextWrapping="Wrap"
 							Margin="0">
-							    Application has been open source by
+							    Application has been open sourced by
                         </TextBlock>
                         <Image 
                             Name="c4fLogo"
