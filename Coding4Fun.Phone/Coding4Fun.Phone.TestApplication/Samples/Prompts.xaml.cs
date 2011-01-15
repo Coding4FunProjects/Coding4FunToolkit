@@ -49,7 +49,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             input.Show();
         }
 
-        void about_Completed(object sender, PopUpEventArgs<object> e)
+        void about_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.OK)
                 MessageBox.Show("OK!");
@@ -59,7 +59,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 MessageBox.Show("meh?");
         }
 
-        void input_Completed(object sender, PopUpEventArgs<string> e)
+        void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.OK)
                 MessageBox.Show("OK!  " + e.Result);

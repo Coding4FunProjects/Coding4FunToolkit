@@ -66,6 +66,8 @@
     <Compile Include="Data\PhoneHelper.cs" />
     <Compile Include="MemoryCounter.cs" />
     <Compile Include="PerformanceProgressBar.cs" />
+    <Compile Include="PopUpEventArgs.cs" />
+    <Compile Include="PopUpResult.cs" />
     <Compile Include="ProgressOverlay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundButton.cs" />
