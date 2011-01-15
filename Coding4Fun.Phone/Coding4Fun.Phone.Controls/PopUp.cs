@@ -4,31 +4,19 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 using Clarity.Phone.Extensions;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class PopUpEventArgs<T> : EventArgs
-    {
-        public PopUpResult PopUpResult { get; set; }
-        public Exception Error { get; set; }
-        public T Result { get; set; }
-    }
-
-    public enum PopUpResult
-    {
-        OK,
-        Cancelled
-    }
-
-    public abstract class PopUp<T> : Control
+    public abstract class PopUp<T, TPopUpResult> : Control
     {
         private DialogService _popUp;
 
         private bool _alreadyFired;
         private bool _hasHookedUpGestureWatcher;
 
-        public event EventHandler<PopUpEventArgs<T>> Completed;
+        public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 
         public override void OnApplyTemplate()
         {
@@ -38,7 +26,7 @@ namespace Coding4Fun.Phone.Controls
                 WireUpGestureEvents(HasGesturesDisabled);
         }
 
-        protected virtual void OnCompleted(PopUpEventArgs<T> result)
+        protected virtual void OnCompleted(PopUpEventArgs<T, TPopUpResult> result)
         {
             _alreadyFired = true;
             
@@ -63,10 +51,15 @@ namespace Coding4Fun.Phone.Controls
             _popUp.Closed += _popUp_Closed;
         }
 
+        protected virtual TPopUpResult GetOnClosedValue()
+        {
+            return default(TPopUpResult);
+        }
+
         void _popUp_Closed(object sender, EventArgs e)
         {
             if(!_alreadyFired)
-                OnCompleted(new PopUpEventArgs<T> { PopUpResult = PopUpResult.Cancelled });
+                OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
 
             _popUp = null;
         }
@@ -79,11 +72,11 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for HasGesturesDisabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HasGesturesDisabledProperty =
-            DependencyProperty.Register("HasGesturesDisabled", typeof(bool), typeof(PopUp<T>), new PropertyMetadata(true, OnHasGesturesDisabledChanged));
+            DependencyProperty.Register("HasGesturesDisabled", typeof(bool), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(true, OnHasGesturesDisabledChanged));
 
         private static void OnHasGesturesDisabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var sender = ((PopUp<T>)o);
+            var sender = ((PopUp<T, TPopUpResult>)o);
             if (sender != null && e.NewValue != e.OldValue)
                 sender.WireUpGestureEvents((bool)e.NewValue);
         }

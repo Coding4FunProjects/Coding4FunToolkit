@@ -5,7 +5,7 @@ using Coding4Fun.Phone.Controls.Data;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class AboutPrompt : PopUp<object>
+    public class AboutPrompt : PopUp<object, PopUpResult>
     {
         private const string OkButtonName = "okButton";
         protected Button okButton;
@@ -79,7 +79,7 @@ namespace Coding4Fun.Phone.Controls
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            OnCompleted(new PopUpEventArgs<object> { PopUpResult=PopUpResult.OK });
+            OnCompleted(new PopUpEventArgs<object, PopUpResult> { PopUpResult = PopUpResult.OK });
         }
 
         public void Show(string authorName, string twitterName = null, string emailAddress = null, string websiteUrl = null)

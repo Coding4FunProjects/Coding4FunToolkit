@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class InputPrompt : PopUp<string>
+    public class InputPrompt : PopUp<string, PopUpResult>
     {
         protected Button OkButton;
         protected TextBox InputBox;
@@ -116,7 +116,7 @@ namespace Coding4Fun.Phone.Controls
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            OnCompleted(new PopUpEventArgs<string> { Result = Value, PopUpResult=PopUpResult.OK });
+            OnCompleted(new PopUpEventArgs<string, PopUpResult> { Result = Value, PopUpResult = PopUpResult.OK });
         }
     }
 }
