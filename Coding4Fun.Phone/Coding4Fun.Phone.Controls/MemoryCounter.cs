@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -13,6 +14,7 @@ namespace Coding4Fun.Phone.Controls
     {
         private const float ByteToMega = 1024 * 1024;
         private readonly DispatcherTimer _timer;
+        private MethodInfo _deviceExtendedPropertiesMethod;
 
         public MemoryCounter()
         {
@@ -20,7 +22,8 @@ namespace Coding4Fun.Phone.Controls
             {
                 DefaultStyleKey = typeof(MemoryCounter);
                 DataContext = this;
-            
+
+                _deviceExtendedPropertiesMethod = typeof(DeviceExtendedProperties).GetMethod("GetValue");
                 _timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(UpdateInterval) };
                 _timer.Tick += timer_Tick;
                 _timer.Start();
@@ -72,18 +75,25 @@ namespace Coding4Fun.Phone.Controls
         {
             if (Debugger.IsAttached)
             {
-                CurrentMemory =
-                    ((long)
-                     typeof (DeviceExtendedProperties).GetMethod("GetValue").Invoke(null,
-                                                                                    new[]
-                                                                                        {
-                                                                                            "ApplicationCurrentMemoryUsage"
-                                                                                        })/ByteToMega).ToString("#.00");
-                PeakMemory =
-                    ((long)
-                     typeof (DeviceExtendedProperties).GetMethod("GetValue").Invoke(null,
-                                                                                    new[] {"ApplicationPeakMemoryUsage"})/
-                     ByteToMega).ToString("#.00");
+                try
+                {
+                    CurrentMemory =
+                        ((long)
+                         _deviceExtendedPropertiesMethod.Invoke(null, new[]
+                                                 {
+                                                     "ApplicationCurrentMemoryUsage"
+                                                 })/ByteToMega).ToString(
+                                                     "#.00");
+                    PeakMemory =
+                        ((long)
+                         _deviceExtendedPropertiesMethod.Invoke(null,
+                                       new[]
+                                           {
+                                               "ApplicationPeakMemoryUsage"
+                                           })/
+                         ByteToMega).ToString("#.00");
+                }
+                catch (Exception) { }
             }
         }
     }
