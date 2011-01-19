@@ -14,7 +14,7 @@ namespace Clarity.Phone.Extensions
 {
     // this code has been modified from the orginal code
     // from Kevin Marshall's post 
-    // http://blogs.claritycon.com/blogs/kevin_marshall/archive/2010/10/12/wp7-page-transitions-sample.aspx
+    // http://blogs.claritycon.com/kevinmarshall/2010/10/13/wp7-page-transitions-sample/
 
     public class DialogService
     {
@@ -103,7 +103,7 @@ namespace Clarity.Phone.Extensions
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>";
 
-        private static Panel _popupContainer;
+        private Panel _popupContainer;
         private PhoneApplicationFrame _rootVisual;
         private PhoneApplicationPage _page;
         private IApplicationBar _originalAppBar;
@@ -135,7 +135,7 @@ namespace Clarity.Phone.Extensions
             get { return _rootVisual ?? (_rootVisual = Application.Current.RootVisual as PhoneApplicationFrame); }
         }
 
-        internal static Panel PopupContainer
+        internal Panel PopupContainer
         {
             get { return _popupContainer ?? (_popupContainer = Application.Current.RootVisual.GetVisualDescendants().OfType<Panel>().First()); }
         }
@@ -170,13 +170,14 @@ namespace Clarity.Phone.Extensions
 
             _overlay.Children.Add(Child);
 
-            // Initialize popup to draw the context menu over all controls
-            PopupContainer.Children.Add(_overlay);
-
+            
             if (BackgroundBrush != null)
                 _overlay.Background = BackgroundBrush;
 
             _overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
+
+            // Initialize popup to draw the context menu over all controls
+            PopupContainer.Children.Add(_overlay);
         }
 
         /// <summary>
@@ -196,20 +197,20 @@ namespace Clarity.Phone.Extensions
             _originalAppBar = Page.ApplicationBar;
 
             _showStoryboard.Completed += _showStoryboard_Completed;
+
             foreach (Timeline t in _showStoryboard.Children)
                 Storyboard.SetTarget(t, _overlay);
 
             _overlay.InvokeOnLayoutUpdated(() =>
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
-                    {
-                        _showStoryboard.Begin();
+                {
+                    _showStoryboard.Begin();
 
-                        if (Page != null)
-                        {
-                            Page.ApplicationBar =
-                                AppBar;
-                        }
-                    }));
+                    if (Page != null)
+                    {
+                        Page.ApplicationBar = AppBar;
+                    }
+                }));
         }
 
         void _showStoryboard_Completed(object sender, EventArgs e)

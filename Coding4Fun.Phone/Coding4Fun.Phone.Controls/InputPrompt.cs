@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -43,15 +44,21 @@ namespace Coding4Fun.Phone.Controls
 
                 SetBinding(ValueProperty, binding);
 
-                if (!DesignerProperties.IsInDesignTool)
-                {
-                    InputBox.Focus();
-                    InputBox.SelectAll();
-                }
+                ThreadPool.QueueUserWorkItem(DelayInputSelect);
             }
 
             if (OkButton != null)
                 OkButton.Click += ok_Click;
+        }
+
+        private void DelayInputSelect(object value)
+        {
+            Thread.Sleep(250);
+            Dispatcher.BeginInvoke(() =>
+            {
+                InputBox.Focus();
+                InputBox.SelectAll();
+            });
         }
 
         #region public InputScope InputScope
