@@ -15,7 +15,7 @@ namespace Coding4Fun.Phone.Controls
         private const float ByteToMega = 1024 * 1024;
         private readonly DispatcherTimer _timer;
         private MethodInfo _deviceExtendedPropertiesMethod;
-
+        private bool _threwException;
         public MemoryCounter()
         {
             if (Debugger.IsAttached)
@@ -40,7 +40,7 @@ namespace Coding4Fun.Phone.Controls
         }
 
         public static readonly DependencyProperty UpdateIntervalProperty =
-            DependencyProperty.Register("UpdateInterval", typeof(int), typeof(MemoryCounter), new PropertyMetadata(100, OnUpdateIntervalChanged));
+            DependencyProperty.Register("UpdateInterval", typeof(int), typeof(MemoryCounter), new PropertyMetadata(1000, OnUpdateIntervalChanged));
 
         private static void OnUpdateIntervalChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
@@ -73,7 +73,7 @@ namespace Coding4Fun.Phone.Controls
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (Debugger.IsAttached)
+            if (Debugger.IsAttached || _threwException)
             {
                 try
                 {
@@ -93,7 +93,10 @@ namespace Coding4Fun.Phone.Controls
                                            })/
                          ByteToMega).ToString("#.00");
                 }
-                catch (Exception) { }
+                catch (Exception) {
+                    _threwException = true;
+                    _timer.Stop();
+                }
             }
         }
     }
