@@ -16,8 +16,8 @@
         <Setter Property="Margin" Value="0,7,0,0" />
     </Style>
     <Style TargetType="local:RoundToggleButton">
-        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="{StaticResource PhoneBorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
@@ -31,69 +31,37 @@
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageNormal">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Collapsed</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageInversed">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Unchecked">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageNormal">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageInversed">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Collapsed</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
+								<VisualState x:Name="Unchecked" />
                                 <VisualState x:Name="Indeterminate"/>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
                         <Grid Width="72" Height="72" Margin="0,-10">
-                            <Ellipse
-								x:Name="ButtonBackground" 
+							<Ellipse
+								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
 								StrokeThickness="{StaticResource PhoneBorderThickness}" 
 								Fill="{TemplateBinding Background}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}" />
-                            <Image 
-                                DataContext="{TemplateBinding ImagePath}"
-								x:Name="imageNormal" 
-								Stretch="None" 
-								Source="{Binding Converter={StaticResource ThemedImageConverter}}" />
-                            <Image 
-                                DataContext="{TemplateBinding ImagePath}"
-							    x:Name="imageInversed"
-								Stretch="None" 
-								Source="{Binding Converter={StaticResource ThemedInverseImageConverter}}" />
-                        </Grid>
-                        <ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
+							<Ellipse
+								x:Name="ButtonForeground" 
+								Fill="{TemplateBinding Foreground}" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}">
+								<Ellipse.OpacityMask>
+									<ImageBrush x:Name="OpacityImageBrush" />
+								</Ellipse.OpacityMask>
+							</Ellipse>
+						</Grid>
+						
+						<ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
                     </StackPanel>
 
                 </ControlTemplate>
@@ -101,12 +69,12 @@
         </Setter>
     </Style>
     <Style TargetType="local:RoundButton">
-        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
-        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
-        <Setter Property="Padding" Value="10,3,10,5"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="{StaticResource PhoneBorderBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+		<Setter Property="Padding" Value="10,3,10,5"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -114,49 +82,18 @@
                     <StackPanel Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageNormal">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageInversed">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Collapsed</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver"/>
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver"/>
                                 <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageNormal">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Collapsed</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imageInversed">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
@@ -170,25 +107,23 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <Grid Width="72" Height="72" Margin="0,-10">
-                            <Ellipse
-								x:Name="ButtonBackground" 
+						<Grid Width="72" Height="72" Margin="0,-10">
+							<Ellipse
+								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
 								StrokeThickness="{StaticResource PhoneBorderThickness}" 
 								Fill="{TemplateBinding Background}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}" />
-                            <Image 
-								x:Name="imageNormal" 
-								Stretch="None" 
-                                DataContext="{TemplateBinding ImagePath}"
-                                Source="{Binding Converter={StaticResource ThemedImageConverter}}" />
-                            <Image 
-								x:Name="imageInversed"
-								Stretch="None" 
-                                DataContext="{TemplateBinding ImagePath}"
-								Source="{Binding Converter={StaticResource ThemedInverseImageConverter}}" />
-                        </Grid>
-                        <ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
+							<Ellipse
+								x:Name="ButtonForeground" 
+								Fill="{TemplateBinding Foreground}" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}">
+								<Ellipse.OpacityMask>
+									<ImageBrush x:Name="OpacityImageBrush" />
+								</Ellipse.OpacityMask>
+							</Ellipse>
+						</Grid>
+						<ContentControl Content="{TemplateBinding Content}" Style="{StaticResource AppBarText}"/>
                     </StackPanel>
 
                 </ControlTemplate>
@@ -228,7 +163,7 @@
                                 <local:RoundButton 
                                     HorizontalAlignment="Center"
                                     x:Name="okButton"
-                                    ImagePath="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
+                                    ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -320,7 +255,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Bottom"
                                         x:Name="okButton"
-                                        ImagePath="/Coding4Fun.Phone.Controls;component/Media/icons/{0}/appbar.check.rest.png" />
+                                        ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
                                 </Grid>
                                 <TextBlock
                                     Margin="10"

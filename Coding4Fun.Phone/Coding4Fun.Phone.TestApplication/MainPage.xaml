@@ -36,7 +36,8 @@
                     <Button Content="About" Click="About_Click" />
                     <Button Content="Buttons" Click="Button_Click" />
                     <Button Content="Memory" Click="Memory_Click" />
-                </StackPanel>
+
+				</StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>

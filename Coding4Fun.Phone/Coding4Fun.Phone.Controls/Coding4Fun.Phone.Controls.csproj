@@ -83,8 +83,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\icons\dark\appbar.check.rest.png" />
-    <Resource Include="Media\icons\light\appbar.check.rest.png" />
+    <Resource Include="Media\icons\appbar.check.rest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

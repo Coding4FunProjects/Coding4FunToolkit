@@ -33,21 +33,22 @@
                 <Controls:RoundButton 
                     HorizontalAlignment="Center"
                     Click="RoundButton_Click"
-                    ImagePath="/Coding4Fun.Phone.TestApplication;component/Media/icons/{0}/appbar.check.rest.png" />
+                    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
                 <Controls:RoundButton 
                     HorizontalAlignment="Center"
 				    Content="With Text"
                     Click="RoundButton_Click"
-				    ImagePath="/Coding4Fun.Phone.TestApplication;component/Media/icons/{0}/appbar.check.rest.png" />
+				    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
 
                 <TextBlock>Round Toggle Button</TextBlock>
                 <Controls:RoundToggleButton 
                     HorizontalAlignment="Center"
-				    ImagePath="/Coding4Fun.Phone.TestApplication;component/Media/icons/{0}/appbar.check.rest.png" />
+				    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
                 <Controls:RoundToggleButton 
                     HorizontalAlignment="Center"
-                    Content="With Text"
-				    ImagePath="/Coding4Fun.Phone.TestApplication;component/Media/icons/{0}/appbar.check.rest.png" />
+                    ImageSource="/Toolkit.Content/ApplicationBar.Check.png" 
+					Content="With Text"
+				    />
                 
                 
             </StackPanel>
