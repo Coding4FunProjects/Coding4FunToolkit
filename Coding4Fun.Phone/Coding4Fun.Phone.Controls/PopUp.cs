@@ -46,10 +46,10 @@ namespace Coding4Fun.Phone.Controls
                              Child = this,
                              BackgroundBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
                          };
-
-            _popUp.Show();
-
+            
             _popUp.Closed += _popUp_Closed;
+
+            Dispatcher.BeginInvoke(_popUp.Show);
         }
 
         protected virtual TPopUpResult GetOnClosedValue()
