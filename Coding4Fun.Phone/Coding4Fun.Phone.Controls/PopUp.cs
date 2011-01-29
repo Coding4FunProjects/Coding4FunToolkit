@@ -33,7 +33,8 @@ namespace Coding4Fun.Phone.Controls
             if (Completed != null)
                 Completed.Invoke(this, result);
             
-            _popUp.Hide();
+            if(_popUp != null)
+                _popUp.Hide();
         }
 
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
