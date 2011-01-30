@@ -5,7 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:Controls1="clr-namespace:Coding4Fun.Phone.Site.Controls;assembly=Coding4Fun.Phone.Site.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+    xmlns:c4fControl="clr-namespace:Coding4Fun.Phone.Site.Controls;assembly=Coding4Fun.Phone.Site.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -20,23 +22,25 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,5,0,0">
             <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="about" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1">
             <StackPanel>
-                <TextBlock>About Person Items</TextBlock>
-                <Controls:AboutPersonItem 
+                <TextBlock  Margin="12,0">About Person Items</TextBlock>
+                <c4f:AboutPersonItem 
                     EmailAddress="clint@rutkas.com" 
                     Role="foo" />
-                <Controls:AboutPersonItem
+                <c4f:AboutPersonItem
                     WebSiteUrl="www.twitter.com/clintrutkas" 
                     AuthorName="Clint Rutkas"
                     EmailAddress="foo@bar.com"
                     Role="me" />
+                <c4fControl:Coding4FunAboutPrompt 
+                    IsPromptMode="False" />
             </StackPanel>
         </Grid>
     </Grid>

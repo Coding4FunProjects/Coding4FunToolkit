@@ -8,9 +8,27 @@ namespace Coding4Fun.Phone.Controls
     public class AboutPrompt : PopUp<object, PopUpResult>
     {
         private const string OkButtonName = "okButton";
+        private const string ActionButtonAreaName = "actionButtonArea";
         protected Button okButton;
+        protected Grid actionButtonArea;
 
-        public object WaterMark
+        /// <summary>
+        /// Should control show the bottom buttons to act as a prompt.
+        /// IE: Example usage would be if control wanted to be used in control on a pivot rather than a popup.
+        /// </summary>
+
+
+        public bool IsPromptMode
+        {
+            get { return (bool)GetValue(IsPromptModeProperty); }
+            set { SetValue(IsPromptModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPromptMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPromptModeProperty =
+            DependencyProperty.Register("IsPromptMode", typeof(bool), typeof(AboutPrompt), new PropertyMetadata(true, OnIsPromptModeChanged));
+
+       public object WaterMark
         {
             get { return (object)GetValue(WaterMarkProperty); }
             set { SetValue(WaterMarkProperty, value); }
@@ -72,9 +90,24 @@ namespace Coding4Fun.Phone.Controls
                 okButton.Click -= ok_Click;
 
             okButton = GetTemplateChild(OkButtonName) as Button;
+            actionButtonArea = GetTemplateChild(ActionButtonAreaName) as Grid;
+            SetIsPromptMode(IsPromptMode);
 
             if (okButton != null)
                 okButton.Click += ok_Click;
+        }
+
+        private static void OnIsPromptModeChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = ((AboutPrompt)o);
+            if (sender != null && sender.actionButtonArea != null && e.NewValue != e.OldValue)
+                sender.SetIsPromptMode((bool)e.NewValue);
+        }
+
+        private void SetIsPromptMode(bool value)
+        {
+            if(actionButtonArea != null)
+                actionButtonArea.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)
@@ -84,7 +117,7 @@ namespace Coding4Fun.Phone.Controls
 
         public void Show(string authorName, string twitterName = null, string emailAddress = null, string websiteUrl = null)
         {
-			var aboutItems = new List<AboutPersonItem> {new AboutPersonItem {Role = "me", AuthorName = authorName}};
+            var aboutItems = new List<AboutPersonItem> {new AboutPersonItem {Role = "me", AuthorName = authorName}};
 
         	if(!string.IsNullOrEmpty(twitterName))
         		aboutItems.Add(new AboutPersonItem { Role="twitter", WebSiteUrl="http://www.twitter.com/" + twitterName.TrimStart('@')});

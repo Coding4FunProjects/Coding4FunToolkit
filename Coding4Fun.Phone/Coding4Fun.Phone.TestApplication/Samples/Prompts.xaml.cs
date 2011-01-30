@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+
 using Coding4Fun.Phone.Controls;
 using Coding4Fun.Phone.Site.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
@@ -32,20 +26,26 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void Input_Click(object sender, RoutedEventArgs e)
         {
-            var input = new InputPrompt();
+            var input = new InputPrompt {Title = "Basic Input", Message = "I'm a basic input prompt"};
+
             input.Completed += input_Completed;
-            input.Title = "Basic Input";
-            input.Message = "I'm a basic input prompt";
+            
             input.Show();
         }
 
-        private void InputEmail_Click(object sender, RoutedEventArgs e)
+        private void InputAdvanced_Click(object sender, RoutedEventArgs e)
         {
-            var input = new InputPrompt();
+            var input = new InputPrompt
+                            {
+                                Title = "TelephoneNum",
+                                Message = "I'm a message about Telephone numbers!",
+                                Background = new SolidColorBrush(Color.FromArgb(255, 100, 149, 237)), //cornflower blue
+                                Overlay = new SolidColorBrush(Color.FromArgb(200, 255, 117, 24)) // pumpkin
+                            };
+
             input.Completed += input_Completed;
-            input.Title = "TelephoneNum";
-            input.Message = "I'm a message about Telephone numbers!";
-            input.InputScope = new InputScope() { Names = { new InputScopeName() { NameValue = InputScopeNameValue.TelephoneNumber } } };
+            
+            input.InputScope = new InputScope { Names = { new InputScopeName() { NameValue = InputScopeNameValue.TelephoneNumber } } };
             input.Show();
         }
 

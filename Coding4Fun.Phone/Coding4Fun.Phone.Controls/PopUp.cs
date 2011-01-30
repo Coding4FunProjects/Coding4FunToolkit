@@ -44,7 +44,7 @@ namespace Coding4Fun.Phone.Controls
             _popUp = new DialogService
                          {
                              Child = this,
-                             BackgroundBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
+                             BackgroundBrush = Overlay,
                          };
             
             _popUp.Closed += _popUp_Closed;
@@ -64,6 +64,21 @@ namespace Coding4Fun.Phone.Controls
 
             _popUp = null;
         }
+
+
+
+        public Brush Overlay
+        {
+            get { return (Brush)GetValue(OverlayProperty); }
+            set { SetValue(OverlayProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OverlayProperty =
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
+
+        
+
 
         public bool HasGesturesDisabled
         {

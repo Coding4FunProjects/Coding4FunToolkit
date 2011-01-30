@@ -21,24 +21,33 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="CODING4FUN TOOLKIT" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="samples" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ScrollViewer>
-                <StackPanel>
-                    <Button Content="TimeSpan" Click="TimeSpan_Click" />
-                    <Button Content="Prompts" Click="Prompts_Click" />
-                    <Button Content="Overlays" Click="Overlays_Click" />
-                    <Button Content="Progress Bar" Click="Progress_Click" />
-                    <Button Content="About" Click="About_Click" />
-                    <Button Content="Buttons" Click="Button_Click" />
-                    <Button Content="Memory" Click="Memory_Click" />
-
-				</StackPanel>
-            </ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer>
+                    <StackPanel>
+                        <Button Content="TimeSpan" Click="TimeSpan_Click" />
+                        <Button Content="Prompts" Click="Prompts_Click" />
+                        <Button Content="Overlays" Click="Overlays_Click" />
+                        <Button Content="Progress Bar" Click="Progress_Click" />
+                        <Button Content="About" Click="About_Click" />
+                        <Button Content="Buttons" Click="Button_Click" />
+                        <Button Content="Memory" Click="Memory_Click" />
+                    </StackPanel>
+                </ScrollViewer>
+                <Image Grid.Row="2"
+                    VerticalAlignment="Bottom" 
+                    Stretch="None" 
+                    Source="/Coding4Fun.Phone.TestApplication;component/Media/Coding4FunProject.png" Margin="0,0,0,10" />
+            </Grid>
         </Grid>
     </Grid>
  

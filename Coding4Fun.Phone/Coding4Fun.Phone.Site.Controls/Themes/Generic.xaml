@@ -5,9 +5,7 @@
     xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls">
     
     <Converters:ThemedImageConverter x:Key="ThemedImageConverter" />
-    <Converters:ThemedInverseImageConverter x:Key="ThemedInverseImageConverter" />
-    <Converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
-
+        
     <Style TargetType="local:Coding4FunFooter">
         <Setter Property="Template">
             <Setter.Value>
@@ -20,7 +18,7 @@
                         </TextBlock>
                         <Image 
                             Name="c4fLogo"
-							Margin="0,5,10,10"
+							Margin="0,5,10,5"
 							DataContext="/Coding4Fun.Phone.Site.Controls;component/Media/icons/{0}/coding4funLogo.png"
 							Source="{Binding Converter={StaticResource ThemedImageConverter}}"
 							Stretch="None"

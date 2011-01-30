@@ -6,9 +6,7 @@
     xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters" 
     xmlns:Binding="clr-namespace:Coding4Fun.Phone.Controls.Binding">
     
-    <Converters:ThemedImageConverter x:Key="ThemedImageConverter" />
-    <Converters:ThemedInverseImageConverter x:Key="ThemedInverseImageConverter" />
-    <Converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+    <Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <Style x:Name="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -16,7 +14,7 @@
         <Setter Property="Margin" Value="0,7,0,0" />
     </Style>
     <Style TargetType="local:RoundToggleButton">
-		<Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource PhoneBorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
@@ -69,8 +67,8 @@
         </Setter>
     </Style>
     <Style TargetType="local:RoundButton">
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="BorderBrush" Value="{StaticResource PhoneBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PhoneBorderBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
 		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
@@ -129,7 +127,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style> 
    
    <Style TargetType="local:InputPrompt">
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
@@ -139,8 +137,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:InputPrompt">
-                    <Grid Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Rectangle Fill="{TemplateBinding Background}" Opacity=".8" />
+                    <Grid>
+                        <Rectangle Fill="Transparent" />
 
                         <Border 
                             VerticalAlignment="Top" 
@@ -173,11 +171,16 @@
     </Style>
 
     <Style TargetType="local:ProgressOverlay">
-        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ProgressOverlay">
-                    <Grid Name="LayoutGrid" Visibility="{TemplateBinding Visibility}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid 
+                        Background="{TemplateBinding Background}"
+                        Name="LayoutGrid" 
+                        Visibility="{TemplateBinding Visibility}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
                         <Grid.Resources>
                             <Storyboard x:Name="fadeOut">
                                 <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
@@ -198,7 +201,7 @@
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
                         </Grid.Resources>
-                        <Rectangle Fill="{TemplateBinding Background}" Opacity=".8" />
+                        <Rectangle Fill="Transparent" />
                         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
                             <ContentControl Content="{TemplateBinding Content}" />
                             <local:PerformanceProgressBar 
@@ -218,8 +221,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AboutPrompt">
-                    <Grid Background="Transparent">
-                        <Rectangle Fill="{StaticResource PhoneChromeBrush}" Opacity=".8" />
+                    <Grid>
+                        <Rectangle Fill="Transparent" />
                         <Border 
                             VerticalAlignment="Center"
 		                    Width="460" Height="460"
@@ -249,20 +252,28 @@
                                     </ScrollViewer>
 
                                     <ContentPresenter Grid.Row="2" Content="{TemplateBinding Footer}" />
-                                
-                                    <local:RoundButton
+                                    <!--
+                                        Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"
+                                        DataContext="{TemplateBinding IsPromptMode}"
+                                    -->
+                                    <Grid 
+                                        Name="actionButtonArea"
                                         Grid.Row="3"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"
-                                        x:Name="okButton"
-                                        ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
-                                </Grid>
-                                <TextBlock
-                                    Margin="10"
+                                        VerticalAlignment="Bottom">
+                                        <local:RoundButton
+                                            x:Name="okButton"
+                                            ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
+                                    </Grid>
+                                    <TextBlock
+                                        Grid.Row="3"
+                                        Margin="0,0,10,10"
                                         VerticalAlignment="Bottom"
                                         HorizontalAlignment="Right"
 								        Text="{TemplateBinding VersionNumber}" 
 								        FontFamily="Segoe WP Light" />
+                                </Grid>
+                                
                             </Grid>
                         </Border>
                     </Grid>
@@ -281,7 +292,7 @@
                             <ColumnDefinition Width="75"/>
                             <ColumnDefinition Width="75"/>
                         </Grid.ColumnDefinitions>
-                        <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource PhoneBackgroundBrush}" Opacity=".75" />
+                        <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource PhoneSemitransparentBrush}" />
                         
                         <TextBlock Padding="0,0,10,0" Grid.Column="0" HorizontalAlignment="Right" Text="{TemplateBinding CurrentMemory}"/>
                         <TextBlock Padding="0,0,10,0" Grid.Column="1" HorizontalAlignment="Right" Text="{TemplateBinding PeakMemory}"/>

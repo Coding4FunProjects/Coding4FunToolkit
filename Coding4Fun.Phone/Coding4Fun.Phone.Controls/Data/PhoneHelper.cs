@@ -18,17 +18,24 @@ namespace Coding4Fun.Phone.Controls.Data
         /// <returns></returns>
         public static string GetAppAttribute(string attributeName)
         {
-            var settings = new XmlReaderSettings { XmlResolver = new XmlXapResolver() };
-
-            using (var rdr = XmlReader.Create(AppManifestName, settings))
+            try
             {
-                rdr.ReadToDescendant(AppNodeName);
-                if (!rdr.IsStartElement())
-                {
-                    throw new FormatException(AppManifestName + " is missing " + AppNodeName);
-                }
+                var settings = new XmlReaderSettings { XmlResolver = new XmlXapResolver() };
 
-                return rdr.GetAttribute(attributeName);
+                using (var rdr = XmlReader.Create(AppManifestName, settings))
+                {
+                    rdr.ReadToDescendant(AppNodeName);
+                    if (!rdr.IsStartElement())
+                    {
+                        throw new FormatException(AppManifestName + " is missing " + AppNodeName);
+                    }
+
+                    return rdr.GetAttribute(attributeName);
+                }
+            }
+            catch (Exception ex0)
+            {
+                return "";
             }
         }
     }
