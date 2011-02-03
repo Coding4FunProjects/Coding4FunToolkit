@@ -160,8 +160,7 @@
                                         Text="{TemplateBinding Value}" />
                                 <local:RoundButton 
                                     HorizontalAlignment="Center"
-                                    x:Name="okButton"
-                                    ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
+                                    x:Name="okButton" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -180,7 +179,7 @@
                         Name="LayoutGrid" 
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
-                        <!--<Grid.Resources>
+                        <Grid.Resources>
                             <Storyboard x:Name="fadeOut">
                                 <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="progressBar">
@@ -199,7 +198,7 @@
                                     <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
-                        </Grid.Resources>-->
+                        </Grid.Resources>
                         <Rectangle Fill="Transparent" />
                         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
                             <ContentControl Content="{TemplateBinding Content}" />
@@ -251,18 +250,13 @@
                                     </ScrollViewer>
 
                                     <ContentPresenter Grid.Row="2" Content="{TemplateBinding Footer}" />
-                                    <!--
-                                        Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"
-                                        DataContext="{TemplateBinding IsPromptMode}"
-                                    -->
+                                    
                                     <Grid 
                                         Name="actionButtonArea"
                                         Grid.Row="3"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Bottom">
-                                        <local:RoundButton
-                                            x:Name="okButton"
-                                            ImageSource="/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png" />
+                                        <local:RoundButton x:Name="okButton" />
                                     </Grid>
                                     <TextBlock
                                         Grid.Row="3"

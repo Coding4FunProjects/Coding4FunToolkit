@@ -28,29 +28,42 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
+                
                 <TextBlock>Round Button</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Controls:RoundButton 
+					    Content="Text" />
+                    <Controls:RoundButton 
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
+                    <Controls:RoundButton
+                        BorderBrush="OliveDrab" />
+                    <Controls:RoundButton
+                        Background="CornflowerBlue" />
+                    <Controls:RoundButton 
+                        Foreground="Salmon" />
+                    <Controls:RoundButton 
+                        Content="Click handler"
+                        Click="RoundButton_Click" />
+                </StackPanel>
                 
-                <Controls:RoundButton 
-                    HorizontalAlignment="Center"
-                    Click="RoundButton_Click"
-                    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
-                <Controls:RoundButton 
-                    HorizontalAlignment="Center"
-				    Content="With Text"
-                    Click="RoundButton_Click"
-				    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
-
                 <TextBlock>Round Toggle Button</TextBlock>
-                <Controls:RoundToggleButton 
-                    HorizontalAlignment="Center"
-				    ImageSource="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.check.rest.png" />
-                <Controls:RoundToggleButton 
-                    HorizontalAlignment="Center"
-                    ImageSource="/Toolkit.Content/ApplicationBar.Check.png" 
-					Content="With Text"
-				    />
-                
-                
+                <StackPanel Orientation="Horizontal">
+                    <Controls:RoundToggleButton 
+					    Content="Text" />
+                    <Controls:RoundToggleButton 
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
+                    <Controls:RoundToggleButton
+                        BorderBrush="OliveDrab" />
+                    <Controls:RoundToggleButton
+                        Background="CornflowerBlue" />
+                    <Controls:RoundToggleButton 
+                        Foreground="Salmon" />
+                    <Controls:RoundToggleButton 
+                        Content="Click handler"
+                        Click="RoundButton_Click" />
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
