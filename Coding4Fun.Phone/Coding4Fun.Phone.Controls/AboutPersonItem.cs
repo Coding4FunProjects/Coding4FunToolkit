@@ -21,7 +21,6 @@ namespace Coding4Fun.Phone.Controls
         public AboutPersonItem()
         {
             DefaultStyleKey = typeof(AboutPersonItem);
-            DataContext = this;
         }
 
         public override void OnApplyTemplate()

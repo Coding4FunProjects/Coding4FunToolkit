@@ -12,7 +12,6 @@ namespace Coding4Fun.Phone.Controls
 		public RoundButton()
 		{
 			DefaultStyleKey = typeof(RoundButton);
-            DataContext = this;
 		}
 
 		public override void OnApplyTemplate()

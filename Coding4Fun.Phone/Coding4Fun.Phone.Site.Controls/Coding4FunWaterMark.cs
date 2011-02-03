@@ -7,7 +7,6 @@ namespace Coding4Fun.Phone.Site.Controls
         public Coding4FunWaterMark()
         {
             DefaultStyleKey = typeof(Coding4FunWaterMark);
-            DataContext = this;
         }
     }
 }

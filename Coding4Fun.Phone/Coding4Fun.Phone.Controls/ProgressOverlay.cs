@@ -27,7 +27,6 @@ namespace Coding4Fun.Phone.Controls
         public ProgressOverlay()
         {
             DefaultStyleKey = typeof(ProgressOverlay);
-            DataContext = this;
         }
 
         public object Content

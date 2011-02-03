@@ -178,10 +178,9 @@
                     <Grid 
                         Background="{TemplateBinding Background}"
                         Name="LayoutGrid" 
-                        Visibility="{TemplateBinding Visibility}"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
-                        <Grid.Resources>
+                        <!--<Grid.Resources>
                             <Storyboard x:Name="fadeOut">
                                 <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="progressBar">
@@ -200,7 +199,7 @@
                                     <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
-                        </Grid.Resources>
+                        </Grid.Resources>-->
                         <Rectangle Fill="Transparent" />
                         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
                             <ContentControl Content="{TemplateBinding Content}" />

@@ -18,6 +18,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         public Overlays()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Ding_Click(object sender, RoutedEventArgs e)
@@ -32,12 +33,46 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void ShowOverlay(object sender, RoutedEventArgs e)
         {
-            progressOverlay.Show();
+            //progressOverlay.Show();
         }
 
         private void HideOverlay(object sender, RoutedEventArgs e)
         {
-            progressOverlay.Hide();
+            //progressOverlay.Hide();
         }
+
+        private void DirectVis(object sender, RoutedEventArgs e)
+        {
+            progressOverlay.Visibility = Visibility.Visible;
+        }
+
+        private void DirectCol(object sender, RoutedEventArgs e)
+        {
+            progressOverlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void DataBindVis(object sender, RoutedEventArgs e)
+        {
+            OverlayVis = Visibility.Visible;
+        }
+
+        private void DataBindCol(object sender, RoutedEventArgs e)
+        {
+            OverlayVis = Visibility.Collapsed;
+        }
+
+
+
+        public Visibility OverlayVis
+        {
+            get { return (Visibility)GetValue(OverlayVisProperty); }
+            set { SetValue(OverlayVisProperty, value); }
+        }
+        
+        // Using a DependencyProperty as the backing store for OverlayVis.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OverlayVisProperty =
+            DependencyProperty.Register("OverlayVis", typeof(Visibility), typeof(Overlays), new PropertyMetadata(Visibility.Visible));
+
+        
     }
 }

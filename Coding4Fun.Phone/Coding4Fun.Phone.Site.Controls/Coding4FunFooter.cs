@@ -13,7 +13,6 @@ namespace Coding4Fun.Phone.Site.Controls
         public Coding4FunFooter()
         {
             DefaultStyleKey = typeof(Coding4FunFooter);
-            DataContext = this;
         }
 
         public override void OnApplyTemplate()

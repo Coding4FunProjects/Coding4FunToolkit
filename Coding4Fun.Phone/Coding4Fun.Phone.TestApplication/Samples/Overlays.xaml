@@ -39,8 +39,18 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="Show" Click="ShowOverlay" />
-                    <Button Grid.Column="1" Content="Hide" Click="HideOverlay" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <Button Grid.Column="0" Content="Vis" Click="DirectVis" />
+                    <Button Grid.Column="1" Content="Col" Click="DirectCol" />
+                    <Button Grid.Column="0" Grid.Row="1" Content="Vis (DataBind)" Click="DataBindVis" />
+                    <Button Grid.Column="1" Grid.Row="1" Content="Col (DataBind)" Click="DataBindCol" />
+                    <Button Grid.Column="0" Grid.Row="2" Content="Show" Click="ShowOverlay" />
+                    <Button Grid.Column="1" Grid.Row="2" Content="Hide" Click="HideOverlay" />
                 </Grid>
             </StackPanel>
             <Grid Grid.Row="1">
@@ -53,7 +63,9 @@
                         </Controls1:GestureService.GestureListener>
                     </Button>
                 </StackPanel>
-                <Controls:ProgressOverlay Name="progressOverlay" >
+                <Controls:ProgressOverlay 
+                    Name="progressOverlay"
+                    Visibility="{Binding OverlayVis}">
                     <Controls:ProgressOverlay.Content>
                         <TextBlock>Loading</TextBlock>
                     </Controls:ProgressOverlay.Content>

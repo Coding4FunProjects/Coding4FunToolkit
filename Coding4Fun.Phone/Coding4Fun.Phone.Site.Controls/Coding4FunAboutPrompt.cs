@@ -6,8 +6,6 @@ namespace Coding4Fun.Phone.Site.Controls
     {
         public Coding4FunAboutPrompt()
         {
-            DataContext = this;
-
             WaterMark = new Coding4FunWaterMark();
             Footer = new Coding4FunFooter();
         }

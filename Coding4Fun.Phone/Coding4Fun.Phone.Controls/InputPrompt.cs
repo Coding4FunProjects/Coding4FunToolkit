@@ -17,7 +17,6 @@ namespace Coding4Fun.Phone.Controls
         public InputPrompt()
         {
             DefaultStyleKey = typeof (InputPrompt);
-            DataContext = this;
         }
 
         public override void OnApplyTemplate()
