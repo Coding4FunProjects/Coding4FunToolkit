@@ -20,14 +20,10 @@ namespace Coding4Fun.Phone.TestApplication
         public MainPage()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(MainPage_Loaded);
+            
+            DataContext = this;
         }
-
-        void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
+        
         private void TimeSpan_Click(object sender, RoutedEventArgs e)
         {
             NavigateTo("/Samples/Timespan.xaml");
@@ -67,6 +63,5 @@ namespace Coding4Fun.Phone.TestApplication
         {
             NavigateTo("/Samples/Buttons.xaml");
         }
-
     }
 }

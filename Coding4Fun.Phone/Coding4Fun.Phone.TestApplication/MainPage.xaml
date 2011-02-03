@@ -43,7 +43,9 @@
                         <Button Content="Memory" Click="Memory_Click" />
                     </StackPanel>
                 </ScrollViewer>
-                <Image Grid.Row="2"
+               
+                <Image 
+                    Grid.Row="2"
                     VerticalAlignment="Bottom" 
                     Stretch="None" 
                     Source="/Coding4Fun.Phone.TestApplication;component/Media/Coding4FunProject.png" Margin="0,0,0,10" />
