@@ -33,12 +33,12 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void ShowOverlay(object sender, RoutedEventArgs e)
         {
-            //progressOverlay.Show();
+            progressOverlay.Show();
         }
 
         private void HideOverlay(object sender, RoutedEventArgs e)
         {
-            //progressOverlay.Hide();
+            progressOverlay.Hide();
         }
 
         private void DirectVis(object sender, RoutedEventArgs e)
