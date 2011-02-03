@@ -182,21 +182,9 @@
                         <Grid.Resources>
                             <Storyboard x:Name="fadeOut">
                                 <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="progressBar">
-                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="Collapsed"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LayoutGrid">
-                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="Collapsed"/>
-                                </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
                             <Storyboard x:Name="fadeIn">
-                                <DoubleAnimation Duration="0:0:0.5" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="progressBar">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LayoutGrid">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimation Duration="0:0:0.5" From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
                             </Storyboard>
                         </Grid.Resources>
                         <Rectangle Fill="Transparent" />

@@ -21,6 +21,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             DataContext = this;
         }
 
+        bool _databindingBroke;
+        const string databindingError = "Databinding was removed on prior call";
+
         private void Ding_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
@@ -34,34 +37,44 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         private void ShowOverlay(object sender, RoutedEventArgs e)
         {
             progressOverlay.Show();
+            _databindingBroke = true;
         }
 
         private void HideOverlay(object sender, RoutedEventArgs e)
         {
             progressOverlay.Hide();
+            _databindingBroke = true;
         }
 
         private void DirectVis(object sender, RoutedEventArgs e)
         {
             progressOverlay.Visibility = Visibility.Visible;
+            _databindingBroke = true;
         }
 
         private void DirectCol(object sender, RoutedEventArgs e)
         {
             progressOverlay.Visibility = Visibility.Collapsed;
+            _databindingBroke = true;
         }
 
         private void DataBindVis(object sender, RoutedEventArgs e)
         {
+            CheckDataBinding();
             OverlayVis = Visibility.Visible;
         }
 
         private void DataBindCol(object sender, RoutedEventArgs e)
         {
+            CheckDataBinding();
             OverlayVis = Visibility.Collapsed;
         }
 
-
+        private void CheckDataBinding()
+        {
+            if (_databindingBroke)
+                MessageBox.Show(databindingError);
+        }
 
         public Visibility OverlayVis
         {

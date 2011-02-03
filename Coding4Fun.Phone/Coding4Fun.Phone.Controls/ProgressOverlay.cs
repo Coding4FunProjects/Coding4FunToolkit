@@ -17,11 +17,11 @@ namespace Coding4Fun.Phone.Controls
         private Storyboard fadeIn;
         private Storyboard fadeOut;
         private Grid LayoutGrid;
-
+        
         private const string fadeInName = "fadeIn";
         private const string fadeOutName = "fadeOut";
         private const string LayoutGridName = "LayoutGrid";
-
+        
         private bool _hasHookedUpGestureWatcher = false;
 
         public ProgressOverlay()
@@ -98,6 +98,7 @@ namespace Coding4Fun.Phone.Controls
         {
             e.Handled = true;
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -108,20 +109,28 @@ namespace Coding4Fun.Phone.Controls
             fadeIn = GetTemplateChild(fadeInName) as Storyboard;
             fadeOut = GetTemplateChild(fadeOutName) as Storyboard;
             LayoutGrid = GetTemplateChild(LayoutGridName) as Grid;
+            
+            if(fadeOut != null)
+                fadeOut.Completed += fadeOut_Completed;
+        }
+
+        void fadeOut_Completed(object sender, EventArgs e)
+        {
+            LayoutGrid.Opacity = 1;
+            Visibility = Visibility.Collapsed;
         }
 
         public void Show()
         {
             if (fadeIn == null)
                 ApplyTemplate();
+            
+            Visibility = Visibility.Visible;
+            
+            if (fadeOut != null)
+                fadeOut.Stop();
 
-            if (Visibility == Visibility.Collapsed)
-            {
-                LayoutGrid.Opacity = 0;
-                Visibility = Visibility.Visible;
-            }
-
-            if (fadeIn != null) 
+            if (fadeIn != null)
                 fadeIn.Begin();
         }
 
@@ -129,6 +138,9 @@ namespace Coding4Fun.Phone.Controls
         {
             if (fadeOut == null)
                 ApplyTemplate();
+
+            if (fadeIn != null)
+                fadeIn.Stop();
 
             if (fadeOut != null) 
                 fadeOut.Begin();
