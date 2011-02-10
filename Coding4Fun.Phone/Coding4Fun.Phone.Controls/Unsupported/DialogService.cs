@@ -104,7 +104,7 @@ namespace Clarity.Phone.Extensions
         </Storyboard>";
 
         private Panel _popupContainer;
-        private PhoneApplicationFrame _rootVisual;
+        private Frame _rootVisual;
         private PhoneApplicationPage _page;
         private IApplicationBar _originalAppBar;
         private Panel _overlay;
@@ -130,14 +130,33 @@ namespace Clarity.Phone.Extensions
             get { return _page ?? (_page = RootVisual.GetVisualDescendants().OfType<PhoneApplicationPage>().FirstOrDefault()); }
         }
 
-        internal FrameworkElement RootVisual
+        internal Frame RootVisual
         {
-            get { return _rootVisual ?? (_rootVisual = Application.Current.RootVisual as PhoneApplicationFrame); }
+            get { return _rootVisual ?? (_rootVisual = Application.Current.RootVisual as Frame); }
         }
 
         internal Panel PopupContainer
         {
-            get { return _popupContainer ?? (_popupContainer = Application.Current.RootVisual.GetVisualDescendants().OfType<Panel>().First()); }
+            get
+            {
+                if (_popupContainer == null)
+                {
+                    var presenters = RootVisual.GetVisualDescendants().OfType<ContentPresenter>();
+                    for (var i = 0; i < presenters.Count(); i++)
+                    {
+
+                        var panels = presenters.ElementAt(i).GetVisualDescendants().OfType<Panel>();
+
+                        if (panels.Count() <= 0)
+                            continue;
+                        _popupContainer = panels.First();
+                        break;
+                    }
+                }
+
+
+                return _popupContainer;
+            }
         }
 
         public DialogService()
@@ -175,6 +194,7 @@ namespace Clarity.Phone.Extensions
                 _overlay.Background = BackgroundBrush;
 
             _overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
+            _overlay.Opacity = 0;
 
             // Initialize popup to draw the context menu over all controls
             PopupContainer.Children.Add(_overlay);
@@ -189,8 +209,6 @@ namespace Clarity.Phone.Extensions
 
             InitializePopup();
 
-            _overlay.Opacity = 0;
-
             Page.BackKeyPress += OnBackKeyPress;
             Page.NavigationService.Navigated += OnNavigated;
 
@@ -201,7 +219,7 @@ namespace Clarity.Phone.Extensions
             foreach (Timeline t in _showStoryboard.Children)
                 Storyboard.SetTarget(t, _overlay);
 
-            _overlay.InvokeOnLayoutUpdated(() =>
+            PopupContainer.InvokeOnLayoutUpdated(() =>
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     _showStoryboard.Begin();
