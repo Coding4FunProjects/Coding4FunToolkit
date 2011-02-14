@@ -5,13 +5,8 @@ using Coding4Fun.Phone.Controls.Data;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class AboutPrompt : PopUp<object, PopUpResult>
+    public class AboutPrompt : ActionPopUp<object, PopUpResult>
     {
-        private const string OkButtonName = "okButton";
-        private const string ActionButtonAreaName = "actionButtonArea";
-        protected Button okButton;
-        protected Grid actionButtonArea;
-
         /// <summary>
         /// Should control show the bottom buttons to act as a prompt.
         /// IE: Example usage would be if control wanted to be used in control on a pivot rather than a popup.
@@ -77,35 +72,31 @@ namespace Coding4Fun.Phone.Controls
         public AboutPrompt()
         {
             DefaultStyleKey = typeof(AboutPrompt);
-            DataContext = this;
+            
+            var okButton = new RoundButton();
+            okButton.Click += ok_Click;
+
+            ActionPopUpButtons.Add(okButton);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            if (okButton != null)
-                okButton.Click -= ok_Click;
-
-            okButton = GetTemplateChild(OkButtonName) as Button;
-            actionButtonArea = GetTemplateChild(ActionButtonAreaName) as Grid;
             SetIsPromptMode(IsPromptMode);
-
-            if (okButton != null)
-                okButton.Click += ok_Click;
         }
 
         private static void OnIsPromptModeChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = ((AboutPrompt)o);
-            if (sender != null && sender.actionButtonArea != null && e.NewValue != e.OldValue)
+            if (sender != null && sender.ActionButtonArea != null && e.NewValue != e.OldValue)
                 sender.SetIsPromptMode((bool)e.NewValue);
         }
 
         private void SetIsPromptMode(bool value)
         {
-            if(actionButtonArea != null)
-                actionButtonArea.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
+            if(ActionButtonArea != null)
+                ActionButtonArea.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)

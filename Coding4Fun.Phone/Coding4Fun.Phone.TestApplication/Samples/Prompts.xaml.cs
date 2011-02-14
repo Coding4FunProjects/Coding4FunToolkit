@@ -26,8 +26,11 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void Input_Click(object sender, RoutedEventArgs e)
         {
-            var input = new InputPrompt {Title = "Basic Input", Message = "I'm a basic input prompt"};
-
+            var input = new InputPrompt
+                            {
+                                Title = "Basic Input",
+                                Message = "I'm a basic input prompt",
+                            };
             input.Completed += input_Completed;
             
             input.Show();
@@ -40,7 +43,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 Title = "TelephoneNum",
                                 Message = "I'm a message about Telephone numbers!",
                                 Background = new SolidColorBrush(Color.FromArgb(255, 100, 149, 237)), //cornflower blue
-                                Overlay = new SolidColorBrush(Color.FromArgb(200, 255, 117, 24)) // pumpkin
+                                Overlay = new SolidColorBrush(Color.FromArgb(200, 255, 117, 24)), // pumpkin
+                                IsCancelVisibile = true
                             };
 
             input.Completed += input_Completed;
@@ -62,9 +66,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.OK)
-                MessageBox.Show("OK!  " + e.Result);
+                MessageBox.Show("You typed: " + e.Result);
             else if (e.PopUpResult == PopUpResult.Cancelled)
-                MessageBox.Show("CANCELLED!  " + e.Result);
+                MessageBox.Show("CANCELLED! " + e.Result);
             else
                 MessageBox.Show("meh?  " + e.Result);
         }

@@ -153,15 +153,19 @@
 							        Margin="0,-10,-25,0" 
 							        FontSize="30" 
 							        TextWrapping="Wrap" FontFamily="Segoe WP Light" />
-                                <TextBlock Text="{TemplateBinding Message}" />
-                                <TextBox Name="inputBox" 
-                                        Binding:TextBoxBinding.UpdateSourceOnChange="True"
-                                        InputScope="{TemplateBinding InputScope}"
-                                        Text="{TemplateBinding Value}" />
-                                <local:RoundButton 
-                                    HorizontalAlignment="Center"
-                                    x:Name="okButton" />
+                                <TextBlock 
+                                    Text="{TemplateBinding Message}" />
+                                <TextBox 
+                                    Name="inputBox" 
+                                    Binding:TextBoxBinding.UpdateSourceOnChange="True"
+                                    InputScope="{TemplateBinding InputScope}"
+                                    Text="{TemplateBinding Value}" />
+                                <StackPanel
+                                    Name="actionButtonArea"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center" />
                             </StackPanel>
+
                         </Border>
                     </Grid>
                 </ControlTemplate>
@@ -239,13 +243,13 @@
 
                                     <ContentPresenter Grid.Row="2" Content="{TemplateBinding Footer}" />
                                     
-                                    <Grid 
+                                    <StackPanel
                                         Name="actionButtonArea"
-                                        Grid.Row="3"
+                                        Orientation="Horizontal"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom">
-                                        <local:RoundButton x:Name="okButton" />
-                                    </Grid>
+                                        VerticalAlignment="Bottom"
+                                        Grid.Row="3" />
+                                    
                                     <TextBlock
                                         Grid.Row="3"
                                         Margin="0,0,10,10"

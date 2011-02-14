@@ -61,11 +61,10 @@ namespace Coding4Fun.Phone.Controls
         {
             if(!_alreadyFired)
                 OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
-
+           
+            _popUp.Child = null;
             _popUp = null;
         }
-
-
 
         public Brush Overlay
         {
@@ -76,9 +75,6 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
             DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
-
-        
-
 
         public bool HasGesturesDisabled
         {

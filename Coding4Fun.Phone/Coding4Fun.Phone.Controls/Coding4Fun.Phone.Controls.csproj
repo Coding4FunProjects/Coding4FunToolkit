@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AboutPrompt.cs" />
     <Compile Include="AboutPersonItem.cs" />
+    <Compile Include="ActionPopUp.cs" />
     <Compile Include="Binding\TextBoxBinding.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\icons\appbar.check.rest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\icons\appbar.cancel.rest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
