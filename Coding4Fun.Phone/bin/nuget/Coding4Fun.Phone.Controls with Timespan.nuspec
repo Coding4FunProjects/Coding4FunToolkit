@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <metadata>
+        <id>Coding4fun Windows Phone Silverlight Toolkit with Timespan Selector</id>
+        <version>1.1</version>
+        <title>Coding4fun Windows Phone Silverlight Toolkit with Timespan Selectorcontrol</title>
+        <authors>Coding4Fun, Clint Rutkas</authors>
+        <description>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</description>
+        <summary>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</summary>
+        <language>en-US</language>
+        <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+        <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+        <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
+    </metadata>
+    <files>
+        <file src="Release\Coding4Fun.Phone.Controls.dll" target="lib" />
+        <file src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" target="lib" />
+        <file src="Release\Microsoft.Phone.Controls.Toolkit.dll" target="lib" />
+    </files>
+</package>

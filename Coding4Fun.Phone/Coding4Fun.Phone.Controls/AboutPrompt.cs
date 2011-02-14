@@ -16,8 +16,6 @@ namespace Coding4Fun.Phone.Controls
         /// Should control show the bottom buttons to act as a prompt.
         /// IE: Example usage would be if control wanted to be used in control on a pivot rather than a popup.
         /// </summary>
-
-
         public bool IsPromptMode
         {
             get { return (bool)GetValue(IsPromptModeProperty); }
