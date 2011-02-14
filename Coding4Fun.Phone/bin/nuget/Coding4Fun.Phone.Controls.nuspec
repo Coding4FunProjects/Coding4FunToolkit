@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
-        <id>Coding4fun Windows Phone Silverlight Toolkit</id>
+        <id>Coding4Fun.Phone.Controls</id>
         <version>1.1</version>
         <title>Coding4fun Windows Phone Silverlight Toolkit</title>
         <authors>Coding4Fun, Clint Rutkas</authors>

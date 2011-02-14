@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
-        <id>Coding4Fun Windows Phone TimeSpan Selector</id>
+        <id>Coding4Fun.Phone.Controls.TimeSpan</id>
         <version>1.1</version>
         <title>Coding4fun Windows Phone Silverlight TimeSpan Selector control</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
-        <description>This is only the timespan selector control from the Coding4Fun silverlight Windows Phone toolkit</description>
-        <summary>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</summary>
+        <description>Just the timespan selector control from the Coding4Fun silverlight Windows Phone toolkit</description>
+        <summary>Just the timespan selector control from the Coding4Fun silverlight Windows Phone toolkit</summary>
         <language>en-US</language>
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
