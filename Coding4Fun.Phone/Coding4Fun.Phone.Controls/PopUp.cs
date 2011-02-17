@@ -11,10 +11,16 @@ namespace Coding4Fun.Phone.Controls
 {
     public abstract class PopUp<T, TPopUpResult> : Control
     {
-        private DialogService _popUp;
+    	protected PopUp()
+		{
+			Dispatcher.BeginInvoke(() => ApplyTemplate());
+		}
+
+    	private DialogService _popUp;
 
         private bool _alreadyFired;
         private bool _hasHookedUpGestureWatcher;
+        protected DialogService.AnimationTypes AnimationType { get; set; }
 
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 
@@ -24,6 +30,11 @@ namespace Coding4Fun.Phone.Controls
 
             if(!_hasHookedUpGestureWatcher)
                 WireUpGestureEvents(HasGesturesDisabled);
+
+            if (_popUp != null)
+            {
+                _popUp.SetAlignmentsOnOverlay(HorizontalAlignment, VerticalAlignment);
+            }
         }
 
         protected virtual void OnCompleted(PopUpEventArgs<T, TPopUpResult> result)
@@ -39,20 +50,24 @@ namespace Coding4Fun.Phone.Controls
 
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
 
-        public virtual void Show()
-        {
-            _popUp = new DialogService
-                         {
-                             Child = this,
-                             BackgroundBrush = Overlay,
-                         };
-            
-            _popUp.Closed += _popUp_Closed;
+		public virtual void Show()
+		{
+			Dispatcher.BeginInvoke(() =>
+									{
+										_popUp = new DialogService
+													{
+														AnimationType = AnimationType,
+														Child = this,
+														BackgroundBrush = Overlay,
+													};
 
-            Dispatcher.BeginInvoke(_popUp.Show);
-        }
+										_popUp.Closed += _popUp_Closed;
 
-        protected virtual TPopUpResult GetOnClosedValue()
+										Dispatcher.BeginInvoke(_popUp.Show);
+									});
+		}
+
+    	protected virtual TPopUpResult GetOnClosedValue()
         {
             return default(TPopUpResult);
         }

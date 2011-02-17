@@ -27,18 +27,30 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <Button Content="Show About" Click="About_Click" />
                 <Button Content="Input (Basic)" Click="Input_Click" />
                 <Button Content="Input (Advanced)" Click="InputAdvanced_Click" />
-
-                <TextBlock>More complex version of about prompt</TextBlock>
-                <Button Content="Show C4F About" Click="C4F_Click" />
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Toast" Click="Toast_Click" />
+					<Button Content="Toast w/ img" Click="ToastWithImg_Click" />
+				</StackPanel>
+				<Button Content="Show About" Click="About_Click" />
+                <Button Content="Custom About" Click="C4F_Click" />
             </StackPanel>
+			
             <StackPanel Orientation="Horizontal">
-                <Button VerticalAlignment="Bottom" Content="Test if I work?"
-                    Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" Height="269" />
-                <Button  VerticalAlignment="Bottom"
-                    Background="Red" BorderBrush="#FFD11E1E" Height="269" Content="Test With Gestures">
+                <Button 
+					VerticalAlignment="Bottom" 
+					Content="Click Event"
+                    Click="Ding_Click" 
+					Background="Red" 
+					BorderBrush="#FFD11E1E" 
+					Height="150" />
+                <Button 
+					VerticalAlignment="Bottom"
+                    Background="Red"
+					BorderBrush="#FFD11E1E" 
+					Height="150" 
+					Content="Test With Gestures">
                     <Controls:GestureService.GestureListener>
                         <Controls:GestureListener Tap="GestureListener_Tap"/>
                     </Controls:GestureService.GestureListener>

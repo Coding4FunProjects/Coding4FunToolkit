@@ -150,7 +150,7 @@ namespace Coding4Fun.Phone.Controls
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            OnCompleted(new PopUpEventArgs<string, PopUpResult> { Result = Value, PopUpResult = PopUpResult.OK });
+            OnCompleted(new PopUpEventArgs<string, PopUpResult> { Result = Value, PopUpResult = PopUpResult.Ok });
         }
 
         private void cancelled_Click(object sender, RoutedEventArgs e)

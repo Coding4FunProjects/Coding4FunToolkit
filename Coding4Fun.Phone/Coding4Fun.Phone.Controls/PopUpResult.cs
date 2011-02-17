@@ -3,6 +3,7 @@
     public enum PopUpResult
     {
         Cancelled,
-        OK
+        NoResponse,
+        Ok
     }
 }

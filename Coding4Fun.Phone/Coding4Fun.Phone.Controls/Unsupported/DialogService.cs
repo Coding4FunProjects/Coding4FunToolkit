@@ -21,7 +21,9 @@ namespace Clarity.Phone.Extensions
         public enum AnimationTypes
         {
             Slide,
-            Swivel
+            SlideHorizontal,
+            Swivel,
+            SwivelHorizontal
         }
 
         private const string SlideUpStoryboard = @"
@@ -39,6 +41,44 @@ namespace Clarity.Phone.Extensions
                                  Storyboard.TargetName=""LayoutRoot"">
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>";
+
+        private const string SlideHorizontalInStoryboard = @"
+        <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"" 
+                                           Storyboard.TargetName=""LayoutRoot"">
+                    <EasingDoubleKeyFrame KeyTime=""0"" Value=""-150""/>
+                    <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""0"" To=""1"" Duration=""0:0:0.350"" 
+                                 Storyboard.TargetName=""LayoutRoot"">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>";
+
+        private const string SlideHorizontalOutStoryboard = @"
+        <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"" 
+                                           Storyboard.TargetName=""LayoutRoot"">
+                <EasingDoubleKeyFrame KeyTime=""0"" Value=""0""/>
+                <EasingDoubleKeyFrame KeyTime=""0:0:0.25"" Value=""150"">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode=""EaseIn"" Exponent=""6""/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""1"" To=""0"" Duration=""0:0:0.25"" 
+                                 Storyboard.TargetName=""LayoutRoot"">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode=""EaseIn"" Exponent=""6""/>
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>";
@@ -174,6 +214,12 @@ namespace Clarity.Phone.Extensions
 
             switch (AnimationType)
             {
+                case AnimationTypes.SlideHorizontal:
+                    _showStoryboard = XamlReader.Load(SlideHorizontalInStoryboard) as Storyboard;
+                    _hideStoryboard = XamlReader.Load(SlideHorizontalOutStoryboard) as Storyboard;
+                    _overlay.RenderTransform = new TranslateTransform();
+                    break;
+
                 case AnimationTypes.Slide:
                     _showStoryboard = XamlReader.Load(SlideUpStoryboard) as Storyboard;
                     _hideStoryboard = XamlReader.Load(SlideDownStoryboard) as Storyboard;
@@ -189,15 +235,23 @@ namespace Clarity.Phone.Extensions
 
             _overlay.Children.Add(Child);
 
-            
             if (BackgroundBrush != null)
                 _overlay.Background = BackgroundBrush;
 
-            _overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
+			_overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
             _overlay.Opacity = 0;
 
             // Initialize popup to draw the context menu over all controls
             PopupContainer.Children.Add(_overlay);
+        }
+
+        protected internal void SetAlignmentsOnOverlay(HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
+        {
+            if (_overlay != null)
+            {
+                _overlay.HorizontalAlignment = horizontalAlignment;
+                _overlay.VerticalAlignment = verticalAlignment;
+            }
         }
 
         /// <summary>

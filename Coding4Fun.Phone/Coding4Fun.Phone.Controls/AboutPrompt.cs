@@ -101,7 +101,7 @@ namespace Coding4Fun.Phone.Controls
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            OnCompleted(new PopUpEventArgs<object, PopUpResult> { PopUpResult = PopUpResult.OK });
+            OnCompleted(new PopUpEventArgs<object, PopUpResult> { PopUpResult = PopUpResult.Ok });
         }
 
         public void Show(string authorName, string twitterName = null, string emailAddress = null, string websiteUrl = null)

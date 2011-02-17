@@ -127,9 +127,50 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style> 
-   
-   <Style TargetType="local:InputPrompt">
+    </Style>
+    <Style TargetType="local:ToastPrompt">
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Overlay" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ToastPrompt">
+					<Grid
+						Height="60"
+						VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="{TemplateBinding Background}">
+						<StackPanel 
+							VerticalAlignment="Bottom" 
+							Margin="24,0,0,5" 
+							Orientation="Horizontal">
+							<Image 
+								Width="28" 
+								Height="28" 
+                                Margin="0,0,16,0"
+								Visibility="Collapsed"
+								Name="ToastImage"
+								Source="{TemplateBinding ImageSource}" />
+							<TextBlock 
+								Text="{TemplateBinding Title}"
+								FontSize="{StaticResource PhoneFontSizeSmall}"
+								FontWeight="Bold"
+								Margin="0, 2, 0, 0"
+								/>
+							<TextBlock 
+								Text="{TemplateBinding Message}" 
+								FontSize="{StaticResource PhoneFontSizeSmall}"
+								Margin="16, 2, 0, 0"/>
+						</StackPanel>
+					</Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="local:InputPrompt">
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -334,7 +375,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="local:PerformanceProgressBar">
         <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
         <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>

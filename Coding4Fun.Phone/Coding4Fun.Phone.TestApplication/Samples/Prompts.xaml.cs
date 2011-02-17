@@ -1,7 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Windows.Media.Imaging;
 using Coding4Fun.Phone.Controls;
 using Coding4Fun.Phone.Site.Controls;
 
@@ -16,8 +17,25 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             InitializeComponent();
             DataContext = this;
         }
-        
-        private void About_Click(object sender, RoutedEventArgs e)
+
+		private void Toast_Click(object sender, RoutedEventArgs e)
+		{
+			var toast = new ToastPrompt {Title = "Title", Message = "Message"};
+			toast.Show();
+		}
+
+		private void ToastWithImg_Click(object sender, RoutedEventArgs e)
+		{
+			var toast = new ToastPrompt
+			            	{
+			            		Title = "Title",
+			            		Message = "Message",
+			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+			            	};
+			toast.Show();
+		}
+
+    	private void About_Click(object sender, RoutedEventArgs e)
         {
             var about = new AboutPrompt();
             about.Completed += about_Completed;
@@ -55,7 +73,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         void about_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
         {
-            if (e.PopUpResult == PopUpResult.OK)
+            if (e.PopUpResult == PopUpResult.Ok)
                 MessageBox.Show("OK!");
             else if (e.PopUpResult == PopUpResult.Cancelled)
                 MessageBox.Show("CANCELLED!");
@@ -65,7 +83,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            if (e.PopUpResult == PopUpResult.OK)
+            if (e.PopUpResult == PopUpResult.Ok)
                 MessageBox.Show("You typed: " + e.Result);
             else if (e.PopUpResult == PopUpResult.Cancelled)
                 MessageBox.Show("CANCELLED! " + e.Result);
