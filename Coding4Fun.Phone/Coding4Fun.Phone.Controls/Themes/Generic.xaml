@@ -151,7 +151,7 @@
                                 Orientation="Horizontal">
                                 <Image 
 								    Width="{Binding ElementName=ToastName, Path=ActualHeight}" 
-					                 Height="{Binding ElementName=ToastName, Path=ActualHeight}" 
+					                Height="{Binding ElementName=ToastName, Path=ActualHeight}" 
                                     Margin="0,0,16,0"
 								    Visibility="Collapsed"
 								    Name="ToastImage"

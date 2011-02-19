@@ -4,6 +4,7 @@
     {
         Cancelled,
         NoResponse,
+        UserDismissed,
         Ok
     }
 }

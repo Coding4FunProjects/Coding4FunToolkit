@@ -45,8 +45,15 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 TextOrientation = System.Windows.Controls.Orientation.Vertical,
 			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
 			            	};
+
+            toast.Completed += toast_Completed;
 			toast.Show();
 		}
+
+        void toast_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        {
+            MessageBox.Show(e.PopUpResult.ToString());
+        }
 
     	private void About_Click(object sender, RoutedEventArgs e)
         {

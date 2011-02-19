@@ -27,9 +27,12 @@ namespace Coding4Fun.Phone.Controls
 
         void ToastPrompt_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
-            if (e.TotalManipulation.Translation.X > 200 ||
-                e.FinalVelocities.LinearVelocity.X > 1000)
+            if (e.TotalManipulation.Translation.X > 200 || e.FinalVelocities.LinearVelocity.X > 1000)
+                OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.UserDismissed });
+            else if (e.TotalManipulation.Translation.X < 20)
+            {
                 OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok });
+            }
             else
             {
                 _translate.X = 0;
