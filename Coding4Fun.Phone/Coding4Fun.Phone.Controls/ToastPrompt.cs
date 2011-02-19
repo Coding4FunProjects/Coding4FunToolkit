@@ -151,6 +151,16 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ToastPrompt),
             new PropertyMetadata(OnImageSource));
+        
+        public Orientation TextOrientation
+        {
+            get { return (Orientation)GetValue(TextOrientationProperty); }
+            set { SetValue(TextOrientationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextOrientation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextOrientationProperty =
+            DependencyProperty.Register("TextOrientation", typeof(Orientation), typeof(ToastPrompt), new PropertyMetadata(Orientation.Horizontal));
 
         private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
@@ -160,7 +170,6 @@ namespace Coding4Fun.Phone.Controls
                 return;
 
             sender.SetImageVisibility(e.NewValue as ImageSource);
-
         }
 
         private void SetImageVisibility(ImageSource source)

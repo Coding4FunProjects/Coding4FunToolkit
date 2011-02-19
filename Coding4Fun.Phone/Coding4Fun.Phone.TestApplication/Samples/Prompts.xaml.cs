@@ -20,7 +20,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
 		private void Toast_Click(object sender, RoutedEventArgs e)
 		{
-			var toast = new ToastPrompt {Title = "Title", Message = "Message"};
+			var toast = new ToastPrompt {Title = " Basic", Message = "Message"};
 			toast.Show();
 		}
 
@@ -28,8 +28,21 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		{
 			var toast = new ToastPrompt
 			            	{
-			            		Title = "Title",
+			            		Title = "With Image",
 			            		Message = "Message",
+			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+			            	};
+			toast.Show();
+		}
+
+        private void ToastAdvanced_Click(object sender, RoutedEventArgs e)
+		{
+			var toast = new ToastPrompt
+			            	{
+			            		Title = "Advanced",
+			            		Message = "Custom Fontsize, img, and orientation",
+                                FontSize=60,
+                                TextOrientation = System.Windows.Controls.Orientation.Vertical,
 			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
 			            	};
 			toast.Show();

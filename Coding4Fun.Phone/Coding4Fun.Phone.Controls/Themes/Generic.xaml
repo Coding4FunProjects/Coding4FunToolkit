@@ -130,7 +130,7 @@
     </Style>
     <Style TargetType="local:ToastPrompt">
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
-        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -139,32 +139,34 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ToastPrompt">
 					<Grid
-						Height="60"
 						VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Background="{TemplateBinding Background}">
 						<StackPanel 
 							VerticalAlignment="Bottom" 
-							Margin="24,0,0,5" 
-							Orientation="Horizontal">
-							<Image 
-								Width="28" 
-								Height="28" 
+							Margin="24, 32, 16, 5" 
+							Orientation="{TemplateBinding TextOrientation}">
+                            <StackPanel
                                 Margin="0,0,16,0"
-								Visibility="Collapsed"
-								Name="ToastImage"
-								Source="{TemplateBinding ImageSource}" />
-							<TextBlock 
-								Text="{TemplateBinding Title}"
-								FontSize="{StaticResource PhoneFontSizeSmall}"
-								FontWeight="Bold"
-								Margin="0, 2, 0, 0"
-								/>
-							<TextBlock 
-								Text="{TemplateBinding Message}" 
-								FontSize="{StaticResource PhoneFontSizeSmall}"
-								Margin="16, 2, 0, 0"/>
+                                VerticalAlignment="Bottom"
+                                Orientation="Horizontal">
+                                <Image 
+								    Width="{Binding ElementName=ToastName, Path=ActualHeight}" 
+					                 Height="{Binding ElementName=ToastName, Path=ActualHeight}" 
+                                    Margin="0,0,16,0"
+								    Visibility="Collapsed"
+								    Name="ToastImage"
+								    Source="{TemplateBinding ImageSource}" />
+                                <TextBlock 
+                                    Name="ToastName"
+								    Text="{TemplateBinding Title}"
+								    FontWeight="Bold"
+								    Margin="0" />
+                            </StackPanel>
+                            <TextBlock 
+                                Text="{TemplateBinding Message}" 
+								Margin="0"/>
 						</StackPanel>
-					</Grid>
+					</Grid>                     
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

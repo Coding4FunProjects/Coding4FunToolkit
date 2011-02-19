@@ -27,14 +27,24 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <Button Content="Input (Basic)" Click="Input_Click" />
-                <Button Content="Input (Advanced)" Click="InputAdvanced_Click" />
-				<StackPanel Orientation="Horizontal">
-					<Button Content="Toast" Click="Toast_Click" />
-					<Button Content="Toast w/ img" Click="ToastWithImg_Click" />
+                <TextBlock Text="Input" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Basic" Click="Input_Click" />
+                    <Button Content="Advanced" Click="InputAdvanced_Click" />
+                </StackPanel>
+                
+                <TextBlock Text="Input" />
+                <StackPanel Orientation="Horizontal">
+					<Button Content="Basic" Click="Toast_Click" />
+					<Button Content="Image" Click="ToastWithImg_Click" />
+                    <Button Content="Advanced" Click="ToastAdvanced_Click" />
 				</StackPanel>
-				<Button Content="Show About" Click="About_Click" />
-                <Button Content="Custom About" Click="C4F_Click" />
+                
+                <TextBlock Text="About" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Basic" Click="About_Click" />
+                    <Button Content="Advanced" Click="C4F_Click" />
+                </StackPanel>
             </StackPanel>
 			
             <StackPanel Orientation="Horizontal">
