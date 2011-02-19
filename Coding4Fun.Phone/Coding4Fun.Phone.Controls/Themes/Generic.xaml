@@ -155,16 +155,20 @@
                                     Margin="0,0,16,0"
 								    Visibility="Collapsed"
 								    Name="ToastImage"
+                                    VerticalAlignment="Bottom"
 								    Source="{TemplateBinding ImageSource}" />
                                 <TextBlock 
                                     Name="ToastName"
 								    Text="{TemplateBinding Title}"
 								    FontWeight="Bold"
-								    Margin="0" />
+                                    VerticalAlignment="Bottom"
+								    Margin="0"
+                                    Padding="0" />
                             </StackPanel>
                             <TextBlock 
                                 Text="{TemplateBinding Message}" 
-								Margin="0"/>
+								Margin="0"
+                                Padding="0" />
 						</StackPanel>
 					</Grid>                     
                 </ControlTemplate>

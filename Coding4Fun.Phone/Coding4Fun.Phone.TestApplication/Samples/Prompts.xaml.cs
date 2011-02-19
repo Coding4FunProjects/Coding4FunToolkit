@@ -12,6 +12,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 {
     public partial class Prompts : PhoneApplicationPage
     {
+        private readonly SolidColorBrush _pumpkin = new SolidColorBrush(Color.FromArgb(255, 255, 117, 24));
+        private readonly SolidColorBrush _lime = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+        private readonly SolidColorBrush _cornFlowerBlue = new SolidColorBrush(Color.FromArgb(200, 100, 149, 237));
+
         public Prompts()
         {
             InitializeComponent();
@@ -36,19 +40,22 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		}
 
         private void ToastAdvanced_Click(object sender, RoutedEventArgs e)
-		{
-			var toast = new ToastPrompt
-			            	{
-			            		Title = "Advanced",
-			            		Message = "Custom Fontsize, img, and orientation",
-                                FontSize=60,
+        {
+            var toast = new ToastPrompt
+                            {
+                                Background = _lime,
+                                Foreground = _pumpkin,
+                                Title = "Advanced",
+                                Message = "Custom Fontsize, img, and orientation",
+                                FontSize = 50,
                                 TextOrientation = System.Windows.Controls.Orientation.Vertical,
-			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
-			            	};
+                                ImageSource =
+                                    new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+                            };
 
             toast.Completed += toast_Completed;
-			toast.Show();
-		}
+            toast.Show();
+        }
 
         void toast_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
@@ -80,8 +87,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                             {
                                 Title = "TelephoneNum",
                                 Message = "I'm a message about Telephone numbers!",
-                                Background = new SolidColorBrush(Color.FromArgb(255, 100, 149, 237)), //cornflower blue
-                                Overlay = new SolidColorBrush(Color.FromArgb(200, 255, 117, 24)), // pumpkin
+                                Background = _lime,
+                                Foreground = _pumpkin,
+                                Overlay = _cornFlowerBlue,
                                 IsCancelVisibile = true
                             };
 
