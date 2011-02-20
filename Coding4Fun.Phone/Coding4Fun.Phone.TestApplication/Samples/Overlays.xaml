@@ -5,14 +5,15 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:Controls1="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:c4fToolkit="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
-
-    <!--LayoutRoot is the root grid where all page content is placed-->
+            <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -55,21 +56,31 @@
             </StackPanel>
             <Grid Grid.Row="1">
                 <StackPanel VerticalAlignment="Center" >
-                <Button Margin="0,0,0,-30" Content="Do I work?"
-                    Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" />
+                    <Button Margin="0,0,0,-30" Content="Do I work?"
+                        Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" />
                     <Button Margin="0, 20" Background="Red" BorderBrush="#FFD11E1E" Content="Test With Gestures">
-                        <Controls1:GestureService.GestureListener>
-                            <Controls1:GestureListener Tap="GestureListener_Tap"/>
-                        </Controls1:GestureService.GestureListener>
+                        <slToolkit:GestureService.GestureListener>
+                            <slToolkit:GestureListener Tap="GestureListener_Tap"/>
+                        </slToolkit:GestureService.GestureListener>
                     </Button>
                 </StackPanel>
-                <Controls:ProgressOverlay 
+                <c4fToolkit:ProgressOverlay 
                     Name="progressOverlay"
                     Visibility="{Binding OverlayVis}">
-                    <Controls:ProgressOverlay.Content>
-                        <TextBlock>Loading</TextBlock>
-                    </Controls:ProgressOverlay.Content>
-                </Controls:ProgressOverlay>
+                    <c4fToolkit:ProgressOverlay.Resources>
+                        <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />
+                    </c4fToolkit:ProgressOverlay.Resources>
+                    <c4fToolkit:ProgressOverlay.Content>
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center">Loading</TextBlock>
+                            <slToolkit:PerformanceProgressBar 
+                                IsIndeterminate="{Binding ElementName=progressOverlay, 
+                                Path=Visibility,
+                                Converter={StaticResource VisToBoolConverter}}"
+                                />
+                        </StackPanel>
+                    </c4fToolkit:ProgressOverlay.Content>
+                </c4fToolkit:ProgressOverlay>
             </Grid>
             
         </Grid>

@@ -5,8 +5,6 @@ using System.Windows.Media;
 
 using Clarity.Phone.Extensions;
 
-using Microsoft.Phone.Controls;
-
 namespace Coding4Fun.Phone.Controls
 {
     public abstract class PopUp<T, TPopUpResult> : Control
@@ -28,8 +26,11 @@ namespace Coding4Fun.Phone.Controls
         {
             base.OnApplyTemplate();
 
-            if(!_hasHookedUpGestureWatcher)
-                WireUpGestureEvents(HasGesturesDisabled);
+            if (!_hasHookedUpGestureWatcher)
+            {
+                GestureHelper.WireUpGestureEvents(HasGesturesDisabled, this);
+                _hasHookedUpGestureWatcher = true;
+            }
 
             if (_popUp != null)
             {
@@ -104,51 +105,9 @@ namespace Coding4Fun.Phone.Controls
         private static void OnHasGesturesDisabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = ((PopUp<T, TPopUpResult>)o);
+
             if (sender != null && e.NewValue != e.OldValue)
-                sender.WireUpGestureEvents((bool)e.NewValue);
-        }
-
-        private void WireUpGestureEvents(bool value)
-        {
-            _hasHookedUpGestureWatcher = true;
-
-            var gesture = GestureService.GetGestureListener(this);
-
-            if (value)
-            {
-                gesture.DoubleTap += gesture_Cancel;
-                gesture.DragCompleted += gesture_Cancel;
-                gesture.DragDelta += gesture_Cancel;
-                gesture.DragStarted += gesture_Cancel;
-                gesture.Flick += gesture_Cancel;
-                gesture.GestureBegin += gesture_Cancel;
-                gesture.GestureCompleted += gesture_Cancel;
-                gesture.Hold += gesture_Cancel;
-                gesture.PinchCompleted += gesture_Cancel;
-                gesture.PinchDelta += gesture_Cancel;
-                gesture.PinchStarted += gesture_Cancel;
-                gesture.Tap += gesture_Cancel;
-            }
-            else
-            {
-                gesture.DoubleTap -= gesture_Cancel;
-                gesture.DragCompleted -= gesture_Cancel;
-                gesture.DragDelta -= gesture_Cancel;
-                gesture.DragStarted -= gesture_Cancel;
-                gesture.Flick -= gesture_Cancel;
-                gesture.GestureBegin -= gesture_Cancel;
-                gesture.GestureCompleted -= gesture_Cancel;
-                gesture.Hold -= gesture_Cancel;
-                gesture.PinchCompleted -= gesture_Cancel;
-                gesture.PinchDelta -= gesture_Cancel;
-                gesture.PinchStarted -= gesture_Cancel;
-                gesture.Tap -= gesture_Cancel;
-            }
-        }
-
-        void gesture_Cancel(object sender, GestureEventArgs e)
-        {
-            e.Handled = true;
+                GestureHelper.WireUpGestureEvents((bool)e.NewValue, sender);
         }
     }
 }

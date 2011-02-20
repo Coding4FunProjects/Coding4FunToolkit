@@ -37,7 +37,6 @@
                         <Button Content="TimeSpan" Click="TimeSpan_Click" />
                         <Button Content="Prompts" Click="Prompts_Click" />
                         <Button Content="Overlays" Click="Overlays_Click" />
-                        <Button Content="Progress Bar" Click="Progress_Click" />
                         <Button Content="About" Click="About_Click" />
                         <Button Content="Buttons" Click="Button_Click" />
                         <Button Content="Memory" Click="Memory_Click" />

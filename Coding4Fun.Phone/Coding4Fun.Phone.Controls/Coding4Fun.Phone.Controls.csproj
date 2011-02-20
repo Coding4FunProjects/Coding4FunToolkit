@@ -42,9 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\Dependencies\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -62,11 +60,11 @@
     <Compile Include="Converters\ThemedImageConverter.cs" />
     <Compile Include="Converters\ThemedInverseImageConverter.cs" />
     <Compile Include="Converters\VisibilityToBooleanConverter.cs" />
+    <Compile Include="GestureHelper.cs" />
     <Compile Include="InputPrompt.cs" />
     <Compile Include="PopUp.cs" />
     <Compile Include="Data\PhoneHelper.cs" />
     <Compile Include="MemoryCounter.cs" />
-    <Compile Include="PerformanceProgressBar.cs" />
     <Compile Include="PopUpEventArgs.cs" />
     <Compile Include="PopUpResult.cs" />
     <Compile Include="ProgressOverlay.cs" />
@@ -75,7 +73,6 @@
     <Compile Include="RoundToggleButton.cs" />
     <Compile Include="ToastPrompt.cs" />
     <Compile Include="Unsupported\DialogService.cs" />
-    <Compile Include="Unsupported\RelativeAnimatingContentControl.cs" />
     <Compile Include="Unsupported\VisualTreeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

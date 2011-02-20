@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -28,6 +21,16 @@ namespace Coding4Fun.Phone.Controls
         {
             DefaultStyleKey = typeof(ProgressOverlay);
         }
+
+        public object ProgressControl
+        {
+            get { return (object)GetValue(ProgressControlProperty); }
+            set { SetValue(ProgressControlProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ProgressControl.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ProgressControlProperty =
+            DependencyProperty.Register("ProgressControl", typeof(object), typeof(ProgressOverlay), new PropertyMetadata(null));
 
         public object Content
         {
@@ -53,58 +56,19 @@ namespace Coding4Fun.Phone.Controls
         {
             var sender = ((ProgressOverlay)o);
             if (sender != null && e.NewValue != e.OldValue)
-                sender.WireUpGestureEvents((bool)e.NewValue);
+                GestureHelper.WireUpGestureEvents((bool)e.NewValue, sender);
         }
 
-        private void WireUpGestureEvents(bool value)
-        {
-            _hasHookedUpGestureWatcher = true;
-
-            var gesture = GestureService.GetGestureListener(this);
-
-            if (value)
-            {
-                gesture.DoubleTap += gesture_Cancel;
-                gesture.DragCompleted += gesture_Cancel;
-                gesture.DragDelta += gesture_Cancel;
-                gesture.DragStarted += gesture_Cancel;
-                gesture.Flick += gesture_Cancel;
-                gesture.GestureBegin += gesture_Cancel;
-                gesture.GestureCompleted += gesture_Cancel;
-                gesture.Hold += gesture_Cancel;
-                gesture.PinchCompleted += gesture_Cancel;
-                gesture.PinchDelta += gesture_Cancel;
-                gesture.PinchStarted += gesture_Cancel;
-                gesture.Tap += gesture_Cancel;
-            }
-            else
-            {
-                gesture.DoubleTap -= gesture_Cancel;
-                gesture.DragCompleted -= gesture_Cancel;
-                gesture.DragDelta -= gesture_Cancel;
-                gesture.DragStarted -= gesture_Cancel;
-                gesture.Flick -= gesture_Cancel;
-                gesture.GestureBegin -= gesture_Cancel;
-                gesture.GestureCompleted -= gesture_Cancel;
-                gesture.Hold -= gesture_Cancel;
-                gesture.PinchCompleted -= gesture_Cancel;
-                gesture.PinchDelta -= gesture_Cancel;
-                gesture.PinchStarted -= gesture_Cancel;
-                gesture.Tap -= gesture_Cancel;
-            }
-        }
-
-        void gesture_Cancel(object sender, GestureEventArgs e)
-        {
-            e.Handled = true;
-        }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
             if (!_hasHookedUpGestureWatcher)
-                WireUpGestureEvents(HasGesturesDisabled);
+            {
+                GestureHelper.WireUpGestureEvents(HasGesturesDisabled, this);
+                _hasHookedUpGestureWatcher = true;
+            }
 
             fadeIn = GetTemplateChild(fadeInName) as Storyboard;
             fadeOut = GetTemplateChild(fadeOutName) as Storyboard;
