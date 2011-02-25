@@ -69,6 +69,7 @@ namespace Coding4Fun.Phone.Controls
 
         public override void Show()
         {
+            IsAppBarVisible = true;
             base.Show();
 
             if (!IsTimerEnabled)

@@ -156,7 +156,7 @@ namespace Clarity.Phone.Extensions
         public double VerticalOffset { get; set; }
         public Brush BackgroundBrush { get; set; }
 
-        internal ApplicationBar AppBar { get; set; }
+        internal IApplicationBar AppBar { get; set; }
         internal bool IsOpen { get; set; }
 
         public event EventHandler Closed;

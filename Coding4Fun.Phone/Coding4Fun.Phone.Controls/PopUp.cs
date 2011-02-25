@@ -9,17 +9,20 @@ namespace Coding4Fun.Phone.Controls
 {
     public abstract class PopUp<T, TPopUpResult> : Control
     {
+        private DialogService _popUp;
+
+        private bool _alreadyFired;
+        private bool _hasHookedUpGestureWatcher;
+
     	protected PopUp()
 		{
 			Dispatcher.BeginInvoke(() => ApplyTemplate());
 		}
 
-    	private DialogService _popUp;
-
-        private bool _alreadyFired;
-        private bool _hasHookedUpGestureWatcher;
+        public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
+        public bool IsAppBarVisible { get; set; }
+    	
         protected DialogService.AnimationTypes AnimationType { get; set; }
-
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 
         public override void OnApplyTemplate()
@@ -49,7 +52,7 @@ namespace Coding4Fun.Phone.Controls
                 _popUp.Hide();
         }
 
-        public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
+        
 
 		public virtual void Show()
 		{
@@ -60,7 +63,11 @@ namespace Coding4Fun.Phone.Controls
 														AnimationType = AnimationType,
 														Child = this,
 														BackgroundBrush = Overlay,
+                                                        
 													};
+
+                                        if(IsAppBarVisible)
+                                            _popUp.AppBar = _popUp.Page.ApplicationBar;
 
 										_popUp.Closed += _popUp_Closed;
 
