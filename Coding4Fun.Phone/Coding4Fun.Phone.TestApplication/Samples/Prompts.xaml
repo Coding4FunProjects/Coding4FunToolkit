@@ -9,7 +9,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -27,20 +27,20 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock Text="Input" />
+                <TextBlock Text="Input Dialog Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="Input_Click" />
                     <Button Content="Advanced" Click="InputAdvanced_Click" />
                 </StackPanel>
                 
-                <TextBlock Text="Input" />
+                <TextBlock Text="Toast Prompt" />
                 <StackPanel Orientation="Horizontal">
 					<Button Content="Basic" Click="Toast_Click" />
 					<Button Content="Image" Click="ToastWithImg_Click" />
                     <Button Content="Advanced" Click="ToastAdvanced_Click" />
 				</StackPanel>
                 
-                <TextBlock Text="About" />
+                <TextBlock Text="About Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="About_Click" />
                     <Button Content="Advanced" Click="C4F_Click" />
@@ -70,7 +70,7 @@
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
             <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
@@ -79,6 +79,6 @@
                 <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
