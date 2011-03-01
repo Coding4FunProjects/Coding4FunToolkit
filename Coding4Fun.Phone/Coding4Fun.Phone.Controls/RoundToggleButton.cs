@@ -49,8 +49,8 @@ namespace Coding4Fun.Phone.Controls
 			if (sender == null || sender.OpacityImageBrush == null)
 				return;
 
-			var brush = e.NewValue as ImageBrush;
-			sender.OpacityImageBrush = brush;
+			var brush = e.NewValue as ImageSource;
+			sender.OpacityImageBrush.ImageSource = brush;
 		}
 	}
 }

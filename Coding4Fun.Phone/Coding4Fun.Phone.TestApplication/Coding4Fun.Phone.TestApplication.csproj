@@ -132,8 +132,9 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Media\icons\appbar.check.rest.png" />
+    <Content Include="Media\icons\appbar.check.rest.png" />
     <Resource Include="Media\Coding4FunProject.png" />
+    <Content Include="Media\icons\appbar.repeat.png" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

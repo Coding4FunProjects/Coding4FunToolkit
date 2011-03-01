@@ -64,6 +64,22 @@
                         Content="Click handler"
                         Click="RoundButton_Click" />
                 </StackPanel>
+                
+                <TextBlock>Change Icon for Round Button</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Controls:RoundButton 
+                        ImageSource="{Binding RoundButtonImage}"
+					    Content="Direct" 
+                        Click="ToggleDirectRoundButtonImage_Click" />
+                </StackPanel>
+                
+                <TextBlock>Change Icon for Round Toggle Button</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Controls:RoundToggleButton 
+                        ImageSource="{Binding RoundToggleButtonImage}"
+					    Content="Direct" 
+                        Click="ToggleDirectRoundToggleButtonImage_Click" />
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
