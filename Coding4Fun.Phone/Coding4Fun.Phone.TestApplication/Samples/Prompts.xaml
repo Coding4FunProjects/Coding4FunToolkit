@@ -32,6 +32,16 @@
                     <Button Content="Basic" Click="Input_Click" />
                     <Button Content="Advanced" Click="InputAdvanced_Click" />
                 </StackPanel>
+                <TextBlock Text="Password Input Dialog Prompt" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Basic" Click="Password_Click" />
+                    <Button Content="Advanced" Click="PasswordAdvanced_Click" />
+                </StackPanel>
+                <TextBlock Text="Message Prompt" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Basic" Click="Message_Click" />
+                    <Button Content="Advanced" Click="MessageAdvanced_Click" />
+                </StackPanel>
                 
                 <TextBlock Text="Toast Prompt" />
                 <StackPanel Orientation="Horizontal">
@@ -53,13 +63,11 @@
 					Content="Click Event"
                     Click="Ding_Click" 
 					Background="Red" 
-					BorderBrush="#FFD11E1E" 
-					Height="150" />
+					BorderBrush="#FFD11E1E" />
                 <Button 
 					VerticalAlignment="Bottom"
                     Background="Red"
 					BorderBrush="#FFD11E1E" 
-					Height="150" 
 					Content="Test With Gestures">
                     <Controls:GestureService.GestureListener>
                         <Controls:GestureListener Tap="GestureListener_Tap"/>

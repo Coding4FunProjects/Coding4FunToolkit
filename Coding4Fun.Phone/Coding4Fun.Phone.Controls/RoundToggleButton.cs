@@ -20,13 +20,9 @@ namespace Coding4Fun.Phone.Controls
         {
             base.OnApplyTemplate();
 
-            
             OpacityImageBrush = GetTemplateChild(OpacityImageBrushName) as ImageBrush;
 
-			if (OpacityImageBrush != null && ImageSource != null)
-            {
-				OpacityImageBrush.ImageSource = ImageSource;
-            }
+            SetImageBrush(ImageSource);
         }
 
 		public ImageSource ImageSource
@@ -42,15 +38,22 @@ namespace Coding4Fun.Phone.Controls
                 new BitmapImage(new Uri("/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute))
                 , OnImageSource));
 
-		private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
-		{
-			var sender = o as RoundToggleButton;
+        private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = o as RoundToggleButton;
 
-			if (sender == null || sender.OpacityImageBrush == null)
-				return;
+            if (sender == null)
+                return;
 
-			var brush = e.NewValue as ImageSource;
-			sender.OpacityImageBrush.ImageSource = brush;
-		}
+            sender.SetImageBrush(e.NewValue as ImageSource);
+        }
+
+        private void SetImageBrush(ImageSource brush)
+        {
+            if (OpacityImageBrush == null)
+                return;
+
+            OpacityImageBrush.ImageSource = brush;
+        }
 	}
 }

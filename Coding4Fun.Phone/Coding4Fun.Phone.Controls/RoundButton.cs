@@ -23,10 +23,7 @@ namespace Coding4Fun.Phone.Controls
             
             OpacityImageBrush = GetTemplateChild(OpacityImageBrushName) as ImageBrush;
 
-			if (OpacityImageBrush != null && ImageSource != null)
-            {
-				OpacityImageBrush.ImageSource = ImageSource;
-            }
+            SetImageBrush(ImageSource);
         }
 
 		public ImageSource ImageSource
@@ -46,11 +43,18 @@ namespace Coding4Fun.Phone.Controls
 		{
 			var sender = o as RoundButton;
 
-			if (sender == null || sender.OpacityImageBrush == null)
+			if (sender == null)
 				return;
 
-			var brush = e.NewValue as ImageSource;
-			sender.OpacityImageBrush.ImageSource = brush;
+            sender.SetImageBrush(e.NewValue as ImageSource);
 		}
+
+        private void SetImageBrush(ImageSource brush)
+        {
+            if (OpacityImageBrush == null)
+                return;
+
+            OpacityImageBrush.ImageSource = brush;
+        }
     }
 }

@@ -65,8 +65,37 @@ namespace Coding4Fun.Phone.TestApplication.Samples
     	private void About_Click(object sender, RoutedEventArgs e)
         {
             var about = new AboutPrompt();
-            about.Completed += about_Completed;
+            about.Completed += baseObject_Completed;
             about.Show();
+        }
+
+        private void Password_Click(object sender, RoutedEventArgs e)
+        {
+            var passwordInput = new PasswordInputPrompt
+            {
+                Title = "Basic Input",
+                Message = "I'm a basic input prompt",
+            };
+            passwordInput.Completed += input_Completed;
+
+            passwordInput.Show();
+        }
+
+        private void PasswordAdvanced_Click(object sender, RoutedEventArgs e)
+        {
+            var passwordInput = new PasswordInputPrompt
+            {
+                Title = "TelephoneNum",
+                Message = "I'm a message about Telephone numbers!",
+                Background = _lime,
+                Foreground = _pumpkin,
+                Overlay = _cornFlowerBlue,
+                IsCancelVisibile = true
+            };
+
+            passwordInput.Completed += input_Completed;
+
+            passwordInput.Show();
         }
 
         private void Input_Click(object sender, RoutedEventArgs e)
@@ -99,7 +128,36 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             input.Show();
         }
 
-        void about_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
+        private void Message_Click(object sender, RoutedEventArgs e)
+        {
+            var messagePrompt = new MessagePrompt
+            {
+                Title = "Basic Message",
+                Message = "I'm a basic message prompt.",
+            };
+            messagePrompt.Completed += baseObject_Completed;
+
+            messagePrompt.Show();
+        }
+
+        private void MessageAdvanced_Click(object sender, RoutedEventArgs e)
+        {
+            var messagePrompt = new MessagePrompt
+            {
+                Title = "Advanced Message",
+                Message = "I'm an advanced message prompt!\nI'm a lot of text, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+                Background = _lime,
+                Foreground = _pumpkin,
+                Overlay = _cornFlowerBlue,
+                IsCancelVisibile = true
+            };
+
+            messagePrompt.Completed += baseObject_Completed;
+    
+            messagePrompt.Show();
+        }
+
+        void baseObject_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.Ok)
                 MessageBox.Show("OK!");
