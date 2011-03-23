@@ -90,7 +90,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 Background = _lime,
                 Foreground = _pumpkin,
                 Overlay = _cornFlowerBlue,
-                IsCancelVisibile = true
+                IsCancelVisible = true
             };
 
             passwordInput.Completed += input_Completed;
@@ -119,7 +119,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 Background = _lime,
                                 Foreground = _pumpkin,
                                 Overlay = _cornFlowerBlue,
-                                IsCancelVisibile = true
+                                IsCancelVisible = true
                             };
 
             input.Completed += input_Completed;
@@ -135,7 +135,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 Title = "Basic Message",
                 Message = "I'm a basic message prompt.",
             };
-            messagePrompt.Completed += baseObject_Completed;
+            messagePrompt.Completed += stringObject_Completed;
 
             messagePrompt.Show();
         }
@@ -149,15 +149,25 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 Background = _lime,
                 Foreground = _pumpkin,
                 Overlay = _cornFlowerBlue,
-                IsCancelVisibile = true
+                IsCancelVisible = true
             };
 
-            messagePrompt.Completed += baseObject_Completed;
+            messagePrompt.Completed += stringObject_Completed;
     
             messagePrompt.Show();
         }
 
         void baseObject_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
+        {
+            if (e.PopUpResult == PopUpResult.Ok)
+                MessageBox.Show("OK!");
+            else if (e.PopUpResult == PopUpResult.Cancelled)
+                MessageBox.Show("CANCELLED!");
+            else
+                MessageBox.Show("meh?");
+        }
+
+        void stringObject_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.Ok)
                 MessageBox.Show("OK!");
