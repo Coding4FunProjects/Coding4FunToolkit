@@ -70,7 +70,7 @@ namespace Coding4Fun.Phone.Controls
 
         private static void OnCancelButtonVisibilityChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var sender = ((InputPrompt)o);
+			var sender = ((UserPrompt)o);
 
             if (sender != null && e.NewValue != e.OldValue)
                 sender.SetCancelButtonVisibility((bool)e.NewValue);
