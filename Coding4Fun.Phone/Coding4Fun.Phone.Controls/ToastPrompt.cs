@@ -12,9 +12,13 @@ namespace Coding4Fun.Phone.Controls
         private const string ToastImageName = "ToastImage";
         private DispatcherTimer _timer;
         private TranslateTransform _translate = new TranslateTransform();
+		
         public ToastPrompt()
         {
             DefaultStyleKey = typeof(ToastPrompt);
+			
+			IsAppBarVisible = true;
+
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
             HasGesturesDisabled = false;
@@ -69,7 +73,7 @@ namespace Coding4Fun.Phone.Controls
 
         public override void Show()
         {
-            IsAppBarVisible = true;
+            
             base.Show();
 
             if (!IsTimerEnabled)

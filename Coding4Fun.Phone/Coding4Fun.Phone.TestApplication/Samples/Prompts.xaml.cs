@@ -43,6 +43,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         {
             var toast = new ToastPrompt
                             {
+								IsAppBarVisible = false,
                                 Background = _lime,
                                 Foreground = _pumpkin,
                                 Title = "Advanced",
