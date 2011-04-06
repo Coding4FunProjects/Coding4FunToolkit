@@ -158,6 +158,7 @@ namespace Clarity.Phone.Extensions
 
         internal IApplicationBar AppBar { get; set; }
         internal bool IsOpen { get; set; }
+        protected internal bool IsBackKeyOverride { get; set; }
 
         public event EventHandler Closed;
         public event EventHandler Opened;
@@ -263,7 +264,9 @@ namespace Clarity.Phone.Extensions
 
             InitializePopup();
 
-            Page.BackKeyPress += OnBackKeyPress;
+            if(!IsBackKeyOverride)
+                Page.BackKeyPress += OnBackKeyPress;
+
             Page.NavigationService.Navigated += OnNavigated;
 
             _originalAppBar = Page.ApplicationBar;
@@ -313,8 +316,8 @@ namespace Clarity.Phone.Extensions
 
                 if (_originalAppBar != null)
                     Page.ApplicationBar = _originalAppBar;
-                else
-                    Page.ApplicationBar = null;
+                //else
+                //    Page.ApplicationBar = null;
 
                 _page = null;
             }
@@ -330,8 +333,11 @@ namespace Clarity.Phone.Extensions
 
         void _hideStoryboard_Completed(object sender, EventArgs e)
         {
-            _hideStoryboard.Completed -= _hideStoryboard_Completed;
-            _hideStoryboard = null;
+            if (_hideStoryboard != null)
+            {
+                _hideStoryboard.Completed -= _hideStoryboard_Completed;
+                _hideStoryboard = null;
+            }
 
             IsOpen = false;
 

@@ -18,6 +18,7 @@ namespace Coding4Fun.Phone.Controls
             DefaultStyleKey = typeof(ToastPrompt);
 			
 			IsAppBarVisible = true;
+            IsBackKeyOverride = true;
 
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;

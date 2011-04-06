@@ -21,7 +21,8 @@ namespace Coding4Fun.Phone.Controls
 
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
         public bool IsAppBarVisible { get; set; }
-    	
+        protected internal bool IsBackKeyOverride { get; set; }
+
         protected DialogService.AnimationTypes AnimationType { get; set; }
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 
@@ -63,7 +64,7 @@ namespace Coding4Fun.Phone.Controls
 														AnimationType = AnimationType,
 														Child = this,
 														BackgroundBrush = Overlay,
-                                                        
+                                                        IsBackKeyOverride = IsBackKeyOverride
 													};
 
                                         if(IsAppBarVisible)
