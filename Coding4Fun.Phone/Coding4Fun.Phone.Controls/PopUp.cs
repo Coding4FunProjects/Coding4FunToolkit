@@ -85,9 +85,12 @@ namespace Coding4Fun.Phone.Controls
         {
             if(!_alreadyFired)
                 OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
-           
-            _popUp.Child = null;
-            _popUp = null;
+
+            if (_popUp != null)
+            {
+                _popUp.Child = null;
+                _popUp = null;
+            }
         }
 
         public Brush Overlay
