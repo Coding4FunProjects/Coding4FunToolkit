@@ -233,14 +233,12 @@
                             <StackPanel Margin="10">
                                 <TextBlock 
 							        Text="{TemplateBinding Title}" 
-							        Margin="0,-10,-25,0" 
+							        Margin="0,-10,-25,10" 
 							        FontSize="30" 
 							        TextWrapping="Wrap" FontFamily="Segoe WP Light" />
-                                <TextBlock 
-                                    Margin="0,10"
-                                    Text="{TemplateBinding Message}" 
-                                    TextWrapping="Wrap"/>
+                                <ContentPresenter Content="{TemplateBinding Body}" />
                                 <StackPanel 
+                                    Margin="0,10,0,0"
                                     Name="actionButtonArea"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Center" />

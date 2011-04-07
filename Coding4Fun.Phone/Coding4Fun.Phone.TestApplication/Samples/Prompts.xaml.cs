@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -155,6 +156,23 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
             messagePrompt.Completed += stringObject_Completed;
     
+            messagePrompt.Show();
+        }
+
+        private void MessageSuper_Click(object sender, RoutedEventArgs e)
+        {
+            var messagePrompt = new MessagePrompt
+                                    {
+                                        Title = "Advanced Message",
+                                        Background = _lime,
+                                        Foreground = _pumpkin,
+                                        Overlay = _cornFlowerBlue,
+                                        IsCancelVisible = true,
+                                        Body = new Button {Content = "I like monkeys"}
+                                    };
+
+            messagePrompt.Completed += stringObject_Completed;
+
             messagePrompt.Show();
         }
 

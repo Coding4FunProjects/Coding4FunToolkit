@@ -7,6 +7,7 @@ namespace Coding4Fun.Phone.Controls
     public abstract class UserPrompt : ActionPopUp<string, PopUpResult>
     {
         readonly RoundButton _cancelButton;
+        protected internal Action MessageChanged;
 
         protected UserPrompt()
         {
@@ -66,7 +67,15 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register("Message", typeof(string), typeof(UserPrompt), new PropertyMetadata(""));
+            DependencyProperty.Register("Message", typeof(string), typeof(UserPrompt), new PropertyMetadata("", OnMesageContentChanged));
+
+        private static void OnMesageContentChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = ((UserPrompt)o);
+
+            if (sender != null && e.NewValue != e.OldValue && sender.MessageChanged != null)
+                sender.MessageChanged();
+        }
 
         private static void OnCancelButtonVisibilityChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
