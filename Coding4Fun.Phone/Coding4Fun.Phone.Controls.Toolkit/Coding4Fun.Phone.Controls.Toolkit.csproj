@@ -101,9 +101,9 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)tools\NuGet.exe" pack "$(SolutionDir)bin\nuget\$(ProjectName).nuspec" -b "$(SolutionDir)bin\" -o "$(SolutionDir)bin\nuget\"
+    <PostBuildEvent>"$(SolutionDir)tools\NuGet.exe" pack "$(SolutionDir)bin\nuget\$(ProjectName).nuspec" -b "$(SolutionDir)bin" -o "$(SolutionDir)bin\nuget"
 
-"$(SolutionDir)tools\NuGet.exe" pack "$(SolutionDir)bin\nuget\Coding4Fun.Phone.Controls with Timespan.nuspec" -b "$(SolutionDir)bin\" -o "$(SolutionDir)bin\nuget\"</PostBuildEvent>
+"$(SolutionDir)tools\NuGet.exe" pack "$(SolutionDir)bin\nuget\Coding4Fun.Phone.Controls with Timespan.nuspec" -b "$(SolutionDir)bin" -o "$(SolutionDir)bin\nuget"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
