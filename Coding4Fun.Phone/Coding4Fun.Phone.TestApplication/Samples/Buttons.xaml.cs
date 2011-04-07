@@ -64,5 +64,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 RoundToggleButtonImage = (RoundToggleButtonImage != CheckIcon) ? CheckIcon : RepeatIcon;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BackgroundRect.Visibility = (BackgroundRect.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
+        }
     }
 }

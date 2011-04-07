@@ -5,7 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -13,22 +15,29 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
+        
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="buttons" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-
+        
+        <Button 
+            Content="Toggle background" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right" 
+            Click="Button_Click" />
+        
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Rectangle Fill="Red" Visibility="Collapsed" Name="BackgroundRect"/>
             <StackPanel>
-                
                 <TextBlock>Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <Controls:RoundButton 
@@ -41,10 +50,12 @@
                     <Controls:RoundButton
                         Background="CornflowerBlue" />
                     <Controls:RoundButton 
-                        Foreground="Salmon" />
+                        Foreground="Salmon"
+                        Content="Text" />
                     <Controls:RoundButton 
-                        Content="Click handler"
-                        Click="RoundButton_Click" />
+                        ImageSource="{Binding RoundButtonImage}"
+					    Content="Click Handler" 
+                        Click="ToggleDirectRoundButtonImage_Click" />
                 </StackPanel>
                 
                 <TextBlock>Round Toggle Button</TextBlock>
@@ -59,26 +70,102 @@
                     <Controls:RoundToggleButton
                         Background="CornflowerBlue" />
                     <Controls:RoundToggleButton 
-                        Foreground="Salmon" />
+                        Foreground="Salmon" 
+                        Content="Text" />
                     <Controls:RoundToggleButton 
+                        ImageSource="{Binding RoundToggleButtonImage}"
+					    Content="Click Handler" 
+                        Click="ToggleDirectRoundToggleButtonImage_Click" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Content="But" />
+                    <ToggleButton 
+                        Content="Tog" />
+                    <Button
+                        Content="But Adv"
+                        BorderBrush="OliveDrab"
+                        Background="CornflowerBlue"
+                        Foreground="Salmon" />
+                    <ToggleButton 
+                        Content="Tog Adv"
+                        BorderBrush="OliveDrab"
+                        Background="CornflowerBlue"
+                        Foreground="Salmon"
+                        />
+                </StackPanel>
+
+
+                <TextBlock>Disabled Round Button</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Controls:RoundButton 
+                        IsEnabled="False"
+					    Content="Text" />
+                    <Controls:RoundButton 
+                        IsEnabled="False"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
+                    <Controls:RoundButton
+                        IsEnabled="False"
+                        BorderBrush="OliveDrab" />
+                    <Controls:RoundButton
+                        IsEnabled="False"
+                        Background="CornflowerBlue" />
+                    <Controls:RoundButton
+                        IsEnabled="False"
+                        Foreground="Salmon" 
+                        Content="Text"/>
+                    <Controls:RoundButton
+                        IsEnabled="False"
                         Content="Click handler"
                         Click="RoundButton_Click" />
                 </StackPanel>
                 
-                <TextBlock>Change Icon for Round Button</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Controls:RoundButton 
-                        ImageSource="{Binding RoundButtonImage}"
-					    Content="Direct" 
-                        Click="ToggleDirectRoundButtonImage_Click" />
-                </StackPanel>
-                
-                <TextBlock>Change Icon for Round Toggle Button</TextBlock>
+                <TextBlock>Disabled Round Toggle Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <Controls:RoundToggleButton 
-                        ImageSource="{Binding RoundToggleButtonImage}"
-					    Content="Direct" 
-                        Click="ToggleDirectRoundToggleButtonImage_Click" />
+                        IsEnabled="False"
+					    Content="Text" />
+                    <Controls:RoundToggleButton 
+                        IsEnabled="False"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
+                    <Controls:RoundToggleButton
+                        IsEnabled="False"
+                        BorderBrush="OliveDrab" />
+                    <Controls:RoundToggleButton
+                        IsEnabled="False"
+                        Background="CornflowerBlue" />
+                    <Controls:RoundToggleButton 
+                        IsEnabled="False"
+                        Foreground="Salmon"
+                        Content="Text" />
+                    <Controls:RoundToggleButton 
+                        IsEnabled="False"
+                        Content="Click handler"
+                        Click="RoundButton_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        IsEnabled="False"
+                        Content="But" />
+                    <ToggleButton 
+                        IsEnabled="False" 
+                        Content="Tog" />
+                    <Button
+                        IsEnabled="False"
+                        Content="But Adv"
+                        BorderBrush="OliveDrab"
+                        Background="CornflowerBlue"
+                        Foreground="Salmon" />
+                    <ToggleButton 
+                        IsEnabled="False" 
+                        Content="Tog Adv"
+                        BorderBrush="OliveDrab"
+                        Background="CornflowerBlue"
+                        Foreground="Salmon"
+                        />
                 </StackPanel>
             </StackPanel>
         </Grid>
