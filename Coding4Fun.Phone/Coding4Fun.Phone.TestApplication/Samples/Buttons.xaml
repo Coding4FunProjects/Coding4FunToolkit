@@ -24,7 +24,6 @@
         
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="buttons" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
         
@@ -44,14 +43,19 @@
 					    Content="Text" />
                     <Controls:RoundButton 
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="Image" />
+					    Content="image" />
                     <Controls:RoundButton
+                        FontSize="24"
+                        Content="Coding"
                         BorderBrush="OliveDrab" />
                     <Controls:RoundButton
+                        FontSize="72"
+                        Content="4"
                         Background="CornflowerBlue" />
                     <Controls:RoundButton 
                         Foreground="Salmon"
-                        Content="Text" />
+                        FontSize="36"
+                        Content="Fun" />
                     <Controls:RoundButton 
                         ImageSource="{Binding RoundButtonImage}"
 					    Content="Click Handler" 
@@ -64,14 +68,19 @@
 					    Content="Text" />
                     <Controls:RoundToggleButton 
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="Image" />
+					    Content="image" />
                     <Controls:RoundToggleButton
+                        FontSize="24"
+                        Content="Coding"
                         BorderBrush="OliveDrab" />
                     <Controls:RoundToggleButton
+                        FontSize="72"
+                        Content="4"
                         Background="CornflowerBlue" />
                     <Controls:RoundToggleButton 
-                        Foreground="Salmon" 
-                        Content="Text" />
+                        Foreground="Salmon"
+                        FontSize="36"
+                        Content="Fun" />
                     <Controls:RoundToggleButton 
                         ImageSource="{Binding RoundToggleButtonImage}"
 					    Content="Click Handler" 
@@ -114,8 +123,9 @@
                         Background="CornflowerBlue" />
                     <Controls:RoundButton
                         IsEnabled="False"
-                        Foreground="Salmon" 
-                        Content="Text"/>
+                        Foreground="Salmon"
+                        FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                        Content="C4F" />
                     <Controls:RoundButton
                         IsEnabled="False"
                         Content="Click handler"
@@ -140,7 +150,8 @@
                     <Controls:RoundToggleButton 
                         IsEnabled="False"
                         Foreground="Salmon"
-                        Content="Text" />
+                        FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                        Content="C4F" />
                     <Controls:RoundToggleButton 
                         IsEnabled="False"
                         Content="Click handler"

@@ -11,6 +11,9 @@ namespace Coding4Fun.Phone.Controls
         protected ImageBrush OpacityImageBrush;
         private const string OpacityImageBrushName = "OpacityImageBrush";
 
+        protected ContentControl ContentBody;
+        private const string ContentBodyName = "ContentBody";
+
 		public RoundButton()
 		{
 			DefaultStyleKey = typeof(RoundButton);
@@ -20,10 +23,18 @@ namespace Coding4Fun.Phone.Controls
         {
             base.OnApplyTemplate();
 
-            
             OpacityImageBrush = GetTemplateChild(OpacityImageBrushName) as ImageBrush;
+            ContentBody = GetTemplateChild(ContentBodyName) as ContentControl;
 
             SetImageBrush(ImageSource);
+
+		    if (ContentBody != null)
+		    {
+                var bottom = -(ContentBody.FontSize / 8.0);
+                var top = -(ContentBody.FontSize / 2.0) - bottom;
+
+                ContentBody.Margin = new Thickness(0, top, 0, bottom);
+		    }
         }
 
 		public ImageSource ImageSource
