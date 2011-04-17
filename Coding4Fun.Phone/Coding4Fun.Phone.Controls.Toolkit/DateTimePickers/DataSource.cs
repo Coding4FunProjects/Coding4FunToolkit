@@ -45,16 +45,16 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             {
                 if (value != _selectedItem)
                 {
-                    //ValueWrapper<T> valueWrapper = (ValueWrapper<T>)value;
-                    ValueWrapper<T> valueWrapper = value as ValueWrapper<T>;
+                    var valueWrapper = value as ValueWrapper<T>;
                     if ((null == valueWrapper) || (null == _selectedItem) || !(valueWrapper.Value.Equals(_selectedItem.Value)))
                     {
                         object previousSelectedItem = _selectedItem;
                         _selectedItem = valueWrapper;
-                        EventHandler<SelectionChangedEventArgs> handler = SelectionChanged;
+
+                        var handler = SelectionChanged;
                         if (null != handler)
                         {
-                            handler(this, new SelectionChangedEventArgs(new object[] { previousSelectedItem }, new object[] { _selectedItem }));
+                            handler(this, new SelectionChangedEventArgs(new[] { previousSelectedItem }, new object[] { _selectedItem }));
                         }
                     }
                 }
@@ -72,19 +72,19 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             {
                 return null;
             }
-            int nextYear = relativeDate.Year + delta;
-            int nextDay = Math.Min(relativeDate.Day, DateTime.DaysInMonth(nextYear, relativeDate.Month));
+            var nextYear = relativeDate.Year + delta;
+            var nextDay = Math.Min(relativeDate.Day, DateTime.DaysInMonth(nextYear, relativeDate.Month));
             return new DateTime(nextYear, relativeDate.Month, nextDay, relativeDate.Hour, relativeDate.Minute, relativeDate.Second);
         }
     }
 
     class MonthDataSource : DataSource<DateTime>
     {
+        const int MonthsInYear = 12;
         protected override DateTime? GetRelativeTo(DateTime relativeDate, int delta)
         {
-            int monthsInYear = 12;
-            int nextMonth = ((monthsInYear + relativeDate.Month - 1 + delta) % monthsInYear) + 1;
-            int nextDay = Math.Min(relativeDate.Day, DateTime.DaysInMonth(relativeDate.Year, nextMonth));
+            var nextMonth = ((MonthsInYear + relativeDate.Month - 1 + delta) % MonthsInYear) + 1;
+            var nextDay = Math.Min(relativeDate.Day, DateTime.DaysInMonth(relativeDate.Year, nextMonth));
             return new DateTime(relativeDate.Year, nextMonth, nextDay, relativeDate.Hour, relativeDate.Minute, relativeDate.Second);
         }
     }
@@ -101,32 +101,32 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
     class TwelveHourDataSource : DataSource<DateTime>
     {
+        const int HoursInHalfDay = 12;
         protected override DateTime? GetRelativeTo(DateTime relativeDate, int delta)
         {
-            int hoursInHalfDay = 12;
-            int nextHour = (hoursInHalfDay + relativeDate.Hour + delta) % hoursInHalfDay;
-            nextHour += hoursInHalfDay <= relativeDate.Hour ? hoursInHalfDay : 0;
+            var nextHour = (HoursInHalfDay + relativeDate.Hour + delta) % HoursInHalfDay;
+            nextHour += HoursInHalfDay <= relativeDate.Hour ? HoursInHalfDay : 0;
             return new DateTime(relativeDate.Year, relativeDate.Month, relativeDate.Day, nextHour, relativeDate.Minute, 0);
         }
     }
 
     class MinuteDataSource : DataSource<DateTime>
     {
+        const int MinutesInHour = 60;
         protected override DateTime? GetRelativeTo(DateTime relativeDate, int delta)
         {
-            int minutesInHour = 60;
-            int nextMinute = (minutesInHour + relativeDate.Minute + delta) % minutesInHour;
+            var nextMinute = (MinutesInHour + relativeDate.Minute + delta) % MinutesInHour;
             return new DateTime(relativeDate.Year, relativeDate.Month, relativeDate.Day, relativeDate.Hour, nextMinute, 0);
         }
     }
 
     class AmPmDataSource : DataSource<DateTime>
     {
+        const int HoursInDay = 24;
         protected override DateTime? GetRelativeTo(DateTime relativeDate, int delta)
         {
-            int hoursInDay = 24;
-            int nextHour = relativeDate.Hour + (delta * (hoursInDay / 2));
-            if ((nextHour < 0) || (hoursInDay <= nextHour))
+            var nextHour = relativeDate.Hour + (delta * (HoursInDay / 2));
+            if ((nextHour < 0) || (HoursInDay <= nextHour))
             {
                 return null;
             }
@@ -136,10 +136,10 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
     class TwentyFourHourDataSource : DataSource<DateTime>
     {
+        const int HoursInDay = 24;
         protected override DateTime? GetRelativeTo(DateTime relativeDate, int delta)
         {
-            int hoursInDay = 24;
-            int nextHour = (hoursInDay + relativeDate.Hour + delta) % hoursInDay;
+            int nextHour = (HoursInDay + relativeDate.Hour + delta) % HoursInDay;
             return new DateTime(relativeDate.Year, relativeDate.Month, relativeDate.Day, nextHour, relativeDate.Minute, 0);
         }
     }

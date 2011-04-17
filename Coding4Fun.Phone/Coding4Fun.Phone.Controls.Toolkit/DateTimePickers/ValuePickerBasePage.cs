@@ -54,12 +54,12 @@ namespace Coding4Fun.Phone.Controls.Primitives
             _tertiarySelectorPart = tertiarySelector;
 
             // Hook up to interesting events
-            _primarySelectorPart.DataSource.SelectionChanged += new EventHandler<SelectionChangedEventArgs>(HandleDataSourceSelectionChanged);
-            _secondarySelectorPart.DataSource.SelectionChanged += new EventHandler<SelectionChangedEventArgs>(HandleDataSourceSelectionChanged);
-            _tertiarySelectorPart.DataSource.SelectionChanged += new EventHandler<SelectionChangedEventArgs>(HandleDataSourceSelectionChanged);
-            _primarySelectorPart.IsExpandedChanged += new DependencyPropertyChangedEventHandler(HandleSelectorIsExpandedChanged);
-            _secondarySelectorPart.IsExpandedChanged += new DependencyPropertyChangedEventHandler(HandleSelectorIsExpandedChanged);
-            _tertiarySelectorPart.IsExpandedChanged += new DependencyPropertyChangedEventHandler(HandleSelectorIsExpandedChanged);
+            _primarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
+            _secondarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
+            _tertiarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
+            _primarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
+            _secondarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
+            _tertiarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
 
             // Hide all selectors
             _primarySelectorPart.Visibility = Visibility.Collapsed;
@@ -76,7 +76,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
             }
 
             // Hook up to storyboard(s)
-            FrameworkElement templateRoot = VisualTreeHelper.GetChild(this, 0) as FrameworkElement;
+            var templateRoot = VisualTreeHelper.GetChild(this, 0) as FrameworkElement;
             if (null != templateRoot)
             {
                 foreach (VisualStateGroup group in VisualStateManager.GetVisualStateGroups(templateRoot))
@@ -88,7 +88,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
                             if ((ClosedVisibilityStateName == state.Name) && (null != state.Storyboard))
                             {
                                 _closedStoryboard = state.Storyboard;
-                                _closedStoryboard.Completed += new EventHandler(HandleClosedStoryboardCompleted);
+                                _closedStoryboard.Completed += HandleClosedStoryboardCompleted;
                             }
                         }
                     }
@@ -100,18 +100,18 @@ namespace Coding4Fun.Phone.Controls.Primitives
             {
                 foreach (object obj in ApplicationBar.Buttons)
                 {
-                    IApplicationBarIconButton button = obj as IApplicationBarIconButton;
+                    var button = obj as IApplicationBarIconButton;
                     if (null != button)
                     {
                         if ("DONE" == button.Text)
                         {
                             button.Text = Toolkit.Properties.Resources.DateTimePickerDoneText;
-                            button.Click += new EventHandler(HandleDoneButtonClick);
+                            button.Click += HandleDoneButtonClick;
                         }
                         else if ("CANCEL" == button.Text)
                         {
                             button.Text = Toolkit.Properties.Resources.DateTimePickerCancelText;
-                            button.Click += new EventHandler(HandleCancelButtonClick);
+                            button.Click += HandleCancelButtonClick;
                         }
                     }
                 }
@@ -225,11 +225,8 @@ namespace Coding4Fun.Phone.Controls.Primitives
             }
 
             // Create a list of index and selector pairs
-            List<Tuple<int, LoopingSelector>> pairs = new List<Tuple<int, LoopingSelector>>(patternCharacters.Length);
-            for (int i = 0; i < patternCharacters.Length; i++)
-            {
-                pairs.Add(new Tuple<int, LoopingSelector>(pattern.IndexOf(patternCharacters[i]), selectors[i]));
-            }
+            var pairs = new List<Tuple<int, LoopingSelector>>(patternCharacters.Length);
+            pairs.AddRange(patternCharacters.Select((t, i) => new Tuple<int, LoopingSelector>(pattern.IndexOf(t), selectors[i])));
 
             // Return the corresponding selectors in order
             return pairs.Where(p => -1 != p.Item1).OrderBy(p => p.Item1).Select(p => p.Item2).Where(s => null != s);
@@ -244,7 +241,14 @@ namespace Coding4Fun.Phone.Controls.Primitives
             set
             {
                 _value = value;
-                ValueWrapper<T> wrapper = GetNewWrapper(_value);
+                var wrapper = GetNewWrapper(_value);
+
+                if (wrapper == null ||
+                    _primarySelectorPart == null ||
+                    _secondarySelectorPart == null ||
+                    _tertiarySelectorPart == null)
+                    return;
+
                 _primarySelectorPart.DataSource.SelectedItem = wrapper;
                 _secondarySelectorPart.DataSource.SelectedItem = wrapper;
                 _tertiarySelectorPart.DataSource.SelectedItem = wrapper;
@@ -295,6 +299,8 @@ namespace Coding4Fun.Phone.Controls.Primitives
             }
 
             base.OnNavigatedTo(e);
+            InitDataSource();
+            InitValue();
 
             // Restore Value if returning to application (to avoid inconsistent state)
             if (State.ContainsKey(StateKey_Value))
@@ -315,5 +321,9 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// </summary>
         public abstract void InitDataSource();
 
+        private void InitValue()
+        {
+            Value = Value.GetValueOrDefault();
+        }
     }
 }

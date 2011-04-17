@@ -75,8 +75,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         protected override void NavigateToNewPage(object page)
         {
             var tsPage = page as ITimeSpanPickerPage<TimeSpan>;
-            tsPage.Max = Max;
-            tsPage.IncrementStep = Step;
+
+            if (tsPage != null)
+            {
+                tsPage.Max = Max;
+                tsPage.IncrementStep = Step;
+            }
 
             base.NavigateToNewPage(page);
         }

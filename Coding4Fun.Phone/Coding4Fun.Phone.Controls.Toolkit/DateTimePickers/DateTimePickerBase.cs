@@ -25,12 +25,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         private IValuePickerPage<T> _dateTimePickerPage;
 
         /// <summary>
-        /// Initializes a new instance of the DateTimePickerBase control.
-        /// </summary>
-        protected DateTimePickerBase()
-        { }
-
-        /// <summary>
         /// Event that is invoked when the Value property changes.
         /// </summary>
         public event EventHandler<ValueChangedEventArgs<T>> ValueChanged;
@@ -50,11 +44,11 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// Identifies the Value DependencyProperty.
         /// </summary>
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-            "Value", typeof(Nullable<T>), typeof(DateTimePickerBase<T>), new PropertyMetadata(null, OnValueChanged));
+            "Value", typeof(T?), typeof(DateTimePickerBase<T>), new PropertyMetadata(null, OnValueChanged));
 
         private static void OnValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            ((DateTimePickerBase<T>)o).OnValueChanged((Nullable<T>)e.OldValue, (Nullable<T>)e.NewValue);
+            ((DateTimePickerBase<T>)o).OnValueChanged((T?)e.OldValue, (T?)e.NewValue);
         }
 
         private void OnValueChanged(T? oldValue, T? newValue)
@@ -108,22 +102,20 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
         private static void OnValueStringFormatChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            ((DateTimePickerBase<T>)o).OnValueStringFormatChanged(/*(string)e.OldValue, (string)e.NewValue*/);
+            ((DateTimePickerBase<T>)o).OnValueStringFormatChanged();
         }
 
-        private void OnValueStringFormatChanged(/*string oldValue, string newValue*/)
+        private void OnValueStringFormatChanged()
         {
             UpdateValueString();
         }
-
-
 
         /// <summary>
         /// Gets or sets the header of the control.
         /// </summary>
         public object Header
         {
-            get { return (object)GetValue(HeaderProperty); }
+            get { return GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
         }
 
@@ -177,7 +169,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             // Unhook from old template
             if (null != _dateButtonPart)
             {
-                _dateButtonPart.Click -= new RoutedEventHandler(HandleDateButtonClick);
+                _dateButtonPart.Click -= HandleDateButtonClick;
             }
 
             base.OnApplyTemplate();
@@ -186,7 +178,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             _dateButtonPart = GetTemplateChild(ButtonPartName) as ButtonBase;
             if (null != _dateButtonPart)
             {
-                _dateButtonPart.Click += new RoutedEventHandler(HandleDateButtonClick);
+                _dateButtonPart.Click += HandleDateButtonClick;
             }
         }
 
@@ -216,18 +208,18 @@ namespace Coding4Fun.Phone.Controls.Toolkit
                     _frameContentWhenOpened = _frame.Content;
 
                     // Save and clear host page transitions for the upcoming "popup" navigation
-                    UIElement frameContentWhenOpenedAsUIElement = _frameContentWhenOpened as UIElement;
-                    if (null != frameContentWhenOpenedAsUIElement)
+                    var frameContentWhenOpenedAsUiElement = _frameContentWhenOpened as UIElement;
+                    if (null != frameContentWhenOpenedAsUiElement)
                     {
-                        _savedNavigationInTransition = TransitionService.GetNavigationInTransition(frameContentWhenOpenedAsUIElement);
-                        TransitionService.SetNavigationInTransition(frameContentWhenOpenedAsUIElement, null);
-                        _savedNavigationOutTransition = TransitionService.GetNavigationOutTransition(frameContentWhenOpenedAsUIElement);
-                        TransitionService.SetNavigationOutTransition(frameContentWhenOpenedAsUIElement, null);
+                        _savedNavigationInTransition = TransitionService.GetNavigationInTransition(frameContentWhenOpenedAsUiElement);
+                        TransitionService.SetNavigationInTransition(frameContentWhenOpenedAsUiElement, null);
+                        _savedNavigationOutTransition = TransitionService.GetNavigationOutTransition(frameContentWhenOpenedAsUiElement);
+                        TransitionService.SetNavigationOutTransition(frameContentWhenOpenedAsUiElement, null);
                     }
 
-                    _frame.Navigated += new NavigatedEventHandler(HandleFrameNavigated);
-                    _frame.NavigationStopped += new NavigationStoppedEventHandler(HandleFrameNavigationStoppedOrFailed);
-                    _frame.NavigationFailed += new NavigationFailedEventHandler(HandleFrameNavigationStoppedOrFailed);
+                    _frame.Navigated += HandleFrameNavigated;
+                    _frame.NavigationStopped += HandleFrameNavigationStoppedOrFailed;
+                    _frame.NavigationFailed += HandleFrameNavigationStoppedOrFailed;
 
                     _frame.Navigate(PickerPageUri);
                 }
@@ -240,17 +232,17 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             // Unhook from events
             if (null != _frame)
             {
-                _frame.Navigated -= new NavigatedEventHandler(HandleFrameNavigated);
-                _frame.NavigationStopped -= new NavigationStoppedEventHandler(HandleFrameNavigationStoppedOrFailed);
-                _frame.NavigationFailed -= new NavigationFailedEventHandler(HandleFrameNavigationStoppedOrFailed);
+                _frame.Navigated -= HandleFrameNavigated;
+                _frame.NavigationStopped -= HandleFrameNavigationStoppedOrFailed;
+                _frame.NavigationFailed -= HandleFrameNavigationStoppedOrFailed;
 
                 // Restore host page transitions for the completed "popup" navigation
-                UIElement frameContentWhenOpenedAsUIElement = _frameContentWhenOpened as UIElement;
-                if (null != frameContentWhenOpenedAsUIElement)
+                var frameContentWhenOpenedAsUiElement = _frameContentWhenOpened as UIElement;
+                if (null != frameContentWhenOpenedAsUiElement)
                 {
-                    TransitionService.SetNavigationInTransition(frameContentWhenOpenedAsUIElement, _savedNavigationInTransition);
+                    TransitionService.SetNavigationInTransition(frameContentWhenOpenedAsUiElement, _savedNavigationInTransition);
                     _savedNavigationInTransition = null;
-                    TransitionService.SetNavigationOutTransition(frameContentWhenOpenedAsUIElement, _savedNavigationOutTransition);
+                    TransitionService.SetNavigationOutTransition(frameContentWhenOpenedAsUiElement, _savedNavigationOutTransition);
                     _savedNavigationOutTransition = null;
                 }
 
@@ -267,7 +259,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
                 _dateTimePickerPage = null;
             }
         }
-
+        
         private void HandleFrameNavigated(object sender, NavigationEventArgs e)
         {
             if (e.Content == _frameContentWhenOpened)
@@ -293,8 +285,11 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// <param name="page">the destination page</param>
         protected virtual void NavigateToNewPage(object page)
         {
-            _dateTimePickerPage.InitDataSource();
-            _dateTimePickerPage.Value = Value.GetValueOrDefault();
+            var navPage = page as IValuePickerPage<T>;
+            if (navPage != null)
+            {
+                navPage.Value = Value.GetValueOrDefault();
+            }
         }
 
         private void HandleFrameNavigationStoppedOrFailed(object sender, EventArgs e)

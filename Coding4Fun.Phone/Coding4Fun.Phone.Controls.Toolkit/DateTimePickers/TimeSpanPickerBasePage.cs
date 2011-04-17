@@ -5,7 +5,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
     /// <summary>
     /// TimeSpanPickerBasePage : For easier instanciation in xaml page
     /// </summary>
-    public abstract partial class TimeSpanPickerBasePage : ValuePickerBasePage<TimeSpan>, ITimeSpanPickerPage<TimeSpan>
+    public abstract class TimeSpanPickerBasePage : ValuePickerBasePage<TimeSpan>, ITimeSpanPickerPage<TimeSpan>
     {
 
         /// <summary>
@@ -43,10 +43,8 @@ namespace Coding4Fun.Phone.Controls.Primitives
         {
             set
             {
-                base.Value = value >= Max ? Max - IncrementStep: value;
+                base.Value = value >= Max ? Max - IncrementStep : value;
             }
         }
-
-
     }
 }
