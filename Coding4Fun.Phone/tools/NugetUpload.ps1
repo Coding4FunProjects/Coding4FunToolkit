@@ -3,8 +3,9 @@
 $root = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 $currentPath = [System.IO.Directory]::GetParent($root).FullName;
-
 $slnPath = [System.IO.Path]::Combine($currentPath, "Coding4Fun.Phone.sln");
+$releaseDir = [System.IO.Directory]::GetParent($root).GetDirectories("bin", [System.IO.SearchOption]::TopDirectoryOnly)[0];
+$releaseDir = $releaseDir.GetDirectories("Release", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 
 $assemblyFiles = [System.IO.Directory]::GetFiles($currentPath, "AssemblyInfo.cs", [System.IO.SearchOption]::AllDirectories);
 $nuspecFiles = [System.IO.Directory]::GetFiles($currentPath, "*.nuspec", [System.IO.SearchOption]::AllDirectories);
@@ -32,8 +33,7 @@ echo "Updated all files to " $versionNumber;
 echo "starting build"
 
 # can't seem to get this to properly work
-#[void][System.Reflection.Assembly]::Load('Microsoft.Build.Engine, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a');
-#$engine = New-Object Microsoft.Build.BuildEngine.Engine;
+[void][System.Reflection.Assembly]::Load('Microsoft.Build.Engine, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a');
 #$project = New-Object Microsoft.Build.BuildEngine.Project($engine);
 #
 #$engine.RegisterLogger((New-Object Microsoft.Build.BuildEngine.ConsoleLogger));
@@ -52,8 +52,31 @@ if($LastExitCode -ne 0)
 	echo "BUILD FAILURE!!"
 	exit 0
 }
-	
 echo "done building"
+
+[System.Reflection.Assembly]::Load("WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")
+if($ZipPackage -ne $null) 
+{
+	$ZipPackage.Close();
+}
+
+$ZipPackage=[System.IO.Packaging.ZipPackage]::Open("Coding4Fun.Phone.Controls.zip", [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
+
+#creating relative URI
+
+ForEach ($file In $releaseDir.EnumerateFiles("*.dll"))
+{
+   $bytes = [System.IO.File]::ReadAllBytes($file.FullName);
+   $uriLocation = '/' + $file.Name;
+   $partName = New-Object System.Uri($uriLocation, [System.UriKind]::Relative);
+   $part = $ZipPackage.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
+   $stream = $part.GetStream();
+   $stream.Write($bytes, 0, $bytes.Length);
+   $stream.Dispose();
+}
+
+#Close the package when we're done.
+$ZipPackage.Close();
 
 echo "start nuget packaging"
 
