@@ -280,10 +280,12 @@
                                     TextWrapping="Wrap" FontFamily="Segoe WP Light" />
                                 <TextBlock 
                                     Text="{TemplateBinding Message}" />
-                                <PasswordBox 
-                                    Name="inputBox" 
-                                    Binding:TextBoxBinding.UpdateSourceOnChange="True"
-                                    Password="{TemplateBinding Value}" />
+                                <Grid>
+                                    <TextBox 
+                                        Name="inputBox" 
+                                        InputScope="{TemplateBinding InputScope}"
+                                        Binding:TextBoxBinding.UpdateSourceOnChange="True" />
+                                </Grid>
                                 <StackPanel
                                     Name="actionButtonArea"
                                     Orientation="Horizontal"

@@ -96,7 +96,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             };
 
             passwordInput.Completed += input_Completed;
-
+            passwordInput.InputScope = new InputScope { Names = { new InputScopeName() { NameValue = InputScopeNameValue.TelephoneNumber } } };
+            passwordInput.Value = "doom";
             passwordInput.Show();
         }
 
