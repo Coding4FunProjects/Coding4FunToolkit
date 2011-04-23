@@ -218,7 +218,10 @@ namespace Coding4Fun.Phone.Controls.Toolkit
                     }
 
                     _frame.Navigated += HandleFrameNavigated;
-                    _frame.NavigationStopped += HandleFrameNavigationStoppedOrFailed;
+
+                    if (_frame.GetType() == typeof(PhoneApplicationFrame))
+                        _frame.NavigationStopped += HandleFrameNavigationStoppedOrFailed;
+
                     _frame.NavigationFailed += HandleFrameNavigationStoppedOrFailed;
 
                     _frame.Navigate(PickerPageUri);

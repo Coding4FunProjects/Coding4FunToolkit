@@ -30,7 +30,9 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock TextWrapping="Wrap">Based off the Silverlight Toolkit and modified by Stéphanie Hertrich</TextBlock>
-                <TextBlock>Basic</TextBlock>
+				<TextBlock>stock</TextBlock>
+				<c4fToolkit:TimeSpanPicker />
+				<TextBlock>Basic</TextBlock>
                 <c4fToolkit:TimeSpanPicker
                     ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
                     />
