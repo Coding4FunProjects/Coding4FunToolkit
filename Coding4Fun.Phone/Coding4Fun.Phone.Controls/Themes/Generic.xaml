@@ -497,4 +497,32 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="local:ColorSlider">
+        <Setter Property="FontFamily" Value="Courier New" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorSlider">
+                    <Grid Name="Body">
+                        <Rectangle 
+                            Name="SelectedColor" 
+                            Fill="{TemplateBinding SolidColorBrush}" />
+
+                        <Grid Name="GradientBody">
+                            <Rectangle Name="Gradient" />
+
+                            <Rectangle 
+                                Name="HueSelector"
+				                Stroke="White"
+                                StrokeThickness="2"
+                                Margin="{TemplateBinding MarginOffset}"
+                                />
+                            <Rectangle 
+                                Name="HueMonitor"
+                                Fill="Transparent" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

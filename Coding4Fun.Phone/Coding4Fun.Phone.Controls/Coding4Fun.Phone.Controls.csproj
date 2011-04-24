@@ -57,11 +57,13 @@
     <Compile Include="AboutPersonItem.cs" />
     <Compile Include="ActionPopUp.cs" />
     <Compile Include="Binding\TextBoxBinding.cs" />
+    <Compile Include="ColorSlider.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="Converters\ThemedImageConverter.cs" />
     <Compile Include="Converters\ThemedInverseImageConverter.cs" />
     <Compile Include="Converters\VisibilityToBooleanConverter.cs" />
+    <Compile Include="Unsupported\ColorSpace.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />
     <Compile Include="GestureHelper.cs" />

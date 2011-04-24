@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Coding4Fun.Phone.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication
@@ -39,11 +30,6 @@ namespace Coding4Fun.Phone.TestApplication
             NavigateTo("/Samples/Prompts.xaml");
         }
 
-        private void Progress_Click(object sender, RoutedEventArgs e)
-        {
-            NavigateTo("/Samples/ProgressBar.xaml");
-        }
-
         private void About_Click(object sender, RoutedEventArgs e)
         {
             NavigateTo("/Samples/AboutItems.xaml");
@@ -54,14 +40,19 @@ namespace Coding4Fun.Phone.TestApplication
             NavigateTo("/Samples/Memory.xaml");
         }
         
-        private void NavigateTo(string page)
-        {
-            this.NavigationService.Navigate(new Uri(page, UriKind.Relative));
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigateTo("/Samples/Buttons.xaml");
+        }
+
+        private void ColorSlider_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo("/Samples/ColorSlider.xaml");
+        }
+
+        private void NavigateTo(string page)
+        {
+            NavigationService.Navigate(new Uri(page, UriKind.Relative));
         }
     }
 }
