@@ -26,7 +26,7 @@ namespace Coding4Fun.Phone.Controls
         protected Rectangle Gradient;
         private const string GradientName = "Gradient";
 
-        protected Rectangle HueSelector;
+        protected Grid HueSelector;
         private const string HueSelectorName = "HueSelector";
 
         protected Rectangle HueMonitor;
@@ -43,7 +43,7 @@ namespace Coding4Fun.Phone.Controls
         const int GradientStops = 6;
         const double NegatedGradientStops = 1 / (float)GradientStops;
 
-        const double HueSelectorSize = 12;
+        const double HueSelectorSize = 24;
         double _rectHueMonitorSize = 180;
 
         public ColorSlider()
@@ -58,10 +58,10 @@ namespace Coding4Fun.Phone.Controls
 
             Body = GetTemplateChild(BodyName) as Grid;
             GradientBody = GetTemplateChild(GradientBodyName) as Grid;
+            HueSelector = GetTemplateChild(HueSelectorName) as Grid;
 
             SelectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
             Gradient = GetTemplateChild(GradientName) as Rectangle;
-            HueSelector = GetTemplateChild(HueSelectorName) as Rectangle;
             HueMonitor = GetTemplateChild(HueMonitorName) as Rectangle;
 
             SizeChanged += UserControl_SizeChanged;
@@ -111,7 +111,7 @@ namespace Coding4Fun.Phone.Controls
 
             var huePos = (int)(position / _rectHueMonitorSize * 255) * GradientStops;
 
-            Color = _colorSpace.GetColorFromPosition(huePos);
+            Color = ColorSpace.GetColorFromPosition(huePos);
             SolidColorBrush = new SolidColorBrush(Color);
 
             if (ColorChanged != null)
@@ -154,6 +154,16 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty SolidColorBrushProperty =
             DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorSlider), new PropertyMetadata(null));
 
+        public bool IsColorVisible
+        {
+            get { return (bool)GetValue(IsColorVisibleProperty); }
+            set { SetValue(IsColorVisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsColorVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsColorVisibleProperty =
+            DependencyProperty.Register("IsColorVisible", typeof(bool), typeof(ColorSlider), new PropertyMetadata(true, OnIsColorVisibleChanged));
+
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
@@ -164,9 +174,19 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ColorSlider), new PropertyMetadata(Orientation.Vertical, OnOrientationPropertyChanged));
         #endregion
+
+        private static void OnIsColorVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var slider = d as ColorSlider;
+
+            if (slider != null)
+                slider.AdjustLayoutBasedOnOrientation();
+        }
+
         private static void OnOrientationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var slider = d as ColorSlider;
+            
             if (slider != null)
                 slider.AdjustLayoutBasedOnOrientation();
         }
@@ -228,18 +248,29 @@ namespace Coding4Fun.Phone.Controls
 
             SelectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
             SelectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
-            _rectHueMonitorSize = isVert ? HueMonitor.ActualHeight : HueMonitor.ActualWidth;
+
+            var squareSize = isVert ? HueMonitor.ActualWidth : HueMonitor.ActualHeight;
+
+            SelectedColor.Height =
+                SelectedColor.Width = squareSize;
 
             if (isVert)
             {
                 Body.RowDefinitions[0].Height = new GridLength(1, GridUnitType.Star);
-                Body.RowDefinitions[1].Height = new GridLength(ActualWidth);
+                Body.RowDefinitions[1].Height = new GridLength(1, GridUnitType.Auto);
             }
             else
             {
                 Body.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
-                Body.ColumnDefinitions[1].Width = new GridLength(ActualHeight);
+                Body.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Auto);
             }
+
+            SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
+
+            _rectHueMonitorSize = isVert ? HueMonitor.ActualHeight : HueMonitor.ActualWidth;
+
+            if (IsColorVisible)
+                _rectHueMonitorSize -= squareSize;
 
             if (_isFirstLoad)
             {
