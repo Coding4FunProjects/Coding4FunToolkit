@@ -61,8 +61,6 @@ namespace Coding4Fun.Phone.Controls
 
             UpdateSample();
         }
-
-        
         #endregion
 
         protected internal override void UpdateSample(double x, double y)
