@@ -519,7 +519,7 @@
                                     />
                             </Grid>
                             <Rectangle 
-                                Name="HueMonitor"
+                                Name="ColorMonitor"
                                 Fill="Transparent" />
                         </Grid>
                     </Grid>

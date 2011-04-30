@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -13,6 +12,15 @@ namespace Coding4Fun.Phone.Controls
 {
     public class ColorSlider : ColorControl
     {
+        bool _isFirstLoad = true;
+
+        const int GradientStops = 6;
+        const double NegatedGradientStops = 1 / (float)GradientStops;
+
+        const double HueSelectorSize = 24;
+        double _rectHueMonitorSize = 180;
+
+        #region controls on template
         protected Grid Body;
         private const string BodyName = "Body";
 
@@ -27,19 +35,7 @@ namespace Coding4Fun.Phone.Controls
 
         protected Grid HueSelector;
         private const string HueSelectorName = "HueSelector";
-
-        protected Rectangle HueMonitor;
-        private const string HueMonitorName = "HueMonitor";
-
-        double _hueStartValue;
-
-        bool _isFirstLoad = true;
-
-        const int GradientStops = 6;
-        const double NegatedGradientStops = 1 / (float)GradientStops;
-
-        const double HueSelectorSize = 24;
-        double _rectHueMonitorSize = 180;
+        #endregion
 
         public ColorSlider()
         {
@@ -56,32 +52,13 @@ namespace Coding4Fun.Phone.Controls
 
             SelectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
             Gradient = GetTemplateChild(GradientName) as Rectangle;
-            HueMonitor = GetTemplateChild(HueMonitorName) as Rectangle;
 
             SizeChanged += UserControl_SizeChanged;
-
-            if (HueMonitor != null)
-            {
-                HueMonitor.ManipulationStarted += HueMonitor_ManipulationStarted;
-                HueMonitor.ManipulationDelta += HueMonitor_ManipulationDelta;
-            }
         }
 
-        void HueMonitor_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        protected internal override void UpdateSample(double x, double y)
         {
-            var offset = (Orientation == Orientation.Vertical) ? e.CumulativeManipulation.Translation.Y : e.CumulativeManipulation.Translation.X;
-
-            UpdateSelection(_hueStartValue + offset);
-        }
-
-        void HueMonitor_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            _hueStartValue = (Orientation == Orientation.Vertical) ? e.ManipulationOrigin.Y : e.ManipulationOrigin.X;
-            UpdateSelection(_hueStartValue);
-        }
-
-        private void UpdateSelection(double position)
-        {
+            var position = (Orientation == Orientation.Horizontal) ? x : y;
             var offset = position;
 
             if (offset < 0)
@@ -220,10 +197,13 @@ namespace Coding4Fun.Phone.Controls
             SelectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
             SelectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
 
-            var squareSize = isVert ? HueMonitor.ActualWidth : HueMonitor.ActualHeight;
+            var colorMonitorWidth = ColorMonitor.ActualWidth;
+            var colorMonitorHeight = ColorMonitor.ActualHeight;
 
-            SelectedColor.Height =
-                SelectedColor.Width = squareSize;
+            var squareSize = isVert ? colorMonitorWidth : colorMonitorHeight;
+            _rectHueMonitorSize = isVert ? colorMonitorHeight : colorMonitorWidth;
+
+            SelectedColor.Height = SelectedColor.Width = squareSize;
 
             if (isVert)
             {
@@ -238,14 +218,15 @@ namespace Coding4Fun.Phone.Controls
 
             SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
 
-            _rectHueMonitorSize = isVert ? HueMonitor.ActualHeight : HueMonitor.ActualWidth;
-
             if (IsColorVisible)
+            {
                 _rectHueMonitorSize -= squareSize;
+            }
 
             if (_isFirstLoad)
             {
-                UpdateSelection(_rectHueMonitorSize/3.0);
+                var size = _rectHueMonitorSize / 3.0;
+                UpdateSample(size, size);
                 _isFirstLoad = false;
             }
 

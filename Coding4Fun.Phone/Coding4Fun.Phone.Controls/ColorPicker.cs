@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -13,23 +12,16 @@ namespace Coding4Fun.Phone.Controls
 {
     public class ColorPicker : ColorControl
     {
-        double _xOffsetValue;
-        double _yOffsetValue;
-        double _xOffsetStartValue;
-        double _yOffsetStartValue;
-
         double _sampleSelectorSize = 10;
 
         private float _hue;
+
         #region controls on template
         protected Grid SampleSelector;
         private const string SampleSelectorName = "SampleSelector";
 
         protected Rectangle SelectedHueColor;
         private const string SelectedHueColorName = "SelectedHueColor";
-
-        protected Rectangle ColorMonitor;
-        private const string ColorMonitorName = "ColorMonitor";
 
         protected ColorSlider ColorSlider;
         private const string ColorSliderName = "ColorSlider";
@@ -47,18 +39,8 @@ namespace Coding4Fun.Phone.Controls
             base.OnApplyTemplate();
 
             SampleSelector = GetTemplateChild(SampleSelectorName) as Grid;
-
             SelectedHueColor = GetTemplateChild(SelectedHueColorName) as Rectangle;
-            ColorMonitor = GetTemplateChild(ColorMonitorName) as Rectangle;
-
             ColorSlider = GetTemplateChild(ColorSliderName) as ColorSlider;
-
-
-            if (ColorMonitor != null)
-            {
-                ColorMonitor.ManipulationStarted += ColorMonitor_ManipulationStarted;
-                ColorMonitor.ManipulationDelta += ColorMonitor_ManipulationDelta;
-            }
 
             if (ColorSlider != null) 
                 ColorSlider.ColorChanged += ColorSlider_ColorChanged;
@@ -69,10 +51,7 @@ namespace Coding4Fun.Phone.Controls
         {
             _sampleSelectorSize = SampleSelector.ActualHeight;
 
-            _xOffsetValue = (int)ColorMonitor.ActualWidth;
-            _yOffsetValue = 0;
-
-            UpdateSample(_xOffsetValue, _yOffsetValue);
+            UpdateSample(ColorMonitor.ActualWidth, 0);
         }
 
         void ColorSlider_ColorChanged(object sender, Color color)
@@ -80,27 +59,13 @@ namespace Coding4Fun.Phone.Controls
             _hue = ColorSpace.CalculateHue(color);
             SelectedHueColor.Fill = new SolidColorBrush(color);
 
-            UpdateSample(_xOffsetValue, _yOffsetValue);
+            UpdateSample();
         }
 
-        void ColorMonitor_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
-        {
-            _xOffsetValue = _xOffsetStartValue + e.CumulativeManipulation.Translation.X;
-            _yOffsetValue = _yOffsetStartValue + e.CumulativeManipulation.Translation.Y;
-
-            UpdateSample(_xOffsetValue, _yOffsetValue);
-        }
-
-        void ColorMonitor_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            _xOffsetValue = _xOffsetStartValue = e.ManipulationOrigin.X;
-            _yOffsetValue = _yOffsetStartValue = e.ManipulationOrigin.Y;
-
-            UpdateSample(_xOffsetStartValue, _yOffsetStartValue);
-        }
-        #endregion
         
-        private void UpdateSample(double x, double y)
+        #endregion
+
+        protected internal override void UpdateSample(double x, double y)
         {
             var height = SelectedHueColor.ActualHeight;
             var width = SelectedHueColor.ActualWidth;
