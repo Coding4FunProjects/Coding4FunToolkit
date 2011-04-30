@@ -13,9 +13,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 {
     public partial class Prompts : PhoneApplicationPage
     {
-        private readonly SolidColorBrush _pumpkin = new SolidColorBrush(Color.FromArgb(255, 255, 117, 24));
-        private readonly SolidColorBrush _lime = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
-        private readonly SolidColorBrush _cornFlowerBlue = new SolidColorBrush(Color.FromArgb(200, 100, 149, 237));
+        private readonly SolidColorBrush _pumpkin = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 117, 24));
+        private readonly SolidColorBrush _lime = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 255, 0));
+        private readonly SolidColorBrush _cornFlowerBlue = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
 
         public Prompts()
         {

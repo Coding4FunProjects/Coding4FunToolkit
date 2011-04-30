@@ -74,8 +74,8 @@
     <Compile Include="Samples\Buttons.xaml.cs">
       <DependentUpon>Buttons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\ColorSlider.xaml.cs">
-      <DependentUpon>ColorSlider.xaml</DependentUpon>
+    <Compile Include="Samples\Color.xaml.cs">
+      <DependentUpon>Color.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Memory.xaml.cs">
       <DependentUpon>Memory.xaml</DependentUpon>
@@ -107,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\ColorSlider.xaml">
+    <Page Include="Samples\Color.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
