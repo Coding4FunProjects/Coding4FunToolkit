@@ -6,10 +6,9 @@ using System.Windows.Shapes;
 
 using SilverlightColorPicker;
 
-// This is a heavily modified version based on ColorSlider by 
+// This is a heavily modified version based on ColorSlider in their ColorPicker sample by 
 // Author: Page Brooks
 // Website: http://www.pagebrooks.com
-// RSS Feed: http://feeds.pagebrooks.com/pagebrooks
 namespace Coding4Fun.Phone.Controls
 {
     public class ColorSlider : Control
@@ -34,10 +33,9 @@ namespace Coding4Fun.Phone.Controls
 
         double _hueStartValue;
 
-        readonly ColorSpace _colorSpace;
         bool _isFirstLoad = true;
 
-        public delegate void ColorChangedHandler(object sender, Color c);
+        public delegate void ColorChangedHandler(object sender, Color color);
         public event ColorChangedHandler ColorChanged;
 
         const int GradientStops = 6;
@@ -49,7 +47,6 @@ namespace Coding4Fun.Phone.Controls
         public ColorSlider()
         {
             DefaultStyleKey = typeof(ColorSlider);
-            _colorSpace = new ColorSpace();
         }
 
         public override void OnApplyTemplate()
@@ -89,13 +86,14 @@ namespace Coding4Fun.Phone.Controls
         private void UpdateSelection(double position)
         {
             var offset = position;
-            if (offset < -1 * HueSelectorSize / 2)
+
+            if (offset < 0)
             {
-                offset = -1 * HueSelectorSize / 2;
+                offset = 0;
             }
-            else if (offset > _rectHueMonitorSize - HueSelectorSize / 2)
+            else if (offset > _rectHueMonitorSize - HueSelectorSize)
             {
-                offset = _rectHueMonitorSize - HueSelectorSize / 2;
+                offset = _rectHueMonitorSize - HueSelectorSize;
             }
 
             MarginOffset = (Orientation == Orientation.Vertical) ? new Thickness(0, offset, 0, 0) : new Thickness(offset, 0, 0, 0);

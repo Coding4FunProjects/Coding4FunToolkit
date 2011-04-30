@@ -38,7 +38,7 @@
                         <Button Content="Overlays" Click="Overlays_Click" />
                         <Button Content="About" Click="About_Click" />
                         <Button Content="Buttons" Click="Button_Click" />
-                        <Button Content="Color Slider" Click="ColorSlider_Click" />
+                        <Button Content="Color" Click="ColorSlider_Click" />
                         <Button Content="Memory" Click="Memory_Click" />
                         <Button Content="TimeSpan" Click="TimeSpan_Click" />
                     </StackPanel>

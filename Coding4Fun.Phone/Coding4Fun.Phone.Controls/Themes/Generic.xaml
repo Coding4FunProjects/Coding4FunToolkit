@@ -495,7 +495,6 @@
         </Setter>
     </Style>
     <Style TargetType="local:ColorSlider">
-        <Setter Property="FontFamily" Value="Courier New" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ColorSlider">
@@ -522,6 +521,78 @@
                             <Rectangle 
                                 Name="HueMonitor"
                                 Fill="Transparent" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:ColorPicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorPicker">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Rectangle 
+                            Margin="0,0,0,12"
+                            Height="24"
+			                Grid.Row="0"
+                            Grid.ColumnSpan="2"
+			                Fill="{TemplateBinding SolidColorBrush}" />
+
+                        <local:ColorSlider 
+                            Width="24"
+                            Margin="0,0,12,0"
+                            IsColorVisible="false" 
+                            x:Name="ColorSlider" 
+                            Grid.Row="2"/>
+
+                        <Grid 
+			                Grid.Column="1"
+			                Grid.Row="1">
+                            <Rectangle 
+                                Name="SelectedHueColor" 
+                                Fill="Red" />
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Offset="0" Color="White"/>
+                                        <GradientStop Offset="1" Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,1" EndPoint="0, 0">
+                                        <GradientStop Offset="0" Color="Black"/>
+                                        <GradientStop Offset="1" Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Grid 
+                                Name="SampleSelector"
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Left">
+                                <Ellipse
+                                    Height="22"
+                                    Width="22"
+                                    StrokeThickness="5" 
+                                    Stroke="Black" />
+                                <Ellipse 
+                                    Height="24"
+                                    Width="24"
+                                    StrokeThickness="3" 
+                                    Stroke="White" />
+                            </Grid>
+                            <Rectangle x:Name="ColorMonitor" Fill="Transparent" />
                         </Grid>
                     </Grid>
                 </ControlTemplate>

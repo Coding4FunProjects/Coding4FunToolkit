@@ -12,9 +12,14 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             DataContext = this;
         }
 
-        private void ColorSlider_ColorChanged(object sender, Color c)
+        private void ColorSlider_ColorChanged(object sender, Color color)
         {
-            ColorFromEvent.Fill = new SolidColorBrush(c);
+            ColorSliderFromEvent.Fill = new SolidColorBrush(color);
+        }
+
+        private void ColorPicker_ColorSelected(object sender, Color color)
+        {
+            ColorPickerFromEvent.Fill = new SolidColorBrush(color);
         }
     }
 }
