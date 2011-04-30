@@ -11,7 +11,7 @@ using SilverlightColorPicker;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Phone.Controls
 {
-    public class ColorSlider : Control
+    public class ColorSlider : ColorControl
     {
         protected Grid Body;
         private const string BodyName = "Body";
@@ -34,9 +34,6 @@ namespace Coding4Fun.Phone.Controls
         double _hueStartValue;
 
         bool _isFirstLoad = true;
-
-        public delegate void ColorChangedHandler(object sender, Color color);
-        public event ColorChangedHandler ColorChanged;
 
         const int GradientStops = 6;
         const double NegatedGradientStops = 1 / (float)GradientStops;
@@ -109,11 +106,7 @@ namespace Coding4Fun.Phone.Controls
 
             var huePos = (int)(position / _rectHueMonitorSize * 255) * GradientStops;
 
-            Color = ColorSpace.GetColorFromPosition(huePos);
-            SolidColorBrush = new SolidColorBrush(Color);
-
-            if (ColorChanged != null)
-                ColorChanged(this, Color);
+            ColorChanging(ColorSpace.GetColorFromPosition(huePos));
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -131,26 +124,6 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for MarginOffset.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty MarginOffsetProperty =
             DependencyProperty.Register("MarginOffset", typeof(Thickness), typeof(ColorSlider), new PropertyMetadata(new Thickness(0)));
-
-        public Color Color
-        {
-            get { return (Color)GetValue(ColorProperty); }
-            set { SetValue(ColorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(ColorSlider), new PropertyMetadata(null));
-
-        public SolidColorBrush SolidColorBrush
-        {
-            get { return (SolidColorBrush)GetValue(SolidColorBrushProperty); }
-            private set { SetValue(SolidColorBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for SolidColorBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SolidColorBrushProperty =
-            DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorSlider), new PropertyMetadata(null));
 
         public bool IsColorVisible
         {

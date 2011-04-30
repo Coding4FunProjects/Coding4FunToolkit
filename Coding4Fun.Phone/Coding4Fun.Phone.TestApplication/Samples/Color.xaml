@@ -56,7 +56,7 @@
                     Grid.Row="1" 
                     Margin="12"
                     Name="ColorPicker" 
-                    ColorSelected="ColorPicker_ColorSelected" />
+                    ColorChanged="ColorPicker_ColorChanged" />
                 <StackPanel Grid.Row="0">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>

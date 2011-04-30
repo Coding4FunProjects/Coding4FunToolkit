@@ -11,7 +11,7 @@ using SilverlightColorPicker;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Phone.Controls
 {
-    public class ColorPicker : Control
+    public class ColorPicker : ColorControl
     {
         double _xOffsetValue;
         double _yOffsetValue;
@@ -20,8 +20,6 @@ namespace Coding4Fun.Phone.Controls
 
         double _sampleSelectorSize = 10;
 
-        public delegate void ColorSelectedHandler(object sender, Color color);
-        public event ColorSelectedHandler ColorSelected;
         private float _hue;
         #region controls on template
         protected Grid SampleSelector;
@@ -101,28 +99,7 @@ namespace Coding4Fun.Phone.Controls
             UpdateSample(_xOffsetStartValue, _yOffsetStartValue);
         }
         #endregion
-        #region dependency properties
-        public Color Color
-        {
-            get { return (Color)GetValue(ColorProperty); }
-            set { SetValue(ColorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(ColorPicker), new PropertyMetadata(null));
-
-        public SolidColorBrush SolidColorBrush
-        {
-            get { return (SolidColorBrush)GetValue(SolidColorBrushProperty); }
-            private set { SetValue(SolidColorBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for SolidColorBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SolidColorBrushProperty =
-            DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(null));
-        #endregion
-
+        
         private void UpdateSample(double x, double y)
         {
             var height = SelectedHueColor.ActualHeight;
@@ -152,11 +129,7 @@ namespace Coding4Fun.Phone.Controls
             var saturation = (float)(x / width);
             var value = (float)(1 - (y / height));
 
-            Color = ColorSpace.ConvertHsvToRgb(_hue, saturation, value);
-            SolidColorBrush = new SolidColorBrush(Color);
-            
-            if (ColorSelected != null)
-                ColorSelected(this, Color);
+            ColorChanging(ColorSpace.ConvertHsvToRgb(_hue, saturation, value));
         }
     }
 }

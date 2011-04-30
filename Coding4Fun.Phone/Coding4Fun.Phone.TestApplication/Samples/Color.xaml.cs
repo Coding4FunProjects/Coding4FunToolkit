@@ -17,7 +17,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             ColorSliderFromEvent.Fill = new SolidColorBrush(color);
         }
 
-        private void ColorPicker_ColorSelected(object sender, System.Windows.Media.Color color)
+        private void ColorPicker_ColorChanged(object sender, System.Windows.Media.Color color)
         {
             ColorPickerFromEvent.Fill = new SolidColorBrush(color);
         }

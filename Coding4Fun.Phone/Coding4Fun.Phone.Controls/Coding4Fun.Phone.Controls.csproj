@@ -57,6 +57,7 @@
     <Compile Include="AboutPersonItem.cs" />
     <Compile Include="ActionPopUp.cs" />
     <Compile Include="Binding\TextBoxBinding.cs" />
+    <Compile Include="ColorControl.cs" />
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorSlider.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
