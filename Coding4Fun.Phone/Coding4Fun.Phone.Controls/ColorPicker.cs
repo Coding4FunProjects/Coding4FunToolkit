@@ -68,24 +68,14 @@ namespace Coding4Fun.Phone.Controls
             var height = SelectedHueColor.ActualHeight;
             var width = SelectedHueColor.ActualWidth;
 
-            if (x < 0)
-                x = 0;
-            else if (x > width)
-                x = width;
+            x = CheckMarginBound(x, width);
+            y = CheckMarginBound(y, height);
 
-            if (y < 0)
-                y = 0;
-            else if (y > height)
-                y = height;
+            var sampleLeft = x - _sampleSelectorSize;
+            var sampleTop = y - _sampleSelectorSize;
 
-            var sampleLeft = x - (_sampleSelectorSize / 2);
-            var sampleTop = y - (_sampleSelectorSize / 2);
-
-            if (sampleLeft < 0)
-                sampleLeft = 0;
-
-            if (sampleTop < 0)
-                sampleTop = 0;
+            sampleLeft = CheckMarginBound(sampleLeft, width);
+            sampleTop = CheckMarginBound(sampleTop, height);
 
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
 

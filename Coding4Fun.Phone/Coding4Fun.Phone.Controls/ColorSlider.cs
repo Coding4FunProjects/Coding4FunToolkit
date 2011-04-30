@@ -59,27 +59,11 @@ namespace Coding4Fun.Phone.Controls
         protected internal override void UpdateSample(double x, double y)
         {
             var position = (Orientation == Orientation.Horizontal) ? x : y;
-            var offset = position;
 
-            if (offset < 0)
-            {
-                offset = 0;
-            }
-            else if (offset > _rectHueMonitorSize - HueSelectorSize)
-            {
-                offset = _rectHueMonitorSize - HueSelectorSize;
-            }
+            var offset = CheckMarginBound(position, _rectHueMonitorSize - HueSelectorSize);
+            position = CheckMarginBound(position, _rectHueMonitorSize - 1);
 
             MarginOffset = (Orientation == Orientation.Vertical) ? new Thickness(0, offset, 0, 0) : new Thickness(offset, 0, 0, 0);
-
-            if (position < 0)
-            {
-                position = 0;
-            }
-            else if (position >= _rectHueMonitorSize)
-            {
-                position = _rectHueMonitorSize - 1;
-            }
 
             var huePos = (int)(position / _rectHueMonitorSize * 255) * GradientStops;
 

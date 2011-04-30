@@ -87,5 +87,15 @@ namespace Coding4Fun.Phone.Controls
             if (ColorChanged != null)
                 ColorChanged(this, Color);
         }
+
+        protected internal double CheckMarginBound(double value, double max)
+        {
+            if (value < 0)
+                value = 0;
+            else if (value > max)
+                value = max;
+
+            return value;
+        }
     }
 }
