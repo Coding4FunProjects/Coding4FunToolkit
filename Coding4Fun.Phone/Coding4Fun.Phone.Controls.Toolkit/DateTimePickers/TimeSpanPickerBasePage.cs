@@ -43,7 +43,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         {
             set
             {
-                base.Value = value >= Max ? Max - IncrementStep : value;
+                base.Value = value > Max ? Max - IncrementStep : value;
             }
         }
     }

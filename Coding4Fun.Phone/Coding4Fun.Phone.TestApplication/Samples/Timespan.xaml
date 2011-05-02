@@ -34,6 +34,7 @@
 				<c4fToolkit:TimeSpanPicker />
 				<TextBlock>Basic</TextBlock>
                 <c4fToolkit:TimeSpanPicker
+                    Name="foo"
                     ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
                     />
                    

@@ -10,6 +10,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         {
             InitializeComponent();
             DataContext = this;
+
+            foo.Value = TimeSpan5Min;
         }
 
 

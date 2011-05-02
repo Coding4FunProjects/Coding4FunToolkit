@@ -26,6 +26,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             {
                 var ts = Value.Value;
 
+                if (Max > TimeSpan.Zero && ts > Max)
+                {
+                    Value = Max;
+                    return;
+                }
+
                 if (!string.IsNullOrEmpty(ValueStringFormat))
                 {
                     ValueString = TimeSpanFormat.Format(ts, ValueStringFormat);
