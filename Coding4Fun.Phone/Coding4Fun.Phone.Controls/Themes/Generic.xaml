@@ -599,4 +599,20 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="local:ColorHexagonPicker">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorHexagonPicker">
+                    <StackPanel>
+                        <ContentPresenter 
+                            Content="{TemplateBinding ColorBody}" />
+                        <ContentPresenter 
+                            Content="{TemplateBinding GreyScaleBody}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

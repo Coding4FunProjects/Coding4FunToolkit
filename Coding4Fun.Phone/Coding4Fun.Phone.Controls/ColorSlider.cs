@@ -10,7 +10,7 @@ using SilverlightColorPicker;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Phone.Controls
 {
-    public class ColorSlider : ColorControl
+    public class ColorSlider : ColorMonitorBaseControl
     {
         bool _isFirstLoad = true;
 

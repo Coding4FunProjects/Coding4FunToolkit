@@ -74,8 +74,17 @@
     <Compile Include="Samples\Buttons.xaml.cs">
       <DependentUpon>Buttons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Color.xaml.cs">
-      <DependentUpon>Color.xaml</DependentUpon>
+    <Compile Include="Samples\ColorControls.xaml.cs">
+      <DependentUpon>ColorControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Color\ColorHexPicker.xaml.cs">
+      <DependentUpon>ColorHexPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Color\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Color\ColorSlider.xaml.cs">
+      <DependentUpon>ColorSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Memory.xaml.cs">
       <DependentUpon>Memory.xaml</DependentUpon>
@@ -107,7 +116,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Color.xaml">
+    <Page Include="Samples\ColorControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Color\ColorHexPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Color\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Color\ColorSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

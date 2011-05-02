@@ -10,7 +10,7 @@ using SilverlightColorPicker;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Phone.Controls
 {
-    public class ColorPicker : ColorControl
+    public class ColorPicker : ColorMonitorBaseControl
     {
         double _sampleSelectorSize = 10;
 
