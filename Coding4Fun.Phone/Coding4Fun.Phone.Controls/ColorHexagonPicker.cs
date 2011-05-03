@@ -12,17 +12,31 @@ namespace Coding4Fun.Phone.Controls
     public class ColorHexagonPicker : ColorBaseControl
     {
         Rectangle _focusedRectangle;
+        bool _layoutGenerated;
 
         public ColorHexagonPicker()
         {
             DefaultStyleKey = typeof(ColorHexagonPicker);
+
+            Loaded += ColorHexagonPicker_Loaded;
         }
 
-        public override void OnApplyTemplate()
+        void ColorHexagonPicker_Loaded(object sender, RoutedEventArgs e)
         {
-            base.OnApplyTemplate();
+            _layoutGenerated = true;
+
+            GenerateLayout();
+        }
+
+        public void GenerateLayout()
+        {
+            if (!_layoutGenerated)
+                return;
 
             var totalSteps = ColorBrightnessSteps + ColorDarknessSteps;
+            
+            GreyScaleBody = null;
+            ColorBody = null;
 
             if (totalSteps > 0)
             {
@@ -39,7 +53,7 @@ namespace Coding4Fun.Phone.Controls
                 }
 
                 // middle
-                colorHexBody.Children.Add(CreateChildren(totalSteps*2 + 1, 0));
+                colorHexBody.Children.Add(CreateChildren(totalSteps * 2 + 1, 0));
 
                 // bottom
                 for (var i = totalSteps - 1; i >= 0; i--)
@@ -63,14 +77,14 @@ namespace Coding4Fun.Phone.Controls
                 var bottomGrey = CreateHorizontalStackPanel();
 
                 var totalGreySteps = GreyScaleSteps + 2; // including pure white and pure black
-                var greyStep = 255/(double) totalGreySteps;
+                var greyStep = 255 / (double)totalGreySteps;
 
                 for (var i = 0; i < totalGreySteps; i++)
                 {
-                    var step = (byte) (greyStep*i);
+                    var step = (byte)(greyStep * i);
                     var rect = CreateRectangle(Color.FromArgb(255, step, step, step));
 
-                    if (i%2 == 0)
+                    if (i % 2 == 0)
                         topGrey.Children.Add(rect);
                     else
                         bottomGrey.Children.Add(rect);
@@ -193,7 +207,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorDarknessSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorDarknessStepsProperty =
-            DependencyProperty.Register("ColorDarknessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(2));
+            DependencyProperty.Register("ColorDarknessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(2, OnLayoutChangeChanged));
 
         public int ColorBrightnessSteps
         {
@@ -203,7 +217,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorBrightnessSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorBrightnessStepsProperty =
-            DependencyProperty.Register("ColorBrightnessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(4));
+            DependencyProperty.Register("ColorBrightnessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(4, OnLayoutChangeChanged));
 
         public int GreyScaleSteps
         {
@@ -213,7 +227,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for GreyScaleSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GreyScaleStepsProperty =
-            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(21));
+            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(21, OnLayoutChangeChanged));
 
         public double ColorSize
         {
@@ -223,7 +237,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorSizeProperty =
-            DependencyProperty.Register("ColorSize", typeof(double), typeof(ColorHexagonPicker), new PropertyMetadata(24d));
+            DependencyProperty.Register("ColorSize", typeof(double), typeof(ColorHexagonPicker), new PropertyMetadata(24d, OnLayoutChangeChanged));
 
         protected object ColorBody
         {
@@ -245,7 +259,13 @@ namespace Coding4Fun.Phone.Controls
         protected static readonly DependencyProperty GreyScaleBodyProperty = 
             DependencyProperty.Register("GreyScaleBody", typeof(object), typeof(ColorHexagonPicker), new PropertyMetadata(null));
 
+        private static void OnLayoutChangeChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = o as ColorHexagonPicker;
 
+            if (sender != null && e.NewValue != e.OldValue)
+                sender.GenerateLayout();
+        }
         #endregion
 
     }

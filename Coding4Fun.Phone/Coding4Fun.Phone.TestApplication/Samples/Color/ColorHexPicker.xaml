@@ -52,6 +52,12 @@
                 
                 <Controls:ColorHexagonPicker 
                     ColorBrightnessSteps="3" 
+                    ColorDarknessSteps="5"
+                    ColorSize="5"
+                    GreyScaleSteps="0"/>
+
+                <Controls:ColorHexagonPicker 
+                    ColorBrightnessSteps="3" 
                     ColorDarknessSteps="0"
                     ColorSize="12"
                     GreyScaleSteps="0"/>
@@ -66,7 +72,7 @@
                     ColorBrightnessSteps="0" 
                     ColorDarknessSteps="0"
                     ColorSize="12"
-                    GreyScaleSteps="15"/>
+                    GreyScaleSteps="17" />
                 
             </StackPanel>
         </StackPanel>
