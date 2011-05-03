@@ -207,7 +207,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorDarknessSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorDarknessStepsProperty =
-            DependencyProperty.Register("ColorDarknessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(2, OnLayoutChangeChanged));
+            DependencyProperty.Register("ColorDarknessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(2, OnLayoutDependentPropertyChanged));
 
         public int ColorBrightnessSteps
         {
@@ -217,7 +217,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorBrightnessSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorBrightnessStepsProperty =
-            DependencyProperty.Register("ColorBrightnessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(4, OnLayoutChangeChanged));
+            DependencyProperty.Register("ColorBrightnessSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(4, OnLayoutDependentPropertyChanged));
 
         public int GreyScaleSteps
         {
@@ -227,7 +227,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for GreyScaleSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GreyScaleStepsProperty =
-            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(20, OnLayoutChangeChanged));
+            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(20, OnLayoutDependentPropertyChanged));
 
         public double ColorSize
         {
@@ -237,7 +237,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for ColorSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorSizeProperty =
-            DependencyProperty.Register("ColorSize", typeof(double), typeof(ColorHexagonPicker), new PropertyMetadata(24d, OnLayoutChangeChanged));
+            DependencyProperty.Register("ColorSize", typeof(double), typeof(ColorHexagonPicker), new PropertyMetadata(24d, OnLayoutDependentPropertyChanged));
 
         protected object ColorBody
         {
@@ -259,7 +259,7 @@ namespace Coding4Fun.Phone.Controls
         protected static readonly DependencyProperty GreyScaleBodyProperty = 
             DependencyProperty.Register("GreyScaleBody", typeof(object), typeof(ColorHexagonPicker), new PropertyMetadata(null));
 
-        private static void OnLayoutChangeChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        private static void OnLayoutDependentPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = o as ColorHexagonPicker;
 
