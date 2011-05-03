@@ -79,7 +79,7 @@ namespace Coding4Fun.Phone.Controls
                 var totalGreySteps = GreyScaleSteps + 2; // including pure white and pure black
                 var greyStep = 255 / (double)totalGreySteps;
 
-                for (var i = 0; i < totalGreySteps; i++)
+                for (var i = 0; i <= totalGreySteps; i++)
                 {
                     var step = (byte)(greyStep * i);
                     var rect = CreateRectangle(Color.FromArgb(255, step, step, step));
@@ -227,7 +227,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for GreyScaleSteps.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GreyScaleStepsProperty =
-            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(21, OnLayoutChangeChanged));
+            DependencyProperty.Register("GreyScaleSteps", typeof(int), typeof(ColorHexagonPicker), new PropertyMetadata(20, OnLayoutChangeChanged));
 
         public double ColorSize
         {
