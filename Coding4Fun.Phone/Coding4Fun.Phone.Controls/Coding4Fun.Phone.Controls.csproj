@@ -72,7 +72,7 @@
     <Compile Include="Unsupported\ColorSpace.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />
-    <Compile Include="GestureHelper.cs" />
+    <Compile Include="Helpers\GestureHelper.cs" />
     <Compile Include="InputPrompt.cs" />
     <Compile Include="PasswordInputPrompt.cs" />
     <Compile Include="PopUp.cs" />

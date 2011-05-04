@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using Coding4Fun.Phone.Controls.Helpers;
 
 namespace Coding4Fun.Phone.Controls
 {
