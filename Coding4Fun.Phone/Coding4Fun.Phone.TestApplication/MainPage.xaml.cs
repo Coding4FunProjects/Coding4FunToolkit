@@ -14,6 +14,11 @@ namespace Coding4Fun.Phone.TestApplication
             
             DataContext = this;
         }
+
+        private void Slider_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo("/Samples/Slider.xaml");
+        }
         
         private void TimeSpan_Click(object sender, RoutedEventArgs e)
         {

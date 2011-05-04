@@ -95,6 +95,9 @@
     <Compile Include="Samples\Prompts.xaml.cs">
       <DependentUpon>Prompts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Slider.xaml.cs">
+      <DependentUpon>Slider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Timespan.xaml.cs">
       <DependentUpon>Timespan.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Prompts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

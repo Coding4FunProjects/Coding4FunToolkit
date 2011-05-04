@@ -67,6 +67,8 @@
     <Compile Include="Converters\ThemedInverseImageConverter.cs" />
     <Compile Include="Converters\VisibilityToBooleanConverter.cs" />
     <Compile Include="ColorBaseControl.cs" />
+    <Compile Include="MonitorBaseControl.cs" />
+    <Compile Include="SuperSlider.cs" />
     <Compile Include="Unsupported\ColorSpace.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />

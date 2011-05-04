@@ -615,4 +615,30 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="local:SuperSlider">
+        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+        <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SuperSlider">
+                    <Grid>
+                        <Rectangle 
+                            Name="BackgroundRectangle"
+                            Fill="{TemplateBinding Background}" />
+
+                        <Rectangle 
+                            Name="ProgressRectangle"
+                            Fill="{TemplateBinding Fill}" />
+
+                        <ContentPresenter
+                            Content="{TemplateBinding Thumb}" />
+                        
+                        <Rectangle 
+                            Name="Monitor" 
+                            Fill="Transparent" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
