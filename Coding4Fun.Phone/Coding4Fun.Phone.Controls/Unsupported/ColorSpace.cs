@@ -3,6 +3,8 @@
 // RSS Feed: http://feeds.pagebrooks.com/pagebrooks
 
 using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace SilverlightColorPicker
@@ -12,9 +14,36 @@ namespace SilverlightColorPicker
         private const byte Min = 0;
         private const byte Max = 255;
         private const byte Alpha = 255;
+        const int GradientStops = 6;
+        const double NegatedGradientStops = 1 / (float)GradientStops;
+
+        public static LinearGradientBrush GetGradientBrush(Orientation orientation)
+        {
+            var brush = new LinearGradientBrush();
+
+            //<GradientStop Offset="0.00" Color="#ffff0000"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 0, Color = Color.FromArgb(255, 255, 0, 0) });
+            //<GradientStop Offset="0.166666" Color="#ffffff00"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 1, Color = Color.FromArgb(255, 255, 255, 0) });
+            //<GradientStop Offset="0.333333" Color="#ff00ff00"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 2, Color = Color.FromArgb(255, 0, 255, 0) });
+            //<GradientStop Offset="0.50" Color="#ff00ffff"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 3, Color = Color.FromArgb(255, 0, 255, 255) });
+            //<GradientStop Offset="0.666666" Color="#ff0000ff"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 4, Color = Color.FromArgb(255, 0, 0, 255) });
+            //<GradientStop Offset="0.833333" Color="#ffff00ff"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 5, Color = Color.FromArgb(255, 255, 0, 255) });
+            //<GradientStop Offset="1.00" Color="#ffff0000"/>
+            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 6, Color = Color.FromArgb(255, 255, 0, 0) });
+
+            brush.EndPoint = (orientation == Orientation.Vertical) ? new Point(0, 1) : new Point(1, 0);
+
+            return brush;
+        }
 
         public static Color GetColorFromPosition(int position)
         {
+            position *= GradientStops;
             var mod = (byte)(position % Max);
             var diff = (byte)(Max - mod);
             

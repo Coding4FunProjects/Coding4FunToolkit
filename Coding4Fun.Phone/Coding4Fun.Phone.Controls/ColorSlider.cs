@@ -14,9 +14,6 @@ namespace Coding4Fun.Phone.Controls
     {
         bool _isFirstLoad = true;
 
-        const int GradientStops = 6;
-        const double NegatedGradientStops = 1 / (float)GradientStops;
-
         const double HueSelectorSize = 24;
         double _rectHueMonitorSize = 180;
 
@@ -65,7 +62,7 @@ namespace Coding4Fun.Phone.Controls
 
             MarginOffset = (Orientation == Orientation.Vertical) ? new Thickness(0, offset, 0, 0) : new Thickness(offset, 0, 0, 0);
 
-            var huePos = (int)(position / _rectHueMonitorSize * 255) * GradientStops;
+            var huePos = (int)(position / _rectHueMonitorSize * 255);
 
             ColorChanging(ColorSpace.GetColorFromPosition(huePos));
         }
@@ -134,26 +131,9 @@ namespace Coding4Fun.Phone.Controls
             var isVert = Orientation == Orientation.Vertical;
 
             #region LinearGradientBrush calculations
-            var brush = new LinearGradientBrush();
 
-            //<GradientStop Offset="0.00" Color="#ffff0000"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 0, Color = Color.FromArgb(255, 255, 0, 0) });
-            //<GradientStop Offset="0.166666" Color="#ffffff00"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 1, Color = Color.FromArgb(255, 255, 255, 0) });
-            //<GradientStop Offset="0.333333" Color="#ff00ff00"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 2, Color = Color.FromArgb(255, 0, 255, 0) });
-            //<GradientStop Offset="0.50" Color="#ff00ffff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 3, Color = Color.FromArgb(255, 0, 255, 255) });
-            //<GradientStop Offset="0.666666" Color="#ff0000ff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 4, Color = Color.FromArgb(255, 0, 0, 255) });
-            //<GradientStop Offset="0.833333" Color="#ffff00ff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 5, Color = Color.FromArgb(255, 255, 0, 255) });
-            //<GradientStop Offset="1.00" Color="#ffff0000"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 6, Color = Color.FromArgb(255, 255, 0, 0) });
 
-            brush.EndPoint = isVert ? new Point(0, 1) : new Point(1, 0);
-
-            Gradient.Fill = brush;
+            Gradient.Fill = ColorSpace.GetGradientBrush(Orientation); ;
             #endregion
 
             Body.RowDefinitions.Clear();
