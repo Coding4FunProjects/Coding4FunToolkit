@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -10,12 +11,9 @@ using SilverlightColorPicker;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Phone.Controls
 {
-    public class ColorSlider : ColorMonitorBaseControl
+    public class ColorSlider : ColorBaseControl
     {
-        bool _isFirstLoad = true;
-
         const double HueSelectorSize = 24;
-        double _rectHueMonitorSize = 180;
 
         #region controls on template
         protected Grid Body;
@@ -23,15 +21,9 @@ namespace Coding4Fun.Phone.Controls
 
         protected Rectangle SelectedColor;
         private const string SelectedColorName = "SelectedColor";
-        
-        protected Grid GradientBody;
-        private const string GradientBodyName = "GradientBody";
 
-        protected Rectangle Gradient;
-        private const string GradientName = "Gradient";
-
-        protected Grid HueSelector;
-        private const string HueSelectorName = "HueSelector";
+        protected SuperSlider Slider;
+        private const string SliderName = "Slider";
         #endregion
 
         public ColorSlider()
@@ -44,27 +36,29 @@ namespace Coding4Fun.Phone.Controls
             base.OnApplyTemplate();
 
             Body = GetTemplateChild(BodyName) as Grid;
-            GradientBody = GetTemplateChild(GradientBodyName) as Grid;
-            HueSelector = GetTemplateChild(HueSelectorName) as Grid;
+            Slider = GetTemplateChild(SliderName) as SuperSlider;
 
             SelectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
-            Gradient = GetTemplateChild(GradientName) as Rectangle;
-
+            
             SizeChanged += UserControl_SizeChanged;
+
+            if (Slider != null)
+            {
+                Slider.ValueChanged += Slider_ValueChanged;
+                Slider.Value = Slider.Maximum / 3; // todo, reverse flow, get value from color if set
+
+                SetColorFromSlider(Slider.Value);
+            }
         }
 
-        protected internal override void UpdateSample(double x, double y)
+        void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            var position = (Orientation == Orientation.Horizontal) ? x : y;
+            SetColorFromSlider(e.NewValue);
+        }
 
-            var offset = CheckMarginBound(position, _rectHueMonitorSize - HueSelectorSize);
-            position = CheckMarginBound(position, _rectHueMonitorSize - 1);
-
-            MarginOffset = (Orientation == Orientation.Vertical) ? new Thickness(0, offset, 0, 0) : new Thickness(offset, 0, 0, 0);
-
-            var huePos = (int)(position / _rectHueMonitorSize * 255);
-
-            ColorChanging(ColorSpace.GetColorFromPosition(huePos));
+        private void SetColorFromSlider(double value)
+        {
+            ColorChanging(ColorSpace.GetColorFromPosition((int)value));
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -73,16 +67,6 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region dependency properties
-        internal Thickness MarginOffset
-        {
-            get { return (Thickness)GetValue(MarginOffsetProperty); }
-            set { SetValue(MarginOffsetProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MarginOffset.  This enables animation, styling, binding, etc...
-        internal static readonly DependencyProperty MarginOffsetProperty =
-            DependencyProperty.Register("MarginOffset", typeof(Thickness), typeof(ColorSlider), new PropertyMetadata(new Thickness(0)));
-
         public bool IsColorVisible
         {
             get { return (bool)GetValue(IsColorVisibleProperty); }
@@ -122,20 +106,15 @@ namespace Coding4Fun.Phone.Controls
 
         private void AdjustLayoutBasedOnOrientation()
         {
-            if (Gradient == null ||
-                Body == null ||
-                SelectedColor == null ||
-                GradientBody == null)
+            if (Body == null ||
+                Slider == null ||
+                SelectedColor == null)
                 return;
 
             var isVert = Orientation == Orientation.Vertical;
 
-            #region LinearGradientBrush calculations
-
-
-            Gradient.Fill = ColorSpace.GetGradientBrush(Orientation); ;
-            #endregion
-
+            Slider.Background = ColorSpace.GetGradientBrush(Orientation);
+            
             Body.RowDefinitions.Clear();
             Body.ColumnDefinitions.Clear();
 
@@ -149,23 +128,21 @@ namespace Coding4Fun.Phone.Controls
                 Body.ColumnDefinitions.Add(new ColumnDefinition());
                 Body.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
-            GradientBody.SetValue(Grid.RowProperty, 0);
-            GradientBody.SetValue(Grid.ColumnProperty, 0);
-
-            HueSelector.VerticalAlignment = isVert ? VerticalAlignment.Top : VerticalAlignment.Stretch;
-            HueSelector.HorizontalAlignment = isVert ? HorizontalAlignment.Stretch : HorizontalAlignment.Left;
-            HueSelector.Height = isVert ? HueSelectorSize : double.NaN;
-            HueSelector.Width = isVert ? double.NaN : HueSelectorSize;
+            
+            var thumb = ((FrameworkElement)Slider.Thumb);
+            if(thumb != null)
+            {
+                thumb.Height = isVert ? HueSelectorSize : double.NaN;
+                thumb.Width = isVert ? double.NaN : HueSelectorSize;
+            }
 
             SelectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
             SelectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
 
-            var colorMonitorWidth = ColorMonitor.ActualWidth;
-            var colorMonitorHeight = ColorMonitor.ActualHeight;
+            var sliderWidth = Slider.ActualWidth;
+            var sliderHeight = Slider.ActualHeight;
 
-            var squareSize = isVert ? colorMonitorWidth : colorMonitorHeight;
-            _rectHueMonitorSize = isVert ? colorMonitorHeight : colorMonitorWidth;
+            var squareSize = isVert ? sliderWidth : sliderHeight;
 
             SelectedColor.Height = SelectedColor.Width = squareSize;
 
@@ -181,19 +158,6 @@ namespace Coding4Fun.Phone.Controls
             }
 
             SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
-
-            if (IsColorVisible)
-            {
-                _rectHueMonitorSize -= squareSize;
-            }
-
-            if (_isFirstLoad)
-            {
-                var size = _rectHueMonitorSize / 3.0;
-                UpdateSample(size, size);
-                _isFirstLoad = false;
-            }
-
         }
     }
 }

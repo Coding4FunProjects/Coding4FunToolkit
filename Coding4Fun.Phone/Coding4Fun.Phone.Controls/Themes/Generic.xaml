@@ -503,25 +503,25 @@
                             Name="SelectedColor" 
                             Fill="{TemplateBinding SolidColorBrush}" />
 
-                        <Grid Name="GradientBody">
-                            <Rectangle Name="Gradient" />
-
-                            <Grid
-                                Margin="{TemplateBinding MarginOffset}"
-                                Name="HueSelector">
-                                <Rectangle 
-				                    Stroke="Black"
-                                    StrokeThickness="6"
+                        <local:SuperSlider 
+                            x:Name="Slider"
+                            Orientation="{TemplateBinding Orientation}"
+                            Fill="Transparent"
+                            Minimum="0"
+                            Maximum="254">
+                            <local:SuperSlider.Thumb>
+                                <Grid>
+                                    <Rectangle 
+				                        Stroke="Black"
+                                        StrokeThickness="6"
                                     />
-                                <Rectangle 
-				                    Stroke="White"
-                                    StrokeThickness="3"
-                                    />
-                            </Grid>
-                            <Rectangle 
-                                Name="ColorMonitor"
-                                Fill="Transparent" />
-                        </Grid>
+                                    <Rectangle 
+				                        Stroke="White"
+                                        StrokeThickness="3"
+                                        />
+                                </Grid>
+                            </local:SuperSlider.Thumb>
+                        </local:SuperSlider>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

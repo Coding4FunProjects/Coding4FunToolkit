@@ -3,6 +3,7 @@
 // RSS Feed: http://feeds.pagebrooks.com/pagebrooks
 
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -36,7 +37,15 @@ namespace SilverlightColorPicker
             //<GradientStop Offset="1.00" Color="#ffff0000"/>
             brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 6, Color = Color.FromArgb(255, 255, 0, 0) });
 
-            brush.EndPoint = (orientation == Orientation.Vertical) ? new Point(0, 1) : new Point(1, 0);
+            if (orientation == Orientation.Vertical)
+            {
+                brush.StartPoint = new Point(0, 1);
+                brush.EndPoint = new Point();
+            }
+            else
+            {
+                brush.EndPoint = new Point(1, 0);
+            }
 
             return brush;
         }
@@ -47,7 +56,6 @@ namespace SilverlightColorPicker
             var mod = (byte)(position % Max);
             var diff = (byte)(Max - mod);
             
-
             switch (position / Max)
             {
                 case 0: return Color.FromArgb(Alpha, Max, mod, Min);
