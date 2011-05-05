@@ -556,6 +556,7 @@
                             Grid.Row="2"/>
 
                         <Grid 
+                            Name="Body"
 			                Grid.Column="1"
 			                Grid.Row="1">
                             <Rectangle 
@@ -592,7 +593,6 @@
                                     StrokeThickness="3" 
                                     Stroke="White" />
                             </Grid>
-                            <Rectangle x:Name="ColorMonitor" Fill="Transparent" />
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -621,7 +621,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SuperSlider">
-                    <Grid>
+                    <Grid Name="Body">
                         <Rectangle 
                             Name="BackgroundRectangle"
                             Fill="{TemplateBinding Background}" />
@@ -632,10 +632,6 @@
 
                         <ContentPresenter
                             Content="{TemplateBinding Thumb}" />
-                        
-                        <Rectangle 
-                            Name="Monitor" 
-                            Fill="Transparent" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

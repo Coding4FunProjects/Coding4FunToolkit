@@ -4,10 +4,11 @@ using System.Windows.Controls;
 
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Coding4Fun.Phone.Controls.Helpers;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class SuperSlider : MonitorBaseControl
+    public class SuperSlider : Control
     {
         bool _isLayoutInit;
         public event RoutedPropertyChangedEventHandler<double> ValueChanged;
@@ -17,6 +18,9 @@ namespace Coding4Fun.Phone.Controls
 
         protected Rectangle ProgressRectangle;
         private const string ProgressRectangleName = "ProgressRectangle";
+
+        private MovementMonitor _monitor;
+        private const string BodyName = "Body";
 
         public SuperSlider()
 		{
@@ -37,7 +41,15 @@ namespace Coding4Fun.Phone.Controls
 
             BackgroundRectangle = GetTemplateChild(BackgroundRectangleName) as Rectangle;
             ProgressRectangle = GetTemplateChild(ProgressRectangleName) as Rectangle;
-            
+            var body = GetTemplateChild(BodyName) as Grid;
+
+            if (body != null)
+            {
+                _monitor = new MovementMonitor();
+                _monitor.Movement += _monitor_Movement;
+                _monitor.MonitorControl(body);
+            }
+
             // stuff isn't set enough but if this isn't done, there will an initial flash
             AdjustLayout();
         }
@@ -134,6 +146,11 @@ namespace Coding4Fun.Phone.Controls
             DependencyProperty.Register("Fill", typeof(Brush), typeof(SuperSlider), new PropertyMetadata(null));
         #endregion
 
+        void _monitor_Movement(object sender, MovementMonitorEventArgs e)
+        {
+            UpdateSampleBasedOnManipulation(e.X, e.Y);
+        }
+
         private static void OnValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = o as SuperSlider;
@@ -150,12 +167,12 @@ namespace Coding4Fun.Phone.Controls
                 sender.AdjustAndUpdateLayout();
         }
 
-        protected internal override void UpdateSampleBasedOnManipulation(double x, double y)
+        private void UpdateSampleBasedOnManipulation(double x, double y)
         {
             var controlMax = GetControlMax();
 
             var offsetValue = (IsVertical()) ? controlMax - y : x;
-            var controlDist = CheckBound(offsetValue, 0, controlMax);
+            var controlDist = ControlHelper.CheckBound(offsetValue, controlMax);
 
             var calculateValue = Minimum;
 
@@ -172,10 +189,7 @@ namespace Coding4Fun.Phone.Controls
 
         private double GetControlMax()
         {
-            if (Monitor == null)
-                return 0;
-
-            return (IsVertical()) ? Monitor.ActualHeight : Monitor.ActualWidth;
+            return (IsVertical()) ? ActualHeight : ActualWidth;
         }
 
         private void SyncValueAndPosition(double value)
@@ -195,7 +209,7 @@ namespace Coding4Fun.Phone.Controls
                 value = stepDiff < (Step / 2d) ? floor : floor + Step;
             }
 
-            value = CheckBound(value, Minimum, Maximum);
+            value = ControlHelper.CheckBound(value, Minimum, Maximum);
 
             if (oldValue == value)
                 return;
@@ -222,7 +236,7 @@ namespace Coding4Fun.Phone.Controls
             if (thumbItem != null)
             {
                 var thumbItemSize = (isVert ? thumbItem.ActualHeight : thumbItem.ActualWidth);
-                var marginOffset = CheckBound(offset - (thumbItemSize / 2d), 0, controlMax - thumbItemSize);
+                var marginOffset = ControlHelper.CheckBound(offset - (thumbItemSize / 2d), 0, controlMax - thumbItemSize);
 
                 thumbItem.Margin = isVert ? new Thickness(0, 0, 0, marginOffset) : new Thickness(marginOffset, 0, 0, 0);
             }
@@ -261,6 +275,9 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region Helper functions
+
+        
+
         private static void SetSizeBasedOnOrientation(FrameworkElement control, bool isVert, double offset)
         {
             if (control == null)
