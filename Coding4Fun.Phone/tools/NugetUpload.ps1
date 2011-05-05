@@ -1,4 +1,4 @@
-﻿$versionNumber = "1.3.2";
+﻿$versionNumber = "1.4.0";
 
 $root = Split-Path -parent $MyInvocation.MyCommand.Definition
 
