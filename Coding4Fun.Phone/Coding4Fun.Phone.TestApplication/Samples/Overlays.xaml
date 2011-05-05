@@ -7,7 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:c4fToolkit="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -64,13 +66,13 @@
                         </slToolkit:GestureService.GestureListener>
                     </Button>
                 </StackPanel>
-                <c4fToolkit:ProgressOverlay 
+                <c4f:ProgressOverlay 
                     Name="progressOverlay"
                     Visibility="{Binding OverlayVis}">
-                    <c4fToolkit:ProgressOverlay.Resources>
+                    <c4f:ProgressOverlay.Resources>
                         <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />
-                    </c4fToolkit:ProgressOverlay.Resources>
-                    <c4fToolkit:ProgressOverlay.Content>
+                    </c4f:ProgressOverlay.Resources>
+                    <c4f:ProgressOverlay.Content>
                         <StackPanel>
                             <TextBlock HorizontalAlignment="Center">Loading</TextBlock>
                             <slToolkit:PerformanceProgressBar 
@@ -79,8 +81,8 @@
                                 Converter={StaticResource VisToBoolConverter}}"
                                 />
                         </StackPanel>
-                    </c4fToolkit:ProgressOverlay.Content>
-                </c4fToolkit:ProgressOverlay>
+                    </c4f:ProgressOverlay.Content>
+                </c4f:ProgressOverlay>
             </Grid>
             
         </Grid>

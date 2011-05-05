@@ -6,7 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,24 +39,24 @@
             <StackPanel>
                 <TextBlock>Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
 					    Content="Text" />
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="image" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         FontSize="24"
                         Content="Coding"
                         BorderBrush="OliveDrab" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         FontSize="72"
                         Content="4"
                         Background="CornflowerBlue" />
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
                         Foreground="Salmon"
                         FontSize="36"
                         Content="Fun" />
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
                         ImageSource="{Binding RoundButtonImage}"
 					    Content="Click Handler" 
                         Click="ToggleDirectRoundButtonImage_Click" />
@@ -64,24 +64,24 @@
                 
                 <TextBlock>Round Toggle Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
 					    Content="Text" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="image" />
-                    <Controls:RoundToggleButton
+                    <c4f:RoundToggleButton
                         FontSize="24"
                         Content="Coding"
                         BorderBrush="OliveDrab" />
-                    <Controls:RoundToggleButton
+                    <c4f:RoundToggleButton
                         FontSize="72"
                         Content="4"
                         Background="CornflowerBlue" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         Foreground="Salmon"
                         FontSize="36"
                         Content="Fun" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         ImageSource="{Binding RoundToggleButtonImage}"
 					    Content="Click Handler" 
                         Click="ToggleDirectRoundToggleButtonImage_Click" />
@@ -108,25 +108,25 @@
 
                 <TextBlock>Disabled Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
                         IsEnabled="False"
 					    Content="Text" />
-                    <Controls:RoundButton 
+                    <c4f:RoundButton 
                         IsEnabled="False"
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="Image" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         IsEnabled="False"
                         BorderBrush="OliveDrab" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         IsEnabled="False"
                         Background="CornflowerBlue" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         IsEnabled="False"
                         Foreground="Salmon"
                         FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                         Content="C4F" />
-                    <Controls:RoundButton
+                    <c4f:RoundButton
                         IsEnabled="False"
                         Content="Click handler"
                         Click="RoundButton_Click" />
@@ -134,25 +134,25 @@
                 
                 <TextBlock>Disabled Round Toggle Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         IsEnabled="False"
 					    Content="Text" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         IsEnabled="False"
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="Image" />
-                    <Controls:RoundToggleButton
+                    <c4f:RoundToggleButton
                         IsEnabled="False"
                         BorderBrush="OliveDrab" />
-                    <Controls:RoundToggleButton
+                    <c4f:RoundToggleButton
                         IsEnabled="False"
                         Background="CornflowerBlue" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         IsEnabled="False"
                         Foreground="Salmon"
                         FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                         Content="C4F" />
-                    <Controls:RoundToggleButton 
+                    <c4f:RoundToggleButton 
                         IsEnabled="False"
                         Content="Click handler"
                         Click="RoundButton_Click" />

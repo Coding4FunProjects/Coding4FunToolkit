@@ -7,7 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-    xmlns:c4fControl="clr-namespace:Coding4Fun.Phone.Site.Controls;assembly=Coding4Fun.Phone.Site.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:c4fSiteControl="clr-namespace:Coding4Fun.Phone.Site.Controls;assembly=Coding4Fun.Phone.Site.Controls" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -39,7 +40,7 @@
                     AuthorName="Clint Rutkas"
                     EmailAddress="foo@bar.com"
                     Role="me" />
-                <c4fControl:Coding4FunAboutPrompt 
+                <c4fSiteControl:Coding4FunAboutPrompt 
                     IsPromptMode="False" />
             </StackPanel>
         </Grid>

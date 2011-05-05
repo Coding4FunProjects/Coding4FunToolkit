@@ -5,7 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
@@ -70,9 +72,9 @@
                     Background="Red"
 					BorderBrush="#FFD11E1E" 
 					Content="Test With Gestures">
-                    <Controls:GestureService.GestureListener>
-                        <Controls:GestureListener Tap="GestureListener_Tap"/>
-                    </Controls:GestureService.GestureListener>
+                    <slToolkit:GestureService.GestureListener>
+                        <slToolkit:GestureListener Tap="GestureListener_Tap"/>
+                    </slToolkit:GestureService.GestureListener>
                 </Button>
             </StackPanel>
         </Grid>

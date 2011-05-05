@@ -5,7 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -27,7 +29,7 @@
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Controls:ColorHexagonPicker 
+            <c4f:ColorHexagonPicker 
                 Name="ColorControl" ColorChanged="ColorControl_ColorChanged" />
             <StackPanel>
                 <TextBlock>Hexagon Picker:</TextBlock>
@@ -50,25 +52,25 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 
-                <Controls:ColorHexagonPicker 
+                <c4f:ColorHexagonPicker 
                     ColorBrightnessSteps="3" 
                     ColorDarknessSteps="5"
                     ColorSize="5"
                     GreyScaleSteps="0"/>
 
-                <Controls:ColorHexagonPicker 
+                <c4f:ColorHexagonPicker 
                     ColorBrightnessSteps="3" 
                     ColorDarknessSteps="0"
                     ColorSize="12"
                     GreyScaleSteps="0"/>
                 
-                <Controls:ColorHexagonPicker 
+                <c4f:ColorHexagonPicker 
                     ColorBrightnessSteps="0" 
                     ColorDarknessSteps="3"
                     ColorSize="12"
                     GreyScaleSteps="0"/>
                 
-                <Controls:ColorHexagonPicker 
+                <c4f:ColorHexagonPicker 
                     ColorBrightnessSteps="0" 
                     ColorDarknessSteps="0"
                     ColorSize="12"
