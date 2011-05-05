@@ -33,23 +33,30 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock>Base Slider</TextBlock>
+                <TextBlock 
+                    Text="Base Slider" 
+                    Style="{StaticResource PhoneTextTitle2Style}" />
                 <c4f:SuperSlider 
                     Name="ResultSlider"
                     Height="24"
+                    Value="2"
                     ValueChanged="ResultSlider_ValueChanged"/>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="12, 0, 0, 0">Via Binding:</TextBlock>
+                        <TextBlock Margin="12, 0">Via Binding:</TextBlock>
                         <TextBlock Text="{Binding ElementName=ResultSlider, Path=Value}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="12, 0, 0, 0">Via Event:</TextBlock>
-                        <TextBlock Name="SliderResult">!RESULT!</TextBlock>
+                        <TextBlock Margin="12, 0">Via Event:</TextBlock>
+                        <TextBlock Name="SliderResult" />
                     </StackPanel>
                 </StackPanel>
-                <TextBlock Text="Exta Bits" Style="{StaticResource PhoneTextTitle2Style}"/>
+                
+                <TextBlock 
+                    Margin="12, 24, 0, 0"
+                    Text="Exta Bits" 
+                    Style="{StaticResource PhoneTextTitle2Style}"/>
 
                 <TextBlock>Slider with steps</TextBlock>
                 <c4f:SuperSlider 
@@ -66,32 +73,46 @@
                     Background="CornflowerBlue">
                     <c4f:SuperSlider.Thumb>
                         <Rectangle 
-                            Stroke="Red"
-                            StrokeThickness="3"
-                            Width="12"
+                            Fill="Red"
+                            Height="12"
                             />
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
-                <TextBlock>Slider with custom sizing</TextBlock>
+                <TextBlock>Slider with custom sizing and "flair"</TextBlock>
                 <c4f:SuperSlider 
                     Margin="0, 12"
                     BackgroundSize="12"
                     ProgressSize="24"
-                    Fill="Orange"
                     Background="CornflowerBlue">
+                    <c4f:SuperSlider.Fill>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Offset="0.00" Color="#ffff0000"/>
+                            <GradientStop Offset="0.166666" Color="#ffffff00"/>
+                            <GradientStop Offset="0.333333" Color="#ff00ff00"/>
+                            <GradientStop Offset="0.50" Color="#ff00ffff"/>
+                            <GradientStop Offset="0.666666" Color="#ff0000ff"/>
+                            <GradientStop Offset="0.833333" Color="#ffff00ff"/>
+                            <GradientStop Offset="1.00" Color="#ffff0000"/>
+                        </LinearGradientBrush>
+                    </c4f:SuperSlider.Fill>
                     <c4f:SuperSlider.Thumb>
-                        <Rectangle 
-                            Stroke="Red"
-                            StrokeThickness="3"
-                            Width="12"
-                            />
+                        <Grid Width="24">
+                            <Rectangle 
+				                Stroke="Black"
+                                StrokeThickness="6" />
+                            <Rectangle 
+				                Stroke="White"
+                                StrokeThickness="3" />
+                        </Grid>
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
-                <TextBlock>Vertical Sliders</TextBlock>
+                <TextBlock 
+                    Margin="12, 24, 0, 0"
+                    Style="{StaticResource PhoneTextTitle2Style}">Vertical Examples</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <c4f:SuperSlider 
-                    
+                    Step="1"
                     Margin="12, 0"
                     Width="24"
                     Value="10"
@@ -106,8 +127,7 @@
                      Orientation="Vertical">
                     <c4f:SuperSlider.Thumb>
                         <Rectangle 
-                            Stroke="Red"
-                            StrokeThickness="3"
+                            Fill="Red"
                             Height="12"
                             />
                     </c4f:SuperSlider.Thumb>
@@ -121,11 +141,14 @@
                     Background="CornflowerBlue"
                      Orientation="Vertical">
                     <c4f:SuperSlider.Thumb>
-                        <Rectangle 
-                            Stroke="Red"
-                            StrokeThickness="3"
-                            Height="12"
-                            />
+                        <Grid Height="24">
+                            <Rectangle 
+				                Stroke="Black"
+                                StrokeThickness="6" />
+                            <Rectangle 
+				                Stroke="White"
+                                StrokeThickness="3" />
+                        </Grid>
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
             </StackPanel>

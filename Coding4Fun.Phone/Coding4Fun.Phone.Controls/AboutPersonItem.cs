@@ -10,9 +10,9 @@ namespace Coding4Fun.Phone.Controls
 {
     public class AboutPersonItem : Control
     {
-        protected TextBlock emailAddress;
-        protected TextBlock website;
-        protected TextBlock author;
+        TextBlock _emailAddress;
+        TextBlock _website;
+        TextBlock _author;
 
         private const string EmailAddressName = "emailAddress";
         private const string WebsiteName = "website";
@@ -27,25 +27,25 @@ namespace Coding4Fun.Phone.Controls
         {
             base.OnApplyTemplate();
 
-            if (website != null)
-                website.ManipulationCompleted -= websiteClick_ManipulationCompleted;
+            if (_website != null)
+                _website.ManipulationCompleted -= websiteClick_ManipulationCompleted;
 
-            if (emailAddress != null)
-                emailAddress.ManipulationCompleted -= email_ManipulationCompleted;
+            if (_emailAddress != null)
+                _emailAddress.ManipulationCompleted -= email_ManipulationCompleted;
             
-            emailAddress = GetTemplateChild(EmailAddressName) as TextBlock;
-            website = GetTemplateChild(WebsiteName) as TextBlock;
-            author = GetTemplateChild(AuthorTxtBlockName) as TextBlock;
+            _emailAddress = GetTemplateChild(EmailAddressName) as TextBlock;
+            _website = GetTemplateChild(WebsiteName) as TextBlock;
+            _author = GetTemplateChild(AuthorTxtBlockName) as TextBlock;
 
-            SetVisibility(emailAddress);
-            SetVisibility(website);
-            SetVisibility(author);
+            SetVisibility(_emailAddress);
+            SetVisibility(_website);
+            SetVisibility(_author);
 
-            if (emailAddress != null)
-                emailAddress.ManipulationCompleted += email_ManipulationCompleted;
+            if (_emailAddress != null)
+                _emailAddress.ManipulationCompleted += email_ManipulationCompleted;
 
-            if (website != null)
-                website.ManipulationCompleted += websiteClick_ManipulationCompleted;
+            if (_website != null)
+                _website.ManipulationCompleted += websiteClick_ManipulationCompleted;
         }
 
         private static void SetVisibility(TextBlock control)
@@ -62,7 +62,7 @@ namespace Coding4Fun.Phone.Controls
             {
                 _webSiteUrl = value;
                 WebSiteDisplay = value;
-                SetVisibility(website);
+                SetVisibility(_website);
             }
         }
         private string _webSiteUrl;
@@ -123,7 +123,7 @@ namespace Coding4Fun.Phone.Controls
                     value = value.ToLowerInvariant();
 
                 SetValue(EmailAddressProperty, value);
-                SetVisibility(emailAddress);
+                SetVisibility(_emailAddress);
             }
         }
 
@@ -153,7 +153,7 @@ namespace Coding4Fun.Phone.Controls
                     value = value.ToLowerInvariant();
 
                 SetValue(AuthorNameProperty, value);
-                SetVisibility(author);
+                SetVisibility(_author);
             }
         }
 

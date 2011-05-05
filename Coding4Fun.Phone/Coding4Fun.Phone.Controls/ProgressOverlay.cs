@@ -2,18 +2,19 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+
 using Coding4Fun.Phone.Controls.Helpers;
 
 namespace Coding4Fun.Phone.Controls
 {
     public class ProgressOverlay : Control
     {
-        private Storyboard fadeIn;
-        private Storyboard fadeOut;
-        private Grid LayoutGrid;
+        private Storyboard _fadeIn;
+        private Storyboard _fadeOut;
+        private Grid _layoutGrid;
         
-        private const string fadeInName = "fadeIn";
-        private const string fadeOutName = "fadeOut";
+        private const string FadeInName = "fadeIn";
+        private const string FadeOutName = "fadeOut";
         private const string LayoutGridName = "LayoutGrid";
         
         private bool _hasHookedUpGestureWatcher = false;
@@ -71,44 +72,44 @@ namespace Coding4Fun.Phone.Controls
                 _hasHookedUpGestureWatcher = true;
             }
 
-            fadeIn = GetTemplateChild(fadeInName) as Storyboard;
-            fadeOut = GetTemplateChild(fadeOutName) as Storyboard;
-            LayoutGrid = GetTemplateChild(LayoutGridName) as Grid;
+            _fadeIn = GetTemplateChild(FadeInName) as Storyboard;
+            _fadeOut = GetTemplateChild(FadeOutName) as Storyboard;
+            _layoutGrid = GetTemplateChild(LayoutGridName) as Grid;
             
-            if(fadeOut != null)
-                fadeOut.Completed += fadeOut_Completed;
+            if(_fadeOut != null)
+                _fadeOut.Completed += fadeOut_Completed;
         }
 
         void fadeOut_Completed(object sender, EventArgs e)
         {
-            LayoutGrid.Opacity = 1;
+            _layoutGrid.Opacity = 1;
             Visibility = Visibility.Collapsed;
         }
 
         public void Show()
         {
-            if (fadeIn == null)
+            if (_fadeIn == null)
                 ApplyTemplate();
             
             Visibility = Visibility.Visible;
             
-            if (fadeOut != null)
-                fadeOut.Stop();
+            if (_fadeOut != null)
+                _fadeOut.Stop();
 
-            if (fadeIn != null)
-                fadeIn.Begin();
+            if (_fadeIn != null)
+                _fadeIn.Begin();
         }
 
         public void Hide()
         {
-            if (fadeOut == null)
+            if (_fadeOut == null)
                 ApplyTemplate();
 
-            if (fadeIn != null)
-                fadeIn.Stop();
+            if (_fadeIn != null)
+                _fadeIn.Stop();
 
-            if (fadeOut != null) 
-                fadeOut.Begin();
+            if (_fadeOut != null) 
+                _fadeOut.Begin();
         }
     }
 }

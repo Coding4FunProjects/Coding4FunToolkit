@@ -7,15 +7,15 @@ using System.Windows.Threading;
 
 using Microsoft.Phone.Info;
 
-
 namespace Coding4Fun.Phone.Controls
 {
     public class MemoryCounter : Control
     {
         private const float ByteToMega = 1024 * 1024;
         private readonly DispatcherTimer _timer;
-        private MethodInfo _deviceExtendedPropertiesMethod;
+        private readonly MethodInfo _deviceExtendedPropertiesMethod;
         private bool _threwException;
+
         public MemoryCounter()
         {
             if (Debugger.IsAttached)

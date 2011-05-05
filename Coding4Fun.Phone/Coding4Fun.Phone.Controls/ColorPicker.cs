@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Coding4Fun.Phone.Controls.Helpers;
-using SilverlightColorPicker;
 
 // This is a heavily modified version based on their ColorPicker sample by 
 // Author: Page Brooks

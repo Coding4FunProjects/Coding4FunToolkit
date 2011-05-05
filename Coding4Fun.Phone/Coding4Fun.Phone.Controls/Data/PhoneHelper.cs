@@ -33,7 +33,7 @@ namespace Coding4Fun.Phone.Controls.Data
                     return rdr.GetAttribute(attributeName);
                 }
             }
-            catch (Exception ex0)
+            catch (Exception)
             {
                 return "";
             }

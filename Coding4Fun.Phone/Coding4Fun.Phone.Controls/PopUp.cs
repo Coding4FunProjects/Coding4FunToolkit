@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 using Clarity.Phone.Extensions;
+
 using Coding4Fun.Phone.Controls.Helpers;
 
 namespace Coding4Fun.Phone.Controls

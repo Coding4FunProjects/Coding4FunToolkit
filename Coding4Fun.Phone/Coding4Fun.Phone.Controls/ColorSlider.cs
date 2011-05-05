@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
-using SilverlightColorPicker;
+using Coding4Fun.Phone.Controls.Helpers;
 
 // This is a heavily modified version based on ColorSlider in their ColorPicker sample by 
 // Author: Page Brooks

@@ -1,13 +1,13 @@
-﻿// Author: Page Brooks
-// Website: http://www.pagebrooks.com
-// RSS Feed: http://feeds.pagebrooks.com/pagebrooks
-
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace SilverlightColorPicker
+// This is a modified version based on their ColorPicker sample by 
+// Author: Page Brooks
+// Website: http://www.pagebrooks.com
+// RSS Feed: http://feeds.pagebrooks.com/pagebrooks
+namespace Coding4Fun.Phone.Controls.Helpers
 {
     public class ColorSpace
     {
