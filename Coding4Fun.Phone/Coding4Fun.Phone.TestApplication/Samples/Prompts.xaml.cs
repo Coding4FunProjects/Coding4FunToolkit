@@ -160,7 +160,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             messagePrompt.Show();
         }
 
-        private void MessageSuper_Click(object sender, RoutedEventArgs e)
+
+        private void MessageCustom_Click(object sender, RoutedEventArgs e)
         {
             var messagePrompt = new MessagePrompt
                                     {
@@ -171,6 +172,32 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                         IsCancelVisible = true,
                                         Body = new Button {Content = "I like monkeys"}
                                     };
+
+            messagePrompt.Completed += stringObject_Completed;
+
+            messagePrompt.Show();
+        }
+
+            
+        private void MessageSuper_Click(object sender, RoutedEventArgs e)
+        {
+            var messagePrompt = new MessagePrompt
+                                    {
+                                        Title = "Advanced Message",
+                                        Background = _lime,
+                                        Foreground = _pumpkin,
+                                        Overlay = _cornFlowerBlue,
+                                    };
+
+            var button1 = new RoundButton { Content = "Hide" };
+            button1.Click += (o, arg) => messagePrompt.Hide();
+
+            var button2 = new RoundButton { Content = "Complete" };
+            button2.Click += (o, arg) => messagePrompt.OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok, Result = "You clicked the Complete Button" });
+
+            messagePrompt.ActionPopUpButtons.Clear();
+            messagePrompt.ActionPopUpButtons.Add(button1);
+            messagePrompt.ActionPopUpButtons.Add(button2);
 
             messagePrompt.Completed += stringObject_Completed;
 
@@ -190,11 +217,11 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         void stringObject_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.Ok)
-                MessageBox.Show("OK!");
+                MessageBox.Show("OK: " + e.Result);
             else if (e.PopUpResult == PopUpResult.Cancelled)
-                MessageBox.Show("CANCELLED!");
+                MessageBox.Show("CANCELLED: " + e.Result);
             else
-                MessageBox.Show("meh?");
+                MessageBox.Show("meh?: " + e.Result);
         }
 
         void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)

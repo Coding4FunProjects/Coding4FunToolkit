@@ -42,8 +42,9 @@
                 <TextBlock Text="Message Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="Message_Click" />
-                    <Button Content="Advanced" Click="MessageAdvanced_Click" />
+                    <Button Content="Adv" Click="MessageAdvanced_Click" />
                     <Button Content="Super" Click="MessageSuper_Click" />
+                    <Button Content="Custom" Click="MessageCustom_Click" />
                 </StackPanel>
                 
                 <TextBlock Text="Toast Prompt" />

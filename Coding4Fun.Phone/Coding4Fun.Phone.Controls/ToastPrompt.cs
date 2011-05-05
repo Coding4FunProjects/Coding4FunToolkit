@@ -95,7 +95,7 @@ namespace Coding4Fun.Phone.Controls
             OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.NoResponse });
         }
 
-        protected override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
+        public override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
         {
             DestroyTimer();
             base.OnCompleted(result);

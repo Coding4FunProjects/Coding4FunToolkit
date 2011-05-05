@@ -44,7 +44,7 @@ namespace Coding4Fun.Phone.Controls
             }
         }
 
-        protected virtual void OnCompleted(PopUpEventArgs<T, TPopUpResult> result)
+        public virtual void OnCompleted(PopUpEventArgs<T, TPopUpResult> result)
         {
             _alreadyFired = true;
             
@@ -81,6 +81,11 @@ namespace Coding4Fun.Phone.Controls
     	protected virtual TPopUpResult GetOnClosedValue()
         {
             return default(TPopUpResult);
+        }
+
+        public void Hide()
+        {
+            _popUp_Closed(this, null);
         }
 
         void _popUp_Closed(object sender, EventArgs e)
