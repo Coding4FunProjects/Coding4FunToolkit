@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DateTimePickerCancelText" xml:space="preserve">
-    <value>cancel</value>
+    <value>stornieren</value>
     <comment>Default text for the "cancel" ApplicationBar button used by DatePicker/TimePicker.</comment>
   </data>
   <data name="DateTimePickerDoneText" xml:space="preserve">
-    <value>done</value>
+    <value>getan</value>
     <comment>Default text for the "done" ApplicationBar button used by DatePicker/TimePicker.</comment>
   </data>
   <data name="HourName" xml:space="preserve">
-    <value>hour</value>
+    <value>stunde</value>
   </data>
   <data name="MinuteName" xml:space="preserve">
     <value>minute</value>
   </data>
   <data name="SecondName" xml:space="preserve">
-    <value>second</value>
+    <value>sekunde</value>
     <comment>Title of Second Duration Part</comment>
   </data>
   <data name="TimeSpanPickerTitle" xml:space="preserve">
-    <value>CHOOSE DURATION</value>
+    <value>WÄHLEN DAUER</value>
   </data>
 </root>

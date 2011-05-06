@@ -11,7 +11,7 @@ namespace Coding4Fun.Phone.TestApplication
         public MainPage()
         {
             InitializeComponent();
-            
+
             DataContext = this;
         }
 
