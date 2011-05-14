@@ -22,6 +22,8 @@ namespace Coding4Fun.Phone.Controls
         private MovementMonitor _monitor;
         private const string BodyName = "Body";
 
+        private double _oldValue;
+
         public SuperSlider()
 		{
             DefaultStyleKey = typeof(SuperSlider);
@@ -156,7 +158,7 @@ namespace Coding4Fun.Phone.Controls
             var sender = o as SuperSlider;
 
             if (sender != null && e.NewValue != e.OldValue)
-                sender.UpdateSampleBasedOnValue(sender.Value);
+                sender.SyncValueAndPosition((double)e.NewValue, (double)e.OldValue);
         }
 
         private static void OnLayoutChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
@@ -179,12 +181,7 @@ namespace Coding4Fun.Phone.Controls
             if(controlMax != 0)
                 calculateValue += (Maximum - Minimum) * (controlDist / controlMax);
 
-            SyncValueAndPosition(calculateValue);
-        }
-
-        private void UpdateSampleBasedOnValue(double value)
-        {
-            SyncValueAndPosition(value);
+            SyncValueAndPosition(calculateValue, Value);
         }
 
         private double GetControlMax()
@@ -192,29 +189,27 @@ namespace Coding4Fun.Phone.Controls
             return (IsVertical()) ? ActualHeight : ActualWidth;
         }
 
-        private void SyncValueAndPosition(double value)
+        private void SyncValueAndPosition(double newValue, double oldValue)
         {
             if (!_isLayoutInit)
                 return;
 
             _isLayoutInit = true;
 
-            var oldValue = Value;
-
             if (Step > 0)
             {
-                var stepDiff = (value % Step);
-                var floor = Math.Floor(value - stepDiff);
+                var stepDiff = (newValue % Step);
+                var floor = Math.Floor(newValue - stepDiff);
 
-                value = stepDiff < (Step / 2d) ? floor : floor + Step;
+                newValue = stepDiff < (Step / 2d) ? floor : floor + Step;
             }
 
-            value = ControlHelper.CheckBound(value, Minimum, Maximum);
+            newValue = ControlHelper.CheckBound(newValue, Minimum, Maximum);
 
-            //if (oldValue == value)
-            //    return;
+            if (oldValue == newValue)
+                return;
 
-            Value = value;
+            Value = newValue;
 
             UpdateUserInterface();
 
