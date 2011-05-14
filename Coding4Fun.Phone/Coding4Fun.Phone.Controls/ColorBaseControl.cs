@@ -18,7 +18,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(ColorBaseControl), new PropertyMetadata(null));
+            DependencyProperty.Register("Color", typeof(Color), typeof(ColorBaseControl), new PropertyMetadata(OnColorChanged));
 
         public SolidColorBrush SolidColorBrush
         {
@@ -30,6 +30,18 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty SolidColorBrushProperty =
             DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorBaseControl), new PropertyMetadata(null));
         #endregion
+
+        private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var colorControl = d as ColorBaseControl;
+
+            if (colorControl != null)
+                colorControl.UpdatePositionBasedOnColor();
+        }
+
+        protected internal virtual void UpdatePositionBasedOnColor()
+        {
+        }
 
         protected internal void ColorChanging(Color color)
         {

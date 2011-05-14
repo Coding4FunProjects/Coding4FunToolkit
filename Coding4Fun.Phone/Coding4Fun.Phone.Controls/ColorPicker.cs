@@ -14,8 +14,8 @@ namespace Coding4Fun.Phone.Controls
         double _sampleSelectorSize = 10;
 
         private float _hue;
-        double _x;
-        double _y;
+
+        Point _position;
 
         #region controls on template
         protected Grid SampleSelector;
@@ -56,8 +56,10 @@ namespace Coding4Fun.Phone.Controls
 
             ColorSlider = GetTemplateChild(ColorSliderName) as ColorSlider;
 
-            if (ColorSlider != null) 
+            if (ColorSlider != null)
+            {
                 ColorSlider.ColorChanged += ColorSlider_ColorChanged;
+            }
         }
 
         #region events
@@ -65,7 +67,13 @@ namespace Coding4Fun.Phone.Controls
         {
             _sampleSelectorSize = SampleSelector.ActualHeight;
 
-            UpdateSample(ActualWidth, 0);
+            if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
+            {
+                _position.X = SelectedHueColor.ActualWidth;
+
+                ColorSlider_ColorChanged(this, ColorSlider.Color);
+            }
+            //UpdateSample(ActualWidth, 0);
         }
 
         void ColorSlider_ColorChanged(object sender, Color color)
@@ -79,37 +87,37 @@ namespace Coding4Fun.Phone.Controls
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)
         {
-            _x = e.X;
-            _y = e.Y;
-
+            _position.X = e.X;
+            _position.Y = e.Y;
+            
             UpdateSample();
         }
 
         private void UpdateSample()
         {
-            UpdateSample(_x, _y);
+            SetSampleLocation();
+
+            var saturation = (float)(_position.X / SelectedHueColor.ActualHeight);
+            var value = (float)(1 - (_position.Y / SelectedHueColor.ActualWidth));
+
+            ColorChanging(ColorSpace.ConvertHsvToRgb(_hue, saturation, value));
         }
 
-        private void UpdateSample(double x, double y)
+        private void SetSampleLocation()
         {
             var height = SelectedHueColor.ActualHeight;
             var width = SelectedHueColor.ActualWidth;
 
-            x = ControlHelper.CheckBound(x, width);
-            y = ControlHelper.CheckBound(y, height);
+            _position.X = ControlHelper.CheckBound(_position.X, width);
+            _position.Y = ControlHelper.CheckBound(_position.Y, height);
 
-            var sampleLeft = x - _sampleSelectorSize;
-            var sampleTop = y - _sampleSelectorSize;
+            var sampleLeft = _position.X - _sampleSelectorSize;
+            var sampleTop = _position.Y - _sampleSelectorSize;
 
             sampleLeft = ControlHelper.CheckBound(sampleLeft, width);
             sampleTop = ControlHelper.CheckBound(sampleTop, height);
 
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
-
-            var saturation = (float)(x / width);
-            var value = (float)(1 - (y / height));
-
-            ColorChanging(ColorSpace.ConvertHsvToRgb(_hue, saturation, value));
         }
     }
 }

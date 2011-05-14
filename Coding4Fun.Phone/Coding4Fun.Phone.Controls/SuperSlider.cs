@@ -211,8 +211,8 @@ namespace Coding4Fun.Phone.Controls
 
             value = ControlHelper.CheckBound(value, Minimum, Maximum);
 
-            if (oldValue == value)
-                return;
+            //if (oldValue == value)
+            //    return;
 
             Value = value;
 

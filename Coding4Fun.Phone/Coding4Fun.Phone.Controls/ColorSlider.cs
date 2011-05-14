@@ -12,6 +12,7 @@ namespace Coding4Fun.Phone.Controls
     public class ColorSlider : ColorBaseControl
     {
         const double HueSelectorSize = 24;
+        bool _fromSliderChange;
 
         #region controls on template
         protected Grid Body;
@@ -43,9 +44,9 @@ namespace Coding4Fun.Phone.Controls
             if (Slider != null)
             {
                 Slider.ValueChanged += Slider_ValueChanged;
-                Slider.Value = Slider.Maximum / 3; // todo, reverse flow, get value from color if set
 
-                SetColorFromSlider(Slider.Value);
+                if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0) 
+                    Color = System.Windows.Media.Color.FromArgb(255, 6, 255, 0);
             }
         }
 
@@ -56,7 +57,9 @@ namespace Coding4Fun.Phone.Controls
 
         private void SetColorFromSlider(double value)
         {
-            ColorChanging(ColorSpace.GetColorFromPosition((int)value));
+            _fromSliderChange = true;
+            ColorChanging(ColorSpace.GetHueColorFromPosition((int)value));
+            _fromSliderChange = false;
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -156,6 +159,17 @@ namespace Coding4Fun.Phone.Controls
             }
 
             SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        protected internal override void UpdatePositionBasedOnColor()
+        {
+            if (_fromSliderChange)
+                return;
+
+            base.UpdatePositionBasedOnColor();
+
+            if(Slider != null)
+                Slider.Value = ColorSpace.GetPositionFromHueColor(Color);
         }
     }
 }

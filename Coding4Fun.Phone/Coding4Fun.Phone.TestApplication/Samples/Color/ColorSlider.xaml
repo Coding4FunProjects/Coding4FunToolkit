@@ -57,6 +57,11 @@
                                 Width="50" />
                         </StackPanel>
                     </StackPanel>
+                    <TextBlock>Slider position set via Color:</TextBlock>
+                    <c4f:ColorSlider 
+                        Name="ColorSliderSetViaColor"
+                        Orientation="Horizontal" 
+                        Height="50" />
                 </StackPanel>
             </StackPanel>
             <Grid Grid.Row="1">

@@ -49,7 +49,7 @@ namespace Coding4Fun.Phone.Controls.Helpers
             return brush;
         }
 
-        public static Color GetColorFromPosition(int position)
+        public static Color GetHueColorFromPosition(int position)
         {
             position *= GradientStops;
             var mod = (byte)(position % Max);
@@ -65,6 +65,74 @@ namespace Coding4Fun.Phone.Controls.Helpers
                 case 5: return Color.FromArgb(Alpha, Max, Min, diff);
                 default: return Colors.Black;
             }
+        }
+
+        public static int GetPositionFromHueColor(Color color)
+        {
+            var mod = int.MinValue;
+            var diff = int.MinValue;
+            var switchCase = int.MinValue;
+            // reversing logic from GetHueColorFromPosition
+            if (color.R == Max)
+            {
+                // covers case 0 and case 5
+                if (color.B == Min)
+                {
+                    mod = color.G;
+                    switchCase = 0;
+                }
+                else
+                {
+                    diff = color.B;
+                    switchCase = 5;
+                }
+            }
+            else if (color.G == Max)
+            {
+                // covers case 1 and 2
+                if (color.B == Min)
+                {
+                    diff = color.R;
+                    switchCase = 1;
+                }
+                else
+                {
+                    mod = color.B;
+                    switchCase = 2;
+                }
+            }
+            else if (color.B == Max)
+            {
+                // covers case 3 and case 4
+                if (color.R == Min)
+                {
+                    diff = color.G;
+                    switchCase = 3;
+                }
+                else
+                {
+                    mod = color.R;
+                    switchCase = 4;
+                }
+            }
+
+            if (switchCase == int.MinValue)
+                return 0;
+
+            //switch(position / Max)
+            var position = switchCase*255;
+
+            //var mod = (byte)(position % Max);
+            if (mod == int.MinValue)
+            {
+                //var diff = Max - mod;
+                // -diff + Max = mod
+
+                mod = -diff + Max;
+            }
+
+            //position *= GradientStops;
+            return (position + mod)/GradientStops;
         }
 
         public static string GetHexCode(Color c)
