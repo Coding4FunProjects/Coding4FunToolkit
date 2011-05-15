@@ -11,6 +11,8 @@ namespace Coding4Fun.Phone.Controls
 
         public override void OnApplyTemplate()
         {
+            Focus();
+
             base.OnApplyTemplate();
             ActionButtonArea = GetTemplateChild(ActionButtonAreaName) as Panel;
 
