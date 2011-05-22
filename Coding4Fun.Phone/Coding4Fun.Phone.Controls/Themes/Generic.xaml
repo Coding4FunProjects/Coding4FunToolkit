@@ -281,7 +281,7 @@
                                     <TextBox 
                                         Name="inputBox" 
                                         InputScope="{TemplateBinding InputScope}"
-                                        Binding:TextBoxBinding.UpdateSourceOnChange="True" />
+                                        Binding:TextBinding.UpdateSourceOnChange="True" />
                                 </Grid>
                                 <StackPanel
                                     Name="actionButtonArea"
@@ -323,7 +323,7 @@
                                     Text="{TemplateBinding Message}" />
                                 <TextBox 
                                     Name="inputBox" 
-                                    Binding:TextBoxBinding.UpdateSourceOnChange="True"
+                                    Binding:TextBinding.UpdateSourceOnChange="True"
                                     InputScope="{TemplateBinding InputScope}"
                                     Text="{TemplateBinding Value}" />
                                 <StackPanel
