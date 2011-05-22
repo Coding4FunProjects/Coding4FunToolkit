@@ -22,8 +22,6 @@ namespace Coding4Fun.Phone.Controls
         private MovementMonitor _monitor;
         private const string BodyName = "Body";
 
-        private double _oldValue;
-
         public SuperSlider()
 		{
             DefaultStyleKey = typeof(SuperSlider);
