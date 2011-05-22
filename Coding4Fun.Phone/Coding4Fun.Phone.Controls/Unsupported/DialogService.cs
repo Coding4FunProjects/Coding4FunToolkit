@@ -102,7 +102,7 @@ namespace Clarity.Phone.Extensions
             </DoubleAnimation>
         </Storyboard>";
 
-        internal static readonly string SwivelInStoryboard =
+        private const string SwivelInStoryboard =
         @"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
             <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" 
                                 Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" 
@@ -122,7 +122,7 @@ namespace Clarity.Phone.Extensions
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>";
 
-        internal static readonly string SwivelOutStoryboard =
+        private const string SwivelOutStoryboard =
         @"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
             <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" 
                                 Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" 
@@ -322,13 +322,18 @@ namespace Clarity.Phone.Extensions
                 _page = null;
             }
 
-            _hideStoryboard.Stop();
-            foreach (Timeline t in _hideStoryboard.Children)
+            if (_hideStoryboard != null)
             {
-                Storyboard.SetTarget(t, _overlay);
+                _hideStoryboard.Stop();
+
+                foreach (Timeline t in _hideStoryboard.Children)
+                {
+                    Storyboard.SetTarget(t, _overlay);
+                }
+
+                _hideStoryboard.Completed += _hideStoryboard_Completed;
+                _hideStoryboard.Begin();
             }
-            _hideStoryboard.Completed += _hideStoryboard_Completed;
-            _hideStoryboard.Begin();
         }
 
         void _hideStoryboard_Completed(object sender, EventArgs e)
