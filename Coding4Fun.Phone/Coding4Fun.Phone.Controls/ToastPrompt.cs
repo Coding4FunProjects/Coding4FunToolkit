@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -10,8 +10,9 @@ namespace Coding4Fun.Phone.Controls
     {
         protected Image ToastImage;
         private const string ToastImageName = "ToastImage";
-        private DispatcherTimer _timer;
-        private TranslateTransform _translate = new TranslateTransform();
+        readonly Timer _timer;
+
+        private readonly TranslateTransform _translate = new TranslateTransform();
 		
         public ToastPrompt()
         {
@@ -19,15 +20,17 @@ namespace Coding4Fun.Phone.Controls
 			
 			IsAppBarVisible = true;
             IsBackKeyOverride = true;
-
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
             HasGesturesDisabled = false;
+
             ManipulationStarted += ToastPrompt_ManipulationStarted;
             ManipulationDelta += ToastPrompt_ManipulationDelta;
             ManipulationCompleted += ToastPrompt_ManipulationCompleted;
 
             RenderTransform = _translate;
+
+            _timer = new Timer(_timer_Tick);
         }
 
         void ToastPrompt_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
@@ -41,8 +44,7 @@ namespace Coding4Fun.Phone.Controls
             else
             {
                 _translate.X = 0;
-                if (_timer != null)
-                    _timer.Start();
+                StartTimer();  
             }
         }
 
@@ -53,10 +55,22 @@ namespace Coding4Fun.Phone.Controls
                 _translate.X = 0;
         }
 
-        void ToastPrompt_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
+        private void StartTimer()
         {
             if (_timer != null)
-                _timer.Stop();
+                _timer.Change(TimeSpan.FromMilliseconds(MillisecondsUntilHidden), TimeSpan.FromMilliseconds(-1));
+        }
+
+        private void PauseTimer()
+        {
+            if (_timer != null)
+                _timer.Change(TimeSpan.FromMilliseconds(-1), TimeSpan.FromMilliseconds(-1));
+        }
+
+
+        void ToastPrompt_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
+        {
+            PauseTimer();
         }
 
         public override void OnApplyTemplate()
@@ -74,40 +88,24 @@ namespace Coding4Fun.Phone.Controls
 
         public override void Show()
         {
-            
-            base.Show();
-
             if (!IsTimerEnabled)
                 return;
 
-            _timer = new DispatcherTimer
-                         {
-                             Interval = TimeSpan.FromMilliseconds(MillisecondsUntilHidden)
-                         };
+            StartTimer();
 
-            _timer.Tick += _timer_Tick;
-            _timer.Start();
+            base.Show();
         }
 
-        void _timer_Tick(object sender, EventArgs e)
+        void _timer_Tick(object state)
         {
-            DestroyTimer();
-            OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.NoResponse });
+            Dispatcher.BeginInvoke(() => OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.NoResponse }));
         }
 
         public override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
         {
-            DestroyTimer();
+            PauseTimer();
+        
             base.OnCompleted(result);
-        }
-
-        private void DestroyTimer()
-        {
-            if (_timer == null)
-                return;
-
-            _timer.Stop();
-            _timer = null;
         }
 
         public int MillisecondsUntilHidden

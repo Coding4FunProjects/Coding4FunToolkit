@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
 using Coding4Fun.Phone.Controls;
 using Coding4Fun.Phone.Site.Controls;
 
@@ -31,13 +32,13 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
 		private void ToastWithImg_Click(object sender, RoutedEventArgs e)
 		{
-			var toast = new ToastPrompt
-			            	{
-			            		Title = "With Image",
-			            		Message = "Message",
-			            		ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
-			            	};
-			toast.Show();
+		    var toast = new ToastPrompt
+                               {
+                                   Title = "With Image",
+                                   Message = "Message",
+                                   ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+                               };
+            toast.Show();
 		}
 
         private void ToastAdvanced_Click(object sender, RoutedEventArgs e)

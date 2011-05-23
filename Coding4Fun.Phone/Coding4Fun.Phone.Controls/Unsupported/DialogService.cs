@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,17 +29,15 @@ namespace Clarity.Phone.Extensions
 
         private const string SlideUpStoryboard = @"
         <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.Y)"" 
-                                           Storyboard.TargetName=""LayoutRoot"">
-                    <EasingDoubleKeyFrame KeyTime=""0"" Value=""150""/>
-                    <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""0"" To=""1"" Duration=""0:0:0.350"" 
-                                 Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.Y)"">
+                <EasingDoubleKeyFrame KeyTime=""0"" Value=""150""/>
+                <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""0"" To=""1"" Duration=""0:0:0.350"">
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
                 </DoubleAnimation.EasingFunction>
@@ -47,8 +46,7 @@ namespace Clarity.Phone.Extensions
 
         private const string SlideHorizontalInStoryboard = @"
         <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"" 
-                                           Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"" >
                     <EasingDoubleKeyFrame KeyTime=""0"" Value=""-150""/>
                     <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -56,8 +54,7 @@ namespace Clarity.Phone.Extensions
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""0"" To=""1"" Duration=""0:0:0.350"" 
-                                 Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""0"" To=""1"" Duration=""0:0:0.350"" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode=""EaseOut"" Exponent=""6""/>
                 </DoubleAnimation.EasingFunction>
@@ -66,8 +63,7 @@ namespace Clarity.Phone.Extensions
 
         private const string SlideHorizontalOutStoryboard = @"
         <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"" 
-                                           Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.X)"">
                 <EasingDoubleKeyFrame KeyTime=""0"" Value=""0""/>
                 <EasingDoubleKeyFrame KeyTime=""0:0:0.25"" Value=""150"">
                     <EasingDoubleKeyFrame.EasingFunction>
@@ -75,8 +71,7 @@ namespace Clarity.Phone.Extensions
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""1"" To=""0"" Duration=""0:0:0.25"" 
-                                 Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""1"" To=""0"" Duration=""0:0:0.25"">
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode=""EaseIn"" Exponent=""6""/>
                 </DoubleAnimation.EasingFunction>
@@ -85,8 +80,7 @@ namespace Clarity.Phone.Extensions
 
         private const string SlideDownStoryboard = @"
         <Storyboard  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.Y)"" 
-                                           Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.RenderTransform).(TranslateTransform.Y)"">
                 <EasingDoubleKeyFrame KeyTime=""0"" Value=""0""/>
                 <EasingDoubleKeyFrame KeyTime=""0:0:0.25"" Value=""150"">
                     <EasingDoubleKeyFrame.EasingFunction>
@@ -94,8 +88,7 @@ namespace Clarity.Phone.Extensions
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""1"" To=""0"" Duration=""0:0:0.25"" 
-                                 Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimation Storyboard.TargetProperty=""(UIElement.Opacity)"" From=""1"" To=""0"" Duration=""0:0:0.25"">
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode=""EaseIn"" Exponent=""6""/>
                 </DoubleAnimation.EasingFunction>
@@ -104,11 +97,9 @@ namespace Clarity.Phone.Extensions
 
         private const string SwivelInStoryboard =
         @"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" 
-                                Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" 
-                                Storyboard.TargetName=""LayoutRoot""
-                                To="".5""/>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.RotationX)"" Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" To="".5""
+                                Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" />
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.RotationX)"">
                 <EasingDoubleKeyFrame KeyTime=""0"" Value=""-30""/>
                 <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
                     <EasingDoubleKeyFrame.EasingFunction>
@@ -116,8 +107,7 @@ namespace Clarity.Phone.Extensions
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Opacity)""
-                                            Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Opacity)"">
                 <DiscreteDoubleKeyFrame KeyTime=""0"" Value=""1"" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>";
@@ -126,9 +116,8 @@ namespace Clarity.Phone.Extensions
         @"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
             <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" 
                                 Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" 
-                                Storyboard.TargetName=""LayoutRoot""
                                 To="".5""/>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.RotationX)"" Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.RotationX)"">
                 <EasingDoubleKeyFrame KeyTime=""0"" Value=""0""/>
                 <EasingDoubleKeyFrame KeyTime=""0:0:0.25"" Value=""45"">
                     <EasingDoubleKeyFrame.EasingFunction>
@@ -136,8 +125,7 @@ namespace Clarity.Phone.Extensions
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Opacity)""
-                                            Storyboard.TargetName=""LayoutRoot"">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Opacity)"">
                 <DiscreteDoubleKeyFrame KeyTime=""0"" Value=""1"" />
                 <DiscreteDoubleKeyFrame KeyTime=""0:0:0.267"" Value=""0"" />
             </DoubleAnimationUsingKeyFrames>
@@ -148,9 +136,7 @@ namespace Clarity.Phone.Extensions
         private PhoneApplicationPage _page;
         private IApplicationBar _originalAppBar;
         private Panel _overlay;
-        private Storyboard _showStoryboard;
-        private Storyboard _hideStoryboard;
-
+        
         public FrameworkElement Child { get; set; }
         public AnimationTypes AnimationType { get; set; }
         public double VerticalOffset { get; set; }
@@ -183,6 +169,7 @@ namespace Clarity.Phone.Extensions
                 if (_popupContainer == null)
                 {
                     var presenters = RootVisual.GetVisualDescendants().OfType<ContentPresenter>();
+
                     for (var i = 0; i < presenters.Count(); i++)
                     {
 
@@ -190,11 +177,11 @@ namespace Clarity.Phone.Extensions
 
                         if (panels.Count() <= 0)
                             continue;
+
                         _popupContainer = panels.First();
                         break;
                     }
                 }
-
 
                 return _popupContainer;
             }
@@ -208,32 +195,11 @@ namespace Clarity.Phone.Extensions
         private void InitializePopup()
         {
             // Add overlay which is the size of RootVisual
-            _overlay = new Grid();
+            _overlay = new Grid {Name = Guid.NewGuid().ToString()};
 
             Grid.SetColumnSpan(_overlay, int.MaxValue);
             Grid.SetRowSpan(_overlay, int.MaxValue);
-
-            switch (AnimationType)
-            {
-                case AnimationTypes.SlideHorizontal:
-                    _showStoryboard = XamlReader.Load(SlideHorizontalInStoryboard) as Storyboard;
-                    _hideStoryboard = XamlReader.Load(SlideHorizontalOutStoryboard) as Storyboard;
-                    _overlay.RenderTransform = new TranslateTransform();
-                    break;
-
-                case AnimationTypes.Slide:
-                    _showStoryboard = XamlReader.Load(SlideUpStoryboard) as Storyboard;
-                    _hideStoryboard = XamlReader.Load(SlideDownStoryboard) as Storyboard;
-                    _overlay.RenderTransform = new TranslateTransform();
-                    break;
-
-                default:
-                    _showStoryboard = XamlReader.Load(SwivelInStoryboard) as Storyboard;
-                    _hideStoryboard = XamlReader.Load(SwivelOutStoryboard) as Storyboard;
-                    _overlay.Projection = new PlaneProjection();
-                    break;
-            }
-
+            
             _overlay.Children.Add(Child);
 
             if (BackgroundBrush != null)
@@ -255,50 +221,63 @@ namespace Clarity.Phone.Extensions
             }
         }
 
+        private static readonly object Lockobj = new object();
         /// <summary>
         /// Shows the context menu.
         /// </summary>
         public void Show()
         {
-            IsOpen = true;
+            lock (Lockobj)
+            {
+                IsOpen = true;
 
-            InitializePopup();
+                InitializePopup();
 
-            if(!IsBackKeyOverride)
-                Page.BackKeyPress += OnBackKeyPress;
+                if (!IsBackKeyOverride)
+                    Page.BackKeyPress += OnBackKeyPress;
 
-            Page.NavigationService.Navigated += OnNavigated;
+                Page.NavigationService.Navigated += OnNavigated;
 
-            _originalAppBar = Page.ApplicationBar;
+                _originalAppBar = Page.ApplicationBar;
 
-            _showStoryboard.Completed += _showStoryboard_Completed;
-
-            foreach (Timeline t in _showStoryboard.Children)
-                Storyboard.SetTarget(t, _overlay);
-
-            PopupContainer.InvokeOnLayoutUpdated(() =>
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                //PopupContainer.InvokeOnLayoutUpdated(() =>
+                //    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                //    {
+                Storyboard storyboard;
+                switch (AnimationType)
                 {
-                    _showStoryboard.Begin();
+                    case AnimationTypes.SlideHorizontal:
+                        storyboard = XamlReader.Load(SlideHorizontalInStoryboard) as Storyboard;
+                        _overlay.RenderTransform = new TranslateTransform();
+                        break;
 
-                    if (Page != null)
-                    {
-                        Page.ApplicationBar = AppBar;
-                    }
-                }));
+                    case AnimationTypes.Slide:
+                        storyboard = XamlReader.Load(SlideUpStoryboard) as Storyboard;
+                        _overlay.RenderTransform = new TranslateTransform();
+                        break;
+
+                    default:
+                        storyboard = XamlReader.Load(SwivelInStoryboard) as Storyboard;
+                        _overlay.Projection = new PlaneProjection();
+                        break;
+                }
+
+                if (storyboard != null)
+                {
+                    foreach (var t in storyboard.Children)
+                        Storyboard.SetTarget(t, _overlay);
+
+                    storyboard.Begin();
+                }
+
+                if (Page != null)
+                {
+                    Page.ApplicationBar = AppBar;
+                }
+                //  }));
+            }
         }
-
-        void _showStoryboard_Completed(object sender, EventArgs e)
-        {
-            var sb = sender as Storyboard;
-
-            if (sb != null)
-                sb.Completed -= _showStoryboard_Completed;
-
-            if (Opened != null)
-                Opened(this, null);
-        }
-
+        
         void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             Hide();
@@ -322,27 +301,41 @@ namespace Clarity.Phone.Extensions
                 _page = null;
             }
 
-            if (_hideStoryboard != null)
+            Storyboard storyboard;
+
+            switch (AnimationType)
             {
-                _hideStoryboard.Stop();
+                case AnimationTypes.SlideHorizontal:
+                    storyboard = XamlReader.Load(SlideHorizontalOutStoryboard) as Storyboard;
+                    break;
 
-                foreach (Timeline t in _hideStoryboard.Children)
-                {
+                case AnimationTypes.Slide:
+                    storyboard = XamlReader.Load(SlideDownStoryboard) as Storyboard;
+                    break;
+
+                default:
+                    storyboard = XamlReader.Load(SwivelOutStoryboard) as Storyboard;
+                    break;
+            }
+
+            if (storyboard != null)
+            {
+                storyboard.Completed += _hideStoryboard_Completed;
+
+                foreach (var t in storyboard.Children)
                     Storyboard.SetTarget(t, _overlay);
-                }
 
-                _hideStoryboard.Completed += _hideStoryboard_Completed;
-                _hideStoryboard.Begin();
+                storyboard.Begin();
             }
         }
 
         void _hideStoryboard_Completed(object sender, EventArgs e)
         {
-            if (_hideStoryboard != null)
-            {
-                _hideStoryboard.Completed -= _hideStoryboard_Completed;
-                _hideStoryboard = null;
-            }
+            //if (_hideStoryboard != null)
+            //{
+            //    _hideStoryboard.Completed -= _hideStoryboard_Completed;
+            //    _hideStoryboard = null;
+            //}
 
             IsOpen = false;
 
@@ -351,11 +344,11 @@ namespace Clarity.Phone.Extensions
                 PopupContainer.Children.Remove(_overlay);
             }
 
-            if (null != _overlay)
-            {
-                _overlay.Children.Clear();
-                _overlay = null;
-            }
+            //if (null != _overlay)
+            //{
+            //    _overlay.Children.Clear();
+            //    _overlay = null;
+            //}
 
             if (Closed != null)
                 Closed(this, null);

@@ -49,7 +49,7 @@ namespace Coding4Fun.Phone.Controls
             _alreadyFired = true;
             
             if (Completed != null)
-                Completed.Invoke(this, result);
+                Completed(this, result);
             
             if(_popUp != null)
                 _popUp.Hide();
@@ -59,23 +59,20 @@ namespace Coding4Fun.Phone.Controls
 
 		public virtual void Show()
 		{
-			Dispatcher.BeginInvoke(() =>
-									{
-										_popUp = new DialogService
-													{
-														AnimationType = AnimationType,
-														Child = this,
-														BackgroundBrush = Overlay,
-                                                        IsBackKeyOverride = IsBackKeyOverride
-													};
+            _popUp = new DialogService
+            {
+                AnimationType = AnimationType,
+                Child = this,
+                BackgroundBrush = Overlay,
+                IsBackKeyOverride = IsBackKeyOverride
+            };
 
-                                        if(IsAppBarVisible)
-                                            _popUp.AppBar = _popUp.Page.ApplicationBar;
+            if (IsAppBarVisible)
+                _popUp.AppBar = _popUp.Page.ApplicationBar;
 
-										_popUp.Closed += _popUp_Closed;
+            _popUp.Closed += _popUp_Closed;
 
-										Dispatcher.BeginInvoke(_popUp.Show);
-									});
+			Dispatcher.BeginInvoke(() => _popUp.Show());
 		}
 
     	protected virtual TPopUpResult GetOnClosedValue()
