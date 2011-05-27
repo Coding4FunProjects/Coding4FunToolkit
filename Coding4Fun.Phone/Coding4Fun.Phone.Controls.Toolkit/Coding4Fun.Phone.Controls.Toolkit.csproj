@@ -68,6 +68,7 @@
     <Compile Include="DateTimePickers\TimespanPickerPage.xaml.cs">
       <DependentUpon>TimespanPickerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DateTimePickers\TimeSpanValueChangedEventArgs.cs" />
     <Compile Include="DateTimePickers\TimeSpanWrapper.cs" />
     <Compile Include="DateTimePickers\TsDataSource.cs" />
     <Compile Include="DateTimePickers\ValuePickerBasePage.cs" />
