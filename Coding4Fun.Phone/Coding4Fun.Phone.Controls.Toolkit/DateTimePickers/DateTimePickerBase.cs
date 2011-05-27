@@ -24,10 +24,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         private NavigationOutTransition _savedNavigationOutTransition;
         private IValuePickerPage<T> _dateTimePickerPage;
 
-        /// <summary>
-        /// Event that is invoked when the Value property changes.
-        /// </summary>
-        public event EventHandler<ValueChangedEventArgs<T>> ValueChanged;
 
         /// <summary>
         /// Gets or sets the DateTime value.
@@ -61,14 +57,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// Called when the value changes.
         /// </summary>
         /// <param name="e">The event data.</param>
-        protected virtual void OnValueChanged(ValueChangedEventArgs<T> e)
-        {
-            EventHandler<ValueChangedEventArgs<T>> handler = ValueChanged;
-            if (null != handler)
-            {
-                handler(this, e);
-            }
-        }
+        protected abstract void OnValueChanged(ValueChangedEventArgs<T> e);
 
         /// <summary>
         /// Gets the string representation of the selected value.

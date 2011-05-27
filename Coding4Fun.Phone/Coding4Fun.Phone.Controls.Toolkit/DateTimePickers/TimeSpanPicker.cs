@@ -75,6 +75,25 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
 
         /// <summary>
+        /// Event that is invoked when the Value property changes.
+        /// </summary>
+        public event EventHandler<TimeSpanValueChangedEventArgs> ValueChanged;
+
+        /// <summary>
+        /// Called when the value changes.
+        /// </summary>
+        /// <param name="e">The event data.</param>
+        protected override void OnValueChanged(ValueChangedEventArgs<TimeSpan> e)
+        {
+            EventHandler<TimeSpanValueChangedEventArgs> handler = ValueChanged;
+            if (null != handler)
+            {
+                handler(this, new TimeSpanValueChangedEventArgs(e.OldValue.GetValueOrDefault(), e.NewValue.GetValueOrDefault()));
+            }
+        }
+
+
+        /// <summary>
         /// Initializes Value, Max, Step when vanigating to the new page
         /// </summary>
         /// <param name="page"></param>
