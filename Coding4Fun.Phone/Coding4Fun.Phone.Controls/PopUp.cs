@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Clarity.Phone.Extensions;
 
 using Coding4Fun.Phone.Controls.Helpers;
+using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Phone.Controls
 {
@@ -23,6 +24,7 @@ namespace Coding4Fun.Phone.Controls
 
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
         public bool IsAppBarVisible { get; set; }
+        internal IApplicationBar AppBar { get; set; }
         protected internal bool IsBackKeyOverride { get; set; }
 
         protected DialogService.AnimationTypes AnimationType { get; set; }
@@ -67,10 +69,13 @@ namespace Coding4Fun.Phone.Controls
                 IsBackKeyOverride = IsBackKeyOverride
             };
 
-            if (IsAppBarVisible)
-                _popUp.AppBar = _popUp.Page.ApplicationBar;
+            if (!IsAppBarVisible)
+            {
+                AppBar = _popUp.Page.ApplicationBar;
+                _popUp.Page.ApplicationBar = null;
+            }
 
-            _popUp.Closed += _popUp_Closed;
+		    _popUp.Closed += _popUp_Closed;
 
 			Dispatcher.BeginInvoke(() => _popUp.Show());
 		}
@@ -89,6 +94,11 @@ namespace Coding4Fun.Phone.Controls
         {
             if(!_alreadyFired)
                 OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
+
+            if (!IsAppBarVisible && AppBar != null)
+            {
+                _popUp.Page.ApplicationBar = AppBar;
+            }
 
             if (_popUp != null)
             {

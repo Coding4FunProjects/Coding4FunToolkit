@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 
 namespace Clarity.Phone.Extensions
 {
@@ -134,7 +132,6 @@ namespace Clarity.Phone.Extensions
         private Panel _popupContainer;
         private Frame _rootVisual;
         private PhoneApplicationPage _page;
-        private IApplicationBar _originalAppBar;
         private Panel _overlay;
         
         public FrameworkElement Child { get; set; }
@@ -142,7 +139,6 @@ namespace Clarity.Phone.Extensions
         public double VerticalOffset { get; set; }
         public Brush BackgroundBrush { get; set; }
 
-        internal IApplicationBar AppBar { get; set; }
         internal bool IsOpen { get; set; }
         protected internal bool IsBackKeyOverride { get; set; }
 
@@ -238,11 +234,6 @@ namespace Clarity.Phone.Extensions
 
                 Page.NavigationService.Navigated += OnNavigated;
 
-                _originalAppBar = Page.ApplicationBar;
-
-                //PopupContainer.InvokeOnLayoutUpdated(() =>
-                //    Deployment.Current.Dispatcher.BeginInvoke(() =>
-                //    {
                 Storyboard storyboard;
                 switch (AnimationType)
                 {
@@ -269,12 +260,6 @@ namespace Clarity.Phone.Extensions
 
                     storyboard.Begin();
                 }
-
-                if (Page != null)
-                {
-                    Page.ApplicationBar = AppBar;
-                }
-                //  }));
             }
         }
         
@@ -292,11 +277,6 @@ namespace Clarity.Phone.Extensions
             {
                 Page.BackKeyPress -= OnBackKeyPress;
                 Page.NavigationService.Navigated -= OnNavigated;
-
-                if (_originalAppBar != null)
-                    Page.ApplicationBar = _originalAppBar;
-                //else
-                //    Page.ApplicationBar = null;
 
                 _page = null;
             }
@@ -331,24 +311,12 @@ namespace Clarity.Phone.Extensions
 
         void _hideStoryboard_Completed(object sender, EventArgs e)
         {
-            //if (_hideStoryboard != null)
-            //{
-            //    _hideStoryboard.Completed -= _hideStoryboard_Completed;
-            //    _hideStoryboard = null;
-            //}
-
             IsOpen = false;
 
             if (PopupContainer != null)
             {
                 PopupContainer.Children.Remove(_overlay);
             }
-
-            //if (null != _overlay)
-            //{
-            //    _overlay.Children.Clear();
-            //    _overlay = null;
-            //}
 
             if (Closed != null)
                 Closed(this, null);
