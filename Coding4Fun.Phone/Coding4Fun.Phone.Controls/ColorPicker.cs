@@ -12,6 +12,7 @@ namespace Coding4Fun.Phone.Controls
     public class ColorPicker : ColorBaseControl
     {
         double _sampleSelectorSize = 10;
+        bool _fromSliderChange;
 
         private float _hue;
 
@@ -98,12 +99,14 @@ namespace Coding4Fun.Phone.Controls
 
         private void UpdateSample()
         {
+            //_fromSliderChange = true;
             SetSampleLocation();
 
-            var saturation = (float)(_position.X / SelectedHueColor.ActualHeight);
-            var value = (float)(1 - (_position.Y / SelectedHueColor.ActualWidth));
+            var saturation = (float)(_position.X / SelectedHueColor.ActualWidth);
+            var value = (float)(1 - (_position.Y / SelectedHueColor.ActualHeight));
 
             ColorChanging(ColorSpace.ConvertHsvToRgb(_hue, saturation, value));
+            //_fromSliderChange = false;
         }
 
         private void SetSampleLocation()
@@ -121,6 +124,24 @@ namespace Coding4Fun.Phone.Controls
             sampleTop = ControlHelper.CheckBound(sampleTop, height);
 
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
+        }
+
+        protected internal override void UpdatePositionBasedOnColor()
+        {
+            if (_fromSliderChange)
+                return;
+
+            base.UpdatePositionBasedOnColor();
+
+            //var hsv = ColorSpace.CalculateHsv(Color);
+
+            //if (ColorSlider != null)
+            //{
+            //    //ColorSlider.Color = ColorSpace.GetHueColorFromPosition((int)hsv.Hue);
+            //    var xxxxr = ColorSpace.GetHueColorFromPosition((int) hsv.Hue);
+            //}
+            //var saturation = (float)(_position.X / SelectedHueColor.ActualHeight);
+            //var value = (float)(1 - (_position.Y / SelectedHueColor.ActualWidth));
         }
 
         public object Thumb
