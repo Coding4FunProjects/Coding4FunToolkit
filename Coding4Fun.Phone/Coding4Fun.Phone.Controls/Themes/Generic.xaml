@@ -494,6 +494,22 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="local:ColorSliderThumb">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorSliderThumb">
+                    <Grid>
+                        <Rectangle 
+				            Stroke="Black"
+                            StrokeThickness="6" />
+                        <Rectangle 
+				            Stroke="White"
+                            StrokeThickness="3" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="local:ColorSlider">
         <Setter Property="Template">
             <Setter.Value>
@@ -508,20 +524,8 @@
                             Orientation="{TemplateBinding Orientation}"
                             Fill="Transparent"
                             Minimum="0"
-                            Maximum="254">
-                            <local:SuperSlider.Thumb>
-                                <Grid>
-                                    <Rectangle 
-				                        Stroke="Black"
-                                        StrokeThickness="6"
-                                    />
-                                    <Rectangle 
-				                        Stroke="White"
-                                        StrokeThickness="3"
-                                        />
-                                </Grid>
-                            </local:SuperSlider.Thumb>
-                        </local:SuperSlider>
+                            Maximum="254" 
+                            Thumb="{TemplateBinding Thumb}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -552,6 +556,7 @@
                             Width="24"
                             Margin="0,0,12,0"
                             IsColorVisible="false" 
+                            Thumb="{TemplateBinding Thumb}"
                             x:Name="ColorSlider" 
                             Grid.Row="2"/>
 

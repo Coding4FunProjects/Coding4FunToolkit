@@ -61,7 +61,13 @@
                     <c4f:ColorSlider 
                         Name="ColorSliderSetViaColor"
                         Orientation="Horizontal" 
-                        Height="50" />
+                        Height="50">
+                        <c4f:ColorSlider.Thumb>
+                            <Ellipse 
+                                Fill="Red"
+                                Width="12" />
+                        </c4f:ColorSlider.Thumb>
+                    </c4f:ColorSlider>
                 </StackPanel>
             </StackPanel>
             <Grid Grid.Row="1">

@@ -37,7 +37,14 @@
                 Grid.Row="0" 
                 Margin="12"
                 Name="picker" 
-                ColorChanged="ColorPicker_ColorChanged" />
+                ColorChanged="ColorPicker_ColorChanged">
+
+                <!--<c4f:ColorPicker.Thumb>
+                    <Ellipse 
+                                Fill="Red"
+                                Width="12" />
+                    </c4f:ColorPicker.Thumb>-->
+            </c4f:ColorPicker>
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel>

@@ -37,6 +37,9 @@ namespace Coding4Fun.Phone.Controls
             Body = GetTemplateChild(BodyName) as Grid;
             Slider = GetTemplateChild(SliderName) as SuperSlider;
 
+            if (Thumb == null)
+                Thumb = new ColorSliderThumb();
+
             SelectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
             
             SizeChanged += UserControl_SizeChanged;
@@ -68,6 +71,20 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region dependency properties
+
+
+        public object Thumb
+        {
+            get { return (object)GetValue(ThumbProperty); }
+            set { SetValue(ThumbProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ThumbProperty =
+            DependencyProperty.Register("Thumb", typeof(object), typeof(ColorSlider), new PropertyMetadata(null));
+
+        
+
         public bool IsColorVisible
         {
             get { return (bool)GetValue(IsColorVisibleProperty); }
@@ -129,9 +146,9 @@ namespace Coding4Fun.Phone.Controls
                 Body.ColumnDefinitions.Add(new ColumnDefinition());
                 Body.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            
+
             var thumb = ((FrameworkElement)Slider.Thumb);
-            if(thumb != null)
+            if (thumb != null)
             {
                 thumb.Height = isVert ? HueSelectorSize : double.NaN;
                 thumb.Width = isVert ? double.NaN : HueSelectorSize;

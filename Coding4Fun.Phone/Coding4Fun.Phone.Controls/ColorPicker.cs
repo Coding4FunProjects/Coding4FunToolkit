@@ -58,6 +58,9 @@ namespace Coding4Fun.Phone.Controls
 
             if (ColorSlider != null)
             {
+                if (Thumb == null)
+                    Thumb = new ColorSliderThumb();
+
                 ColorSlider.ColorChanged += ColorSlider_ColorChanged;
             }
         }
@@ -119,5 +122,15 @@ namespace Coding4Fun.Phone.Controls
 
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
         }
+
+        public object Thumb
+        {
+            get { return (object)GetValue(ThumbProperty); }
+            set { SetValue(ThumbProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ThumbProperty =
+            DependencyProperty.Register("Thumb", typeof(object), typeof(ColorPicker), new PropertyMetadata(null));
     }
 }
