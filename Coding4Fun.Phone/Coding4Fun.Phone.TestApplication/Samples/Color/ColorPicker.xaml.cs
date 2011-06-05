@@ -24,6 +24,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
         private void ColorPicker_ColorChanged(object sender, System.Windows.Media.Color color)
         {
             ColorPickerFromEvent.Fill = new SolidColorBrush(color);
+            pickerClone.Color = color;
         }
     }
 }

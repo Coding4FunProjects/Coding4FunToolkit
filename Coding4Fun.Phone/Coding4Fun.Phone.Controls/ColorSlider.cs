@@ -61,7 +61,7 @@ namespace Coding4Fun.Phone.Controls
         private void SetColorFromSlider(double value)
         {
             _fromSliderChange = true;
-            ColorChanging(ColorSpace.GetHueColorFromPosition((int)value));
+            ColorChanging(ColorSpace.GetColorFromHueValue((int)value));
             _fromSliderChange = false;
         }
 
@@ -186,7 +186,7 @@ namespace Coding4Fun.Phone.Controls
             base.UpdatePositionBasedOnColor();
 
             if(Slider != null)
-                Slider.Value = ColorSpace.GetPositionFromHueColor(Color);
+                Slider.Value = Color.GetHue();
         }
     }
 }

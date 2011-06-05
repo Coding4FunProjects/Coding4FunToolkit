@@ -21,6 +21,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
         private void ColorVerticalSlider_ColorChanged(object sender, System.Windows.Media.Color color)
         {
             ColorSliderVerticalFromEvent.Fill = new SolidColorBrush(color);
+            ColorSliderVerticalClone.Color = color;
         }
     }
 }

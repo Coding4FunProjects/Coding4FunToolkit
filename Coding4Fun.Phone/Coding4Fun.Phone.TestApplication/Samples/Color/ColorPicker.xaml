@@ -33,19 +33,29 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <c4f:ColorPicker 
-                Grid.Row="0" 
-                Margin="12"
-                Name="picker" 
-                ColorChanged="ColorPicker_ColorChanged">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <c4f:ColorPicker  
+                    Margin="12"
+                    Name="picker" 
+                    ColorChanged="ColorPicker_ColorChanged">
+                
 
-                <!--<c4f:ColorPicker.Thumb>
-                    <Ellipse 
-                                Fill="Red"
-                                Width="12" />
-                    </c4f:ColorPicker.Thumb>-->
-            </c4f:ColorPicker>
-            <StackPanel Grid.Row="1">
+                    <!--<c4f:ColorPicker.Thumb>
+                        <Ellipse 
+                                    Fill="Red"
+                                    Width="12" />
+                        </c4f:ColorPicker.Thumb>-->
+                </c4f:ColorPicker>
+                <c4f:ColorPicker  
+                    Grid.Row="1"
+                    Margin="12"
+                    Name="pickerClone" />
+            </Grid>
+            <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel>
                         <TextBlock>Color Picker Control:</TextBlock>
@@ -67,7 +77,7 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
  

@@ -524,7 +524,7 @@
                             Orientation="{TemplateBinding Orientation}"
                             Fill="Transparent"
                             Minimum="0"
-                            Maximum="254" 
+                            Maximum="360" 
                             Thumb="{TemplateBinding Thumb}" />
                     </Grid>
                 </ControlTemplate>

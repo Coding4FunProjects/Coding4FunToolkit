@@ -71,12 +71,19 @@
                 </StackPanel>
             </StackPanel>
             <Grid Grid.Row="1">
-                <c4f:ColorSlider 
-                    Width="50"
+                <StackPanel 
                     HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <c4f:ColorSlider 
+                    Width="50"
                     x:Name="ColorSliderVertical" 
                     ColorChanged="ColorVerticalSlider_ColorChanged" />
 
+                    <c4f:ColorSlider 
+                    Width="50"
+                    x:Name="ColorSliderVerticalClone" />
+                </StackPanel>
+                
                 <StackPanel>
                     <TextBlock>Vertical Slider:</TextBlock>
                     <StackPanel Orientation="Horizontal">
