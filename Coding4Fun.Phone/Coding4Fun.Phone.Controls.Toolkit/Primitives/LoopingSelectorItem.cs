@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
@@ -54,7 +55,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
             MouseLeftButtonDown += LoopingSelectorItem_MouseLeftButtonDown;
             MouseLeftButtonUp += LoopingSelectorItem_MouseLeftButtonUp;
             LostMouseCapture += LoopingSelectorItem_LostMouseCapture;
-            GestureService.GetGestureListener(this).Tap += new EventHandler<GestureEventArgs>(LoopingSelectorItem_Tap);
+            GestureService.GetGestureListener(this).Tap += LoopingSelectorItem_Tap;
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
         /// <returns>The current state.</returns>
         internal State GetState() { return _state; }
 
-        void LoopingSelectorItem_Tap(object sender, GestureEventArgs e)
+        void LoopingSelectorItem_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
         {
             e.Handled = true;
         }

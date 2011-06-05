@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 using Microsoft.Phone.Tasks;
@@ -35,6 +36,7 @@ namespace Coding4Fun.Phone.Site.Controls
 
         private static void NavigateTo(string uri)
         {
+            //var web = new WebBrowserTask { Uri = new Uri(uri) };
             var web = new WebBrowserTask { URL = uri };
             web.Show();
         }

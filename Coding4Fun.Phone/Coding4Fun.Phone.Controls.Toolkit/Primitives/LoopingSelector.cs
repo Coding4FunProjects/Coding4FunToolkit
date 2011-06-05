@@ -5,15 +5,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Controls.Primitives;
-
 using ILoopingSelectorDataSource = Coding4Fun.Phone.Controls.Primitives.ILoopingSelectorDataSource;
 
 
@@ -267,7 +264,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
             }
         }
 
-        void listener_Tap(object sender, GestureEventArgs e)
+        void listener_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
         {
             //Debug.WriteLine("listener_Tap");
 
@@ -349,14 +346,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
         void LoopingSelector_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             _centeringTransform.Y = Math.Round(e.NewSize.Height / 2);
-            Clip = new RectangleGeometry() { Rect = new Rect(0, 0, e.NewSize.Width, e.NewSize.Height) };
+            Clip = new RectangleGeometry { Rect = new Rect(0, 0, e.NewSize.Width, e.NewSize.Height) };
             UpdateData();
         }
 
         void wrapper_Click(object sender, EventArgs e)
         {
-            //Debug.WriteLine("wrapper_Click");
-
             if (_state == State.Normal)
             {
                 _state = State.Expanded;
@@ -371,7 +366,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
                 }
                 else if (sender != _selectedItem && !_isAnimating)
                 {
-                    //Debug.WriteLine("Selecting from wrapper_Click {0}", sender);
                     SelectAndSnapTo((LoopingSelectorItem)sender);
                 }
             }
@@ -754,14 +748,14 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
         private void CreateEventHandlers()
         {
 
-            SizeChanged += new SizeChangedEventHandler(LoopingSelector_SizeChanged);
+            SizeChanged += LoopingSelector_SizeChanged;
 
             GestureListener listener = GestureService.GetGestureListener(this);
-            listener.DragStarted += new EventHandler<DragStartedGestureEventArgs>(listener_DragStarted);
-            listener.DragDelta += new EventHandler<DragDeltaGestureEventArgs>(listener_DragDelta);
-            listener.DragCompleted += new EventHandler<DragCompletedGestureEventArgs>(listener_DragCompleted);
-            listener.Flick += new EventHandler<FlickGestureEventArgs>(listener_Flick);
-            listener.Tap += new EventHandler<GestureEventArgs>(listener_Tap);
+            listener.DragStarted += listener_DragStarted;
+            listener.DragDelta += listener_DragDelta;
+            listener.DragCompleted += listener_DragCompleted;
+            listener.Flick += listener_Flick;
+            listener.Tap += listener_Tap;
 
             AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(LoopingSelector_MouseLeftButtonDown), true);
             AddHandler(MouseLeftButtonUpEvent, new MouseButtonEventHandler(LoopingSelector_MouseLeftButtonUp), true);
@@ -775,12 +769,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 
             if (!reuse)
             {
-                wrapper.ContentTemplate = this.ItemTemplate;
+                wrapper.ContentTemplate = ItemTemplate;
                 wrapper.Width = ItemSize.Width;
                 wrapper.Height = ItemSize.Height;
                 wrapper.Padding = ItemMargin;
 
-                wrapper.Click += new EventHandler<EventArgs>(wrapper_Click);
+                wrapper.Click += wrapper_Click;
             }
 
             wrapper.DataContext = wrapper.Content = content;

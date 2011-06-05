@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -169,6 +170,7 @@ namespace Coding4Fun.Phone.Controls
 
         private void navigateTo(string uri)
         {
+            //var web = new WebBrowserTask { Uri = new Uri(uri) };
             var web = new WebBrowserTask { URL = uri };
             web.Show();
         }

@@ -174,15 +174,15 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Coding4Fun.Phone.Controls.Toolkit\Coding4Fun.Phone.Controls.Toolkit.csproj">
+    <ProjectReference Include="..\Coding4Fun.Phone.Controls.Toolkit\Coding4Fun.Phone.Controls.Toolkit.7.1.csproj">
       <Project>{B58CFF25-E379-4719-81A3-59905027BC00}</Project>
       <Name>Coding4Fun.Phone.Controls.Toolkit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.csproj">
+    <ProjectReference Include="..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.7.1.csproj">
       <Project>{09AC45C7-27E8-4A39-B2C4-0031111595D5}</Project>
       <Name>Coding4Fun.Phone.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.csproj">
+    <ProjectReference Include="..\Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.7.1.csproj">
       <Project>{B5067622-7764-488C-AABE-FBE0D3BE9F65}</Project>
       <Name>Coding4Fun.Phone.Site.Controls</Name>
     </ProjectReference>

@@ -9,4 +9,9 @@
 *.suo
 *.cache
 *.user
+</Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.Coding4Fun.Phone
+*.suo
+*.cache
+*.user
+_ReSharper.Coding4Fun.Phone.7.1
 </Value></Property></Properties></ItemProperties>
