@@ -63,7 +63,7 @@
 							<Ellipse
 								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
-								StrokeThickness="{StaticResource PhoneBorderThickness}" 
+								StrokeThickness="{StaticResource PhoneStrokeThickness}" 
 								Fill="{TemplateBinding Background}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}" />
 							<Ellipse
@@ -141,7 +141,7 @@
                             <Ellipse
 								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
-								StrokeThickness="{StaticResource PhoneBorderThickness}" 
+								StrokeThickness="{StaticResource PhoneStrokeThickness}" 
 								Fill="{TemplateBinding Background}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}" />
 							<Ellipse
