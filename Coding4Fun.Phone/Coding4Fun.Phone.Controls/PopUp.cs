@@ -92,16 +92,16 @@ namespace Coding4Fun.Phone.Controls
 
         void _popUp_Closed(object sender, EventArgs e)
         {
-            if(!_alreadyFired)
+			if(!_alreadyFired)
                 OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
-
-            if (!IsAppBarVisible && AppBar != null)
-            {
-                _popUp.Page.ApplicationBar = AppBar;
-            }
 
             if (_popUp != null)
             {
+				if (!IsAppBarVisible && AppBar != null)
+				{
+					_popUp.Page.ApplicationBar = AppBar;
+				}
+
                 _popUp.Child = null;
                 _popUp = null;
             }
