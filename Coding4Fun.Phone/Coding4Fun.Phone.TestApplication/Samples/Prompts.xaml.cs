@@ -149,14 +149,14 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var messagePrompt = new MessagePrompt
             {
                 Title = "Advanced Message",
-                Message = "I'm an advanced message prompt!\nI'm a lot of text, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+                Message = "I'm an advanced message prompt!\nWhen complete, i'll navigate back\nI'm a lot of text, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
                 Background = _lime,
                 Foreground = _pumpkin,
                 Overlay = _cornFlowerBlue,
                 IsCancelVisible = true
             };
 
-            messagePrompt.Completed += stringObject_Completed;
+			messagePrompt.Completed += navBack_Completed;
     
             messagePrompt.Show();
         }
@@ -174,7 +174,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                         Body = new Button {Content = "I like monkeys"}
                                     };
 
-            messagePrompt.Completed += stringObject_Completed;
+            messagePrompt.Completed += navBack_Completed;
 
             messagePrompt.Show();
         }
@@ -227,14 +227,19 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            if (e.PopUpResult == PopUpResult.Ok)
-                MessageBox.Show("You typed: " + e.Result);
-            else if (e.PopUpResult == PopUpResult.Cancelled)
-                MessageBox.Show("CANCELLED! " + e.Result);
-            else
-                MessageBox.Show("meh?  " + e.Result);
+			if (e.PopUpResult == PopUpResult.Ok)
+				MessageBox.Show("You typed: " + e.Result);
+			else if (e.PopUpResult == PopUpResult.Cancelled)
+				MessageBox.Show("CANCELLED! " + e.Result);
+			else
+				MessageBox.Show("meh?  " + e.Result);
         }
-        
+
+		void navBack_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+		{
+			NavigationService.GoBack();
+		}
+
         private void C4F_Click(object sender, RoutedEventArgs e)
         {
             var about = new Coding4FunAboutPrompt();

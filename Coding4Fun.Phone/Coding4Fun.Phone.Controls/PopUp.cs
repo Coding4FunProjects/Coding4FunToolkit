@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Clarity.Phone.Extensions;
 
 using Coding4Fun.Phone.Controls.Helpers;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Phone.Controls
@@ -13,7 +14,7 @@ namespace Coding4Fun.Phone.Controls
     public abstract class PopUp<T, TPopUpResult> : Control
     {
         private DialogService _popUp;
-
+		private PhoneApplicationPage _startingPage;
         private bool _alreadyFired;
         private bool _hasHookedUpGestureWatcher;
 
@@ -71,6 +72,8 @@ namespace Coding4Fun.Phone.Controls
 
             if (!IsAppBarVisible)
             {
+				_startingPage = _popUp.Page;
+
                 AppBar = _popUp.Page.ApplicationBar;
                 _popUp.Page.ApplicationBar = null;
             }
@@ -92,12 +95,15 @@ namespace Coding4Fun.Phone.Controls
 
         void _popUp_Closed(object sender, EventArgs e)
         {
-			if(!_alreadyFired)
-                OnCompleted(new PopUpEventArgs<T, TPopUpResult> { PopUpResult = GetOnClosedValue() });
+			if (!_alreadyFired)
+			{
+				OnCompleted(new PopUpEventArgs<T, TPopUpResult> {PopUpResult = GetOnClosedValue()});
+				return;
+			}
 
-            if (_popUp != null)
+        	if (_popUp != null)
             {
-				if (!IsAppBarVisible && AppBar != null)
+				if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
 				{
 					_popUp.Page.ApplicationBar = AppBar;
 				}
