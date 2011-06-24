@@ -31,6 +31,8 @@
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Button Content="Add 2mb" Click="Add_Click" />
             <Button Content="Remove 2mb" Click="Remove_Click" />
+            <Button Content="Blank" />
+            <Button Content="Blank with event" Click="Button_Click" />
         </StackPanel>
         <c4f:MemoryCounter />
     </Grid>

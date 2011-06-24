@@ -34,5 +34,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             
             GC.Collect();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
