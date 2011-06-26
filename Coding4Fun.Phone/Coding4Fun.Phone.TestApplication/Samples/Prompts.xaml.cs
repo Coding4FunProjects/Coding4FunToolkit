@@ -150,8 +150,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             {
                 Title = "Advanced Message",
                 Message = "I'm an advanced message prompt!\nWhen complete, i'll navigate back\nI'm a lot of text, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
-                Background = _lime,
-                Foreground = _pumpkin,
+                //Background = _lime,
+                //Foreground = _pumpkin,
                 Overlay = _cornFlowerBlue,
                 IsCancelVisible = true
             };
