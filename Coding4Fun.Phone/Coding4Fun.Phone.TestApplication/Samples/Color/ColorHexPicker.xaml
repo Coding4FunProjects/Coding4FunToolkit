@@ -55,7 +55,7 @@
                     Minimum="0"
                     Maximum="25" />
             </StackPanel>
-            <Viewbox Height="500" VerticalAlignment="Bottom">
+            <Grid Height="500" VerticalAlignment="Bottom">
                 <c4f:ColorHexagonPicker 
                     Name="ColorControl" 
                     Color="Red"
@@ -64,10 +64,11 @@
                     ColorDarknessSteps="{Binding ElementName=colorDarkSteps, Path=Value}"
                     GreyScaleSteps="{Binding ElementName=greySteps, Path=Value}"
                     ColorChanged="ColorControl_ColorChanged" />
-            </Viewbox>
+            </Grid>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal">
+                <Button Content="Red" Click="Button_Click" />
                 <StackPanel Margin="12">
                     <TextBlock>Via Binding:</TextBlock>
                     <Rectangle 

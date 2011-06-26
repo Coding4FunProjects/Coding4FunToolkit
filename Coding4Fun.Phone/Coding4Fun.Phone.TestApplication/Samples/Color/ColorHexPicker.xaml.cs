@@ -25,5 +25,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
         {
             ColorFromEvent.Fill = new SolidColorBrush(color);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ColorControl.Color = System.Windows.Media.Color.FromArgb(255, 255, 0, 0);
+        }
     }
 }

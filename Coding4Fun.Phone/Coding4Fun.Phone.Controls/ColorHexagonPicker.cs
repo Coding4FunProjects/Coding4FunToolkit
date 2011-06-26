@@ -39,7 +39,7 @@ namespace Coding4Fun.Phone.Controls
 
             base.UpdateLayoutBasedOnColor();
 
-            SetFocusedRectangle(_rectangles.Where(r => r.Fill == SolidColorBrush).SingleOrDefault());
+            SetFocusedRectangle(_rectangles.Where(r => ((SolidColorBrush)r.Fill).Color == Color).SingleOrDefault());
         }
 
         public void GenerateLayout()
