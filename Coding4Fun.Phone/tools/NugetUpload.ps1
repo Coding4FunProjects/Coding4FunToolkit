@@ -33,7 +33,7 @@ echo "Updated all files to " $versionNumber;
 echo "starting build"
 
 # can't seem to get this to properly work
-[void][System.Reflection.Assembly]::Load('Microsoft.Build.Engine, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a');
+#[void][System.Reflection.Assembly]::Load('Microsoft.Build.Engine, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a');
 #$project = New-Object Microsoft.Build.BuildEngine.Project($engine);
 #
 #$engine.RegisterLogger((New-Object Microsoft.Build.BuildEngine.ConsoleLogger));
@@ -63,8 +63,8 @@ if($ZipPackage -ne $null)
 $ZipPackage=[System.IO.Packaging.ZipPackage]::Open("Coding4Fun.Phone.Controls.zip", [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
 
 #creating relative URI
-
-ForEach ($file In $releaseDir.EnumerateFiles("*.dll"))
+$dllsInDir = $releaseDir.GetFiles("*.dll");
+ForEach ($file In $dllsInDir)
 {
    $bytes = [System.IO.File]::ReadAllBytes($file.FullName);
    $uriLocation = '/' + $file.Name;
