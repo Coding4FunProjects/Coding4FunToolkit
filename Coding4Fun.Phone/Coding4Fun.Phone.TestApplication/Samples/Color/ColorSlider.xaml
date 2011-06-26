@@ -45,19 +45,17 @@
                         <StackPanel Margin="12">
                             <TextBlock>Via Binding:</TextBlock>
                             <Rectangle 
-                                Height="50"
-                                Width="50"
+                                Height="25"
                                 Fill="{Binding ElementName=ColorSliderHorizontal, Path=SolidColorBrush}" />
                         </StackPanel>
                         <StackPanel Margin="12">
                             <TextBlock>Via Event:</TextBlock>
                             <Rectangle 
                                 Name="ColorSliderHorizontalFromEvent"
-                                Height="50"
-                                Width="50" />
+                                Height="25" />
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock>Slider position set via Color:</TextBlock>
+                    <TextBlock>Slider position set via Color and custom thumb:</TextBlock>
                     <c4f:ColorSlider 
                         Name="ColorSliderSetViaColor"
                         Orientation="Horizontal" 
@@ -70,36 +68,35 @@
                     </c4f:ColorSlider>
                 </StackPanel>
             </StackPanel>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="0, 12, 0, 0">
                 <StackPanel 
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
                     <c4f:ColorSlider 
-                    Width="50"
-                    x:Name="ColorSliderVertical" 
-                    ColorChanged="ColorVerticalSlider_ColorChanged" />
+                        Width="50"
+                        Margin="12, 0"
+                        x:Name="ColorSliderVertical" 
+                        ColorChanged="ColorVerticalSlider_ColorChanged" />
 
                     <c4f:ColorSlider 
-                    Width="50"
-                    x:Name="ColorSliderVerticalClone" />
+                        Width="50"
+                        x:Name="ColorSliderVerticalClone" />
                 </StackPanel>
                 
-                <StackPanel>
+                <StackPanel >
                     <TextBlock>Vertical Slider:</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="12">
                             <TextBlock>Via Binding:</TextBlock>
                             <Rectangle 
-                                    Height="50"
-                                    Width="50"
+                                    Height="25"
                                     Fill="{Binding ElementName=ColorSliderVertical, Path=SolidColorBrush}" />
                         </StackPanel>
                         <StackPanel Margin="12">
                             <TextBlock>Via Event:</TextBlock>
                             <Rectangle 
                                 Name="ColorSliderVerticalFromEvent"
-                                Height="50"
-                                Width="50" />
+                                Height="25" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

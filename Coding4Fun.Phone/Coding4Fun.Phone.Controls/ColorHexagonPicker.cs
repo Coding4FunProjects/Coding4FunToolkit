@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,7 +14,9 @@ namespace Coding4Fun.Phone.Controls
     public class ColorHexagonPicker : ColorBaseControl
     {
         Rectangle _focusedRectangle;
-        bool _layoutGenerated;
+        bool _isLoaded;
+        bool _raisedFromRectangleFocusMethod;
+        List<Rectangle> _rectangles = new List<Rectangle>();
 
         public ColorHexagonPicker()
         {
@@ -23,20 +27,31 @@ namespace Coding4Fun.Phone.Controls
 
         void ColorHexagonPicker_Loaded(object sender, RoutedEventArgs e)
         {
-            _layoutGenerated = true;
-
+            // need to allow all properties to set rather than do costly regenerates
+            _isLoaded = true;
             GenerateLayout();
+        }
+
+        protected internal override void UpdateLayoutBasedOnColor()
+        {
+            if (_raisedFromRectangleFocusMethod)
+                return;
+
+            base.UpdateLayoutBasedOnColor();
+
+            SetFocusedRectangle(_rectangles.Where(r => r.Fill == SolidColorBrush).SingleOrDefault());
         }
 
         public void GenerateLayout()
         {
-            if (!_layoutGenerated)
+            if (!_isLoaded)
                 return;
 
             var totalSteps = ColorBrightnessSteps + ColorDarknessSteps;
             
             GreyScaleBody = null;
             ColorBody = null;
+            _rectangles.Clear();
 
             if (totalSteps > 0)
             {
@@ -104,12 +119,12 @@ namespace Coding4Fun.Phone.Controls
             return ColorSize * (totalSteps - i - 1);
         }
 
-        private double CalculateDistance(double x1, double y1)
+        private static double CalculateDistance(double x1, double y1)
         {
             return Math.Sqrt(Math.Pow(x1, 2) + Math.Pow(y1, 2));
         }
 
-        private double CalculateAngle(double x1, double y1)
+        private static double CalculateAngle(double x1, double y1)
         {
             // assume init point is 1,0 which is red
             var angle = Math.Atan2(y1, x1) * (180 / Math.PI);
@@ -175,6 +190,11 @@ namespace Coding4Fun.Phone.Controls
 
             rect.MouseEnter += Rectangle_MouseEnter;
 
+            if (Color == color)
+                SetFocusedRectangle(rect);
+
+            _rectangles.Add(rect);
+
             return rect;
         }
         #endregion
@@ -185,20 +205,44 @@ namespace Coding4Fun.Phone.Controls
 
             if (rect != null)
             {
-                rect.Stroke = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-
-                if (_focusedRectangle != null && _focusedRectangle != rect)
-                {
-                    _focusedRectangle.Stroke = _focusedRectangle.Fill;
-                }
-
-                _focusedRectangle = rect;
-
-                ColorChanging(((SolidColorBrush)rect.Fill).Color);
+                SetFocusedRectangle(rect);
             }
         }
 
+        private void SetFocusedRectangle(Rectangle rect)
+        {
+            if (rect == null)
+                return;
+
+            rect.Stroke = new SolidColorBrush(SelectedStrokeColor);
+
+            if (_focusedRectangle != null && _focusedRectangle != rect)
+            {
+                _focusedRectangle.Stroke = _focusedRectangle.Fill;
+            }
+
+            _focusedRectangle = rect;
+
+            _raisedFromRectangleFocusMethod = true;
+            ColorChanging(((SolidColorBrush)rect.Fill).Color);
+            _raisedFromRectangleFocusMethod = false;
+        }
+
         #region dependancy properties
+
+
+        public Color SelectedStrokeColor
+        {
+            get { return (Color)GetValue(SelectedStrokeColorProperty); }
+            set { SetValue(SelectedStrokeColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedStrokeColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedStrokeColorProperty =
+            DependencyProperty.Register("SelectedStrokeColor", typeof(Color), typeof(ColorHexagonPicker), new PropertyMetadata(Color.FromArgb(255, 255, 255, 255)));
+
+
+
         public int ColorDarknessSteps
         {
             get { return (int)GetValue(ColorDarknessStepsProperty); }

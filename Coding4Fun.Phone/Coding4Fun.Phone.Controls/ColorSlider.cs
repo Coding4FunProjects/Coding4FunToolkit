@@ -178,12 +178,12 @@ namespace Coding4Fun.Phone.Controls
             SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        protected internal override void UpdatePositionBasedOnColor()
+        protected internal override void UpdateLayoutBasedOnColor()
         {
             if (_fromSliderChange)
                 return;
 
-            base.UpdatePositionBasedOnColor();
+            base.UpdateLayoutBasedOnColor();
 
             if(Slider != null)
                 Slider.Value = Color.GetHue();

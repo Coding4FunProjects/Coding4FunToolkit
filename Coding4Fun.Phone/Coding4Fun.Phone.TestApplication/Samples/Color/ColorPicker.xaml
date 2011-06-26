@@ -55,30 +55,26 @@
                     Margin="12"
                     Name="pickerClone" />
             </Grid>
-            <Grid Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <TextBlock>Color Picker Control:</TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Margin="12">
-                                <TextBlock>Via Binding:</TextBlock>
-                                <Rectangle 
-                                    Height="50"
-                                    Width="50"
-                                    Fill="{Binding ElementName=picker, Path=SolidColorBrush}" />
-                            </StackPanel>
-                            <StackPanel Margin="12">
-                                <TextBlock>Via Event:</TextBlock>
-                                <Rectangle 
-                                    Name="ColorPickerFromEvent"
-                                    Height="50"
-                                    Width="50" />
-                            </StackPanel>
+    </Grid>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="12">
+                            <TextBlock>Via Binding:</TextBlock>
+                            <Rectangle 
+                                Height="25"
+                                Fill="{Binding ElementName=picker, Path=SolidColorBrush}" />
                         </StackPanel>
+                        <StackPanel Margin="12">
+                            <TextBlock>Via Event:</TextBlock>
+                            <Rectangle 
+                                Name="ColorPickerFromEvent"
+                                Height="25" />
+                    </StackPanel>
                     </StackPanel>
                 </StackPanel>
-            </Grid>
-        </Grid>
+            </StackPanel>
+        
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

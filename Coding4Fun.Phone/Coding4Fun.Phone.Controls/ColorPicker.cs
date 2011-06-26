@@ -126,12 +126,12 @@ namespace Coding4Fun.Phone.Controls
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
         }
 
-        protected internal override void UpdatePositionBasedOnColor()
+        protected internal override void UpdateLayoutBasedOnColor()
         {
             if (_fromSliderChange)
                 return;
 
-            base.UpdatePositionBasedOnColor();
+            base.UpdateLayoutBasedOnColor();
 
             var hsv = Color.GetHSV();
 

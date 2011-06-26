@@ -36,10 +36,10 @@ namespace Coding4Fun.Phone.Controls
             var colorControl = d as ColorBaseControl;
 
             if (colorControl != null)
-                colorControl.UpdatePositionBasedOnColor();
+                colorControl.UpdateLayoutBasedOnColor();
         }
 
-        protected internal virtual void UpdatePositionBasedOnColor()
+        protected internal virtual void UpdateLayoutBasedOnColor()
         {
         }
 
