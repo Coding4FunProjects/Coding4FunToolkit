@@ -137,7 +137,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var messagePrompt = new MessagePrompt
             {
                 Title = "Basic Message",
-                Message = "I'm a basic message prompt.",
+                Message = "I'm a basic message prompt.  Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor. Cras sodales, erat eu varius elementum, augue turpis consequat tellus, ut tempor arcu urna hendrerit leo. Fusce molestie convallis nunc, ac porttitor diam porta ut. ",
             };
             messagePrompt.Completed += stringObject_Completed;
 
@@ -149,9 +149,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var messagePrompt = new MessagePrompt
             {
                 Title = "Advanced Message",
-                Message = "I'm an advanced message prompt!\nWhen complete, i'll navigate back\nI'm a lot of text, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
-                //Background = _lime,
-                //Foreground = _pumpkin,
+                Message = "When complete, i'll navigate back",
                 Overlay = _cornFlowerBlue,
                 IsCancelVisible = true
             };
