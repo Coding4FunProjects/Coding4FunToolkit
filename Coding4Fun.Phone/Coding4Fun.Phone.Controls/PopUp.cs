@@ -105,7 +105,7 @@ namespace Coding4Fun.Phone.Controls
             {
 				if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
 				{
-					_popUp.Page.ApplicationBar = AppBar;
+                    _startingPage.ApplicationBar = AppBar;
 				}
 
                 _popUp.Child = null;
