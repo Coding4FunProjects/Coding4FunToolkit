@@ -1,9 +1,11 @@
 ﻿$versionNumber = "1.4.2";
+$solutionName = "Coding4Fun.Phone.sln";
+$zipFileName = "Coding4Fun.Phone.Controls.zip";
 
 $root = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 $currentPath = [System.IO.Directory]::GetParent($root).FullName;
-$slnPath = [System.IO.Path]::Combine($currentPath, "Coding4Fun.Phone.sln");
+$slnPath = [System.IO.Path]::Combine($currentPath, $solutionName);
 $releaseDir = [System.IO.Directory]::GetParent($root).GetDirectories("bin", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 $releaseDir = $releaseDir.GetDirectories("Release", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 
@@ -60,7 +62,7 @@ if($ZipPackage -ne $null)
 	$ZipPackage.Close();
 }
 
-$ZipPackage=[System.IO.Packaging.ZipPackage]::Open("Coding4Fun.Phone.Controls.zip", [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
+$ZipPackage=[System.IO.Packaging.ZipPackage]::Open($zipFileName, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
 
 #creating relative URI
 $dllsInDir = $releaseDir.GetFiles("*.dll");
