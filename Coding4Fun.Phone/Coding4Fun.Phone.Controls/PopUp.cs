@@ -95,13 +95,7 @@ namespace Coding4Fun.Phone.Controls
 
         void _popUp_Closed(object sender, EventArgs e)
         {
-			if (!_alreadyFired)
-			{
-				OnCompleted(new PopUpEventArgs<T, TPopUpResult> {PopUpResult = GetOnClosedValue()});
-				return;
-			}
-
-        	if (_popUp != null)
+            if (_popUp != null)
             {
 				if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
 				{
@@ -111,6 +105,12 @@ namespace Coding4Fun.Phone.Controls
                 _popUp.Child = null;
                 _popUp = null;
             }
+
+			if (!_alreadyFired)
+			{
+				OnCompleted(new PopUpEventArgs<T, TPopUpResult> {PopUpResult = GetOnClosedValue()});
+				return;
+			}
         }
 
         public Brush Overlay
