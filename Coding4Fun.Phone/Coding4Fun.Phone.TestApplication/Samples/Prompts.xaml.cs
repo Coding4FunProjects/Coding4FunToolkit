@@ -154,7 +154,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 IsCancelVisible = true
             };
 
-			messagePrompt.Completed += navBack_Completed;
+			messagePrompt.Completed += stringObject_Completed;
     
             messagePrompt.Show();
         }
@@ -172,8 +172,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                         
                                     };
 
-            var btn = new Button { Content = "Nav to Colors" };
-            btn.Click += (s, ee) => NavigationService.Navigate(new Uri("/Samples/ColorControls.xaml", UriKind.Relative));
+            var btn = new Button { Content = "Msg Box" };
+            btn.Click += (s, ee) => MessageBox.Show("Hi!");
             messagePrompt.Body = btn;
 
             messagePrompt.Completed += stringObject_Completed;
@@ -237,32 +237,25 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 				MessageBox.Show("meh?  " + e.Result);
         }
 
-		void navBack_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
-		{
-			NavigationService.GoBack();
-		}
-
-		void navTo_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
-		{
-			NavigationService.Navigate(new Uri("/Samples/ColorControls.xaml", UriKind.Relative));
-		}
-
-        private void C4F_Click(object sender, RoutedEventArgs e)
+		private void C4F_Click(object sender, RoutedEventArgs e)
         {
             var about = new Coding4FunAboutPrompt();
             about.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
-			about.Completed += navTo_Completed;
         }
-
 
         private void Ding_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
         }
 
-        private void GestureListener_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
+        private void GestureListener_Tap(object sender, GestureEventArgs e)
         {
             MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
         }
+
+		private void navToStress_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/Samples/PromptStressTest.xaml", UriKind.Relative));
+		}
      }
 }

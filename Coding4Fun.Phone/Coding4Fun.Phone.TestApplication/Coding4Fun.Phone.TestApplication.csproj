@@ -94,6 +94,9 @@
     <Compile Include="Samples\Prompts.xaml.cs">
       <DependentUpon>Prompts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\PromptStressTest.xaml.cs">
+      <DependentUpon>PromptStressTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Prompts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PromptStressTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

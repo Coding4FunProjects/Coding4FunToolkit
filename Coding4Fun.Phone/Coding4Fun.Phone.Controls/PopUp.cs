@@ -79,16 +79,10 @@ namespace Coding4Fun.Phone.Controls
 		    _popUp.Closed += _popUp_Closed;
 
             _startingPage = _popUp.Page;
-            _startingPage.NavigationService.Navigating += _userNavigatingAway;
 			
             Dispatcher.BeginInvoke(() => _popUp.Show());
 		}
-
-        void _userNavigatingAway(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
-        {
-            ResetWorldAndDestroyPopUp();
-        }
-
+		
     	protected virtual TPopUpResult GetOnClosedValue()
         {
             return default(TPopUpResult);
@@ -114,13 +108,12 @@ namespace Coding4Fun.Phone.Controls
     	{
     		if (_popUp != null)
     		{
-    			if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
+				if (!IsAppBarVisible && AppBar != null && _startingPage != null)
     			{
     				_startingPage.ApplicationBar = AppBar;
     			}
-
-                _startingPage.NavigationService.Navigating -= _userNavigatingAway;
-                _startingPage = null;
+				
+				_startingPage = null;
     			
                 _popUp.Child = null;
     			_popUp = null;
