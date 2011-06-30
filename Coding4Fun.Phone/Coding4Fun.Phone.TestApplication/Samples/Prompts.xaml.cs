@@ -238,10 +238,16 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 			NavigationService.GoBack();
 		}
 
+		void navTo_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
+		{
+			NavigationService.Navigate(new Uri("/Samples/ColorControls.xaml", UriKind.Relative));
+		}
+
         private void C4F_Click(object sender, RoutedEventArgs e)
         {
             var about = new Coding4FunAboutPrompt();
             about.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
+			about.Completed += navTo_Completed;
         }
 
 

@@ -50,15 +50,15 @@ namespace Coding4Fun.Phone.Controls
         public virtual void OnCompleted(PopUpEventArgs<T, TPopUpResult> result)
         {
             _alreadyFired = true;
-            
+
             if (Completed != null)
                 Completed(this, result);
             
             if(_popUp != null)
                 _popUp.Hide();
-        }
 
-        
+            ResetWorldAndDestroyPopUp();
+        }
 
 		public virtual void Show()
 		{
@@ -95,25 +95,30 @@ namespace Coding4Fun.Phone.Controls
 
         void _popUp_Closed(object sender, EventArgs e)
         {
-            if (_popUp != null)
-            {
-				if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
-				{
-                    _startingPage.ApplicationBar = AppBar;
-				}
-
-                _popUp.Child = null;
-                _popUp = null;
-            }
-
-			if (!_alreadyFired)
+        	if (!_alreadyFired)
 			{
 				OnCompleted(new PopUpEventArgs<T, TPopUpResult> {PopUpResult = GetOnClosedValue()});
 				return;
 			}
+
+            ResetWorldAndDestroyPopUp();
         }
 
-        public Brush Overlay
+    	private void ResetWorldAndDestroyPopUp()
+    	{
+    		if (_popUp != null)
+    		{
+    			if (!IsAppBarVisible && _popUp.Page == _startingPage && AppBar != null)
+    			{
+    				_startingPage.ApplicationBar = AppBar;
+    			}
+
+    			_popUp.Child = null;
+    			_popUp = null;
+    		}
+    	}
+
+    	public Brush Overlay
         {
             get { return (Brush)GetValue(OverlayProperty); }
             set { SetValue(OverlayProperty, value); }
