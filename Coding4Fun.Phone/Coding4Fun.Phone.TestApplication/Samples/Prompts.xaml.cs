@@ -169,10 +169,14 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                         Foreground = _pumpkin,
                                         Overlay = _cornFlowerBlue,
                                         IsCancelVisible = true,
-                                        Body = new Button {Content = "I like monkeys"}
+                                        
                                     };
 
-            messagePrompt.Completed += navBack_Completed;
+            var btn = new Button { Content = "Nav to Colors" };
+            btn.Click += (s, ee) => NavigationService.Navigate(new Uri("/Samples/ColorControls.xaml", UriKind.Relative));
+            messagePrompt.Body = btn;
+
+            messagePrompt.Completed += stringObject_Completed;
 
             messagePrompt.Show();
         }
