@@ -251,14 +251,19 @@ namespace Clarity.Phone.Extensions
                         storyboard = XamlReader.Load(SwivelInStoryboard) as Storyboard;
                         _overlay.Projection = new PlaneProjection();
                         break;
-                }
-
+                } 
+                
                 if (storyboard != null)
                 {
-                    foreach (var t in storyboard.Children)
-                        Storyboard.SetTarget(t, _overlay);
+                    Page.Dispatcher.BeginInvoke(() =>
+                                                    {
 
-                    storyboard.Begin();
+                                                        foreach (var t in storyboard.Children)
+                                                            Storyboard.SetTarget(t, _overlay);
+
+                                                        storyboard.Begin();
+
+                                                    });
                 }
             }
         }
