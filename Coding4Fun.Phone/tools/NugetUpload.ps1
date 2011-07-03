@@ -1,4 +1,4 @@
-﻿$versionNumber = "1.4.4";
+﻿$versionNumber = "1.4.5";
 $solutionName = "Coding4Fun.Phone.sln";
 $zipFileName = "Coding4Fun.Phone.Controls.zip";
 
