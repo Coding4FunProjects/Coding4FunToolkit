@@ -39,11 +39,7 @@
             <StackPanel>
                 <TextBlock>Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <c4f:RoundButton 
-					    Content="Text" />
-                    <c4f:RoundButton 
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="image" />
+                    
                     <c4f:RoundButton
                         FontSize="24"
                         Content="Coding"
@@ -60,15 +56,14 @@
                         ImageSource="{Binding RoundButtonImage}"
 					    Content="Click Handler" 
                         Click="ToggleDirectRoundButtonImage_Click" />
+                    <c4f:RoundButton 
+                        Orientation="Horizontal"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="image" />
                 </StackPanel>
                 
                 <TextBlock>Round Toggle Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <c4f:RoundToggleButton 
-					    Content="Text" />
-                    <c4f:RoundToggleButton 
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="image" />
                     <c4f:RoundToggleButton
                         FontSize="24"
                         Content="Coding"
@@ -85,6 +80,10 @@
                         ImageSource="{Binding RoundToggleButtonImage}"
 					    Content="Click Handler" 
                         Click="ToggleDirectRoundToggleButtonImage_Click" />
+                    <c4f:RoundToggleButton 
+                        Orientation="Horizontal"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="image" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -108,13 +107,6 @@
 
                 <TextBlock>Disabled Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <c4f:RoundButton 
-                        IsEnabled="False"
-					    Content="Text" />
-                    <c4f:RoundButton 
-                        IsEnabled="False"
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="Image" />
                     <c4f:RoundButton
                         IsEnabled="False"
                         BorderBrush="OliveDrab" />
@@ -130,17 +122,15 @@
                         IsEnabled="False"
                         Content="Click handler"
                         Click="RoundButton_Click" />
+                    <c4f:RoundButton 
+                        Orientation="Horizontal"
+                        IsEnabled="False"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
                 </StackPanel>
                 
                 <TextBlock>Disabled Round Toggle Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <c4f:RoundToggleButton 
-                        IsEnabled="False"
-					    Content="Text" />
-                    <c4f:RoundToggleButton 
-                        IsEnabled="False"
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="Image" />
                     <c4f:RoundToggleButton
                         IsEnabled="False"
                         BorderBrush="OliveDrab" />
@@ -156,6 +146,11 @@
                         IsEnabled="False"
                         Content="Click handler"
                         Click="RoundButton_Click" />
+                    <c4f:RoundToggleButton
+                        Orientation="Horizontal"
+                        IsEnabled="False"
+                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+					    Content="Image" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button

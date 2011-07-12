@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:RoundToggleButton">
-                    <StackPanel>
+                    <StackPanel Orientation="{TemplateBinding Orientation}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
@@ -99,7 +99,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:RoundButton">
-                    <StackPanel>
+                    <StackPanel Orientation="{TemplateBinding Orientation}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />

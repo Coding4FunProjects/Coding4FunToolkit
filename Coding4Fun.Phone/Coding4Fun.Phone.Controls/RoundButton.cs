@@ -39,6 +39,16 @@ namespace Coding4Fun.Phone.Controls
                 ContentBody.Margin = new Thickness(0, top, 0, bottom);
 		    }
         }
+        #region dependency properties
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(RoundButton), new PropertyMetadata(Orientation.Vertical));
 
 		public ImageSource ImageSource
         {
@@ -52,8 +62,10 @@ namespace Coding4Fun.Phone.Controls
             new PropertyMetadata(
             //new BitmapImage(new Uri("/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute)),
                 OnImageSource));
+        #endregion
 
-		private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        #region dp onchange callbacks
+        private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
 		{
 			var sender = o as RoundButton;
 
@@ -70,5 +82,6 @@ namespace Coding4Fun.Phone.Controls
 
             OpacityImageBrush.ImageSource = brush;
         }
+        #endregion
     }
 }
