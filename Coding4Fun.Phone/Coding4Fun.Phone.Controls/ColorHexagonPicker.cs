@@ -283,24 +283,24 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty ColorSizeProperty =
             DependencyProperty.Register("ColorSize", typeof(double), typeof(ColorHexagonPicker), new PropertyMetadata(24d, OnLayoutDependentPropertyChanged));
 
-        protected object ColorBody
+        public object ColorBody
         {
             get { return (object)GetValue(ColorBodyProperty); }
             set { SetValue(ColorBodyProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Body.  This enables animation, styling, binding, etc...
-        protected static readonly DependencyProperty ColorBodyProperty =
+        public static readonly DependencyProperty ColorBodyProperty =
             DependencyProperty.Register("ColorBody", typeof(object), typeof(ColorHexagonPicker), new PropertyMetadata(null));
 
-        protected object GreyScaleBody
+        public object GreyScaleBody
         {
             get { return (object)GetValue(GreyScaleBodyProperty); }
             set { SetValue(GreyScaleBodyProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for GreyScaleBody.  This enables animation, styling, binding, etc...
-        protected static readonly DependencyProperty GreyScaleBodyProperty = 
+        public static readonly DependencyProperty GreyScaleBodyProperty = 
             DependencyProperty.Register("GreyScaleBody", typeof(object), typeof(ColorHexagonPicker), new PropertyMetadata(null));
 
         private static void OnLayoutDependentPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
