@@ -72,16 +72,14 @@
                     <c4f:ProgressOverlay.Resources>
                         <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />
                     </c4f:ProgressOverlay.Resources>
-                    <c4f:ProgressOverlay.Content>
-                        <StackPanel>
-                            <TextBlock HorizontalAlignment="Center">Loading</TextBlock>
-                            <slToolkit:PerformanceProgressBar 
-                                IsIndeterminate="{Binding ElementName=progressOverlay, 
-                                Path=Visibility,
-                                Converter={StaticResource VisToBoolConverter}}"
-                                />
-                        </StackPanel>
-                    </c4f:ProgressOverlay.Content>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center">Loading</TextBlock>
+                        <slToolkit:PerformanceProgressBar 
+                            IsIndeterminate="{Binding ElementName=progressOverlay, 
+                            Path=Visibility,
+                            Converter={StaticResource VisToBoolConverter}}"
+                            />
+                    </StackPanel>
                 </c4f:ProgressOverlay>
             </Grid>
             
