@@ -19,6 +19,8 @@ namespace Coding4Fun.Phone.Controls.Binding
     /// </summary>
     public class TextBinding
     {
+        #region ClipToBounds
+        #region DependencyProperty
         public static bool GetUpdateSourceOnChange(DependencyObject obj)
         {
             return (bool)obj.GetValue(UpdateSourceOnChangeProperty);
@@ -35,19 +37,20 @@ namespace Coding4Fun.Phone.Controls.Binding
                 "UpdateSourceOnChange",
                 typeof(bool),
                 typeof(TextBinding),
-                new PropertyMetadata(false, OnPropertyChanged));
+                new PropertyMetadata(false, OnUpdateSourceOnChangePropertyChanged));
+        #endregion
 
-        private static void OnPropertyChanged (DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnUpdateSourceOnChangePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue == e.OldValue)
                 return;
 
-            HandleEventAppend(obj, (bool)e.NewValue);
+            HandleUpdateSourceOnChangeEventAppend(obj, (bool)e.NewValue);
         }
 
-        private static void ItemChanged(object sender, RoutedEventArgs e)
+        private static void UpdateSourceOnChangePropertyChanged(object sender, RoutedEventArgs e)
         {
-            var dp = GetDependancyPropertyForControl(sender);
+            var dp = GetDependancyPropertyForText(sender);
 
             if (dp == null)
                 return;
@@ -58,7 +61,7 @@ namespace Coding4Fun.Phone.Controls.Binding
                 bind.UpdateSource();
         }
 
-        private static DependencyProperty GetDependancyPropertyForControl(object sender)
+        private static DependencyProperty GetDependancyPropertyForText(object sender)
         {
             var type = sender.GetType();
             DependencyProperty returnVal = null;
@@ -71,17 +74,17 @@ namespace Coding4Fun.Phone.Controls.Binding
             return returnVal;
         }
 
-        private static void HandleEventAppend(object sender, bool value)
+        private static void HandleUpdateSourceOnChangeEventAppend(object sender, bool value)
         {
             var type = sender.GetType();
 
             if (type == typeof(TextBox))
-                HandleEventAppendTextBox(sender, value);
+                HandleUpdateSourceOnChangeEventAppendTextBox(sender, value);
             else if (type == typeof(PasswordBox))
-                HandleEventAppendPassword(sender, value);
+                HandleUpdateSourceOnChangeEventAppendPassword(sender, value);
         }
 
-        private static void HandleEventAppendTextBox(object sender, bool value)
+        private static void HandleUpdateSourceOnChangeEventAppendTextBox(object sender, bool value)
         {
             var item = sender as TextBox;
 
@@ -89,12 +92,12 @@ namespace Coding4Fun.Phone.Controls.Binding
                 return;
 
             if (value)
-                item.TextChanged += ItemChanged;
+                item.TextChanged += UpdateSourceOnChangePropertyChanged;
             else
-                item.TextChanged -= ItemChanged;
+                item.TextChanged -= UpdateSourceOnChangePropertyChanged;
         }
 
-        private static void HandleEventAppendPassword(object sender, bool value)
+        private static void HandleUpdateSourceOnChangeEventAppendPassword(object sender, bool value)
         {
             var item = sender as PasswordBox;
 
@@ -102,9 +105,10 @@ namespace Coding4Fun.Phone.Controls.Binding
                 return;
 
             if (value)
-                item.PasswordChanged += ItemChanged;
+                item.PasswordChanged += UpdateSourceOnChangePropertyChanged;
             else
-                item.PasswordChanged -= ItemChanged;
+                item.PasswordChanged -= UpdateSourceOnChangePropertyChanged;
         }
+        #endregion
     }
 }
