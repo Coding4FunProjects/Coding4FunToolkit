@@ -30,40 +30,35 @@ namespace Coding4Fun.Phone.Controls.Binding
         }
 
         // Using a DependencyProperty as the backing store for …
-        public static readonly DependencyProperty
-          UpdateSourceOnChangeProperty =
+        public static readonly DependencyProperty UpdateSourceOnChangeProperty =
             DependencyProperty.RegisterAttached(
-            "UpdateSourceOnChange",
-            typeof(bool),
-            typeof(TextBinding),
-            new PropertyMetadata(false, OnPropertyChanged));
+                "UpdateSourceOnChange",
+                typeof(bool),
+                typeof(TextBinding),
+                new PropertyMetadata(false, OnPropertyChanged));
 
         private static void OnPropertyChanged (DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var newValue = (bool)e.NewValue;
-            var oldValue = (bool)e.OldValue;
-
-            if (newValue == oldValue)
+            if (e.NewValue == e.OldValue)
                 return;
 
-            HandleEventAppend(obj, newValue);
+            HandleEventAppend(obj, (bool)e.NewValue);
         }
 
         private static void ItemChanged(object sender, RoutedEventArgs e)
         {
-            var dp = GetDependancyProperty(sender);
+            var dp = GetDependancyPropertyForControl(sender);
+
             if (dp == null)
                 return;
 
             var bind = ((FrameworkElement)sender).GetBindingExpression(dp);
 
             if (bind != null)
-            {
                 bind.UpdateSource();
-            }
         }
 
-        private static DependencyProperty GetDependancyProperty(object sender)
+        private static DependencyProperty GetDependancyPropertyForControl(object sender)
         {
             var type = sender.GetType();
             DependencyProperty returnVal = null;
@@ -76,35 +71,37 @@ namespace Coding4Fun.Phone.Controls.Binding
             return returnVal;
         }
 
-        private static void HandleEventAppend(object sender, bool newValue)
+        private static void HandleEventAppend(object sender, bool value)
         {
             var type = sender.GetType();
 
             if (type == typeof(TextBox))
-                HandleEventAppendTextBox(sender, newValue);
+                HandleEventAppendTextBox(sender, value);
             else if (type == typeof(PasswordBox))
-                HandleEventAppendPassword(sender, newValue);
+                HandleEventAppendPassword(sender, value);
         }
 
-        private static void HandleEventAppendTextBox(object sender, bool newValue)
+        private static void HandleEventAppendTextBox(object sender, bool value)
         {
             var item = sender as TextBox;
+
             if (item == null)
                 return;
 
-            if (newValue)
+            if (value)
                 item.TextChanged += ItemChanged;
             else
                 item.TextChanged -= ItemChanged;
         }
 
-        private static void HandleEventAppendPassword(object sender, bool newValue)
+        private static void HandleEventAppendPassword(object sender, bool value)
         {
             var item = sender as PasswordBox;
+
             if (item == null)
                 return;
 
-            if (newValue)
+            if (value)
                 item.PasswordChanged += ItemChanged;
             else
                 item.PasswordChanged -= ItemChanged;
