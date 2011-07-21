@@ -55,8 +55,9 @@
                 <TextBlock Text="Toast Prompt" />
                 <StackPanel Orientation="Horizontal">
 					<Button Content="Basic" Click="Toast_Click" />
-					<Button Content="Image" Click="ToastWithImg_Click" />
-                    <Button Content="Advanced" Click="ToastAdvanced_Click" />
+					<Button Content="Img" Click="ToastWithImgAndNoTitle_Click" />
+                    <Button Content="Img w/title" Click="ToastWithImg_Click" />
+                    <Button Content="Adv" Click="ToastAdvanced_Click" />
 				</StackPanel>
                 
                 <TextBlock Text="About Prompt" />

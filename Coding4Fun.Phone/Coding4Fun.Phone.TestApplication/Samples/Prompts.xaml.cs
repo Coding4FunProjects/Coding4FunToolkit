@@ -26,20 +26,33 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
 		private void Toast_Click(object sender, RoutedEventArgs e)
 		{
-			var toast = new ToastPrompt {Title = " Basic", Message = "Message"};
+			var toast = new ToastPrompt {
+                Title = "Basic", 
+                Message = "Message",
+            };
 			toast.Show();
 		}
 
-		private void ToastWithImg_Click(object sender, RoutedEventArgs e)
+        private void ToastWithImgAndNoTitle_Click(object sender, RoutedEventArgs e)
 		{
 		    var toast = new ToastPrompt
                                {
-                                   Title = "With Image",
                                    Message = "Message",
-                                   ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+                                   ImageSource = new BitmapImage(new Uri("..\\media\\c4f_26x26.png", UriKind.RelativeOrAbsolute))
                                };
             toast.Show();
 		}
+
+        private void ToastWithImg_Click(object sender, RoutedEventArgs e)
+        {
+            var toast = new ToastPrompt
+            {
+                Title = "With Image",
+                Message = "Message",
+                ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+            };
+            toast.Show();
+        }
 
         private void ToastAdvanced_Click(object sender, RoutedEventArgs e)
         {

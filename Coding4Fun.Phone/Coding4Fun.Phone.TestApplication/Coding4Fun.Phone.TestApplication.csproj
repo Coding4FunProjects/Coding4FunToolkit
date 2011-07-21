@@ -173,6 +173,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Media\c4f_26x26.png" />
     <Content Include="Media\icons\appbar.check.rest.png" />
     <Resource Include="Media\Coding4FunProject.png" />
     <Content Include="Media\icons\appbar.repeat.png" />
