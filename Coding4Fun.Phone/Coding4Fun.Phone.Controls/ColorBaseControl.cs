@@ -36,7 +36,10 @@ namespace Coding4Fun.Phone.Controls
             var colorControl = d as ColorBaseControl;
 
             if (colorControl != null)
+            {
                 colorControl.UpdateLayoutBasedOnColor();
+                colorControl.SolidColorBrush = new SolidColorBrush((Color)e.NewValue);
+            }
         }
 
         protected internal virtual void UpdateLayoutBasedOnColor()

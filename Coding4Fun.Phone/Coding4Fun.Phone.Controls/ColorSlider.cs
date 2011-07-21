@@ -48,8 +48,10 @@ namespace Coding4Fun.Phone.Controls
             {
                 Slider.ValueChanged += Slider_ValueChanged;
 
-                if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0) 
+                if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
                     Color = System.Windows.Media.Color.FromArgb(255, 6, 255, 0);
+                else
+                    UpdateLayoutBasedOnColor();
             }
         }
 

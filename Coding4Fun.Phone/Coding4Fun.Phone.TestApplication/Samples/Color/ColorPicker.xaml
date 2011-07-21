@@ -37,6 +37,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <c4f:ColorPicker  
                     Margin="12"
@@ -54,6 +55,10 @@
                     Grid.Row="1"
                     Margin="12"
                     Name="pickerClone" />
+                <c4f:ColorPicker  
+                    Grid.Row="2"
+                    Margin="12"
+                    Color="Plum"/>
             </Grid>
     </Grid>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">

@@ -77,16 +77,31 @@ namespace Coding4Fun.Phone.Controls
 
                 ColorSlider_ColorChanged(this, ColorSlider.Color);
             }
-            //UpdateSample(ActualWidth, 0);
+            else
+            {
+                ColorChanging(Color);
+                UpdateHue(Color);
+                UpdateLayoutBasedOnColor();
+            }
         }
 
         void ColorSlider_ColorChanged(object sender, Color color)
         {
-            _hue = color.GetHue();
-            SelectedHueColor.Fill = new SolidColorBrush(color);
+            UpdateColor(color);
+        }
 
+        private void UpdateColor(Color color)
+        {
+            UpdateHue(color);
             UpdateSample();
         }
+
+        private void UpdateHue(Color color)
+        {
+            _hue = color.GetHue();
+            SelectedHueColor.Fill = new SolidColorBrush(color);
+        }
+
         #endregion
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)
@@ -128,7 +143,7 @@ namespace Coding4Fun.Phone.Controls
 
         protected internal override void UpdateLayoutBasedOnColor()
         {
-            if (_fromSliderChange)
+            if (_fromSliderChange || SelectedHueColor == null)
                 return;
 
             base.UpdateLayoutBasedOnColor();
