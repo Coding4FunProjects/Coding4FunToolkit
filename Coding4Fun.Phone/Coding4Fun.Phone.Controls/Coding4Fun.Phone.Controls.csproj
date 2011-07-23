@@ -56,6 +56,7 @@
     <Compile Include="AboutPrompt.cs" />
     <Compile Include="AboutPersonItem.cs" />
     <Compile Include="ActionPopUp.cs" />
+    <Compile Include="Binding\ControlBinding.cs" />
     <Compile Include="Binding\TextBinding.cs" />
     <Compile Include="ColorHexagonPicker.cs" />
     <Compile Include="ColorPicker.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="SuperSlider.cs" />
     <Compile Include="Helpers\ColorSpace.cs" />
     <Compile Include="ColorSliderThumb.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileNotification.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />
     <Compile Include="Helpers\GestureHelper.cs" />

@@ -70,8 +70,14 @@
     <Compile Include="Samples\AboutItems.xaml.cs">
       <DependentUpon>AboutItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Buttons.xaml.cs">
-      <DependentUpon>Buttons.xaml</DependentUpon>
+    <Compile Include="Samples\ButtonSamples\RoundButtons.xaml.cs">
+      <DependentUpon>RoundButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ButtonSamples\RoundToggleButtons.xaml.cs">
+      <DependentUpon>RoundToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ButtonSamples\Tiles.xaml.cs">
+      <DependentUpon>Tiles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Samples\Color\ColorSlider.xaml.cs">
       <DependentUpon>ColorSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ButtonControls.xaml.cs">
+      <DependentUpon>ButtonControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Memory.xaml.cs">
       <DependentUpon>Memory.xaml</DependentUpon>
@@ -117,7 +126,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Buttons.xaml">
+    <Page Include="Samples\ButtonSamples\RoundButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ButtonSamples\RoundToggleButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ButtonSamples\Tiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +153,10 @@
     <Page Include="Samples\Color\ColorSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ButtonControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\Memory.xaml">
       <SubType>Designer</SubType>
@@ -174,9 +195,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Media\c4f_26x26.png" />
+    <Resource Include="Media\head.png" />
+    <Resource Include="Media\headWhite.png" />
+    <Resource Include="Media\headWhite_100.png" />
+    <Resource Include="Media\icons\appbar.share.rest.png" />
     <Content Include="Media\icons\appbar.check.rest.png" />
     <Resource Include="Media\Coding4FunProject.png" />
     <Content Include="Media\icons\appbar.repeat.png" />
+    <Resource Include="Media\trex_360width.jpg" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

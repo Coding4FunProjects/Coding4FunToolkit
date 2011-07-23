@@ -47,7 +47,7 @@ namespace Coding4Fun.Phone.TestApplication
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo("/Samples/Buttons.xaml");
+            NavigateTo("/Samples/ButtonControls.xaml");
         }
 
         private void ColorSlider_Click(object sender, RoutedEventArgs e)

@@ -261,7 +261,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
         }
 
-        private void GestureListener_Tap(object sender, GestureEventArgs e)
+        private void GestureListener_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
         {
             MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
         }

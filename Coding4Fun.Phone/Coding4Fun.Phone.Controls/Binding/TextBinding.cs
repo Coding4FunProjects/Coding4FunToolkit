@@ -19,7 +19,7 @@ namespace Coding4Fun.Phone.Controls.Binding
     /// </summary>
     public class TextBinding
     {
-        #region ClipToBounds
+        #region UpdateSourceOnChange
         #region DependencyProperty
         public static bool GetUpdateSourceOnChange(DependencyObject obj)
         {
@@ -46,32 +46,6 @@ namespace Coding4Fun.Phone.Controls.Binding
                 return;
 
             HandleUpdateSourceOnChangeEventAppend(obj, (bool)e.NewValue);
-        }
-
-        private static void UpdateSourceOnChangePropertyChanged(object sender, RoutedEventArgs e)
-        {
-            var dp = GetDependancyPropertyForText(sender);
-
-            if (dp == null)
-                return;
-
-            var bind = ((FrameworkElement)sender).GetBindingExpression(dp);
-
-            if (bind != null)
-                bind.UpdateSource();
-        }
-
-        private static DependencyProperty GetDependancyPropertyForText(object sender)
-        {
-            var type = sender.GetType();
-            DependencyProperty returnVal = null;
-            
-            if (type == typeof(TextBox))
-                returnVal = TextBox.TextProperty;
-            else if(type == typeof(PasswordBox))
-                returnVal = PasswordBox.PasswordProperty;
-
-            return returnVal;
         }
 
         private static void HandleUpdateSourceOnChangeEventAppend(object sender, bool value)
@@ -108,6 +82,32 @@ namespace Coding4Fun.Phone.Controls.Binding
                 item.PasswordChanged += UpdateSourceOnChangePropertyChanged;
             else
                 item.PasswordChanged -= UpdateSourceOnChangePropertyChanged;
+        }
+
+        private static void UpdateSourceOnChangePropertyChanged(object sender, RoutedEventArgs e)
+        {
+            var dp = GetDependancyPropertyForText(sender);
+
+            if (dp == null)
+                return;
+
+            var bind = ((FrameworkElement)sender).GetBindingExpression(dp);
+
+            if (bind != null)
+                bind.UpdateSource();
+        }
+
+        private static DependencyProperty GetDependancyPropertyForText(object sender)
+        {
+            var type = sender.GetType();
+            DependencyProperty returnVal = null;
+
+            if (type == typeof(TextBox))
+                returnVal = TextBox.TextProperty;
+            else if (type == typeof(PasswordBox))
+                returnVal = PasswordBox.PasswordProperty;
+
+            return returnVal;
         }
         #endregion
     }

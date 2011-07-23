@@ -1,13 +1,11 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="Coding4Fun.Phone.TestApplication.Samples.Buttons"
+    x:Class="Coding4Fun.Phone.TestApplication.Samples.ButtonSamples.RoundButtons"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -20,26 +18,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="PageTitle" Text="buttons" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="round button" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-        
-        <Button 
-            Content="Toggle background" 
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right" 
-            Click="Button_Click" />
-        
+
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Rectangle Fill="Red" Visibility="Collapsed" Name="BackgroundRect"/>
             <StackPanel>
                 <TextBlock>Round Button</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    
+
                     <c4f:RoundButton
                         FontSize="24"
                         Content="Coding"
@@ -61,47 +54,15 @@
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="image" />
                 </StackPanel>
-                
-                <TextBlock>Round Toggle Button</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <c4f:RoundToggleButton
-                        FontSize="24"
-                        Content="Coding"
-                        BorderBrush="OliveDrab" />
-                    <c4f:RoundToggleButton
-                        FontSize="72"
-                        Content="4"
-                        Background="CornflowerBlue" />
-                    <c4f:RoundToggleButton 
-                        Foreground="Salmon"
-                        FontSize="36"
-                        Content="Fun" />
-                    <c4f:RoundToggleButton 
-                        ImageSource="{Binding RoundToggleButtonImage}"
-					    Content="Click Handler" 
-                        Click="ToggleDirectRoundToggleButtonImage_Click" />
-                    <c4f:RoundToggleButton 
-                        Orientation="Horizontal"
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="image" />
-                </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <Button
                         Content="But" />
-                    <ToggleButton 
-                        Content="Tog" />
                     <Button
                         Content="But Adv"
                         BorderBrush="OliveDrab"
                         Background="CornflowerBlue"
                         Foreground="Salmon" />
-                    <ToggleButton 
-                        Content="Tog Adv"
-                        BorderBrush="OliveDrab"
-                        Background="CornflowerBlue"
-                        Foreground="Salmon"
-                        />
                 </StackPanel>
 
 
@@ -128,55 +89,28 @@
                         ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 					    Content="Image" />
                 </StackPanel>
-                
-                <TextBlock>Disabled Round Toggle Button</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <c4f:RoundToggleButton
-                        IsEnabled="False"
-                        BorderBrush="OliveDrab" />
-                    <c4f:RoundToggleButton
-                        IsEnabled="False"
-                        Background="CornflowerBlue" />
-                    <c4f:RoundToggleButton 
-                        IsEnabled="False"
-                        Foreground="Salmon"
-                        FontSize="{StaticResource PhoneFontSizeMediumLarge}"
-                        Content="C4F" />
-                    <c4f:RoundToggleButton 
-                        IsEnabled="False"
-                        Content="Click handler"
-                        Click="RoundButton_Click" />
-                    <c4f:RoundToggleButton
-                        Orientation="Horizontal"
-                        IsEnabled="False"
-                        ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-					    Content="Image" />
-                </StackPanel>
+
                 <StackPanel Orientation="Horizontal">
                     <Button
                         IsEnabled="False"
                         Content="But" />
-                    <ToggleButton 
-                        IsEnabled="False" 
-                        Content="Tog" />
                     <Button
                         IsEnabled="False"
                         Content="But Adv"
                         BorderBrush="OliveDrab"
                         Background="CornflowerBlue"
                         Foreground="Salmon" />
-                    <ToggleButton 
-                        IsEnabled="False" 
-                        Content="Tog Adv"
-                        BorderBrush="OliveDrab"
-                        Background="CornflowerBlue"
-                        Foreground="Salmon"
-                        />
                 </StackPanel>
+
+                <Button 
+                    Content="Toggle background" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right" 
+                    Click="Button_Click" />
             </StackPanel>
         </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
