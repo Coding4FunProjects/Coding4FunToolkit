@@ -56,7 +56,7 @@
     <Compile Include="AboutPrompt.cs" />
     <Compile Include="AboutPersonItem.cs" />
     <Compile Include="ActionPopUp.cs" />
-    <Compile Include="Binding\ControlBinding.cs" />
+    <Compile Include="Binding\FrameworkElementBinding.cs" />
     <Compile Include="Binding\TextBinding.cs" />
     <Compile Include="ColorHexagonPicker.cs" />
     <Compile Include="ColorPicker.cs" />
