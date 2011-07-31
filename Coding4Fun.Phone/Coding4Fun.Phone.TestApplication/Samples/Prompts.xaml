@@ -37,11 +37,13 @@
                 <TextBlock Text="Input Dialog Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="Input_Click" />
+                    <Button Content="No enter" Click="InputNoEnter_Click" />
                     <Button Content="Advanced" Click="InputAdvanced_Click" />
                 </StackPanel>
                 <TextBlock Text="Password Input Dialog Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="Password_Click" />
+                    <Button Content="No enter" Click="PasswordNoEnter_Click" />
                     <Button Content="Advanced" Click="PasswordAdvanced_Click" />
                 </StackPanel>
                 <TextBlock Text="Message Prompt" />

@@ -96,6 +96,19 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
             passwordInput.Show();
         }
+        
+        private void PasswordNoEnter_Click(object sender, RoutedEventArgs e)
+        {
+            var passwordInput = new PasswordInputPrompt
+            {
+                Title = "Enter won't submit",
+                Message = "Enter key won't submit now",
+                IsSubmitOnEnterKey = false
+            };
+            passwordInput.Completed += input_Completed;
+
+            passwordInput.Show();
+        }
 
         private void PasswordAdvanced_Click(object sender, RoutedEventArgs e)
         {
@@ -127,6 +140,19 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             input.Show();
         }
 
+        private void InputNoEnter_Click(object sender, RoutedEventArgs e)
+        {
+            var input = new InputPrompt
+                            {
+                                Title = "Enter won't submit",
+                                Message = "Enter key won't submit now",
+                                IsSubmitOnEnterKey = false
+                            };
+            input.Completed += input_Completed;
+            
+            input.Show();
+        }
+        
         private void InputAdvanced_Click(object sender, RoutedEventArgs e)
         {
             var input = new InputPrompt
