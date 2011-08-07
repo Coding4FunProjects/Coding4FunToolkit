@@ -21,5 +21,15 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(Tile), new PropertyMetadata(""));
+
+        public TextWrapping TextWrapping
+        {
+            get { return (TextWrapping)GetValue(TextWrappingProperty); }
+            set { SetValue(TextWrappingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextWrapping.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextWrappingProperty =
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(Tile), new PropertyMetadata(TextWrapping.NoWrap));
     }
 }
