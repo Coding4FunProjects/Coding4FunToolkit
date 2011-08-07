@@ -43,22 +43,26 @@
                     Margin="12"
                     Name="picker" 
                     ColorChanged="ColorPicker_ColorChanged">
-                
-
-                    <!--<c4f:ColorPicker.Thumb>
-                        <Ellipse 
-                                    Fill="Red"
-                                    Width="12" />
-                        </c4f:ColorPicker.Thumb>-->
                 </c4f:ColorPicker>
                 <c4f:ColorPicker  
                     Grid.Row="1"
                     Margin="12"
                     Name="pickerClone" />
-                <c4f:ColorPicker  
-                    Grid.Row="2"
-                    Margin="12"
-                    Color="Plum"/>
+                <Grid Grid.Row="2" Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="12" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <c4f:ColorPicker 
+                        Grid.Column="0"
+                        Name="ColorPickerOnLoadTest" />
+                    <c4f:ColorPicker
+                        Grid.Column="3"
+                        Color="Cyan"
+                        />
+                </Grid>
+                
             </Grid>
     </Grid>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">

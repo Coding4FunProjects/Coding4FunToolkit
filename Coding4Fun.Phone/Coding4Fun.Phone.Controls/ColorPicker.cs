@@ -63,6 +63,17 @@ namespace Coding4Fun.Phone.Controls
                     Thumb = new ColorSliderThumb();
 
                 ColorSlider.ColorChanged += ColorSlider_ColorChanged;
+
+                if(SelectedHueColor != null)
+                {
+                    var binding = new System.Windows.Data.Binding
+                                      {
+                                          Source = ColorSlider,
+                                          Path = new PropertyPath("SolidColorBrush"),
+                                      };
+
+                    SelectedHueColor.SetBinding(Shape.FillProperty, binding);
+                }
             }
         }
 
@@ -87,11 +98,6 @@ namespace Coding4Fun.Phone.Controls
 
         void ColorSlider_ColorChanged(object sender, Color color)
         {
-            UpdateColor(color);
-        }
-
-        private void UpdateColor(Color color)
-        {
             UpdateHue(color);
             UpdateSample();
         }
@@ -99,7 +105,6 @@ namespace Coding4Fun.Phone.Controls
         private void UpdateHue(Color color)
         {
             _hue = color.GetHue();
-            SelectedHueColor.Fill = new SolidColorBrush(color);
         }
 
         #endregion
