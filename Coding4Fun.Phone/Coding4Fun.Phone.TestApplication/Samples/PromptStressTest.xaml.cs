@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -114,5 +115,30 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		{
 			MessageBox.Show(e.PopUpResult.ToString());
 		}
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            var toast = new ToastPrompt { Message = "attempt to get onnavigateto failure" };
+            toast.Show();
+
+            base.OnNavigatedTo(e);
+        }
+
+        private void AsyncToastWithNav_Click(object sender, RoutedEventArgs e)
+        {
+            var t = new Thread(ToastCall);
+
+            NavigationService.GoBack();
+            t.Start();
+        }
+
+        private void ToastCall()
+        {
+             Dispatcher.BeginInvoke(() =>
+                                       {
+                                           var toast = new ToastPrompt { Message = "Hi from the past" };
+                                           toast.Show();
+                                       });
+        }
 	}
 }
