@@ -173,7 +173,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
         private void HandleDateButtonClick(object sender, RoutedEventArgs e)
         {
-            OpenPickerPage();
+            OpenPicker();
         }
 
         protected internal virtual void UpdateValueString()
@@ -181,7 +181,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             ValueString = string.Format(CultureInfo.CurrentCulture, ValueStringFormat ?? ValueStringFormatFallback, Value);
         }
 
-        private void OpenPickerPage()
+        public void OpenPicker()
         {
             if (null == PickerPageUri)
             {

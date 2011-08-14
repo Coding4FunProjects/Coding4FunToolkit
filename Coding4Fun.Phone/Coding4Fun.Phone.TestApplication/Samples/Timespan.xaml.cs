@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Controls;
+using Coding4Fun.Phone.Controls.Toolkit;
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
@@ -34,6 +35,11 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
                 }
             }
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            foo.OpenPicker();
         }
     }
 }
