@@ -76,15 +76,6 @@
                     Click="Ding_Click" 
 					Background="Red" 
 					BorderBrush="#FFD11E1E" />
-                <Button 
-					VerticalAlignment="Bottom"
-                    Background="Red"
-					BorderBrush="#FFD11E1E" 
-					Content="Test With Gestures">
-                    <slToolkit:GestureService.GestureListener>
-                        <slToolkit:GestureListener Tap="GestureListener_Tap"/>
-                    </slToolkit:GestureService.GestureListener>
-                </Button>
             </StackPanel>
         </Grid>
     </Grid>

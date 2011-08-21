@@ -6,7 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:c4fToolkit="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
+    xmlns:c4fSlToolkitExtender="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
     xmlns:Controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -32,20 +32,20 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock>stock</TextBlock>
-				<c4fToolkit:TimeSpanPicker />
+                <c4fSlToolkitExtender:TimeSpanPicker />
 				<TextBlock>Basic</TextBlock>
-                <c4fToolkit:TimeSpanPicker
+                <c4fSlToolkitExtender:TimeSpanPicker
                     Name="foo"
                     ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
                     />
                    
                 <TextBlock>Max 2 hours, Steps 10 min</TextBlock>
-                <c4fToolkit:TimeSpanPicker 
+                <c4fSlToolkitExtender:TimeSpanPicker 
                     Max="{Binding TimeSpan2Hour}" 
                     Step="{Binding TimeSpan10Min}"/>
                 
                 <TextBlock>Max 30min, Step 5 min</TextBlock>
-                <c4fToolkit:TimeSpanPicker 
+                <c4fSlToolkitExtender:TimeSpanPicker 
                     Max="{Binding TimeSpan30Min}" 
                     Step="{Binding TimeSpan5Min}"/>
                 <TextBlock>Set Language</TextBlock>

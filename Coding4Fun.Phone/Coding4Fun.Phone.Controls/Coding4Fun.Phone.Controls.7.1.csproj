@@ -42,9 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
-      <HintPath>..\Dependencies\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -78,7 +75,6 @@
     <Compile Include="TileNotification.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />
-    <Compile Include="Helpers\GestureHelper.cs" />
     <Compile Include="InputPrompt.cs" />
     <Compile Include="PasswordInputPrompt.cs" />
     <Compile Include="PopUp.cs" />

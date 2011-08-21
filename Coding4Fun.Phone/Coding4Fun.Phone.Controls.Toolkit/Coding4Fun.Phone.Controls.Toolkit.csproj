@@ -52,6 +52,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binding\DependencyObjectBinding.cs" />
     <Compile Include="Common\PhysicsConstants.cs" />
     <Compile Include="Common\SafeRaise.cs" />
     <Compile Include="Common\TimeSpanFormat.cs" />

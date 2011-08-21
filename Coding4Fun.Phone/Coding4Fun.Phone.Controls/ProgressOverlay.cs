@@ -4,8 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
 
-using Coding4Fun.Phone.Controls.Helpers;
-
 namespace Coding4Fun.Phone.Controls
 {
     [ContentProperty("Content")]
@@ -19,8 +17,6 @@ namespace Coding4Fun.Phone.Controls
         private const string FadeOutName = "fadeOut";
         private const string LayoutGridName = "LayoutGrid";
         
-        private bool _hasHookedUpGestureWatcher = false;
-
         public ProgressOverlay()
         {
             DefaultStyleKey = typeof(ProgressOverlay);
@@ -46,34 +42,10 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(ProgressOverlay), new PropertyMetadata(null));
 
-        public bool HasGesturesDisabled
-        {
-            get { return (bool)GetValue(HasGesturesDisabledProperty); }
-            set { SetValue(HasGesturesDisabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HasGesturesDisabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HasGesturesDisabledProperty =
-            DependencyProperty.Register("HasGesturesDisabled", typeof(bool), typeof(ProgressOverlay), new PropertyMetadata(true, OnHasGesturesDisabledChanged));
-
-        private static void OnHasGesturesDisabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            var sender = ((ProgressOverlay)o);
-            if (sender != null && e.NewValue != e.OldValue)
-                GestureHelper.WireUpGestureEvents((bool)e.NewValue, sender);
-        }
-
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
-            if (!_hasHookedUpGestureWatcher)
-            {
-                GestureHelper.WireUpGestureEvents(HasGesturesDisabled, this);
-                _hasHookedUpGestureWatcher = true;
-            }
-
+            
             _fadeIn = GetTemplateChild(FadeInName) as Storyboard;
             _fadeOut = GetTemplateChild(FadeOutName) as Storyboard;
             _layoutGrid = GetTemplateChild(LayoutGridName) as Grid;

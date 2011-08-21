@@ -22,8 +22,7 @@ namespace Coding4Fun.Phone.Controls
             IsBackKeyOverride = true;
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
-            HasGesturesDisabled = false;
-
+            
             ManipulationStarted += ToastPrompt_ManipulationStarted;
             ManipulationDelta += ToastPrompt_ManipulationDelta;
             ManipulationCompleted += ToastPrompt_ManipulationCompleted;

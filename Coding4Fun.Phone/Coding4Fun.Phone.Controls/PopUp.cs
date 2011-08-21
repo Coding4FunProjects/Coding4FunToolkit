@@ -5,7 +5,6 @@ using System.Windows.Media;
 
 using Clarity.Phone.Extensions;
 
-using Coding4Fun.Phone.Controls.Helpers;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -16,7 +15,6 @@ namespace Coding4Fun.Phone.Controls
         private DialogService _popUp;
 		private PhoneApplicationPage _startingPage;
         private bool _alreadyFired;
-        private bool _hasHookedUpGestureWatcher;
 
     	protected PopUp()
 		{
@@ -34,12 +32,6 @@ namespace Coding4Fun.Phone.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
-            if (!_hasHookedUpGestureWatcher)
-            {
-                GestureHelper.WireUpGestureEvents(HasGesturesDisabled, this);
-                _hasHookedUpGestureWatcher = true;
-            }
 
             if (_popUp != null)
             {
@@ -129,23 +121,5 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
             DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
-
-        public bool HasGesturesDisabled
-        {
-            get { return (bool)GetValue(HasGesturesDisabledProperty); }
-            set { SetValue(HasGesturesDisabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HasGesturesDisabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HasGesturesDisabledProperty =
-            DependencyProperty.Register("HasGesturesDisabled", typeof(bool), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(true, OnHasGesturesDisabledChanged));
-
-        private static void OnHasGesturesDisabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            var sender = ((PopUp<T, TPopUpResult>)o);
-
-            if (sender != null && e.NewValue != e.OldValue)
-                GestureHelper.WireUpGestureEvents((bool)e.NewValue, sender);
-        }
     }
 }

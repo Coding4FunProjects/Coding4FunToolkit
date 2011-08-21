@@ -9,7 +9,7 @@
     xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:c4fSlToolkitExtenderBinding="clr-namespace:Coding4Fun.Phone.Controls.Toolkit.Binding;assembly=Coding4Fun.Phone.Controls.Toolkit" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -67,7 +67,8 @@
                     </Button>
                 </StackPanel>
                 <c4f:ProgressOverlay 
-                    Name="progressOverlay"
+                    Name="progressOverlay" 
+                    c4fSlToolkitExtenderBinding:DependencyObjectBinding.CancelGestureListenerBubble="true"
                     Visibility="{Binding OverlayVis}">
                     <c4f:ProgressOverlay.Resources>
                         <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />
