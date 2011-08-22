@@ -205,6 +205,7 @@
                                 Text="{TemplateBinding Message}" 
 								Margin="0"
                                 Padding="0" 
+                                TextWrapping="{TemplateBinding TextWrapping}"
                                 VerticalAlignment="Center"/>
 						</StackPanel>
 					</Grid>                     

@@ -18,6 +18,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         private readonly SolidColorBrush _lime = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 255, 0));
         private readonly SolidColorBrush _cornFlowerBlue = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
 
+        const string ToastLongMsg = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
+        
         public Prompts()
         {
             InitializeComponent();
@@ -27,8 +29,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		private void Toast_Click(object sender, RoutedEventArgs e)
 		{
 			var toast = new ToastPrompt {
-                Title = "Basic", 
-                Message = "Message",
+                Title = "Basic",
+                Message = ToastLongMsg,
             };
 			toast.Show();
 		}
@@ -37,7 +39,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		{
 		    var toast = new ToastPrompt
                                {
-                                   Message = "Message",
+                                   Message = ToastLongMsg,
                                    ImageSource = new BitmapImage(new Uri("..\\media\\c4f_26x26.png", UriKind.RelativeOrAbsolute))
                                };
             toast.Show();
@@ -48,7 +50,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var toast = new ToastPrompt
             {
                 Title = "With Image",
-                Message = "Message",
+                TextOrientation = System.Windows.Controls.Orientation.Vertical,
+                Message = ToastLongMsg,
                 ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
             };
             toast.Show();
@@ -68,6 +71,61 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 ImageSource =
                                     new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
                             };
+
+            toast.Completed += toast_Completed;
+            toast.Show();
+        }
+
+        private void ToastWrap_Click(object sender, RoutedEventArgs e)
+        {
+            var toast = new ToastPrompt
+            {
+                TextWrapping = TextWrapping.Wrap,
+                Title = "Basic",
+                Message = ToastLongMsg,
+            };
+            toast.Show();
+        }
+
+        private void ToastWithImgAndNoTitleWrap_Click(object sender, RoutedEventArgs e)
+        {
+            var toast = new ToastPrompt
+            {
+                TextWrapping = TextWrapping.Wrap,
+                Message = ToastLongMsg,
+                ImageSource = new BitmapImage(new Uri("..\\media\\c4f_26x26.png", UriKind.RelativeOrAbsolute))
+            };
+            toast.Show();
+        }
+
+        private void ToastWithImgWrap_Click(object sender, RoutedEventArgs e)
+        {
+            var toast = new ToastPrompt
+            {
+                TextWrapping = TextWrapping.Wrap,
+                Title = "With Image",
+                TextOrientation = System.Windows.Controls.Orientation.Vertical,
+                Message = ToastLongMsg,
+                ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+            };
+            toast.Show();
+        }
+
+        private void ToastAdvancedWrap_Click(object sender, RoutedEventArgs e)
+        {
+            var toast = new ToastPrompt
+            {
+                TextWrapping = TextWrapping.Wrap,
+                IsAppBarVisible = false,
+                Background = _lime,
+                Foreground = _pumpkin,
+                Title = "Advanced",
+                Message = "Custom Fontsize, img, and orientation",
+                FontSize = 50,
+                TextOrientation = System.Windows.Controls.Orientation.Vertical,
+                ImageSource =
+                    new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+            };
 
             toast.Completed += toast_Completed;
             toast.Show();

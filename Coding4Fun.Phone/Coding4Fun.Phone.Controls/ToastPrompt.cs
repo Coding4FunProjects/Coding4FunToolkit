@@ -83,6 +83,8 @@ namespace Coding4Fun.Phone.Controls
                 ToastImage.Source = ImageSource;
                 SetImageVisibility(ImageSource);
             }
+
+            SetTextOrientation(TextWrapping);
         }
 
         public override void Show()
@@ -168,6 +170,26 @@ namespace Coding4Fun.Phone.Controls
         public static readonly DependencyProperty TextOrientationProperty =
             DependencyProperty.Register("TextOrientation", typeof(Orientation), typeof(ToastPrompt), new PropertyMetadata(Orientation.Horizontal));
 
+        public TextWrapping TextWrapping
+        {
+            get { return (TextWrapping)GetValue(TextWrappingProperty); }
+            set { SetValue(TextWrappingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextWrapping.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextWrappingProperty =
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(ToastPrompt), new PropertyMetadata(TextWrapping.NoWrap, OnTextWrapping));
+
+        private static void OnTextWrapping(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = o as ToastPrompt;
+
+            if (sender == null || sender.ToastImage == null)
+                return;
+
+            sender.SetTextOrientation((TextWrapping) e.NewValue);
+        }
+
         private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = o as ToastPrompt;
@@ -181,6 +203,14 @@ namespace Coding4Fun.Phone.Controls
         private void SetImageVisibility(ImageSource source)
         {
             ToastImage.Visibility = (source == null) ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void SetTextOrientation(TextWrapping value)
+        {
+            if (value == TextWrapping.Wrap)
+            {
+                TextOrientation = Orientation.Vertical;
+            }
         }
     }
 }

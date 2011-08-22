@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,0">
             <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="prompts" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
@@ -56,20 +56,27 @@
                 
                 <TextBlock Text="Toast Prompt" />
                 <StackPanel Orientation="Horizontal">
-					<Button Content="Basic" Click="Toast_Click" />
+					<Button Content="Base" Click="Toast_Click" />
 					<Button Content="Img" Click="ToastWithImgAndNoTitle_Click" />
-                    <Button Content="Img w/title" Click="ToastWithImg_Click" />
+                    <Button Content="Img+title" Click="ToastWithImg_Click" />
                     <Button Content="Adv" Click="ToastAdvanced_Click" />
-				</StackPanel>
-                
+                </StackPanel>
+                <TextBlock Text="Toast Prompt + Text Wrap" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Base" Click="ToastWrap_Click" />
+                    <Button Content="Img" Click="ToastWithImgAndNoTitleWrap_Click" />
+                    <Button Content="Img+title" Click="ToastWithImgWrap_Click" />
+                    <Button Content="Adv" Click="ToastAdvancedWrap_Click" />
+                </StackPanel>
+
                 <TextBlock Text="About Prompt" />
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Basic" Click="About_Click" />
                     <Button Content="Advanced" Click="C4F_Click" />
                 </StackPanel>
             </StackPanel>
-			
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button 
 					VerticalAlignment="Bottom" 
 					Content="Click Event"
