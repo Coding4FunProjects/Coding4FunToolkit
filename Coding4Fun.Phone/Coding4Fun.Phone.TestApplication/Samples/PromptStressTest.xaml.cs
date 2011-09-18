@@ -126,10 +126,11 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void AsyncToastWithNav_Click(object sender, RoutedEventArgs e)
         {
-            var t = new Thread(ToastCall);
-
+            //var t = new Thread(ToastCall);
+            ToastCall();
             NavigationService.GoBack();
-            t.Start();
+            
+            //t.Start();
         }
 
         private void ToastCall()

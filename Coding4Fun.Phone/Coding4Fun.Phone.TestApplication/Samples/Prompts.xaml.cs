@@ -133,7 +133,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         void toast_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            MessageBox.Show(e.PopUpResult.ToString());
+            resultBlock.Text = e.PopUpResult.ToString();
         }
 
     	private void About_Click(object sender, RoutedEventArgs e)
@@ -150,7 +150,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 Title = "Basic Input",
                 Message = "I'm a basic input prompt",
             };
-            passwordInput.Completed += input_Completed;
+            passwordInput.Completed += stringObject_Completed;
 
             passwordInput.Show();
         }
@@ -163,7 +163,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 Message = "Enter key won't submit now",
                 IsSubmitOnEnterKey = false
             };
-            passwordInput.Completed += input_Completed;
+            passwordInput.Completed += stringObject_Completed;
 
             passwordInput.Show();
         }
@@ -180,7 +180,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 IsCancelVisible = true
             };
 
-            passwordInput.Completed += input_Completed;
+            passwordInput.Completed += stringObject_Completed;
             passwordInput.InputScope = new InputScope { Names = { new InputScopeName() { NameValue = InputScopeNameValue.TelephoneNumber } } };
             passwordInput.Value = "doom";
             passwordInput.Show();
@@ -193,7 +193,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 Title = "Basic Input",
                                 Message = "I'm a basic input prompt",
                             };
-            input.Completed += input_Completed;
+            input.Completed += stringObject_Completed;
             
             input.Show();
         }
@@ -206,7 +206,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 Message = "Enter key won't submit now",
                                 IsSubmitOnEnterKey = false
                             };
-            input.Completed += input_Completed;
+            input.Completed += stringObject_Completed;
             
             input.Show();
         }
@@ -223,7 +223,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                 IsCancelVisible = true
                             };
 
-            input.Completed += input_Completed;
+            input.Completed += stringObject_Completed;
             
             input.InputScope = new InputScope { Names = { new InputScopeName() { NameValue = InputScopeNameValue.TelephoneNumber } } };
             input.Show();
@@ -270,7 +270,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                     };
 
             var btn = new Button { Content = "Msg Box" };
-            btn.Click += (s, ee) => MessageBox.Show("Hi!");
+            btn.Click += (s, ee) => resultBlock.Text = "Hi!";
             messagePrompt.Body = btn;
 
             messagePrompt.Completed += stringObject_Completed;
@@ -306,35 +306,27 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         void baseObject_Completed(object sender, PopUpEventArgs<object, PopUpResult> e)
         {
-            if (e.PopUpResult == PopUpResult.Ok)
-                MessageBox.Show("OK!");
-            else if (e.PopUpResult == PopUpResult.Cancelled)
-                MessageBox.Show("CANCELLED!");
-            else
-                MessageBox.Show("meh?");
+            resultBlock.Text = GetBaseResult(e.PopUpResult);
         }
 
         void stringObject_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            if (e.PopUpResult == PopUpResult.Ok)
-                MessageBox.Show("OK: " + e.Result);
-            else if (e.PopUpResult == PopUpResult.Cancelled)
-                MessageBox.Show("CANCELLED: " + e.Result);
-            else
-                MessageBox.Show("meh?: " + e.Result);
+            resultBlock.Text = GetBaseResult(e.PopUpResult) + e.Result;
         }
 
-        void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        private string GetBaseResult(PopUpResult popUp)
         {
-			if (e.PopUpResult == PopUpResult.Ok)
-				MessageBox.Show("You typed: " + e.Result);
-			else if (e.PopUpResult == PopUpResult.Cancelled)
-				MessageBox.Show("CANCELLED! " + e.Result);
-			else
-				MessageBox.Show("meh?  " + e.Result);
+            var result = "meh?";
+
+            if (popUp == PopUpResult.Ok)
+                result = "OK!";
+            else if (popUp == PopUpResult.Cancelled)
+                result = "CANCELLED!";
+
+            return result;
         }
 
-		private void C4F_Click(object sender, RoutedEventArgs e)
+        private void C4F_Click(object sender, RoutedEventArgs e)
         {
             var about = new Coding4FunAboutPrompt();
             about.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
@@ -343,11 +335,6 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         private void Ding_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
-        }
-
-        private void GestureListener_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
-        {
-            MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
         }
 
 		private void navToStress_Click(object sender, RoutedEventArgs e)
