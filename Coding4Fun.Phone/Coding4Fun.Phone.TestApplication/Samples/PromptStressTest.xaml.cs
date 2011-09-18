@@ -141,5 +141,21 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                                            toast.Show();
                                        });
         }
+
+        private void LargeToastCreation_Click(object sender, RoutedEventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem((state) => 
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Thread.Sleep(33);
+                    Dispatcher.BeginInvoke(() =>
+                                               {
+                                                   var toast = new ToastPrompt { Message = i.ToString() };
+                                                   toast.Show();
+                                               });
+                }
+            });
+        }
 	}
 }

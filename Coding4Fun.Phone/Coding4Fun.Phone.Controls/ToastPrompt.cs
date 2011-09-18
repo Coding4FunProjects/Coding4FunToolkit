@@ -12,7 +12,7 @@ namespace Coding4Fun.Phone.Controls
         private const string ToastImageName = "ToastImage";
         readonly Timer _timer;
 
-        private readonly TranslateTransform _translate = new TranslateTransform();
+        private TranslateTransform _translate;
 		
         public ToastPrompt()
         {
@@ -26,9 +26,7 @@ namespace Coding4Fun.Phone.Controls
             ManipulationStarted += ToastPrompt_ManipulationStarted;
             ManipulationDelta += ToastPrompt_ManipulationDelta;
             ManipulationCompleted += ToastPrompt_ManipulationCompleted;
-
-            RenderTransform = _translate;
-
+            
             _timer = new Timer(_timer_Tick);
         }
 
@@ -75,6 +73,9 @@ namespace Coding4Fun.Phone.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            
+            _translate = new TranslateTransform();
+            RenderTransform = _translate;
 
             ToastImage = GetTemplateChild(ToastImageName) as Image;
 

@@ -16,11 +16,6 @@ namespace Coding4Fun.Phone.Controls
 		private PhoneApplicationPage _startingPage;
         private bool _alreadyFired;
 
-    	protected PopUp()
-		{
-			Dispatcher.BeginInvoke(() => ApplyTemplate());
-		}
-
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
         public bool IsAppBarVisible { get; set; }
         internal IApplicationBar AppBar { get; set; }

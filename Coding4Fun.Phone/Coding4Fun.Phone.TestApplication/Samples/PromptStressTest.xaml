@@ -40,6 +40,10 @@
 				<Button Content="Image" Click="ToastWithImg_Click" />
 				<Button Content="Advanced" Click="ToastAdvanced_Click" />
 			</StackPanel>
+            <TextBlock>Full Stress</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Mass toasts" Click="LargeToastCreation_Click" />
+            </StackPanel>
             <TextBlock>Async calls</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button Content="nav then 2 sec toast call" Click="AsyncToastWithNav_Click" />
