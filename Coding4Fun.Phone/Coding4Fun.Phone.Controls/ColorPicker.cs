@@ -11,10 +11,7 @@ namespace Coding4Fun.Phone.Controls
 {
     public class ColorPicker : ColorBaseControl
     {
-        double _sampleSelectorSize = 10;
         bool _fromSliderChange;
-
-        private float _hue;
 
         Point _position;
 
@@ -36,7 +33,7 @@ namespace Coding4Fun.Phone.Controls
         {
             DefaultStyleKey = typeof (ColorPicker);
 
-            Loaded += ColorPicker_Loaded;
+            SizeChanged += ColorPicker_SizeChanged;
         }
 
         public override void OnApplyTemplate()
@@ -78,35 +75,21 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region events
-        private void ColorPicker_Loaded(object sender, RoutedEventArgs e)
-        {
-            _sampleSelectorSize = SampleSelector.ActualHeight;
-
-            if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
-            {
-                _position.X = SelectedHueColor.ActualWidth;
-
-                ColorSlider_ColorChanged(this, ColorSlider.Color);
-            }
-            else
-            {
-                ColorChanging(Color);
-                UpdateHue(Color);
-                UpdateLayoutBasedOnColor();
-            }
-        }
-
         void ColorSlider_ColorChanged(object sender, Color color)
         {
-            UpdateHue(color);
             UpdateSample();
         }
 
-        private void UpdateHue(Color color)
+        void ColorPicker_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            _hue = color.GetHue();
+            // setting UX up
+            // setting color will call UpdateLayoutBasedOnColor
+            // if we know the color, we must update UpdateLayoutBasedOnColor manually
+            if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
+                Color = ColorSlider.Color;
+            else
+                UpdateLayoutBasedOnColor();
         }
-
         #endregion
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)
@@ -125,20 +108,22 @@ namespace Coding4Fun.Phone.Controls
             var saturation = (float)(_position.X / SelectedHueColor.ActualWidth);
             var value = (float)(1 - (_position.Y / SelectedHueColor.ActualHeight));
 
-            ColorChanging(ColorSpace.ConvertHsvToRgb(_hue, saturation, value));
+            ColorChanging(ColorSpace.ConvertHsvToRgb(ColorSlider.Color.GetHue(), saturation, value));
             _fromSliderChange = false;
         }
 
         private void SetSampleLocation()
         {
+            var sampleSelectorSize = SampleSelector.ActualHeight;
+
             var height = SelectedHueColor.ActualHeight;
             var width = SelectedHueColor.ActualWidth;
 
             _position.X = ControlHelper.CheckBound(_position.X, width);
             _position.Y = ControlHelper.CheckBound(_position.Y, height);
 
-            var sampleLeft = _position.X - _sampleSelectorSize;
-            var sampleTop = _position.Y - _sampleSelectorSize;
+            var sampleLeft = _position.X - sampleSelectorSize;
+            var sampleTop = _position.Y - sampleSelectorSize;
 
             sampleLeft = ControlHelper.CheckBound(sampleLeft, width);
             sampleTop = ControlHelper.CheckBound(sampleTop, height);

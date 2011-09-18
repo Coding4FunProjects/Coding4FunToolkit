@@ -36,33 +36,45 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="12" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="12" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
                 <c4f:ColorPicker  
-                    Margin="12"
                     Name="picker" 
                     ColorChanged="ColorPicker_ColorChanged">
                 </c4f:ColorPicker>
                 <c4f:ColorPicker  
-                    Grid.Row="1"
-                    Margin="12"
+                    Grid.Column="2"
                     Name="pickerClone" />
-                <Grid Grid.Row="2" Margin="12">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="12" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <c4f:ColorPicker 
-                        Grid.Column="0"
-                        Name="ColorPickerOnLoadTest" />
-                    <c4f:ColorPicker
-                        Grid.Column="3"
-                        Color="Cyan"
-                        />
-                </Grid>
-                
+                   
+                <c4f:ColorPicker 
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Name="ColorPickerOnLoadTest" />
+                <c4f:ColorPicker
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Color="Cyan" />
+
+                <c4f:ColorPicker
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Visibility="Collapsed"
+                    Color="CornflowerBlue"
+                    Name="pickerVisibilityToggle"/>
+                <Button 
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    Content="Toggle Vis"
+                    Click="pickerVisibilityToggle_Click"
+                    />
             </Grid>
     </Grid>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
