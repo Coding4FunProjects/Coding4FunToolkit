@@ -8,6 +8,8 @@ using Coding4Fun.Phone.Controls.Helpers;
 
 namespace Coding4Fun.Phone.Controls
 {
+	[TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
+	[TemplateVisualState(Name = "Normal", GroupName = "GroupCommon")]
     public class SuperSlider : Control
     {
         bool _isLayoutInit;
@@ -25,8 +27,15 @@ namespace Coding4Fun.Phone.Controls
         public SuperSlider()
 		{
             DefaultStyleKey = typeof(SuperSlider);
-            
+
+			IsEnabledChanged += SuperSlider_IsEnabledChanged;
             Loaded += SuperSlider_Loaded;
+		}
+
+		void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+
 		}
 
         void SuperSlider_Loaded(object sender, RoutedEventArgs e)

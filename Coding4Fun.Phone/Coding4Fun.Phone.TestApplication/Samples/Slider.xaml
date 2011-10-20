@@ -107,6 +107,10 @@
                         </Grid>
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
+				<c4f:SuperSlider 
+                    Height="24"
+                    Value="2"
+                    IsEnabled="False" />
                 <TextBlock 
                     Margin="12, 24, 0, 0"
                     Style="{StaticResource PhoneTextTitle2Style}">Vertical Examples</TextBlock>
@@ -152,6 +156,15 @@
                         </Grid>
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
+				<c4f:SuperSlider 
+					IsEnabled="False"
+                    Step="1"
+                    Margin="12, 0"
+                    Width="24"
+                    Value="10"
+                    Minimum="5"
+                    Maximum="15"
+                    Orientation="Vertical"/>
             </StackPanel>
             
         </Grid>
