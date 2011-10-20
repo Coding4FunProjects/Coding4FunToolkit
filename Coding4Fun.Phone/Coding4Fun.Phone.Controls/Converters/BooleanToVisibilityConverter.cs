@@ -9,7 +9,12 @@ namespace Coding4Fun.Phone.Controls.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return System.Convert.ToBoolean(value) ? Visibility.Visible : Visibility.Collapsed;
+			var boolValue = System.Convert.ToBoolean(value);
+
+			if (parameter != null)
+				boolValue = !boolValue;
+
+            return boolValue ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
