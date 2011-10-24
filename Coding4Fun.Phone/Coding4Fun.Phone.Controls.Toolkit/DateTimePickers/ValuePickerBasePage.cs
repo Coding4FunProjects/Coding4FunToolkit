@@ -22,6 +22,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         private const string OpenVisibilityStateName = "Open";
         private const string ClosedVisibilityStateName = "Closed";
         private const string StateKey_Value = "DateTimePickerPageBase_State_Value";
+		private const string StateKey_DialogTitle = "DateTimePickerPageBase_State_DialogTitle";
 
         private LoopingSelector _primarySelectorPart;
         private LoopingSelector _secondarySelectorPart;
@@ -259,7 +260,16 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// </summary>
         private T? _value;
 
+		public string DialogTitle
+		{
+			get { return (string)GetValue(DialogTitleProperty); }
+			set { SetValue(DialogTitleProperty, value); }
+		}
 
+		// Using a DependencyProperty as the backing store for DialogTitle.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DialogTitleProperty =
+			DependencyProperty.Register("DialogTitle", typeof(string), typeof(ValuePickerBasePage<T>), new PropertyMetadata(""));
+		
         /// <summary>
         /// Instanciates a derived wrapper
         /// </summary>
@@ -313,6 +323,11 @@ namespace Coding4Fun.Phone.Controls.Primitives
                     NavigationService.GoBack();
                 }
             }
+
+			if(State.ContainsKey(StateKey_DialogTitle))
+        	{
+				DialogTitle = State[StateKey_DialogTitle].ToString();
+        	}
         }
 
 

@@ -18,6 +18,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             Value = TimeSpan.FromMinutes(30);
             Max = TimeSpan.FromHours(24);
             Step = TimeSpan.FromSeconds(1);
+			DialogTitle = DateTimePickerResources.TimeSpanPickerTitle;
         }
 
         protected internal override void UpdateValueString()

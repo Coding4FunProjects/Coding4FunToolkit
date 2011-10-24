@@ -13,5 +13,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// Gets or sets the DateTime to show in the picker page and to set when the user makes a selection.
         /// </summary>
         Nullable<T> Value { get; set; }
+
+		string DialogTitle { get; set; }
     }
 }

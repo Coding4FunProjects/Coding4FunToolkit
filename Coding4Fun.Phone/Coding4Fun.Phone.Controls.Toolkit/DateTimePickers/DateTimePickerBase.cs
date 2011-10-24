@@ -24,6 +24,16 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         private NavigationOutTransition _savedNavigationOutTransition;
         private IValuePickerPage<T> _dateTimePickerPage;
 
+		public string DialogTitle
+		{
+			get { return (string)GetValue(DialogTitleProperty); }
+			set { SetValue(DialogTitleProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for DialogTitle.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DialogTitleProperty =
+			DependencyProperty.Register("DialogTitle", typeof(string), typeof(DateTimePickerBase<T>), new PropertyMetadata(""));
+		
 
         /// <summary>
         /// Gets or sets the DateTime value.
@@ -281,6 +291,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             if (navPage != null)
             {
                 navPage.Value = Value.GetValueOrDefault();
+				navPage.DialogTitle = DialogTitle;
             }
         }
 

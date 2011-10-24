@@ -39,8 +39,9 @@
                     ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
                     />
                    
-                <TextBlock>Max 2 hours, Steps 10 min</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker 
+                <TextBlock>Max 2 hours, Steps 10 min, custom title</TextBlock>
+                <c4fSlToolkitExtender:TimeSpanPicker
+					DialogTitle="coding4fun timespan picker"
                     Max="{Binding TimeSpan2Hour}" 
                     Step="{Binding TimeSpan10Min}"/>
                 

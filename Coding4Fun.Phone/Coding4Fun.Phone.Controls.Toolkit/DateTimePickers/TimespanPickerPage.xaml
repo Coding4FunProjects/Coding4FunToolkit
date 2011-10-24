@@ -70,7 +70,7 @@
         <!-- Title -->
         <TextBlock
             Grid.Row="1"
-            Text="{Binding TimeSpanPickerTitle, Source={StaticResource DateTimePickerResources}}"
+            Text="{Binding DialogTitle}"
             FontFamily="{StaticResource PhoneFontFamilySemiBold}"
             FontSize="{StaticResource PhoneFontSizeMedium}"
             Foreground="{StaticResource PhoneForegroundBrush}"
