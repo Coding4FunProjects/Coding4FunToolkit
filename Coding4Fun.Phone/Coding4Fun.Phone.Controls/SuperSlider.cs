@@ -30,12 +30,12 @@ namespace Coding4Fun.Phone.Controls
 
 			IsEnabledChanged += SuperSlider_IsEnabledChanged;
             Loaded += SuperSlider_Loaded;
+			SizeChanged += SuperSlider_SizeChanged;
 		}
 
 		void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
-
 		}
 
         void SuperSlider_Loaded(object sender, RoutedEventArgs e)
@@ -44,7 +44,12 @@ namespace Coding4Fun.Phone.Controls
             AdjustAndUpdateLayout();
         }
 
-        public override void OnApplyTemplate()
+		void SuperSlider_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			AdjustAndUpdateLayout();
+		}
+
+		public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 

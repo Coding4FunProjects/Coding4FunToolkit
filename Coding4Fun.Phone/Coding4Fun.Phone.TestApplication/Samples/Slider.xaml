@@ -42,20 +42,28 @@
                     Height="24"
                     Value="2"
                     ValueChanged="ResultSlider_ValueChanged"/>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                <Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+                    <StackPanel 
+						Grid.Column="0" 
+						Orientation="Horizontal">
                         <TextBlock Margin="12, 0">Via Binding:</TextBlock>
                         <TextBlock Text="{Binding ElementName=ResultSlider, Path=Value}" />
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+						Grid.Column="1" 
+						Orientation="Horizontal">
                         <TextBlock Margin="12, 0">Via Event:</TextBlock>
                         <TextBlock Name="SliderResult" />
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 
                 <TextBlock 
-                    Margin="12, 24, 0, 0"
+                    Margin="12, 12, 0, 0"
                     Text="Exta Bits" 
                     Style="{StaticResource PhoneTextTitle2Style}"/>
 
@@ -66,20 +74,7 @@
                     Step="1"
                     Minimum="5"
                     Maximum="15" />
-                <TextBlock>Slider with thumb</TextBlock>
-                <c4f:SuperSlider 
-                    Margin="0, 12"
-                    Height="24"
-                    Fill="Orange"
-                    Background="CornflowerBlue">
-                    <c4f:SuperSlider.Thumb>
-                        <Rectangle 
-                            Fill="Red"
-                            Height="12"
-                            />
-                    </c4f:SuperSlider.Thumb>
-                </c4f:SuperSlider>
-                <TextBlock>Slider with custom sizing and "flair"</TextBlock>
+				<TextBlock>Slider with thumb, custom sizing and "flair"</TextBlock>
                 <c4f:SuperSlider 
                     Margin="0, 12"
                     BackgroundSize="12"
@@ -112,10 +107,12 @@
                     Value="2"
                     IsEnabled="False" />
                 <TextBlock 
-                    Margin="12, 24, 0, 0"
+                    Margin="12, 12, 0, 0"
                     Style="{StaticResource PhoneTextTitle2Style}">Vertical Examples</TextBlock>
             </StackPanel>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel 
+				Grid.Row="1" 
+				Orientation="Horizontal">
                 <c4f:SuperSlider 
                     Step="1"
                     Margin="12, 0"
@@ -165,9 +162,23 @@
                     Minimum="5"
                     Maximum="15"
                     Orientation="Vertical"/>
+				<c4f:SuperSlider 
+					Name="sliderVisTest"
+                    Step="1"
+                    Margin="12, 0"
+                    Width="24"
+                    Value="10"
+                    Minimum="5"
+                    Maximum="15"
+                    Orientation="Vertical"
+					Visibility="Collapsed"/>
             </StackPanel>
-            
-        </Grid>
+			<Button 
+				Grid.Row="1"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Bottom" Click="Button_Click">Toggle Vis</Button>
+		</Grid>
+		
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

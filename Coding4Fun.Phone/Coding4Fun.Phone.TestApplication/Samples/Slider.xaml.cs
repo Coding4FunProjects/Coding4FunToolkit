@@ -24,5 +24,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         {
             SliderResult.Text = e.NewValue.ToString();
         }
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			sliderVisTest.Visibility = (sliderVisTest.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
+		}
     }
 }
