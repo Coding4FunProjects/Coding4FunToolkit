@@ -18,6 +18,8 @@ namespace Coding4Fun.Phone.Controls
         public void MonitorControl(Panel panel)
         {
             Monitor = new Rectangle {Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))};
+			Monitor.SetValue(Grid.RowProperty, int.MaxValue - 1);
+			Monitor.SetValue(Grid.ColumnProperty, int.MaxValue - 1);
 
             Monitor.ManipulationStarted += MonitorManipulationStarted;
             Monitor.ManipulationDelta += MonitorManipulationDelta;

@@ -69,6 +69,40 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region dependency properties
+
+
+
+		public double BarHeight
+		{
+			get { return (double)GetValue(BarHeightProperty); }
+			set { SetValue(BarHeightProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty BarHeightProperty =
+			DependencyProperty.Register("BarHeight", typeof(double), typeof(SuperSlider), new PropertyMetadata(Double.NaN));
+
+		public double BarWidth
+		{
+			get { return (double)GetValue(BarWidthProperty); }
+			set { SetValue(BarWidthProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty BarWidthProperty =
+			DependencyProperty.Register("BarWidth", typeof(double), typeof(SuperSlider), new PropertyMetadata(Double.NaN));
+		
+		public string Title
+		{
+			get { return (string)GetValue(TitleProperty); }
+			set { SetValue(TitleProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty TitleProperty =
+			DependencyProperty.Register("Title", typeof(string), typeof(SuperSlider), new PropertyMetadata(""));
+
+
         public object Thumb
         {
             get { return (object)GetValue(ThumbProperty); }

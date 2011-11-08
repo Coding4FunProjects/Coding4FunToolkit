@@ -34,12 +34,10 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock 
-                    Text="Base Slider" 
-                    Style="{StaticResource PhoneTextTitle2Style}" />
                 <c4f:SuperSlider 
                     Name="ResultSlider"
-                    Height="24"
+					Title="Base Slider"
+					BarHeight="24"
                     Value="2"
                     ValueChanged="ResultSlider_ValueChanged"/>
                 <Grid>
@@ -67,16 +65,16 @@
                     Text="Exta Bits" 
                     Style="{StaticResource PhoneTextTitle2Style}"/>
 
-                <TextBlock>Slider with steps</TextBlock>
+                <TextBlock></TextBlock>
                 <c4f:SuperSlider 
-                    Height="24"
+					Title="Slider with steps"
+                    BarHeight="24"
                     Value="10"
                     Step="1"
                     Minimum="5"
                     Maximum="15" />
-				<TextBlock>Slider with thumb, custom sizing and "flair"</TextBlock>
-                <c4f:SuperSlider 
-                    Margin="0, 12"
+				<c4f:SuperSlider 
+					Title="Slider with thumb, custom sizing and &quot;flair&quot;"
                     BackgroundSize="12"
                     ProgressSize="24"
                     Background="CornflowerBlue">
@@ -103,7 +101,8 @@
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
 				<c4f:SuperSlider 
-                    Height="24"
+					Padding="0"
+                    BarHeight="12"
                     Value="2"
                     IsEnabled="False" />
                 <TextBlock 
@@ -116,32 +115,34 @@
                 <c4f:SuperSlider 
                     Step="1"
                     Margin="12, 0"
-                    Width="24"
+					Padding="0"
+                    BarWidth="24"
                     Value="10"
                     Minimum="5"
                     Maximum="15"
                     Orientation="Vertical"/>
                 <c4f:SuperSlider 
                     Margin="12, 0"
-                    Width="24"
+                    BarWidth="24"
+					Padding="0"
                     Fill="Orange"
                     Background="CornflowerBlue"
                      Orientation="Vertical">
                     <c4f:SuperSlider.Thumb>
                         <Rectangle 
                             Fill="Red"
-                            Height="12"
-                            />
+                            Height="12"/>
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
 
                 <c4f:SuperSlider 
                     Margin="12, 0"
+					Padding="0"
                     BackgroundSize="12"
                     ProgressSize="24"
                     Fill="Orange"
                     Background="CornflowerBlue"
-                     Orientation="Vertical">
+                    Orientation="Vertical">
                     <c4f:SuperSlider.Thumb>
                         <Grid Height="24">
                             <Rectangle 
@@ -154,10 +155,11 @@
                     </c4f:SuperSlider.Thumb>
                 </c4f:SuperSlider>
 				<c4f:SuperSlider 
+					Padding="0"
 					IsEnabled="False"
                     Step="1"
                     Margin="12, 0"
-                    Width="24"
+                    BarWidth="24"
                     Value="10"
                     Minimum="5"
                     Maximum="15"
@@ -165,8 +167,9 @@
 				<c4f:SuperSlider 
 					Name="sliderVisTest"
                     Step="1"
+					Padding="0"
                     Margin="12, 0"
-                    Width="24"
+                    BarWidth="24"
                     Value="10"
                     Minimum="5"
                     Maximum="15"
