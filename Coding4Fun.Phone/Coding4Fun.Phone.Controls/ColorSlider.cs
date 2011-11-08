@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
@@ -63,7 +64,7 @@ namespace Coding4Fun.Phone.Controls
         private void SetColorFromSlider(double value)
         {
             _fromSliderChange = true;
-            ColorChanging(ColorSpace.GetColorFromHueValue((int)value));
+            ColorChanging(ColorSpace.GetColorFromHueValue((int)value % 360));
             _fromSliderChange = false;
         }
 
