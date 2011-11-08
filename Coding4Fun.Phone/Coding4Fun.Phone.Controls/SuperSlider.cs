@@ -35,13 +35,14 @@ namespace Coding4Fun.Phone.Controls
 
 		void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+		    IsEnabledVisualStateUpdate();
 		}
 
-        void SuperSlider_Loaded(object sender, RoutedEventArgs e)
+	    void SuperSlider_Loaded(object sender, RoutedEventArgs e)
         {
             _isLayoutInit = true;
             AdjustAndUpdateLayout();
+            IsEnabledVisualStateUpdate();
         }
 
 		void SuperSlider_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -69,8 +70,6 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region dependency properties
-
-
 
 		public double BarHeight
 		{
@@ -317,7 +316,10 @@ namespace Coding4Fun.Phone.Controls
 
         #region Helper functions
 
-        
+        private void IsEnabledVisualStateUpdate()
+        {
+            VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+        }
 
         private static void SetSizeBasedOnOrientation(FrameworkElement control, bool isVert, double offset)
         {
