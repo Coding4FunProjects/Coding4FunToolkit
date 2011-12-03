@@ -1,13 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-
+using System.Windows.Threading;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace Clarity.Phone.Extensions
 {
@@ -188,25 +190,45 @@ namespace Clarity.Phone.Extensions
             AnimationType = AnimationTypes.Slide;
         }
 
-        private void InitializePopup()
+		bool _deferredShowToLoaded;
+		private void InitializePopup()
         {
             // Add overlay which is the size of RootVisual
             _overlay = new Grid {Name = Guid.NewGuid().ToString()};
 
-            Grid.SetColumnSpan(_overlay, int.MaxValue);
-            Grid.SetRowSpan(_overlay, int.MaxValue);
-            
-            _overlay.Children.Add(Child);
+			Grid.SetColumnSpan(_overlay, int.MaxValue);
+			Grid.SetRowSpan(_overlay, int.MaxValue);
 
-            if (BackgroundBrush != null)
-                _overlay.Background = BackgroundBrush;
+			if (BackgroundBrush != null)
+				_overlay.Background = BackgroundBrush;
+
+			if (SystemTray.IsVisible && SystemTray.Opacity < 1 && SystemTray.Opacity > 0)
+			{
+				VerticalOffset += 32;
+			}
 
 			_overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
-            _overlay.Opacity = 0;
+			_overlay.Opacity = 0;
 
-            // Initialize popup to draw the context menu over all controls
-            PopupContainer.Children.Add(_overlay);
+			// Initialize popup to draw the context menu over all controls
+			if (PopupContainer != null)
+			{
+				PopupContainer.Children.Add(_overlay);
+				_overlay.Children.Add(Child);
+			}
+			else
+			{
+				_deferredShowToLoaded = true;
+				RootVisual.Loaded += RootVisualDeferredShow_Loaded;
+			}
         }
+
+		void RootVisualDeferredShow_Loaded(object sender, RoutedEventArgs e)
+		{
+			RootVisual.Loaded -= RootVisualDeferredShow_Loaded;
+			_deferredShowToLoaded = false;
+			Show();
+		}
 
         protected internal void SetAlignmentsOnOverlay(HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
         {
@@ -228,6 +250,9 @@ namespace Clarity.Phone.Extensions
                 IsOpen = true;
 
                 InitializePopup();
+
+				if (_deferredShowToLoaded)
+					return;
 
                 if (!IsBackKeyOverride)
                     Page.BackKeyPress += OnBackKeyPress;
@@ -265,6 +290,9 @@ namespace Clarity.Phone.Extensions
 
                                                     });
                 }
+
+				if (Opened != null)
+					Opened.Invoke(this, null);
             }
         }
         

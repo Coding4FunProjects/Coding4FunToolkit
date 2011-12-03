@@ -28,6 +28,7 @@ namespace Coding4Fun.Phone.Controls
             ManipulationCompleted += ToastPrompt_ManipulationCompleted;
             
             _timer = new Timer(_timer_Tick);
+			Opened += ToastPrompt_Opened;
         }
 
         void ToastPrompt_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
@@ -93,10 +94,14 @@ namespace Coding4Fun.Phone.Controls
             if (!IsTimerEnabled)
                 return;
 
-            StartTimer();
-
             base.Show();
         }
+
+
+		void ToastPrompt_Opened(object sender, EventArgs e)
+		{
+			StartTimer();
+		}
 
         void _timer_Tick(object state)
         {

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 using Coding4Fun.Phone.Controls;
+
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
 {
@@ -157,5 +152,35 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                 }
             });
         }
+
+		private void PromptVis_Click(object sender, RoutedEventArgs e)
+		{
+			AdjustSystemTray();
+			CreateMsgPrompt("Test Vis");
+		}
+
+		private void PromptNotVis_Click(object sender, RoutedEventArgs e)
+		{
+			AdjustSystemTray(false);
+			CreateMsgPrompt("Test not Vis");
+		}
+
+		private void PromptVisWithOpacity_Click(object sender, RoutedEventArgs e)
+		{
+			AdjustSystemTray(true, .8);
+			CreateMsgPrompt("Test with Opacity");
+		}
+		
+		private static void AdjustSystemTray(bool isVisible = true, double opacity = 1)
+		{
+			SystemTray.IsVisible = isVisible;
+			SystemTray.Opacity = opacity;
+		}
+
+		private static void CreateMsgPrompt(string message)
+		{
+			var msgPrompt = new MessagePrompt { Title = message, Message = message };
+			msgPrompt.Show();
+		}
 	}
 }

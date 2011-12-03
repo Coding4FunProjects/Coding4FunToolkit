@@ -23,6 +23,7 @@ namespace Coding4Fun.Phone.Controls
 
         protected DialogService.AnimationTypes AnimationType { get; set; }
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
+		public event EventHandler Opened;
 
         public override void OnApplyTemplate()
         {
@@ -64,10 +65,17 @@ namespace Coding4Fun.Phone.Controls
             }
 
 		    _popUp.Closed += _popUp_Closed;
+			_popUp.Opened += _popUp_Opened;
 
             _startingPage = _popUp.Page;
 			
             Dispatcher.BeginInvoke(() => _popUp.Show());
+		}
+
+		void _popUp_Opened(object sender, EventArgs e)
+		{
+			if (Opened != null)
+				Opened(sender, e);
 		}
 		
     	protected virtual TPopUpResult GetOnClosedValue()
