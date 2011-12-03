@@ -104,6 +104,15 @@
                                 Height="25" />
                         </StackPanel>
                     </StackPanel>
+                    
+                    <TextBlock>Disabled</TextBlock>
+                    <c4f:ColorSlider 
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal" 
+                        Height="50"
+                        Width="300"
+                        IsEnabled="False"
+                        ColorChanged="ColorHorizontalSlider_ColorChanged" />
                 </StackPanel>
             </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
@@ -29,6 +29,14 @@ namespace Coding4Fun.Phone.Controls
         public ColorSlider()
         {
             DefaultStyleKey = typeof(ColorSlider);
+
+            IsEnabledChanged += SuperSlider_IsEnabledChanged;
+            Loaded += ColorSlider_Loaded;
+        }
+
+        void ColorSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            IsEnabledVisualStateUpdate();
         }
 
         public override void OnApplyTemplate()
@@ -71,6 +79,11 @@ namespace Coding4Fun.Phone.Controls
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             AdjustLayoutBasedOnOrientation();
+        }
+
+        void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            IsEnabledVisualStateUpdate();
         }
 
         #region dependency properties
@@ -190,6 +203,11 @@ namespace Coding4Fun.Phone.Controls
 
             if(Slider != null)
                 Slider.Value = Color.GetHue();
+        }
+
+        private void IsEnabledVisualStateUpdate()
+        {
+            VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
         }
     }
 }

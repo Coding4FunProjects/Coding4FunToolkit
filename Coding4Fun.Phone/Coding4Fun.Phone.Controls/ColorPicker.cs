@@ -34,7 +34,14 @@ namespace Coding4Fun.Phone.Controls
             DefaultStyleKey = typeof (ColorPicker);
 
             SizeChanged += ColorPicker_SizeChanged;
+			IsEnabledChanged += ColorSlider_IsEnabledChanged;
+			Loaded += new RoutedEventHandler(ColorPicker_Loaded);
         }
+
+		void ColorPicker_Loaded(object sender, RoutedEventArgs e)
+		{
+			IsEnabledVisualStateUpdate();
+		}
 
         public override void OnApplyTemplate()
         {
@@ -75,6 +82,10 @@ namespace Coding4Fun.Phone.Controls
         }
 
         #region events
+		void ColorSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			IsEnabledVisualStateUpdate();
+		}
         void ColorSlider_ColorChanged(object sender, Color color)
         {
             UpdateSample();
@@ -148,7 +159,13 @@ namespace Coding4Fun.Phone.Controls
             SetSampleLocation();
         }
 
-        public object Thumb
+		private void IsEnabledVisualStateUpdate()
+		{
+			VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+		}
+
+		#region dependency properties
+		public object Thumb
         {
             get { return (object)GetValue(ThumbProperty); }
             set { SetValue(ThumbProperty, value); }
@@ -157,5 +174,6 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbProperty =
             DependencyProperty.Register("Thumb", typeof(object), typeof(ColorPicker), new PropertyMetadata(null));
-    }
+		#endregion
+	}
 }
