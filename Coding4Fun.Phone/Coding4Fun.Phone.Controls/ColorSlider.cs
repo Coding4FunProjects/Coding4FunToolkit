@@ -147,7 +147,7 @@ namespace Coding4Fun.Phone.Controls
 
             var isVert = Orientation == Orientation.Vertical;
 
-            Slider.Background = ColorSpace.GetGradientBrush(Orientation);
+			Slider.Background = IsEnabled ? ColorSpace.GetColorGradientBrush(Orientation) : ColorSpace.GetBlackAndWhiteGradientBrush(Orientation);
             
             Body.RowDefinitions.Clear();
             Body.ColumnDefinitions.Clear();

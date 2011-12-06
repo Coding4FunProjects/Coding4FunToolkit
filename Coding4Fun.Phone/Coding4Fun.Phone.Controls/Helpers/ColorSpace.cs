@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-// This is a modified version based on their ColorPicker sample by 
+// This is a modified version based on ColorPicker sample by 
 // Author: Page Brooks
 // Website: http://www.pagebrooks.com
 // RSS Feed: http://feeds.pagebrooks.com/pagebrooks
@@ -14,27 +14,48 @@ namespace Coding4Fun.Phone.Controls.Helpers
         private const byte MinValue = 0;
         private const byte MaxValue = 255;
         private const byte DefaultAlphaValue = 255;
-        const int GradientStops = 6;
-        const double NegatedGradientStops = 1 / (float)GradientStops;
 
-        public static LinearGradientBrush GetGradientBrush(Orientation orientation)
+		private static readonly Color[] ColorGradients = 
+			new[] {Color.FromArgb(255, 255, 0, 0),
+				Color.FromArgb(255, 255, 255, 0),
+				Color.FromArgb(255, 0, 255, 0),
+				Color.FromArgb(255, 0, 255, 255),
+				Color.FromArgb(255, 0, 0, 255),
+				Color.FromArgb(255, 255, 0, 255)};
+
+		// would like to have this computed 
+		// values are from using paint.net and 
+		// doing a black and white filter
+		private static readonly Color[] BlackAndWhiteGradients =
+			new[] {Color.FromArgb(255, 76, 76, 76),
+				Color.FromArgb(255, 225, 225, 225),
+				Color.FromArgb(255, 149, 149, 149),
+				Color.FromArgb(255, 178, 178, 178),
+				Color.FromArgb(255, 29, 29, 29),
+				Color.FromArgb(255, 105, 105, 105)};
+
+        public static LinearGradientBrush GetColorGradientBrush(Orientation orientation)
         {
-            var brush = new LinearGradientBrush();
+			return CreateGradientBrush(orientation, ColorGradients);
+        }
 
-            //<GradientStop Offset="0.00" Color="#ffff0000"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 0, Color = Color.FromArgb(255, 255, 0, 0) });
-            //<GradientStop Offset="0.166666" Color="#ffffff00"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 1, Color = Color.FromArgb(255, 255, 255, 0) });
-            //<GradientStop Offset="0.333333" Color="#ff00ff00"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 2, Color = Color.FromArgb(255, 0, 255, 0) });
-            //<GradientStop Offset="0.50" Color="#ff00ffff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 3, Color = Color.FromArgb(255, 0, 255, 255) });
-            //<GradientStop Offset="0.666666" Color="#ff0000ff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 4, Color = Color.FromArgb(255, 0, 0, 255) });
-            //<GradientStop Offset="0.833333" Color="#ffff00ff"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 5, Color = Color.FromArgb(255, 255, 0, 255) });
-            //<GradientStop Offset="1.00" Color="#ffff0000"/>
-            brush.GradientStops.Add(new GradientStop { Offset = NegatedGradientStops * 6, Color = Color.FromArgb(255, 255, 0, 0) });
+		public static LinearGradientBrush GetBlackAndWhiteGradientBrush(Orientation orientation)
+		{
+			return CreateGradientBrush(orientation, BlackAndWhiteGradients);
+		}
+
+		private static LinearGradientBrush CreateGradientBrush(Orientation orientation, params Color[] colors)
+		{
+		    var brush = new LinearGradientBrush();
+			var negatedStops = 1 / (float) colors.Length;
+
+			for (var i = 0; i < colors.Length; i++)
+			{
+				brush.GradientStops.Add(new GradientStop { Offset = negatedStops * i, Color = colors[i] });
+			}
+
+			// creating the full loop
+			brush.GradientStops.Add(new GradientStop { Offset = negatedStops * colors.Length, Color = colors[0] });
 
             if (orientation == Orientation.Vertical)
             {
@@ -48,12 +69,12 @@ namespace Coding4Fun.Phone.Controls.Helpers
 
             return brush;
         }
-
-        public static Color GetColorFromHueValue(float position)
+		
+    	public static Color GetColorFromHueValue(float position)
         {
             position /= 360f;
 
-            position *= GradientStops * 255;
+			position *= ColorGradients.Length * 255;  // I know there are 6 stops in the 
             var mod = (byte)(position % MaxValue);
             var diff = (byte)(MaxValue - mod);
             
