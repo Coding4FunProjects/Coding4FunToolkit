@@ -46,8 +46,9 @@
                     Step="{Binding TimeSpan10Min}"/>
                 
                 <TextBlock>Max 30min, Step 5 min</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker 
-                    Max="{Binding TimeSpan30Min}" 
+                <c4fSlToolkitExtender:TimeSpanPicker
+					Value="{Binding TimeSpan5Min}"
+					Max="{Binding TimeSpan30Min}" 
                     Step="{Binding TimeSpan5Min}"/>
                 <TextBlock>Set Language</TextBlock>
                 <Controls:WrapPanel>
