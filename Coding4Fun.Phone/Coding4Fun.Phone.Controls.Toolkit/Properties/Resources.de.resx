@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DateTimePickerCancelText" xml:space="preserve">
+  <data name="ValuePickerCancelText" xml:space="preserve">
     <value>abbrechen</value>
-    <comment>Default text for the "cancel" ApplicationBar button used by DatePicker/TimePicker.</comment>
+    <comment>Default text for the "cancel" ApplicationBar button used by ValuePicker.</comment>
   </data>
-  <data name="DateTimePickerDoneText" xml:space="preserve">
+  <data name="ValuePickerDoneText" xml:space="preserve">
     <value>bestätigen</value>
-    <comment>Default text for the "done" ApplicationBar button used by DatePicker/TimePicker.</comment>
+    <comment>Default text for the "done" ApplicationBar button used by ValuePicker.</comment>
   </data>
   <data name="HourName" xml:space="preserve">
     <value>stunde</value>

@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DateTimePickerCancelText" xml:space="preserve">
-    <value>취소</value>
-    <comment>Default text for the "cancel" ApplicationBar button used by DatePicker/TimePicker.</comment>
-  </data>
-  <data name="DateTimePickerDoneText" xml:space="preserve">
-    <value>완료</value>
-    <comment>Default text for the "done" ApplicationBar button used by DatePicker/TimePicker.</comment>
-  </data>
   <data name="HourName" xml:space="preserve">
     <value>시간</value>
   </data>
@@ -137,5 +129,13 @@
   </data>
   <data name="TimeSpanPickerTitle" xml:space="preserve">
     <value>선택 기간</value>
+  </data>
+  <data name="ValuePickerCancelText" xml:space="preserve">
+    <value>취소</value>
+    <comment>Default text for the "cancel" ApplicationBar button used by ValuePicker.</comment>
+  </data>
+  <data name="ValuePickerDoneText" xml:space="preserve">
+    <value>완료</value>
+    <comment>Default text for the "done" ApplicationBar button used by ValuePicker.</comment>
   </data>
 </root>

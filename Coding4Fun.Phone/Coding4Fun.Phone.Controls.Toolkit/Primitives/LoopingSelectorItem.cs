@@ -55,7 +55,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
             MouseLeftButtonDown += LoopingSelectorItem_MouseLeftButtonDown;
             MouseLeftButtonUp += LoopingSelectorItem_MouseLeftButtonUp;
             LostMouseCapture += LoopingSelectorItem_LostMouseCapture;
-            GestureService.GetGestureListener(this).Tap += LoopingSelectorItem_Tap;
+            Tap += LoopingSelectorItem_Tap;
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
         /// <returns>The current state.</returns>
         internal State GetState() { return _state; }
 
-        void LoopingSelectorItem_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
-        {
+		void LoopingSelectorItem_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+		{
             e.Handled = true;
         }
 

@@ -6,11 +6,12 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows;
-using Coding4Fun.Phone.Controls.Primitives;
-
 using System.Linq;
+using System.Windows;
+
+using Coding4Fun.Phone.Controls.Primitives;
 using Coding4Fun.Phone.Controls.Toolkit.Primitives;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.Controls.Toolkit
@@ -37,17 +38,17 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         {
             var stepSeconds = IncrementStep.Seconds;
             var maxSeconds = Max >= TimeSpan.FromMinutes(1) ? 60 : Math.Min(Max.Seconds + stepSeconds, 60);
-            TertiarySelector.DataSource = new SecondTSDataSource(maxSeconds, stepSeconds);
+            TertiarySelector.DataSource = new SecondTimeSpanDataSource(maxSeconds, stepSeconds);
 
             var stepMinutes = IncrementStep > TimeSpan.FromMinutes(1) ? IncrementStep.Minutes : 1;
             var maxMinutes = Max >= TimeSpan.FromHours(1) ? 60 : Math.Min(Max.Minutes + stepMinutes, 60);
-            SecondarySelector.DataSource = new MinuteTSDataSource(maxMinutes, stepMinutes);
+            SecondarySelector.DataSource = new MinuteTimeSpanDataSource(maxMinutes, stepMinutes);
 
             var stepHours = IncrementStep > TimeSpan.FromHours(1) ? IncrementStep.Hours : 1;
             var maxHours = Max >= TimeSpan.FromHours(24) ? 24 : Max.Hours + stepHours;
-            PrimarySelector.DataSource = new HourTSDataSource(maxHours, stepHours);
+            PrimarySelector.DataSource = new HourTimeSpanDataSource(maxHours, stepHours);
 
-            InitializeDateTimePickerPage(PrimarySelector, SecondarySelector, TertiarySelector);
+            InitializeValuePickerPage(PrimarySelector, SecondarySelector, TertiarySelector);
         }
 
 

@@ -57,23 +57,26 @@
     <Compile Include="Common\SafeRaise.cs" />
     <Compile Include="Common\TimeSpanFormat.cs" />
     <Compile Include="Common\Tuple.cs" />
-    <Compile Include="DateTimePickers\DataSource.cs" />
-    <Compile Include="DateTimePickers\DateTimePickerBase.cs" />
-    <Compile Include="DateTimePickers\DateTimePickerResources.cs" />
-    <Compile Include="DateTimePickers\DateTimeValueChangedEventArgs.cs" />
-    <Compile Include="DateTimePickers\ILoopingSelectorDataSource.cs" />
-    <Compile Include="DateTimePickers\ITimeSpanPickerPage.cs" />
-    <Compile Include="DateTimePickers\IValuePickerPage.cs" />
-    <Compile Include="DateTimePickers\TimeSpanPicker.cs" />
-    <Compile Include="DateTimePickers\TimeSpanPickerBasePage.cs" />
-    <Compile Include="DateTimePickers\TimespanPickerPage.xaml.cs">
-      <DependentUpon>TimespanPickerPage.xaml</DependentUpon>
+    <Compile Include="TimeSpanPicker\DataSource\MinuteTimeSpanDataSource.cs" />
+    <Compile Include="TimeSpanPicker\DataSource\HourTimeSpanDataSource.cs" />
+    <Compile Include="TimeSpanPicker\DataSource\SecondTimeSpanDataSource.cs" />
+    <Compile Include="ValuePickers\DataSource.cs" />
+    <Compile Include="ValuePickers\ValuePickerBase.cs" />
+    <Compile Include="ValuePickers\ValuePickerResources.cs" />
+    <Compile Include="ValuePickers\ValueChangedEventArgs.cs" />
+    <Compile Include="Primitives\ILoopingSelectorDataSource.cs" />
+    <Compile Include="TimeSpanPicker\ITimeSpanPickerPage.cs" />
+    <Compile Include="ValuePickers\IValuePickerPage.cs" />
+    <Compile Include="TimeSpanPicker\TimeSpanPicker.cs" />
+    <Compile Include="TimeSpanPicker\TimeSpanPickerBasePage.cs" />
+    <Compile Include="TimeSpanPicker\TimeSpanPickerPage.xaml.cs">
+      <DependentUpon>TimeSpanPickerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DateTimePickers\TimeSpanValueChangedEventArgs.cs" />
-    <Compile Include="DateTimePickers\TimeSpanWrapper.cs" />
-    <Compile Include="DateTimePickers\TsDataSource.cs" />
-    <Compile Include="DateTimePickers\ValuePickerBasePage.cs" />
-    <Compile Include="DateTimePickers\ValueWrapper.cs" />
+    <Compile Include="TimeSpanPicker\TimeSpanValueChangedEventArgs.cs" />
+    <Compile Include="TimeSpanPicker\TimeSpanWrapper.cs" />
+    <Compile Include="TimeSpanPicker\DataSource\TimeSpanDataSource.cs" />
+    <Compile Include="ValuePickers\ValuePickerBasePage.cs" />
+    <Compile Include="ValuePickers\ValueWrapper.cs" />
     <Compile Include="Primitives\LoopingSelector.cs" />
     <Compile Include="Primitives\LoopingSelectorItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,7 +112,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DateTimePickers\TimespanPickerPage.xaml">
+    <Page Include="TimeSpanPicker\TimeSpanPickerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -130,18 +133,22 @@
     <EmbeddedResource Include="Properties\Resources.it.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.it.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.kr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.kr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

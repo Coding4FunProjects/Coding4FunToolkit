@@ -7,7 +7,7 @@ using Coding4Fun.Phone.Controls.Toolkit.Common;
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
-    public class TimeSpanPicker : DateTimePickerBase<TimeSpan>
+    public class TimeSpanPicker : ValuePickerBase<TimeSpan>
     {
         /// <summary>
         /// Initializes a new instance of the TimePicker control.
@@ -15,10 +15,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         public TimeSpanPicker()
         {
             DefaultStyleKey = typeof(TimeSpanPicker);
+
             Value = TimeSpan.FromMinutes(30);
             Max = TimeSpan.FromHours(24);
             Step = TimeSpan.FromSeconds(1);
-			DialogTitle = DateTimePickerResources.TimeSpanPickerTitle;
+			DialogTitle = ValuePickerResources.TimeSpanPickerTitle;
+
         }
 
         protected internal override void UpdateValueString()
@@ -56,7 +58,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// Identifies the Max Property
         /// </summary>
         public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(
-            "Max", typeof(TimeSpan), typeof(DateTimePickerBase<TimeSpan>), null);
+            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), null);
 
 
         /// <summary>
@@ -72,27 +74,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// Identifies the Max Property
         /// </summary>
         public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
-            "Step", typeof(TimeSpan), typeof(DateTimePickerBase<TimeSpan>), null);
-
-
-        /// <summary>
-        /// Event that is invoked when the Value property changes.
-        /// </summary>
-        public event EventHandler<TimeSpanValueChangedEventArgs> ValueChanged;
-
-        /// <summary>
-        /// Called when the value changes.
-        /// </summary>
-        /// <param name="e">The event data.</param>
-        protected override void OnValueChanged(ValueChangedEventArgs<TimeSpan> e)
-        {
-            EventHandler<TimeSpanValueChangedEventArgs> handler = ValueChanged;
-            if (null != handler)
-            {
-                handler(this, new TimeSpanValueChangedEventArgs(e.OldValue.GetValueOrDefault(), e.NewValue.GetValueOrDefault()));
-            }
-        }
-
+            "Step", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), null);
 
         /// <summary>
         /// Initializes Value, Max, Step when vanigating to the new page

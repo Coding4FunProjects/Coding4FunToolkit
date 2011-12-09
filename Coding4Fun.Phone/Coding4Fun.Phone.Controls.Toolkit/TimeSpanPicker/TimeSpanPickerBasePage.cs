@@ -27,14 +27,16 @@ namespace Coding4Fun.Phone.Controls.Primitives
             set;
         }
 
-        /// <summary>
-        /// Value step as a TimeSpan
-        /// </summary>
-        public TimeSpan IncrementStep
-        {
-            get;
-            set;
-        }
+		/// <summary>
+		/// Value step as a TimeSpan
+		/// </summary>
+		public TimeSpan IncrementStep
+		{
+			get;
+			set;
+		}
+
+
 
         /// <summary>
         /// TimeSpan Value

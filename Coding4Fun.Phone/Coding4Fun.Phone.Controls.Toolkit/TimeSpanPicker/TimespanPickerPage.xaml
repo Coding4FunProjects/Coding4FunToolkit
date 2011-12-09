@@ -24,7 +24,7 @@
     mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480">
 
     <primitives:TimeSpanPickerBasePage.Resources>
-        <Controls:DateTimePickerResources x:Key="DateTimePickerResources"/>
+        <Controls:ValuePickerResources x:Key="TimeSpanPickerResources"/>
         <ExponentialEase x:Key="Ease" EasingMode="EaseIn"/>
     </primitives:TimeSpanPickerBasePage.Resources>
 
@@ -102,7 +102,7 @@
                                 FontFamily="{StaticResource PhoneFontFamilySemiBold}"
                                 Margin="0,-8"/>
                             <TextBlock
-                                Text="{Binding Source={StaticResource DateTimePickerResources}, Path=HourName}"
+                                Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=HourName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
                                 Foreground="{StaticResource PhoneSubtleBrush}"
@@ -130,7 +130,7 @@
                                 FontFamily="{StaticResource PhoneFontFamilySemiBold}"
                                 Margin="0,-8"/>
                             <TextBlock
-                                Text="{Binding Source={StaticResource DateTimePickerResources}, Path=MinuteName}"
+                                Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=MinuteName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
                                 Foreground="{StaticResource PhoneSubtleBrush}"
@@ -160,7 +160,7 @@
                                 Margin="0,-8"/>
 
                             <TextBlock
-                                Text="{Binding Source={StaticResource DateTimePickerResources}, Path=SecondName}"
+                                Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=SecondName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
                                 Foreground="{StaticResource PhoneSubtleBrush}"

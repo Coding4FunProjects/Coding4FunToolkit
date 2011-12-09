@@ -2,6 +2,7 @@
 {
     public interface ITimeSpanPickerPage<T> : IValuePickerPage<T> where T : struct
     {
+		//Value is in IValuePickerPage base
 
         /// <summary>
         /// The maximum of Value

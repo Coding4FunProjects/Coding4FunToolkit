@@ -21,8 +21,9 @@ namespace Coding4Fun.Phone.Controls.Primitives
         private const string VisibilityGroupName = "VisibilityStates";
         private const string OpenVisibilityStateName = "Open";
         private const string ClosedVisibilityStateName = "Closed";
-        private const string StateKey_Value = "DateTimePickerPageBase_State_Value";
-		private const string StateKey_DialogTitle = "DateTimePickerPageBase_State_DialogTitle";
+
+        private static readonly string StateKeyValue = "ValuePickerPageBase_State_Value" + typeof(T);
+		private static readonly string StateKeyDialogTitle = "ValuePickerPageBase_State_DialogTitle" + typeof(T);
 
         private LoopingSelector _primarySelectorPart;
         private LoopingSelector _secondarySelectorPart;
@@ -35,7 +36,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// <param name="primarySelector">Primary selector.</param>
         /// <param name="secondarySelector">Secondary selector.</param>
         /// <param name="tertiarySelector">Tertiary selector.</param>
-        protected void InitializeDateTimePickerPage(LoopingSelector primarySelector, LoopingSelector secondarySelector, LoopingSelector tertiarySelector)
+        protected void InitializeValuePickerPage(LoopingSelector primarySelector, LoopingSelector secondarySelector, LoopingSelector tertiarySelector)
         {
             if (null == primarySelector)
             {
@@ -89,7 +90,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
                             if ((ClosedVisibilityStateName == state.Name) && (null != state.Storyboard))
                             {
                                 _closedStoryboard = state.Storyboard;
-                                _closedStoryboard.Completed += HandleClosedStoryboardCompleted;
+                                _closedStoryboard.Completed += OnClosedStoryboardCompleted;
                             }
                         }
                     }
@@ -99,20 +100,22 @@ namespace Coding4Fun.Phone.Controls.Primitives
             // Customize the ApplicationBar Buttons by providing the right text
             if (null != ApplicationBar)
             {
-                foreach (object obj in ApplicationBar.Buttons)
+                foreach (var obj in ApplicationBar.Buttons)
                 {
                     var button = obj as IApplicationBarIconButton;
+
                     if (null != button)
                     {
-                        if ("DONE" == button.Text)
+                        switch (button.Text)
                         {
-                            button.Text = Toolkit.Properties.Resources.DateTimePickerDoneText;
-                            button.Click += HandleDoneButtonClick;
-                        }
-                        else if ("CANCEL" == button.Text)
-                        {
-                            button.Text = Toolkit.Properties.Resources.DateTimePickerCancelText;
-                            button.Click += HandleCancelButtonClick;
+                        	case "DONE":
+                        		button.Text = Toolkit.Properties.Resources.ValuePickerDoneText;
+                        		button.Click += OnDoneButtonClick;
+                        		break;
+                        	case "CANCEL":
+                        		button.Text = Toolkit.Properties.Resources.ValuePickerCancelText;
+                        		button.Click += OnCancelButtonClick;
+                        		break;
                         }
                     }
                 }
@@ -125,7 +128,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         private void HandleDataSourceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Push the selected item to all selectors
-             var dataSource = (Toolkit.DataSource<T>)sender;
+            var dataSource = (Toolkit.DataSource<T>)sender;
 
             _primarySelectorPart.DataSource.SelectedItem = dataSource.SelectedItem;
             _secondarySelectorPart.DataSource.SelectedItem = dataSource.SelectedItem;
@@ -143,7 +146,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
             }
         }
 
-        private void HandleDoneButtonClick(object sender, EventArgs e)
+        private void OnDoneButtonClick(object sender, EventArgs e)
         {
             // Commit the value and close
             Debug.Assert((_primarySelectorPart.DataSource.SelectedItem == _secondarySelectorPart.DataSource.SelectedItem) && (_secondarySelectorPart.DataSource.SelectedItem == _tertiarySelectorPart.DataSource.SelectedItem));
@@ -151,7 +154,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
             ClosePickerPage();
         }
 
-        private void HandleCancelButtonClick(object sender, EventArgs e)
+        private void OnCancelButtonClick(object sender, EventArgs e)
         {
             // Close without committing a value
             _value = null;
@@ -183,11 +186,11 @@ namespace Coding4Fun.Phone.Controls.Primitives
             }
             else
             {
-                HandleClosedStoryboardCompleted(null, null);
+                OnClosedStoryboardCompleted(null, null);
             }
         }
 
-        private void HandleClosedStoryboardCompleted(object sender, EventArgs e)
+        private void OnClosedStoryboardCompleted(object sender, EventArgs e)
         {
             // Close the picker page
             NavigationService.GoBack();
@@ -212,29 +215,35 @@ namespace Coding4Fun.Phone.Controls.Primitives
             {
                 throw new ArgumentNullException("pattern");
             }
+
             if (null == patternCharacters)
             {
                 throw new ArgumentNullException("patternCharacters");
             }
+
             if (null == selectors)
             {
                 throw new ArgumentNullException("selectors");
             }
+
             if (patternCharacters.Length != selectors.Length)
             {
                 throw new ArgumentException("Arrays must contain the same number of elements.");
             }
 
             // Create a list of index and selector pairs
-            var pairs = new List<Tuple<int, LoopingSelector>>(patternCharacters.Length);
-            pairs.AddRange(patternCharacters.Select((t, i) => new Tuple<int, LoopingSelector>(pattern.IndexOf(t), selectors[i])));
+			var pairs = new List<Tuple<int, LoopingSelector>>(patternCharacters.Length);
+			for (int i = 0; i < patternCharacters.Length; i++)
+			{
+				pairs.Add(new Tuple<int, LoopingSelector>(pattern.IndexOf(patternCharacters[i]), selectors[i]));
+			}
 
-            // Return the corresponding selectors in order
-            return pairs.Where(p => -1 != p.Item1).OrderBy(p => p.Item1).Select(p => p.Item2).Where(s => null != s);
+			// Return the corresponding selectors in order
+			return pairs.Where(p => -1 != p.Item1).OrderBy(p => p.Item1).Select(p => p.Item2).Where(s => null != s);
         }
 
         /// <summary>
-        /// Gets or sets the DateTime to show in the picker page and to set when the user makes a selection.
+        /// Gets or sets the Value to show in the picker page and to set when the user makes a selection.
         /// </summary>
         public virtual T? Value
         {
@@ -293,7 +302,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
             // Save Value if navigating away from application
             if ("app://external/" == e.Uri.ToString())
             {
-                State[StateKey_Value] = Value;
+                State[StateKeyValue] = Value;
             }
         }
 
@@ -301,37 +310,44 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// Called when a page becomes the active page in a frame.
         /// </summary>
         /// <param name="e">An object that contains the event data.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+		protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (null == e)
-            {
-                throw new ArgumentNullException("e");
-            }
-
-            base.OnNavigatedTo(e);
-            InitDataSource();
-            InitValue();
-
-            // Restore Value if returning to application (to avoid inconsistent state)
-            if (State.ContainsKey(StateKey_Value))
-            {
-                Value = State[StateKey_Value] as T?;
-
-                // Back out from picker page for consistency with behavior of core pickers in this scenario
-                if (NavigationService.CanGoBack)
-                {
-                    NavigationService.GoBack();
-                }
-            }
-
-			if(State.ContainsKey(StateKey_DialogTitle))
+        	if (null == e)
         	{
-				DialogTitle = State[StateKey_DialogTitle].ToString();
+        		throw new ArgumentNullException("e");
         	}
+
+        	base.OnNavigatedTo(e);
+
+        	var cancelInit = false;
+
+        	// Restore Value if returning to application (to avoid inconsistent state)
+        	if (State.ContainsKey(StateKeyValue))
+        	{
+        		Value = State[StateKeyValue] as T?;
+
+        		// Back out from picker page for consistency with behavior of core pickers in this scenario
+        		if (NavigationService.CanGoBack)
+        		{
+        			NavigationService.GoBack();
+        			cancelInit = true;
+        		}
+        	}
+
+        	if (State.ContainsKey(StateKeyDialogTitle))
+        	{
+        		DialogTitle = State[StateKeyDialogTitle].ToString();
+        	}
+
+        	if (cancelInit)
+				return;
+
+        	InitDataSource();
+        	InitValue();
         }
 
 
-        /// <summary>
+    	/// <summary>
         /// Hooks Datasources
         /// </summary>
         public abstract void InitDataSource();

@@ -1,12 +1,12 @@
 ﻿namespace Coding4Fun.Phone.Controls.Primitives
 {
     /// <summary>
-    /// Implements a wrapper for DateTime that provides formatted strings for DatePicker.
+    /// Implements a wrapper for value that provides formatted strings for ValuePicker.
     /// </summary>
     public abstract class ValueWrapper<T> where T : struct
     {
         /// <summary>
-        /// Gets the DateTime being wrapped.
+        /// Gets the value being wrapped.
         /// </summary>
         public T Value { get; private set; }
 

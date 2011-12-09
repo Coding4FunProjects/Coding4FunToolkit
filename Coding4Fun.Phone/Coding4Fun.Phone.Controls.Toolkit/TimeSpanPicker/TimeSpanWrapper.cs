@@ -4,7 +4,6 @@
 // All other rights reserved.
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Coding4Fun.Phone.Controls.Primitives
@@ -31,7 +30,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         {
             get
             {
-                return (TimeSpan)Value;
+                return Value;
             }
         }
 
@@ -72,12 +71,7 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// <summary>
         /// Initializes a new instance of the TimespanWrapper class.
         /// </summary>
-        /// <param name="dateTime">DateTime to wrap.</param>
-        public TimeSpanWrapper(TimeSpan dateTime)
-            : base(dateTime)
-        {
-        }
-
-
+        /// <param name="timeSpan">TimeSpan to wrap.</param>
+        public TimeSpanWrapper(TimeSpan timeSpan) : base(timeSpan) { }
     }
 }
