@@ -74,7 +74,7 @@
 					</Grid>
 				</StackPanel>
 			</ms:PivotItem>
-			<ms:PivotItem Header="Extras">
+			<ms:PivotItem Header="extras">
 				<StackPanel>
 					<c4f:SuperSlider 
 						Title="Slider with steps"
@@ -111,7 +111,7 @@
 						</c4f:SuperSlider.Thumb>
 					</c4f:SuperSlider>
 					<c4f:SuperSlider 
-						Padding="0"
+						Title="Disabled"
 						BarHeight="12"
 						Value="2"
 						IsEnabled="False" />
@@ -123,15 +123,11 @@
 						Toggle Vis
 					</Button>
 					<c4f:SuperSlider 
+						Title="We're testing visiblity!"
 						Name="sliderVisTest"
-						Step="1"
-						Padding="0"
-						Margin="12, 0"
 						BarHeight="24"
 						Value="10"
-						Minimum="5"
-						Maximum="15"
-						Visibility="Collapsed"/>
+						Visibility="Visible"/>
 				</StackPanel>
 			</ms:PivotItem>
 			<ms:PivotItem Header="vertical">
