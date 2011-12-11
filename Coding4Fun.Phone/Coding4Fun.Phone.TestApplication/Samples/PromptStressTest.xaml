@@ -28,27 +28,16 @@
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<TextBlock>System tray</TextBlock>
-			<StackPanel Orientation="Horizontal">
-				<Button Content="vis" Click="PromptVis_Click" />
-				<Button Content="!vis" Click="PromptNotVis_Click" />
-				<Button Content="vis w/ .8 opac" Click="PromptVisWithOpacity_Click" />
-			</StackPanel>
+			
 			<TextBlock>Nav</TextBlock>
 			<StackPanel Orientation="Horizontal">
 				<Button Content="Back" Click="back_Click" />
 				<Button Content="New pg" Click="newPage_Click" />
-				<Button Content="New Pg Btn" Click="newPageViaBodyButtn_Click" />
-			</StackPanel>
-			<TextBlock>Varients of toast</TextBlock>
-			<StackPanel Orientation="Horizontal">
-				<Button Content="Basic" Click="Toast_Click" />
-				<Button Content="Image" Click="ToastWithImg_Click" />
-				<Button Content="Advanced" Click="ToastAdvanced_Click" />
+				<Button Content="New Pg Btn" Click="NavToNewPageViaBodyButtonClick" />
 			</StackPanel>
             <TextBlock>Full Stress</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Mass toasts" Click="LargeToastCreation_Click" />
+                <Button Content="Mass toasts" Click="MassToastCreationClick" />
             </StackPanel>
             <TextBlock>Async calls</TextBlock>
             <StackPanel Orientation="Horizontal">

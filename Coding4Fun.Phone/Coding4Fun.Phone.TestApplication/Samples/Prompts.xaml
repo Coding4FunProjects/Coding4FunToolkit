@@ -6,8 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
@@ -15,78 +14,88 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+		<ms:Pivot Title="{StaticResource AppName}">
+			<ms:PivotItem Header="toast">
+				<StackPanel>
+					<TextBlock Text="basic" />
+					<StackPanel Orientation="Horizontal">
+						<Button Content="Base" Click="ToastBasicClick" />
+						<Button Content="Img" Click="ToastWithImgAndNoTitleClick" />
+						<Button Content="Img+title" Click="ToastWithImgAndTitleClick" />
+						<Button Content="Adv" Click="ToastAdvancedClick" />
+					</StackPanel>
+					
+					<TextBlock Text="with text wrap" />
+					<StackPanel Orientation="Horizontal">
+						<Button Content="Base" Click="ToastWrapBasicClick" />
+						<Button Content="Img" Click="ToastWrapWithImgAndNoTitleClick" />
+						<Button Content="Img+title" Click="ToastWrapWithImgAndTitleClick" />
+						<Button Content="Adv" Click="ToastWrapAdvancedClick" />
+					</StackPanel>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,0,0,0">
-            <TextBlock x:Name="PageTitle" Text="prompts" Margin="9,-24,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-		<Button 
-            Content="Stress Test" 
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right" 
-            Click="navToStress_Click" />
+					<TextBlock Text="test: system tray" />
+					<StackPanel Orientation="Horizontal">
+						<Button Content="vis" Click="ToastSysTrayVisClick" />
+						<Button Content="!vis" Click="ToastSysTrayNotVisClick" />
+						<Button Content="vis w/ .8 opac" Click="ToastSysTrayVisWithOpacityClick" />
+					</StackPanel>
+					<TextBlock Text="stress" />
+					<StackPanel>
+						<Button Content="Nav to stress page" Click="NavToToastStressClick" />
+					</StackPanel>
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="input">
+				<StackPanel>
+					<Button Content="Basic" Click="InputClick" />
+					<Button Content="No enter" Click="InputNoEnterClick" />
+					<Button Content="Advanced" Click="InputAdvancedClick" />
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="password">
+				<StackPanel>
+					<Button Content="Basic" Click="PasswordClick" />
+					<Button Content="No enter" Click="PasswordNoEnterClick" />
+					<Button Content="Advanced" Click="PasswordAdvancedClick" />
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="message">
+				<StackPanel>
+					<Button Content="Basic" Click="MessageClick" />
+					<Button Content="Advanced" Click="MessageAdvancedClick" />
+					<Button Content="Custom Button Actions" Click="MessageSuperClick" />
+					<Button Content="Custom Body" Click="MessageCustomClick" />
+					<TextBlock Text="test: system tray" />
+					<StackPanel Orientation="Horizontal">
+						<Button Content="vis" Click="MsgSysTrayVisClick" />
+						<Button Content="!vis" Click="MsgSysTrayNotVisClick" />
+						<Button Content="vis w/ .8 opac" Click="MsgSysTrayVisWithOpacityClick" />
+					</StackPanel>
+				</StackPanel>
+				
+			</ms:PivotItem>
+			<ms:PivotItem Header="about">
+				<StackPanel>
+					<Button Content="Blank" Click="AboutPromptBlankClick" />
+					<Button Content="Basic" Click="AboutPromptBasicClick" />
+					<Button Content="Long" Click="AboutPromptLongClick" />
+					<Button Content="Advanced" Click="AboutPromptC4FClick" />
+				</StackPanel>
+			</ms:PivotItem>
+		</ms:Pivot>
 		
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <TextBlock Text="Input Dialog Prompt" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Basic" Click="Input_Click" />
-                    <Button Content="No enter" Click="InputNoEnter_Click" />
-                    <Button Content="Advanced" Click="InputAdvanced_Click" />
-                </StackPanel>
-                <TextBlock Text="Password Input Dialog Prompt" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Basic" Click="Password_Click" />
-                    <Button Content="No enter" Click="PasswordNoEnter_Click" />
-                    <Button Content="Advanced" Click="PasswordAdvanced_Click" />
-                </StackPanel>
-                <TextBlock Text="Message Prompt" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Basic" Click="Message_Click" />
-                    <Button Content="Adv" Click="MessageAdvanced_Click" />
-                    <Button Content="Super" Click="MessageSuper_Click" />
-                    <Button Content="Custom" Click="MessageCustom_Click" />
-                </StackPanel>
-                
-                <TextBlock Text="Toast Prompt" />
-                <StackPanel Orientation="Horizontal">
-					<Button Content="Base" Click="Toast_Click" />
-					<Button Content="Img" Click="ToastWithImgAndNoTitle_Click" />
-                    <Button Content="Img+title" Click="ToastWithImg_Click" />
-                    <Button Content="Adv" Click="ToastAdvanced_Click" />
-                </StackPanel>
-                <TextBlock Text="Toast Prompt + Text Wrap" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Base" Click="ToastWrap_Click" />
-                    <Button Content="Img" Click="ToastWithImgAndNoTitleWrap_Click" />
-                    <Button Content="Img+title" Click="ToastWithImgWrap_Click" />
-                    <Button Content="Adv" Click="ToastAdvancedWrap_Click" />
-                </StackPanel>
-
-                <TextBlock Text="About Prompt" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Basic" Click="About_Click" />
-                    <Button Content="Advanced" Click="C4F_Click" />
-                </StackPanel>
-            </StackPanel>
-
-            <TextBlock
-                Name="resultBlock"
-                VerticalAlignment="Bottom" />
-            <Button 
-                HorizontalAlignment="Right"
-					VerticalAlignment="Bottom" 
-					Content="Click Event"
-                    Click="Ding_Click" 
-					Background="Red" 
-					BorderBrush="#FFD11E1E" />
-        </Grid>
-    </Grid>
+		<TextBlock
+			Name="resultBlock"
+			Text="result: ##"
+			VerticalAlignment="Bottom" />
+		<Button 
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom" 
+			Content="Click Event"
+			Click="Ding_Click" 
+			Background="Red" 
+			BorderBrush="#FFD11E1E" />
+	</Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
