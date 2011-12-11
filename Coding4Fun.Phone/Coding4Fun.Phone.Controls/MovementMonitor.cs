@@ -34,6 +34,8 @@ namespace Coding4Fun.Phone.Controls
                     X = _xOffsetStartValue + e.CumulativeManipulation.Translation.X,
                     Y = _yOffsetStartValue + e.CumulativeManipulation.Translation.Y
                 });
+
+			e.Handled = true;
         }
 
         void MonitorManipulationStarted(object sender, ManipulationStartedEventArgs e)
@@ -47,6 +49,8 @@ namespace Coding4Fun.Phone.Controls
                     X = _xOffsetStartValue,
                     Y = _yOffsetStartValue
                 });
+
+			e.Handled = true;
         }
     }
 }
