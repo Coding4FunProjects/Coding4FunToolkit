@@ -23,14 +23,18 @@ namespace Coding4Fun.Phone.Controls.Primitives
         private const string ClosedVisibilityStateName = "Closed";
 
         private static readonly string StateKeyValue = "ValuePickerPageBase_State_Value" + typeof(T);
-		private static readonly string StateKeyDialogTitle = "ValuePickerPageBase_State_DialogTitle" + typeof(T);
 
         private LoopingSelector _primarySelectorPart;
         private LoopingSelector _secondarySelectorPart;
         private LoopingSelector _tertiarySelectorPart;
         private Storyboard _closedStoryboard;
 
-        /// <summary>
+		protected ValuePickerBasePage()
+		{
+			DataContext = this;
+		}
+
+    	/// <summary>
         /// Initializes the ValuePickerPageBase class; must be called from the subclass's constructor.
         /// </summary>
         /// <param name="primarySelector">Primary selector.</param>
@@ -250,21 +254,27 @@ namespace Coding4Fun.Phone.Controls.Primitives
             get { return _value; }
             set
             {
-                _value = value;
-                var wrapper = GetNewWrapper(_value);
-
-                if (wrapper == null ||
-                    _primarySelectorPart == null ||
-                    _secondarySelectorPart == null ||
-                    _tertiarySelectorPart == null)
-                    return;
-
-                _primarySelectorPart.DataSource.SelectedItem = wrapper;
-                _secondarySelectorPart.DataSource.SelectedItem = wrapper;
-                _tertiarySelectorPart.DataSource.SelectedItem = wrapper;
+            	_value = value;
+            	SetDataSources();
             }
         }
-        /// <summary>
+
+    	private void SetDataSources()
+    	{
+			var wrapper = GetNewWrapper(Value);
+
+    		if (wrapper == null ||
+    		    _primarySelectorPart == null ||
+    		    _secondarySelectorPart == null ||
+    		    _tertiarySelectorPart == null)
+    			return;
+
+    		_primarySelectorPart.DataSource.SelectedItem = wrapper;
+    		_secondarySelectorPart.DataSource.SelectedItem = wrapper;
+    		_tertiarySelectorPart.DataSource.SelectedItem = wrapper;
+    	}
+
+    	/// <summary>
         /// private value
         /// </summary>
         private T? _value;
@@ -334,16 +344,11 @@ namespace Coding4Fun.Phone.Controls.Primitives
         		}
         	}
 
-        	if (State.ContainsKey(StateKeyDialogTitle))
-        	{
-        		DialogTitle = State[StateKeyDialogTitle].ToString();
-        	}
-
         	if (cancelInit)
 				return;
 
         	InitDataSource();
-        	InitValue();
+			SetDataSources();
         }
 
 
@@ -351,10 +356,5 @@ namespace Coding4Fun.Phone.Controls.Primitives
         /// Hooks Datasources
         /// </summary>
         public abstract void InitDataSource();
-
-        private void InitValue()
-        {
-            Value = Value.GetValueOrDefault();
-        }
     }
 }

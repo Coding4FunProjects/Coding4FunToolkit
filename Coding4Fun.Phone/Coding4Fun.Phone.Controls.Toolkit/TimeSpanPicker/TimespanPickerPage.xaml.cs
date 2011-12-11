@@ -27,8 +27,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         public TimeSpanPickerPage()
         {
             InitializeComponent();
-
-			DataContext = this;
         }
 
         /// <summary>

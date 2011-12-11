@@ -214,6 +214,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             {
                 // Hook up to necessary events and navigate
                 _frame = Application.Current.RootVisual as PhoneApplicationFrame;
+
                 if (null != _frame)
                 {
                     _frameContentWhenOpened = _frame.Content;
@@ -266,6 +267,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
                 _frame = null;
                 _frameContentWhenOpened = null;
             }
+
             // Commit the value if available
             if (null != _valuePickerPage)
             {
