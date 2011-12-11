@@ -11,9 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
-
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -23,39 +21,39 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,0">
-            <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="color hexagon" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="hexagon" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Margin="0,0,0, 12">
-                <TextBlock>Color Brightness Steps:</TextBlock>
                 <c4f:SuperSlider 
                     Name="colorBrightSteps"
-                    Height="12"
+					Title="color brightness steps"
+                    BarHeight="12"
                     Step="1"
                     Value="4"
                     Minimum="0"
                     Maximum="10" />
-                <TextBlock>Color Darkness Steps:</TextBlock>
                 <c4f:SuperSlider 
                     Name="colorDarkSteps"
-                    Height="12"
-                    Step="1"
+					Title="color darkness steps"
+                    BarHeight="12"
+					Step="1"
                     Value="2"
                     Minimum="0"
                     Maximum="10" />
-                <TextBlock>Grey Steps:</TextBlock>
                 <c4f:SuperSlider 
                     Name="greySteps"
-                    Height="12"
+					Title="grey steps"
+                    BarHeight="12"
                     Step="1"
                     Value="20"
                     Minimum="0"
                     Maximum="25" />
             </StackPanel>
-            <Grid Height="500" VerticalAlignment="Bottom">
+            <Grid VerticalAlignment="Bottom">
                 <c4f:ColorHexagonPicker 
                     Name="ColorControl" 
                     Color="Red"
