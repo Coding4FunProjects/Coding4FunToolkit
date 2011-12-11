@@ -10,13 +10,14 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
         public ColorPicker()
         {
             InitializeComponent();
+
             DataContext = this;
             Loaded += ColorPicker_Loaded;
         }
 
         void ColorPicker_Loaded(object sender, RoutedEventArgs e)
         {
-            ColorPickerOnLoadTest.Color = Colors.Blue;
+            ColorPickerOnLoadTest.Color = Colors.Magenta;
         }
 
         private void ColorPicker_ColorChanged(object sender, System.Windows.Media.Color color)
