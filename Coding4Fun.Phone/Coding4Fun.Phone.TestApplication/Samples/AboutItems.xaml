@@ -19,7 +19,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
 		<ms:Pivot Title="{StaticResource AppName}">
 			<ms:PivotItem Header="static">
-				<Grid>
+				<Grid Margin="-12, 0">
 					<c4f:AboutPrompt 
 		                IsPromptMode="False">
 						<c4f:AboutPrompt.Body>
