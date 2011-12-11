@@ -3,52 +3,331 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+	xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+	xmlns:c4fBinding="clr-namespace:Coding4Fun.Phone.Controls.Binding;assembly=Coding4Fun.Phone.Controls"
+	xmlns:sltoolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+	<phone:PhoneApplicationPage.Resources>
+		<Storyboard 
+            x:Name="trexStoryboard" 
+            AutoReverse="True" 
+            RepeatBehavior="Forever"  >
+			<DoubleAnimationUsingKeyFrames 
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0:0:1"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:36" Value="-307"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:37" Value="-307" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</phone:PhoneApplicationPage.Resources>
+	<!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+		<ms:Pivot 
+			Name="ButtonPivot"
+			Title="{StaticResource AppName}" SelectionChanged="PivotSelectionChanged">
+			<ms:PivotItem Header="round">
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<c4f:RoundButton
+							Click="RoundButtonBasicClick">
+							Basic
+						</c4f:RoundButton>
+						<c4f:RoundButton
+							FontSize="18"
+							Content="Coding"
+							BorderBrush="CornflowerBlue" />
+						<c4f:RoundButton
+							FontSize="48"
+							Content="4"
+							Background="CornflowerBlue" />
+						<c4f:RoundButton 
+							Foreground="CornflowerBlue"
+							FontSize="36"
+							Content="Fun" />
+						<c4f:RoundButton 
+							ImageSource="{Binding RoundButtonImage}"
+							Content="toggle img" 
+							Click="ToggleRoundButtonImageClick" />
+					</StackPanel>
+					<c4f:RoundButton 
+							Orientation="Horizontal"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="horizontal text" />
+					<TextBlock Margin="0, 24, 0, 0">Disabled</TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<c4f:RoundButton
+							IsEnabled="False"
+							Click="RoundButtonBasicClick">
+							Basic
+						</c4f:RoundButton>
+						<c4f:RoundButton
+							IsEnabled="False"
+							FontSize="18"
+							Content="Coding"
+							BorderBrush="CornflowerBlue" />
+						<c4f:RoundButton
+							IsEnabled="False"
+							FontSize="48"
+							Content="4"
+							Background="CornflowerBlue" />
+						<c4f:RoundButton 
+							IsEnabled="False"
+							Foreground="CornflowerBlue"
+							FontSize="36"
+							Content="Fun" />
+						<c4f:RoundButton 
+							IsEnabled="False"
+							ImageSource="{Binding RoundButtonImage}"
+							Content="toggle img" 
+							Click="ToggleRoundButtonImageClick" />
+					</StackPanel>
+					<c4f:RoundButton 
+						IsEnabled="False"
+							Orientation="Horizontal"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="horizontal text" />
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+					<TextBlock Margin="0, 24, 0, 0">System buttons as a base</TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<Button
+	                        Content="basic" />
+						<Button
+		                    BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+							properties
+						</Button>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<Button
+							IsEnabled="False"
+							Content="basic" />
+						<Button
+							IsEnabled="False"
+							BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+							properties
+						</Button>
+					</StackPanel>
+				</StackPanel>
+			</ms:PivotItem>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="button controls" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+			<ms:PivotItem Header="toggle">
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<c4f:RoundToggleButton
+							Click="RoundButtonBasicClick">
+							Basic
+						</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton
+							FontSize="18"
+							Content="Coding"
+							BorderBrush="CornflowerBlue" />
+						<c4f:RoundToggleButton
+							FontSize="48"
+							Content="4"
+							Background="CornflowerBlue" />
+						<c4f:RoundToggleButton 
+							Foreground="CornflowerBlue"
+							FontSize="36"
+							Content="Fun" />
+						<c4f:RoundToggleButton 
+							ImageSource="{Binding RoundButtonImage}"
+							Content="toggle img" 
+							Click="ToggleRoundButtonImageClick" />
+					</StackPanel>
+					<c4f:RoundToggleButton 
+							Orientation="Horizontal"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="horizontal text" />
+					<TextBlock Margin="0, 24, 0, 0">Disabled</TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<c4f:RoundToggleButton
+							IsEnabled="False"
+							Click="RoundButtonBasicClick">
+							Basic
+						</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton
+							IsEnabled="False"
+							FontSize="18"
+							Content="Coding"
+							BorderBrush="CornflowerBlue" />
+						<c4f:RoundToggleButton
+							IsEnabled="False"
+							FontSize="48"
+							Content="4"
+							Background="CornflowerBlue" />
+						<c4f:RoundToggleButton
+							IsEnabled="False"
+							Foreground="CornflowerBlue"
+							FontSize="36"
+							Content="Fun" />
+						<c4f:RoundToggleButton 
+							IsEnabled="False"
+							ImageSource="{Binding RoundButtonImage}"
+							Content="toggle img" 
+							Click="ToggleRoundButtonImageClick" />
+					</StackPanel>
+					<c4f:RoundToggleButton 
+						IsEnabled="False"
+						Orientation="Horizontal"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Content="horizontal text" />
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ScrollViewer>
-                <StackPanel>
-                    <Button Content="Round Buttons" Click="RoundButtons_Click" />
-                    <Button Content="Round Toggle Buttons" Click="RoundToggleButtons_Click" />
-                    <Button Content="Tiles" Click="Tiles_Click" />
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
-    </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-			<shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-			<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+					<TextBlock Margin="0, 24, 0, 0">System buttons as a base</TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<ToggleButton
+	                        Content="basic" />
+						<ToggleButton
+		                    BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+							properties
+						</ToggleButton>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<ToggleButton
+							IsEnabled="False"
+							Content="basic" />
+						<ToggleButton
+							IsEnabled="False"
+							BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+							properties
+						</ToggleButton>
+					</StackPanel>
+				</StackPanel>
+			</ms:PivotItem>
+			
+			<ms:PivotItem 
+				Header="tile"
+				Tag="tile"
+				sltoolkit:TiltEffect.IsTiltEnabled="True">
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<c4f:Tile 
+                            Margin="0, 0, 12, 0"
+                            Width="173"
+                            Height="173"
+                            Title="Click Me"
+							Click="TileClick">
+							<Grid>
+								<Image 
+                                    Source="/Coding4Fun.Phone.TestApplication;component/Media/headWhite_100.png" 
+                                    Stretch="None" />
+								<c4f:TileNotification 
+                                    Content="99" />
+							</Grid>
+						</c4f:Tile>
+						<c4f:Tile 
+                            Margin="0, 0, 12, 0"
+                            Width="173"
+                            Height="173"
+                            TextWrapping="Wrap"
+                            Title="Testing Text Wrapping">
+							<Image 
+                                Source="/Coding4Fun.Phone.TestApplication;component/Media/head.png" 
+                                Width="100"
+                                Height="100"/>
+						</c4f:Tile>
+					</StackPanel>
+					<c4f:Tile 
+                        HorizontalAlignment="Left"
+                        Margin="0, 12"
+                        Width="358"
+                        Height="173"
+                        c4fBinding:FrameworkElementBinding.ClipToBounds="True"
+                        Title="Coding4Fun Phone Toolkit">
+						<Grid>
+							<Canvas>
+								<Image 
+					                x:Name="image" 
+	        		                Source="/Coding4Fun.Phone.TestApplication;component/Media/trex_360width.jpg" 
+	        		                Stretch="None">
+									<Image.RenderTransform>
+										<CompositeTransform />
+									</Image.RenderTransform>
+								</Image>
+							</Canvas>
+							<c4f:TileNotification
+                                Padding="18, 0"
+                                Background="{StaticResource PhoneAccentBrush}">
+								<TextBlock>rawr?</TextBlock>
+								<!-- in 7.1, you can skip the need for TextBlock -->
+							</c4f:TileNotification>
+						</Grid>
+					</c4f:Tile>
+
+					<c4f:Tile 
+                        Height="100"
+                        Title="Coding4Fun Phone Toolkit">
+						<Grid>
+							<StackPanel 
+                                Orientation="Horizontal" 
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Margin="12, 0">
+								<TextBlock VerticalAlignment="Bottom">
+									<Run>Fri</Run>
+									<Run 
+										FontSize="54"
+										FontWeight="Bold"
+										FontFamily="{StaticResource PhoneFontFamilySemiBold}">
+										15
+									</Run>
+								</TextBlock>
+							</StackPanel>
+							<c4f:TileNotification
+                                Padding="0"
+                                Background="Transparent"
+                                HorizontalAlignment="Left">
+								<StackPanel Orientation="Horizontal">
+									<Image 
+                                        Height="35"
+                                        Stretch="Uniform"
+                                        Source="/Coding4Fun.Phone.TestApplication;component/Media/icons/appbar.share.rest.png" />
+									<TextBlock 
+                                        VerticalAlignment="Center">
+										Birthday
+									</TextBlock>
+								</StackPanel>
+							</c4f:TileNotification>
+						</Grid>
+					</c4f:Tile>
+					<c4f:Tile 
+                        Margin="0, 12"
+                        Height="100"
+                        Background="Orange"
+                        c4fBinding:FrameworkElementBinding.ClipToBounds="True"
+                        FontSize="28"
+                        Foreground="{StaticResource PhoneChromeBrush}"
+                        Title="Coding4Fun Phone Toolkit">
+						<Image 
+                            HorizontalAlignment="Right"
+                            Source="/Coding4Fun.Phone.TestApplication;component/Media/headWhite.png" 
+                            Stretch="Uniform" 
+                            Height="150"
+                            Width="150"
+                            Margin="0, -25, -28, 0" />
+					</c4f:Tile>
+				</StackPanel>
+			</ms:PivotItem>
+		</ms:Pivot>
+		<Button 
+            Content="Toggle background" 
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right" 
+            Click="ToggleBackgroundClick" />
+	</Grid>
 
 </phone:PhoneApplicationPage>

@@ -48,6 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\Dependencies\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
@@ -98,6 +99,9 @@
     </Compile>
     <Compile Include="Samples\Overlays.xaml.cs">
       <DependentUpon>Overlays.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PivotPage1.xaml.cs">
+      <DependentUpon>PivotPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Prompts.xaml.cs">
       <DependentUpon>Prompts.xaml</DependentUpon>
@@ -162,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Overlays.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PivotPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
