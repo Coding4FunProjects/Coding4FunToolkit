@@ -3,70 +3,58 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:c4fSlToolkitExtender="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
     xmlns:Controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+		<ms:Pivot Title="{StaticResource AppName}">
+			<ms:PivotItem Header="base">
+				<StackPanel>
+					<TextBlock>stock</TextBlock>
+					<c4fSlToolkitExtender:TimeSpanPicker />
+					
+					<TextBlock>custom format</TextBlock>
+					<c4fSlToolkitExtender:TimeSpanPicker
+						Name="foo"
+						ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
+						/>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,5,0,12">
-			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="timespan" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+					<TextBlock>Max 2 hours, Steps 10 min, custom title</TextBlock>
+					<c4fSlToolkitExtender:TimeSpanPicker
+						DialogTitle="coding4fun timespan picker"
+						Max="{Binding TimeSpan2Hour}" 
+						Step="{Binding TimeSpan10Min}"/>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <TextBlock>stock</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker />
-				<TextBlock>Basic</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker
-                    Name="foo"
-                    ValueStringFormat="{}{0:hh} - {0:mm} - {0:ss}"
-                    />
-                   
-                <TextBlock>Max 2 hours, Steps 10 min, custom title</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker
-					DialogTitle="coding4fun timespan picker"
-                    Max="{Binding TimeSpan2Hour}" 
-                    Step="{Binding TimeSpan10Min}"/>
-                
-                <TextBlock>Max 30min, Step 5 min</TextBlock>
-                <c4fSlToolkitExtender:TimeSpanPicker
-					Value="{Binding TimeSpan5Min}"
-					Max="{Binding TimeSpan30Min}" 
-                    Step="{Binding TimeSpan5Min}"/>
-                <TextBlock>Set Language</TextBlock>
-                <Controls:WrapPanel>
-                    <Button Content="en-US" Click="SetLanguage_Click"/>
-                    <Button Content="de-DE" Click="SetLanguage_Click" />
-                    <Button Content="es-ES" Click="SetLanguage_Click" />
-                    <Button Content="fr-FR" Click="SetLanguage_Click" />
-                    <Button Content="it-IT" Click="SetLanguage_Click" />
-                </Controls:WrapPanel>
-            </StackPanel>
-        </Grid>
+					<TextBlock>Max 30min, Step 5 min</TextBlock>
+					<c4fSlToolkitExtender:TimeSpanPicker
+						Value="{Binding TimeSpan5Min}"
+						Max="{Binding TimeSpan30Min}" 
+						Step="{Binding TimeSpan5Min}"/>
+
+					<Button Click="LaunchPickerClick">Launch Via OpenPicker()</Button>
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="set lang">
+				<StackPanel>
+					<TextBlock>Set Language</TextBlock>
+					<Controls:WrapPanel>
+						<Button Content="en-US" Click="SetLanguage_Click"/>
+						<Button Content="de-DE" Click="SetLanguage_Click" />
+						<Button Content="es-ES" Click="SetLanguage_Click" />
+						<Button Content="fr-FR" Click="SetLanguage_Click" />
+						<Button Content="it-IT" Click="SetLanguage_Click" />
+					</Controls:WrapPanel>
+				</StackPanel>
+			</ms:PivotItem>
+		</ms:Pivot>
     </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="false">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1" Click="ApplicationBarIconButton_Click" />
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
 </phone:PhoneApplicationPage>

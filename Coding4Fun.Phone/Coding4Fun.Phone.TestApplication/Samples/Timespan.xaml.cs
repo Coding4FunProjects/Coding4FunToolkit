@@ -16,7 +16,6 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             foo.Value = TimeSpan5Min;
         }
 
-
         public TimeSpan TimeSpan5Min { get { return TimeSpan.FromMinutes(5); } }
         public TimeSpan TimeSpan10Min { get { return TimeSpan.FromMinutes(10); } }
         public TimeSpan TimeSpan30Min { get { return TimeSpan.FromMinutes(30); } }
@@ -37,9 +36,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             }
         }
 
-        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
-        {
-            foo.OpenPicker();
-        }
+		private void LaunchPickerClick(object sender, System.Windows.RoutedEventArgs e)
+		{
+			foo.OpenPicker();
+		}
     }
 }

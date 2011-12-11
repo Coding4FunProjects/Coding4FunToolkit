@@ -494,21 +494,20 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 
 			_additionalItemsCount = (int)Math.Round((ActualHeight * 1.5) / actualItemHeight);
 
-			LoopingSelectorItem closestToMiddle = null;
-			int closestToMiddleIndex = -1;
+			LoopingSelectorItem closestToMiddle;
 
 			if (_itemsPanel.Children.Count == 0)
 			{
 				// We need to get the selection and start from there
-				closestToMiddleIndex = 0;
 				_selectedItem = closestToMiddle = CreateAndAddItem(_itemsPanel, DataSource.SelectedItem);
+
 				closestToMiddle.Transform.Y = -actualItemHeight / 2;
 				closestToMiddle.Transform.X = (ActualWidth - actualItemWidth) / 2;
 				closestToMiddle.SetState(LoopingSelectorItem.State.Selected, false);
 			}
 			else
 			{
-				closestToMiddleIndex = GetClosestItem();
+				int closestToMiddleIndex = GetClosestItem();
 				closestToMiddle = (LoopingSelectorItem)_itemsPanel.Children[closestToMiddleIndex];
 			}
 
@@ -524,10 +523,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				while (itemsBeforeCount < _additionalItemsCount)
 				{
 					object newData = DataSource.GetPrevious(firstItem.DataContext);
+
 					if (newData == null)
 					{
 						// There may be room to display more items, but there is no more data.
 						_maximumPanelScroll = -firstItem.Transform.Y - actualItemHeight / 2;
+
 						if (_isAnimating && _panelAnimation.To.Value > _maximumPanelScroll)
 						{
 							Brake(_maximumPanelScroll);
