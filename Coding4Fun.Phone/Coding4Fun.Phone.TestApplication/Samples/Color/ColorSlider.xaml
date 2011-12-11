@@ -6,114 +6,116 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+		<ms:Pivot Title="{StaticResource AppName}">
+			<ms:PivotItem Header="horizontal">
+				<StackPanel>
+					<c4f:ColorSlider 
+						x:Name="ColorSliderHorizontal"
+						Orientation="Horizontal" 
+						Height="48"
+						ColorChanged="ColorHorizontalSlider_ColorChanged" />
+					<StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<StackPanel Margin="12">
+								<TextBlock>Via Binding:</TextBlock>
+								<Rectangle 
+                                Height="25"
+                                Fill="{Binding ElementName=ColorSliderHorizontal, Path=SolidColorBrush}" />
+							</StackPanel>
+							<StackPanel Margin="12">
+								<TextBlock>Via Event:</TextBlock>
+								<Rectangle 
+                                Name="ColorSliderHorizontalFromEvent"
+                                Height="25" />
+							</StackPanel>
+						</StackPanel>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="color slider" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+						<TextBlock  Margin="0, 24, 0, 0">Slider position set via Event and custom thumb:</TextBlock>
+						<c4f:ColorSlider 
+							Name="ColorSliderSetViaEvent"
+							Orientation="Horizontal" 
+							Height="48">
+							<c4f:ColorSlider.Thumb>
+								<Ellipse 
+									Fill="Red"
+									Width="12" />
+							</c4f:ColorSlider.Thumb>
+						</c4f:ColorSlider>
+					</StackPanel>
+				</StackPanel>
+			</ms:PivotItem>
 
-        <!--ContentPanel - place additional content here-->
+			<ms:PivotItem Header="vertical">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+				
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+						<c4f:ColorSlider 
+							Width="48"
+							Margin="12, 0"
+							x:Name="ColorSliderVertical" 
+							ColorChanged="ColorVerticalSlider_ColorChanged" />
+
+						<c4f:ColorSlider 
+							Width="48"
+							x:Name="ColorSliderVerticalClone" />
+					</StackPanel>
+					<StackPanel 
+						Grid.Row="1"
+						VerticalAlignment="Bottom"
+						Orientation="Horizontal">
+						<StackPanel Margin="12">
+							<TextBlock>Via Binding:</TextBlock>
+							<Rectangle 
+								Height="25"
+								Fill="{Binding ElementName=ColorSliderVertical, Path=SolidColorBrush}" />
+						</StackPanel>
+						<StackPanel Margin="12">
+							<TextBlock>Via Event:</TextBlock>
+							<Rectangle 
+								Name="ColorSliderVerticalFromEvent"
+								Height="25" />
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+			</ms:PivotItem>
+			<ms:PivotItem Header="extra">
+				<StackPanel >
+					<TextBlock>Color Set to Fuchsia:</TextBlock>
+					<c4f:ColorSlider 
+						Color="Fuchsia"
+						Orientation="Horizontal" 
+						Height="48" />
+					
+					<TextBlock Margin="0, 24, 0, 0">Disabled</TextBlock>
+					<c4f:ColorSlider 
+                        Orientation="Horizontal" 
+                        Height="48"
+                        IsEnabled="False"
+                        ColorChanged="ColorHorizontalSlider_ColorChanged" />
+				</StackPanel>
+			</ms:PivotItem>
+		</ms:Pivot>
+		<!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel>
-                <c4f:ColorSlider 
-                    x:Name="ColorSliderHorizontal"
-                    Orientation="Horizontal" 
-                    Height="50"
-                    ColorChanged="ColorHorizontalSlider_ColorChanged" />
-                <StackPanel>
-                    <TextBlock>Horizontal Slider:</TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="12">
-                            <TextBlock>Via Binding:</TextBlock>
-                            <Rectangle 
-                                Height="25"
-                                Fill="{Binding ElementName=ColorSliderHorizontal, Path=SolidColorBrush}" />
-                        </StackPanel>
-                        <StackPanel Margin="12">
-                            <TextBlock>Via Event:</TextBlock>
-                            <Rectangle 
-                                Name="ColorSliderHorizontalFromEvent"
-                                Height="25" />
-                        </StackPanel>
-                    </StackPanel>
-                    <TextBlock>Slider position set via Color and custom thumb:</TextBlock>
-                    <c4f:ColorSlider 
-                        Name="ColorSliderSetViaColor"
-                        Orientation="Horizontal" 
-                        Height="50">
-                        <c4f:ColorSlider.Thumb>
-                            <Ellipse 
-                                Fill="Red"
-                                Width="12" />
-                        </c4f:ColorSlider.Thumb>
-                    </c4f:ColorSlider>
-                    <TextBlock>Color Set to Purple:</TextBlock>
-                    <c4f:ColorSlider 
-                        Color="Purple"
-                        Orientation="Horizontal" 
-                        Height="50" />
-                </StackPanel>
-            </StackPanel>
+            
             <Grid Grid.Row="1" Margin="0, 12, 0, 0">
-                <StackPanel 
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-                    <c4f:ColorSlider 
-                        Width="50"
-                        Margin="12, 0"
-                        x:Name="ColorSliderVertical" 
-                        ColorChanged="ColorVerticalSlider_ColorChanged" />
-
-                    <c4f:ColorSlider 
-                        Width="50"
-                        x:Name="ColorSliderVerticalClone" />
-                </StackPanel>
                 
-                <StackPanel >
-                    <TextBlock>Vertical Slider:</TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="12">
-                            <TextBlock>Via Binding:</TextBlock>
-                            <Rectangle 
-                                    Height="25"
-                                    Fill="{Binding ElementName=ColorSliderVertical, Path=SolidColorBrush}" />
-                        </StackPanel>
-                        <StackPanel Margin="12">
-                            <TextBlock>Via Event:</TextBlock>
-                            <Rectangle 
-                                Name="ColorSliderVerticalFromEvent"
-                                Height="25" />
-                        </StackPanel>
-                    </StackPanel>
-                    
-                    <TextBlock>Disabled</TextBlock>
-                    <c4f:ColorSlider 
-                        HorizontalAlignment="Left"
-                        Orientation="Horizontal" 
-                        Height="50"
-                        Width="300"
-                        IsEnabled="False"
-                        ColorChanged="ColorHorizontalSlider_ColorChanged" />
-                </StackPanel>
             </Grid>
         </Grid>
     </Grid>
