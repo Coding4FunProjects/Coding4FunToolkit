@@ -4,8 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using Microsoft.Phone.Controls;
-
 namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 {
     /// <summary>
