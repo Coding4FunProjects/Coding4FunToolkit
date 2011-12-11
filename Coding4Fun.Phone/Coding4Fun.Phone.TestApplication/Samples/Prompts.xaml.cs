@@ -15,9 +15,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 {
     public partial class Prompts : PhoneApplicationPage
     {
-        private readonly SolidColorBrush _pumpkin = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 117, 24));
-        private readonly SolidColorBrush _lime = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 255, 0));
-        private readonly SolidColorBrush _cornFlowerBlue = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
+		private readonly SolidColorBrush _aliceBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 240, 248, 255));
+		private readonly SolidColorBrush _naturalBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 135, 189));
+		private readonly SolidColorBrush _cornFlowerBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
 
         const string ToastLongMsg = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
         
@@ -138,8 +138,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 			var toast =  new ToastPrompt
 			{
 				IsAppBarVisible = false,
-				Background = _lime,
-				Foreground = _pumpkin,
+				Background = _aliceBlueSolidColorBrush,
+				Foreground = _cornFlowerBlueSolidColorBrush,
 				Title = "Advanced",
 				Message = "Custom Fontsize, img, and orientation",
 				FontSize = 50,
@@ -241,9 +241,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 									{
 										Title = "TelephoneNum",
 										Message = "I'm a message about Telephone numbers!",
-										Background = _lime,
-										Foreground = _pumpkin,
-										Overlay = _cornFlowerBlue,
+										Background = _naturalBlueSolidColorBrush,
+										Foreground = _aliceBlueSolidColorBrush,
+										Overlay = _cornFlowerBlueSolidColorBrush,
 										IsCancelVisible = true,
 										InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } },
 										Value = "doom"
@@ -288,9 +288,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
                             {
                                 Title = "TelephoneNum",
                                 Message = "I'm a message about Telephone numbers!",
-                                Background = _lime,
-                                Foreground = _pumpkin,
-                                Overlay = _cornFlowerBlue,
+								Background = _naturalBlueSolidColorBrush,
+								Foreground = _aliceBlueSolidColorBrush,
+								Overlay = _cornFlowerBlueSolidColorBrush,
                                 IsCancelVisible = true
                             };
 
@@ -320,7 +320,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             {
                 Title = "Advanced Message",
                 Message = "When complete, i'll navigate back",
-                Overlay = _cornFlowerBlue,
+                Overlay = _cornFlowerBlueSolidColorBrush,
                 IsCancelVisible = true
             };
 
@@ -334,9 +334,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var messagePrompt = new MessagePrompt
                                     {
                                         Title = "Custom Body Message",
-                                        Background = _lime,
-                                        Foreground = _pumpkin,
-                                        Overlay = _cornFlowerBlue,
+										Background = _naturalBlueSolidColorBrush,
+										Foreground = _aliceBlueSolidColorBrush,
+										Overlay = _cornFlowerBlueSolidColorBrush,
                                         IsCancelVisible = true,
                                         
                                     };
@@ -356,9 +356,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             var messagePrompt = new MessagePrompt
                                     {
                                         Title = "Advanced Message",
-                                        Background = _lime,
-                                        Foreground = _pumpkin,
-                                        Overlay = _cornFlowerBlue,
+										Background = _naturalBlueSolidColorBrush,
+										Foreground = _aliceBlueSolidColorBrush,
+										Overlay = _cornFlowerBlueSolidColorBrush,
                                     };
 
             var btnHide = new RoundButton { Content = "Hide" };
