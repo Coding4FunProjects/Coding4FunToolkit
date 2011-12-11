@@ -4,9 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using Coding4Fun.Phone.Controls;
-using Coding4Fun.Phone.TestApplication.Samples.ButtonSamples;
-
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples

@@ -70,15 +70,6 @@
     <Compile Include="Samples\AboutItems.xaml.cs">
       <DependentUpon>AboutItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\ButtonSamples\RoundButtons.xaml.cs">
-      <DependentUpon>RoundButtons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\ButtonSamples\RoundToggleButtons.xaml.cs">
-      <DependentUpon>RoundToggleButtons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\ButtonSamples\Tiles.xaml.cs">
-      <DependentUpon>Tiles.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
     </Compile>
@@ -99,9 +90,6 @@
     </Compile>
     <Compile Include="Samples\Overlays.xaml.cs">
       <DependentUpon>Overlays.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\PivotPage1.xaml.cs">
-      <DependentUpon>PivotPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Prompts.xaml.cs">
       <DependentUpon>Prompts.xaml</DependentUpon>
@@ -126,18 +114,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\AboutItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\ButtonSamples\RoundButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\ButtonSamples\RoundToggleButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\ButtonSamples\Tiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,10 +142,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Overlays.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Samples\PivotPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
