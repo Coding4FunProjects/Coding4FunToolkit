@@ -7,7 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -16,172 +17,180 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="SAMPLES" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="super slider" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackPanel>
-                <c4f:SuperSlider 
-                    Name="ResultSlider"
-					Title="Base Slider"
-					BarHeight="24"
-                    Value="2"
-                    ValueChanged="ResultSlider_ValueChanged"/>
-                <Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
-                    <StackPanel 
+		<ms:Pivot Title="{StaticResource AppName}">
+			<ms:PivotItem Header="base">
+				<StackPanel>
+					<c4f:SuperSlider 
+						Name="ResultSlider"
+						Title="Base Slider"
+						BarHeight="24"
+						Value="2"
+						ValueChanged="ResultSlider_ValueChanged"/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<StackPanel 
 						Grid.Column="0" 
 						Orientation="Horizontal">
-                        <TextBlock Margin="12, 0">Via Binding:</TextBlock>
-                        <TextBlock Text="{Binding ElementName=ResultSlider, Path=Value}" />
-                    </StackPanel>
+							<TextBlock Margin="12, 0">Via Binding:</TextBlock>
+							<TextBlock Text="{Binding ElementName=ResultSlider, Path=Value}" />
+						</StackPanel>
 
-                    <StackPanel 
+						<StackPanel 
 						Grid.Column="1" 
 						Orientation="Horizontal">
-                        <TextBlock Margin="12, 0">Via Event:</TextBlock>
-                        <TextBlock Name="SliderResult" />
-                    </StackPanel>
-                </Grid>
-                
-                <TextBlock 
-                    Margin="12, 12, 0, 0"
-                    Text="Exta Bits" 
-                    Style="{StaticResource PhoneTextTitle2Style}"/>
+							<TextBlock Margin="12, 0">Via Event:</TextBlock>
+							<TextBlock Name="SliderResult" />
+						</StackPanel>
+					</Grid>
+					<c4f:SuperSlider 
+						Name="ResultWithStepSlider"
+						Title="Base Slider With Step"
+						BarHeight="24"
+						Value="2"
+						Step="1"
+						Margin="0,24,0,0"
+						ValueChanged="ResultWithStepSlider_ValueChanged"/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<StackPanel 
+						Grid.Column="0" 
+						Orientation="Horizontal">
+							<TextBlock Margin="12, 0">Via Binding:</TextBlock>
+							<TextBlock Text="{Binding ElementName=ResultWithStepSlider, Path=Value}" />
+						</StackPanel>
 
-                <TextBlock></TextBlock>
-                <c4f:SuperSlider 
-					Title="Slider with steps"
-                    BarHeight="24"
-                    Value="10"
-                    Step="1"
-                    Minimum="5"
-                    Maximum="15" />
-				<c4f:SuperSlider 
-					Title="Slider with thumb, custom sizing and &quot;flair&quot;"
-                    BackgroundSize="12"
-                    ProgressSize="24"
-                    Background="CornflowerBlue">
-                    <c4f:SuperSlider.Fill>
-                        <LinearGradientBrush EndPoint="1,0">
-                            <GradientStop Offset="0.00" Color="#ffff0000"/>
-                            <GradientStop Offset="0.166666" Color="#ffffff00"/>
-                            <GradientStop Offset="0.333333" Color="#ff00ff00"/>
-                            <GradientStop Offset="0.50" Color="#ff00ffff"/>
-                            <GradientStop Offset="0.666666" Color="#ff0000ff"/>
-                            <GradientStop Offset="0.833333" Color="#ffff00ff"/>
-                            <GradientStop Offset="1.00" Color="#ffff0000"/>
-                        </LinearGradientBrush>
-                    </c4f:SuperSlider.Fill>
-                    <c4f:SuperSlider.Thumb>
-                        <Grid Width="24">
-                            <Rectangle 
+						<StackPanel 
+						Grid.Column="1" 
+						Orientation="Horizontal">
+							<TextBlock Margin="12, 0">Via Event:</TextBlock>
+							<TextBlock Name="SliderWithStepResult" />
+						</StackPanel>
+					</Grid>
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="Extras">
+				<StackPanel>
+					<c4f:SuperSlider 
+						Title="Slider with steps"
+						BarHeight="24"
+						Value="10"
+						Step="1"
+						Minimum="5"
+						Maximum="15" />
+					<c4f:SuperSlider 
+						Title="Slider with thumb, custom sizing and &quot;flair&quot;"
+						BackgroundSize="12"
+						ProgressSize="24"
+						Background="CornflowerBlue">
+						<c4f:SuperSlider.Fill>
+							<LinearGradientBrush EndPoint="1,0">
+								<GradientStop Offset="0.00" Color="#ffff0000"/>
+								<GradientStop Offset="0.166666" Color="#ffffff00"/>
+								<GradientStop Offset="0.333333" Color="#ff00ff00"/>
+								<GradientStop Offset="0.50" Color="#ff00ffff"/>
+								<GradientStop Offset="0.666666" Color="#ff0000ff"/>
+								<GradientStop Offset="0.833333" Color="#ffff00ff"/>
+								<GradientStop Offset="1.00" Color="#ffff0000"/>
+							</LinearGradientBrush>
+						</c4f:SuperSlider.Fill>
+						<c4f:SuperSlider.Thumb>
+							<Grid Width="24">
+								<Rectangle 
 				                Stroke="Black"
                                 StrokeThickness="6" />
-                            <Rectangle 
+								<Rectangle 
 				                Stroke="White"
                                 StrokeThickness="3" />
-                        </Grid>
-                    </c4f:SuperSlider.Thumb>
-                </c4f:SuperSlider>
-				<c4f:SuperSlider 
-					Padding="0"
-                    BarHeight="12"
-                    Value="2"
-                    IsEnabled="False" />
-                <TextBlock 
-                    Margin="12, 12, 0, 0"
-                    Style="{StaticResource PhoneTextTitle2Style}">Vertical Examples</TextBlock>
-            </StackPanel>
-            <StackPanel 
-				Grid.Row="1" 
-				Orientation="Horizontal">
-                <c4f:SuperSlider 
-                    Step="1"
-                    Margin="12, 0"
-					Padding="0"
-                    BarWidth="24"
-                    Value="10"
-                    Minimum="5"
-                    Maximum="15"
-                    Orientation="Vertical"/>
-                <c4f:SuperSlider 
-                    Margin="12, 0"
-                    BarWidth="24"
-					Padding="0"
-                    Fill="Orange"
-                    Background="CornflowerBlue"
-                     Orientation="Vertical">
-                    <c4f:SuperSlider.Thumb>
-                        <Rectangle 
-                            Fill="Red"
-                            Height="12"/>
-                    </c4f:SuperSlider.Thumb>
-                </c4f:SuperSlider>
+							</Grid>
+						</c4f:SuperSlider.Thumb>
+					</c4f:SuperSlider>
+					<c4f:SuperSlider 
+						Padding="0"
+						BarHeight="12"
+						Value="2"
+						IsEnabled="False" />
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="visible">
+				<StackPanel>
+					<Button Click="Button_Click">
+						Toggle Vis
+					</Button>
+					<c4f:SuperSlider 
+						Name="sliderVisTest"
+						Step="1"
+						Padding="0"
+						Margin="12, 0"
+						BarHeight="24"
+						Value="10"
+						Minimum="5"
+						Maximum="15"
+						Visibility="Collapsed"/>
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="vertical">
+				<StackPanel Orientation="Horizontal">
+					<c4f:SuperSlider 
+						Step="1"
+						Margin="12, 0"
+						Padding="0"
+						BarWidth="24"
+						Value="10"
+						Minimum="5"
+						Maximum="15"
+					    Orientation="Vertical"/>
+					<c4f:SuperSlider 
+						Margin="12, 0"
+						BarWidth="24"
+						Padding="0"
+						Fill="Orange"
+						Background="CornflowerBlue"
+						Orientation="Vertical">
+						<c4f:SuperSlider.Thumb>
+							<Rectangle 
+								Fill="Red"
+								Height="12"/>
+						</c4f:SuperSlider.Thumb>
+					</c4f:SuperSlider>
 
-                <c4f:SuperSlider 
-                    Margin="12, 0"
-					Padding="0"
-                    BackgroundSize="12"
-                    ProgressSize="24"
-                    Fill="Orange"
-                    Background="CornflowerBlue"
-                    Orientation="Vertical">
-                    <c4f:SuperSlider.Thumb>
-                        <Grid Height="24">
-                            <Rectangle 
-				                Stroke="Black"
-                                StrokeThickness="6" />
-                            <Rectangle 
-				                Stroke="White"
-                                StrokeThickness="3" />
-                        </Grid>
-                    </c4f:SuperSlider.Thumb>
-                </c4f:SuperSlider>
-				<c4f:SuperSlider 
-					Padding="0"
-					IsEnabled="False"
-                    Step="1"
-                    Margin="12, 0"
-                    BarWidth="24"
-                    Value="10"
-                    Minimum="5"
-                    Maximum="15"
-                    Orientation="Vertical"/>
-				<c4f:SuperSlider 
-					Name="sliderVisTest"
-                    Step="1"
-					Padding="0"
-                    Margin="12, 0"
-                    BarWidth="24"
-                    Value="10"
-                    Minimum="5"
-                    Maximum="15"
-                    Orientation="Vertical"
-					Visibility="Collapsed"/>
-            </StackPanel>
-			<Button 
-				Grid.Row="1"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Bottom" Click="Button_Click">Toggle Vis</Button>
-		</Grid>
-		
+					<c4f:SuperSlider 
+						Margin="12, 0"
+						Padding="0"
+						BackgroundSize="12"
+						ProgressSize="24"
+						Fill="Orange"
+						Background="CornflowerBlue"
+						Orientation="Vertical">
+						<c4f:SuperSlider.Thumb>
+							<Grid Height="24">
+								<Rectangle 
+									Stroke="Black"
+									StrokeThickness="6" />
+								<Rectangle 
+									Stroke="White"
+									StrokeThickness="3" />
+							</Grid>
+						</c4f:SuperSlider.Thumb>
+					</c4f:SuperSlider>
+					<c4f:SuperSlider 
+						Padding="0"
+						IsEnabled="False"
+						Step="1"
+						Margin="12, 0"
+						BarWidth="24"
+						Value="10"
+						Minimum="5"
+						Maximum="15"
+						Orientation="Vertical"/>
+				</StackPanel>
+			</ms:PivotItem>
+		</ms:Pivot>		
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
