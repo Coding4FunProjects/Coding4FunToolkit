@@ -28,30 +28,50 @@
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Margin="0,0,0, 12">
-                <c4f:SuperSlider 
-                    Name="colorBrightSteps"
-					Title="color brightness steps"
-                    BarHeight="12"
-                    Step="1"
-                    Value="4"
-                    Minimum="0"
-                    Maximum="10" />
-                <c4f:SuperSlider 
-                    Name="colorDarkSteps"
-					Title="color darkness steps"
-                    BarHeight="12"
-					Step="1"
-                    Value="2"
-                    Minimum="0"
-                    Maximum="10" />
-                <c4f:SuperSlider 
-                    Name="greySteps"
-					Title="grey steps"
-                    BarHeight="12"
-                    Step="1"
-                    Value="20"
-                    Minimum="0"
-                    Maximum="25" />
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<c4f:SuperSlider 
+						Grid.Column="0"
+						Name="colorBrightSteps"
+						Title="color brightness steps"
+						BarHeight="12"
+						Step="1"
+						Value="4"
+						Minimum="0"
+						Maximum="6" />
+					<c4f:SuperSlider 
+						Grid.Column="1"
+						Name="colorDarkSteps"
+						Title="color darkness steps"
+						BarHeight="12"
+						Step="1"
+						Value="2"
+						Minimum="0"
+						Maximum="6" />
+					<c4f:SuperSlider
+						Grid.Row="1"
+						Name="greySteps"
+						Title="grey steps"
+						BarHeight="12"
+						Step="1"
+						Value="20"
+						Minimum="0"
+						Maximum="25" />
+					<Button 
+						Grid.Column="1"
+						Grid.Row="1"
+						Content="Set to Red" 
+						Click="Button_Click" />
+
+				</Grid>
+				
             </StackPanel>
             <Grid VerticalAlignment="Bottom">
                 <c4f:ColorHexagonPicker 
@@ -64,9 +84,11 @@
                     ColorChanged="ColorControl_ColorChanged" />
             </Grid>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right">
+        <StackPanel 
+			Grid.Row="1"
+			VerticalAlignment="Bottom" 
+			HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Red" Click="Button_Click" />
                 <StackPanel Margin="12">
                     <TextBlock>Via Binding:</TextBlock>
                     <Rectangle 
