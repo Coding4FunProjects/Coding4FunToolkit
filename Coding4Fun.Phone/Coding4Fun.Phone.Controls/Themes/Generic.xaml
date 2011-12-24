@@ -764,9 +764,7 @@
 							Foreground="{StaticResource PhoneSubtleBrush}"  />
 						<Grid Grid.Row="1">
 							<Border Margin="{TemplateBinding Padding}">
-								<Grid
-									Height="{TemplateBinding BarHeight}" 
-									Width="{TemplateBinding BarWidth}">
+								<Grid Name="BarBody">
 									<Rectangle 
 										Grid.Row="1"
 										Name="BackgroundRectangle"

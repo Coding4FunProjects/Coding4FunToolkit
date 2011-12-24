@@ -23,7 +23,6 @@
 					<c4f:SuperSlider 
 						Name="ResultSlider"
 						Title="Base Slider"
-						BarHeight="24"
 						Value="2"
 						ValueChanged="ResultSlider_ValueChanged"/>
 					<Grid>
@@ -48,7 +47,6 @@
 					<c4f:SuperSlider 
 						Name="ResultWithStepSlider"
 						Title="Base Slider With Step"
-						BarHeight="24"
 						Value="2"
 						Step="1"
 						Margin="0,24,0,0"
@@ -78,7 +76,6 @@
 				<StackPanel>
 					<c4f:SuperSlider 
 						Title="Slider with steps"
-						BarHeight="24"
 						Value="10"
 						Step="1"
 						Minimum="5"
@@ -125,7 +122,6 @@
 					<c4f:SuperSlider 
 						Title="We're testing visiblity!"
 						Name="sliderVisTest"
-						BarHeight="24"
 						Value="10"
 						Visibility="Visible"/>
 				</StackPanel>
@@ -136,14 +132,12 @@
 						Step="1"
 						Margin="12, 0"
 						Padding="0"
-						BarWidth="24"
 						Value="10"
 						Minimum="5"
 						Maximum="15"
 					    Orientation="Vertical"/>
 					<c4f:SuperSlider 
 						Margin="12, 0"
-						BarWidth="24"
 						Padding="0"
 						Fill="Orange"
 						Background="CornflowerBlue"
@@ -179,7 +173,6 @@
 						IsEnabled="False"
 						Step="1"
 						Margin="12, 0"
-						BarWidth="24"
 						Value="10"
 						Minimum="5"
 						Maximum="15"
@@ -189,16 +182,4 @@
 		</ms:Pivot>		
     </Grid>
  
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-
 </phone:PhoneApplicationPage>

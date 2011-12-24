@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -23,6 +24,7 @@ namespace Coding4Fun.Phone.Controls
 
         private MovementMonitor _monitor;
         private const string BodyName = "Body";
+		private const string BarBodyName = "BarBody";
 
         public SuperSlider()
 		{
@@ -79,7 +81,7 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty BarHeightProperty =
-			DependencyProperty.Register("BarHeight", typeof(double), typeof(SuperSlider), new PropertyMetadata(Double.NaN));
+			DependencyProperty.Register("BarHeight", typeof(double), typeof(SuperSlider), new PropertyMetadata(24d, OnLayoutChanged));
 
 		public double BarWidth
 		{
@@ -89,7 +91,7 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty BarWidthProperty =
-			DependencyProperty.Register("BarWidth", typeof(double), typeof(SuperSlider), new PropertyMetadata(Double.NaN));
+			DependencyProperty.Register("BarWidth", typeof(double), typeof(SuperSlider), new PropertyMetadata(24d, OnLayoutChanged));
 		
 		public string Title
 		{
@@ -294,8 +296,42 @@ namespace Coding4Fun.Phone.Controls
                 return;
 
             var isVert = IsVertical();
+			var bar = GetTemplateChild(BarBodyName) as Grid;
 
-            SetAlignment(ProgressRectangle, isVert);
+        	if (bar != null)
+        	{
+				if (isVert)
+				{
+					//var widthBinding = new System.Windows.Data.Binding
+					//{
+					//    Source = bar,
+					//    Path = new PropertyPath("Width"),
+					//    Mode = BindingMode.TwoWay
+					//};
+
+					//SetBinding(BarWidthProperty, widthBinding);
+
+					bar.Width = BarWidth;
+					bar.Height = double.NaN;
+				}
+				else
+				{
+					//var heightBinding = new System.Windows.Data.Binding
+					//{
+					//    Source = bar,
+					//    Path = new PropertyPath("Height"),
+					//    Mode = BindingMode.TwoWay
+					//};
+
+					//SetBinding(BarHeightProperty, heightBinding);
+
+					bar.Width = double.NaN;
+					bar.Height = BarHeight;
+				}
+        	}
+
+
+        	SetAlignment(ProgressRectangle, isVert);
 
             ProgressRectangle.Width = double.NaN;
             ProgressRectangle.Height = double.NaN;
