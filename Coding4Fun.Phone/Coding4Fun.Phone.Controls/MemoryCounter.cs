@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -13,7 +12,7 @@ namespace Coding4Fun.Phone.Controls
     {
         private const float ByteToMega = 1024 * 1024;
         private readonly DispatcherTimer _timer;
-        private readonly MethodInfo _deviceExtendedPropertiesMethod;
+
         private bool _threwException;
 
         public MemoryCounter()
@@ -23,7 +22,6 @@ namespace Coding4Fun.Phone.Controls
                 DefaultStyleKey = typeof(MemoryCounter);
                 DataContext = this;
 
-                _deviceExtendedPropertiesMethod = typeof(DeviceExtendedProperties).GetMethod("GetValue");
                 _timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(UpdateInterval) };
                 _timer.Tick += timer_Tick;
                 _timer.Start();
@@ -75,28 +73,16 @@ namespace Coding4Fun.Phone.Controls
         {
             if (Debugger.IsAttached || _threwException)
             {
-                try
-                {
-                    CurrentMemory =
-                        ((long)
-                         _deviceExtendedPropertiesMethod.Invoke(null, new[]
-                                                 {
-                                                     "ApplicationCurrentMemoryUsage"
-                                                 })/ByteToMega).ToString(
-                                                     "#.00");
-                    PeakMemory =
-                        ((long)
-                         _deviceExtendedPropertiesMethod.Invoke(null,
-                                       new[]
-                                           {
-                                               "ApplicationPeakMemoryUsage"
-                                           })/
-                         ByteToMega).ToString("#.00");
-                }
-                catch (Exception) {
-                    _threwException = true;
-                    _timer.Stop();
-                }
+            	try
+            	{
+            		CurrentMemory = ((DeviceStatus.ApplicationCurrentMemoryUsage) / ByteToMega).ToString("#.00");
+            		PeakMemory = ((DeviceStatus.ApplicationPeakMemoryUsage) / ByteToMega).ToString("#.00");
+            	}
+            	catch (Exception)
+            	{
+            		_threwException = true;
+            		_timer.Stop();
+            	}
             }
         }
     }
