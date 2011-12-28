@@ -6,12 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows;
-using System.Collections;
-using System.Text;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
@@ -28,7 +25,7 @@ namespace Clarity.Phone.Extensions
     /// scenarios.
     /// </remarks>
     /// <QualityBand>Experimental</QualityBand>
-    public static class VisualTreeExtensions
+    public  static class VisualTreeExtensions
     {
         /// <summary>
         /// Get the visual tree ancestors of an element.
@@ -99,13 +96,14 @@ namespace Clarity.Phone.Extensions
             return GetVisualChildren(target).Where(child => child is T).Cast<T>();
         }
 
-        /// <summary>
-        /// Gets the visual children of type T.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="target"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> GetVisualChildren<T>(this DependencyObject target, bool strict)
+    	/// <summary>
+    	/// Gets the visual children of type T.
+    	/// </summary>
+    	/// <typeparam name="T"></typeparam>
+    	/// <param name="target"></param>
+    	/// <param name="strict"></param>
+    	/// <returns></returns>
+    	public static IEnumerable<T> GetVisualChildren<T>(this DependencyObject target, bool strict)
             where T : DependencyObject
         {
             return GetVisualChildren(target, strict).Where(child => child is T).Cast<T>();
@@ -203,67 +201,7 @@ namespace Clarity.Phone.Extensions
             }
         }
 
-        /// <summary>
-        /// A helper method used to get visual decnedants using a breadth-first strategy.
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="strict">Prevents the search from navigating the logical tree; eg. ContentControl.Content</param>
-        /// <param name="queue"></param>
-        /// <returns></returns>
-        private static IEnumerable<DependencyObject> GetVisualDecendants(DependencyObject target, bool strict, Queue<DependencyObject> queue)
-        {
-            foreach (var child in GetVisualChildren(target, strict))
-            {
-                queue.Enqueue(child);
-            }
-
-            if (queue.Count == 0)
-            {
-                yield break;
-            }
-            else
-            {
-                DependencyObject node = queue.Dequeue();
-                yield return node;
-
-                foreach (var decendant in GetVisualDecendants(node, strict, queue))
-                {
-                    yield return decendant;
-                }
-            }
-        }
-
-        /// <summary>
-        /// A helper method used to get visual decnedants using a depth-first strategy.
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="strict">Prevents the search from navigating the logical tree; eg. ContentControl.Content</param>
-        /// <param name="stack"></param>
-        /// <returns></returns>
-        private static IEnumerable<DependencyObject> GetVisualDecendants(DependencyObject target, bool strict, Stack<DependencyObject> stack)
-        {
-            foreach (var child in GetVisualChildren(target, strict))
-            {
-                stack.Push(child);
-            }
-
-            if (stack.Count == 0)
-            {
-                yield break;
-            }
-            else
-            {
-                DependencyObject node = stack.Pop();
-                yield return node;
-
-                foreach (var decendant in GetVisualDecendants(node, strict, stack))
-                {
-                    yield return decendant;
-                }
-            }
-        }
-
-        /// <summary>
+    	/// <summary>
         /// Get the visual tree descendants of an element.
         /// </summary>
         /// <param name="element">The element.</param>
@@ -312,17 +250,15 @@ namespace Clarity.Phone.Extensions
         /// </returns>
         private static IEnumerable<DependencyObject> GetVisualDescendantsAndSelfIterator(DependencyObject element)
         {
-            Debug.Assert(element != null, "element should not be null!");
-
-            Queue<DependencyObject> remaining = new Queue<DependencyObject>();
+            var remaining = new Queue<DependencyObject>();
             remaining.Enqueue(element);
 
             while (remaining.Count > 0)
             {
-                DependencyObject obj = remaining.Dequeue();
+                var obj = remaining.Dequeue();
                 yield return obj;
 
-                foreach (DependencyObject child in obj.GetVisualChildren())
+                foreach (var child in obj.GetVisualChildren())
                 {
                     remaining.Enqueue(child);
                 }
@@ -390,15 +326,16 @@ namespace Clarity.Phone.Extensions
             {
                 throw new ArgumentNullException("element");
             }
-            else if (otherElement == null)
-            {
-                throw new ArgumentNullException("otherElement");
-            }
+        	
+			if (otherElement == null)
+        	{
+        		throw new ArgumentNullException("otherElement");
+        	}
 
-            try
+        	try
             {
                 Point origin, bottom;
-                GeneralTransform transform = element.TransformToVisual(otherElement);
+                var transform = element.TransformToVisual(otherElement);
                 if (transform != null &&
                     transform.TryTransform(new Point(), out origin) &&
                     transform.TryTransform(new Point(element.ActualWidth, element.ActualHeight), out bottom))
@@ -414,24 +351,25 @@ namespace Clarity.Phone.Extensions
             return null;
         }
 
-        public static childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
+        public static TChildItem FindVisualChild<TChildItem>(DependencyObject obj) where TChildItem : DependencyObject
         {
             for (var i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
             {
                 var child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
+
+                if (child != null && child is TChildItem)
                 {
-                    return (childItem)child;
+                    return (TChildItem)child;
                 }
-                else
-                {
-                    var childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                    {
-                        return childOfChild;
-                    }
-                }
+            	
+				var childOfChild = FindVisualChild<TChildItem>(child);
+
+            	if (childOfChild != null)
+            	{
+            		return childOfChild;
+            	}
             }
+
             return null;
         }
 
@@ -443,7 +381,7 @@ namespace Clarity.Phone.Extensions
         /// <returns>The found node, or null if not found</returns>
         public static FrameworkElement FindVisualChild(this FrameworkElement root, string name)
         {
-            FrameworkElement temp = root.FindName(name) as FrameworkElement;
+            var temp = root.FindName(name) as FrameworkElement;
             if (temp != null)
                 return temp;
 
@@ -502,17 +440,20 @@ namespace Clarity.Phone.Extensions
         /// <returns>The group, if found</returns>
         public static VisualStateGroup GetVisualStateGroup(this FrameworkElement root, string groupName, bool searchAncestors)
         {
-            IList groups = VisualStateManager.GetVisualStateGroups(root);
-            foreach (object o in groups)
-            {
-                VisualStateGroup group = o as VisualStateGroup;
-                if (group != null && group.Name == groupName)
-                    return group;
-            }
+            var groups = VisualStateManager.GetVisualStateGroups(root);
+        	
+			foreach (var o in groups)
+			{
+				var group = o as VisualStateGroup;
 
-            if (searchAncestors)
+				if (group != null && group.Name == groupName)
+					return group;
+			}
+
+        	if (searchAncestors)
             {
-                FrameworkElement parent = root.GetVisualParent();
+                var parent = root.GetVisualParent();
+
                 if (parent != null)
                     return parent.GetVisualStateGroup(groupName, true);
             }
@@ -520,92 +461,27 @@ namespace Clarity.Phone.Extensions
             return null;
         }
 
-        /// <summary>
-        /// Provides a debug string that represents the visual child tree
-        /// </summary>
-        /// <param name="root">The root node</param>
-        /// <param name="result">StringBuilder into which the text is appended</param>
-        /// <remarks>This method only works in DEBUG mode</remarks>
-        [Conditional("DEBUG")]
-        public static void GetVisualChildTreeDebugText(this FrameworkElement root, StringBuilder result)
-        {
-            List<string> results = new List<string>();
-            root.GetChildTree("", "  ", results);
-            foreach (string s in results)
-                result.AppendLine(s);
-        }
-
-        private static void GetChildTree(this FrameworkElement root, string prefix, string addPrefix, List<string> results)
-        {
-            string thisElement = "";
-            if (String.IsNullOrEmpty(root.Name))
-                thisElement = "[Anonymous]";
-            else
-                thisElement = "[" + root.Name + "]";
-
-            thisElement += " : " + root.GetType().Name;
-
-            results.Add(prefix + thisElement);
-            foreach (FrameworkElement directChild in root.GetVisualChildren())
-            {
-                directChild.GetChildTree(prefix + addPrefix, addPrefix, results);
-            }
-        }
-
-        /// <summary>
-        /// Provides a debug string that represents the visual child tree
-        /// </summary>
-        /// <param name="node">The root node</param>
-        /// <param name="result">StringBuilder into which the text is appended</param>
-        /// <remarks>This method only works in DEBUG mode</remarks>
-        [Conditional("DEBUG")]
-        public static void GetAncestorVisualTreeDebugText(this FrameworkElement node, StringBuilder result)
-        {
-            List<string> tree = new List<string>();
-            node.GetAncestorVisualTree(tree);
-            string prefix = "";
-            foreach (string s in tree)
-            {
-                result.AppendLine(prefix + s);
-                prefix = prefix + "  ";
-            }
-        }
-
-        private static void GetAncestorVisualTree(this FrameworkElement node, List<string> children)
-        {
-            string name = String.IsNullOrEmpty(node.Name) ? "[Anon]" : node.Name;
-            string thisNode = name + ": " + node.GetType().Name;
-
-            // Ensure list is in reverse order going up the tree
-            children.Insert(0, thisNode);
-            FrameworkElement parent = node.GetVisualParent();
-            if (parent != null)
-                GetAncestorVisualTree(parent, children);
-        }
-
-        /// <summary>
+    	/// <summary>
         /// Returns a render transform of the specified type from the element, creating it if necessary
         /// </summary>
-        /// <typeparam name="RequestedTransform">The type of transform (Rotate, Translate, etc)</typeparam>
+        /// <typeparam name="TRequestedTransform">The type of transform (Rotate, Translate, etc)</typeparam>
         /// <param name="element">The element to check</param>
         /// <param name="mode">The mode to use for creating transforms, if not found</param>
         /// <returns>The specified transform, or null if not found and not created</returns>
-        public static RequestedTransform GetTransform<RequestedTransform>(this UIElement element, TransformCreationMode mode) where RequestedTransform : Transform, new()
+        public static TRequestedTransform GetTransform<TRequestedTransform>(this UIElement element, TransformCreationMode mode) where TRequestedTransform : Transform, new()
         {
             //if (element == null)
             //    return null;
 
             Transform originalTransform = element.RenderTransform;
-            RequestedTransform requestedTransform = null;
-            MatrixTransform matrixTransform = null;
-            TransformGroup transformGroup = null;
+            TRequestedTransform requestedTransform;
 
-            // Current transform is null -- create if necessary and return
+        	// Current transform is null -- create if necessary and return
             if (originalTransform == null)
             {
                 if ((mode & TransformCreationMode.Create) == TransformCreationMode.Create)
                 {
-                    requestedTransform = new RequestedTransform();
+                    requestedTransform = new TRequestedTransform();
                     element.RenderTransform = requestedTransform;
                     return requestedTransform;
                 }
@@ -614,20 +490,22 @@ namespace Clarity.Phone.Extensions
             }
 
             // Transform is exactly what we want -- return it
-            requestedTransform = originalTransform as RequestedTransform;
+            requestedTransform = originalTransform as TRequestedTransform;
+
             if (requestedTransform != null)
                 return requestedTransform;
 
 
             // The existing transform is matrix transform - overwrite if necessary and return
-            matrixTransform = originalTransform as MatrixTransform;
+            var matrixTransform = originalTransform as MatrixTransform;
+
             if (matrixTransform != null)
             {
                 if (matrixTransform.Matrix.IsIdentity
                   && (mode & TransformCreationMode.Create) == TransformCreationMode.Create
                   && (mode & TransformCreationMode.IgnoreIdentityMatrix) == TransformCreationMode.IgnoreIdentityMatrix)
                 {
-                    requestedTransform = new RequestedTransform();
+                    requestedTransform = new TRequestedTransform();
                     element.RenderTransform = requestedTransform;
                     return requestedTransform;
                 }
@@ -636,20 +514,20 @@ namespace Clarity.Phone.Extensions
             }
 
             // Transform is actually a group -- check for the requested type
-            transformGroup = originalTransform as TransformGroup;
+            var transformGroup = originalTransform as TransformGroup;
             if (transformGroup != null)
             {
-                foreach (Transform child in transformGroup.Children)
-                {
-                    // Child is the right type -- return it
-                    if (child is RequestedTransform)
-                        return child as RequestedTransform;
-                }
+            	foreach (var child in transformGroup.Children)
+            	{
+					// Child is the right type -- return it
+            		if (child is TRequestedTransform)
+            			return child as TRequestedTransform;
+            	}
 
-                // Right type was not found, but we are OK to add it
+            	// Right type was not found, but we are OK to add it
                 if ((mode & TransformCreationMode.AddToGroup) == TransformCreationMode.AddToGroup)
                 {
-                    requestedTransform = new RequestedTransform();
+                    requestedTransform = new TRequestedTransform();
                     transformGroup.Children.Add(requestedTransform);
                     return requestedTransform;
                 }
@@ -665,10 +543,10 @@ namespace Clarity.Phone.Extensions
                 transformGroup.Children.Add(originalTransform);
                 transformGroup.Children.Add(requestedTransform);
                 element.RenderTransform = transformGroup;
+
                 return requestedTransform;
             }
 
-            Debug.Assert(false, "Shouldn't get here");
             return null;
         }
 
@@ -677,26 +555,26 @@ namespace Clarity.Phone.Extensions
         /// </summary>
         /// <param name="element">The element to get the path for</param>
         /// <param name="subProperty">The property of the transform</param>
-        /// <typeparam name="RequestedType">The type of transform to look fo</typeparam>
+        /// <typeparam name="TRequestedType">The type of transform to look fo</typeparam>
         /// <returns>A property path</returns>
-        public static string GetTransformPropertyPath<RequestedType>(this FrameworkElement element, string subProperty) where RequestedType : Transform
+        public static string GetTransformPropertyPath<TRequestedType>(this FrameworkElement element, string subProperty) where TRequestedType : Transform
         {
-            Transform t = element.RenderTransform;
-            if (t is RequestedType)
-                return String.Format("(RenderTransform).({0}.{1})", typeof(RequestedType).Name, subProperty);
+            var t = element.RenderTransform;
+            if (t is TRequestedType)
+                return String.Format("(RenderTransform).({0}.{1})", typeof(TRequestedType).Name, subProperty);
 
-            else if (t is TransformGroup)
-            {
-                TransformGroup g = t as TransformGroup;
-                for (int i = 0; i < g.Children.Count; i++)
-                {
-                    if (g.Children[i] is RequestedType)
-                        return String.Format("(RenderTransform).(TransformGroup.Children)[" + i + "].({0}.{1})",
-                          typeof(RequestedType).Name, subProperty);
-                }
-            }
+        	if (t is TransformGroup)
+        	{
+        		var g = t as TransformGroup;
+        		for (var i = 0; i < g.Children.Count; i++)
+        		{
+        			if (g.Children[i] is TRequestedType)
+        				return String.Format("(RenderTransform).(TransformGroup.Children)[" + i + "].({0}.{1})",
+        				                     typeof(TRequestedType).Name, subProperty);
+        		}
+        	}
 
-            return "";
+        	return "";
         }
 
         /// <summary>
@@ -746,12 +624,13 @@ namespace Clarity.Phone.Extensions
             {
                 throw new ArgumentNullException("element");
             }
-            else if (action == null)
-            {
-                throw new ArgumentNullException("action");
-            }
+        	
+			if (action == null)
+        	{
+        		throw new ArgumentNullException("action");
+        	}
 
-            // Create an event handler that unhooks itself before calling the
+        	// Create an event handler that unhooks itself before calling the
             // action and then attach it to the LayoutUpdated event.
             EventHandler handler = null;
             handler = (s, e) =>
@@ -774,12 +653,10 @@ namespace Clarity.Phone.Extensions
         /// <returns>The logical children of the framework element.</returns>
         internal static IEnumerable<FrameworkElement> GetLogicalChildren(this FrameworkElement parent)
         {
-            Debug.Assert(parent != null, "The parent cannot be null.");
-
-            Popup popup = parent as Popup;
+            var popup = parent as Popup;
             if (popup != null)
             {
-                FrameworkElement popupChild = popup.Child as FrameworkElement;
+                var popupChild = popup.Child as FrameworkElement;
                 if (popupChild != null)
                 {
                     yield return popupChild;
@@ -788,10 +665,10 @@ namespace Clarity.Phone.Extensions
 
             // If control is an items control return all children using the 
             // Item container generator.
-            ItemsControl itemsControl = parent as ItemsControl;
+            var itemsControl = parent as ItemsControl;
             if (itemsControl != null)
             {
-                foreach (FrameworkElement logicalChild in
+                foreach (var logicalChild in
                     Enumerable
                         .Range(0, itemsControl.Items.Count)
                         .Select(index => itemsControl.ItemContainerGenerator.ContainerFromIndex(index))
@@ -801,45 +678,24 @@ namespace Clarity.Phone.Extensions
                 }
             }
 
-            string parentName = parent.Name;
-            Queue<FrameworkElement> queue =
-                new Queue<FrameworkElement>(parent.GetVisualChildren().OfType<FrameworkElement>());
+            var queue = new Queue<FrameworkElement>(parent.GetVisualChildren().OfType<FrameworkElement>());
 
             while (queue.Count > 0)
             {
-                FrameworkElement element = queue.Dequeue();
+                var element = queue.Dequeue();
+
                 if (element.Parent == parent || element is UserControl)
                 {
                     yield return element;
                 }
                 else
                 {
-                    foreach (FrameworkElement visualChild in element.GetVisualChildren().OfType<FrameworkElement>())
+                    foreach (var visualChild in element.GetVisualChildren().OfType<FrameworkElement>())
                     {
                         queue.Enqueue(visualChild);
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Retrieves all the logical descendents of a framework element using a 
-        /// breadth-first search. For performance reasons this method manually 
-        /// manages the stack instead of using recursion.
-        /// </summary>
-        /// <param name="parent">The parent framework element.</param>
-        /// <returns>The logical children of the framework element.</returns>
-        internal static IEnumerable<FrameworkElement> GetLogicalDescendents(this FrameworkElement parent)
-        {
-            Debug.Assert(parent != null, "The parent cannot be null.");
-
-            //return
-            //    FunctionalProgramming.TraverseBreadthFirst(
-            //        parent,
-            //        node => node.GetLogicalChildren(),
-            //        node => true);
-
-            return null;
         }
     }
 

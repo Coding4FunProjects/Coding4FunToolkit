@@ -35,7 +35,7 @@ namespace Coding4Fun.Phone.Controls
 
             SizeChanged += ColorPicker_SizeChanged;
 			IsEnabledChanged += ColorSlider_IsEnabledChanged;
-			Loaded += new RoutedEventHandler(ColorPicker_Loaded);
+			Loaded += ColorPicker_Loaded;
         }
 
 		void ColorPicker_Loaded(object sender, RoutedEventArgs e)

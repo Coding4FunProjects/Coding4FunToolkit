@@ -16,7 +16,7 @@ namespace Coding4Fun.Phone.Controls
         Rectangle _focusedRectangle;
         bool _isLoaded;
         bool _raisedFromRectangleFocusMethod;
-        List<Rectangle> _rectangles = new List<Rectangle>();
+    	readonly List<Rectangle> _rectangles = new List<Rectangle>();
 
         public ColorHexagonPicker()
         {

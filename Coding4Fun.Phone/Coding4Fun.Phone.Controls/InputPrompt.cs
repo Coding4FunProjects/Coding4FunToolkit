@@ -66,7 +66,7 @@ namespace Coding4Fun.Phone.Controls
 
         /// <summary>
         /// Identifies the
-        /// <see cref="P:Microsoft.Phone.Controls.AutoCompleteBox.InputScope"/>
+		/// <see cref="T:System.Windows.Input.InputScope"/>
         /// dependency property.
         /// </summary>
         public static readonly DependencyProperty InputScopeProperty =
