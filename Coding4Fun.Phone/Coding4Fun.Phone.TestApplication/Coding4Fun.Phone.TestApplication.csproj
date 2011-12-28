@@ -88,6 +88,9 @@
     <Compile Include="Samples\Memory.xaml.cs">
       <DependentUpon>Memory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\MetroFlow.xaml.cs">
+      <DependentUpon>MetroFlow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Overlays.xaml.cs">
       <DependentUpon>Overlays.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\MetroFlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Overlays.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,10 +187,15 @@
     <Resource Include="Media\headWhite.png" />
     <Resource Include="Media\headWhite_100.png" />
     <Resource Include="Media\icons\appbar.share.rest.png" />
+    <Resource Include="Media\icons\appbar.add.rest.png" />
     <Content Include="Media\icons\appbar.check.rest.png" />
     <Resource Include="Media\Coding4FunProject.png" />
+    <Resource Include="Media\icons\appbar.minus.rest.png" />
     <Content Include="Media\icons\appbar.repeat.png" />
     <Resource Include="Media\trex_360width.jpg" />
+    <Resource Include="Media\lamp.jpg" />
+    <Resource Include="Media\robot.jpg" />
+    <Resource Include="Media\Seattle.jpg" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

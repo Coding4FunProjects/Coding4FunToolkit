@@ -50,12 +50,17 @@ namespace Coding4Fun.Phone.TestApplication
             NavigateTo("/Samples/ButtonControls.xaml");
         }
 
-        private void ColorSlider_Click(object sender, RoutedEventArgs e)
+        private void Colors_Click(object sender, RoutedEventArgs e)
         {
             NavigateTo("/Samples/ColorControls.xaml");
         }
 
-        private void NavigateTo(string page)
+		private void MetroFlow_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo("/Samples/MetroFlow.xaml");
+        }
+		
+		private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));
         }

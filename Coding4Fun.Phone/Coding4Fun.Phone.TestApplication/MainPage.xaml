@@ -5,54 +5,79 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	
+	xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
+	xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="Portrait" Orientation="Portrait">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,6,0,6">
-            <TextBlock x:Name="ApplicationTitle" 
-					   Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="samples" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-        
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ScrollViewer>
-                    <StackPanel>
-                        <Button Content="Prompts" Click="Prompts_Click" />
-                        <Button Content="Super Slider" Click="Slider_Click" />
-                        <Button Content="Overlays" Click="Overlays_Click" />
-                        <Button Content="About" Click="About_Click" />
-                        <Button Content="Buttons" Click="Button_Click" />
-                        <Button Content="Color" Click="ColorSlider_Click" />
-                        <Button Content="Memory" Click="Memory_Click" />
-                        <Button Content="TimeSpan" Click="TimeSpan_Click" />
-                    </StackPanel>
-                </ScrollViewer>
-               
-                <Image 
-                    Grid.Row="2"
-                    VerticalAlignment="Bottom" 
-                    Stretch="None" 
-                    Source="Media/Coding4FunProject.png" Margin="0,0,0,10" />
-            </Grid>
-        </Grid>
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" 
+					   Text="{StaticResource AppName}"
+					   Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="samples" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
+		<ScrollViewer>
+			<slToolkit:WrapPanel 
+				slToolkit:TiltEffect.IsTiltEnabled="True"
+				Margin="12,120,0,0">
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Prompt controls"
+					Click="Prompts_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Color controls"
+					Click="Colors_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Button controls"
+					Click="Button_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="MetroFlow"
+					Click="MetroFlow_Click" />
+					
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Overlay"
+					Click="Overlays_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="About controls"
+					Click="About_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Memory"
+					Click="Memory_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Timespan"
+					Click="TimeSpan_Click" />
+			</slToolkit:WrapPanel>
+		</ScrollViewer>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

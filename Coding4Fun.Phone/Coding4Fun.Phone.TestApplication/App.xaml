@@ -8,6 +8,9 @@
     <!--Application Resources-->
     <Application.Resources>
 		<System:String x:Key="AppName">CODING4FUN WINDOWS PHONE TOOLKIT</System:String>
+		<System:Double x:Key="TileSizeWidth">173</System:Double>
+		<System:Double x:Key="TileSizeHeight">160</System:Double>
+		<Thickness x:Key="TileMargin">0, 0, 12, 12</Thickness>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
