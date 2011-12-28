@@ -66,8 +66,12 @@
     <Compile Include="ColorBaseControl.cs" />
     <Compile Include="Helpers\ColorExtentions.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="MetroFlow.cs" />
+    <Compile Include="MetroFlowData.cs" />
+    <Compile Include="MetroFlowItem.cs" />
     <Compile Include="MovementMonitor.cs" />
     <Compile Include="MovementMonitorEventArgs.cs" />
+    <Compile Include="SelectionTapEventArgs.cs" />
     <Compile Include="SuperSlider.cs" />
     <Compile Include="Helpers\ColorSpace.cs" />
     <Compile Include="ColorSliderThumb.cs" />
