@@ -2,7 +2,7 @@
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
-	class SecondTimeSpanDataSource : TimeSpanDataSource
+	public class SecondTimeSpanDataSource : TimeSpanDataSource
 	{
 		public SecondTimeSpanDataSource() : base(59, 1) { }
 

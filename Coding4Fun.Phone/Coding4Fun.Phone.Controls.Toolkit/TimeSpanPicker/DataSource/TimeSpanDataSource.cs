@@ -2,7 +2,7 @@
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
-    abstract class TimeSpanDataSource : DataSource<TimeSpan>
+    public abstract class TimeSpanDataSource : DataSource<TimeSpan>
     {
         protected int Max;
         protected int Step;

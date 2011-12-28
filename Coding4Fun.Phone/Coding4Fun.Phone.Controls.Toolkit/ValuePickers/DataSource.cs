@@ -10,7 +10,7 @@ using Coding4Fun.Phone.Controls.Primitives;
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
-    abstract class DataSource<T> : ILoopingSelectorDataSource where T : struct
+    public abstract class DataSource<T> : ILoopingSelectorDataSource where T : struct
     {
         private ValueWrapper<T> _selectedItem;
 
