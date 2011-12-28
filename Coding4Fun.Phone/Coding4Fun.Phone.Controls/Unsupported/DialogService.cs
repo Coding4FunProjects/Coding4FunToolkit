@@ -330,15 +330,26 @@ namespace Clarity.Phone.Extensions
                     break;
             }
 
-            if (storyboard != null)
-            {
-                storyboard.Completed += _hideStoryboard_Completed;
+			try
+			{
+				if (storyboard != null)
+				{
+					storyboard.Completed += _hideStoryboard_Completed;
 
-                foreach (var t in storyboard.Children)
-                    Storyboard.SetTarget(t, _overlay);
+					foreach (var t in storyboard.Children)
+						Storyboard.SetTarget(t, _overlay);
 
-                storyboard.Begin();
-            }
+					storyboard.Begin();
+				}
+			}
+			catch (Exception)
+			{
+				// chances are user nav'ed away
+				// attempting to be extremely robust here
+				// if this fails, go straight to complete
+				// and attempt to remove it from the visual tree
+				_hideStoryboard_Completed(null, null);
+			}
         }
 
         void _hideStoryboard_Completed(object sender, EventArgs e)
