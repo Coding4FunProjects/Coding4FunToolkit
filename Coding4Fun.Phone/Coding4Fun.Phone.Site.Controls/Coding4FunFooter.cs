@@ -8,8 +8,8 @@ namespace Coding4Fun.Phone.Site.Controls
 {
     public class Coding4FunFooter : Control
     {
-        private const string c4fLogoName = "c4fLogo";
-        protected Image c4fLogo;
+        private const string C4FLogoName = "c4fLogo";
+        protected Image C4FLogo;
 
         public Coding4FunFooter()
         {
@@ -20,13 +20,13 @@ namespace Coding4Fun.Phone.Site.Controls
         {
             base.OnApplyTemplate();
 
-            if (c4fLogo != null)
-                c4fLogo.ManipulationCompleted -= c4fLogo_ManipulationCompleted;
+            if (C4FLogo != null)
+                C4FLogo.ManipulationCompleted -= c4fLogo_ManipulationCompleted;
 
-            c4fLogo = GetTemplateChild(c4fLogoName) as Image;
+            C4FLogo = GetTemplateChild(C4FLogoName) as Image;
 
-            if (c4fLogo != null)
-                c4fLogo.ManipulationCompleted += c4fLogo_ManipulationCompleted;
+            if (C4FLogo != null)
+                C4FLogo.ManipulationCompleted += c4fLogo_ManipulationCompleted;
         }
 
         void c4fLogo_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
@@ -36,9 +36,9 @@ namespace Coding4Fun.Phone.Site.Controls
 
         private static void NavigateTo(string uri)
         {
-            //var web = new WebBrowserTask { Uri = new Uri(uri) };
-            var web = new WebBrowserTask { URL = uri };
-            web.Show();
+            var web = new WebBrowserTask { Uri = new Uri(uri) };
+            
+			web.Show();
         }
     }
 }

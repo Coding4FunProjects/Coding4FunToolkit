@@ -165,14 +165,14 @@ namespace Coding4Fun.Phone.Controls
         #endregion
         protected internal void websiteClick_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            navigateTo(WebSiteUrl);
+            NavigateTo(WebSiteUrl);
         }
 
-        private void navigateTo(string uri)
+        private static void NavigateTo(string uri)
         {
-            //var web = new WebBrowserTask { Uri = new Uri(uri) };
-            var web = new WebBrowserTask { URL = uri };
-            web.Show();
+            var web = new WebBrowserTask { Uri = new Uri(uri) };
+            
+			web.Show();
         }
     }
 }
