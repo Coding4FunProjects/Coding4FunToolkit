@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Threading;
+
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -152,7 +151,7 @@ namespace Clarity.Phone.Extensions
 
         internal PhoneApplicationPage Page
         {
-            get { return _page ?? (_page = RootVisual.GetVisualDescendants().OfType<PhoneApplicationPage>().FirstOrDefault()); }
+            get { return _page ?? (_page = RootVisual.GetFirstLogicalChildByType<PhoneApplicationPage>(false)); }
         }
 
         internal Frame RootVisual
@@ -166,12 +165,12 @@ namespace Clarity.Phone.Extensions
             {
                 if (_popupContainer == null)
                 {
-                    var presenters = RootVisual.GetVisualDescendants().OfType<ContentPresenter>();
+                    var presenters = RootVisual.GetLogicalChildrenByType<ContentPresenter>(false);
 
                     for (var i = 0; i < presenters.Count(); i++)
                     {
 
-                        var panels = presenters.ElementAt(i).GetVisualDescendants().OfType<Panel>();
+						var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
 
                         if (panels.Count() <= 0)
                             continue;

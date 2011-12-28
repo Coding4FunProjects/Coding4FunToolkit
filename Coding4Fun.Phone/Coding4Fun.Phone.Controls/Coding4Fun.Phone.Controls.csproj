@@ -77,6 +77,8 @@
     <Compile Include="ColorSliderThumb.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileNotification.cs" />
+    <Compile Include="Unsupported\TemplatedVisualTreeExtensions.cs" />
+    <Compile Include="Unsupported\VisualTreeExtensions.cs" />
     <Compile Include="UserPrompt.cs" />
     <Compile Include="MessagePrompt.cs" />
     <Compile Include="InputPrompt.cs" />
@@ -92,7 +94,6 @@
     <Compile Include="RoundToggleButton.cs" />
     <Compile Include="ToastPrompt.cs" />
     <Compile Include="Unsupported\DialogService.cs" />
-    <Compile Include="Unsupported\VisualTreeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
