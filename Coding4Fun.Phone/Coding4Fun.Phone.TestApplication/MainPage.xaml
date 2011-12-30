@@ -21,12 +21,21 @@
 			<TextBlock x:Name="ApplicationTitle" 
 					   Text="{StaticResource AppName}"
 					   Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="samples" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock x:Name="PageTitle" Text="samples" Margin="9,-12,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
+
+		<Image 
+			Opacity=".5"  
+			Stretch="None"
+			VerticalAlignment="Bottom"
+			HorizontalAlignment="Right"
+			Source="media/head.png"
+			Margin="0, 0, -50, -50">
+		</Image>
 		<ScrollViewer>
 			<slToolkit:WrapPanel 
 				slToolkit:TiltEffect.IsTiltEnabled="True"
-				Margin="12,120,0,0">
+				Margin="24,120,0,0">
 				<c4f:Tile
 					Height="{StaticResource TileSizeHeight}"
 					Width="{StaticResource TileSizeWidth}"
@@ -62,6 +71,18 @@
 					Height="{StaticResource TileSizeHeight}"
 					Width="{StaticResource TileSizeWidth}"
 					Margin="{StaticResource TileMargin}"
+					Title="Super slider"
+					Click="Slider_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Timespan"
+					Click="TimeSpan_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
 					Title="About controls"
 					Click="About_Click" />
 				<c4f:Tile
@@ -70,12 +91,6 @@
 					Margin="{StaticResource TileMargin}"
 					Title="Memory"
 					Click="Memory_Click" />
-				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
-					Title="Timespan"
-					Click="TimeSpan_Click" />
 			</slToolkit:WrapPanel>
 		</ScrollViewer>
     </Grid>
