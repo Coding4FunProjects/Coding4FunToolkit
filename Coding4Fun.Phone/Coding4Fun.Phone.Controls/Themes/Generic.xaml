@@ -521,9 +521,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:SuperSlider">
                     <Grid 
-                        x:Name="Body"
-                        Height="{TemplateBinding BarHeight}" 
-						Width="{TemplateBinding BarWidth}">
+                        x:Name="Body">
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
