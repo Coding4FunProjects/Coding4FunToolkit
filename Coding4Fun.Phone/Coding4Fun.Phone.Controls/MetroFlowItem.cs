@@ -18,12 +18,12 @@ namespace Coding4Fun.Phone.Controls
 		
 		public ImageSource ImageSource
 		{
-			get { return (ImageSource)GetValue(ImageProperty); }
-			set { SetValue(ImageProperty, value); }
+			get { return (ImageSource)GetValue(ImageSourceProperty ); }
+			set { SetValue(ImageSourceProperty , value); }
 		}
 
 		// Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty ImageProperty =
+		public static readonly DependencyProperty ImageSourceProperty  =
 			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(MetroFlowItem), new PropertyMetadata(OnImageSourceChanged));
 
 		private static void OnImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
