@@ -56,6 +56,13 @@
 							ImageSource="{Binding RoundButtonImage}"
 							Content="toggle img" 
 							Click="ToggleRoundButtonImageClick" />
+
+						<c4f:RoundButton
+							ButtonWidth="100"
+							ButtonHeight="100"
+							Click="RoundButtonBasicClick">
+							Custom Size
+						</c4f:RoundButton>
 					</StackPanel>
 					<c4f:RoundButton 
 							Orientation="Horizontal"
@@ -144,6 +151,12 @@
 							ImageSource="{Binding RoundButtonImage}"
 							Content="toggle img" 
 							Click="ToggleRoundButtonImageClick" />
+						<c4f:RoundToggleButton
+							ButtonWidth="100"
+							ButtonHeight="100"
+							Click="RoundButtonBasicClick">
+							Custom Size
+						</c4f:RoundToggleButton>
 					</StackPanel>
 					<c4f:RoundToggleButton 
 							Orientation="Horizontal"

@@ -63,6 +63,26 @@ namespace Coding4Fun.Phone.Controls
             new PropertyMetadata(
                 //new BitmapImage(new Uri("/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute)),
                 OnImageSource));
+
+		public double ButtonWidth
+		{
+			get { return (double)GetValue(ButtonWidthProperty); }
+			set { SetValue(ButtonWidthProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ButtonWidth.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ButtonWidthProperty =
+			DependencyProperty.Register("ButtonWidth", typeof(double), typeof(RoundToggleButton), new PropertyMetadata(72d));
+
+		public double ButtonHeight
+		{
+			get { return (double)GetValue(ButtonHeightProperty); }
+			set { SetValue(ButtonHeightProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ButtonHeight.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ButtonHeightProperty =
+			DependencyProperty.Register("ButtonHeight", typeof(double), typeof(RoundToggleButton), new PropertyMetadata(72d));
         #endregion
 
         #region dp onchange callbacks

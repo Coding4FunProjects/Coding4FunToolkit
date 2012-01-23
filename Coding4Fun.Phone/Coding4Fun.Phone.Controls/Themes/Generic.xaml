@@ -61,9 +61,12 @@
                         <Rectangle Fill="Transparent" />
                     
                         <StackPanel Orientation="{TemplateBinding Orientation}">
-                        
 
-                        <Grid Width="72" Height="72" Margin="0,-10, 0, 0">
+
+						<Grid 
+							Width="{TemplateBinding ButtonWidth}" 
+							Height="{TemplateBinding ButtonHeight}" 
+							Margin="0,-10, 0, 0">
 							<Ellipse
 								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
@@ -143,7 +146,10 @@
                         <Rectangle Fill="Transparent" />
                         <StackPanel Orientation="{TemplateBinding Orientation}">
 
-                            <Grid Width="72" Height="72" Margin="0,-10, 0, -3">
+                            <Grid 
+								Width="{TemplateBinding ButtonWidth}" 
+								Height="{TemplateBinding ButtonHeight}" 
+								Margin="0,-10, 0, -3">
                             <Ellipse
 								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
