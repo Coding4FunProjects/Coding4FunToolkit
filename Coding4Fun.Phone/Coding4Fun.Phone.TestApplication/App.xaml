@@ -11,6 +11,7 @@
 		<System:Double x:Key="TileSizeWidth">140</System:Double>
 		<System:Double x:Key="TileSizeHeight">140</System:Double>
 		<Thickness x:Key="TileMargin">0, 0, 12, 12</Thickness>
+		<Thickness x:Key="ResetMargin">-12, 0</Thickness>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

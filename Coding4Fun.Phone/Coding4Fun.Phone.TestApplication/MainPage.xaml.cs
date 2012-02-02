@@ -59,8 +59,13 @@ namespace Coding4Fun.Phone.TestApplication
         {
             NavigateTo("/Samples/MetroFlow.xaml");
         }
-		
-		private void NavigateTo(string page)
+
+		private void Binding_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateTo("/Samples/Binding.xaml");
+		}
+
+    	private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));
         }

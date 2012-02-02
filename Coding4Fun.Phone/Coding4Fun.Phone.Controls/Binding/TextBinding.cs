@@ -50,11 +50,9 @@ namespace Coding4Fun.Phone.Controls.Binding
 
         private static void HandleUpdateSourceOnChangeEventAppend(object sender, bool value)
         {
-            var type = sender.GetType();
-
-            if (type == typeof(TextBox))
+			if (sender is TextBox)
                 HandleUpdateSourceOnChangeEventAppendTextBox(sender, value);
-            else if (type == typeof(PasswordBox))
+            else if (sender is PasswordBox)
                 HandleUpdateSourceOnChangeEventAppendPassword(sender, value);
         }
 
@@ -99,12 +97,11 @@ namespace Coding4Fun.Phone.Controls.Binding
 
         private static DependencyProperty GetDependancyPropertyForText(object sender)
         {
-            var type = sender.GetType();
             DependencyProperty returnVal = null;
 
-            if (type == typeof(TextBox))
+            if (sender is TextBox)
                 returnVal = TextBox.TextProperty;
-            else if (type == typeof(PasswordBox))
+            else if (sender is PasswordBox)
                 returnVal = PasswordBox.PasswordProperty;
 
             return returnVal;

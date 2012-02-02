@@ -1,0 +1,92 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Coding4Fun.Phone.TestApplication.Samples.Binding"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Binding="clr-namespace:Coding4Fun.Phone.Controls.Binding;assembly=Coding4Fun.Phone.Controls"
+    xmlns:Test="clr-namespace:Coding4Fun.Phone.TestApplication.Test"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Grid.ColumnSpan="2" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="binding" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+		<StackPanel Grid.Row="1" Margin="12,0">
+			<TextBlock
+				Text="result"
+				/>
+			<TextBox Text="{Binding TestProp}" Margin="-12, 0, -12, 24" />
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" Grid.Column="0" Margin="12,0">
+			<TextBlock FontWeight="Bold" Margin="0, 0, 0, 24">UpdateSourceOnChange</TextBlock>
+			<TextBlock>Textbox</TextBlock>
+			<TextBox 
+				Text="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}"
+				Binding:TextBinding.UpdateSourceOnChange="True"
+				/>
+			<TextBlock>passwordbox</TextBlock>
+			<PasswordBox 
+				Password="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}"
+				Binding:TextBinding.UpdateSourceOnChange="True"
+				/>
+			<TextBlock>inherited Textbox</TextBlock>
+			<Test:InheritedTextBox
+				Text="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}"
+				Binding:TextBinding.UpdateSourceOnChange="True"
+				/>
+		</StackPanel>
+		<!--Binding:TextBinding.UpdateSourceOnChange="True"-->
+		<StackPanel Grid.Row="2" Grid.Column="1" Margin="12,0,12,0">
+			<TextBlock FontWeight="Bold" Margin="0, 0, 0, 24">Normal</TextBlock>
+			<TextBlock>Textbox</TextBlock>
+			<TextBox 
+				Text="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}"
+				/>
+			<TextBlock>passwordbox</TextBlock>
+			<PasswordBox 
+				Password="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}" />
+			<TextBlock>inherited Textbox</TextBlock>
+			<Test:InheritedTextBox 
+				Text="{Binding TestProp, Mode=TwoWay}"
+				Margin="{StaticResource ResetMargin}" />
+		</StackPanel>
+	</Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

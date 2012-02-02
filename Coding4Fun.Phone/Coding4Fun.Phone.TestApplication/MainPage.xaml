@@ -91,6 +91,12 @@
 					Margin="{StaticResource TileMargin}"
 					Title="Memory"
 					Click="Memory_Click" />
+				<c4f:Tile
+					Height="{StaticResource TileSizeHeight}"
+					Width="{StaticResource TileSizeWidth}"
+					Margin="{StaticResource TileMargin}"
+					Title="Binding"
+					Click="Binding_Click" />
 			</slToolkit:WrapPanel>
 		</ScrollViewer>
     </Grid>
