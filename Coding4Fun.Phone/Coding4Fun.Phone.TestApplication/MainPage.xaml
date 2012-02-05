@@ -37,66 +37,86 @@
 				slToolkit:TiltEffect.IsTiltEnabled="True"
 				Margin="24,120,0,0">
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Prompt controls"
-					Click="Prompts_Click" />
+					Click="Prompts_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Pr
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Color controls"
-					Click="Colors_Click" />
+					Click="Colors_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Co
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Button controls"
-					Click="Button_Click" />
+					Click="Button_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bn
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="MetroFlow"
-					Click="MetroFlow_Click" />
+					Click="MetroFlow_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Mf
+					</TextBlock>
+				</c4f:Tile>
 					
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Overlay"
-					Click="Overlays_Click" />
+					Click="Overlays_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ov
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Super slider"
-					Click="Slider_Click" />
+					Click="Slider_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Sl
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Timespan"
-					Click="TimeSpan_Click" />
+					Click="TimeSpan_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ts
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="About controls"
-					Click="About_Click" />
+					Click="About_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ab
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Memory"
-					Click="Memory_Click" />
+					Click="Memory_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Me
+					</TextBlock>
+				</c4f:Tile>
 				<c4f:Tile
-					Height="{StaticResource TileSizeHeight}"
-					Width="{StaticResource TileSizeWidth}"
-					Margin="{StaticResource TileMargin}"
+					Style="{StaticResource TileStyle}"
 					Title="Binding"
-					Click="Binding_Click" />
+					Click="Binding_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bi
+					</TextBlock>
+				</c4f:Tile>
 			</slToolkit:WrapPanel>
 		</ScrollViewer>
     </Grid>
