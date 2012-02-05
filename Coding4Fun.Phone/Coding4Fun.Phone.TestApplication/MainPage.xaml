@@ -38,7 +38,7 @@
 				Margin="24,120,0,0">
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Prompt controls"
+					Title="Prompt"
 					Click="Prompts_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Pr
@@ -46,7 +46,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Color controls"
+					Title="Color"
 					Click="Colors_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Co
@@ -54,7 +54,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Button controls"
+					Title="Button"
 					Click="Button_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Bn
@@ -79,7 +79,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Super slider"
+					Title="Super Slider"
 					Click="Slider_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Sl
@@ -95,7 +95,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="About controls"
+					Title="About"
 					Click="About_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Ab
