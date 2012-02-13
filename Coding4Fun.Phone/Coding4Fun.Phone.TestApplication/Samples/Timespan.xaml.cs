@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using Coding4Fun.Phone.Controls.Toolkit;
 using Microsoft.Phone.Controls;
@@ -39,6 +40,12 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		private void LaunchPickerClick(object sender, System.Windows.RoutedEventArgs e)
 		{
 			foo.OpenPicker();
+		}
+
+		private void TimeSpanPicker_ValueChanged(object sender, RoutedPropertyChangedEventArgs<TimeSpan> e)
+		{
+			if(e.NewValue != null)
+				resultBlock.Text = e.NewValue.ToString();
 		}
     }
 }

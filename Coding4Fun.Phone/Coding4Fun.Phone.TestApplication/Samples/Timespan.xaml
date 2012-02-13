@@ -38,7 +38,8 @@
 					<c4fSlToolkitExtender:TimeSpanPicker
 						Value="{Binding TimeSpan5Min}"
 						Max="{Binding TimeSpan30Min}" 
-						Step="{Binding TimeSpan5Min}"/>
+						Step="{Binding TimeSpan5Min}" 
+						ValueChanged="TimeSpanPicker_ValueChanged" />
 
 					<Button Click="LaunchPickerClick">Launch Via OpenPicker()</Button>
 				</StackPanel>
@@ -56,5 +57,9 @@
 				</StackPanel>
 			</ms:PivotItem>
 		</ms:Pivot>
+		<TextBlock
+			Name="resultBlock"
+			Text="result: ##"
+			VerticalAlignment="Bottom" />
     </Grid>
 </phone:PhoneApplicationPage>

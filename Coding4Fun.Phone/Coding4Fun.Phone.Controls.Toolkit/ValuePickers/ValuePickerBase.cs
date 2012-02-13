@@ -29,6 +29,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 		/// Event that is invoked when the Value property changes.
 		/// </summary>
 		public event EventHandler<ValueChangedEventArgs<T>> ValueChanged;
+//		public event RoutedPropertyChangedEventHandler<T> ValueChanged;
 
 		public string DialogTitle
 		{
@@ -43,7 +44,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit
         /// <summary>
         /// Gets or sets the DateTime value.
         /// </summary>
-        [TypeConverter(typeof(TimeTypeConverter))]
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = "Matching the use of Value as a Picker naming convention.")]
         public T? Value
         {
@@ -64,17 +64,22 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
         private void OnValueChanged(T? oldValue, T? newValue)
         {
-            UpdateValueString();
-            OnValueChanged(new ValueChangedEventArgs<T>(oldValue, newValue));
+        	UpdateValueString();
+            //OnValueChanged(new ValueChangedEventArgs<T>(oldValue, newValue));
+        	if (newValue != null && oldValue != null)
+				OnValueChanged(new ValueChangedEventArgs<T>(oldValue, newValue));
+				//OnValueChanged(new RoutedPropertyChangedEventArgs<T>(oldValue.Value, newValue.Value));
         }
 
-        /// <summary>
+    	/// <summary>
         /// Called when the value changes.
         /// </summary>
         /// <param name="e">The event data.</param>
 		protected virtual void OnValueChanged(ValueChangedEventArgs<T> e)
+		//protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs<T> e)
 		{
 			var handler = ValueChanged;
+
 			if (null != handler)
 			{
 				handler(this, e);
