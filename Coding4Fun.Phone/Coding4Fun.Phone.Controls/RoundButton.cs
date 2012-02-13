@@ -31,6 +31,8 @@ namespace Coding4Fun.Phone.Controls
             else
                 SetImageBrush(ImageSource);
 
+			SetStretch(Stretch);
+
 		    if (ContentBody != null)
 		    {
                 var bottom = -(ContentBody.FontSize / 8.0);
@@ -49,6 +51,16 @@ namespace Coding4Fun.Phone.Controls
         // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(RoundButton), new PropertyMetadata(Orientation.Vertical));
+
+		public Stretch Stretch
+		{
+			get { return (Stretch)GetValue(StretchProperty); }
+			set { SetValue(StretchProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty StretchProperty =
+			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(RoundButton), new PropertyMetadata(Stretch.Fill, OnStretch));
 
 		public ImageSource ImageSource
         {
@@ -102,6 +114,24 @@ namespace Coding4Fun.Phone.Controls
 
             OpacityImageBrush.ImageSource = brush;
         }
+
+		private static void OnStretch(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			var sender = o as RoundButton;
+
+			if (sender == null || e.NewValue == e.OldValue)
+				return;
+
+			sender.SetStretch((Stretch)e.NewValue);
+		}
+
+		private void SetStretch(Stretch stretch)
+		{
+			if (OpacityImageBrush == null)
+				return;
+
+			OpacityImageBrush.Stretch = stretch;
+		}
         #endregion
     }
 }

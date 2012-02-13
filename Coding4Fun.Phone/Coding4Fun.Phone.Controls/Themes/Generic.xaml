@@ -78,7 +78,7 @@
 								Fill="{TemplateBinding Foreground}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}">
 								<Ellipse.OpacityMask>
-									<ImageBrush x:Name="OpacityImageBrush" />
+									<ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
 								</Ellipse.OpacityMask>
 							</Ellipse>
 						</Grid>
@@ -161,8 +161,8 @@
 								Fill="{TemplateBinding Foreground}" 
 								Margin="{StaticResource PhoneTouchTargetOverhang}">
 								<Ellipse.OpacityMask>
-									<ImageBrush x:Name="OpacityImageBrush" />
-								</Ellipse.OpacityMask>
+										<ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
+									</Ellipse.OpacityMask>
 							</Ellipse>
 						</Grid>
                         
@@ -733,7 +733,7 @@
     <Style TargetType="local:SuperSlider">
         <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
         <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
-		<Setter Property="Padding" Value="0, 6, 0, 36" />
+		<Setter Property="Padding" Value="0, 3, 0, 36" />
 		
         <Setter Property="Template">
 			<Setter.Value>
@@ -765,7 +765,7 @@
 						</VisualStateManager.VisualStateGroups>
 						<TextBlock 
 							Text="{TemplateBinding Title}" 
-							Foreground="{StaticResource PhoneSubtleBrush}"  />
+							Foreground="{StaticResource PhoneSubtleBrush}" />
 						<Grid Grid.Row="1">
 							<Border Margin="{TemplateBinding Padding}">
 								<Grid Name="BarBody">

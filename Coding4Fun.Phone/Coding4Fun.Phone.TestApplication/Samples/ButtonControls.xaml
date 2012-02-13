@@ -53,6 +53,7 @@
 							FontSize="36"
 							Content="Fun" />
 						<c4f:RoundButton 
+							Stretch="None"
 							ImageSource="{Binding RoundButtonImage}"
 							Content="toggle img" 
 							Click="ToggleRoundButtonImageClick" />
@@ -60,6 +61,7 @@
 						<c4f:RoundButton
 							ButtonWidth="100"
 							ButtonHeight="100"
+							Stretch="None"
 							Click="RoundButtonBasicClick">
 							Custom Size
 						</c4f:RoundButton>
@@ -150,10 +152,12 @@
 						<c4f:RoundToggleButton 
 							ImageSource="{Binding RoundButtonImage}"
 							Content="toggle img" 
+							Stretch="None"
 							Click="ToggleRoundButtonImageClick" />
 						<c4f:RoundToggleButton
 							ButtonWidth="100"
 							ButtonHeight="100"
+							Stretch="None"
 							Click="RoundButtonBasicClick">
 							Custom Size
 						</c4f:RoundToggleButton>
