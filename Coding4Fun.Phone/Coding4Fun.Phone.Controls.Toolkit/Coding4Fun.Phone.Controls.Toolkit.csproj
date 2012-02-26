@@ -109,10 +109,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.it.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.kr.Designer.cs">
+    <Compile Include="Properties\Resources.ko.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.kr.resx</DependentUpon>
+      <DependentUpon>Resources.ko.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +143,9 @@
       <LastGenOutput>Resources.it.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.kr.resx">
+    <EmbeddedResource Include="Properties\Resources.ko.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.kr.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.ko.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fr.resx">
