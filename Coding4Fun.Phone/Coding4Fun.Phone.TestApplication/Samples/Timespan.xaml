@@ -53,6 +53,7 @@
 						<Button Content="es-ES" Click="SetLanguage_Click" />
 						<Button Content="fr-FR" Click="SetLanguage_Click" />
 						<Button Content="it-IT" Click="SetLanguage_Click" />
+						<Button Content="cs-CZ" Click="SetLanguage_Click" />
 					</Controls:WrapPanel>
 				</StackPanel>
 			</ms:PivotItem>

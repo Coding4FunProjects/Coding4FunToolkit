@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using Coding4Fun.Phone.Controls.Toolkit;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
@@ -22,9 +22,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         public TimeSpan TimeSpan30Min { get { return TimeSpan.FromMinutes(30); } }
         public TimeSpan TimeSpan2Hour { get { return TimeSpan.FromHours(2); } }
 
-        private void SetLanguage_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void SetLanguage_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
+
             if (button != null)
             {
                 var culture = button.Content as string;
@@ -37,15 +38,14 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             }
         }
 
-		private void LaunchPickerClick(object sender, System.Windows.RoutedEventArgs e)
+		private void LaunchPickerClick(object sender, RoutedEventArgs e)
 		{
 			foo.OpenPicker();
 		}
 
 		private void TimeSpanPicker_ValueChanged(object sender, RoutedPropertyChangedEventArgs<TimeSpan> e)
 		{
-			if(e.NewValue != null)
-				resultBlock.Text = e.NewValue.ToString();
+			resultBlock.Text = e.NewValue.ToString();
 		}
     }
 }
