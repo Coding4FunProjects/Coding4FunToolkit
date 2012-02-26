@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ValuePickerCancelText" xml:space="preserve">
-    <value>zrušit</value>
+    <value>storno</value>
     <comment>Default text for the "cancel" ApplicationBar button used by ValuePicker.</comment>
   </data>
   <data name="ValuePickerDoneText" xml:space="preserve">
@@ -126,16 +126,16 @@
     <comment>Default text for the "done" ApplicationBar button used by ValuePicker.</comment>
   </data>
   <data name="HourName" xml:space="preserve">
-    <value>hodina</value>
+    <value>hodin</value>
   </data>
   <data name="MinuteName" xml:space="preserve">
-    <value>minuta</value>
+    <value>minut</value>
   </data>
   <data name="SecondName" xml:space="preserve">
-    <value>sekunda</value>
+    <value>sekund</value>
     <comment>Title of Second Duration Part</comment>
   </data>
   <data name="TimeSpanPickerTitle" xml:space="preserve">
-    <value>NASTAVIT ČAS</value>
+    <value>ZVOLTE DOBU TRVÁNÍ</value>
   </data>
 </root>
