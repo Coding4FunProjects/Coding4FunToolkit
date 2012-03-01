@@ -17,7 +17,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
 
         void ColorPicker_Loaded(object sender, RoutedEventArgs e)
         {
-            ColorPickerOnLoadTest.Color = Colors.Magenta;
+            ColorPickerSetOnLoadTest.Color = Colors.Magenta;
         }
 
         private void ColorPicker_ColorChanged(object sender, System.Windows.Media.Color color)
@@ -30,5 +30,31 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
         {
             pickerVisibilityToggle.Visibility = (pickerVisibilityToggle.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible; 
         }
+
+		private void Cyan_Click(object sender, RoutedEventArgs e)
+		{
+			SetColor(Colors.Cyan);
+		}
+
+		private void Yellow_Click(object sender, RoutedEventArgs e)
+		{
+			SetColor(Colors.Yellow);
+		}
+
+		private void Orange_Click(object sender, RoutedEventArgs e)
+		{
+			SetColor(Colors.Orange);
+		}
+
+		private void Magenta_Click(object sender, RoutedEventArgs e)
+		{
+			SetColor(Colors.Magenta);
+		}
+
+		private void SetColor(System.Windows.Media.Color color)
+		{
+			ColorPickerSetOnLoadTest.Color = color;
+			ColorPickerSetOnXamlLoadTest.Color = color;
+		}
     }
 }

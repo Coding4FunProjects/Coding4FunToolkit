@@ -57,17 +57,37 @@
 						<RowDefinition />
 						<RowDefinition Height="Auto" />
 						<RowDefinition />
+						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
 					<TextBlock Grid.Row="0">XAML Set Color: Cyan</TextBlock>
 					<c4f:ColorPicker
 						Grid.Row="1"
-						Color="Cyan" />
+						Color="Cyan" 
+						Name="ColorPickerSetOnXamlLoadTest"/>
 
 					<TextBlock Grid.Row="2">On Load Set Color: Magenta</TextBlock>
-					
 					<c4f:ColorPicker 
 						Grid.Row="3"
-						Name="ColorPickerOnLoadTest" />
+						Name="ColorPickerSetOnLoadTest" />
+					<StackPanel
+						Grid.Row="4" 
+						HorizontalAlignment="Center"
+						Orientation="Horizontal">
+						
+						<c4f:RoundButton 
+							Content="Cyan" 
+							Click="Cyan_Click" />
+						<c4f:RoundButton 
+							Content="Yellow" 
+							Click="Yellow_Click" />
+						<c4f:RoundButton
+							Content="Orange" 
+							Click="Orange_Click" />
+						<c4f:RoundButton 
+							Content="Magenta" 
+							Click="Magenta_Click" />
+
+					</StackPanel>
 				</Grid>
 			</ms:PivotItem>
 			<ms:PivotItem Header="disabled">
