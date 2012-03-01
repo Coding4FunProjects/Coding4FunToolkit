@@ -13,36 +13,56 @@ namespace Coding4Fun.Phone.Controls
 {
     public class ColorHexagonPicker : ColorBaseControl
     {
-        Rectangle _focusedRectangle;
-        bool _isLoaded;
-        bool _raisedFromRectangleFocusMethod;
+		bool _isLoaded;
+		bool _raisedFromRectangleFocusMethod;
+		bool _fingerMovement;
+
+		Rectangle _focusedRectangle;
+        
     	readonly List<Rectangle> _rectangles = new List<Rectangle>();
 
         public ColorHexagonPicker()
         {
             DefaultStyleKey = typeof(ColorHexagonPicker);
 
-            Loaded += ColorHexagonPicker_Loaded;
+            Loaded += ColorHexagonPickerLoaded;
+
+			ManipulationStarted += ColorHexagonPickerManipulationStarted;
+			ManipulationCompleted += ColorHexagonPickerManipulationCompleted;
         }
 
-        void ColorHexagonPicker_Loaded(object sender, RoutedEventArgs e)
+		void ColorHexagonPickerManipulationStarted(object sender, ManipulationStartedEventArgs e)
+		{
+			_fingerMovement = true;
+		}
+
+		void ColorHexagonPickerManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+		{
+			_fingerMovement = false;
+		}
+
+        void ColorHexagonPickerLoaded(object sender, RoutedEventArgs e)
         {
             // need to allow all properties to set rather than do costly regenerates
             _isLoaded = true;
             GenerateLayout();
         }
 
-        protected internal override void UpdateLayoutBasedOnColor()
-        {
-            if (_raisedFromRectangleFocusMethod)
-                return;
+		protected internal override void UpdateLayoutBasedOnColor()
+		{
+			if (_raisedFromRectangleFocusMethod)
+				return;
 
-            base.UpdateLayoutBasedOnColor();
+			base.UpdateLayoutBasedOnColor();
 
-            SetFocusedRectangle(_rectangles.Where(r => ((SolidColorBrush)r.Fill).Color == Color).SingleOrDefault());
-        }
+			if (_rectangles.All(r => ((SolidColorBrush) r.Fill).Color != Color))
+				return;
 
-        public void GenerateLayout()
+			var rect = _rectangles.First(r => ((SolidColorBrush) r.Fill).Color == Color);
+			SetFocusedRectangle(rect);
+		}
+
+    	public void GenerateLayout()
         {
             if (!_isLoaded)
                 return;
@@ -187,9 +207,13 @@ namespace Coding4Fun.Phone.Controls
                            Stroke = new SolidColorBrush(color),
                            Fill = new SolidColorBrush(color)
                        };
+			
+			// handles single click
+			rect.Tap += RectangleTap;
 
-            rect.MouseEnter += Rectangle_MouseEnter;
-
+			// handles person moving around
+            rect.MouseEnter += RectangleMouseEnter;
+			
             if (Color == color)
                 SetFocusedRectangle(rect);
 
@@ -197,19 +221,34 @@ namespace Coding4Fun.Phone.Controls
 
             return rect;
         }
-        #endregion
 
-        void Rectangle_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var rect = sender as Rectangle;
+		void RectangleTap(object sender, GestureEventArgs e)
+		{
+			SetRectFromEvent(sender);
+		}
 
-            if (rect != null)
-            {
-                SetFocusedRectangle(rect);
-            }
+        void RectangleMouseEnter(object sender, MouseEventArgs e)
+		{
+			// catch a weird cascade event where this gets fired even though no one clicked it.
+			if (!_fingerMovement)
+				return;
+
+			SetRectFromEvent(sender);
         }
 
-        private void SetFocusedRectangle(Rectangle rect)
+    	private void SetRectFromEvent(object sender)
+    	{
+    		var rect = sender as Rectangle;
+
+    		if (rect != null)
+    		{
+    			SetFocusedRectangle(rect);
+    		}
+    	}
+
+    	#endregion
+		
+		private void SetFocusedRectangle(Rectangle rect)
         {
             if (rect == null)
                 return;
@@ -239,7 +278,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for SelectedStrokeColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedStrokeColorProperty =
-            DependencyProperty.Register("SelectedStrokeColor", typeof(Color), typeof(ColorHexagonPicker), new PropertyMetadata(Color.FromArgb(255, 255, 255, 255)));
+            DependencyProperty.Register("SelectedStrokeColor", typeof(Color), typeof(ColorHexagonPicker), new PropertyMetadata(Color.FromArgb(255, 0, 255, 255)));
 
 
 

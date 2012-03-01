@@ -11,7 +11,8 @@ namespace Coding4Fun.Phone.Controls
 {
     public class ColorPicker : ColorBaseControl
     {
-        bool _fromSliderChange;
+        bool _fromMovement;
+		bool _adjustingColor;
 
         Point _position;
 
@@ -87,7 +88,7 @@ namespace Coding4Fun.Phone.Controls
 			IsEnabledVisualStateUpdate();
 		}
         void ColorSlider_ColorChanged(object sender, Color color)
-        {
+		{
             UpdateSample();
         }
 
@@ -113,14 +114,16 @@ namespace Coding4Fun.Phone.Controls
 
         private void UpdateSample()
         {
-            _fromSliderChange = true;
+			_fromMovement = true;
             SetSampleLocation();
 
             var saturation = (float)(_position.X / SelectedHueColor.ActualWidth);
             var value = (float)(1 - (_position.Y / SelectedHueColor.ActualHeight));
 
-            ColorChanging(ColorSpace.ConvertHsvToRgb(ColorSlider.Color.GetHue(), saturation, value));
-            _fromSliderChange = false;
+			if(!_adjustingColor)
+	            ColorChanging(ColorSpace.ConvertHsvToRgb(ColorSlider.Color.GetHue(), saturation, value));
+			
+			_fromMovement = false;
         }
 
         private void SetSampleLocation()
@@ -144,17 +147,23 @@ namespace Coding4Fun.Phone.Controls
 
         protected internal override void UpdateLayoutBasedOnColor()
         {
-            if (_fromSliderChange || SelectedHueColor == null)
+            if (_fromMovement || SelectedHueColor == null)
                 return;
 
             base.UpdateLayoutBasedOnColor();
 
             var hsv = Color.GetHSV();
 
-            if (ColorSlider != null)
-                ColorSlider.Color = ColorSpace.GetColorFromHueValue((int)hsv.Hue);
+			if (ColorSlider != null)
+			{
+				_adjustingColor = true;
 
-            _position.X = hsv.Saturation * SelectedHueColor.ActualWidth;
+				ColorSlider.Color = ColorSpace.GetColorFromHueValue((int) hsv.Hue);
+				
+				_adjustingColor = false;
+			}
+
+        	_position.X = hsv.Saturation * SelectedHueColor.ActualWidth;
             _position.Y = (1 - hsv.Value) * SelectedHueColor.ActualHeight;
             SetSampleLocation();
         }
