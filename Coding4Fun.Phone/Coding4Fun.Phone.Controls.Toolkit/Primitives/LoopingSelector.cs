@@ -151,8 +151,6 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		public static readonly DependencyProperty ItemTemplateProperty =
 			DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LoopingSelector), new PropertyMetadata(null));
 
-
-
 		public Orientation Orientation
 		{
 			get { return (Orientation)GetValue(OrientationProperty); }
@@ -163,7 +161,35 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		public static readonly DependencyProperty OrientationProperty =
 			DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LoopingSelector), new PropertyMetadata(Orientation.Vertical));
 
+		public double Friction
+		{
+			get { return (double)GetValue(FrictionProperty); }
+			set { SetValue(FrictionProperty, value); }
+		}
 
+		// Using a DependencyProperty as the backing store for Friction.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty FrictionProperty =
+			DependencyProperty.Register("Friction", typeof(double), typeof(LoopingSelector), new PropertyMetadata(MotionParameters.Friction));
+
+		public double MaximumSpeed
+		{
+			get { return (double)GetValue(MaximumSpeedProperty); }
+			set { SetValue(MaximumSpeedProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for MaximumSpeed.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty MaximumSpeedProperty =
+			DependencyProperty.Register("MaximumSpeed", typeof(double), typeof(LoopingSelector), new PropertyMetadata(MotionParameters.MaximumSpeed));
+
+		public double ParkingSpeed
+		{
+			get { return (double)GetValue(ParkingSpeedProperty); }
+			set { SetValue(ParkingSpeedProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ParkingSpeed.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ParkingSpeedProperty =
+			DependencyProperty.Register("ParkingSpeed", typeof(double), typeof(LoopingSelector), new PropertyMetadata(MotionParameters.ParkingSpeed));
 
 		/// <summary>
 		/// The size of the items, excluding the ItemMargin.
@@ -376,9 +402,9 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 					else
 						velocity = new Point(e.FinalVelocities.LinearVelocity.X, 0);
 
-					double flickDuration = PhysicsConstants.GetStopTime(velocity);
-					Point flickEndPoint = PhysicsConstants.GetStopPoint(velocity);
-					IEasingFunction flickEase = PhysicsConstants.GetEasingFunction(flickDuration);
+					double flickDuration = PhysicsConstants.GetStopTime(velocity, Friction, MaximumSpeed, ParkingSpeed);
+					Point flickEndPoint = PhysicsConstants.GetStopPoint(velocity, Friction, MaximumSpeed, ParkingSpeed);
+					IEasingFunction flickEase = PhysicsConstants.GetEasingFunction(flickDuration, Friction);
 
 					double to;
 					if (Orientation == Orientation.Vertical)

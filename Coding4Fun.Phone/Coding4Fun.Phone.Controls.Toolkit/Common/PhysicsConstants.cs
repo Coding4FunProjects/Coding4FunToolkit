@@ -9,22 +9,27 @@ using System.Windows.Media.Animation;
 
 namespace Coding4Fun.Phone.Controls.Toolkit
 {
-    internal static class MotionParameters
+    public struct MotionParameters
     {
-        public static double MaximumSpeed { get { return 4000.0; } }
-        public static double ParkingSpeed { get { return 80.0; } }
-        public static double Friction { get { return 0.2; } }
+        public const double MaximumSpeed = 4000.0;
+		public const double ParkingSpeed = 80.0;
+		public const double Friction = 0.2;
     }
 
     internal static class PhysicsConstants
     {
-        internal static double GetStopTime(Point initialVelocity)
+		public static double GetStopTime(Point initialVelocity)
+		{
+			return GetStopTime(initialVelocity, MotionParameters.Friction, MotionParameters.MaximumSpeed, MotionParameters.ParkingSpeed);
+		}
+
+    	public static double GetStopTime(Point initialVelocity, double friction, double maximumSpeed, double parkingSpeed)
         {
             // We need to cap the velocity's magnitude at the maximum speed in order not to have an unbounded scrolling velocity.
             double initialVelocityMagnitude =
                 Math.Min(
                     Math.Sqrt(initialVelocity.X * initialVelocity.X + initialVelocity.Y * initialVelocity.Y),
-                    MotionParameters.MaximumSpeed);
+					maximumSpeed);
 
             // The formula is
             //
@@ -45,28 +50,33 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             //
             // If the parking speed is greater than the initial velocity, we just stop immediately.
             //
-            if (MotionParameters.ParkingSpeed >= initialVelocityMagnitude)
+            if (parkingSpeed >= initialVelocityMagnitude)
             {
                 return 0;
             }
             else
             {
-                return Math.Log(MotionParameters.ParkingSpeed / initialVelocityMagnitude) / Math.Log(MotionParameters.Friction);
+                return Math.Log(parkingSpeed / initialVelocityMagnitude) / Math.Log(friction);
             }
         }
 
-        internal static Point GetStopPoint(Point initialVelocity)
+		public static Point GetStopPoint(Point initialVelocity)
+		{
+			return GetStopPoint(initialVelocity, MotionParameters.Friction, MotionParameters.MaximumSpeed, MotionParameters.ParkingSpeed);
+		}
+
+		public static Point GetStopPoint(Point initialVelocity, double friction, double maximumSpeed, double parkingSpeed)
         {
             // We need to cap the velocity's magnitude at the maximum speed in order not to have an unbounded scrolling velocity.
             double initialVelocityMagnitude = Math.Sqrt(initialVelocity.X * initialVelocity.X + initialVelocity.Y * initialVelocity.Y);
             Point cappedInitialVelocity = initialVelocity;
 
-            if (initialVelocityMagnitude > MotionParameters.MaximumSpeed && initialVelocityMagnitude > 0)
+			if (initialVelocityMagnitude > maximumSpeed && initialVelocityMagnitude > 0)
             {
                 // We want to cap the magnitude, so multiplying each directional value by
                 // the ratio between the maximum speed and the current magnitude accomplishes this.
-                cappedInitialVelocity.X *= MotionParameters.MaximumSpeed / initialVelocityMagnitude;
-                cappedInitialVelocity.Y *= MotionParameters.MaximumSpeed / initialVelocityMagnitude;
+				cappedInitialVelocity.X *= maximumSpeed / initialVelocityMagnitude;
+				cappedInitialVelocity.Y *= maximumSpeed / initialVelocityMagnitude;
             }
 
             // The formula is
@@ -88,14 +98,19 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             // (mu^t - 1) / ln mu is a scalar value, so we only need
             // to calculate it once.
             //
-            double initialVelocityCoefficient = (Math.Pow(MotionParameters.Friction, GetStopTime(cappedInitialVelocity)) - 1) / Math.Log(MotionParameters.Friction);
+			double initialVelocityCoefficient = (Math.Pow(friction, GetStopTime(cappedInitialVelocity, friction, maximumSpeed, parkingSpeed)) - 1) / Math.Log(friction);
 
             return new Point(
                 cappedInitialVelocity.X * initialVelocityCoefficient,
                 cappedInitialVelocity.Y * initialVelocityCoefficient);
         }
 
-        internal static IEasingFunction GetEasingFunction(double stopTime)
+		public static IEasingFunction GetEasingFunction(double stopTime)
+		{
+			return GetEasingFunction(stopTime, MotionParameters.Friction);
+		}
+
+    	public static IEasingFunction GetEasingFunction(double stopTime, double friction)
         {
             // From above, we have the equation of position
             //
@@ -148,10 +163,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit
             // So, we can use an exponential easing function here with its
             // Exponent property set to t_max ln mu, and it will get us what we want.
             //
-            ExponentialEase ee = new ExponentialEase();
-            ee.Exponent = stopTime * Math.Log(MotionParameters.Friction);
-            ee.EasingMode = EasingMode.EaseIn;
-            return ee;
+    		ExponentialEase ee = new ExponentialEase
+    		                     	{
+										Exponent = stopTime*Math.Log(friction), 
+										EasingMode = EasingMode.EaseIn
+									};
+    		return ee;
         }
     }
 }
