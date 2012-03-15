@@ -32,7 +32,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 
 		// Amount of finger movement before the manipulation is considered a dragging manipulation.
 		private const double DragSensitivity = 12;
-
+		
 		private static readonly Duration _selectDuration = new Duration(TimeSpan.FromMilliseconds(500));
 		private readonly IEasingFunction _selectEase = new ExponentialEase() { EasingMode = EasingMode.EaseInOut };
 
@@ -63,6 +63,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		// Once the user starts dragging horizontally, he is not allowed to drag vertically
 		// until he completes his touch gesture and starts again.
 		private bool _isAllowedToDragVertically = true;
+		private bool _isAllowedToDragHorizontally = true;
 
 		// Specify whether or not the user is dragging with his finger.
 		private bool _isDragging;
@@ -150,6 +151,20 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		public static readonly DependencyProperty ItemTemplateProperty =
 			DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(LoopingSelector), new PropertyMetadata(null));
 
+
+
+		public Orientation Orientation
+		{
+			get { return (Orientation)GetValue(OrientationProperty); }
+			set { SetValue(OrientationProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty OrientationProperty =
+			DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LoopingSelector), new PropertyMetadata(Orientation.Vertical));
+
+
+
 		/// <summary>
 		/// The size of the items, excluding the ItemMargin.
 		/// </summary>
@@ -165,6 +180,9 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		/// </summary>
 		public LoopingSelector()
 		{
+			_isAllowedToDragVertically = Orientation == Orientation.Vertical;
+			_isAllowedToDragHorizontally = Orientation == Orientation.Horizontal;
+
 			DefaultStyleKey = typeof(LoopingSelector);
 			CreateEventHandlers();
 		}
@@ -233,9 +251,19 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		{
 			if (_isAnimating)
 			{
-				double y = _panningTransform.Y;
-				StopAnimation();
-				_panningTransform.Y = y;
+				if (Orientation == Orientation.Vertical)
+				{
+					double y = _panningTransform.Y;
+					StopAnimation();
+					_panningTransform.Y = y;
+				}
+				else
+				{
+					double x = _panningTransform.X;
+					StopAnimation();
+					_panningTransform.X = x;
+				}
+
 				_isAnimating = false;
 				_state = State.Dragging;
 			}
@@ -263,34 +291,66 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		private void OnManipulationStarted(object sender, ManipulationStartedEventArgs e)
 		{
 			_isAllowedToDragVertically = true;
+			_isAllowedToDragHorizontally = true;
+
 			_isDragging = false;
 		}
 
 		private void OnManipulationDelta(object sender, ManipulationDeltaEventArgs e)
 		{
-			if (_isDragging)
+			if (Orientation == Orientation.Vertical)
 			{
-				AnimatePanel(_panDuration, _panEase, _dragTarget += e.DeltaManipulation.Translation.Y);
-				e.Handled = true;
-			}
-			else if (Math.Abs(e.CumulativeManipulation.Translation.X) > DragSensitivity)
-			{
-				_isAllowedToDragVertically = false;
-			}
-			else if (_isAllowedToDragVertically && Math.Abs(e.CumulativeManipulation.Translation.Y) > DragSensitivity)
-			{
-				_isDragging = true;
-				_state = State.Dragging;
-				e.Handled = true;
-				_selectedItem = null;
-
-				if (!IsExpanded)
+				if (_isDragging)
 				{
-					IsExpanded = true;
+					AnimatePanel(_panDuration, _panEase, _dragTarget += e.DeltaManipulation.Translation.Y);
+					e.Handled = true;
 				}
+				else if (Math.Abs(e.CumulativeManipulation.Translation.X) > DragSensitivity)
+				{
+					_isAllowedToDragVertically = false;
+				}
+				else if (_isAllowedToDragVertically && Math.Abs(e.CumulativeManipulation.Translation.Y) > DragSensitivity)
+				{
+					_isDragging = true;
+					_state = State.Dragging;
+					e.Handled = true;
+					_selectedItem = null;
 
-				_dragTarget = _panningTransform.Y;
-				UpdateItemState();
+					if (!IsExpanded)
+					{
+						IsExpanded = true;
+					}
+
+					_dragTarget = _panningTransform.Y;
+					UpdateItemState();
+				}
+			}
+			else
+			{
+				if (_isDragging)
+				{
+					AnimatePanel(_panDuration, _panEase, _dragTarget += e.DeltaManipulation.Translation.X);
+					e.Handled = true;
+				}
+				else if (Math.Abs(e.CumulativeManipulation.Translation.Y) > DragSensitivity)
+				{
+					_isAllowedToDragHorizontally = false;
+				}
+				else if (_isAllowedToDragHorizontally && Math.Abs(e.CumulativeManipulation.Translation.X) > DragSensitivity)
+				{
+					_isDragging = true;
+					_state = State.Dragging;
+					e.Handled = true;
+					_selectedItem = null;
+
+					if (!IsExpanded)
+					{
+						IsExpanded = true;
+					}
+
+					_dragTarget = _panningTransform.X;
+					UpdateItemState();
+				}
 			}
 		}
 
@@ -309,12 +369,24 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 						IsExpanded = true;
 					}
 
-					Point velocity = new Point(0, e.FinalVelocities.LinearVelocity.Y);
+					Point velocity;
+
+					if (Orientation == Orientation.Vertical)
+						velocity = new Point(0, e.FinalVelocities.LinearVelocity.Y);
+					else
+						velocity = new Point(e.FinalVelocities.LinearVelocity.X, 0);
+
 					double flickDuration = PhysicsConstants.GetStopTime(velocity);
 					Point flickEndPoint = PhysicsConstants.GetStopPoint(velocity);
 					IEasingFunction flickEase = PhysicsConstants.GetEasingFunction(flickDuration);
 
-					AnimatePanel(new Duration(TimeSpan.FromSeconds(flickDuration)), flickEase, _panningTransform.Y + flickEndPoint.Y);
+					double to;
+					if (Orientation == Orientation.Vertical)
+						to = _panningTransform.Y + flickEndPoint.Y;
+					else
+						to = _panningTransform.X + flickEndPoint.X;
+
+					AnimatePanel(new Duration(TimeSpan.FromSeconds(flickDuration)), flickEase, to);
 
 					e.Handled = true;
 
@@ -334,7 +406,11 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 
 		void OnSizeChanged(object sender, SizeChangedEventArgs e)
 		{
-			_centeringTransform.Y = Math.Round(e.NewSize.Height / 2);
+			if (Orientation == Orientation.Vertical)
+				_centeringTransform.Y = Math.Round(e.NewSize.Height / 2);
+			else
+				_centeringTransform.X = Math.Round(e.NewSize.Width / 2);
+
 			Clip = new RectangleGeometry() { Rect = new Rect(0, 0, e.NewSize.Width, e.NewSize.Height) };
 			UpdateData();
 		}
@@ -389,10 +465,21 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 			TranslateTransform transform = item.Transform;
 			if (transform != null)
 			{
-				double newPosition = -transform.Y - Math.Round(item.ActualHeight / 2);
-				if (_panningTransform.Y != newPosition)
+				if (Orientation == Orientation.Vertical)
 				{
-					AnimatePanel(_selectDuration, _selectEase, newPosition);
+					double newPosition = -transform.Y - Math.Round(item.ActualHeight / 2);
+					if (_panningTransform.Y != newPosition)
+					{
+						AnimatePanel(_selectDuration, _selectEase, newPosition);
+					}
+				}
+				else
+				{
+					double newPosition = -transform.X - Math.Round(item.ActualWidth / 2);
+					if (_panningTransform.X != newPosition)
+					{
+						AnimatePanel(_selectDuration, _selectEase, newPosition);
+					}
 				}
 			}
 		}
@@ -412,13 +499,18 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				{
 					item.SetState(LoopingSelectorItem.State.Normal, false);
 				}
+
 				_temporaryItemsPool.Enqueue(item);
 				item.Remove();
 			}
 
 			_itemsPanel.Children.Clear();
 			StopAnimation();
-			_panningTransform.Y = 0;
+
+			if (Orientation == Orientation.Vertical)
+				_panningTransform.Y = 0;
+			else
+				_panningTransform.X = 0;
 
 			// Reset the extents
 			_minimumPanelScroll = float.MinValue;
@@ -434,8 +526,21 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 			if (to != newTo)
 			{
 				// Adjust the duration
-				double originalDelta = Math.Abs(_panningTransform.Y - to);
-				double modifiedDelta = Math.Abs(_panningTransform.Y - newTo);
+
+				double originalDelta;
+				double modifiedDelta;
+
+				if (Orientation == Orientation.Vertical)
+				{
+					originalDelta = Math.Abs(_panningTransform.Y - to);
+					modifiedDelta = Math.Abs(_panningTransform.Y - newTo);
+				}
+				else
+				{
+					originalDelta = Math.Abs(_panningTransform.X - to);
+					modifiedDelta = Math.Abs(_panningTransform.X - newTo);
+				}
+
 				double factor = modifiedDelta / originalDelta;
 
 				duration = new Duration(TimeSpan.FromMilliseconds(duration.TimeSpan.Milliseconds * factor));
@@ -443,7 +548,13 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				to = newTo;
 			}
 
-			double from = _panningTransform.Y;
+			double from;
+
+			if (Orientation == Orientation.Vertical)
+				from = _panningTransform.Y;
+			else
+				from = _panningTransform.X;
+
 			StopAnimation();
 			CompositionTarget.Rendering += AnimationPerFrameCallback;
 
@@ -451,6 +562,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 			_panelAnimation.EasingFunction = ease;
 			_panelAnimation.From = from;
 			_panelAnimation.To = to;
+
 			_panelStoryboard.Begin();
 			_panelStoryboard.SeekAlignedToLastTick(TimeSpan.Zero);
 
@@ -465,18 +577,32 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 
 		private void Brake(double newStoppingPoint)
 		{
-			double originalDelta = _panelAnimation.To.Value - _panelAnimation.From.Value;
-			double remainingDelta = newStoppingPoint - _panningTransform.Y;
-			double factor = remainingDelta / originalDelta;
+			if (_panelAnimation.To != null && _panelAnimation.From != null)
+			{
+				double originalDelta = _panelAnimation.To.Value - _panelAnimation.From.Value;
+				double remainingDelta = newStoppingPoint;
 
-			Duration duration = new Duration(TimeSpan.FromMilliseconds(_panelAnimation.Duration.TimeSpan.Milliseconds * factor));
+				if (Orientation == Orientation.Vertical)
+					remainingDelta -= _panningTransform.Y;
+				else
+					remainingDelta -= _panningTransform.X;
 
-			AnimatePanel(duration, _panelAnimation.EasingFunction, newStoppingPoint);
+				double factor = remainingDelta / originalDelta;
+
+				Duration duration = new Duration(TimeSpan.FromMilliseconds(_panelAnimation.Duration.TimeSpan.Milliseconds * factor));
+
+				AnimatePanel(duration, _panelAnimation.EasingFunction, newStoppingPoint);
+			}
 		}
 
 		private bool IsReady
 		{
-			get { return ActualHeight > 0 && DataSource != null && _itemsPanel != null; }
+			get
+			{
+				bool isValidSizing = (Orientation == Orientation.Vertical) ? ActualHeight > 0 : ActualWidth > 0;
+
+				return isValidSizing && DataSource != null && _itemsPanel != null;
+			}
 		}
 
 		/// <summary>
@@ -492,22 +618,36 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 			double actualItemWidth = ActualItemWidth;
 			double actualItemHeight = ActualItemHeight;
 
-			_additionalItemsCount = (int)Math.Round((ActualHeight * 1.5) / actualItemHeight);
+			if (Orientation == Orientation.Vertical)
+				_additionalItemsCount = (int)Math.Round((ActualHeight * 1.5) / actualItemHeight);
+			else
+				_additionalItemsCount = (int)Math.Round((ActualWidth * 1.5) / actualItemWidth);
 
-			LoopingSelectorItem closestToMiddle;
+			LoopingSelectorItem closestToMiddle = null;
+			int closestToMiddleIndex = -1;
 
 			if (_itemsPanel.Children.Count == 0)
 			{
 				// We need to get the selection and start from there
+				closestToMiddleIndex = 0;
 				_selectedItem = closestToMiddle = CreateAndAddItem(_itemsPanel, DataSource.SelectedItem);
 
-				closestToMiddle.Transform.Y = -actualItemHeight / 2;
-				closestToMiddle.Transform.X = (ActualWidth - actualItemWidth) / 2;
+				if (Orientation == Orientation.Vertical)
+				{
+					closestToMiddle.Transform.Y = -actualItemHeight / 2;
+					closestToMiddle.Transform.X = (ActualWidth - actualItemWidth) / 2;
+				}
+				else
+				{
+					closestToMiddle.Transform.X = -actualItemWidth / 2;
+					closestToMiddle.Transform.Y = (ActualHeight - actualItemHeight) / 2;
+				}
+
 				closestToMiddle.SetState(LoopingSelectorItem.State.Selected, false);
 			}
 			else
 			{
-				int closestToMiddleIndex = GetClosestItem();
+				closestToMiddleIndex = GetClosestItem();
 				closestToMiddle = (LoopingSelectorItem)_itemsPanel.Children[closestToMiddleIndex];
 			}
 
@@ -523,13 +663,15 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				while (itemsBeforeCount < _additionalItemsCount)
 				{
 					object newData = DataSource.GetPrevious(firstItem.DataContext);
-
 					if (newData == null)
 					{
 						// There may be room to display more items, but there is no more data.
-						_maximumPanelScroll = -firstItem.Transform.Y - actualItemHeight / 2;
+						if (Orientation == Orientation.Vertical)
+							_maximumPanelScroll = -firstItem.Transform.Y - actualItemHeight / 2;
+						else
+							_maximumPanelScroll = -firstItem.Transform.X - actualItemWidth / 2;
 
-						if (_isAnimating && _panelAnimation.To.Value > _maximumPanelScroll)
+						if (_panelAnimation.To != null && (_isAnimating && _panelAnimation.To.Value > _maximumPanelScroll))
 						{
 							Brake(_maximumPanelScroll);
 						}
@@ -550,11 +692,19 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 					{
 						// Make a new item
 						newItem = CreateAndAddItem(_itemsPanel, newData);
-						newItem.Transform.X = (ActualWidth - actualItemWidth) / 2;
+
+						if (Orientation == Orientation.Vertical)
+							newItem.Transform.X = (ActualWidth - actualItemWidth) / 2;
+						else
+							newItem.Transform.Y = (ActualHeight - actualItemHeight) / 2;
 					}
 
 					// Put the new item on the top
-					newItem.Transform.Y = firstItem.Transform.Y - actualItemHeight;
+					if (Orientation == Orientation.Vertical)
+						newItem.Transform.Y = firstItem.Transform.Y - actualItemHeight;
+					else
+						newItem.Transform.X = firstItem.Transform.X - actualItemWidth;
+
 					newItem.InsertBefore(firstItem);
 					firstItem = newItem;
 
@@ -571,8 +721,12 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 					if (newData == null)
 					{
 						// There may be room to display more items, but there is no more data.
-						_minimumPanelScroll = -lastItem.Transform.Y - actualItemHeight / 2;
-						if (_isAnimating && _panelAnimation.To.Value < _minimumPanelScroll)
+						if (Orientation == Orientation.Vertical)
+							_minimumPanelScroll = -lastItem.Transform.Y - actualItemHeight / 2;
+						else
+							_minimumPanelScroll = -lastItem.Transform.X - actualItemWidth / 2;
+
+						if (_panelAnimation.To != null && (_isAnimating && _panelAnimation.To.Value < _minimumPanelScroll))
 						{
 							Brake(_minimumPanelScroll);
 						}
@@ -593,11 +747,19 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 					{
 						// Make a new item
 						newItem = CreateAndAddItem(_itemsPanel, newData);
-						newItem.Transform.X = (ActualWidth - actualItemWidth) / 2;
+
+						if (Orientation == Orientation.Vertical)
+							newItem.Transform.X = (ActualWidth - actualItemWidth) / 2;
+						else
+							newItem.Transform.Y = (ActualHeight - ActualItemHeight) / 2;
 					}
 
 					// Put the new item on the bottom
-					newItem.Transform.Y = lastItem.Transform.Y + actualItemHeight;
+					if (Orientation == Orientation.Vertical)
+						newItem.Transform.Y = lastItem.Transform.Y + actualItemHeight;
+					else
+						newItem.Transform.X = lastItem.Transform.X + actualItemWidth;
+
 					newItem.InsertAfter(lastItem);
 					lastItem = newItem;
 
@@ -644,24 +806,35 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				return -1;
 			}
 
-			double actualItemHeight = ActualItemHeight;
-
 			int count = _itemsPanel.Children.Count;
+
 			double panelY = _panningTransform.Y;
-			double halfHeight = actualItemHeight / 2;
+			double panelX = _panningTransform.X;
+
+			double halfHeight = ActualItemHeight / 2;
+			double halfWidth = ActualItemWidth / 2;
+
 			int found = -1;
 			double closestDistance = double.MaxValue;
 
 			for (int index = 0; index < count; ++index)
 			{
 				LoopingSelectorItem wrapper = (LoopingSelectorItem)_itemsPanel.Children[index];
-				double distance = Math.Abs((wrapper.Transform.Y + halfHeight) + panelY);
+
+				double distance;
+
+				if (Orientation == Orientation.Vertical)
+					distance = Math.Abs((wrapper.Transform.Y + halfHeight) + panelY);
+				else
+					distance = Math.Abs((wrapper.Transform.X + halfWidth) + panelX);
+
 				if (distance <= halfHeight)
 				{
 					found = index;
 					break;
 				}
-				else if (closestDistance > distance)
+
+				if (closestDistance > distance)
 				{
 					closestDistance = distance;
 					found = index;
@@ -674,7 +847,9 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		void PanelStoryboardCompleted(object sender, EventArgs e)
 		{
 			CompositionTarget.Rendering -= AnimationPerFrameCallback;
+
 			_isAnimating = false;
+
 			if (_state != State.Dragging)
 			{
 				SelectAndSnapToClosest();
@@ -689,6 +864,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 			}
 
 			int index = GetClosestItem();
+
 			if (index == -1)
 			{
 				return;
@@ -726,8 +902,11 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		private void CreateVisuals()
 		{
 			_panelAnimation = new DoubleAnimation();
+
 			Storyboard.SetTarget(_panelAnimation, _panningTransform);
-			Storyboard.SetTargetProperty(_panelAnimation, new PropertyPath("Y"));
+			string propName = (Orientation == Orientation.Vertical) ? "Y" : "X";
+
+			Storyboard.SetTargetProperty(_panelAnimation, new PropertyPath(propName));
 
 			_panelStoryboard = new Storyboard();
 			_panelStoryboard.Children.Add(_panelAnimation);
