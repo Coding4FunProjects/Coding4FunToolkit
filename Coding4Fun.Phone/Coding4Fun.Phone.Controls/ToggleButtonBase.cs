@@ -4,14 +4,9 @@ using System.Windows.Media;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class RoundButton : Button, IButtonBase
-    {
-        protected ImageBrush OpacityImageBrush;
-        
-		public RoundButton()
-		{
-			DefaultStyleKey = typeof(RoundButton);
-		}
+	public abstract class ToggleButtonBase : CheckBox, IButtonBase
+	{
+		protected ImageBrush OpacityImageBrush;
 
 		public override void OnApplyTemplate()
         {
@@ -22,6 +17,7 @@ namespace Coding4Fun.Phone.Controls
 
 			ButtonBaseHelper.ApplyTemplate(this, OpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
         }
+
         #region dependency properties
         public Orientation Orientation
         {
@@ -31,7 +27,7 @@ namespace Coding4Fun.Phone.Controls
 
         // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(RoundButton), new PropertyMetadata(Orientation.Vertical));
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ToggleButtonBase), new PropertyMetadata(Orientation.Vertical));
 
 		public Stretch Stretch
 		{
@@ -41,7 +37,7 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty StretchProperty =
-			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(RoundButton), new PropertyMetadata(Stretch.Fill, OnStretch));
+			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(ToggleButtonBase), new PropertyMetadata(Stretch.Fill, OnStretch));
 
 		public ImageSource ImageSource
         {
@@ -51,9 +47,9 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageSourceProperty =
-			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(RoundButton), 
+			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ToggleButtonBase),
             new PropertyMetadata(
-            //new BitmapImage(new Uri("/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute)),
+                //new BitmapImage(new Uri("/Coding4Fun.Phone.Controls;component/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute)),
                 OnImageSource));
 
 		public double ButtonWidth
@@ -64,7 +60,7 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonWidth.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonWidthProperty =
-			DependencyProperty.Register("ButtonWidth", typeof(double), typeof(RoundButton), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonWidth", typeof(double), typeof(ToggleButtonBase), new PropertyMetadata(72d));
 
 		public double ButtonHeight
 		{
@@ -74,23 +70,23 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonHeightProperty =
-			DependencyProperty.Register("ButtonHeight", typeof(double), typeof(RoundButton), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonHeight", typeof(double), typeof(ToggleButtonBase), new PropertyMetadata(72d));
         #endregion
 
         #region dp onchange callbacks
-		private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
-		{
-			var sender = o as RoundButton;
+        private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+			var sender = o as ToggleButtonBase;
 
 			if (sender == null)
 				return;
 
 			ButtonBaseHelper.OnImageChange(e, sender.OpacityImageBrush);
-		}
+        }
 
 		private static void OnStretch(DependencyObject o, DependencyPropertyChangedEventArgs e)
 		{
-			var sender = o as RoundButton;
+			var sender = o as ToggleButtonBase;
 
 			if (sender == null)
 				return;
@@ -98,5 +94,5 @@ namespace Coding4Fun.Phone.Controls
 			ButtonBaseHelper.OnStretch(e, sender.OpacityImageBrush);
 		}
         #endregion
-    }
+	}
 }
