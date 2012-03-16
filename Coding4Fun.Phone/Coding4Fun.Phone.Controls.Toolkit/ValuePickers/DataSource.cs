@@ -16,12 +16,18 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 
         public object GetNext(object relativeTo)
         {
+			if (relativeTo == null)
+				return null;
+
             T? next = GetRelativeTo(((ValueWrapper<T>)relativeTo).Value, 1);
             return next.HasValue ? _selectedItem.CreateNew(next.Value) : null;
         }
 
         public object GetPrevious(object relativeTo)
         {
+			if (relativeTo == null)
+				return null;
+
             T? next = GetRelativeTo(((ValueWrapper<T>)relativeTo).Value, -1);
             return next.HasValue ? _selectedItem.CreateNew(next.Value) : null;
         }
