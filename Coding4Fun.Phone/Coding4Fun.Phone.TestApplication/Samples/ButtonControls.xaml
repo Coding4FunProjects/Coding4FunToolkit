@@ -394,7 +394,9 @@
 					<Button Click="NavAway_Click">Nav Away</Button>
 					<StackPanel Orientation="Horizontal">
 						<c4f:RoundButton>Round</c4f:RoundButton>
-						<c4f:RoundToggleButton>Round</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton>toggle</c4f:RoundToggleButton>
+						<c4f:RoundButton>Round</c4f:RoundButton>
+						<c4f:RoundToggleButton>toggle</c4f:RoundToggleButton>
 					</StackPanel>
 				</StackPanel>
 			</ms:PivotItem>
