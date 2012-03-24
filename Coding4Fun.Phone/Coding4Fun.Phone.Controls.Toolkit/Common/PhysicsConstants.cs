@@ -16,7 +16,7 @@ namespace Coding4Fun.Phone.Controls.Toolkit
 		public const double Friction = 0.2;
     }
 
-    internal static class PhysicsConstants
+    public static class PhysicsConstants
     {
 		public static double GetStopTime(Point initialVelocity)
 		{

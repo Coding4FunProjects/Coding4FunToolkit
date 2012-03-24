@@ -88,8 +88,7 @@
                 x:Name="PrimarySelector"
                 Grid.Column="0"
                 Width="148"
-                ItemSize="148,148"
-                ItemMargin="6">
+                ItemSize="148,148">
                 <Primitives:LoopingSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel
@@ -116,8 +115,7 @@
                 x:Name="SecondarySelector"
                 Grid.Column="1"
                 Width="148"
-                ItemSize="148,148"
-                ItemMargin="6">
+                ItemSize="148,148">
                 <Primitives:LoopingSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel
@@ -145,8 +143,7 @@
                 Grid.Column="2"
                 x:Name="TertiarySelector"
                 Width="148"
-                ItemSize="148,148"
-                ItemMargin="6">
+                ItemSize="148,148">
                 <Primitives:LoopingSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel

@@ -37,7 +37,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="Transparent">
+                    <!--<Border Background="Transparent">-->
                         <Canvas x:Name="ItemsPanel">
                             <Canvas.RenderTransform>
                                 <TransformGroup>
@@ -46,7 +46,7 @@
                                 </TransformGroup>
                             </Canvas.RenderTransform>
                         </Canvas>
-                    </Border>
+                    <!--</Border>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -90,11 +90,11 @@
                             <TranslateTransform x:Name="Transform"/>
                         </Border.RenderTransform>
 
-                        <Grid>
+						<Grid Margin="{TemplateBinding Margin}">
                             <Rectangle x:Name="background" Margin="2" Opacity="0" Fill="{StaticResource PhoneInactiveBrush}" CacheMode="BitmapCache"/>
 
-                            <Border BorderThickness="2" BorderBrush="{StaticResource PhoneInactiveBrush}">
-                                <ContentPresenter x:Name="contentPresenter" CacheMode="BitmapCache"/>
+							<Border BorderThickness="2" BorderBrush="{StaticResource PhoneInactiveBrush}">
+								<ContentPresenter x:Name="contentPresenter" CacheMode="BitmapCache" />
                             </Border>
                         </Grid>
 

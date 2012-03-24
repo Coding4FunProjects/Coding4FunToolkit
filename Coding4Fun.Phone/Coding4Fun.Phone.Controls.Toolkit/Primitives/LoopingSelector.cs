@@ -197,9 +197,17 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 		public Size ItemSize { get; set; }
 
 		/// <summary>
-		/// The margin around the items, to be a part of the touchable area.
+		/// The padding around the items, to be a part of the touchable area.
 		/// </summary>
-		public Thickness ItemMargin { get; set; }
+		public Thickness ItemPadding
+		{
+			get { return (Thickness)GetValue(ItemPaddingProperty); }
+			set { SetValue(ItemPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ItemPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ItemPaddingProperty =
+			DependencyProperty.Register("ItemPadding", typeof(Thickness), typeof(LoopingSelector), new PropertyMetadata(new Thickness(6)));
 
 		/// <summary>
 		/// Creates a new LoopingSelector.
@@ -850,14 +858,24 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				double distance;
 
 				if (Orientation == Orientation.Vertical)
+				{
 					distance = Math.Abs((wrapper.Transform.Y + halfHeight) + panelY);
+
+					if (distance <= halfHeight)
+					{
+						found = index;
+						break;
+					}
+				}
 				else
+				{
 					distance = Math.Abs((wrapper.Transform.X + halfWidth) + panelX);
 
-				if (distance <= halfHeight)
-				{
-					found = index;
-					break;
+					if (distance <= halfWidth)
+					{
+						found = index;
+						break;
+					}
 				}
 
 				if (closestDistance > distance)
@@ -965,7 +983,8 @@ namespace Coding4Fun.Phone.Controls.Toolkit.Primitives
 				wrapper.ContentTemplate = this.ItemTemplate;
 				wrapper.Width = ItemSize.Width;
 				wrapper.Height = ItemSize.Height;
-				wrapper.Padding = ItemMargin;
+
+				wrapper.Padding = ItemPadding;
 
 				wrapper.Click += OnWrapperClick;
 			}
