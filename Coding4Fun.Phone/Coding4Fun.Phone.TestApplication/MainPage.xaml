@@ -95,6 +95,14 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
+					Title="Chat bubbles"
+					Click="Chat_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ch
+					</TextBlock>
+				</c4f:Tile>
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
 					Title="About"
 					Click="About_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">

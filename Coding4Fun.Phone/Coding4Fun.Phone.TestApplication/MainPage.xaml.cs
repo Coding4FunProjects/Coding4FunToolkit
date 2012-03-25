@@ -15,6 +15,11 @@ namespace Coding4Fun.Phone.TestApplication
             DataContext = this;
         }
 
+		private void Chat_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateTo("/Samples/ChatBubbleControls.xaml");
+		}
+
         private void Slider_Click(object sender, RoutedEventArgs e)
         {
             NavigateTo("/Samples/Slider.xaml");

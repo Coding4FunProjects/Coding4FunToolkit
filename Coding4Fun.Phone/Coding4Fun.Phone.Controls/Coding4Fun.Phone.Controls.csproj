@@ -54,6 +54,9 @@
     <Compile Include="Binding\FrameworkElementBinding.cs" />
     <Compile Include="Binding\TextBinding.cs" />
     <Compile Include="ButtonBaseHelper.cs" />
+    <Compile Include="ChatBubble.cs" />
+    <Compile Include="ChatBubbleDirection.cs" />
+    <Compile Include="ChatBubbleTextBox.cs" />
     <Compile Include="ColorHexagonPicker.cs" />
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorSlider.cs" />

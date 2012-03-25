@@ -72,6 +72,15 @@
     <Compile Include="Samples\Binding.xaml.cs">
       <DependentUpon>Binding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\ChatBubbleControls.xaml.cs">
+      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbles.xaml.cs">
+      <DependentUpon>ChatBubbles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
     </Compile>
@@ -126,6 +135,18 @@
     <Page Include="Samples\Binding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbleControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\ColorControls.xaml">
       <SubType>Designer</SubType>
