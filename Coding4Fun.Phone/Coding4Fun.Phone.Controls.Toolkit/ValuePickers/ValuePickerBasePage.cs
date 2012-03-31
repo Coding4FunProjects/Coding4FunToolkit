@@ -113,11 +113,11 @@ namespace Coding4Fun.Phone.Controls.Primitives
                         switch (button.Text)
                         {
                         	case "DONE":
-                        		button.Text = Toolkit.Properties.Resources.ValuePickerDoneText;
+                        		button.Text = Toolkit.Properties.Resources.DoneText;
                         		button.Click += OnDoneButtonClick;
                         		break;
                         	case "CANCEL":
-                        		button.Text = Toolkit.Properties.Resources.ValuePickerCancelText;
+                        		button.Text = Toolkit.Properties.Resources.CancelText;
                         		button.Click += OnCancelButtonClick;
                         		break;
                         }

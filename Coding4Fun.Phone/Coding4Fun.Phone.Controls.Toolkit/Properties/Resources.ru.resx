@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CancelText" xml:space="preserve">
-    <value>abbrechen</value>
+    <value>Отмена</value>
   </data>
   <data name="DoneText" xml:space="preserve">
-    <value>bestätigen</value>
+    <value>Договорились</value>
   </data>
   <data name="HourName" xml:space="preserve">
-    <value>stunde</value>
+    <value>час</value>
   </data>
   <data name="MinuteName" xml:space="preserve">
-    <value>minute</value>
+    <value>минута</value>
   </data>
   <data name="SecondName" xml:space="preserve">
-    <value>sekunde</value>
+    <value>второй</value>
   </data>
   <data name="TimeSpanPickerTitle" xml:space="preserve">
-    <value>DAUER AUSWÄHLEN</value>
+    <value>ВЫБОР ДЛИТЕЛЬНОСТИ</value>
     <comment>Title for TimeSpanPicker</comment>
   </data>
 </root>
