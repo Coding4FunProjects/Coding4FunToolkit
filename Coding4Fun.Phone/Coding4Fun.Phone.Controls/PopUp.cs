@@ -50,29 +50,33 @@ namespace Coding4Fun.Phone.Controls
 
 		public virtual void Show()
 		{
-            _popUp = new DialogService
-            {
-                AnimationType = AnimationType,
-                Child = this,
-                BackgroundBrush = Overlay,
-                IsBackKeyOverride = IsBackKeyOverride
-            };
+			_popUp = new DialogService
+			         	{
+			         		AnimationType = AnimationType,
+			         		Child = this,
+			         		BackgroundBrush = Overlay,
+			         		IsBackKeyOverride = IsBackKeyOverride
+			         	};
 
-            if (!IsAppBarVisible)
-            {
-                AppBar = _popUp.Page.ApplicationBar;
-                _popUp.Page.ApplicationBar = null;
-            }
+			_popUp.Closed += PopUpClosed;
+			_popUp.Opened += PopUpOpened;
 
-		    _popUp.Closed += _popUp_Closed;
-			_popUp.Opened += _popUp_Opened;
+			Dispatcher.BeginInvoke(
+				() =>
+					{
+						if (!IsAppBarVisible)
+						{
+							AppBar = _popUp.Page.ApplicationBar;
+							_popUp.Page.ApplicationBar = null;
+						}
 
-            _startingPage = _popUp.Page;
-			
-            Dispatcher.BeginInvoke(() => _popUp.Show());
+						_startingPage = _popUp.Page;
+
+						_popUp.Show();
+					});
 		}
 
-		void _popUp_Opened(object sender, EventArgs e)
+    	void PopUpOpened(object sender, EventArgs e)
 		{
 			if (Opened != null)
 				Opened(sender, e);
@@ -85,10 +89,10 @@ namespace Coding4Fun.Phone.Controls
 
         public void Hide()
         {
-            _popUp_Closed(this, null);
+            PopUpClosed(this, null);
         }
 
-        void _popUp_Closed(object sender, EventArgs e)
+        void PopUpClosed(object sender, EventArgs e)
         {
         	if (!_alreadyFired)
 			{
