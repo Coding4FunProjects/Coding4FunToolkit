@@ -138,7 +138,9 @@ namespace Clarity.Phone.Extensions
         public FrameworkElement Child { get; set; }
         public AnimationTypes AnimationType { get; set; }
         public double VerticalOffset { get; set; }
-        public Brush BackgroundBrush { get; set; }
+    	internal double ControlVerticalOffset { get; set; }
+
+    	public Brush BackgroundBrush { get; set; }
 
         internal bool IsOpen { get; set; }
         protected internal bool IsBackKeyOverride { get; set; }
@@ -172,7 +174,7 @@ namespace Clarity.Phone.Extensions
 
 						var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
 
-                        if (panels.Count() <= 0)
+                        if (!panels.Any())
                             continue;
 
                         _popupContainer = panels.First();
@@ -201,12 +203,8 @@ namespace Clarity.Phone.Extensions
 			if (BackgroundBrush != null)
 				_overlay.Background = BackgroundBrush;
 
-			if (SystemTray.IsVisible && SystemTray.Opacity < 1 && SystemTray.Opacity > 0)
-			{
-				VerticalOffset += 32;
-			}
+			CalculateVerticalOffset();
 
-			_overlay.Margin = new Thickness(0, VerticalOffset, 0, 0);
 			_overlay.Opacity = 0;
 
 			// Initialize popup to draw the context menu over all controls
@@ -218,14 +216,30 @@ namespace Clarity.Phone.Extensions
 			else
 			{
 				_deferredShowToLoaded = true;
-				RootVisual.Loaded += RootVisualDeferredShow_Loaded;
+				RootVisual.Loaded += RootVisualDeferredShowLoaded;
 			}
         }
 
-		void RootVisualDeferredShow_Loaded(object sender, RoutedEventArgs e)
+    	internal void CalculateVerticalOffset()
+    	{
+			if (_overlay == null)
+				return;
+
+    		var sysTrayVerticalOffset = 0;
+
+    		if (SystemTray.IsVisible && SystemTray.Opacity < 1 && SystemTray.Opacity > 0)
+    		{
+				sysTrayVerticalOffset += 32;
+    		}
+
+			_overlay.Margin = new Thickness(0, VerticalOffset + sysTrayVerticalOffset + ControlVerticalOffset, 0, 0);
+    	}
+		
+		void RootVisualDeferredShowLoaded(object sender, RoutedEventArgs e)
 		{
-			RootVisual.Loaded -= RootVisualDeferredShow_Loaded;
+			RootVisual.Loaded -= RootVisualDeferredShowLoaded;
 			_deferredShowToLoaded = false;
+
 			Show();
 		}
 
@@ -294,8 +308,8 @@ namespace Clarity.Phone.Extensions
 					Opened.Invoke(this, null);
             }
         }
-        
-        void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+
+		void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             Hide();
         }
@@ -309,7 +323,7 @@ namespace Clarity.Phone.Extensions
             {
                 Page.BackKeyPress -= OnBackKeyPress;
                 Page.NavigationService.Navigated -= OnNavigated;
-
+				
                 _page = null;
             }
 

@@ -42,6 +42,7 @@
 					<TextBlock Text="stress" />
 					<StackPanel>
 						<Button Content="Nav to stress page" Click="NavToToastStressClick" />
+						<TextBox Text="on-screen keyboard test" GotFocus="ToastBasicClick" />
 					</StackPanel>
 				</StackPanel>
 			</ms:PivotItem>

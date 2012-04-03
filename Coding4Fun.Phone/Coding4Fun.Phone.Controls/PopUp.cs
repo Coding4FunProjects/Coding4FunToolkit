@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,14 +19,44 @@ namespace Coding4Fun.Phone.Controls
 
         public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
         public bool IsAppBarVisible { get; set; }
-        internal IApplicationBar AppBar { get; set; }
+    	
+		// adjust for SIP
+    	private bool _isCalculateFrameVerticalOffset;
+
+    	protected bool IsCalculateFrameVerticalOffset
+    	{
+    		get { return _isCalculateFrameVerticalOffset; }
+    		set
+    		{
+    			_isCalculateFrameVerticalOffset = value;
+
+    			if (_isCalculateFrameVerticalOffset)
+    			{
+    				var bind = new System.Windows.Data.Binding("Y");
+    				var frame = (Application.Current.RootVisual as Frame);
+
+    				if (frame != null)
+    				{
+    					var transGroup = frame.RenderTransform as TransformGroup;
+
+    					if (transGroup != null)
+    					{
+    						bind.Source = transGroup.Children.FirstOrDefault(t => t is TranslateTransform);
+    						SetBinding(FrameTransformProperty, bind);
+    					}
+    				}
+    			}
+    		}
+    	}
+
+    	internal IApplicationBar AppBar { get; set; }
         protected internal bool IsBackKeyOverride { get; set; }
 
         protected DialogService.AnimationTypes AnimationType { get; set; }
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 		public event EventHandler Opened;
-
-        public override void OnApplyTemplate()
+		
+    	public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
@@ -47,8 +78,22 @@ namespace Coding4Fun.Phone.Controls
 
             ResetWorldAndDestroyPopUp();
         }
+		
+		static void OnFrameTransformPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+		{
+			var sender = source as PopUp<T, TPopUpResult>;
 
-		public virtual void Show()
+			if (sender == null || sender._popUp == null)
+				return;
+
+			if (!sender.IsCalculateFrameVerticalOffset)
+				return;
+
+			sender._popUp.ControlVerticalOffset = -sender.FrameTransform;
+			sender._popUp.CalculateVerticalOffset();
+		}
+
+    	public virtual void Show()
 		{
 			_popUp = new DialogService
 			         	{
@@ -58,7 +103,12 @@ namespace Coding4Fun.Phone.Controls
 			         		IsBackKeyOverride = IsBackKeyOverride
 			         	};
 
-			_popUp.Closed += PopUpClosed;
+			if (IsCalculateFrameVerticalOffset)
+			{
+				_popUp.ControlVerticalOffset = -FrameTransform;
+			}
+
+    		_popUp.Closed += PopUpClosed;
 			_popUp.Opened += PopUpOpened;
 
 			Dispatcher.BeginInvoke(
@@ -118,6 +168,18 @@ namespace Coding4Fun.Phone.Controls
     			_popUp = null;
     		}
     	}
+
+		double FrameTransform
+		{
+			get { return (double)GetValue(FrameTransformProperty); }
+			set { SetValue(FrameTransformProperty, value); }
+		}
+
+		static readonly DependencyProperty FrameTransformProperty = DependencyProperty.Register(
+			  "FrameTransform",
+			  typeof(double),
+			  typeof(PopUp<T, TPopUpResult>),
+			  new PropertyMetadata((double)0, OnFrameTransformPropertyChanged));
 
     	public Brush Overlay
         {

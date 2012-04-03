@@ -20,6 +20,8 @@ namespace Coding4Fun.Phone.Controls
 			
 			IsAppBarVisible = true;
             IsBackKeyOverride = true;
+			IsCalculateFrameVerticalOffset = true;
+
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
             
