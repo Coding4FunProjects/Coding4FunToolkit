@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <version>1.5.5</version>
-    <authors>Coding4Fun, Clint Rutkas</authors>
-    <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
-    <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
-    <dependencies>
-      <dependency id="SilverlightToolkitWP" />
-    </dependencies>
-    <id>Coding4Fun.Phone.Controls.TimeSpan</id>
-    <title>Coding4fun Windows Phone Silverlight Toolkit - Extending the SL WP Toolkit</title>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A timespan selector control and other items that extends the Silverlight WP Toolkit</description>
-    <summary>A timespan selector control and other items that extends the Silverlight WP Toolkit</summary>
-    <language>en-US</language>
-    <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
+    <id>Coding4Fun.Phone.Controls.Complete</id>
+        <version>1.5.5</version>
+        <title>Coding4fun Windows Phone Silverlight Toolkit with Timespan Selector control</title>
+        <authors>Coding4Fun, Clint Rutkas</authors>
+        <description>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</description>
+        <summary>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</summary>
+        <language>en-US</language>
+        <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+        <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+        <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
+        <dependencies>
+          <dependency id="SilverlightToolkitWP" />
+        </dependencies>
   </metadata>
   <files>
     <file src="Release\Coding4Fun.Phone.Controls.dll" target="Release\Coding4Fun.Phone.Controls.dll" />
