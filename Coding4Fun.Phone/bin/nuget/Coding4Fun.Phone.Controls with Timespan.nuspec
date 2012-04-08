@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <version>1.5.1</version>
+    <version>1.5.5</version>
     <authors>Coding4Fun, Clint Rutkas</authors>
     <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
     <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
@@ -17,7 +17,7 @@
     <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
   </metadata>
   <files>
-    <file src="Release\Coding4Fun.Phone.Controls.dll" target=="Release\Coding4Fun.Phone.Controls.dll" />
+    <file src="Release\Coding4Fun.Phone.Controls.dll" target="Release\Coding4Fun.Phone.Controls.dll" />
     <file src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" target="Release\Coding4Fun.Phone.Controls.Toolkit.dll" />
   </files>
 </package>
