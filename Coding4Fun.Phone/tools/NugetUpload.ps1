@@ -8,6 +8,7 @@ $currentPath = [System.IO.Directory]::GetParent($root).FullName;
 $slnPath = [System.IO.Path]::Combine($currentPath, $solutionName);
 $releaseDir = [System.IO.Directory]::GetParent($root).GetDirectories("bin", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 $releaseDir = $releaseDir.GetDirectories("Release", [System.IO.SearchOption]::TopDirectoryOnly)[0];
+$zipFullPath = [System.IO.Path]::Combine($root, $zipFileName);
 
 $assemblyFiles = [System.IO.Directory]::GetFiles($currentPath, "AssemblyInfo.cs", [System.IO.SearchOption]::AllDirectories);
 $nuspecFiles = [System.IO.Directory]::GetFiles($currentPath, "*.nuspec", [System.IO.SearchOption]::AllDirectories);
@@ -56,13 +57,13 @@ if($LastExitCode -ne 0)
 }
 echo "done building"
 
-[System.Reflection.Assembly]::Load("WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")
+[System.Reflection.Assembly]::Load("WindowsBase, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")
 if($ZipPackage -ne $null) 
 {
 	$ZipPackage.Close();
 }
 
-$ZipPackage=[System.IO.Packaging.ZipPackage]::Open($zipFileName, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
+$ZipPackage=[System.IO.Packaging.ZipPackage]::Open($zipFullPath, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
 
 #creating relative URI
 $dllsInDir = $releaseDir.GetFiles("*.dll");
@@ -90,7 +91,7 @@ del *.nupkg
 
 foreach($file in $nuspecFiles)
 {
-	nuget 'pack' $file '-b' '../'
+	#nuget 'pack' $file '-b' '../'
 }
 
 echo "done nuget packaging"
@@ -99,7 +100,7 @@ echo "start nuget push"
 $nupkgFiles = [System.IO.Directory]::GetFiles($currentPath, "*.nupkg", [System.IO.SearchOption]::AllDirectories);
 foreach($file in $nupkgFiles)
 {
-	nuget 'push' $file
+	#nuget 'push' $file
 }
 
 echo "done nuget push"
