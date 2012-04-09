@@ -1,0 +1,25 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Phone.Controls">
+	
+	<Style TargetType="local:MemoryCounter">
+		<Setter Property="FontFamily" Value="Courier New" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:MemoryCounter">
+					<Grid VerticalAlignment="Top" HorizontalAlignment="Right">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="75"/>
+							<ColumnDefinition Width="75"/>
+						</Grid.ColumnDefinitions>
+						<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource PhoneSemitransparentBrush}" />
+
+						<TextBlock Padding="0,0,10,0" Grid.Column="0" HorizontalAlignment="Right" Text="{TemplateBinding CurrentMemory}"/>
+						<TextBlock Padding="0,0,10,0" Grid.Column="1" HorizontalAlignment="Right" Text="{TemplateBinding PeakMemory}"/>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

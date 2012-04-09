@@ -1,0 +1,65 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Phone.Controls">
+	<Style TargetType="local:AboutPrompt">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:AboutPrompt">
+					<Grid>
+						<Rectangle Fill="Transparent" />
+						<Border 
+                            VerticalAlignment="Center"
+		                    Width="460" Height="460"
+                            Background="{StaticResource PhoneChromeBrush}"
+                            BorderThickness="1" 
+                            BorderBrush="{StaticResource PhoneForegroundBrush}">
+							<Grid>
+								<ContentPresenter 
+                                    Content="{TemplateBinding WaterMark}" />
+								<Grid Margin="10">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="*"/>
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+									</Grid.RowDefinitions>
+									<TextBlock
+                                        Grid.Row="0"
+                                        VerticalAlignment="Top"
+								        Text="{TemplateBinding Title}" 
+								        Margin="0,-10,-25,0" 
+								        FontSize="56" 
+								        TextWrapping="Wrap" FontFamily="Segoe WP Light" />
+									<ScrollViewer 
+                                        Grid.Row="1" 
+                                        Margin="0,0,0,10">
+										<ContentPresenter Content="{TemplateBinding Body}" />
+									</ScrollViewer>
+
+									<ContentPresenter Grid.Row="2" Content="{TemplateBinding Footer}" />
+
+									<StackPanel
+                                        Name="actionButtonArea"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Grid.Row="3" />
+
+									<TextBlock
+                                        Grid.Row="3"
+                                        Margin="0,0,10,10"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Right"
+								        Text="{TemplateBinding VersionNumber}" 
+								        FontFamily="Segoe WP Light" />
+								</Grid>
+
+							</Grid>
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Phone.Controls">
+
+	<Style TargetType="local:ProgressOverlay">
+		<Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:ProgressOverlay">
+					<Grid 
+                        Background="{TemplateBinding Background}"
+                        Name="LayoutGrid" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+						<Grid.Resources>
+							<Storyboard x:Name="fadeOut">
+								<DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
+							</Storyboard>
+							<Storyboard x:Name="fadeIn">
+								<DoubleAnimation Duration="0:0:0.5" From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
+							</Storyboard>
+						</Grid.Resources>
+						<Rectangle Fill="{StaticResource TransparentBrush}" />
+						<Grid>
+							<ContentControl Content="{TemplateBinding Content}" HorizontalContentAlignment="Stretch" />
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

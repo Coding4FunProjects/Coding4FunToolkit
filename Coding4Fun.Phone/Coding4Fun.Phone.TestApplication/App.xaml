@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
 	xmlns:System="clr-namespace:System;assembly=mscorlib"
-    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls">
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls">
 
     <!--Application Resources-->
     <Application.Resources>
@@ -13,7 +13,8 @@
 		<System:Double x:Key="TileSizeHeight">140</System:Double>
 		<Thickness x:Key="TileMargin">0, 0, 12, 12</Thickness>
 		<Thickness x:Key="ResetMargin">-12, 0</Thickness>
-		<Style TargetType="Controls:Tile" x:Key="TileStyle">
+		
+		<Style TargetType="c4f:Tile" x:Key="TileStyle">
 			<Setter Property="Height" Value="{StaticResource TileSizeHeight}" />
 			<Setter Property="Width" Value="{StaticResource TileSizeWidth}" />
 			<Setter Property="Margin" Value="{StaticResource TileMargin}" />
