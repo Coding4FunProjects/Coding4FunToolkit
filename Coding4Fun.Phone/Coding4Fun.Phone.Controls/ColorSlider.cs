@@ -31,12 +31,6 @@ namespace Coding4Fun.Phone.Controls
             DefaultStyleKey = typeof(ColorSlider);
 
             IsEnabledChanged += SuperSlider_IsEnabledChanged;
-            Loaded += ColorSlider_Loaded;
-        }
-
-        void ColorSlider_Loaded(object sender, RoutedEventArgs e)
-        {
-            IsEnabledVisualStateUpdate();
         }
 
         public override void OnApplyTemplate()
@@ -62,6 +56,8 @@ namespace Coding4Fun.Phone.Controls
                 else
                     UpdateLayoutBasedOnColor();
             }
+
+			IsEnabledVisualStateUpdate();
         }
 
         void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -147,7 +143,7 @@ namespace Coding4Fun.Phone.Controls
 
             var isVert = Orientation == Orientation.Vertical;
 
-			Slider.Background = IsEnabled ? ColorSpace.GetColorGradientBrush(Orientation) : ColorSpace.GetBlackAndWhiteGradientBrush(Orientation);
+			IsEnabledVisualStateUpdate();
             
             Body.RowDefinitions.Clear();
             Body.ColumnDefinitions.Clear();
@@ -208,6 +204,7 @@ namespace Coding4Fun.Phone.Controls
         private void IsEnabledVisualStateUpdate()
         {
             VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+			Slider.Background = IsEnabled ? ColorSpace.GetColorGradientBrush(Orientation) : ColorSpace.GetBlackAndWhiteGradientBrush(Orientation);
         }
     }
 }

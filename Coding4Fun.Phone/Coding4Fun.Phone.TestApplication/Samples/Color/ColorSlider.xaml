@@ -6,7 +6,9 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -95,15 +97,32 @@
 					<TextBlock>Color Set to Fuchsia:</TextBlock>
 					<c4f:ColorSlider 
 						Color="Fuchsia"
-						Orientation="Horizontal" 
+						Orientation="Horizontal"
 						Height="48" />
-					
-					<TextBlock Margin="0, 24, 0, 0">Disabled</TextBlock>
+
+					<TextBlock Margin="0, 24, 0, 0">Disabled at compile</TextBlock>
 					<c4f:ColorSlider 
-                        Orientation="Horizontal" 
-                        Height="48"
+                        Height="48" 
+						Orientation="Horizontal" 
                         IsEnabled="False"
                         ColorChanged="ColorHorizontalSlider_ColorChanged" />
+
+					<TextBlock Margin="0, 24, 0, 0">Disabled via event</TextBlock>
+					<c4f:ColorSlider 
+                        Height="48" 
+						Orientation="Horizontal" 
+                        IsEnabled="False"
+                        ColorChanged="ColorHorizontalSlider_ColorChanged" 
+						Name="IsEnabledViaEvent"/>
+					<toolkit:ToggleSwitch IsChecked="false" Unchecked="ToggleSwitch_Unchecked" Checked="ToggleSwitch_Checked" />
+
+					<TextBlock Margin="0, 24, 0, 0">Disabled via bind</TextBlock>
+					<c4f:ColorSlider 
+                        Height="48" 
+						Orientation="Horizontal" 
+                        IsEnabled="{Binding ElementName=isEnableVerification, Path=IsChecked}"
+                        ColorChanged="ColorHorizontalSlider_ColorChanged" />
+					<toolkit:ToggleSwitch Name="isEnableVerification" IsChecked="true" />
 				</StackPanel>
 			</ms:PivotItem>
 		</ms:Pivot>

@@ -23,5 +23,15 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
             ColorSliderVerticalFromEvent.Fill = new SolidColorBrush(color);
             ColorSliderVerticalClone.Color = color;
         }
+
+		private void ToggleSwitch_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			IsEnabledViaEvent.IsEnabled = false;
+		}
+
+		private void ToggleSwitch_Checked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			IsEnabledViaEvent.IsEnabled = true;
+		}
     }
 }

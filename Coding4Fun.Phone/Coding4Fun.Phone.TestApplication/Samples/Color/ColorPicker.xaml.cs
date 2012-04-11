@@ -56,5 +56,16 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Color
 			ColorPickerSetOnLoadTest.Color = color;
 			ColorPickerSetOnXamlLoadTest.Color = color;
 		}
+
+
+		private void ToggleSwitch_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			IsEnabledViaEvent.IsEnabled = false;
+		}
+
+		private void ToggleSwitch_Checked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			IsEnabledViaEvent.IsEnabled = true;
+		}
     }
 }

@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
-	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -93,13 +94,45 @@
 			<ms:PivotItem Header="disabled">
 				<Grid>
 					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
 						<RowDefinition />
+						<RowDefinition Height="Auto" />
 						<RowDefinition />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
+					
+					<TextBlock Grid.Row="0">Disabled at compile</TextBlock>
 					<c4f:ColorPicker
-							Grid.Row="0"
-							Color="Cyan" 
-							IsEnabled="False"/>
+						Grid.Row="1"
+						Color="Cyan" 
+						IsEnabled="False" />
+
+					<TextBlock Grid.Row="2" Margin="0, 24, 0, 0">Disabled via event</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="3"
+						Color="Cyan" 
+						Name="IsEnabledViaEvent" />
+					<toolkit:ToggleSwitch 
+						Grid.Row="4" 
+						IsChecked="true" 
+						Unchecked="ToggleSwitch_Unchecked"
+						Checked="ToggleSwitch_Checked" />
+
+					<TextBlock Grid.Row="5">Disabled via bind</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="6"
+						Color="Cyan" 
+						IsEnabled="{Binding ElementName=isEnableVerification, Path=IsChecked}"
+						 />
+					<toolkit:ToggleSwitch 
+						Grid.Row="7" 
+						Name="isEnableVerification" 
+						IsChecked="true" 
+						/>
+					
 				</Grid>
 			</ms:PivotItem>
 			<ms:PivotItem Header="visibility">
