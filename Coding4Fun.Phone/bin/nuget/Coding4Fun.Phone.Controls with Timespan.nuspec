@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Coding4Fun.Phone.Controls.Complete</id>
-        <version>1.5.5</version>
+        <version>1.5.6</version>
         <title>Coding4fun Windows Phone Silverlight Toolkit with Timespan Selector control</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</description>
@@ -16,7 +16,11 @@
         </dependencies>
   </metadata>
   <files>
-    <file src="Release\Coding4Fun.Phone.Controls.dll" target="Release\Coding4Fun.Phone.Controls.dll" />
-    <file src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" target="Release\Coding4Fun.Phone.Controls.Toolkit.dll" />
+    <file 
+	src="Release\Coding4Fun.Phone.Controls.dll"
+	target="lib\sl4-windowsphone71" />
+    <file 
+	src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" 
+	target="lib\sl4-windowsphone71" />
   </files>
 </package>

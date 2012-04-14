@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>Coding4Fun.Phone.Controls.TimeSpan</id>
-        <version>1.5.5</version>
+        <version>1.5.6</version>
         <title>Coding4fun Windows Phone Silverlight Toolkit - Extending the SL WP Toolkit</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>A timespan selector control and other items that extends the Silverlight WP Toolkit</description>
@@ -16,6 +16,8 @@
         </dependencies>
     </metadata>
     <files>
-       <file src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" target="Release\Coding4Fun.Phone.Controls.Toolkit.dll" />
+       <file 
+		src="Release\Coding4Fun.Phone.Controls.Toolkit.dll" 
+		target="lib\sl4-windowsphone71" />
     </files>
 </package>
