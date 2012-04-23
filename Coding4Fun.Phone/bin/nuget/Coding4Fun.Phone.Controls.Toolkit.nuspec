@@ -3,10 +3,10 @@
     <metadata>
         <id>Coding4Fun.Phone.Controls.TimeSpan</id>
         <version>1.5.6</version>
-        <title>Coding4fun Windows Phone Silverlight Toolkit - Extending the SL WP Toolkit</title>
+        <title>Coding4fun Toolkit for Windows Phone - Extending the SL WP Toolkit Only</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
-        <description>A timespan selector control and other items that extends the Silverlight WP Toolkit</description>
-        <summary>A timespan selector control and other items that extends the Silverlight WP Toolkit</summary>
+        <description>The Coding4Fun Toolkit with multiple controls and useful items for Windows Phone Silverlight applications.  This version extends the Silverlight Toolkit for Windows Phone with controls like the TimeSpan Picker.</description>
+        <summary>A TimeSpan selector control and other items that extends the Silverlight WP Toolkit</summary>
         <language>en-US</language>
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>

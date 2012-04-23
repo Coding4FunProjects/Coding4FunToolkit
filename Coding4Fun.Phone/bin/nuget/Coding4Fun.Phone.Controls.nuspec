@@ -3,9 +3,9 @@
     <metadata>
         <id>Coding4Fun.Phone.Controls</id>
         <version>1.5.6</version>
-        <title>Coding4fun Windows Phone Silverlight Toolkit</title>
+        <title>Coding4fun Toolkit for Windows Phone</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
-        <description>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</description>
+        <description>The Coding4Fun Toolkit has multiple controls and useful items for Windows Phone Silverlight applications.  This version does NOT include the timespan picker, use the complete version if you want that control.</description>
         <summary>A toolkit with multiple controls and useful items for Windows Phone Silverlight applications</summary>
         <language>en-US</language>
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
