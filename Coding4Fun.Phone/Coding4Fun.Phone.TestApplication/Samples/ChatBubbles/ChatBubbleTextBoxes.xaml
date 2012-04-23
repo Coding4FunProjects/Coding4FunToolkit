@@ -22,7 +22,11 @@
 					<c4f:ChatBubbleTextBox 
 						Text="testing normal"
 						Margin="48, 0, 0, 0" />
-
+					<c4f:ChatBubbleTextBox 
+						IsReadOnly="True"
+						Text="testing readonly"
+						Margin="48, 0, 0, 0" />
+					
 					<c4f:ChatBubbleTextBox 
 						Text="testing wrapping: coding4fun coding4fun coding4fun"
 						TextWrapping="Wrap"
@@ -92,6 +96,30 @@
 							Text="LowerLeft"
 							ChatBubbleDirection="LowerLeft" />
 					</Grid>
+				</StackPanel>
+			</ms:PivotItem>
+			<ms:PivotItem Header="hint">
+				<StackPanel>
+					<c4f:ChatBubbleTextBox 
+						Hint="type a message"/>
+					<c4f:ChatBubbleTextBox 
+						Text="i'm a message with a hint"
+						Hint="type a message"/>
+					<c4f:ChatBubbleTextBox 
+						Hint="read only hint"
+						IsReadOnly="True"/>
+					<c4f:ChatBubbleTextBox 
+						Hint="read only hint"
+						Text="read only text"
+						IsReadOnly="True"/>
+					<c4f:ChatBubbleTextBox 
+						Hint="disabled hint"
+						IsEnabled="False"/>
+					<c4f:ChatBubbleTextBox 
+						Hint="disabled hint"
+						Text="disabled text"
+						IsEnabled="False"/>
+
 				</StackPanel>
 			</ms:PivotItem>
 			<ms:PivotItem Header="color">

@@ -108,6 +108,7 @@
 							Background="{TemplateBinding Background}">
 							<ContentControl 
 								HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								Margin="{StaticResource PhoneTextBoxInnerMargin}"
 								Content="{TemplateBinding Content}" 
 								FontSize="{TemplateBinding FontSize}" 
 								FontFamily="{TemplateBinding FontFamily}" />

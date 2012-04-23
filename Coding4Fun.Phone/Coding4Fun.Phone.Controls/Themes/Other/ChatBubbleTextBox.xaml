@@ -8,8 +8,13 @@
 
 
 	<ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
-		<ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" 
-						Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
+		<ContentControl 
+			x:Name="ContentElement" 
+			BorderThickness="0" 
+			HorizontalContentAlignment="Stretch" 
+			Margin="{StaticResource PhoneTextBoxInnerMargin}"
+			Padding="{TemplateBinding Padding}" 
+			VerticalContentAlignment="Stretch"/>
 	</ControlTemplate>
 
 	<Style TargetType="local:ChatBubbleTextBox">
@@ -180,12 +185,27 @@
 							BorderThickness="{TemplateBinding BorderThickness}" 
 							BorderBrush="{TemplateBinding Background}"
 							Background="{TemplateBinding Background}">
-							<ContentControl 
-								x:Name="ContentElement" 
-								BorderThickness="0" 
-								HorizontalContentAlignment="Stretch"
-								VerticalContentAlignment="Stretch"/>
+							<Grid>
+								<ContentControl
+									x:Name="HintContentElement"
+									BorderThickness="0" 
+									Background="Transparent"
+									Margin="{StaticResource PhoneTextBoxInnerMargin}"
+									HorizontalContentAlignment="Stretch"
+									VerticalContentAlignment="Stretch"
+									Foreground="{StaticResource PhoneTextBoxReadOnlyBrush}"
+									Content="{TemplateBinding Hint}" />
+								<ContentControl 
+									x:Name="ContentElement" 
+									BorderThickness="0" 
+									Background="Transparent"
+									Margin="{StaticResource PhoneTextBoxInnerMargin}"
+									HorizontalContentAlignment="Stretch"
+									VerticalContentAlignment="Stretch" />
+								
+							</Grid>
 						</Border>
+						
 						<Border 
 							x:Name="DisabledOrReadonlyBorder" 
 							Grid.Row="1"
@@ -194,11 +214,16 @@
 							Padding="{TemplateBinding Padding}"	
 							Visibility="Collapsed">
 							<TextBox 
-								x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource PhoneDisabledBrush}"
-								 FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontSize="{TemplateBinding FontSize}" 
-									 FontFamily="{TemplateBinding FontFamily}" IsReadOnly="True" SelectionForeground="{TemplateBinding SelectionForeground}" 
-									 SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" 
-									 TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}"/>
+								x:Name="DisabledOrReadonlyContent"
+								Background="Transparent"
+								Foreground="{StaticResource PhoneDisabledBrush}"
+								IsReadOnly="True"
+								SelectionForeground="{TemplateBinding SelectionForeground}" 
+								SelectionBackground="{TemplateBinding SelectionBackground}"
+								TextAlignment="{TemplateBinding TextAlignment}" 
+								TextWrapping="{TemplateBinding TextWrapping}" 
+								Text="{TemplateBinding Text}" 
+								Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}"/>
 						</Border>
 
 						<Path 
