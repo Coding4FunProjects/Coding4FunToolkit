@@ -7,7 +7,7 @@ namespace Coding4Fun.Phone.Controls
 	{
 		protected ContentControl HintContentElement;
 		private const string HintContentElementName = "HintContentElement";
-
+		private bool _hasFocus;
 		public ChatBubbleTextBox()
 		{
 			DefaultStyleKey = typeof(ChatBubbleTextBox);
@@ -57,17 +57,20 @@ namespace Coding4Fun.Phone.Controls
 			UpdateChatBubbleDirection();
 		}
 		
+		
 		protected override void OnGotFocus(RoutedEventArgs e)
 		{
+			_hasFocus = true;
 			SetHintVisibility(Visibility.Collapsed);
-
+			
 			base.OnGotFocus(e);
 		}
 
 		protected override void OnLostFocus(RoutedEventArgs e)
 		{
+			_hasFocus = false;
 			UpdateHintVisibility();
-
+			
 			base.OnLostFocus(e);
 		}
 
@@ -76,7 +79,8 @@ namespace Coding4Fun.Phone.Controls
 		/// </summary>
 		private void UpdateHintVisibility()
 		{
-			SetHintVisibility(string.IsNullOrEmpty(Text) ? Visibility.Visible : Visibility.Collapsed);
+			if(!_hasFocus)
+				SetHintVisibility(string.IsNullOrEmpty(Text) ? Visibility.Visible : Visibility.Collapsed);
 		}
 
 		private void SetHintVisibility(Visibility value)

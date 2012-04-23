@@ -120,6 +120,12 @@
 						Text="disabled text"
 						IsEnabled="False"/>
 
+					<c4f:ChatBubbleTextBox 
+						Name="DynamicTextHintTest"
+						Hint="testing dynamic text"/>
+
+					<Button Click="Button_Click">Add text</Button>
+
 				</StackPanel>
 			</ms:PivotItem>
 			<ms:PivotItem Header="color">
