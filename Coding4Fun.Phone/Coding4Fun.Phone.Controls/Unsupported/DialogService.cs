@@ -370,13 +370,33 @@ namespace Clarity.Phone.Extensions
         {
             IsOpen = false;
 
-            if (PopupContainer != null)
-            {
-                PopupContainer.Children.Remove(_overlay);
-            }
+			try
+			{
+				if (PopupContainer != null && PopupContainer.Children != null)
+				{
+					PopupContainer.Children.Remove(_overlay);
+				}
+			}
+			catch (Exception)
+			{
+				// chances are user nav'ed away
+				// attempting to be extremely robust here
+				// if this fails, go straight to complete
+				// and attempt to remove it from the visual tree
+			}
 
-            if (Closed != null)
-                Closed(this, null);
+			try
+			{
+				if (Closed != null)
+					Closed(this, null);
+			}
+			catch (Exception)
+			{
+				// chances are user nav'ed away
+				// attempting to be extremely robust here
+				// if this fails, go straight to complete
+				// and attempt to remove it from the visual tree
+			}
         }
 
         public void OnBackKeyPress(object sender, CancelEventArgs e)
