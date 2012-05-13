@@ -14,7 +14,7 @@ namespace System.Windows.Controls
     /// <summary>
     /// A static class providing methods for working with the visual tree.  
     /// </summary>
-    internal static class VisualTreeExtensions
+    public static class VisualTreeExtensions
     {
         #region GetVisualChildren(...)
         /// <summary>
@@ -22,7 +22,7 @@ namespace System.Windows.Controls
         /// </summary>
         /// <param name="parent">The parent framework element.</param>
         /// <returns>The visual children of the framework element.</returns>
-        internal static IEnumerable<DependencyObject> GetVisualChildren(this DependencyObject parent)
+        public static IEnumerable<DependencyObject> GetVisualChildren(this DependencyObject parent)
         {
             var childCount = VisualTreeHelper.GetChildrenCount(parent);
 
@@ -43,7 +43,7 @@ namespace System.Windows.Controls
         /// </summary>
         /// <param name="parent">The parent framework element.</param>
         /// <returns>The logical children of the framework element.</returns>
-        internal static IEnumerable<FrameworkElement> GetLogicalChildrenBreadthFirst(this FrameworkElement parent)
+        public static IEnumerable<FrameworkElement> GetLogicalChildrenBreadthFirst(this FrameworkElement parent)
         {
             var queue = new Queue<FrameworkElement>(parent.GetVisualChildren().OfType<FrameworkElement>());
 

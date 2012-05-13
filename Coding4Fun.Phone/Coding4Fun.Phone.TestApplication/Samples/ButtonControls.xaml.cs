@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+using Coding4Fun.Phone.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
@@ -67,6 +69,44 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 		private void NavAway_Click(object sender, RoutedEventArgs e)
 		{
 			NavigationService.Navigate(new Uri("/Samples/Memory.xaml", UriKind.Relative));
+		}
+
+		private void RoundButtonUnchecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<RoundButton>(disabledRoundButtons, false);
+		}
+
+		private void RoundButtonChecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<RoundButton>(disabledRoundButtons, true);
+		}
+
+		private void RoundToggleButtonUnchecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, false);
+		}
+
+		private void RoundToggleButtonChecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, true);
+		}
+
+		private void OpacityToggleButtonUnchecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<OpacityToggleButton>(opacityButtons, false);
+		}
+
+		private void OpacityToggleButtonChecked(object sender, RoutedEventArgs e)
+		{
+			SetIsEnableToType<OpacityToggleButton>(opacityButtons, true);
+		}
+		
+		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control
+		{
+			var children = target.GetLogicalChildrenByType<T>(false);
+
+			foreach (var child in children)
+				child.IsEnabled = isEnabled;
 		}
     }
 }

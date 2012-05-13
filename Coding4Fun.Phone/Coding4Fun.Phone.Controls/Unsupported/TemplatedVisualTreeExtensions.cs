@@ -27,7 +27,7 @@ namespace System.Windows.Controls
         /// <param name="parent">The parent framework element.</param>
         /// <param name="applyTemplates">Specifies whether to apply templates on the traversed framework elements</param>
         /// <returns>The first logical child of the framework element of the specified type.</returns>
-        internal static T GetFirstLogicalChildByType<T>(this FrameworkElement parent, bool applyTemplates)
+        public static T GetFirstLogicalChildByType<T>(this FrameworkElement parent, bool applyTemplates)
             where T : FrameworkElement
         {
             var queue = new Queue<FrameworkElement>();
@@ -69,7 +69,7 @@ namespace System.Windows.Controls
         /// <param name="parent">The parent framework element.</param>
         /// <param name="applyTemplates">Specifies whether to apply templates on the traversed framework elements</param>
         /// <returns>The logical children of the framework element of the specified type.</returns>
-        internal static IEnumerable<T> GetLogicalChildrenByType<T>(this FrameworkElement parent, bool applyTemplates)
+        public static IEnumerable<T> GetLogicalChildrenByType<T>(this FrameworkElement parent, bool applyTemplates)
                 where T : FrameworkElement
         {
             if (applyTemplates && parent is Control)

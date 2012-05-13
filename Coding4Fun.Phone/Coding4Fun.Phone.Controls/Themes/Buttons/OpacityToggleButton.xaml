@@ -26,6 +26,8 @@
 								<VisualState x:Name="Indeterminate"/>
 							</VisualStateGroup>
 							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+
 								<VisualState x:Name="Disabled">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ButtonForeground">

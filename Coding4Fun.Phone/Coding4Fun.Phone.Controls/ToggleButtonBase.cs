@@ -9,8 +9,8 @@ namespace Coding4Fun.Phone.Controls
 		protected ImageBrush OpacityImageBrush;
 
 		public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
+		{
+			base.OnApplyTemplate();
 
 			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
 			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
