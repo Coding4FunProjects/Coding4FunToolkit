@@ -70,6 +70,11 @@ namespace Coding4Fun.Phone.TestApplication
 			NavigateTo("/Samples/Binding.xaml");
 		}
 
+		private void Audio_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateTo("/Samples/Audio.xaml");
+		}
+
     	private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));

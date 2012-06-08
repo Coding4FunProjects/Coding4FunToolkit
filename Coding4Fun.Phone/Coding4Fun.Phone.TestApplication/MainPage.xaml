@@ -125,6 +125,14 @@
 						Bi
 					</TextBlock>
 				</c4f:Tile>
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Audio"
+					Click="Audio_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Au
+					</TextBlock>
+				</c4f:Tile>
 			</slToolkit:WrapPanel>
 		</ScrollViewer>
     </Grid>

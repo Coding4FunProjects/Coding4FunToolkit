@@ -69,6 +69,9 @@
     <Compile Include="Samples\AboutItems.xaml.cs">
       <DependentUpon>AboutItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Audio.xaml.cs">
+      <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Binding.xaml.cs">
       <DependentUpon>Binding.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\AboutItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Audio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +239,10 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Phone.Audio\Coding4Fun.Phone.Audio.csproj">
+      <Project>{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}</Project>
+      <Name>Coding4Fun.Phone.Audio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Phone.Controls.Toolkit\Coding4Fun.Phone.Controls.Toolkit.csproj">
       <Project>{B58CFF25-E379-4719-81A3-59905027BC00}</Project>
       <Name>Coding4Fun.Phone.Controls.Toolkit</Name>

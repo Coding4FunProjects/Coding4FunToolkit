@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Phone.Controls.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Phone.Site.Controls", "Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.csproj", "{B5067622-7764-488C-AABE-FBE0D3BE9F65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Phone.Audio", "Coding4Fun.Phone.Audio\Coding4Fun.Phone.Audio.csproj", "{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B5067622-7764-488C-AABE-FBE0D3BE9F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5067622-7764-488C-AABE-FBE0D3BE9F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5067622-7764-488C-AABE-FBE0D3BE9F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BFE08B-7F0A-4A2E-8000-B75E6B97536E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
