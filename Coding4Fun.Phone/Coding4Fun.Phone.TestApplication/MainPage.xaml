@@ -88,6 +88,16 @@
 						Co
 					</TextBlock>
 				</c4f:Tile>
+				
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Gzip Webclient"
+					Click="GzipWebClient_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Gz
+					</TextBlock>
+				</c4f:Tile>
+				
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Title="Memory"

@@ -1,0 +1,157 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Coding4Fun.Phone.TestApplication.Samples.Gzip"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:compatible="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Compatible;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    
+	<phone:PhoneApplicationPage.Resources>
+
+		<Style x:Key="PolylineStyleBase" TargetType="Polyline">
+			<Setter Property="StrokeThickness" Value="5"/>
+		</Style>
+
+		<Style x:Key="BeginGetResponseStyle" 
+			   TargetType="Polyline"
+			   BasedOn="{StaticResource PolylineStyleBase}">
+			<Setter Property="Stroke" Value="#bbFFbb" />
+		</Style>
+
+		<Style x:Key="BeginGetCompressedResponseStyle" 
+			   TargetType="Polyline"
+			   BasedOn="{StaticResource PolylineStyleBase}">
+			<Setter Property="Stroke" Value="LightSkyBlue" />
+		</Style>
+
+		<Style x:Key="WebClientStyle" 
+			   TargetType="Polyline"
+			   BasedOn="{StaticResource PolylineStyleBase}">
+			<Setter Property="Stroke" Value="Lime" />
+		</Style>
+
+		<Style x:Key="GzipWebClientStyle" 
+			   TargetType="Polyline"
+			   BasedOn="{StaticResource PolylineStyleBase}">
+			<Setter Property="Stroke" Value="Cyan" />
+		</Style>
+		
+		<Style x:Key="LineDataPointStyle" TargetType="charting:LineDataPoint">
+			<Setter Property="Background" Value="White" />
+			<Setter Property="BorderBrush" Value="White"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="IsTabStop" Value="False"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="charting:LineDataPoint">
+						<Grid x:Name="Root" Opacity="1">
+							<Ellipse StrokeThickness="{TemplateBinding BorderThickness}" 
+								 Stroke="{TemplateBinding BorderBrush}" 
+								 Fill="{TemplateBinding Background}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" 
+					   Text="{StaticResource AppName}"
+					   Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="gzip webclient" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<Grid.Resources>
+				<Style x:Key="Invisible" TargetType="Control">
+					<Setter Property="Width" Value="0"/>
+					<Setter Property="Height" Value="0"/>
+				</Style>
+			</Grid.Resources>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<charting:Chart
+				Margin="-12, -50, -12, 0"
+                LegendStyle="{StaticResource Invisible}" 
+				Tap="Chart_Tap">
+
+				<charting:Chart.PlotAreaStyle>
+					<Style TargetType="Grid">
+						<Setter Property="Background" Value="Transparent"/>
+					</Style>
+				</charting:Chart.PlotAreaStyle>
+
+				<charting:Chart.Axes>
+					<charting:LinearAxis
+                        Orientation="Y"
+                        Minimum="0"/>
+					<charting:LinearAxis
+                        Orientation="X"
+                        Height="1"/>
+				</charting:Chart.Axes>
+
+				<compatible:LineSeries
+                    ItemsSource="{Binding BeginGetResponse}"
+                    IndependentValuePath="Time"
+                    DependentValuePath="Elapsed" 
+					PolylineStyle="{StaticResource BeginGetResponseStyle}" 
+					DataPointStyle="{StaticResource LineDataPointStyle}" />
+				
+				<compatible:LineSeries
+                    ItemsSource="{Binding BeginGetCompressedResponse}"
+                    IndependentValuePath="Time"
+                    DependentValuePath="Elapsed"
+					PolylineStyle="{StaticResource BeginGetCompressedResponseStyle}" 
+					DataPointStyle="{StaticResource LineDataPointStyle}" />
+					
+				<compatible:LineSeries
+                    ItemsSource="{Binding WebClient}"
+                    IndependentValuePath="Time"
+                    DependentValuePath="Elapsed"
+                    PolylineStyle="{StaticResource WebClientStyle}" 
+					DataPointStyle="{StaticResource LineDataPointStyle}" />
+
+				<compatible:LineSeries
+                    ItemsSource="{Binding GzipWebClient}"
+                    IndependentValuePath="Time"
+                    DependentValuePath="Elapsed"
+					PolylineStyle="{StaticResource GzipWebClientStyle}" 
+					DataPointStyle="{StaticResource LineDataPointStyle}"
+					/>
+			</charting:Chart>
+			<Button Grid.Row="1" Click="EmailResult">email result</Button>
+		</Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

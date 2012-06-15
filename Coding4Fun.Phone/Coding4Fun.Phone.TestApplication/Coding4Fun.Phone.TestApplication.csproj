@@ -53,9 +53,16 @@
       <HintPath>..\packages\SilverlightToolkitWP.4.2011.12.14\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls">
+      <HintPath>External\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>External\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +105,9 @@
     </Compile>
     <Compile Include="Samples\ButtonControls.xaml.cs">
       <DependentUpon>ButtonControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Gzip.xaml.cs">
+      <DependentUpon>Gzip.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Memory.xaml.cs">
       <DependentUpon>Memory.xaml</DependentUpon>
@@ -181,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Samples\Gzip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Memory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -260,6 +274,10 @@
     <ProjectReference Include="..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.csproj">
       <Project>{09AC45C7-27E8-4A39-B2C4-0031111595D5}</Project>
       <Name>Coding4Fun.Phone.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Phone.Net\Coding4Fun.Phone.Net.csproj">
+      <Project>{E3E35B44-6B0A-49B6-8396-E4A3FAA98E28}</Project>
+      <Name>Coding4Fun.Phone.Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.csproj">
       <Project>{B5067622-7764-488C-AABE-FBE0D3BE9F65}</Project>
