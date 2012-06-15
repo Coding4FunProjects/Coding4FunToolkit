@@ -75,6 +75,11 @@ namespace Coding4Fun.Phone.TestApplication
 			NavigateTo("/Samples/Audio.xaml");
 		}
 
+        private void Storage_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateTo("/Samples/Storage.xaml");
+		}
+
     	private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));

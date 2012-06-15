@@ -21,12 +21,13 @@
 			<TextBlock x:Name="ApplicationTitle" 
 					   Text="{StaticResource AppName}"
 					   Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="samples" Margin="9,-12,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock x:Name="PageTitle" Text="tests/samples" Margin="9,-12,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
 		<Image 
 			Opacity=".5"  
-			Stretch="None"
+			Stretch="Uniform"
+            Height="225"
 			VerticalAlignment="Bottom"
 			HorizontalAlignment="Right"
 			Source="media/head.png"
@@ -36,14 +37,49 @@
 			<slToolkit:WrapPanel 
 				slToolkit:TiltEffect.IsTiltEnabled="True"
 				Margin="24,120,0,0">
-				<c4f:Tile
+
+                <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Prompt"
-					Click="Prompts_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Pr
-					</TextBlock>
-				</c4f:Tile>
+					Title="About"
+					Click="About_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ab
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Audio"
+					Click="Audio_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Au
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Binding"
+					Click="Binding_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bi
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Button"
+					Click="Button_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bn
+                    </TextBlock>
+                </c4f:Tile>
+
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Chat bubble"
+					Click="Chat_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ch
+                    </TextBlock>
+                </c4f:Tile>
+                
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Title="Color"
@@ -52,15 +88,15 @@
 						Co
 					</TextBlock>
 				</c4f:Tile>
-				<c4f:Tile
+                <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Button"
-					Click="Button_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Bn
-					</TextBlock>
-				</c4f:Tile>
-				<c4f:Tile
+					Title="Memory"
+					Click="Memory_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Me
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Title="MetroFlow"
 					Click="MetroFlow_Click">
@@ -77,7 +113,24 @@
 						Ov
 					</TextBlock>
 				</c4f:Tile>
-				<c4f:Tile
+
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Prompt"
+					Click="Prompts_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Pr
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Storage"
+					Click="Storage_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						St
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Title="Super Slider"
 					Click="Slider_Click">
@@ -93,47 +146,9 @@
 						Ts
 					</TextBlock>
 				</c4f:Tile>
-				<c4f:Tile
-					Style="{StaticResource TileStyle}"
-					Title="Chat bubbles"
-					Click="Chat_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Ch
-					</TextBlock>
-				</c4f:Tile>
-				<c4f:Tile
-					Style="{StaticResource TileStyle}"
-					Title="About"
-					Click="About_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Ab
-					</TextBlock>
-				</c4f:Tile>
-				<c4f:Tile
-					Style="{StaticResource TileStyle}"
-					Title="Memory"
-					Click="Memory_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Me
-					</TextBlock>
-				</c4f:Tile>
-				<c4f:Tile
-					Style="{StaticResource TileStyle}"
-					Title="Binding"
-					Click="Binding_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Bi
-					</TextBlock>
-				</c4f:Tile>
-				<c4f:Tile
-					Style="{StaticResource TileStyle}"
-					Title="Audio"
-					Click="Audio_Click">
-					<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Au
-					</TextBlock>
-				</c4f:Tile>
-			</slToolkit:WrapPanel>
+				
+
+            </slToolkit:WrapPanel>
 		</ScrollViewer>
     </Grid>
  

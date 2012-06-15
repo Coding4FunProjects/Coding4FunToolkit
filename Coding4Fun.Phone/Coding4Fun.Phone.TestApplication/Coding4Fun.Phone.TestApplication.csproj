@@ -117,10 +117,16 @@
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Storage.xaml.cs">
+      <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Timespan.xaml.cs">
       <DependentUpon>Timespan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Test\InheritedTextBox.cs" />
+    <Compile Include="Test\InheritedTextBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Test\TestSerializeClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -199,6 +205,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Storage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Timespan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -254,6 +264,10 @@
     <ProjectReference Include="..\Coding4Fun.Phone.Site.Controls\Coding4Fun.Phone.Site.Controls.csproj">
       <Project>{B5067622-7764-488C-AABE-FBE0D3BE9F65}</Project>
       <Name>Coding4Fun.Phone.Site.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Phone.Storage\Coding4Fun.Phone.Storage.csproj">
+      <Project>{C0ACC865-5179-41F4-A517-044E2784A805}</Project>
+      <Name>Coding4Fun.Phone.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
