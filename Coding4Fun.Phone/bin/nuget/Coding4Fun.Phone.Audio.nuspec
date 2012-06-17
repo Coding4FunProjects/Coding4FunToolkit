@@ -3,7 +3,7 @@
   <metadata>
     <id>Coding4Fun.Phone.Audio</id>
         <version>1.5.6</version>
-        <title>Coding4fun Toolkit for Windows Phone - Audio</title>
+        <title>Coding4Fun Toolkit for Windows Phone - Audio</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>Part of the Coding4Fun Toolkit for Windows Phone with only the Audio library.  It provides an easy to use wrapper to get audio data from the microphone.</description>
         <summary>An easy to use API for getting data from the Microphone on Windows Phone</summary>
