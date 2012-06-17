@@ -91,7 +91,7 @@ del *.nupkg
 
 foreach($file in $nuspecFiles)
 {
-	nuget 'pack' $file '-b' '../'
+	nuget 'pack' $file '-BasePath' '../'
 }
 
 echo "done nuget packaging"
