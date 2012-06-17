@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Coding4Fun.Phone.Audio</id>
+        <version>1.5.6</version>
+        <title>Coding4fun Toolkit for Windows Phone - Audio</title>
+        <authors>Coding4Fun, Clint Rutkas</authors>
+        <description>Part of the Coding4Fun Toolkit for Windows Phone with only the Audio library.  It provides an easy to use wrapper to get audio data from the microphone.</description>
+        <summary>An easy to use API for getting data from the Microphone on Windows Phone</summary>
+        <language>en-US</language>
+        <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+        <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+        <tags>coding4fun silverlight windows phone wp7 microphone</tags>
+        <frameworkAssemblies>
+	  <frameworkAssembly assemblyName="Microsoft.Xna.Framework" />
+        </frameworkAssemblies>
+  </metadata>
+
+  <files>
+    <file 
+	src="Release\Coding4Fun.Phone.Audio.dll"
+	target="lib\sl4-windowsphone71" />
+  </files>
+</package>

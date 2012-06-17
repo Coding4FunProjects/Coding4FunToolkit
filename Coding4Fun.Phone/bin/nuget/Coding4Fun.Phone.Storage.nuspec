@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Coding4Fun.Phone.Storage</id>
+        <version>1.5.6</version>
+        <title>Coding4fun Toolkit for Windows Phone - Storage</title>
+        <authors>Coding4Fun, Clint Rutkas</authors>
+        <description>Part of the Coding4Fun Toolkit for Windows Phone with only the Storage library.  It provides an easy to use wrapper open and save data via serialization.</description>
+        <summary>An easy to use wrapper open and save data via serialization</summary>
+        <language>en-US</language>
+        <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+        <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+        <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
+        <frameworkAssemblies>
+          <frameworkAssembly assemblyName="System.Runtime.Serialization" />
+          <frameworkAssembly assemblyName="System.Xml" />
+        </frameworkAssemblies>
+  </metadata>
+
+  <files>
+    <file 
+	src="Release\Coding4Fun.Phone.Storage.dll"
+	target="lib\sl4-windowsphone71" />
+  </files>
+</package>
