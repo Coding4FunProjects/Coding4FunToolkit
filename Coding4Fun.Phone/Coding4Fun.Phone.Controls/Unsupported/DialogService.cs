@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -167,19 +168,37 @@ namespace Clarity.Phone.Extensions
             {
                 if (_popupContainer == null)
                 {
-                    var presenters = RootVisual.GetLogicalChildrenByType<ContentPresenter>(false);
+                    //var popups = RootVisual.GetLogicalChildrenByType<Popup>(false).Where(x => x.IsOpen);
 
-                    for (var i = 0; i < presenters.Count(); i++)
+                    //if (popups.Any())
+                    //{
+                    //    for (var i = 0; i < popups.Count(); i++)
+                    //    {
+                    //        var child = popups.ElementAt(i).Child as Panel;
+
+                    //        if (child == null)
+                    //            continue;
+
+                    //        _popupContainer = child;
+                    //        break;
+                    //    }
+                    //}
+                    //else
                     {
+                        var presenters = RootVisual.GetLogicalChildrenByType<ContentPresenter>(false);
 
-						var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
+                        for (var i = 0; i < presenters.Count(); i++)
+                        {
+                            var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
 
-                        if (!panels.Any())
-                            continue;
+                            if (!panels.Any())
+                                continue;
 
-                        _popupContainer = panels.First();
-                        break;
+                            _popupContainer = panels.First();
+                            break;
+                        }
                     }
+                   
                 }
 
                 return _popupContainer;
