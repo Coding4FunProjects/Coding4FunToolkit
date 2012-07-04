@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,13 +24,21 @@ namespace Coding4Fun.Phone.Controls
                 // GetBindingExpression doesn't seem to respect TemplateBinding
                 // so TextBoxBinding's code doesn't fire
 
-                InputBox.TextChanged += InputBox_TextChanged;
+                InputBox.TextChanged += InputBoxTextChanged;
+				InputBox.SelectionChanged += InputBoxSelectionChanged;
             }
         }
 
-        void InputBox_TextChanged(object sender, TextChangedEventArgs e)
+		void InputBoxSelectionChanged(object sender, RoutedEventArgs e)
+		{
+			if (InputBox.SelectionLength > 0)
+				InputBox.SelectionLength = 0;  
+		}
+
+        void InputBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             var diff = InputBox.Text.Length - _inputText.Length;
+
             // handle text removes
             if (diff < 0)
             {
@@ -50,20 +59,21 @@ namespace Coding4Fun.Phone.Controls
                 // set value
                 // update InputBox with *
                 var selectionStart = InputBox.SelectionStart;
+				var selectionIndex = selectionStart - 1;
+				var newChars = InputBox.Text.Substring(selectionIndex, diff);
+				_inputText.Insert(selectionIndex, newChars);
 
-                var newChars = InputBox.Text.Substring(InputBox.SelectionStart - 1, diff);
-                _inputText.Append(newChars);
                 Value = _inputText.ToString();
-
 
                 if (InputBox.Text.Length >= 2)
                 {
                     var replacementString = new StringBuilder();
-                    replacementString.Insert(0, PasswordChar.ToString(), InputBox.Text.Length - 1);
-                    replacementString.Append(newChars);
+					replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length - 1);
+					replacementString.Insert(selectionIndex, newChars);
 
                     InputBox.Text = replacementString.ToString();
                 }
+
                 InputBox.SelectionStart = selectionStart;
             }
         }
