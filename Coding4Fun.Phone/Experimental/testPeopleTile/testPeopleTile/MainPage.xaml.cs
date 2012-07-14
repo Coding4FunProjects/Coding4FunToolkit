@@ -50,7 +50,7 @@ namespace testPeopleTile
 
 		const int TotalImages = 15;
 
-        private void PageTitleTap(object sender, GestureEventArgs e)
+        private void ToggleImagesTap(object sender, GestureEventArgs e)
         {
         	var img = new Image {Source = GetRandomImage()};
 
