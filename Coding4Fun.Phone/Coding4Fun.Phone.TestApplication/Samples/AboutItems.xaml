@@ -7,21 +7,30 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
-    xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
-	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Site.Controls;assembly=Coding4Fun.Phone.Site.Controls"
+    xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
-
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+    <phone:PhoneApplicationPage.Resources>
+        <Converters:ThemedImageConverter x:Key="c4fThemedImageConverter" />
+    </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
 		<ms:Pivot Title="{StaticResource AppName}">
 			<ms:PivotItem Header="static">
 				<Grid Margin="-12, 0">
-					<c4f:AboutPrompt 
-		                IsPromptMode="False">
+					
+                    <Controls:Coding4FunFooter />
+                    <Controls:Coding4FunWaterMark />
+
+                    <!--
+                   		
+                    
+					<c4f:AboutPrompt IsPromptMode="False">
 						<c4f:AboutPrompt.Body>
 							<StackPanel>
 								<c4f:AboutPersonItem 
@@ -62,6 +71,7 @@
 							</StackPanel>
 						</c4f:AboutPrompt.Footer>
 					</c4f:AboutPrompt>
+-->
 				</Grid>
 			</ms:PivotItem>
 			
@@ -74,6 +84,7 @@
 
 			<ms:PivotItem Header="item">
 				<StackPanel>
+
 					<c4f:AboutPersonItem 
 						EmailAddress="clint@rutkas.com" 
 						Role="foo" />

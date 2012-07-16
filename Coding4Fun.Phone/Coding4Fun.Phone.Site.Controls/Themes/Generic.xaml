@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:Coding4Fun.Phone.Site.Controls"
     xmlns:Converters="clr-namespace:Coding4Fun.Phone.Controls.Converters;assembly=Coding4Fun.Phone.Controls">
     
-    <Converters:ThemedImageConverter x:Key="ThemedImageConverter" />
+    <Converters:ThemedImageConverter x:Key="c4fThemedImageConverter" />
         
     <Style TargetType="local:Coding4FunFooter">
         <Setter Property="Template">
@@ -19,8 +19,9 @@
                         <Image 
                             Name="c4fLogo"
 							Margin="0,5,10,5"
-							DataContext="/Coding4Fun.Phone.Site.Controls;component/Media/icons/{0}/coding4funLogo.png"
-							Source="{Binding Converter={StaticResource ThemedImageConverter}}"
+							Source="{Binding 
+                            Converter={StaticResource c4fThemedImageConverter}, 
+                            ConverterParameter=/Coding4Fun.Phone.Site.Controls;component/Media/icons/\{0\}/coding4funLogo.png}"
 							Stretch="None"
 							HorizontalAlignment="Right" />
                     </StackPanel>
@@ -38,9 +39,9 @@
 						Stretch="None"
 						VerticalAlignment="Bottom"
 						HorizontalAlignment="Right"
-						DataContext="/Coding4Fun.Phone.Site.Controls;component/Media/icons/{0}/head.png"
-						Source="{Binding Converter={StaticResource ThemedImageConverter}}"
+						Source="{Binding Converter={StaticResource c4fThemedImageConverter}, ConverterParameter=/Coding4Fun.Phone.Site.Controls;component/Media/icons/\{0\}/head.png}"
 						Margin="-20, -20">
+
                         <Image.Clip>
                             <RectangleGeometry Rect="0,0,255,274" />
                         </Image.Clip>
