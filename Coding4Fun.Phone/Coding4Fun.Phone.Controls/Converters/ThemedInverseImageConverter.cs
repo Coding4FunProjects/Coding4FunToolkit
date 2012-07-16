@@ -6,14 +6,19 @@ namespace Coding4Fun.Phone.Controls.Converters
 {
     public class ThemedInverseImageConverter : IValueConverter
     {
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			return ThemedImageConverterHelper.GetImage(parameter as string, true);
-		}
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var formatString = parameter as string;
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
+            if (string.IsNullOrEmpty(formatString))
+                formatString = value as string;
+
+            return ThemedImageConverterHelper.GetImage(formatString, true);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,17 +4,21 @@ using System.Windows.Data;
 
 namespace Coding4Fun.Phone.Controls.Converters
 {
-	public class ThemedImageConverter : IValueConverter
-	{
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			return ThemedImageConverterHelper.GetImage(parameter as string);
-		}
+    public class ThemedImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var formatString = parameter as string;
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
+            if (string.IsNullOrEmpty(formatString))
+                formatString = value as string;
 
+            return ThemedImageConverterHelper.GetImage(formatString);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

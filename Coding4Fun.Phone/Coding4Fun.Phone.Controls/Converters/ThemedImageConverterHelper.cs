@@ -11,6 +11,9 @@ namespace Coding4Fun.Phone.Controls.Converters
 
 		public static BitmapImage GetImage(string path, bool negateResult = false)
 		{
+            if (string.IsNullOrEmpty(path))
+                return null;
+
 			var isDarkTheme = (Application.Current.Resources.Contains("PhoneDarkThemeVisibility") &&
 			                   ((Visibility) Application.Current.Resources["PhoneDarkThemeVisibility"]) == Visibility.Visible);
 
