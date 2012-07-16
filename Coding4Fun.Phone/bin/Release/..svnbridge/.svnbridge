@@ -8,4 +8,16 @@ de
 es
 fr
 it
+</Value></Property><Property><Name>svn:ignore</Name><Value>*.dll
+*.pdb
+*.xml
+de
+es
+fr
+it
+cs
+ko
+ru
+sk
+pl
 </Value></Property></Properties></ItemProperties>
