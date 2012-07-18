@@ -22,7 +22,7 @@
 		<Style TargetType="TextBlock" x:Key="TileTextBlockStyle">
 			<Setter Property="VerticalAlignment" Value="Center" />
 			<Setter Property="HorizontalAlignment" Value="Center" />
-			<Setter Property="Margin" Value="0, -18, 0 ,0" />
+			<Setter Property="Margin" Value="0, -6, 0 ,0" />
 			<Setter Property="FontFamily" Value="Segoe WP Light" />
 			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraExtraLarge}" />
 		</Style>
