@@ -26,10 +26,7 @@
 					
                     <Controls:Coding4FunFooter />
                     <Controls:Coding4FunWaterMark />
-
-                    <!--
-                   		
-                    
+					
 					<c4f:AboutPrompt IsPromptMode="False">
 						<c4f:AboutPrompt.Body>
 							<StackPanel>
@@ -71,7 +68,6 @@
 							</StackPanel>
 						</c4f:AboutPrompt.Footer>
 					</c4f:AboutPrompt>
--->
 				</Grid>
 			</ms:PivotItem>
 			
