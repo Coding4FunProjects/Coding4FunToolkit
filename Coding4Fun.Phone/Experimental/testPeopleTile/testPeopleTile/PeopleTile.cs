@@ -46,10 +46,24 @@ namespace testPeopleTile
         {
             if (this.imageContainer != null && this.ItemsSource != null && this.ItemsSource.Count > 0)
             {
-                int col = GetNonRepeatRandomValue(0, 3, _lastUsedCol);
-                int row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
+                int col = -1;
+                int row = -1;
+                string id = null;
 
-                string id = string.Format("{0}{1}", row, col);
+                while (true)
+                {
+                    col = GetNonRepeatRandomValue(0, 3, _lastUsedCol);
+                    row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
+
+                    id = string.Format("{0}{1}", row, col);
+
+                    if (_currentlyDisplayed.Count == 9)
+                        break;
+
+                    if (!_currentlyDisplayed.ContainsKey(id))
+                        break;
+                }
+
                 var img = new Image { Source = GetRandomImage(id) };
 
                 var sb = new Storyboard();
