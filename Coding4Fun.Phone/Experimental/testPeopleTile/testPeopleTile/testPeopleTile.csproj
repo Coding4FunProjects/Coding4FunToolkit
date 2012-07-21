@@ -76,10 +76,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <ApplicationDefinition Include="Themes\Generic.xaml">
+    <Resource Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
@@ -94,6 +94,9 @@
     </Content>
     <Content Include="headGreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\PlaceholderPhoto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="images\1.jpg" />
     <Resource Include="images\10.jpg" />
@@ -111,7 +114,12 @@
     <Resource Include="images\8.jpg" />
     <Resource Include="images\9.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.csproj">
+      <Project>{09AC45C7-27E8-4A39-B2C4-0031111595D5}</Project>
+      <Name>Coding4Fun.Phone.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

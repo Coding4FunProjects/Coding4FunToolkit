@@ -21,6 +21,7 @@ namespace testPeopleTile
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        List<Uri> imgUriList = new List<Uri>();
         // Constructor
         public MainPage()
         {
@@ -38,9 +39,17 @@ namespace testPeopleTile
 
 				_currentlyDisplayed.Add(GetFileUrl(index));
 			}
+
+            for (int i = 0; i < 16; i++)
+            {
+                imgUriList.Add(new Uri(String.Format("Images/{0}.jpg", i), UriKind.Relative));
+            }
+
+            this.myPT.ItemsSource = imgUriList;
+            this.myPT.IsFrozen = false;
         }
 
-		List<tester> _bigList = new List<tester>();
+        List<tester> _bigList = new List<tester>();
         Random _rand = new Random();
 		
 		List<string> _currentlyDisplayed = new List<string>();
@@ -155,10 +164,10 @@ namespace testPeopleTile
         }
     }
 
-    public struct tester
-    {
-        public Storyboard sb { get; set; }
-        public int Row { get; set; }
-        public int Column { get; set; }
-    }
+    //public struct tester
+    //{
+    //    public Storyboard sb { get; set; }
+    //    public int Row { get; set; }
+    //    public int Column { get; set; }
+    //}
 }
