@@ -34,7 +34,7 @@ namespace testPeopleTile
         public PeopleTile()
 		{
             DefaultStyleKey = typeof(PeopleTile);
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += new EventHandler(timer_Tick);
             //timer.Start();
 		}
@@ -292,7 +292,13 @@ namespace testPeopleTile
 
             if (tile != null)
             {
-                tile.timer.Interval = TimeSpan.FromSeconds(tile.AnimationInterval);
+                bool bRunning = tile.timer.IsEnabled;
+                tile.timer.Stop();
+
+                tile.timer.Interval = TimeSpan.FromMilliseconds(tile.AnimationInterval);
+
+                if (bRunning)
+                    tile.timer.Start();
             }
         }
     }
