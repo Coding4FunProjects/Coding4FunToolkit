@@ -39,7 +39,8 @@
 					HorizontalAlignment="Center" 
 					IsFrozen="False" 
 					AnimationType="Fade"
-					AnimationInterval="250" />
+					AnimationInterval="250"
+					 />
             <Grid Width="300" Height="300" Name="foo">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />

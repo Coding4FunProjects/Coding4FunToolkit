@@ -33,6 +33,7 @@ namespace testPeopleTile
         public ImageTile()
 		{
             DefaultStyleKey = typeof(ImageTile);
+
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Tick += timer_Tick;
 		}
@@ -292,7 +293,7 @@ namespace testPeopleTile
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-            if (tile != null)
+			if (tile != null && tile._timer != null)
             {
                 if (tile.IsFrozen)
                     tile._timer.Stop();
@@ -305,7 +306,7 @@ namespace testPeopleTile
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-			if (tile != null)
+			if (tile != null && tile._timer != null)
 			{
 				bool isEnabled = tile._timer.IsEnabled;
 				tile._timer.Stop();
