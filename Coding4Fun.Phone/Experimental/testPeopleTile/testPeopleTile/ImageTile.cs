@@ -18,9 +18,9 @@ namespace testPeopleTile
     	
 		Dictionary<string, Uri> _currentlyDisplayed = new Dictionary<string, Uri>();
 		
-		List<string> _availableIds = new List<string>();
-		List<string> _availableLargeIds = new List<string>();
-		List<string> _IdsInUseWithLarge = new List<string>();
+		List<string> _availableSpotsOnGrid = new List<string>();
+		List<string> _available2xSpotsOnGrid = new List<string>();
+		List<string> _inuse2xSpotsOnGrid = new List<string>();
 		
 		//readonly string[] _imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
     	//readonly string[] _largeImgIds = { "00", "01", "10", "11" };
@@ -111,35 +111,32 @@ namespace testPeopleTile
                 string id = null;
 
                 // first run or when available positons have been filled
-                if (_availableIds.Count == 0)
+                if (_availableSpotsOnGrid.Count == 0)
                 {
                     // iterate through the rows and columns and create list of availble position for 1x1 images
                     for (int i = 0; i < this.Rows; i++)
                     {
                         for (int j = 0; j < this.Columns; j++)
                         {
-                            _availableIds.Add(String.Format("{0}{1}", i, j));
+                            _availableSpotsOnGrid.Add(String.Format("{0}{1}", i, j));
                         }
                     }
 
                     // iterate through rows and columns and create list of positions suitable for 2x2 images
                     for (int i = 0; i < this.Rows-1; i++)
-                    {
                         for (int j = 0; j < this.Columns-1; j++)
-                        {
-                            _availableLargeIds.Add(String.Format("{0}{1}", i, j));
-                        }
-                    }
+                            _available2xSpotsOnGrid.Add(String.Format("{0}{1}", i, j));
                     
                     if (_showLargeImage)
                     {
                         // every alternate iteration, show 1 large image so every second time code will enter this part
+                        // if you have 16 images, it will show once in 32 images.. ie 
 
                         string largeid = null;
                         while (true)
                         {
                             // randomly select 1 vaible position for 2x2 image
-                            largeid = _availableLargeIds[_rand.Next(0, _availableLargeIds.Count)];
+                            largeid = _available2xSpotsOnGrid[_rand.Next(0, _available2xSpotsOnGrid.Count)];
                             if(largeid != _lastLargeId)
                                 break;
                         }
@@ -149,18 +146,13 @@ namespace testPeopleTile
                         int largeRow = int.Parse(_lastLargeId.Substring(0, 1));
                         int largeCol = int.Parse(_lastLargeId.Substring(1, 1));
 
-                        _IdsInUseWithLarge.Clear();
+                        _inuse2xSpotsOnGrid.Clear();
 
 
                         // now assign positions which will be occupied by 2x2 image
                         for (int i = largeRow; i <= largeRow + 1; i++)
-                        {
                             for (int j = largeCol; j <= largeCol + 1; j++)
-                            {
-                                _availableLargeIds.Add(string.Format("{0}{1}", i, j));
-                                _IdsInUseWithLarge.Add(string.Format("{0}{1}", i, j));
-                            }
-                        }
+                                _available2xSpotsOnGrid.Add(string.Format("{0}{1}", i, j));
                     }
                     
                     _showLargeImage = !_showLargeImage;
@@ -170,35 +162,35 @@ namespace testPeopleTile
                 // remove it so its not selected until the end
                 bool hasImageRemoved = false;
 
-                if (_showLargeImage && _availableIds.Count > 1)
+                if (_showLargeImage && _availableSpotsOnGrid.Count > 1)
                 {
-                    _availableIds.Remove(_lastLargeId);
+                    _availableSpotsOnGrid.Remove(_lastLargeId);
                     hasImageRemoved = true;
                 }
                 
-                int iRand = _rand.Next(0, _availableIds.Count);
-                id = _availableIds[iRand];
+                int iRand = _rand.Next(0, _availableSpotsOnGrid.Count);
+                id = _availableSpotsOnGrid[iRand];
 
-                _availableIds.RemoveAt(iRand);
+                _availableSpotsOnGrid.RemoveAt(iRand);
 
                 if (hasImageRemoved)
-                    _availableIds.Remove(_lastLargeId);
+                    _availableSpotsOnGrid.Remove(_lastLargeId);
 
                 Image img = null;
 
-                int index = _IdsInUseWithLarge.IndexOf(id);
+                int index = _inuse2xSpotsOnGrid.IndexOf(id);
 
                 if(!_showLargeImage && index > -1)
                 {
                     // if showing large image and selected position matches 1 of the 4 2x2 positions, display the image using top left
-                    if (_IdsInUseWithLarge.Count == 4)
+                    if (_inuse2xSpotsOnGrid.Count == 4)
                     {
-                        id = _IdsInUseWithLarge[0]; // top left position for 2x2 image
+                        id = _inuse2xSpotsOnGrid[0]; // top left position for 2x2 image
                         
-                        foreach (string val in _IdsInUseWithLarge)
-                            _availableIds.Remove(val);
+                        foreach (string val in _inuse2xSpotsOnGrid)
+                            _availableSpotsOnGrid.Remove(val);
 
-                        _IdsInUseWithLarge.Clear();
+                        _inuse2xSpotsOnGrid.Clear();
                 
                         img = new Image 
 						{
