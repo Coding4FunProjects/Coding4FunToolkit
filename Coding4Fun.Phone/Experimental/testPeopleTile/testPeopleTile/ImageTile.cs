@@ -250,7 +250,8 @@ namespace testPeopleTile
 
 		static void retImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+            //(sender as BitmapImage).UriSource = new Uri("Images/PlaceholderPhoto.png", UriKind.Relative);
+            //(sender as BitmapImage) = new BitmapImage();
 		}
 
         public List<Uri> ItemsSource
