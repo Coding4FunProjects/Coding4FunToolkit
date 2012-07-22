@@ -110,8 +110,10 @@ namespace testPeopleTile
                 int row = -1;
                 string id = null;
 
+                // first run or when available positons have been filled
                 if (_availableIds.Count == 0)
                 {
+                    // iterate through the rows and columns and create list of availble position for 1x1 images
                     for (int i = 0; i < this.Rows; i++)
                     {
                         for (int j = 0; j < this.Columns; j++)
@@ -120,6 +122,7 @@ namespace testPeopleTile
                         }
                     }
 
+                    // iterate through rows and columns and create list of positions suitable for 2x2 images
                     for (int i = 0; i < this.Rows-1; i++)
                     {
                         for (int j = 0; j < this.Columns-1; j++)
@@ -128,12 +131,14 @@ namespace testPeopleTile
                         }
                     }
                     
-
                     if (_showLargeImage)
                     {
+                        // every alternate iteration, show 1 large image so every second time code will enter this part
+
                         string largeid = null;
                         while (true)
                         {
+                            // randomly select 1 vaible position for 2x2 image
                             largeid = _availableLargeIds[_rand.Next(0, _availableLargeIds.Count)];
                             if(largeid != _lastLargeId)
                                 break;
@@ -147,6 +152,7 @@ namespace testPeopleTile
                         _IdsInUseWithLarge.Clear();
 
 
+                        // now assign positions which will be occupied by 2x2 image
                         for (int i = largeRow; i <= largeRow + 1; i++)
                         {
                             for (int j = largeCol; j <= largeCol + 1; j++)
@@ -160,6 +166,8 @@ namespace testPeopleTile
                     _showLargeImage = !_showLargeImage;
                 }
 
+                // the top left position of 2x2 image should be the last to be invalidated.. (at least base when it was scaled earlier)
+                // remove it so its not selected until the end
                 bool hasImageRemoved = false;
 
                 if (_showLargeImage && _availableIds.Count > 1)
@@ -177,13 +185,15 @@ namespace testPeopleTile
                     _availableIds.Remove(_lastLargeId);
 
                 Image img = null;
+
                 int index = _IdsInUseWithLarge.IndexOf(id);
 
                 if(!_showLargeImage && index > -1)
                 {
+                    // if showing large image and selected position matches 1 of the 4 2x2 positions, display the image using top left
                     if (_IdsInUseWithLarge.Count == 4)
                     {
-                        id = _IdsInUseWithLarge[0];
+                        id = _IdsInUseWithLarge[0]; // top left position for 2x2 image
                         
                         foreach (string val in _IdsInUseWithLarge)
                             _availableIds.Remove(val);
@@ -201,6 +211,7 @@ namespace testPeopleTile
                 }
                 else
                 {
+                    // any other positon can be filled as usual
                     img = new Image { Source = GetRandomImage(id) };
                 }
 
