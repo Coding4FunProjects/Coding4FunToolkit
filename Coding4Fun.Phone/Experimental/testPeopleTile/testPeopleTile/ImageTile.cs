@@ -20,9 +20,10 @@ namespace testPeopleTile
 		
 		List<string> _availableIds = new List<string>();
 		List<string> _availableLargeIds = new List<string>();
+		List<string> _IdsInUseWithLarge = new List<string>();
 		
-		readonly string[] _imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
-    	readonly string[] _largeImgIds = { "00", "01", "10", "11" };
+		//readonly string[] _imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
+    	//readonly string[] _largeImgIds = { "00", "01", "10", "11" };
         
 		Grid _imageContainer;
         BitmapImage _largeTileImage;
@@ -57,14 +58,29 @@ namespace testPeopleTile
 
                 if (_availableIds.Count == 0)
                 {
-                    _availableIds.AddRange(_imgIds);
+                    for (int i = 0; i < this.Rows; i++)
+                    {
+                        for (int j = 0; j < this.Columns; j++)
+                        {
+                            _availableIds.Add(String.Format("{0}{1}", i, j));
+                        }
+                    }
+
+                    for (int i = 0; i < this.Rows-1; i++)
+                    {
+                        for (int j = 0; j < this.Columns-1; j++)
+                        {
+                            _availableLargeIds.Add(String.Format("{0}{1}", i, j));
+                        }
+                    }
+                    
 
                     if (_showLargeImage)
                     {
                         string largeid = null;
                         while (true)
                         {
-                            largeid = _largeImgIds[_rand.Next(0, _largeImgIds.Length)];
+                            largeid = _availableLargeIds[_rand.Next(0, _availableLargeIds.Count)];
                             if(largeid != _lastLargeId)
                                 break;
                         }
@@ -74,7 +90,7 @@ namespace testPeopleTile
                         int largeRow = int.Parse(_lastLargeId.Substring(0, 1));
                         int largeCol = int.Parse(_lastLargeId.Substring(1, 1));
 
-                        _availableLargeIds.Clear();
+                        _IdsInUseWithLarge.Clear();
 
                         _largeTileImage = GetRandomImage(_lastLargeId);
 
@@ -83,6 +99,7 @@ namespace testPeopleTile
                             for (int j = largeCol; j <= largeCol + 1; j++)
                             {
                                 _availableLargeIds.Add(string.Format("{0}{1}", i, j));
+                                _IdsInUseWithLarge.Add(string.Format("{0}{1}", i, j));
                             }
                         }
                     }
@@ -107,18 +124,18 @@ namespace testPeopleTile
                     _availableIds.Remove(_lastLargeId);
 
                 Image img = null;
-                int index = _availableLargeIds.IndexOf(id);
+                int index = _IdsInUseWithLarge.IndexOf(id);
 
                 if(!_showLargeImage && index > -1)
                 {
-                    if (_availableLargeIds.Count == 4)
+                    if (_IdsInUseWithLarge.Count == 4)
                     {
-                        id = _availableLargeIds[0];
+                        id = _IdsInUseWithLarge[0];
                         
-                        foreach (string val in _availableLargeIds)
+                        foreach (string val in _IdsInUseWithLarge)
                             _availableIds.Remove(val);
 
-                        _availableLargeIds.Clear();
+                        _IdsInUseWithLarge.Clear();
                 
                         img = new Image 
 						{ 
