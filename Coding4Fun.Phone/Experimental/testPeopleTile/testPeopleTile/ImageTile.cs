@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Collections.Generic;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
-using System.Linq;
 
 namespace testPeopleTile
 {
@@ -14,7 +14,7 @@ namespace testPeopleTile
     {
     	DispatcherTimer _timer = new DispatcherTimer();
         Random _rand = new Random();
-    	List<ImageTileState> _bigList = new List<ImageTileState>();
+    	List<ImageTileState> _animationTracking = new List<ImageTileState>();
     	
 		Dictionary<string, Uri> _currentlyDisplayed = new Dictionary<string, Uri>();
 		
@@ -22,9 +22,6 @@ namespace testPeopleTile
 		List<string> _available2xSpotsOnGrid = new List<string>();
 		List<string> _inuse2xSpotsOnGrid = new List<string>();
 		
-		//readonly string[] _imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
-    	//readonly string[] _largeImgIds = { "00", "01", "10", "11" };
-        
 		Grid _imageContainer;
 
         private bool _showLargeImage;
@@ -45,70 +42,13 @@ namespace testPeopleTile
 
 			GridSizeChanged();
 			_timer.Tick += timer_Tick;
-			//_timer.Tick += ToggleImageTick;
         }
-
-		void ToggleImageTick(object sender, EventArgs e)
-		{
-			if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
-				return;
-
-			// needs to have smarter "random" :-)
-			int row = _rand.Next(Rows);
-			int col = _rand.Next(Columns);
-
-			var img = CreateImage();
-			img.SetValue(Grid.ColumnProperty, col);
-			img.SetValue(Grid.RowProperty, row);
-
-			_imageContainer.Children.Add(img);
-			var sb = new Storyboard();
-			var tileState = new ImageTileState {Storyboard = sb, Row = row, Column = col};
-
-			switch (AnimationType)
-			{
-				case
-					ImageTileAnimationType.Fade:
-					CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
-					break;
-				case ImageTileAnimationType.HorizontalExpand:
-					img.Projection = new PlaneProjection();
-					CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, 500);
-					break;
-				case ImageTileAnimationType.VerticalExpand:
-					img.Projection = new PlaneProjection();
-					CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
-					break;
-			}
-
-			_bigList.Add(tileState);
-
-			sb.Begin();
-			sb.Completed += sb_Completed;
-		}
-
-    	private Image CreateImage()
-		{
-			var img = new Image
-			{
-				HorizontalAlignment = HorizontalAlignment.Center,
-				VerticalAlignment = VerticalAlignment.Center,
-				Stretch = Stretch.UniformToFill,
-				Name = Guid.NewGuid().ToString()
-			};
-
-			img.Source = GetRandomImage(img.Name);
-
-			return img;
-		}
 
         void timer_Tick(object sender, EventArgs e)
         {
             if (_imageContainer != null && ItemsSource != null && ItemsSource.Count > 0)
             {
-                int col = -1;
-                int row = -1;
-                string id = null;
+            	string id = null;
 
                 // first run or when available positons have been filled
                 if (_availableSpotsOnGrid.Count == 0)
@@ -126,36 +66,39 @@ namespace testPeopleTile
                     for (int i = 0; i < this.Rows-1; i++)
                         for (int j = 0; j < this.Columns-1; j++)
                             _available2xSpotsOnGrid.Add(String.Format("{0}{1}", i, j));
-                    
-                    if (_showLargeImage)
-                    {
-                        // every alternate iteration, show 1 large image so every second time code will enter this part
-                        // if you have 16 images, it will show once in 32 images.. ie 
 
-                        string largeid = null;
-                        while (true)
-                        {
-                            // randomly select 1 vaible position for 2x2 image
-                            largeid = _available2xSpotsOnGrid[_rand.Next(0, _available2xSpotsOnGrid.Count)];
-                            if(largeid != _lastLargeId)
-                                break;
-                        }
+					if (_showLargeImage)
+					{
+						// every alternate iteration, show 1 large image so every second time code will enter this part
+						// if you have 16 images, it will show once in 32 images.. ie 
 
-                        _lastLargeId = largeid;
+						string largeid = null;
+						while (true)
+						{
+							// randomly select 1 vaible position for 2x2 image
+							largeid = _available2xSpotsOnGrid[_rand.Next(0, _available2xSpotsOnGrid.Count)];
+							if (largeid != _lastLargeId)
+								break;
+						}
 
-                        int largeRow = int.Parse(_lastLargeId.Substring(0, 1));
-                        int largeCol = int.Parse(_lastLargeId.Substring(1, 1));
+						_lastLargeId = largeid;
 
-                        _inuse2xSpotsOnGrid.Clear();
+						int largeRow = int.Parse(_lastLargeId.Substring(0, 1));
+						int largeCol = int.Parse(_lastLargeId.Substring(1, 1));
+
+						_inuse2xSpotsOnGrid.Clear();
 
 
-                        // now assign positions which will be occupied by 2x2 image
-                        for (int i = largeRow; i <= largeRow + 1; i++)
-                            for (int j = largeCol; j <= largeCol + 1; j++)
-                                _available2xSpotsOnGrid.Add(string.Format("{0}{1}", i, j));
-                    }
-                    
-                    _showLargeImage = !_showLargeImage;
+						// now assign positions which will be occupied by 2x2 image
+						for (int i = largeRow; i <= largeRow + 1; i++)
+							for (int j = largeCol; j <= largeCol + 1; j++)
+							{
+								_available2xSpotsOnGrid.Add(string.Format("{0}{1}", i, j));
+								_inuse2xSpotsOnGrid.Add(string.Format("{0}{1}", i, j));
+							}
+					}
+
+                	_showLargeImage = !_showLargeImage;
                 }
 
                 // the top left position of 2x2 image should be the last to be invalidated.. (at least base when it was scaled earlier)
@@ -176,9 +119,12 @@ namespace testPeopleTile
                 if (hasImageRemoved)
                     _availableSpotsOnGrid.Remove(_lastLargeId);
 
-                Image img = null;
+				int row = int.Parse(id.Substring(0, 1));
+				int col = int.Parse(id.Substring(1, 1));
 
-                int index = _inuse2xSpotsOnGrid.IndexOf(id);
+            	var img = CreateImage(row, col);
+				
+            	int index = _inuse2xSpotsOnGrid.IndexOf(id);
 
                 if(!_showLargeImage && index > -1)
                 {
@@ -191,11 +137,8 @@ namespace testPeopleTile
                             _availableSpotsOnGrid.Remove(val);
 
                         _inuse2xSpotsOnGrid.Clear();
-                
-                        img = new Image 
-						{
-							Source = GetRandomImage(_lastLargeId), 
-						};
+
+						img.Source = GetRandomImage(_lastLargeId);
 
 						img.SetValue(Grid.ColumnSpanProperty, 2);
 						img.SetValue(Grid.RowSpanProperty, 2);
@@ -204,56 +147,61 @@ namespace testPeopleTile
                 else
                 {
                     // any other positon can be filled as usual
-                    img = new Image { Source = GetRandomImage(id) };
+                    img.Source = GetRandomImage(id);
                 }
 
-                row = int.Parse(id.Substring(0, 1));
-                col = int.Parse(id.Substring(1, 1));
-
                 var sb = new Storyboard();
-                var tileState = new ImageTileState();
+				TrackAnimationForImageRemoval(col, row, sb);
 
-            	if (img != null)
+				switch (AnimationType)
             	{
-            		img.SetValue(Grid.ColumnProperty, col);
-            		img.SetValue(Grid.RowProperty, row);
-
-            		img.HorizontalAlignment = HorizontalAlignment.Center;
-            		img.VerticalAlignment = VerticalAlignment.Center;
-            		img.Stretch = Stretch.UniformToFill;
-            		img.Name = Guid.NewGuid().ToString();
-
-            		_imageContainer.Children.Add(img);
-
-					switch (AnimationType)
-					{
-						case
-							ImageTileAnimationType.Fade:
-							CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
-							break;
-						case ImageTileAnimationType.HorizontalExpand:
-							img.Projection = new PlaneProjection();
-							CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, 500);
-							break;
-						case ImageTileAnimationType.VerticalExpand:
-							img.Projection = new PlaneProjection();
-							CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
-							break;
-					}
+            		case
+            			ImageTileAnimationType.Fade:
+            			CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
+            			break;
+            		case ImageTileAnimationType.HorizontalExpand:
+            			img.Projection = new PlaneProjection();
+            			CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, 500);
+            			break;
+            		case ImageTileAnimationType.VerticalExpand:
+            			img.Projection = new PlaneProjection();
+            			CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
+            			break;
             	}
 
-            	tileState.Storyboard = sb;
-                tileState.Row = row;
-                tileState.Column = col;
+            	
 
-                _bigList.Add(tileState);
+				_imageContainer.Children.Add(img);
 
             	sb.Begin();
                 sb.Completed += sb_Completed;
             }
         }
 
-        private static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0, int speed = 500)
+    	private static Image CreateImage(int row, int col)
+    	{
+    		var img = new Image
+    		            	{
+    		            		HorizontalAlignment = HorizontalAlignment.Center,
+    		            		VerticalAlignment = VerticalAlignment.Center,
+    		            		Stretch = Stretch.UniformToFill,
+    		            		Name = Guid.NewGuid().ToString()
+    		            	};
+
+			img.SetValue(Grid.ColumnProperty, col);
+			img.SetValue(Grid.RowProperty, row);
+
+    		return img;
+    	}
+
+    	private void TrackAnimationForImageRemoval(int col, int row, Storyboard sb)
+    	{
+    		var tileState = new ImageTileState {Storyboard = sb, Row = row, Column = col};
+
+    		_animationTracking.Add(tileState);
+    	}
+
+    	private static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0, int speed = 500)
         {
             var doubleAni = new DoubleAnimation
             {
@@ -271,7 +219,7 @@ namespace testPeopleTile
         void sb_Completed(object sender, EventArgs e)
         {
             var itemStoryboard = sender as Storyboard;
-            var result = _bigList.FirstOrDefault(x => x.Storyboard == itemStoryboard);
+            var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
             var items =
                 _imageContainer.Children.Where(
@@ -286,8 +234,9 @@ namespace testPeopleTile
 
 				_imageContainer.Children.Remove(img);
 				_currentlyDisplayed.Remove(img.Name);
-
             }
+
+			_animationTracking.Remove(result);
         }
 
         private BitmapImage GetRandomImage(string id)
@@ -444,29 +393,29 @@ namespace testPeopleTile
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-			if (tile != null && tile._timer != null)
-            {
-                if (tile.IsFrozen)
-                    tile._timer.Stop();
-                else
-                    tile._timer.Start();
-            }
+        	if (tile == null || tile._timer == null) 
+				return;
+
+        	if (tile.IsFrozen)
+        		tile._timer.Stop();
+        	else
+        		tile._timer.Start();
         }
 
         private static void AnimationIntervalPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-			if (tile != null && tile._timer != null)
-			{
-				bool isEnabled = tile._timer.IsEnabled;
-				tile._timer.Stop();
+        	if (tile == null || tile._timer == null)
+				return;
 
-				tile._timer.Interval = TimeSpan.FromMilliseconds(tile.AnimationInterval);
+        	bool isEnabled = tile._timer.IsEnabled;
+        	tile._timer.Stop();
 
-				if (isEnabled)
-					tile._timer.Start();
-			}
+        	tile._timer.Interval = TimeSpan.FromMilliseconds(tile.AnimationInterval);
+
+        	if (isEnabled)
+        		tile._timer.Start();
         }
     }
 }

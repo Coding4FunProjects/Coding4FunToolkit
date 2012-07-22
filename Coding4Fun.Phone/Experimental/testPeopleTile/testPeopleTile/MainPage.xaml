@@ -44,7 +44,7 @@
 					Margin="0"
 					x:Name="verticalExpandTile" 
 					HorizontalAlignment="Center" 
-					IsFrozen="False"
+					IsFrozen="True"
 					AnimationType="VerticalExpand"
 					AnimationInterval="1000" 
 					Columns="3"
@@ -54,7 +54,7 @@
 				<my1:ImageTile 
 					x:Name="horizontalExpandTile" 
 					HorizontalAlignment="Center" 
-					IsFrozen="False"
+					IsFrozen="True"
 					AnimationType="HorizontalExpand"
 					AnimationInterval="250" 
 					Columns="2"
