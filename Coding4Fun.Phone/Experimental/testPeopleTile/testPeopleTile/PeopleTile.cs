@@ -22,11 +22,14 @@ namespace testPeopleTile
         Random _rand = new Random();
         List<tester> _bigList = new List<tester>();
         Dictionary<string, Uri> _currentlyDisplayed = new Dictionary<string, Uri>();
-        int _lastUsedCol = -1;
-        int _lastUsedRow = -1;
         string[] imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
+        string[] largeImgIds = { "00", "01", "10", "11" };
         Grid imageContainer = null;
         List<string> availableIds = new List<string>();
+        List<string> availableLargeIds = new List<string>();
+        BitmapImage largeTileImage = null;
+        private bool bShowLargeImage = false;
+        private string lastlargeid = null;
 
         public PeopleTile()
 		{
@@ -51,31 +54,76 @@ namespace testPeopleTile
                 int row = -1;
                 string id = null;
 
-                if(availableIds.Count == 0)
+                //int width = (int)this.imageContainer.ActualWidth / 3;
+                //int height = (int)this.imageContainer.ActualHeight / 3;
+
+                if (availableIds.Count == 0)
+                {
                     availableIds.AddRange(imgIds);
 
-                int i = _rand.Next(0, availableIds.Count);
-                id = availableIds[i];
-                availableIds.RemoveAt(i);
+                    if (bShowLargeImage)
+                    {
+                        lastlargeid = largeImgIds[_rand.Next(0, largeImgIds.Length)];
+
+                        int largeRow = int.Parse(lastlargeid.Substring(0, 1));
+                        int largeCol = int.Parse(lastlargeid.Substring(1, 1));
+
+                        availableLargeIds.Clear();
+
+                        largeTileImage = GetRandomImage(lastlargeid);
+
+                        for (int i = largeRow; i <= largeRow + 1; i++)
+                        {
+                            for (int j = largeCol; j <= largeCol + 1; j++)
+                            {
+                                availableLargeIds.Add(string.Format("{0}{1}", i, j));
+                            }
+                        }
+                    }
+                    
+                    bShowLargeImage = !bShowLargeImage;
+                }
+
+                bool bRemoved = false;
+                if (bShowLargeImage && availableIds.Count > 1)
+                {
+                    availableIds.Remove(lastlargeid);
+                    bRemoved = true;
+                }
+
+                
+                int iRand = _rand.Next(0, availableIds.Count);
+                id = availableIds[iRand];
+
+                availableIds.RemoveAt(iRand);
+
+                if (bRemoved)
+                    availableIds.Remove(lastlargeid);
+
+
+                Image img = null;
+                int index = availableLargeIds.IndexOf(id);
+                if(!bShowLargeImage && index > -1)
+                {
+                    if (availableLargeIds.Count == 4)
+                    {
+                        id = availableLargeIds[0];
+                        
+                        foreach (string val in availableLargeIds)
+                            availableIds.Remove(val);
+
+                        availableLargeIds.Clear();
+                
+                        img = new Image() { Source = largeTileImage, RenderTransform = new ScaleTransform() { ScaleX = 2, ScaleY = 2 } };
+                    }
+                }
+                else
+                {
+                    img = new Image { Source = GetRandomImage(id) };
+                }
 
                 row = int.Parse(id.Substring(0, 1));
                 col = int.Parse(id.Substring(1, 1));
-                
-                //while (true)
-                //{
-                //    col = GetNonRepeatRandomValue(0, 3, _lastUsedCol);
-                //    row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
-
-                //    id = string.Format("{0}{1}", row, col);
-
-                //    //if (_currentlyDisplayed.Count == 9)
-                //    //    break;
-
-                //    if (!_currentlyDisplayed.ContainsKey(id))
-                //        break;
-                //}
-
-                var img = new Image { Source = GetRandomImage(id) };
 
                 var sb = new Storyboard();
                 var test = new tester();
@@ -100,21 +148,6 @@ namespace testPeopleTile
                     CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
                 else
                 {
-                    //var items =
-                    //imageContainer.Children.Where(
-                    //x => (int)x.GetValue(Grid.RowProperty) == row && (int)x.GetValue(Grid.ColumnProperty) == col).
-                    //ToArray();
-
-                    //try
-                    //{
-                    //    if (items.Count() > 0)
-                    //    {
-                    //        Image oldimg = (Image)items[0];
-                    //        oldimg.Projection = new PlaneProjection();
-                    //        CreateDoubleAnimations(sb, img.Projection, "RotationX", 0, 90, 500);
-                    //    }
-                    //}
-                    //catch { }
                     img.Projection = new PlaneProjection();
                     CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
                 }
@@ -149,12 +182,9 @@ namespace testPeopleTile
                     x => (int)x.GetValue(Grid.RowProperty) == result.Row && (int)x.GetValue(Grid.ColumnProperty) == result.Column).
                     ToArray();
 
-            if(items.Count() > 1)
+            for (int i = 0; i < items.Count() - 1; i++)
             {
-                Image img = (Image)items[0];
-                //_currentlyDisplayed.Remove(((BitmapImage)(img.Source)).UriSource);
-
-                imageContainer.Children.Remove(img);
+                imageContainer.Children.Remove(items[i]);
             }
         }
 
@@ -170,6 +200,7 @@ namespace testPeopleTile
 
             return returnValue;
         }
+
 
         private BitmapImage GetRandomImage(string id)
         {

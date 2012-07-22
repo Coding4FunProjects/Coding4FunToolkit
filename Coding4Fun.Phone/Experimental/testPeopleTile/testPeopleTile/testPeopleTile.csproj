@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="PeopleTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriteableBitmapMediaLibraryExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
