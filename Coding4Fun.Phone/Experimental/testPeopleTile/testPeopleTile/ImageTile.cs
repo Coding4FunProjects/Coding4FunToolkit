@@ -220,7 +220,7 @@ namespace testPeopleTile
 
             do
             {
-            	int index = _rand.Next(1, ItemsSource.Count);
+            	int index = _rand.Next(0, ItemsSource.Count);
 
             	item = ItemsSource[index];
             } while (_currentlyDisplayed.ContainsValue(item));
@@ -237,6 +237,7 @@ namespace testPeopleTile
             try
             {
                 retImage = new BitmapImage(file);
+				retImage.ImageFailed += new EventHandler<ExceptionRoutedEventArgs>(retImage_ImageFailed);
             }
             catch (Exception)
             {
@@ -245,6 +246,11 @@ namespace testPeopleTile
 
             return retImage;
         }
+
+		static void retImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 
         public List<Uri> ItemsSource
         {
