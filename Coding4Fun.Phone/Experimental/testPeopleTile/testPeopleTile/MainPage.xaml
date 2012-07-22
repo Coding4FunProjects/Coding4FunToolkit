@@ -46,7 +46,9 @@
 					HorizontalAlignment="Center" 
 					IsFrozen="False"
 					AnimationType="VerticalExpand"
-					AnimationInterval="250" 
+					AnimationInterval="1000" 
+					Columns="3"
+					Rows="3"
 					Width="300"
 					Height="173" />
 				<my1:ImageTile 
@@ -55,6 +57,8 @@
 					IsFrozen="False"
 					AnimationType="HorizontalExpand"
 					AnimationInterval="250" 
+					Columns="2"
+					Rows="2"
 					Width="300"
 					Height="300" />
 			</StackPanel>

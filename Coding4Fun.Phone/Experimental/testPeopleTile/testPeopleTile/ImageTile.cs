@@ -26,7 +26,6 @@ namespace testPeopleTile
     	//readonly string[] _largeImgIds = { "00", "01", "10", "11" };
         
 		Grid _imageContainer;
-        BitmapImage _largeTileImage;
 
         private bool _showLargeImage;
         private string _lastLargeId;
@@ -46,7 +45,62 @@ namespace testPeopleTile
 
 			GridSizeChanged();
 			_timer.Tick += timer_Tick;
+			//_timer.Tick += ToggleImageTick;
         }
+
+		void ToggleImageTick(object sender, EventArgs e)
+		{
+			if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
+				return;
+
+			// needs to have smarter "random" :-)
+			int row = _rand.Next(Rows);
+			int col = _rand.Next(Columns);
+
+			var img = CreateImage();
+			img.SetValue(Grid.ColumnProperty, col);
+			img.SetValue(Grid.RowProperty, row);
+
+			_imageContainer.Children.Add(img);
+			var sb = new Storyboard();
+			var tileState = new ImageTileState {Storyboard = sb, Row = row, Column = col};
+
+			switch (AnimationType)
+			{
+				case
+					ImageTileAnimationType.Fade:
+					CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
+					break;
+				case ImageTileAnimationType.HorizontalExpand:
+					img.Projection = new PlaneProjection();
+					CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, 500);
+					break;
+				case ImageTileAnimationType.VerticalExpand:
+					img.Projection = new PlaneProjection();
+					CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
+					break;
+			}
+
+			_bigList.Add(tileState);
+
+			sb.Begin();
+			sb.Completed += sb_Completed;
+		}
+
+    	private Image CreateImage()
+		{
+			var img = new Image
+			{
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
+				Stretch = Stretch.UniformToFill,
+				Name = Guid.NewGuid().ToString()
+			};
+
+			img.Source = GetRandomImage(img.Name);
+
+			return img;
+		}
 
         void timer_Tick(object sender, EventArgs e)
         {
@@ -92,7 +146,6 @@ namespace testPeopleTile
 
                         _IdsInUseWithLarge.Clear();
 
-                        _largeTileImage = GetRandomImage(_lastLargeId);
 
                         for (int i = largeRow; i <= largeRow + 1; i++)
                         {
@@ -138,9 +191,8 @@ namespace testPeopleTile
                         _IdsInUseWithLarge.Clear();
                 
                         img = new Image 
-						{ 
-							Source = _largeTileImage, 
-							//RenderTransform = new ScaleTransform { ScaleX = 2, ScaleY = 2 } 
+						{
+							Source = GetRandomImage(_lastLargeId), 
 						};
 
 						img.SetValue(Grid.ColumnSpanProperty, 2);
@@ -225,23 +277,15 @@ namespace testPeopleTile
 
             for (int i = 0; i < items.Count() - 1; i++)
             {
-                _imageContainer.Children.Remove(items[i]);
+				var img = items[i] as Image;
+				if (img == null)
+					continue;
+
+				_imageContainer.Children.Remove(img);
+				_currentlyDisplayed.Remove(img.Name);
+
             }
         }
-
-        private int GetNonRepeatRandomValue(int minValue, int maxValue, int lastValue)
-        {
-            int returnValue;
-
-            do
-            {
-                returnValue = _rand.Next(minValue, maxValue);
-            }
-            while (returnValue == lastValue);
-
-            return returnValue;
-        }
-
 
         private BitmapImage GetRandomImage(string id)
         {
@@ -252,7 +296,9 @@ namespace testPeopleTile
             	int index = _rand.Next(0, ItemsSource.Count);
 
             	item = ItemsSource[index];
-            } while (_currentlyDisplayed.ContainsValue(item));
+			} 
+			while (_currentlyDisplayed.ContainsValue(item) &&	// does it contain it already
+				_currentlyDisplayed.Count < ItemsSource.Count);	// if does, are we out of items, if so, allow it to slide, 
 
             _currentlyDisplayed[id] = item;
 
