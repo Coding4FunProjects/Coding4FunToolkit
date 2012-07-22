@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:testPeopleTile"
 	mc:Ignorable="d">
 
-    <Style TargetType="local:PeopleTile">
+    <Style TargetType="local:ImageTile">
         <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
@@ -22,7 +22,7 @@
         
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:PeopleTile">
+                <ControlTemplate TargetType="local:ImageTile">
                     <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{StaticResource PhoneAccentBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />

@@ -49,7 +49,7 @@ namespace testPeopleTile
             //this.myPT.IsFrozen = false;
         }
 
-        List<tester> _bigList = new List<tester>();
+        List<ImageTileState> _bigList = new List<ImageTileState>();
         Random _rand = new Random();
 		
 		List<string> _currentlyDisplayed = new List<string>();
@@ -67,7 +67,7 @@ namespace testPeopleTile
 			int row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
 
             var sb = new Storyboard();
-            var test = new tester();
+            var test = new ImageTileState();
 
             img.SetValue(Grid.ColumnProperty, col);
             img.SetValue(Grid.RowProperty, row);
@@ -79,7 +79,7 @@ namespace testPeopleTile
 
             foo.Children.Add(img);
 
-            test.sb = sb;
+			test.Storyboard = sb;
             test.Row = row;
             test.Column = col;
 
@@ -133,7 +133,7 @@ namespace testPeopleTile
 		void sb_Completed(object sender, EventArgs e)
 		{
 			var test = sender as Storyboard;
-			var result = _bigList.Where(x => x.sb == test).FirstOrDefault();
+			var result = _bigList.Where(x => x.Storyboard == test).FirstOrDefault();
 
 			var items =
 				foo.Children.Where(
@@ -164,7 +164,7 @@ namespace testPeopleTile
         }
     }
 
-    //public struct tester
+    //public struct ImageTileState
     //{
     //    public Storyboard sb { get; set; }
     //    public int Row { get; set; }
