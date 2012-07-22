@@ -23,7 +23,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PeopleTile">
-                    <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{StaticResource PhoneAccentBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />

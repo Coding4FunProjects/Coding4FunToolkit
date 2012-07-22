@@ -24,15 +24,16 @@ namespace testPeopleTile
         Dictionary<string, Uri> _currentlyDisplayed = new Dictionary<string, Uri>();
         int _lastUsedCol = -1;
         int _lastUsedRow = -1;
-
+        string[] imgIds = { "00", "01", "02", "10", "11", "12", "20", "21", "22" };
         Grid imageContainer = null;
+        List<string> availableIds = new List<string>();
 
         public PeopleTile()
 		{
             DefaultStyleKey = typeof(PeopleTile);
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
+            //timer.Start();
 		}
 
         public override void OnApplyTemplate()
@@ -50,19 +51,29 @@ namespace testPeopleTile
                 int row = -1;
                 string id = null;
 
-                while (true)
-                {
-                    col = GetNonRepeatRandomValue(0, 3, _lastUsedCol);
-                    row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
+                if(availableIds.Count == 0)
+                    availableIds.AddRange(imgIds);
 
-                    id = string.Format("{0}{1}", row, col);
+                int i = _rand.Next(0, availableIds.Count);
+                id = availableIds[i];
+                availableIds.RemoveAt(i);
 
-                    if (_currentlyDisplayed.Count == 9)
-                        break;
+                row = int.Parse(id.Substring(0, 1));
+                col = int.Parse(id.Substring(1, 1));
+                
+                //while (true)
+                //{
+                //    col = GetNonRepeatRandomValue(0, 3, _lastUsedCol);
+                //    row = GetNonRepeatRandomValue(0, 3, _lastUsedRow);
 
-                    if (!_currentlyDisplayed.ContainsKey(id))
-                        break;
-                }
+                //    id = string.Format("{0}{1}", row, col);
+
+                //    //if (_currentlyDisplayed.Count == 9)
+                //    //    break;
+
+                //    if (!_currentlyDisplayed.ContainsKey(id))
+                //        break;
+                //}
 
                 var img = new Image { Source = GetRandomImage(id) };
 
@@ -85,19 +96,41 @@ namespace testPeopleTile
 
                 _bigList.Add(test);
 
-                CreateDoubleAnimations(sb, img, "Opacity", 0, 1);
+                if (this.AnimationType == AnimationTypeDef.Fade)
+                    CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
+                else
+                {
+                    //var items =
+                    //imageContainer.Children.Where(
+                    //x => (int)x.GetValue(Grid.RowProperty) == row && (int)x.GetValue(Grid.ColumnProperty) == col).
+                    //ToArray();
+
+                    //try
+                    //{
+                    //    if (items.Count() > 0)
+                    //    {
+                    //        Image oldimg = (Image)items[0];
+                    //        oldimg.Projection = new PlaneProjection();
+                    //        CreateDoubleAnimations(sb, img.Projection, "RotationX", 0, 90, 500);
+                    //    }
+                    //}
+                    //catch { }
+                    img.Projection = new PlaneProjection();
+                    CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
+                }
                 sb.Begin();
                 sb.Completed += sb_Completed;
             }
         }
 
-        private static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0)
+        private static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0, int speed = 500)
         {
+            
             var doubleAni = new DoubleAnimation
             {
                 To = toValue,
                 From = fromValue,
-                Duration = new Duration(TimeSpan.FromMilliseconds(500)),
+                Duration = new Duration(TimeSpan.FromMilliseconds(speed)),
             };
 
             Storyboard.SetTarget(doubleAni, target);
@@ -177,7 +210,9 @@ namespace testPeopleTile
 
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register("ItemsSource", typeof(List<Uri>), typeof(PeopleTile), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty IsFrozenProperty = DependencyProperty.Register("IsFrozen", typeof(bool), typeof(PeopleTile), new PropertyMetadata(OnIsFrozenPropertyChanged));
+        public static readonly DependencyProperty AnimationTypeProperty = DependencyProperty.Register("AnimationType", typeof(AnimationTypeDef), typeof(PeopleTile), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty IsFrozenProperty = DependencyProperty.Register("IsFrozen", typeof(bool?), typeof(PeopleTile), new PropertyMetadata(OnIsFrozenPropertyChanged));
 
         public static readonly DependencyProperty AnimationIntervalProperty = DependencyProperty.Register("AnimationInterval", typeof(int), typeof(PeopleTile), new PropertyMetadata(AnimationIntervalPropertyChanged));
 
@@ -185,6 +220,12 @@ namespace testPeopleTile
         {
             get { return (List<Uri>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        public AnimationTypeDef AnimationType
+        {
+            get { return (AnimationTypeDef)GetValue(AnimationTypeProperty); }
+            set { SetValue(AnimationTypeProperty, value); }
         }
 
         public bool IsFrozen
@@ -208,7 +249,6 @@ namespace testPeopleTile
                 if (tile.IsFrozen)
                     tile.timer.Stop();
                 else
-
                     tile.timer.Start();
 
                 //spinnerControl.Visibility = spinnerControl.IsSpinning ? Visibility.Visible : Visibility.Collapsed;
@@ -224,6 +264,12 @@ namespace testPeopleTile
                 tile.timer.Interval = TimeSpan.FromSeconds(tile.AnimationInterval);
             }
         }
+    }
+
+    public enum AnimationTypeDef
+    {
+        Fade,
+        Flip,
     }
 
     public struct tester

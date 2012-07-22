@@ -46,7 +46,7 @@ namespace testPeopleTile
             }
 
             this.myPT.ItemsSource = imgUriList;
-            this.myPT.IsFrozen = false;
+            //this.myPT.IsFrozen = false;
         }
 
         List<tester> _bigList = new List<tester>();
