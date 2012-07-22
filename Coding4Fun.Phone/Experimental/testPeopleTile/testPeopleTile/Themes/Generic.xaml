@@ -34,18 +34,6 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        
-                        <Image Grid.Row="0" Grid.Column="0"/>
-                        <Image Grid.Row="0" Grid.Column="1"/>
-                        <Image Grid.Row="0" Grid.Column="2"/>
-
-                        <Image Grid.Row="1" Grid.Column="0"/>
-                        <Image Grid.Row="1" Grid.Column="1"/>
-                        <Image Grid.Row="1" Grid.Column="2"/>
-
-                        <Image Grid.Row="2" Grid.Column="0"/>
-                        <Image Grid.Row="2" Grid.Column="1"/>
-                        <Image Grid.Row="2" Grid.Column="2"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
