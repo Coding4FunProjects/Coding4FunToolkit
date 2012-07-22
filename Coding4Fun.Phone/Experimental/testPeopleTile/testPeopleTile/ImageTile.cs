@@ -62,7 +62,15 @@ namespace testPeopleTile
 
                     if (_showLargeImage)
                     {
-                        _lastLargeId = _largeImgIds[_rand.Next(0, _largeImgIds.Length)];
+                        string largeid = null;
+                        while (true)
+                        {
+                            largeid = _largeImgIds[_rand.Next(0, _largeImgIds.Length)];
+                            if(largeid != _lastLargeId)
+                                break;
+                        }
+
+                        _lastLargeId = largeid;
 
                         int largeRow = int.Parse(_lastLargeId.Substring(0, 1));
                         int largeCol = int.Parse(_lastLargeId.Substring(1, 1));
@@ -251,7 +259,6 @@ namespace testPeopleTile
 		static void retImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
 		{
             //(sender as BitmapImage).UriSource = new Uri("Images/PlaceholderPhoto.png", UriKind.Relative);
-            //(sender as BitmapImage) = new BitmapImage();
 		}
 
         public List<Uri> ItemsSource
