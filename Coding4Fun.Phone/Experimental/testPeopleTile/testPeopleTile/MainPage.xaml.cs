@@ -29,8 +29,9 @@ namespace testPeopleTile
                 _imgUriList.Add(new Uri(String.Format("Images/{0}.jpg", i), UriKind.Relative));
             }
 
-            stockTile.ItemsSource = _imgUriList;
-			largerTile.ItemsSource = _imgUriList;
+            fadeTile.ItemsSource = _imgUriList;
+			verticalExpandTile.ItemsSource = _imgUriList;
+			horizontalExpandTile.ItemsSource = _imgUriList;
         }
     }
 }

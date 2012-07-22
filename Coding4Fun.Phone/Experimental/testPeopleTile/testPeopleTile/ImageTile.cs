@@ -35,7 +35,6 @@ namespace testPeopleTile
             DefaultStyleKey = typeof(ImageTile);
 
             _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += timer_Tick;
 		}
 
         public override void OnApplyTemplate()
@@ -45,6 +44,7 @@ namespace testPeopleTile
             _imageContainer = (Grid)GetTemplateChild("ImageContainer");
 
 			GridSizeChanged();
+			_timer.Tick += timer_Tick;
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -159,7 +159,11 @@ namespace testPeopleTile
 							ImageTileAnimationType.Fade:
 							CreateDoubleAnimations(sb, img, "Opacity", 0, 1, 500);
 							break;
-						case ImageTileAnimationType.Flip:
+						case ImageTileAnimationType.HorizontalExpand:
+							img.Projection = new PlaneProjection();
+							CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, 500);
+							break;
+						case ImageTileAnimationType.VerticalExpand:
 							img.Projection = new PlaneProjection();
 							CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, 500);
 							break;

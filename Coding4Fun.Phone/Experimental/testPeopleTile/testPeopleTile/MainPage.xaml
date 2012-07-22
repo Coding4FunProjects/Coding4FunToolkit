@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,0,0,0">
             <TextBlock x:Name="ApplicationTitle" Text="CODING4FUN TOOLKIT FOR WP - EXPERIMENTAL" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="people tile" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
@@ -35,20 +35,28 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <my1:ImageTile 
-					x:Name="stockTile" 
+					x:Name="fadeTile" 
 					HorizontalAlignment="Center" 
 					IsFrozen="False" 
 					AnimationType="Fade"
 					AnimationInterval="250" />
 				<my1:ImageTile 
-					x:Name="largerTile" 
+					Margin="0"
+					x:Name="verticalExpandTile" 
 					HorizontalAlignment="Center" 
 					IsFrozen="False"
-					AnimationType="Flip"
+					AnimationType="VerticalExpand"
 					AnimationInterval="250" 
 					Width="300"
 					Height="173" />
-				
+				<my1:ImageTile 
+					x:Name="horizontalExpandTile" 
+					HorizontalAlignment="Center" 
+					IsFrozen="False"
+					AnimationType="HorizontalExpand"
+					AnimationInterval="250" 
+					Width="300"
+					Height="300" />
 			</StackPanel>
             
         </Grid>

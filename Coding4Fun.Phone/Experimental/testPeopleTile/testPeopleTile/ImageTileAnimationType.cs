@@ -3,6 +3,7 @@
 	public enum ImageTileAnimationType
 	{
 		Fade,
-        Flip,
+        HorizontalExpand,
+		VerticalExpand,
 	}
 }
