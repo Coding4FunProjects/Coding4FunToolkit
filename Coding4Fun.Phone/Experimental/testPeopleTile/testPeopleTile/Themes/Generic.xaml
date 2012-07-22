@@ -24,16 +24,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ImageTile">
                     <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{StaticResource PhoneAccentBrush}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions >
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

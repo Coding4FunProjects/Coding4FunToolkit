@@ -43,6 +43,8 @@ namespace testPeopleTile
             base.OnApplyTemplate();
 
             _imageContainer = (Grid)GetTemplateChild("ImageContainer");
+
+			GridSizeChanged();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -52,9 +54,6 @@ namespace testPeopleTile
                 int col = -1;
                 int row = -1;
                 string id = null;
-
-                //int width = (int)this.imageContainer.ActualWidth / 3;
-                //int height = (int)this.imageContainer.ActualHeight / 3;
 
                 if (_availableIds.Count == 0)
                 {
@@ -195,8 +194,8 @@ namespace testPeopleTile
 
         void sb_Completed(object sender, EventArgs e)
         {
-            var test = sender as Storyboard;
-            var result = _bigList.FirstOrDefault(x => x.Storyboard == test);
+            var itemStoryboard = sender as Storyboard;
+            var result = _bigList.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
             var items =
                 _imageContainer.Children.Where(
@@ -260,6 +259,80 @@ namespace testPeopleTile
 		{
             //(sender as BitmapImage).UriSource = new Uri("Images/PlaceholderPhoto.png", UriKind.Relative);
 		}
+
+		private static void OnGridSizeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+		{
+			var tile = dependencyObject as ImageTile;
+
+			if (tile != null)
+				tile.GridSizeChanged();
+		}
+
+		private void GridSizeChanged()
+		{
+			if (_imageContainer != null)
+			{
+				int colCount = _imageContainer.ColumnDefinitions.Count;
+				int rowCount = _imageContainer.RowDefinitions.Count;
+
+				// more col in grid than new value
+				// remove
+				if(colCount > Columns)
+				{
+					for (int i = _imageContainer.ColumnDefinitions.Count - 1; i >= Columns; i--)
+					{
+						_imageContainer.ColumnDefinitions.RemoveAt(i);
+					}
+				}
+				// less col in grid than new value
+				// adding new ones
+				else if (colCount < Columns)
+				{
+					for (int i = 0; i < Columns - colCount; i++)
+					{
+						_imageContainer.ColumnDefinitions.Add(new ColumnDefinition());
+					}
+				}
+
+				// more row in grid than new value
+				// remove
+				if (rowCount > Rows)
+				{
+					for (int i = _imageContainer.RowDefinitions.Count - 1; i >= Rows; i--)
+					{
+						_imageContainer.RowDefinitions.RemoveAt(i);
+					}
+				}
+				// less col in grid than new value
+				// adding new ones
+				else if (rowCount < Rows)
+				{
+					for (int i = 0; i < Rows - rowCount; i++)
+					{
+						_imageContainer.RowDefinitions.Add(new RowDefinition());
+					}
+				}
+			}
+
+		}
+
+    	public int Columns
+		{
+			get { return (int)GetValue(ColumnProperty); }
+			set { SetValue(ColumnProperty, value); }
+		}
+
+		public static readonly DependencyProperty ColumnProperty =
+			DependencyProperty.Register("Columns", typeof(int), typeof(ImageTile), new PropertyMetadata(3, OnGridSizeChanged));
+
+		public int Rows
+		{
+			get { return (int)GetValue(RowsProperty); }
+			set { SetValue(RowsProperty, value); }
+		}
+
+		public static readonly DependencyProperty RowsProperty =
+			DependencyProperty.Register("Rows", typeof(int), typeof(ImageTile), new PropertyMetadata(3, OnGridSizeChanged));
 
         public List<Uri> ItemsSource
         {
