@@ -9,9 +9,9 @@ namespace testPeopleTile
 		public int Column { get; set; }
 	}
 
-	public struct ImageLocation
+    public struct ImageLocation
 	{
-		public ImageLocation(int row, int column) : this()
+        public ImageLocation(int row, int column) : this()
 		{
 			Row = row;
 			Column = column;
@@ -19,6 +19,8 @@ namespace testPeopleTile
 
 		public int Row { get; set; }
 		public int Column { get; set; }
+
+        public int Index { get; set; }
 
 		public static bool operator ==(ImageLocation point1, ImageLocation point2)
 		{
@@ -43,7 +45,7 @@ namespace testPeopleTile
 
 		public override int GetHashCode()
 		{
-			return (Row ^ Column);
+			return (Row ^ Column) + Index;
 		}
 
 

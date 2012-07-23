@@ -15,12 +15,12 @@ namespace testPeopleTile
     	DispatcherTimer _timer = new DispatcherTimer();
         Random _rand = new Random();
     	List<ImageTileState> _animationTracking = new List<ImageTileState>();
-    	
-		Dictionary<string, Uri> _currentlyDisplayed = new Dictionary<string, Uri>();
+
+        Dictionary<ImageLocation?, Uri> _currentlyDisplayed = new Dictionary<ImageLocation?, Uri>();
 		
-		List<string> _availableSpotsOnGrid = new List<string>();
-		private string _largeImageId;
-		private string _lastId;
+		List<ImageLocation?> _availableSpotsOnGrid = new List<ImageLocation?>();
+		private ImageLocation? _largeImageId;
+        private ImageLocation _lastId;
 
 		Grid _imageContainer;
 
@@ -52,45 +52,46 @@ namespace testPeopleTile
 
         	ResetGridStateManagement();
 
-        	string id;
+            ImageLocation? il;
         	// allow one cycle before large image gets overwritten
         	// prevent new cycle and same image being used two times in a row
         	do
         	{
-        		id = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count)];
+                il = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count-1)];
+
         	}
-			while (_lastId == id || (_showNewLargeImage && _largeImageId == id && _availableSpotsOnGrid.Count > 1));
+			while (_lastId == il || (_showNewLargeImage && _largeImageId.HasValue && _largeImageId.Value == il && _availableSpotsOnGrid.Count > 1));
 
-        	_lastId = id;
+            _lastId = il.Value;
+            
+        	//int row = int.Parse(id.Substring(0, 1));
+        	//int col = int.Parse(id.Substring(1, 1));
 
-        	int row = int.Parse(id.Substring(0, 1));
-        	int col = int.Parse(id.Substring(1, 1));
+            var img = CreateImage(_lastId);
 
-        	var img = CreateImage(row, col);
-
-        	img.Source = GetRandomImage(id);
-        	_availableSpotsOnGrid.Remove(id);
+            img.Source = GetRandomImage(_lastId);
+            _availableSpotsOnGrid.Remove(_lastId);
 
         	// first valid large image
         	if (!_isLargeImageShowing &&
-        	    row != (Rows - 1) &&
-        	    col != (Columns - 1))
+                _lastId.Row != (Rows - 1) &&
+                _lastId.Column != (Columns - 1))
         	{
-        		_largeImageId = id;
+                _largeImageId = _lastId;
 
         		img.SetValue(Grid.ColumnSpanProperty, 2);
         		img.SetValue(Grid.RowSpanProperty, 2);
 
         		// removing other spots so it doesn't have stuff on top of it right away
-        		CleanUpLargeImageData(row, col + 1);
-        		CleanUpLargeImageData(row + 1, col);
-        		CleanUpLargeImageData(row + 1, col + 1);
+                CleanUpLargeImageData(new ImageLocation(_lastId.Row, _lastId.Column + 1));
+                CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column));
+                CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column + 1));
 
         		_isLargeImageShowing = true;
         	}
 
         	var sb = new Storyboard();
-        	TrackAnimationForImageRemoval(col, row, sb);
+            TrackAnimationForImageRemoval(_lastId, sb);
 
         	switch (AnimationType)
         	{
@@ -122,17 +123,20 @@ namespace testPeopleTile
 
     		if (_forceOverwriteOfLargeImageOnNextIteration)
     		{
-    			_availableSpotsOnGrid.Add(_largeImageId);
-    			_forceOverwriteOfLargeImageOnNextIteration = false;
+                if (_largeImageId.HasValue)
+                {
+                    _availableSpotsOnGrid.Add(_largeImageId);
+                    _forceOverwriteOfLargeImageOnNextIteration = false;
+                }
     		}
     		else
     		{
     			// iterate through the rows and columns and create list of availble position for 1x1 images
-    			for (int i = 0; i < Rows; i++)
+    			for (int i = 1; i <= Rows; i++)
     			{
-    				for (int j = 0; j < Columns; j++)
+    				for (int j = 1; j <= Columns; j++)
     				{
-    					_availableSpotsOnGrid.Add(string.Format("{0}{1}", i, j));
+                        _availableSpotsOnGrid.Add(new ImageLocation(i, j) { Index = _availableSpotsOnGrid.Count });
     				}
     			}
 
@@ -154,13 +158,13 @@ namespace testPeopleTile
     		}
     	}
 
-    	private void CleanUpLargeImageData(int row, int col)
+        private void CleanUpLargeImageData(ImageLocation il)
     	{
-    		_availableSpotsOnGrid.Remove(string.Format("{0}{1}", row, col));
-    		RemoveOldImagesFromGrid(row, col);
+    		_availableSpotsOnGrid.Remove(il);
+    		RemoveOldImagesFromGrid(il);
     	}
 
-    	private static Image CreateImage(int row, int col)
+    	private static Image CreateImage(ImageLocation il)
     	{
     		var img = new Image
     		            	{
@@ -170,15 +174,15 @@ namespace testPeopleTile
     		            		Name = Guid.NewGuid().ToString()
     		            	};
 
-			img.SetValue(Grid.ColumnProperty, col);
-			img.SetValue(Grid.RowProperty, row);
+			img.SetValue(Grid.ColumnProperty, il.Column-1);
+			img.SetValue(Grid.RowProperty, il.Row-1);
 
     		return img;
     	}
 
-    	private void TrackAnimationForImageRemoval(int col, int row, Storyboard sb)
+    	private void TrackAnimationForImageRemoval(ImageLocation il, Storyboard sb)
     	{
-    		var tileState = new ImageTileState {Storyboard = sb, Row = row, Column = col};
+    		var tileState = new ImageTileState {Storyboard = sb, Row = il.Row, Column = il.Column};
 
     		_animationTracking.Add(tileState);
     	}
@@ -203,17 +207,17 @@ namespace testPeopleTile
             var itemStoryboard = sender as Storyboard;
             var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
-            RemoveOldImagesFromGrid(result.Row, result.Column);
+            RemoveOldImagesFromGrid(new ImageLocation(result.Row, result.Column));
 
         	_animationTracking.Remove(result);
         }
 
-    	private void RemoveOldImagesFromGrid(int row, int column)
+    	private void RemoveOldImagesFromGrid(ImageLocation il)
     	{
     		var items =
     			_imageContainer.Children.Where(
-    				x => (int) x.GetValue(Grid.RowProperty) == row 
-						&& (int) x.GetValue(Grid.ColumnProperty) == column).
+    				x => (int) x.GetValue(Grid.RowProperty) == il.Row
+						&& (int) x.GetValue(Grid.ColumnProperty) == il.Column).
     				ToArray();
 
     		for (int i = 0; i < items.Count() - 1; i++)
@@ -223,11 +227,11 @@ namespace testPeopleTile
     				continue;
 
     			_imageContainer.Children.Remove(img);
-    			_currentlyDisplayed.Remove(img.Name);
+    			_currentlyDisplayed.Remove(il);
     		}
     	}
 
-    	private BitmapImage GetRandomImage(string id)
+    	private BitmapImage GetRandomImage(ImageLocation il)
         {
         	Uri item;
 
@@ -241,7 +245,7 @@ namespace testPeopleTile
 				_currentlyDisplayed.ContainsValue(item) &&	// does it contain it already
 				_currentlyDisplayed.Count < ItemsSource.Count);	// if does, are we out of items, if so, allow it to slide, 
 
-            _currentlyDisplayed[id] = item;
+            _currentlyDisplayed[il] = item;
 
             return GetImage(item);
         }

@@ -24,7 +24,7 @@ namespace testPeopleTile
 			//    _currentlyDisplayed.Add(GetFileUrl(index));
 			//}
 
-            for (int i = 1; i < 16; i++)
+            for (int i = 1; i < 9; i++)
             {
                 _imgUriList.Add(new Uri(String.Format("Images/{0}.jpg", i), UriKind.Relative));
             }
