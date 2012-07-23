@@ -5,5 +5,6 @@
 		Fade,
         HorizontalExpand,
 		VerticalExpand,
+		None,
 	}
 }
