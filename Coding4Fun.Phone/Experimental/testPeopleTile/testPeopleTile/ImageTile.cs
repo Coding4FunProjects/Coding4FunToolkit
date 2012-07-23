@@ -59,7 +59,7 @@ namespace testPeopleTile
         	{
         		id = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count)];
         	}
-        	while (_lastId == id || (_showNewLargeImage && _largeImageId == id));
+			while (_lastId == id || (_showNewLargeImage && _largeImageId == id && _availableSpotsOnGrid.Count > 1));
 
         	_lastId = id;
 

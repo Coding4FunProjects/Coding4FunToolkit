@@ -39,12 +39,13 @@
 					HorizontalAlignment="Center" 
 					IsFrozen="False" 
 					AnimationType="Fade"
-					AnimationDuration="250" />
+					AnimationDuration="250"
+					ImageCycleInterval="500" />
 				<my1:ImageTile 
 					Margin="0"
 					x:Name="verticalExpandTile" 
 					HorizontalAlignment="Center" 
-					IsFrozen="True"
+					IsFrozen="False"
 					AnimationType="VerticalExpand"
 					AnimationDuration="1000" 
 					Columns="3"
@@ -54,7 +55,7 @@
 				<my1:ImageTile 
 					x:Name="horizontalExpandTile" 
 					HorizontalAlignment="Center" 
-					IsFrozen="True"
+					IsFrozen="False"
 					AnimationType="HorizontalExpand"
 					AnimationDuration="250" 
 					Columns="2"
