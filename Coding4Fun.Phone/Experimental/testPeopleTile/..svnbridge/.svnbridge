@@ -3,4 +3,6 @@
 </Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.testPeopleTile
 *.suo
 *.user
+</Value></Property><Property><Name>svn:ignore</Name><Value>testPeopleTile.sln.DotSettings.user
+testPeopleTile.suo
 </Value></Property></Properties></ItemProperties>
