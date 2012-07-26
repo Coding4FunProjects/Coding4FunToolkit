@@ -45,7 +45,7 @@ namespace testPeopleTile
 
 		public override int GetHashCode()
 		{
-			return (Row ^ Column) + Index;
+			return Index;
 		}
 
 
