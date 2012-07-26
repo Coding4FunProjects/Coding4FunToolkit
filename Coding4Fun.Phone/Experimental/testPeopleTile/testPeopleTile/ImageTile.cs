@@ -72,10 +72,8 @@ namespace testPeopleTile
 				)
 			);
 
-            _lastId = il.Value;
-            
-        	//int row = int.Parse(id.Substring(0, 1));
-        	//int col = int.Parse(id.Substring(1, 1));
+        	if (il != null) 
+				_lastId = il.Value;
 
             var img = CreateImage(_lastId);
 
@@ -84,14 +82,16 @@ namespace testPeopleTile
 
         	// first valid large image
         	if (!_isLargeImageShowing &&
-                _lastId.Row != (Rows - 1) &&
-                _lastId.Column != (Columns - 1))
+				_lastId.Row != (Rows - 1) && // TODO make this configurable
+				_lastId.Column != (Columns - 1)) // TODO make this configurable
         	{
                 _largeImageId = _lastId;
 
+				// TODO make this configurable
         		img.SetValue(Grid.ColumnSpanProperty, 2);
         		img.SetValue(Grid.RowSpanProperty, 2);
 
+				// TODO make this configurable
         		// removing other spots so it doesn't have stuff on top of it right away
                 CleanUpLargeImageData(new ImageLocation(_lastId.Row, _lastId.Column + 1));
                 CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column));
@@ -121,8 +121,8 @@ namespace testPeopleTile
 
         	_imageContainer.Children.Add(img);
 
+			sb.Completed += AnimationCompleted;
         	sb.Begin();
-        	sb.Completed += AnimationCompleted;
         }
 
     	private void ResetGridStateManagement()
@@ -142,9 +142,9 @@ namespace testPeopleTile
     		else
     		{
     			// iterate through the rows and columns and create list of availble position for 1x1 images
-    			for (int i = 0; i <= Rows - 1; i++)
+    			for (int i = 0; i < Rows; i++)
     			{
-    				for (int j = 0; j <= Columns - 1; j++)
+    				for (int j = 0; j < Columns; j++)
     				{
                         _availableSpotsOnGrid.Add(new ImageLocation(i, j));
     				}
@@ -233,6 +233,7 @@ namespace testPeopleTile
     		for (int i = 0; i < items.Count() - 1; i++)
     		{
     			var img = items[i] as Image;
+
     			if (img == null)
     				continue;
 
@@ -302,7 +303,7 @@ namespace testPeopleTile
 			// remove
 			if(colCount > Columns)
 			{
-				for (int i = _imageContainer.ColumnDefinitions.Count - 1; i >= Columns; i--)
+				for (int i = colCount - 1; i >= Columns; i--)
 				{
 					_imageContainer.ColumnDefinitions.RemoveAt(i);
 				}
@@ -321,7 +322,7 @@ namespace testPeopleTile
 			// remove
 			if (rowCount > Rows)
 			{
-				for (int i = _imageContainer.RowDefinitions.Count - 1; i >= Rows; i--)
+				for (int i = rowCount - 1; i >= Rows; i--)
 				{
 					_imageContainer.RowDefinitions.RemoveAt(i);
 				}
