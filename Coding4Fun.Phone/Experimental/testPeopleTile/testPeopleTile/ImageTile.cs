@@ -53,14 +53,24 @@ namespace testPeopleTile
         	ResetGridStateManagement();
 
             ImageLocation? il;
+
+			int maxLoopCounter = 0;
         	// allow one cycle before large image gets overwritten
         	// prevent new cycle and same image being used two times in a row
         	do
         	{
                 il = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count-1)];
 
+				maxLoopCounter++;
         	}
-			while (_lastId == il || (_showNewLargeImage && _largeImageId.HasValue && _largeImageId.Value == il && _availableSpotsOnGrid.Count > 1));
+			while
+			(
+				maxLoopCounter < 5 &&
+				(
+					_lastId == il || 
+					(_showNewLargeImage && _largeImageId.HasValue && _largeImageId.Value == il && _availableSpotsOnGrid.Count > 1)
+				)
+			);
 
             _lastId = il.Value;
             
@@ -132,11 +142,11 @@ namespace testPeopleTile
     		else
     		{
     			// iterate through the rows and columns and create list of availble position for 1x1 images
-    			for (int i = 1; i <= Rows; i++)
+    			for (int i = 0; i <= Rows - 1; i++)
     			{
-    				for (int j = 1; j <= Columns; j++)
+    				for (int j = 0; j <= Columns - 1; j++)
     				{
-                        _availableSpotsOnGrid.Add(new ImageLocation(i, j) { Index = _availableSpotsOnGrid.Count });
+                        _availableSpotsOnGrid.Add(new ImageLocation(i, j));
     				}
     			}
 
@@ -174,8 +184,8 @@ namespace testPeopleTile
     		            		Name = Guid.NewGuid().ToString()
     		            	};
 
-			img.SetValue(Grid.ColumnProperty, il.Column-1);
-			img.SetValue(Grid.RowProperty, il.Row-1);
+			img.SetValue(Grid.ColumnProperty, il.Column);
+			img.SetValue(Grid.RowProperty, il.Row);
 
     		return img;
     	}
