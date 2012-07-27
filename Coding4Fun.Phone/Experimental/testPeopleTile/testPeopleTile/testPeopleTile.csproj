@@ -131,7 +131,7 @@
     <Resource Include="images\32.jpg" />
     <Resource Include="images\33.jpg" />
     <Resource Include="images\34.jpg" />
-    <Resource Include="images\35.jpg" />
+    <Resource Include="images\0.jpg" />
     <Resource Include="images\PlaceholderPhoto.png" />
   </ItemGroup>
   <ItemGroup>
