@@ -12,7 +12,7 @@ namespace testPeopleTile
 {
     public class ImageTile : Button
     {
-    	DispatcherTimer _timer = new DispatcherTimer();
+    	DispatcherTimer _changeImageTimer = new DispatcherTimer();
         Random _rand = new Random();
     	List<ImageTileState> _animationTracking = new List<ImageTileState>();
 
@@ -26,13 +26,13 @@ namespace testPeopleTile
 
         private bool _isLargeImageShowing = true;
 		private bool _showNewLargeImage = true;
-		private bool _forceOverwriteOfLargeImageOnNextIteration = false;
+		private bool _forceOverwriteOfLargeImageOnNextIteration;
 
         public ImageTile()
 		{
             DefaultStyleKey = typeof(ImageTile);
 
-            _timer.Interval = TimeSpan.FromSeconds(1);
+            _changeImageTimer.Interval = TimeSpan.FromSeconds(1);
 		}
 
         public override void OnApplyTemplate()
@@ -42,10 +42,10 @@ namespace testPeopleTile
             _imageContainer = (Grid)GetTemplateChild("ImageContainer");
 
 			GridSizeChanged();
-			_timer.Tick += timer_Tick;
+			_changeImageTimer.Tick += ChangeImageTimerTick;
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        void ChangeImageTimerTick(object sender, EventArgs e)
         {
         	if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
 				return;
@@ -406,29 +406,29 @@ namespace testPeopleTile
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-        	if (tile == null || tile._timer == null) 
+        	if (tile == null || tile._changeImageTimer == null) 
 				return;
 
         	if (tile.IsFrozen)
-        		tile._timer.Stop();
+        		tile._changeImageTimer.Stop();
         	else
-        		tile._timer.Start();
+        		tile._changeImageTimer.Start();
         }
 
         private static void ImageCycleIntervalPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             ImageTile tile = dependencyObject as ImageTile;
 
-        	if (tile == null || tile._timer == null)
+        	if (tile == null || tile._changeImageTimer == null)
 				return;
 
-        	bool isEnabled = tile._timer.IsEnabled;
-        	tile._timer.Stop();
+        	bool isEnabled = tile._changeImageTimer.IsEnabled;
+        	tile._changeImageTimer.Stop();
 
-        	tile._timer.Interval = TimeSpan.FromMilliseconds(tile.ImageCycleInterval);
+        	tile._changeImageTimer.Interval = TimeSpan.FromMilliseconds(tile.ImageCycleInterval);
 
         	if (isEnabled)
-        		tile._timer.Start();
+        		tile._changeImageTimer.Start();
         }
     }
 }
