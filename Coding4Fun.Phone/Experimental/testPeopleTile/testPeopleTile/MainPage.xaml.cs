@@ -30,8 +30,13 @@ namespace testPeopleTile
             }
 
             fadeTile.ItemsSource = _imgUriList;
-			verticalExpandTile.ItemsSource = _imgUriList;
-			horizontalExpandTile.ItemsSource = _imgUriList;
+			//verticalExpandTile.ItemsSource = _imgUriList;
+			//horizontalExpandTile.ItemsSource = _imgUriList;
         }
+
+		private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			fadeTile.CycleImage();
+		}
     }
 }

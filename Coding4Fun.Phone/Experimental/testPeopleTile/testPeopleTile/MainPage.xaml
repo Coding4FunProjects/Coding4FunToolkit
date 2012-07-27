@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-	xmlns:my1="clr-namespace:testPeopleTile"  
+	xmlns:c4fTest="clr-namespace:testPeopleTile"  
     x:Class="testPeopleTile.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -11,13 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait">
-	<phone:PhoneApplicationPage.Resources>
-        <Style x:Key="test" TargetType="Image">
-            <Setter Property="Stretch" Value="UniformToFill" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-        </Style>
-    </phone:PhoneApplicationPage.Resources>
+
         <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -34,14 +28,18 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <my1:ImageTile 
+                <c4fTest:ImageTile 
 					x:Name="fadeTile" 
 					HorizontalAlignment="Center" 
-					IsFrozen="False" 
+					IsFrozen="{Binding Path=IsChecked, ElementName=IsTileFrozen}" 
 					AnimationType="Fade"
 					AnimationDuration="250"
-					ImageCycleInterval="500" />
-				<my1:ImageTile 
+					ImageCycleInterval="500"
+					Width="300"
+					Height="300"/>
+				<CheckBox Name="IsTileFrozen">Is Frozen</CheckBox>
+				<Button Click="Button_Click">Cycle</Button>
+				<!--<c4fTest:ImageTile 
 					Margin="0"
 					x:Name="verticalExpandTile" 
 					HorizontalAlignment="Center" 
@@ -52,7 +50,7 @@
 					Rows="3"
 					Width="300"
 					Height="173" />
-				<my1:ImageTile 
+				<c4fTest:ImageTile 
 					x:Name="horizontalExpandTile" 
 					HorizontalAlignment="Center" 
 					IsFrozen="False"
@@ -61,22 +59,9 @@
 					Columns="2"
 					Rows="2"
 					Width="300"
-					Height="300" />
+					Height="300" />-->
 			</StackPanel>
             
         </Grid>
     </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-
 </phone:PhoneApplicationPage>
