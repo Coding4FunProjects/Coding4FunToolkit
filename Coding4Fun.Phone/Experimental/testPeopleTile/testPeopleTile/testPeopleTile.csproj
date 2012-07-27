@@ -110,9 +110,6 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="headGreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="images\16.jpg" />
     <Resource Include="images\17.jpg" />
     <Resource Include="images\18.jpg" />
