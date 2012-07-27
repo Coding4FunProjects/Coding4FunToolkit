@@ -47,85 +47,89 @@ namespace testPeopleTile
 
         void ChangeImageTimerTick(object sender, EventArgs e)
         {
-        	if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
-				return;
-
-        	ResetGridStateManagement();
-
-            ImageLocation? il;
-
-			int maxLoopCounter = 0;
-        	// allow one cycle before large image gets overwritten
-        	// prevent new cycle and same image being used two times in a row
-        	do
-        	{
-                il = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count-1)];
-
-				maxLoopCounter++;
-        	}
-			while
-			(
-				maxLoopCounter < 5 &&
-				(
-					_lastId == il || 
-					(_showNewLargeImage && _largeImageId.HasValue && _largeImageId.Value == il && _availableSpotsOnGrid.Count > 1)
-				)
-			);
-
-        	if (il != null) 
-				_lastId = il.Value;
-
-            var img = CreateImage(_lastId);
-
-            img.Source = GetRandomImage(_lastId);
-            _availableSpotsOnGrid.Remove(_lastId);
-
-        	// first valid large image
-        	if (!_isLargeImageShowing &&
-				_lastId.Row != (Rows - 1) && // TODO make this configurable
-				_lastId.Column != (Columns - 1)) // TODO make this configurable
-        	{
-                _largeImageId = _lastId;
-
-				// TODO make this configurable
-        		img.SetValue(Grid.ColumnSpanProperty, 2);
-        		img.SetValue(Grid.RowSpanProperty, 2);
-
-				// TODO make this configurable
-        		// removing other spots so it doesn't have stuff on top of it right away
-                CleanUpLargeImageData(new ImageLocation(_lastId.Row, _lastId.Column + 1));
-                CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column));
-                CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column + 1));
-
-        		_isLargeImageShowing = true;
-        	}
-
-        	var sb = new Storyboard();
-            TrackAnimationForImageRemoval(_lastId, sb);
-
-        	switch (AnimationType)
-        	{
-        		case
-        			ImageTileAnimationType.Fade:
-        			CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
-        			break;
-        		case ImageTileAnimationType.HorizontalExpand:
-        			img.Projection = new PlaneProjection();
-        			CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
-        			break;
-        		case ImageTileAnimationType.VerticalExpand:
-        			img.Projection = new PlaneProjection();
-        			CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
-        			break;
-        	}
-
-        	_imageContainer.Children.Add(img);
-
-			sb.Completed += AnimationCompleted;
-        	sb.Begin();
+	        CycleImage();
         }
 
-    	private void ResetGridStateManagement()
+	    public void CycleImage()
+	    {
+		    if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
+			    return;
+
+		    ResetGridStateManagement();
+
+		    ImageLocation? il;
+
+		    int maxLoopCounter = 0;
+		    // allow one cycle before large image gets overwritten
+		    // prevent new cycle and same image being used two times in a row
+		    do
+		    {
+			    il = _availableSpotsOnGrid[_rand.Next(0, _availableSpotsOnGrid.Count - 1)];
+
+			    maxLoopCounter++;
+		    } while
+			    (
+			    maxLoopCounter < 5 &&
+			    (
+				    _lastId == il ||
+				    (_showNewLargeImage && _largeImageId.HasValue && _largeImageId.Value == il && _availableSpotsOnGrid.Count > 1)
+			    )
+			    );
+
+		    if (il != null)
+			    _lastId = il.Value;
+
+		    var img = CreateImage(_lastId);
+
+		    img.Source = GetRandomImage(_lastId);
+		    _availableSpotsOnGrid.Remove(_lastId);
+
+		    // first valid large image
+		    if (!_isLargeImageShowing &&
+		        _lastId.Row != (Rows - 1) && // TODO make this configurable
+		        _lastId.Column != (Columns - 1)) // TODO make this configurable
+		    {
+			    _largeImageId = _lastId;
+
+			    // TODO make this configurable
+			    img.SetValue(Grid.ColumnSpanProperty, 2);
+			    img.SetValue(Grid.RowSpanProperty, 2);
+
+			    // TODO make this configurable
+			    // removing other spots so it doesn't have stuff on top of it right away
+			    CleanUpLargeImageData(new ImageLocation(_lastId.Row, _lastId.Column + 1));
+			    CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column));
+			    CleanUpLargeImageData(new ImageLocation(_lastId.Row + 1, _lastId.Column + 1));
+
+			    _isLargeImageShowing = true;
+		    }
+
+		    var sb = new Storyboard();
+		    TrackAnimationForImageRemoval(_lastId, sb);
+
+		    switch (AnimationType)
+		    {
+			    case
+				    ImageTileAnimationType.Fade:
+				    CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
+				    break;
+			    case ImageTileAnimationType.HorizontalExpand:
+				    img.Projection = new PlaneProjection();
+				    CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
+				    break;
+			    case ImageTileAnimationType.VerticalExpand:
+				    img.Projection = new PlaneProjection();
+				    CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
+				    break;
+		    }
+
+		    _imageContainer.Children.Add(img);
+
+		    sb.Completed += AnimationCompleted;
+		    sb.Begin();
+	    }
+
+	    private void ResetGridStateManagement()
     	{
     		// first run or when available positons have been filled
     		if (_availableSpotsOnGrid.Count != 0) 
