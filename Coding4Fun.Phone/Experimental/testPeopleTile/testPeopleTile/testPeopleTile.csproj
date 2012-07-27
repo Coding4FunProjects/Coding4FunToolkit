@@ -78,6 +78,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="images\1.jpg" />
+    <Resource Include="images\10.jpg" />
+    <Resource Include="images\11.jpg" />
+    <Resource Include="images\12.jpg" />
+    <Resource Include="images\13.jpg" />
+    <Resource Include="images\14.jpg" />
+    <Resource Include="images\15.jpg" />
+    <Resource Include="images\2.jpg" />
+    <Resource Include="images\3.jpg" />
+    <Resource Include="images\4.jpg" />
+    <Resource Include="images\5.jpg" />
+    <Resource Include="images\6.jpg" />
+    <Resource Include="images\7.jpg" />
+    <Resource Include="images\8.jpg" />
+    <Resource Include="images\9.jpg" />
     <Resource Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,24 +112,27 @@
     <Content Include="headGreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\PlaceholderPhoto.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="images\1.jpg" />
-    <Resource Include="images\10.jpg" />
-    <Resource Include="images\11.jpg" />
-    <Resource Include="images\12.jpg" />
-    <Resource Include="images\13.jpg" />
-    <Resource Include="images\14.jpg" />
-    <Resource Include="images\15.jpg" />
-    <Resource Include="images\2.jpg" />
-    <Resource Include="images\3.jpg" />
-    <Resource Include="images\4.jpg" />
-    <Resource Include="images\5.jpg" />
-    <Resource Include="images\6.jpg" />
-    <Resource Include="images\7.jpg" />
-    <Resource Include="images\8.jpg" />
-    <Resource Include="images\9.jpg" />
+    <Resource Include="images\16.jpg" />
+    <Resource Include="images\17.jpg" />
+    <Resource Include="images\18.jpg" />
+    <Resource Include="images\19.jpg" />
+    <Resource Include="images\20.jpg" />
+    <Resource Include="images\21.jpg" />
+    <Resource Include="images\22.jpg" />
+    <Resource Include="images\23.jpg" />
+    <Resource Include="images\24.jpg" />
+    <Resource Include="images\25.jpg" />
+    <Resource Include="images\26.jpg" />
+    <Resource Include="images\27.jpg" />
+    <Resource Include="images\28.jpg" />
+    <Resource Include="images\29.jpg" />
+    <Resource Include="images\30.jpg" />
+    <Resource Include="images\31.jpg" />
+    <Resource Include="images\32.jpg" />
+    <Resource Include="images\33.jpg" />
+    <Resource Include="images\34.jpg" />
+    <Resource Include="images\35.jpg" />
+    <Resource Include="images\PlaceholderPhoto.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Coding4Fun.Phone.Controls\Coding4Fun.Phone.Controls.csproj">
