@@ -14,17 +14,14 @@ namespace testPeopleTile
 	{
 		DispatcherTimer _changeImageTimer = new DispatcherTimer();
         Random _rand = new Random();
-
-    	List<ImageTileState> _animationTracking = new List<ImageTileState>();
-
+	
         Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
+
 		List<Uri> _imagesBeingShown = new List<Uri>();
-
 		List<int> _availableSpotsOnGrid = new List<int>();
+		List<ImageTileState> _animationTracking = new List<ImageTileState>();
 
-		private int _largeImageIndex = -1;
-		private int _lastIndex = -1;
-
+		private int _largeImageIndex = -1;		
 		private int _lastIdRow = -1;
 		private int _lastIdCol = -1;
 
@@ -136,7 +133,6 @@ namespace testPeopleTile
 					)
 				);
 
-			_lastIndex = index;
 			_lastIdRow = row;
 			_lastIdCol = col;
 
@@ -365,6 +361,8 @@ namespace testPeopleTile
 				for (int i = colCount - 1; i >= Columns; i--)
 				{
 					_imageContainer.ColumnDefinitions.RemoveAt(i);
+
+					KeepGridInSyncCol(i);
 				}
 			}
 				// less col in grid than new value
@@ -384,6 +382,8 @@ namespace testPeopleTile
 				for (int i = rowCount - 1; i >= Rows; i--)
 				{
 					_imageContainer.RowDefinitions.RemoveAt(i);
+
+					KeepGridInSyncRow(i);
 				}
 			}
 				// less col in grid than new value
@@ -397,7 +397,38 @@ namespace testPeopleTile
 			}
 		}
 
-    	public int Columns
+		private void KeepGridInSyncRow(int row)
+		{
+			for(int col = 0; col < Columns; col++)
+			{
+				KeepGridInSync(row, col);
+			}
+		}
+
+		private void KeepGridInSyncCol(int col)
+		{
+			for (int row = 0; row < Rows; row++)
+			{
+				KeepGridInSync(row, col);
+			}
+		}
+
+		private void KeepGridInSync(int row, int col)
+		{
+			var index = CalculateIndex(row, col);
+
+			Uri imgUri;
+			
+			if (_imageCurrentLocation.TryGetValue(index, out imgUri))
+			{
+				_imagesBeingShown.Remove(imgUri);
+				_imageCurrentLocation.Remove(index);
+			}
+
+			_availableSpotsOnGrid.Remove(index);
+		}
+
+		public int Columns
 		{
 			get { return (int)GetValue(ColumnProperty); }
 			set { SetValue(ColumnProperty, value); }
