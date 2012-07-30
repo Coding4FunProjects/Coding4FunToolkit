@@ -99,58 +99,75 @@ namespace testPeopleTile
 		    sb.Begin();
 	    }
 
-	    private void CalculateNextValidItem(out int index, out int row, out int col, out bool isLargeImage)
-		{
-			isLargeImage = false;
+        private void CalculateNextValidItem(out int index, out int row, out int col, out bool isLargeImage)
+        {
+            isLargeImage = false;
 
-			if (_availableSpotsOnGrid.Count == 0)
-			{
-				ResetGridStateManagement();
+            if (_availableSpotsOnGrid.Count == 0)
+            {
+                ResetGridStateManagement();
 
-				isLargeImage = _imageTileLayoutState == ImageTileLayoutStates.BigImage;
-			}
+                isLargeImage = _imageTileLayoutState == ImageTileLayoutStates.BigImage;
+            }
 
-		    do
-			{
-				row = _rand.Next(!isLargeImage ? Rows : Rows - 1);
-				col = _rand.Next(!isLargeImage ? Columns : Columns - 1);
+            var lastIndex = -1;
 
-				index = CalculateIndex(row, col);
-			} while
-				(
-				// same spot as last image
-				// is the spot open on the grid
-				// is this a valid spot
-				// if a large image // valid spot
-				//maxLoopCounter < 5 &&
-					(
-				//(_showNewLargeImage && _largeImageIndex == index) || 
-				//(!_showNewLargeImage && _lastIndex == index) &&
+            do
+            {
+                //Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
+                //  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
+                var rowMax = !isLargeImage ? Rows : Rows - 1;
+                var colMax = !isLargeImage ? Columns : Columns - 1;
 
-						// repeat if
-				// index isn't there
-						!_availableSpotsOnGrid.Contains(index)
-					)
-				);
+                row = _rand.Next(rowMax >= 0 ? rowMax : 0);
+                col = _rand.Next(colMax >= 0 ? colMax : 0);
 
-			_lastIdRow = row;
-			_lastIdCol = col;
+                index = CalculateIndex(row, col);
 
-			if (isLargeImage)
-			{
-				_largeImageIndex = index;
+                //If we've got the same number twice in a row, break out of the loop and assign the image
+                //  let the available slots be recalc'd on the next run through
+                if (lastIndex == index)
+                {
+                    break;
+                }
 
-				_availableSpotsOnGrid.Remove(CalculateIndex(row, col + 1));
-				_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col));
-				_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col + 1));
-			}
+                lastIndex = index;
+            } while
+                (
+                // same spot as last image
+                // is the spot open on the grid
+                // is this a valid spot
+                // if a large image // valid spot
+                //maxLoopCounter < 5 &&
+                    (
+                //(_showNewLargeImage && _largeImageIndex == index) || 
+                //(!_showNewLargeImage && _lastIndex == index) &&
 
-			_availableSpotsOnGrid.Remove(index);
-		}
+                        // repeat if
+                // index isn't there
+                //  and there is at least one available spot in the grid
+                        !_availableSpotsOnGrid.Contains(index) && _availableSpotsOnGrid.Count > 0
+                    )
+                );
+
+            _lastIdRow = row;
+            _lastIdCol = col;
+
+            if (isLargeImage)
+            {
+                _largeImageIndex = index;
+
+                _availableSpotsOnGrid.Remove(CalculateIndex(row, col + 1));
+                _availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col));
+                _availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col + 1));
+            }
+
+            _availableSpotsOnGrid.Remove(index);
+        }
 
 	    private void ResetGridStateManagement()
     	{
-    		// first run or when available positons have been filled
+    		// first run or when available positions have been filled
     		if (_availableSpotsOnGrid.Count != 0) 
 				return;
 
