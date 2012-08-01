@@ -124,8 +124,8 @@ namespace testPeopleTile
             {
                 //Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
                 //  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
-                var rowMax = !isLargeImage ? Rows : Rows - 1;
-                var colMax = !isLargeImage ? Columns : Columns - 1;
+                var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows;
+                var colMax = !isLargeImage ? Columns : Columns - LargeTileColumns;
 
                 row = _rand.Next(rowMax >= 0 ? rowMax : 0);
                 col = _rand.Next(colMax >= 0 ? colMax : 0);
@@ -165,9 +165,17 @@ namespace testPeopleTile
             {
                 _largeImageIndex = index;
 
-                _availableSpotsOnGrid.Remove(CalculateIndex(row, col + 1));
-                _availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col));
-                _availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col + 1));
+                for (int i = 0; i < this.LargeTileRows; i++)
+                    for (int j = 0; j < this.LargeTileColumns; j++)
+                    {
+                        if (i == 0 && j == 0)
+                            continue;
+
+                        _availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
+                    }
+                //_availableSpotsOnGrid.Remove(CalculateIndex(row, col + 1));
+                //_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col));
+                //_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col + 1));
             }
 
             _availableSpotsOnGrid.Remove(index);
@@ -239,8 +247,9 @@ namespace testPeopleTile
 
             if (isLargeImage)
             {
-                img.SetValue(Grid.ColumnSpanProperty, 2);
-                img.SetValue(Grid.RowSpanProperty, 2);
+                System.Diagnostics.Debug.WriteLine("Large Tile");
+                img.SetValue(Grid.ColumnSpanProperty, this.LargeTileColumns);
+                img.SetValue(Grid.RowSpanProperty, this.LargeTileRows);
             }
 
             img.Source = GetImage(imgUri);
@@ -282,9 +291,19 @@ namespace testPeopleTile
 			{
 				// TODO make this configurable
 				// removing other spots so it doesn't have stuff on top of it right away
-				RemoveOldImagesFromGrid(_lastIdRow, _lastIdCol + 1);
-				RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol);
-				RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol + 1);
+
+                for(int i = 0; i < this.LargeTileRows; i++)
+                    for (int j = 0; j < this.LargeTileColumns; j++)
+                    {
+                        if (i == 0 && j == 0)
+                            continue;
+
+                        RemoveOldImagesFromGrid(i, _lastIdCol + j);
+                    }
+
+                //RemoveOldImagesFromGrid(_lastIdRow, _lastIdCol + 1);
+                //RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol);
+                //RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol + 1);
 			}
 
 	        RemoveOldImagesFromGrid(result.Row, result.Column);
@@ -470,6 +489,24 @@ namespace testPeopleTile
 		public static readonly DependencyProperty RowsProperty =
 			DependencyProperty.Register("Rows", typeof(int), typeof(ImageTile), new PropertyMetadata(3, OnGridSizeChanged));
 
+        public int LargeTileColumns
+        {
+            get { return (int)GetValue(LargeTileColumnsProperty); }
+            set { SetValue(LargeTileColumnsProperty, value); }
+        }
+
+        public static readonly DependencyProperty LargeTileColumnsProperty =
+            DependencyProperty.Register("LargeTileColumns", typeof(int), typeof(ImageTile), new PropertyMetadata(2, OnLargeTileColsRowsPropertyChanged));
+
+        public int LargeTileRows
+        {
+            get { return (int)GetValue(LargeTileRowsProperty); }
+            set { SetValue(LargeTileRowsProperty, value); }
+        }
+
+        public static readonly DependencyProperty LargeTileRowsProperty =
+            DependencyProperty.Register("LargeTileRows", typeof(int), typeof(ImageTile), new PropertyMetadata(2, OnLargeTileColsRowsPropertyChanged));
+
         public List<Uri> ItemsSource
         {
             get { return (List<Uri>)GetValue(ItemsSourceProperty); }
@@ -515,6 +552,20 @@ namespace testPeopleTile
 		// Using a DependencyProperty as the backing store for ImageCycleInterval.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ImageCycleIntervalProperty =
 			DependencyProperty.Register("ImageCycleInterval", typeof(int), typeof(ImageTile), new PropertyMetadata(1000, ImageCycleIntervalPropertyChanged));
+
+        private static void OnLargeTileColsRowsPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+        {
+            ImageTile tile = dependencyObject as ImageTile;
+
+            if (tile == null)
+                return;
+
+            if (tile.LargeTileRows > tile.Rows)
+                tile.LargeTileColumns = tile.Rows;
+
+            if (tile.LargeTileColumns > tile.LargeTileColumns)
+                tile.LargeTileColumns = tile.Columns;
+        }
 
         private static void OnIsFrozenPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {

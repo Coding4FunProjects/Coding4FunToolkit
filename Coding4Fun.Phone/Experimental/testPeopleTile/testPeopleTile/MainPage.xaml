@@ -27,7 +27,11 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
                 <c4fTest:ImageTile 
 					x:Name="fadeTile" 
 					HorizontalAlignment="Center" 
@@ -37,43 +41,60 @@
 					ImageCycleInterval="500"
 					Rows="{Binding ElementName=rows, Path=Value}"
 					Columns="{Binding ElementName=cols, Path=Value}"
+                    LargeTileRows="{Binding ElementName=largerows, Path=Value, Mode=TwoWay}"
+					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}"
 					Width="300"
 					Height="300"/>
-				
-				<Controls:SuperSlider 
-					Title="Rows" 
-					Name="rows"
-					Value="3" 
-					Step="1" 
-					Minimum="0"
-					Maximum="10" />
-				<Controls:SuperSlider 
-					Title="Columns" 
-					Name="cols"
-					Value="3" 
-					Step="1" 
-					Minimum="0"
-					Maximum="10" />
-				<Controls:SuperSlider 
-					Title="Test Dataset size" 
-					Name="data"
-					Value="15" 
-					Step="1" 
-					Minimum="0"
-					Maximum="40" ValueChanged="data_ValueChanged" />
-				<Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <!--CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox-->
-                    <CheckBox Name="IsTileFrozen" Grid.Column="1">Is Frozen</CheckBox>
-                    <Button IsEnabled="{Binding ElementName=IsTileFrozen, Path=IsChecked}"
-						Click="Button_Click" Grid.Column="2" HorizontalAlignment="Right">Cycle</Button>
-				</Grid>
-			</StackPanel>
-            
+
+                <StackPanel Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Controls:SuperSlider 
+					    Title="Rows" 
+					    Name="rows"
+					    Value="3" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" />
+				    <Controls:SuperSlider 
+					    Title="Columns" 
+					    Name="cols"
+					    Value="3" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" />
+                    <Controls:SuperSlider 
+					    Title="Large Tile Rows" 
+					    Name="largerows"
+					    Value="2" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" />
+                    <Controls:SuperSlider 
+					    Title="Large Tile Columns" 
+					    Name="largecols"
+					    Value="2" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" />
+                    <Controls:SuperSlider 
+					    Title="Test Dataset size" 
+					    Name="data"
+					    Value="15" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="40" ValueChanged="data_ValueChanged" />
+				    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!--CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox-->
+                        <CheckBox Name="IsTileFrozen" Grid.Column="1">Is Frozen</CheckBox>
+                        <Button IsEnabled="{Binding ElementName=IsTileFrozen, Path=IsChecked}"
+						    Click="Button_Click" Grid.Column="2" HorizontalAlignment="Right">Cycle</Button>
+				    </Grid>
+			    </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>
