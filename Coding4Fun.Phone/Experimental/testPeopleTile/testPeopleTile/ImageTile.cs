@@ -47,6 +47,14 @@ namespace testPeopleTile
 			GridSizeChanged();
 			ResetGridStateManagement();
 
+            for (int i = 0; i < this.Rows; i++)
+            {
+                for (int j = 0; j < this.Columns; j++)
+                {
+                    CycleImage();
+                }
+            }
+
 			_changeImageTimer.Tick += ChangeImageTimerTick;
         }
 
@@ -215,65 +223,28 @@ namespace testPeopleTile
 
 		}
 
-    	private UIElement CreateImage(int row, int col, int index, bool isLargeImage)
+    	private Image CreateImage(int row, int col, int index, bool isLargeImage)
     	{
             var imgUri = GetRandomImageUri(index);
-			UIElement retUIElement = null;
-            if (imgUri != null)
+			var img = new Image
+                            {
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                Stretch = Stretch.UniformToFill,
+                                Name = Guid.NewGuid().ToString()
+                            };
+
+            img.SetValue(Grid.ColumnProperty, col);
+            img.SetValue(Grid.RowProperty, row);
+
+            if (isLargeImage)
             {
-                var img = new Image
-                                {
-                                    HorizontalAlignment = HorizontalAlignment.Center,
-                                    VerticalAlignment = VerticalAlignment.Center,
-                                    Stretch = Stretch.UniformToFill,
-                                    Name = Guid.NewGuid().ToString()
-                                };
-
-                img.SetValue(Grid.ColumnProperty, col);
-                img.SetValue(Grid.RowProperty, row);
-
-                if (isLargeImage)
-                {
-                    img.SetValue(Grid.ColumnSpanProperty, 2);
-                    img.SetValue(Grid.RowSpanProperty, 2);
-                }
-
-                img.Source = GetImage(imgUri);
-
-                retUIElement = img;
-            }
-            else
-            {
-                Color c1 = (Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color;
-                double d = new Random().NextDouble();
-                Color c2 = Color.FromArgb(
-                    c1.A,
-                    (byte)Math.Min(255, c1.R + 255 * d),
-                    (byte)Math.Min(255, c1.G + 255 * d),
-                    (byte)Math.Min(255, c1.B + 255 * d));
-
-                Rectangle r = new Rectangle()
-                {
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    Stretch = Stretch.UniformToFill,
-                    Name = Guid.NewGuid().ToString(),
-                    Fill = new SolidColorBrush(c2)
-                };
-
-                r.SetValue(Grid.ColumnProperty, col);
-                r.SetValue(Grid.RowProperty, row);
-
-                if (isLargeImage)
-                {
-                    r.SetValue(Grid.ColumnSpanProperty, 2);
-                    r.SetValue(Grid.RowSpanProperty, 2);
-                }
-
-                retUIElement = r;
+                img.SetValue(Grid.ColumnSpanProperty, 2);
+                img.SetValue(Grid.RowSpanProperty, 2);
             }
 
-            return retUIElement;
+            img.Source = GetImage(imgUri);
+            return img;
     	}
 
     	private void TrackAnimationForImageRemoval(int row, int col, Storyboard sb, bool forceLargeImageCleanup)

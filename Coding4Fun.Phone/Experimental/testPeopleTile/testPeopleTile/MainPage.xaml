@@ -67,7 +67,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox>
+                    <!--CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox-->
                     <CheckBox Name="IsTileFrozen" Grid.Column="1">Is Frozen</CheckBox>
                     <Button IsEnabled="{Binding ElementName=IsTileFrozen, Path=IsChecked}"
 						Click="Button_Click" Grid.Column="2" HorizontalAlignment="Right">Cycle</Button>

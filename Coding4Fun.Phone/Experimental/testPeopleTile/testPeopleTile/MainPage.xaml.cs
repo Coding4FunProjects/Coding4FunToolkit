@@ -34,15 +34,6 @@ namespace testPeopleTile
 			}
 
 			fadeTile.ItemsSource = items;
-		}
-
-        private void AdBlanks_Checked(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if (this.AdBlanks.IsChecked == true)
-            {
-                for (int i = 0; i < 5; i++)
-                    fadeTile.ItemsSource.Add(null);
-            }
-        }
+		}        
     }
 }
