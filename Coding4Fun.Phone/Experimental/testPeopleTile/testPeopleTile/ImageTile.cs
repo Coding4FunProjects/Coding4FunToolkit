@@ -257,7 +257,8 @@ namespace testPeopleTile
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     Stretch = Stretch.UniformToFill,
-                    Name = Guid.NewGuid().ToString()
+                    Name = Guid.NewGuid().ToString(),
+                    Fill = new SolidColorBrush(c2)
                 };
 
                 r.SetValue(Grid.ColumnProperty, col);
