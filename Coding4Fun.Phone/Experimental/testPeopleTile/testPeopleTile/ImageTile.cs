@@ -247,7 +247,7 @@ namespace testPeopleTile
 
             if (isLargeImage)
             {
-                System.Diagnostics.Debug.WriteLine("Large Tile");
+                //System.Diagnostics.Debug.WriteLine("Large Tile");
                 img.SetValue(Grid.ColumnSpanProperty, this.LargeTileColumns);
                 img.SetValue(Grid.RowSpanProperty, this.LargeTileRows);
             }
@@ -385,8 +385,10 @@ namespace testPeopleTile
 		{
 			var tile = dependencyObject as ImageTile;
 
-			if (tile != null)
-				tile.GridSizeChanged();
+            if (tile != null)
+            {
+                tile.GridSizeChanged();
+            }
 		}
 
 		private void GridSizeChanged()
@@ -474,7 +476,18 @@ namespace testPeopleTile
 		public int Columns
 		{
 			get { return (int)GetValue(ColumnProperty); }
-			set { SetValue(ColumnProperty, value); }
+			set 
+            {
+                int Val = value;
+                if (Val < 1)
+                    Val = 1;
+
+                if (Val != this.Columns)
+                {
+                    SetValue(ColumnProperty, Val); 
+                }
+                
+            }
 		}
 
 		public static readonly DependencyProperty ColumnProperty =
@@ -483,7 +496,17 @@ namespace testPeopleTile
 		public int Rows
 		{
 			get { return (int)GetValue(RowsProperty); }
-			set { SetValue(RowsProperty, value); }
+			set 
+            {
+                int Val = value;
+                if (Val < 1)
+                    Val = 1;
+
+                if (Val != this.Rows)
+                {
+                    SetValue(RowsProperty, Val);
+                }
+            }
 		}
 
 		public static readonly DependencyProperty RowsProperty =
@@ -492,20 +515,46 @@ namespace testPeopleTile
         public int LargeTileColumns
         {
             get { return (int)GetValue(LargeTileColumnsProperty); }
-            set { SetValue(LargeTileColumnsProperty, value); }
+            set 
+            {
+                int Val = value;
+                if (Val < 1)
+                    Val = 1;
+
+                if (Val > Columns)
+                    Val = Columns;
+
+                if (Val != this.LargeTileColumns)
+                {
+                    SetValue(LargeTileColumnsProperty, Val);
+                }
+            }
         }
 
         public static readonly DependencyProperty LargeTileColumnsProperty =
-            DependencyProperty.Register("LargeTileColumns", typeof(int), typeof(ImageTile), new PropertyMetadata(2, OnLargeTileColsRowsPropertyChanged));
+            DependencyProperty.Register("LargeTileColumns", typeof(int), typeof(ImageTile), new PropertyMetadata(2, null));
 
         public int LargeTileRows
         {
             get { return (int)GetValue(LargeTileRowsProperty); }
-            set { SetValue(LargeTileRowsProperty, value); }
+            set
+            {
+                int Val = value;
+                if (Val < 1)
+                    Val = 1;
+
+                if (Val > Rows)
+                    Val = Rows;
+
+                if (Val != this.LargeTileRows)
+                {
+                    SetValue(LargeTileRowsProperty, Val);
+                }
+            }
         }
 
         public static readonly DependencyProperty LargeTileRowsProperty =
-            DependencyProperty.Register("LargeTileRows", typeof(int), typeof(ImageTile), new PropertyMetadata(2, OnLargeTileColsRowsPropertyChanged));
+            DependencyProperty.Register("LargeTileRows", typeof(int), typeof(ImageTile), new PropertyMetadata(2, null));
 
         public List<Uri> ItemsSource
         {
@@ -552,21 +601,7 @@ namespace testPeopleTile
 		// Using a DependencyProperty as the backing store for ImageCycleInterval.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ImageCycleIntervalProperty =
 			DependencyProperty.Register("ImageCycleInterval", typeof(int), typeof(ImageTile), new PropertyMetadata(1000, ImageCycleIntervalPropertyChanged));
-
-        private static void OnLargeTileColsRowsPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
-        {
-            ImageTile tile = dependencyObject as ImageTile;
-
-            if (tile == null)
-                return;
-
-            if (tile.LargeTileRows > tile.Rows)
-                tile.LargeTileColumns = tile.Rows;
-
-            if (tile.LargeTileColumns > tile.LargeTileColumns)
-                tile.LargeTileColumns = tile.Columns;
-        }
-
+    
         private static void OnIsFrozenPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             ImageTile tile = dependencyObject as ImageTile;
