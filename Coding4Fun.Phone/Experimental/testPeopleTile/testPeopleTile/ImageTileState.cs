@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Animation;
 
-namespace testPeopleTile
+namespace Coding4Fun.Phone.Controls
 {
 	public struct ImageTileState
 	{

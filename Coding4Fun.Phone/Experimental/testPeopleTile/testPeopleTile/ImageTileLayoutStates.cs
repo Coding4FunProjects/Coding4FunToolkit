@@ -1,4 +1,4 @@
-﻿namespace testPeopleTile
+﻿namespace Coding4Fun.Phone.Controls
 {
 	internal enum ImageTileLayoutStates
 	{

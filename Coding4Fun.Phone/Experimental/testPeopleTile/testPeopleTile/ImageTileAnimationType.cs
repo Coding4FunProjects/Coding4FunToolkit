@@ -1,4 +1,4 @@
-﻿namespace testPeopleTile
+﻿namespace Coding4Fun.Phone.Controls
 {
 	public enum ImageTileAnimationType
 	{

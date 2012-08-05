@@ -3,10 +3,9 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:testPeopleTile"
-	mc:Ignorable="d">
+	xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls" mc:Ignorable="d">
 
-    <Style TargetType="local:ImageTile">
+    <Style TargetType="Controls:ImageTile">
         <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
@@ -22,7 +21,7 @@
         
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:ImageTile">
+                <ControlTemplate TargetType="Controls:ImageTile">
                     <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{StaticResource PhoneAccentBrush}">
                         
                     </Grid>
