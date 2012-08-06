@@ -456,20 +456,38 @@ namespace Coding4Fun.Phone.Controls
 		private void VerifyGridBounds()
 		{
 			if (Rows < 1)
+			{
 				Rows = 1;
+				//throw new ArgumentOutOfRangeException("Rows", "Rows must be greater than 0");
+			}
 
 			if (Columns < 1)
+			{
 				Columns = 1;
+				//throw new ArgumentOutOfRangeException("Columns", "Columns must be greater than 0");
+			}
 
 			if (LargeTileRows < 1)
+			{
 				LargeTileRows = 1;
+				//throw new ArgumentOutOfRangeException("LargeTileRows", "LargeTileRows must be greater than 0");
+			}
 			else if (LargeTileRows > Rows)
+			{
 				LargeTileRows = Rows;
+				//throw new ArgumentOutOfRangeException("LargeTileRows", "LargeTileRows must be less than or equal to Rows");
+			}
 
 			if (LargeTileColumns < 1)
+			{
 				LargeTileColumns = 1;
+				//throw new ArgumentOutOfRangeException("LargeTileColumns", "LargeTileColumns must be greater than 0");
+			}
 			else if (LargeTileColumns > Columns)
+			{
 				LargeTileColumns = Columns;
+				//throw new ArgumentOutOfRangeException("LargeTileColumns", "LargeTileColumns must be less than or equal to Columns");
+			}
 		}
 
 		private void KeepGridInSyncRow(int row)
