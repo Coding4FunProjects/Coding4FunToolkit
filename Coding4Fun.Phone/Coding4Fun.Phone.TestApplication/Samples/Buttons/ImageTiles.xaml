@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -24,7 +25,95 @@
             <TextBlock x:Name="PageTitle" Text="image tiles" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
-    </Grid>
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Controls:ImageTile 
+					x:Name="fadeTile" 
+					HorizontalAlignment="Center" 
+					IsFrozen="{Binding Path=IsChecked, ElementName=IsTileFrozen}" 
+					AnimationTypes="Fade"
+					AnimationDuration="250"
+					ImageCycleInterval="500"
+					Rows="{Binding ElementName=rows, Path=Value}"
+					Columns="{Binding ElementName=cols, Path=Value}"
+                    LargeTileRows="{Binding ElementName=largerows, Path=Value, Mode=TwoWay}"
+					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}"
+					Width="300"
+					Height="300"/>
+				<Grid Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Controls:SuperSlider 
+					    Title="Rows" 
+					    Name="rows"
+					    Value="3" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10"
+                        Grid.Row="0" Grid.Column="0"/>
+					<Controls:SuperSlider 
+					    Title="Columns" 
+					    Name="cols"
+					    Value="3" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10"
+                        Grid.Row="0" Grid.Column="1"/>
+					<Controls:SuperSlider 
+					    Title="Large Tile Rows" 
+					    Name="largerows"
+					    Value="2" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" 
+                        Grid.Row="1" Grid.Column="0"/>
+					<Controls:SuperSlider 
+					    Title="Large Tile Columns" 
+					    Name="largecols"
+					    Value="2" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="10" 
+                        Grid.Row="1" Grid.Column="1"/>
+					<Controls:SuperSlider 
+					    Title="Test Dataset size" 
+					    Name="data"
+					    Value="15" 
+					    Step="1" 
+					    Minimum="0"
+					    Maximum="40" ValueChanged="DataValueChanged" 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"/>
+					<Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<!--CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox-->
+						<CheckBox Name="IsTileFrozen" Grid.Column="1">Is Frozen</CheckBox>
+						<Button 
+							IsEnabled="{Binding ElementName=IsTileFrozen, Path=IsChecked}"
+						    Click="ButtonClick"
+							Grid.Column="2" 
+							HorizontalAlignment="Right">
+							Cycle
+						</Button>
+					</Grid>
+				</Grid>
+
+			</Grid>
+		</Grid>
+	</Grid>
 </phone:PhoneApplicationPage>
