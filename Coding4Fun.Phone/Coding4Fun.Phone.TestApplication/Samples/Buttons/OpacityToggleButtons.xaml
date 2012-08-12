@@ -3,9 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sltoolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -25,7 +26,57 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<StackPanel>
+				<StackPanel 
+						Name="opacityButtons"
+						Orientation="Horizontal">
+					<c4f:OpacityToggleButton />
+					<c4f:OpacityToggleButton
+							Background="Red"
+							UncheckedOpacity=".5"
+							CheckedOpacity=".9"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png"  />
+					<c4f:OpacityToggleButton>
+						Testing
+					</c4f:OpacityToggleButton>
+					<c4f:OpacityToggleButton
+							Background="CornflowerBlue"
+							Foreground="lime"
+							UncheckedOpacity=".9"
+							CheckedOpacity=".4"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="foo" />
+					<c4f:OpacityToggleButton
+							Background="Red"
+							UncheckedOpacity=".4"
+							CheckedOpacity=".9"
+							Padding="12"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="12 pad" />
+					<c4f:OpacityToggleButton
+							Background="Red"
+							IsEnabled="False"
+							UncheckedOpacity=".1"
+							CheckedOpacity=".9"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="disabled"/>
+				</StackPanel>
+				<sltoolkit:ToggleSwitch 
+						IsChecked="True" 
+						Unchecked="OpacityToggleButtonUnchecked"
+						Checked="OpacityToggleButtonChecked">
+					<sltoolkit:ToggleSwitch.Header>
+						<TextBlock Text="Is Enabled"/>
+					</sltoolkit:ToggleSwitch.Header>
+				</sltoolkit:ToggleSwitch>
+			</StackPanel>
+			<Button 
+					Content="Toggle background" 
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Right" 
+					Click="ToggleBackgroundClick" />
+		</Grid>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

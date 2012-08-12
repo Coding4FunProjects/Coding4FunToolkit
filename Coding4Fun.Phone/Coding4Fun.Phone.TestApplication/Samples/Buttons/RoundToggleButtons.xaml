@@ -6,13 +6,13 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    xmlns:sltoolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
-
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -27,19 +27,122 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
-    </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<c4f:RoundToggleButton
+							Click="RoundButtonBasicClick">
+						Basic
+					</c4f:RoundToggleButton>
+					<c4f:RoundToggleButton
+							FontSize="18"
+							Content="Coding"
+							BorderBrush="CornflowerBlue" />
+					<c4f:RoundToggleButton
+							Content="4"
+							Background="CornflowerBlue" />
+					<c4f:RoundToggleButton 
+							Foreground="CornflowerBlue"
+							Content="Fun" />
+					<c4f:RoundToggleButton 
+							ImageSource="{Binding RoundButtonImage}"
+							Content="toggle img" 
+							Stretch="None"
+							Click="ToggleRoundButtonImageClick" />
+					<c4f:RoundToggleButton
+							ButtonWidth="100"
+							ButtonHeight="100"
+							Stretch="None"
+							Click="RoundButtonBasicClick">
+						Custom Size
+					</c4f:RoundToggleButton>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<c4f:RoundToggleButton 
+							IsChecked="True"
+							Orientation="Horizontal"
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+							Content="horizontal text" />
+					<c4f:RoundToggleButton 
+							Padding="24" Content="24 pad" />
+				</StackPanel>
+				<TextBlock Margin="0, 18, 0, 0">Disabled</TextBlock>
+				<StackPanel Name="disabledRoundToggleButtons">
+					<StackPanel Orientation="Horizontal">
+						<c4f:RoundToggleButton
+								IsEnabled="False"
+								Click="RoundButtonBasicClick">
+							Basic
+						</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton
+								IsEnabled="False"
+								FontSize="18"
+								Content="Coding"
+								BorderBrush="CornflowerBlue" />
+						<c4f:RoundToggleButton
+								IsEnabled="False"
+								Content="4"
+								Background="CornflowerBlue" />
+						<c4f:RoundToggleButton
+								IsEnabled="False"
+								Foreground="CornflowerBlue"
+								Content="Fun" />
+						<c4f:RoundToggleButton 
+								IsEnabled="False"
+								ImageSource="{Binding RoundButtonImage}"
+								Content="toggle img" 
+								Click="ToggleRoundButtonImageClick" />
+						<c4f:RoundToggleButton
+								IsEnabled="False"
+								ButtonWidth="100"
+								ButtonHeight="100"
+								Stretch="None"
+								Click="RoundButtonBasicClick">
+							Custom Size
+						</c4f:RoundToggleButton>
+					</StackPanel>
+					<Grid>
+						<c4f:RoundToggleButton 
+								HorizontalAlignment="Left"
+								IsEnabled="False"
+								Orientation="Horizontal"
+								ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+								Content="horizontal text" />
+						<sltoolkit:ToggleSwitch 
+								HorizontalAlignment="Right"
+								IsChecked="false" 
+								Unchecked="RoundToggleButtonUnchecked"
+								Checked="RoundToggleButtonChecked" />
+					</Grid>
+				</StackPanel>
+				<TextBlock Margin="0, 18, 0, 0">System buttons as a base</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<ToggleButton
+	                        Content="basic" />
+					<ToggleButton
+		                    BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+						clr
+					</ToggleButton>
+					<ToggleButton
+							IsEnabled="False"
+							Content="basic" />
+					<ToggleButton
+							IsEnabled="False"
+							BorderBrush="CornflowerBlue"
+							Background="AliceBlue"
+							Foreground="CornflowerBlue">
+						clr
+					</ToggleButton>
+				</StackPanel>
+			</StackPanel>
 
+			<Button 
+				Content="Toggle background" 
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Right" 
+				Click="ToggleBackgroundClick" />
+		</Grid>
+    </Grid>
 </phone:PhoneApplicationPage>

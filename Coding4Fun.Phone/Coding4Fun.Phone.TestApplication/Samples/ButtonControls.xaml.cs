@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-
-using Coding4Fun.Phone.Controls;
-
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
@@ -15,98 +9,41 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         public ButtonControls()
         {
             InitializeComponent();
-
-			DataContext = this;
         }
 
-		static readonly ImageSource CheckIcon = new BitmapImage(new Uri("/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute));
-		static readonly ImageSource RepeatIcon = new BitmapImage(new Uri("/Media/icons/appbar.repeat.png", UriKind.RelativeOrAbsolute));
-
-		public ImageSource RoundButtonImage
+		private void NavToTilesClick(object sender, RoutedEventArgs e)
 		{
-			get { return (ImageSource)GetValue(RoundButtonImageProperty); }
-			set { SetValue(RoundButtonImageProperty, value); }
+			NavigateTo("Tiles.xaml");
 		}
 
-		// Using a DependencyProperty as the backing store for RoundButtonImage.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty RoundButtonImageProperty =
-			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(ButtonControls), new PropertyMetadata(RepeatIcon));
-
-		private void RoundButtonBasicClick(object sender, RoutedEventArgs e)
+		private void NavToImageTilesClick(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("Ding!");
+			NavigateTo("ImageTiles.xaml");
 		}
 
-		private void ToggleRoundButtonImageClick(object sender, RoutedEventArgs e)
+		private void NavToRoundButtonsClick(object sender, RoutedEventArgs e)
 		{
-			RoundButtonImage = (RoundButtonImage != CheckIcon) ? CheckIcon : RepeatIcon;
+			NavigateTo("RoundButtons.xaml");
 		}
 
-		private void TileClick(object sender, RoutedEventArgs e)
+		private void NavToRoundToggleButtonsClick(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("You clicked the tile!");
+			NavigateTo("RoundToggleButtons.xaml");
 		}
 
-		private void PivotSelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void NavToOpacityToggleButtonsClick(object sender, RoutedEventArgs e)
 		{
-			var item = ButtonPivot.SelectedItem as PivotItem;
-
-			if (item != null && (string) item.Tag == "tile")
-				trexStoryboard.Begin();
-			else
-				trexStoryboard.Stop();
-
+			NavigateTo("OpacityToggleButtons.xaml");
 		}
 
-		bool _isRed;
-		private void ToggleBackgroundClick(object sender, RoutedEventArgs e)
-        {
-			_isRed = !_isRed;
-
-			LayoutRoot.Background = new SolidColorBrush(_isRed ? Colors.Red : Colors.Transparent);
-        }
-
-		private void NavAway_Click(object sender, RoutedEventArgs e)
+		private void NavToStressClick(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new Uri("/Samples/Memory.xaml", UriKind.Relative));
+			NavigateTo("StressTests.xaml");
 		}
 
-		private void RoundButtonUnchecked(object sender, RoutedEventArgs e)
+		private void NavigateTo(string page)
 		{
-			SetIsEnableToType<RoundButton>(disabledRoundButtons, false);
-		}
-
-		private void RoundButtonChecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<RoundButton>(disabledRoundButtons, true);
-		}
-
-		private void RoundToggleButtonUnchecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, false);
-		}
-
-		private void RoundToggleButtonChecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, true);
-		}
-
-		private void OpacityToggleButtonUnchecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<OpacityToggleButton>(opacityButtons, false);
-		}
-
-		private void OpacityToggleButtonChecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<OpacityToggleButton>(opacityButtons, true);
-		}
-		
-		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control
-		{
-			var children = target.GetLogicalChildrenByType<T>(false);
-
-			foreach (var child in children)
-				child.IsEnabled = isEnabled;
-		}
+			NavigationService.Navigate(new Uri("/Samples/Buttons/" + page, UriKind.Relative));
+		}		
     }
 }
