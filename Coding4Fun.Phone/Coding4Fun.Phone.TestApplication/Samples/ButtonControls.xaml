@@ -300,7 +300,7 @@
 							<Canvas>
 								<Image 
 					                x:Name="image" 
-	        		                Source="/Coding4Fun.Phone.TestApplication;component/Media/trex_360width.jpg" 
+	        		                Source="../Media/images/trex_360width.jpg" 
 	        		                Stretch="None">
 									<Image.RenderTransform>
 										<CompositeTransform />

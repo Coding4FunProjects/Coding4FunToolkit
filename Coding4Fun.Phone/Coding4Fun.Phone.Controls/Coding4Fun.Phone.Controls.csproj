@@ -70,6 +70,10 @@
     <Compile Include="Helpers\ColorExtentions.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
     <Compile Include="IButtonBase.cs" />
+    <Compile Include="ImageTile.cs" />
+    <Compile Include="ImageTileAnimationTypes.cs" />
+    <Compile Include="ImageTileLayoutStates.cs" />
+    <Compile Include="ImageTileState.cs" />
     <Compile Include="MetroFlow.cs" />
     <Compile Include="MetroFlowData.cs" />
     <Compile Include="MetroFlowItem.cs" />
@@ -113,6 +117,10 @@
     <Page Include="Themes\Common\CommonStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Other\ImageTile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Prompts\AboutPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>

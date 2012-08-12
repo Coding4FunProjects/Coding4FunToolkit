@@ -17,11 +17,11 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 			
 			SetColIndexSliderMax();
 
-			loadImageAtRunTime.ImageSource = new BitmapImage(new Uri(@"..\media\trex_360width.jpg", UriKind.RelativeOrAbsolute));
+			loadImageAtRunTime.ImageSource = new BitmapImage(new Uri(@"..\media\images\trex_360width.jpg", UriKind.RelativeOrAbsolute));
 
-			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 1", ImageUri = new Uri(@"..\media\Robot.jpg", UriKind.RelativeOrAbsolute) });
-			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 2", ImageUri = new Uri(@"..\media\trex_360width.jpg", UriKind.RelativeOrAbsolute) });
-			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 3", ImageUri = new Uri(@"..\media\lamp.jpg", UriKind.RelativeOrAbsolute) });
+			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 1", ImageUri = new Uri(@"..\media\images\Robot.jpg", UriKind.RelativeOrAbsolute) });
+			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 2", ImageUri = new Uri(@"..\media\images\trex_360width.jpg", UriKind.RelativeOrAbsolute) });
+			loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 3", ImageUri = new Uri(@"..\media\images\lamp.jpg", UriKind.RelativeOrAbsolute) });
 			loadDataAtRunTime.Items.Add(new MetroFlowData
 			{
 				Title = "coding4fun",
@@ -31,7 +31,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 			loadDataAtRunTime.Items.Add(new MetroFlowData
 			{
 				Title = "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
-				ImageUri = new Uri(@"..\media\Seattle.jpg", UriKind.RelativeOrAbsolute)
+				ImageUri = new Uri(@"..\media\images\Seattle.jpg", UriKind.RelativeOrAbsolute)
 			});
 
 			loadDataAtRunTime.SelectedColumnIndex = 2;
@@ -56,7 +56,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
 		private void Add_Click(object sender, RoutedEventArgs e)
 		{
-			loadDataAtDesignTime.Items.Add(new MetroFlowData { Title = DateTime.Now.ToString(), ImageUri = new Uri(@"..\media\trex_360width.jpg", UriKind.RelativeOrAbsolute) });
+			loadDataAtDesignTime.Items.Add(new MetroFlowData { Title = DateTime.Now.ToString(), ImageUri = new Uri(@"..\media\images\trex_360width.jpg", UriKind.RelativeOrAbsolute) });
 
 			SetColIndexSliderMax();
 		}

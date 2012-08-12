@@ -61,13 +61,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImageTileAnimationType.cs" />
-    <Compile Include="ImageTileLayoutStates.cs" />
-    <Compile Include="ImageTileState.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImageTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +90,7 @@
     <Resource Include="images\7.jpg" />
     <Resource Include="images\8.jpg" />
     <Resource Include="images\9.jpg" />
-    <Resource Include="Themes\Generic.xaml">
+    <Resource Include="Themes\ImageTile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>

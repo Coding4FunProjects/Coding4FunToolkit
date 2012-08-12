@@ -22,13 +22,13 @@
 						SelectionTap="MetroFlow_SelctionTap">
 						<c4f:MetroFlow.Items>
 							<c4f:MetroFlowData 
-								ImageUri="../media/trex_360width.jpg"
+								ImageUri="../media/images/trex_360width.jpg"
 								Title="rawr" />
 							<c4f:MetroFlowData
-								ImageUri="../media/Seattle.jpg"
+								ImageUri="../media/images/Seattle.jpg"
 								Title="hello from seattle" />
 							<c4f:MetroFlowData 
-								ImageUri="../media/robot.jpg"
+								ImageUri="../media/images/robot.jpg"
 								Title="my t-shirt cannon" />
 						</c4f:MetroFlow.Items>
 					</c4f:MetroFlow>
@@ -90,28 +90,23 @@
 				</StackPanel>
 			</ms:PivotItem>
 			<ms:PivotItem Header="item">
-				<StackPanel>
-					
-						<c4f:MetroFlowItem
+				<StackPanel>					
+					<c4f:MetroFlowItem
 						Height="120"
 						Title="____Loading image at design time"
 						ItemIndex="123"
 						ItemIndexOpacity="1"
 						ItemIndexVisibility="Visible"
 						Margin="0, 12"
-						ImageSource="..\Media\robot.jpg"
-						/>
+						ImageSource="/Media/images/robot.jpg"/>
 
 					<c4f:MetroFlowItem 
 						Height="120"
 						Margin="0, 12"
 						Name="loadImageAtRunTime"
-						Title="Loading image at runtime"
-						/>
+						Title="Loading image at runtime" />
 				</StackPanel>
 			</ms:PivotItem>
 		</ms:Pivot>
 	</Grid>
- 
-
 </phone:PhoneApplicationPage>

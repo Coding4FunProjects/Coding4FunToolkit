@@ -18,6 +18,7 @@
 
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/MetroFlow.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/ProgressOverlay.xaml" />
+		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/ImageTile.xaml" />
 
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/AboutPersonItem.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/AboutPrompt.xaml" />

@@ -82,6 +82,24 @@
     <Compile Include="Samples\Binding.xaml.cs">
       <DependentUpon>Binding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Buttons\ImageTiles.xaml.cs">
+      <DependentUpon>ImageTiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\OpacityToggleButtons.xaml.cs">
+      <DependentUpon>OpacityToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RoundButtons.xaml.cs">
+      <DependentUpon>RoundButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RoundToggleButtons.xaml.cs">
+      <DependentUpon>RoundToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\StressTests.xaml.cs">
+      <DependentUpon>StressTests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\Tiles.xaml.cs">
+      <DependentUpon>Tiles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\ChatBubbleControls.xaml.cs">
       <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
     </Compile>
@@ -156,6 +174,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Binding.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\ImageTiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\OpacityToggleButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\RoundButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\RoundToggleButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\StressTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\Tiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,6 +284,42 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Media\images\0.jpg" />
+    <Resource Include="Media\images\1.jpg" />
+    <Resource Include="Media\images\10.jpg" />
+    <Resource Include="Media\images\11.jpg" />
+    <Resource Include="Media\images\12.jpg" />
+    <Resource Include="Media\images\13.jpg" />
+    <Resource Include="Media\images\14.jpg" />
+    <Resource Include="Media\images\15.jpg" />
+    <Resource Include="Media\images\16.jpg" />
+    <Resource Include="Media\images\17.jpg" />
+    <Resource Include="Media\images\18.jpg" />
+    <Resource Include="Media\images\19.jpg" />
+    <Resource Include="Media\images\2.jpg" />
+    <Resource Include="Media\images\20.jpg" />
+    <Resource Include="Media\images\21.jpg" />
+    <Resource Include="Media\images\22.jpg" />
+    <Resource Include="Media\images\23.jpg" />
+    <Resource Include="Media\images\24.jpg" />
+    <Resource Include="Media\images\25.jpg" />
+    <Resource Include="Media\images\26.jpg" />
+    <Resource Include="Media\images\27.jpg" />
+    <Resource Include="Media\images\28.jpg" />
+    <Resource Include="Media\images\29.jpg" />
+    <Resource Include="Media\images\3.jpg" />
+    <Resource Include="Media\images\30.jpg" />
+    <Resource Include="Media\images\31.jpg" />
+    <Resource Include="Media\images\32.jpg" />
+    <Resource Include="Media\images\33.jpg" />
+    <Resource Include="Media\images\34.jpg" />
+    <Resource Include="Media\images\4.jpg" />
+    <Resource Include="Media\images\5.jpg" />
+    <Resource Include="Media\images\6.jpg" />
+    <Resource Include="Media\images\7.jpg" />
+    <Resource Include="Media\images\8.jpg" />
+    <Resource Include="Media\images\9.jpg" />
+    <Resource Include="Media\images\PlaceholderPhoto.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Media\c4f_26x26.png" />
@@ -254,10 +332,10 @@
     <Resource Include="Media\Coding4FunProject.png" />
     <Resource Include="Media\icons\appbar.minus.rest.png" />
     <Content Include="Media\icons\appbar.repeat.png" />
-    <Resource Include="Media\trex_360width.jpg" />
-    <Resource Include="Media\lamp.jpg" />
-    <Resource Include="Media\robot.jpg" />
-    <Resource Include="Media\Seattle.jpg" />
+    <Resource Include="Media\images\trex_360width.jpg" />
+    <Resource Include="Media\images\lamp.jpg" />
+    <Resource Include="Media\images\robot.jpg" />
+    <Resource Include="Media\images\Seattle.jpg" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

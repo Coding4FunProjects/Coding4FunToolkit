@@ -5,7 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:Coding4Fun.Phone.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls" 
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -32,11 +32,11 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <local:ImageTile 
+                <Controls:ImageTile 
 					x:Name="fadeTile" 
 					HorizontalAlignment="Center" 
 					IsFrozen="{Binding Path=IsChecked, ElementName=IsTileFrozen}" 
-					AnimationType="Fade"
+					AnimationTypes="Fade"
 					AnimationDuration="250"
 					ImageCycleInterval="500"
 					Rows="{Binding ElementName=rows, Path=Value}"
