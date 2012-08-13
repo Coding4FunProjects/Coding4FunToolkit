@@ -35,7 +35,7 @@
 					x:Name="fadeTile" 
 					HorizontalAlignment="Center" 
 					IsFrozen="{Binding Path=IsChecked, ElementName=IsTileFrozen}" 
-					AnimationTypes="Fade"
+					AnimationType="Fade"
 					AnimationDuration="250"
 					ImageCycleInterval="500"
 					Rows="{Binding ElementName=rows, Path=Value}"

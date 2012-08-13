@@ -84,12 +84,12 @@ namespace Coding4Fun.Phone.Controls
 
 			_imageContainer.Children.Add(img);
 
-			if (_createAnimation && AnimationTypes != ImageTileAnimationTypes.None)
+			if (_createAnimation && AnimationType != ImageTileAnimationTypes.None)
 			{
 				var sb = new Storyboard();
 				TrackAnimationForImageRemoval(row, col, sb, isLargeImage);
 
-				switch (AnimationTypes)
+				switch (AnimationType)
 				{
 					case
 						ImageTileAnimationTypes.Fade:
@@ -435,13 +435,13 @@ namespace Coding4Fun.Phone.Controls
 			DependencyProperty.Register("ItemsSource", typeof(List<Uri>), 
 			typeof(ImageTile), new PropertyMetadata(null));
 
-		public ImageTileAnimationTypes AnimationTypes
+		public ImageTileAnimationTypes AnimationType
         {
 			get { return (ImageTileAnimationTypes)GetValue(AnimationTypesProperty); }
             set { SetValue(AnimationTypesProperty, value); }
         }
 		public static readonly DependencyProperty AnimationTypesProperty =
-			DependencyProperty.Register("AnimationTypes", typeof(ImageTileAnimationTypes),
+			DependencyProperty.Register("AnimationType", typeof(ImageTileAnimationTypes),
 			typeof(ImageTile), new PropertyMetadata(null));
 
         public bool IsFrozen
