@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Coding4Fun.Phone.Controls.Complete</id>
-        <version>1.5.6</version>
+        <version>1.6.0</version>
         <title>Coding4Fun Toolkit for Windows Phone - Complete</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>The Coding4Fun Toolkit has multiple controls and useful items such as a GzipWebClient and Audio Recorder for Windows Phone Silverlight applications.  This is the complete version which includes the controls that extend the Silverlight Toolkit for Windows Phone.</description>
