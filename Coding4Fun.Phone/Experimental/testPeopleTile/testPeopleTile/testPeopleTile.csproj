@@ -90,10 +90,6 @@
     <Resource Include="images\7.jpg" />
     <Resource Include="images\8.jpg" />
     <Resource Include="images\9.jpg" />
-    <Resource Include="Themes\ImageTile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
