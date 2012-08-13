@@ -24,6 +24,7 @@ namespace Coding4Fun.Phone.Controls
 		private int _largeImageIndex = -1;		
 		private int _lastIdRow = -1;
 		private int _lastIdCol = -1;
+		private bool _createAnimation = true;
 
 		ImageTileLayoutStates _imageTileLayoutState = ImageTileLayoutStates.Unknown;
 
@@ -47,14 +48,13 @@ namespace Coding4Fun.Phone.Controls
 			GridSizeChanged();
 			ResetGridStateManagement();
 
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    CycleImage();
-                }
-            }
+			_createAnimation = false;
 
+			while (_availableSpotsOnGrid.Any())
+				CycleImage();
+
+			_createAnimation = true;
+			
 			_changeImageTimer.Tick += ChangeImageTimerTick;
         }
 
@@ -82,29 +82,32 @@ namespace Coding4Fun.Phone.Controls
 
 			var img = CreateImage(row, col, index, isLargeImage);
 
-		    var sb = new Storyboard();
-			TrackAnimationForImageRemoval(row, col, sb, isLargeImage);
+			_imageContainer.Children.Add(img);
 
-		    switch (AnimationTypes)
-		    {
-			    case
-				    ImageTileAnimationTypes.Fade:
-				    CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
-				    break;
-			    case ImageTileAnimationTypes.HorizontalExpand:
-				    img.Projection = new PlaneProjection();
-				    CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
-				    break;
-			    case ImageTileAnimationTypes.VerticalExpand:
-				    img.Projection = new PlaneProjection();
-				    CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
-				    break;
-		    }
+			if (_createAnimation && AnimationTypes != ImageTileAnimationTypes.None)
+			{
+				var sb = new Storyboard();
+				TrackAnimationForImageRemoval(row, col, sb, isLargeImage);
 
-		    _imageContainer.Children.Add(img);
+				switch (AnimationTypes)
+				{
+					case
+						ImageTileAnimationTypes.Fade:
+						CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
+						break;
+					case ImageTileAnimationTypes.HorizontalExpand:
+						img.Projection = new PlaneProjection();
+						CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
+						break;
+					case ImageTileAnimationTypes.VerticalExpand:
+						img.Projection = new PlaneProjection();
+						CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
+						break;
+				}
 
-		    sb.Completed += AnimationCompleted;
-		    sb.Begin();
+				sb.Completed += AnimationCompleted;
+				sb.Begin();
+			}
 	    }
 
         private void CalculateNextValidItem(out int index, out int row, out int col, out bool isLargeImage)
@@ -124,8 +127,13 @@ namespace Coding4Fun.Phone.Controls
             {
                 //Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
                 //  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
-                var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows;
-                var colMax = !isLargeImage ? Columns : Columns - LargeTileColumns;
+				
+				// random numbers are calc between low and high bound, not including high.
+				// if Rows = 3 and LargeTileRows = 2, valid spots are 0, 1
+				// this means Rows - LargeTileRows = 3 - 2 = 1
+ 				// Since we want a value of 0 or 1, we need to add 1
+                var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows + 1;
+				var colMax = !isLargeImage ? Columns : Columns - LargeTileColumns + 1;
 
                 row = _rand.Next(rowMax >= 0 ? rowMax : 0);
                 col = _rand.Next(colMax >= 0 ? colMax : 0);
