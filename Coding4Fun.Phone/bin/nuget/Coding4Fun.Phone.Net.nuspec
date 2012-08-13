@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Coding4Fun.Phone.Net</id>
-        <version>1.6.0</version>
+        <version>1.6.0.1</version>
         <title>Coding4Fun Toolkit for Windows Phone - Network</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>Part of the Coding4Fun Toolkit for Windows Phone with only the Network library.  Items such as a GzipWebClient are in it.</description>
