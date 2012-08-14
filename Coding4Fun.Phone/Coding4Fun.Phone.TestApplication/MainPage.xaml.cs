@@ -2,6 +2,7 @@
 using System.Windows;
 
 using Microsoft.Phone.Controls;
+using Coding4Fun.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication
 {
@@ -88,6 +89,23 @@ namespace Coding4Fun.Phone.TestApplication
     	private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));
+        }
+
+        private void FlipMenuButton_Click(object sender, EventArgs e)
+        {
+            new PhoneFlipMenu(new PhoneFlipMenuAction("add one", () =>
+                            {
+                                MessageBox.Show("one has been added");
+                            }),
+                              new PhoneFlipMenuAction("add two", ()=>
+                            {
+                                MessageBox.Show("Two have been added");
+                            }),
+                            new PhoneFlipMenuAction("add three", ()=>
+                            {
+                                MessageBox.Show("Three have been added");
+                            })).Show();
+            
         }
     }
 }
