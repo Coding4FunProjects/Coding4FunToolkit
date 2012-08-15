@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,8 +36,6 @@ namespace Coding4Fun.Phone.Controls
         public ImageTile()
 		{
             DefaultStyleKey = typeof(ImageTile);
-
-            _changeImageTimer.Interval = TimeSpan.FromSeconds(1);
 		}
 
         public override void OnApplyTemplate()
@@ -50,11 +49,16 @@ namespace Coding4Fun.Phone.Controls
 
 			_createAnimation = false;
 
-			while (_availableSpotsOnGrid.Any())
-				CycleImage();
+			if (!DesignerProperties.IsInDesignTool)
+			{
+				while (_availableSpotsOnGrid.Any())
+					CycleImage();
+			}
+	        _createAnimation = true;
 
-			_createAnimation = true;
-			
+			ImageCycleIntervalChanged();
+			IsFrozenPropertyChanged();
+
 			_changeImageTimer.Tick += ChangeImageTimerTick;
         }
 
@@ -450,8 +454,8 @@ namespace Coding4Fun.Phone.Controls
             set { SetValue(IsFrozenProperty, value); }
         }
 		public static readonly DependencyProperty IsFrozenProperty =
-			DependencyProperty.Register("IsFrozen", typeof(bool?), typeof(ImageTile),
-			new PropertyMetadata(OnIsFrozenPropertyChanged));
+			DependencyProperty.Register("IsFrozen", typeof(bool), typeof(ImageTile),
+			new PropertyMetadata(false, OnIsFrozenPropertyChanged));
 
         public int AnimationDuration
         {
@@ -470,7 +474,7 @@ namespace Coding4Fun.Phone.Controls
 
 		// Using a DependencyProperty as the backing store for ImageCycleInterval.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ImageCycleIntervalProperty =
-			DependencyProperty.Register("ImageCycleInterval", typeof(int), typeof(ImageTile), new PropertyMetadata(1000, ImageCycleIntervalPropertyChanged));
+			DependencyProperty.Register("ImageCycleInterval", typeof(int), typeof(ImageTile), new PropertyMetadata(1000, OnImageCycleIntervalPropertyChanged));
 		#endregion
 
 		#region dependency property callbacks
@@ -481,26 +485,35 @@ namespace Coding4Fun.Phone.Controls
         	if (tile == null || tile._changeImageTimer == null) 
 				return;
 
-        	if (tile.IsFrozen)
-        		tile._changeImageTimer.Stop();
-        	else
-        		tile._changeImageTimer.Start();
+        	tile.IsFrozenPropertyChanged();
         }
 
-        private static void ImageCycleIntervalPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+		private void IsFrozenPropertyChanged()
+		{
+			if (IsFrozen)
+				_changeImageTimer.Stop();
+			else
+				_changeImageTimer.Start();
+		}
+
+		private static void OnImageCycleIntervalPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             var tile = dependencyObject as ImageTile;
 
         	if (tile == null || tile._changeImageTimer == null)
 				return;
 
-        	bool isEnabled = tile._changeImageTimer.IsEnabled;
-        	tile._changeImageTimer.Stop();
+        	tile.ImageCycleIntervalChanged();
+        }
 
-        	tile._changeImageTimer.Interval = TimeSpan.FromMilliseconds(tile.ImageCycleInterval);
+		private void ImageCycleIntervalChanged()
+		{
+			_changeImageTimer.Stop();
 
-        	if (isEnabled)
-        		tile._changeImageTimer.Start();
+			_changeImageTimer.Interval = TimeSpan.FromMilliseconds(ImageCycleInterval);
+
+			if (_changeImageTimer.IsEnabled)
+				_changeImageTimer.Start();
 		}
 
 		private static void OnLargeTileChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
