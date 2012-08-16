@@ -121,64 +121,50 @@ namespace Coding4Fun.Phone.Controls
         {
             isLargeImage = false;
 
-            if (_availableSpotsOnGrid.Count == 0)
+            if (row == -1 && col == -1)
             {
-                ResetGridStateManagement();
+                if (_availableSpotsOnGrid.Count == 0)
+                {
+                    ResetGridStateManagement();
 
-                isLargeImage = _imageTileLayoutState == ImageTileLayoutStates.BigImage;
+                    isLargeImage = _imageTileLayoutState == ImageTileLayoutStates.BigImage;
+                }
+
+                var largeTileSpotCandidates = _availableSpotsOnGrid.Where(IsValidLargeTilePosition).ToList();
+                var selectionSet = isLargeImage ? largeTileSpotCandidates : _availableSpotsOnGrid;
+                var location = _rand.Next(0, selectionSet.Count);
+                index = selectionSet[location];
+                GetRowAndColumnForIndex(index, out row, out col);
             }
-
-            var lastIndex = -1;
-
-			do
-			{
-				// Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
-				//  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
-				// random numbers are calc between low and high bound, not including high.
-				// if Rows = 3 and LargeTileRows = 2, valid spots are 0, 1
-				// this means Rows - LargeTileRows = 3 - 2 = 1
-				// Since we want a value of 0 or 1, we need to add 1
-				var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows + 1;
-				var colMax = !isLargeImage ? Columns : Columns - LargeTileColumns + 1;
-
-				if(row < 0)
-					row = _rand.Next(rowMax >= 0 ? rowMax : 0);
-
-				if(col < 0)
-					col = _rand.Next(colMax >= 0 ? colMax : 0);
-
-				index = CalculateIndex(row, col);
-
-				//If we've got the same number twice in a row, break out of the loop and assign the image
-				//  let the available slots be recalc'd on the next run through
-				if (lastIndex == index)
-				{
-					break;
-				}
-
-				lastIndex = index;
-			} 
-			while (!_availableSpotsOnGrid.Contains(index) && _availableSpotsOnGrid.Count > 0);
+            else
+            {
+                index = CalculateIndex(row, col);
+            }
 
             if (isLargeImage)
             {
                 _largeImageIndex = index;
-
-				for (int i = 0; i < LargeTileRows; i++)
-				{
-					for (int j = 0; j < LargeTileColumns; j++)
-					{
-						if (i == 0 && j == 0)
-							continue;
-
-						_availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
-					}
-				}
+                for (var i = 0; i < LargeTileRows; ++i)
+                {
+                    for (var j = 0; j < LargeTileColumns; ++j)
+                    {
+                        _availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
+                    }
+                }
             }
-
-            _availableSpotsOnGrid.Remove(index);
+            else
+            {
+                _availableSpotsOnGrid.Remove(index);
+            }
         }
 
+        private bool IsValidLargeTilePosition(int spot)
+        {
+            int row, column;
+            GetRowAndColumnForIndex(spot, out row, out column);
+            return column <= Columns - LargeTileColumns && row <= Rows - LargeTileRows;
+        }
+        
 	    private void ResetGridStateManagement()
     	{
     		// first run or when available positions have been filled
@@ -193,21 +179,41 @@ namespace Coding4Fun.Phone.Controls
 			if (_imageTileLayoutState == ImageTileLayoutStates.ForceOverwriteOfBigImage)
 			{
 				// we want to force an over write on top of the large tile
-				_availableSpotsOnGrid.Add(_largeImageIndex);
+				_availableSpotsOnGrid.Clear();
+
+			    int row, col;
+                GetRowAndColumnForIndex(_largeImageIndex, out row, out col);
+                RemoveOldImagesFromGrid(row, col, true);
+
+                for (var i = 0; i < LargeTileRows; ++i)
+                {
+                    for (var j = 0; j < LargeTileColumns; ++j)
+                    {
+                        _availableSpotsOnGrid.Add(CalculateIndex(row + i, col + j));
+                    }
+                }
 			}
 			else
 			{
-				for (int row = 0; row < Rows; row++)
-				{
-					for (int col = 0; col < Columns; col++)
-					{
-						_availableSpotsOnGrid.Add(CalculateIndex(row, col));
-					}
-				}
+			    var spotCount = Rows*Columns;
+
+                for (var i = 0; i < spotCount; ++i)
+                {
+                    _availableSpotsOnGrid.Add(i);
+                }
 
 				if (_imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
 				{
-					_availableSpotsOnGrid.Remove(_largeImageIndex);
+                    int row, col;
+                    GetRowAndColumnForIndex(_largeImageIndex, out row, out col);
+
+                    for (var i = 0; i < LargeTileRows; ++i)
+                    {
+                        for (var j = 0; j < LargeTileColumns; ++j)
+                        {
+                            _availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
+                        }
+                    }
 				}
 			}
 
@@ -328,7 +334,8 @@ namespace Coding4Fun.Phone.Controls
     				ToArray();
 
 			var offset = forceRemoval ? 0 : 1;
-			for (int i = 0; i < items.Count() - offset; i++)
+
+			for (int i = 0; i < items.Length - offset; i++)
     		{
     			var img = items[i] as Image;
 
@@ -371,6 +378,12 @@ namespace Coding4Fun.Phone.Controls
 			_imagesBeingShown.Add(imgUri);
 
             return imgUri;
+        }
+
+        private void GetRowAndColumnForIndex(int index, out int row, out int column)
+        {
+            column = index%Columns;
+            row = (index - column)/Rows;
         }
 
 		private bool AllowRandomImageFetchToContinue(int targetIndex, int maxAvailableSlots, int imageSourceCount, int maxLoopCounter, Uri imgUri)
@@ -623,7 +636,7 @@ namespace Coding4Fun.Phone.Controls
 			if (Rows < 1)
 			{
 				//Rows = 1;
-				throw new ArgumentOutOfRangeException(RowsProperty.Name, "Rows must be greater than 0");
+				throw new ArgumentOutOfRangeException("Rows", "Rows must be greater than 0");
 			}
 
 			if (Columns < 1)
