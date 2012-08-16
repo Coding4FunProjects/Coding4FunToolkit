@@ -354,24 +354,21 @@ namespace Coding4Fun.Phone.Controls
         {
         	Uri imgUri;
 
-			var count = ItemsSource.Count;
-
+			var imageSourceCount = ItemsSource.Count;
+			var maxAvailableSlots = Rows * Columns;
 			int maxLoopCounter = 0;
+
 			do
 			{
-				imgUri = ItemsSource[_rand.Next(count)];
+				imgUri = ItemsSource[_rand.Next(imageSourceCount)];
 				maxLoopCounter++;
 			}
-			while (
-				maxLoopCounter < 5 &&
-				// is it currently being shown?
-				_imageCurrentLocation.ContainsValue(imgUri)
-				||
-				(
-					
-					_imagesBeingShown.Count < count &&
-					_imagesBeingShown.Contains(imgUri)
-				));	// if does, are we out of items, if so, allow it to slide, 
+			while (AllowRandomImageFetchToContinue(
+						index,
+						maxAvailableSlots, 
+						imageSourceCount, 
+						maxLoopCounter, 
+						imgUri));	// if does, are we out of items, if so, allow it to slide, 
 
 			_imageCurrentLocation[index] = imgUri;
 			_imagesBeingShown.Add(imgUri);
@@ -379,7 +376,41 @@ namespace Coding4Fun.Phone.Controls
             return imgUri;
         }
 
-        private BitmapImage GetImage(Uri file)
+		private bool AllowRandomImageFetchToContinue(int targetIndex, int maxAvailableSlots, int imageSourceCount, int maxLoopCounter, Uri imgUri)
+		{
+			// this is in a do while loop, 
+			// true == another pass
+			// false == continue with work
+
+			var tooManyRevs = maxLoopCounter >= 10;			
+
+			// too many passes, hard stop
+			if (tooManyRevs)
+				return false;
+
+			var moreSlotsThanImages = imageSourceCount <= maxAvailableSlots;
+
+			if (moreSlotsThanImages)
+			{
+				var imageAtIndexIsTheSame = _imageCurrentLocation.ContainsKey(targetIndex) && _imageCurrentLocation[targetIndex] == imgUri;
+
+				// keep going if same image at same location
+				if (imageAtIndexIsTheSame)
+					return true;
+
+				// image source could have changed
+				// so if the image is being shown already, 
+				// we'll do another pass until we hit max looping
+				var imageBeingShown = _imagesBeingShown.Contains(imgUri);
+				return imageBeingShown;
+			}
+
+			var containsImageAtSlot = _imageCurrentLocation.ContainsValue(imgUri);
+			// finally, if there is that image on the board ...
+			return containsImageAtSlot;
+		}
+
+		private BitmapImage GetImage(Uri file)
         {
 	        var img = new BitmapImage(file);
 			img.ImageFailed += ImageLoadFail;
