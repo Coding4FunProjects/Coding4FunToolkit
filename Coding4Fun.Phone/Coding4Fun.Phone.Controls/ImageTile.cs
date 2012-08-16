@@ -133,6 +133,7 @@ namespace Coding4Fun.Phone.Controls
                 var largeTileSpotCandidates = _availableSpotsOnGrid.Where(IsValidLargeTilePosition).ToList();
                 var selectionSet = isLargeImage ? largeTileSpotCandidates : _availableSpotsOnGrid;
                 var location = _rand.Next(0, selectionSet.Count);
+
                 index = selectionSet[location];
                 GetRowAndColumnForIndex(index, out row, out col);
             }
@@ -144,6 +145,7 @@ namespace Coding4Fun.Phone.Controls
             if (isLargeImage)
             {
                 _largeImageIndex = index;
+
                 for (var i = 0; i < LargeTileRows; ++i)
                 {
                     for (var j = 0; j < LargeTileColumns; ++j)
@@ -156,12 +158,15 @@ namespace Coding4Fun.Phone.Controls
             {
                 _availableSpotsOnGrid.Remove(index);
             }
+
+			Debug.WriteLine(_availableSpotsOnGrid.Count);
         }
 
-        private bool IsValidLargeTilePosition(int spot)
+        private bool IsValidLargeTilePosition(int index)
         {
             int row, column;
-            GetRowAndColumnForIndex(spot, out row, out column);
+            GetRowAndColumnForIndex(index, out row, out column);
+
             return column <= Columns - LargeTileColumns && row <= Rows - LargeTileRows;
         }
         
@@ -178,20 +183,7 @@ namespace Coding4Fun.Phone.Controls
 
 			if (_imageTileLayoutState == ImageTileLayoutStates.ForceOverwriteOfBigImage)
 			{
-				// we want to force an over write on top of the large tile
-				_availableSpotsOnGrid.Clear();
-
-			    int row, col;
-                GetRowAndColumnForIndex(_largeImageIndex, out row, out col);
-                RemoveOldImagesFromGrid(row, col, true);
-
-                for (var i = 0; i < LargeTileRows; ++i)
-                {
-                    for (var j = 0; j < LargeTileColumns; ++j)
-                    {
-                        _availableSpotsOnGrid.Add(CalculateIndex(row + i, col + j));
-                    }
-                }
+				_availableSpotsOnGrid.Add(_largeImageIndex);
 			}
 			else
 			{
@@ -204,16 +196,7 @@ namespace Coding4Fun.Phone.Controls
 
 				if (_imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
 				{
-                    int row, col;
-                    GetRowAndColumnForIndex(_largeImageIndex, out row, out col);
-
-                    for (var i = 0; i < LargeTileRows; ++i)
-                    {
-                        for (var j = 0; j < LargeTileColumns; ++j)
-                        {
-                            _availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
-                        }
-                    }
+					_availableSpotsOnGrid.Remove(_largeImageIndex);
 				}
 			}
 
@@ -325,8 +308,6 @@ namespace Coding4Fun.Phone.Controls
 
     	private void RemoveOldImagesFromGrid(int row, int col, bool forceRemoval = false)
     	{
-			Debug.WriteLine("removing: " + row + ":" + col + "  :: " + forceRemoval);
-
     		var items =
     			_imageContainer.Children.Where(
     				x => (int) x.GetValue(Grid.RowProperty) == row
@@ -412,10 +393,12 @@ namespace Coding4Fun.Phone.Controls
 				// so if the image is being shown already, 
 				// we'll do another pass until we hit max looping
 				var imageBeingShown = _imagesBeingShown.Contains(imgUri);
+
 				return imageBeingShown;
 			}
 
 			var containsImageAtSlot = _imageCurrentLocation.ContainsValue(imgUri);
+
 			// finally, if there is that image on the board ...
 			return containsImageAtSlot;
 		}
