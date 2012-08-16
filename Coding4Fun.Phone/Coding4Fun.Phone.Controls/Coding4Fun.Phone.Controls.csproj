@@ -80,9 +80,6 @@
     <Compile Include="MovementMonitor.cs" />
     <Compile Include="MovementMonitorEventArgs.cs" />
     <Compile Include="OpacityToggleButton.cs" />
-    <Compile Include="PhoneFlipMenuAction.cs" />
-    <Compile Include="PhoneFlipMenuControl.cs" />
-    <Compile Include="PhoneFlipMenuItem.cs" />
     <Compile Include="SelectionTapEventArgs.cs" />
     <Compile Include="SuperSlider.cs" />
     <Compile Include="Helpers\ColorSpace.cs" />

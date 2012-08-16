@@ -26,7 +26,7 @@
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/MessagePrompt.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/PasswordInputPrompt.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/ToastPrompt.xaml" />
-        <ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/PhoneFlipMenu.xaml" />
+        <!--<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/PhoneFlipMenu.xaml" />-->
 
         <ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/RoundButton.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/RoundToggleButton.xaml" />
