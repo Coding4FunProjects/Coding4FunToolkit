@@ -14,15 +14,15 @@ using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Phone.TestApplication.Samples
 {
-    public partial class Prompts : PhoneApplicationPage
+    public partial class PromptControls : PhoneApplicationPage
     {
 		private readonly SolidColorBrush _aliceBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 240, 248, 255));
 		private readonly SolidColorBrush _naturalBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 135, 189));
 		private readonly SolidColorBrush _cornFlowerBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
 
         const string ToastLongMsg = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
-        
-        public Prompts()
+
+		public PromptControls()
         {
             InitializeComponent();
         

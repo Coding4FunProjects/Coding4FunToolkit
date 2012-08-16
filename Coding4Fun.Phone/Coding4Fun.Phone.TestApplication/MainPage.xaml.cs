@@ -38,7 +38,7 @@ namespace Coding4Fun.Phone.TestApplication
 
         private void Prompts_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo("/Samples/Prompts.xaml");
+			NavigateTo("/Samples/PromptControls.xaml");
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
