@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,9 +23,7 @@ namespace Coding4Fun.Phone.Controls
 		readonly List<int> _availableSpotsOnGrid = new List<int>();
 		readonly List<ImageTileState> _animationTracking = new List<ImageTileState>();
 
-		private int _largeImageIndex = -1;		
-		private int _lastIdRow = -1;
-		private int _lastIdCol = -1;
+		private int _largeImageIndex = -1;
 		private bool _createAnimation = true;
 
 		ImageTileLayoutStates _imageTileLayoutState = ImageTileLayoutStates.Unknown;
@@ -51,9 +50,15 @@ namespace Coding4Fun.Phone.Controls
 
 			if (!DesignerProperties.IsInDesignTool)
 			{
-				while (_availableSpotsOnGrid.Any())
-					CycleImage();
+				for (var i = 0; i < Rows; i++)
+				{
+					for (var j = 0; j < Columns; j++)
+					{
+						CycleImage(i, j);
+					}
+				}
 			}
+
 	        _createAnimation = true;
 
 			ImageCycleIntervalChanged();
@@ -72,17 +77,15 @@ namespace Coding4Fun.Phone.Controls
 	        CycleImage();
         }
 
-	    public void CycleImage()
+	    public void CycleImage(int row = -1, int col = -1)
 	    {
 		    if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
 			    return;
 
 		    int index;
-			int row;
-			int col;
 			bool isLargeImage;
 
-		    CalculateNextValidItem(out index, out row, out col, out isLargeImage);
+		    CalculateNextValidItem(out index, ref row, ref col, out isLargeImage);
 
 			var img = CreateImage(row, col, index, isLargeImage);
 
@@ -114,7 +117,7 @@ namespace Coding4Fun.Phone.Controls
 			}
 	    }
 
-        private void CalculateNextValidItem(out int index, out int row, out int col, out bool isLargeImage)
+        private void CalculateNextValidItem(out int index, ref int row, ref int col, out bool isLargeImage)
         {
             isLargeImage = false;
 
@@ -127,67 +130,50 @@ namespace Coding4Fun.Phone.Controls
 
             var lastIndex = -1;
 
-            do
-            {
-                //Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
-                //  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
-				
+			do
+			{
+				// Capture the numbers we'll feed to the random number generator so that we can ensure that they will be 
+				//  non-negative (only matters if the grid is 0xN or Mx0 for some reason)
 				// random numbers are calc between low and high bound, not including high.
 				// if Rows = 3 and LargeTileRows = 2, valid spots are 0, 1
 				// this means Rows - LargeTileRows = 3 - 2 = 1
- 				// Since we want a value of 0 or 1, we need to add 1
-                var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows + 1;
+				// Since we want a value of 0 or 1, we need to add 1
+				var rowMax = !isLargeImage ? Rows : Rows - LargeTileRows + 1;
 				var colMax = !isLargeImage ? Columns : Columns - LargeTileColumns + 1;
 
-                row = _rand.Next(rowMax >= 0 ? rowMax : 0);
-                col = _rand.Next(colMax >= 0 ? colMax : 0);
+				if(row < 0)
+					row = _rand.Next(rowMax >= 0 ? rowMax : 0);
 
-                index = CalculateIndex(row, col);
+				if(col < 0)
+					col = _rand.Next(colMax >= 0 ? colMax : 0);
 
-                //If we've got the same number twice in a row, break out of the loop and assign the image
-                //  let the available slots be recalc'd on the next run through
-                if (lastIndex == index)
-                {
-                    break;
-                }
+				index = CalculateIndex(row, col);
 
-                lastIndex = index;
-            } while
-                (
-                // same spot as last image
-                // is the spot open on the grid
-                // is this a valid spot
-                // if a large image // valid spot
-                //maxLoopCounter < 5 &&
-                    (
-                //(_showNewLargeImage && _largeImageIndex == index) || 
-                //(!_showNewLargeImage && _lastIndex == index) &&
+				//If we've got the same number twice in a row, break out of the loop and assign the image
+				//  let the available slots be recalc'd on the next run through
+				if (lastIndex == index)
+				{
+					break;
+				}
 
-                        // repeat if
-                // index isn't there
-                //  and there is at least one available spot in the grid
-                        !_availableSpotsOnGrid.Contains(index) && _availableSpotsOnGrid.Count > 0
-                    )
-                );
-
-            _lastIdRow = row;
-            _lastIdCol = col;
+				lastIndex = index;
+			} 
+			while (!_availableSpotsOnGrid.Contains(index) && _availableSpotsOnGrid.Count > 0);
 
             if (isLargeImage)
             {
                 _largeImageIndex = index;
 
-                for (int i = 0; i < LargeTileRows; i++)
-                    for (int j = 0; j < LargeTileColumns; j++)
-                    {
-                        if (i == 0 && j == 0)
-                            continue;
+				for (int i = 0; i < LargeTileRows; i++)
+				{
+					for (int j = 0; j < LargeTileColumns; j++)
+					{
+						if (i == 0 && j == 0)
+							continue;
 
-                        _availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
-                    }
-                //_availableSpotsOnGrid.Remove(CalculateIndex(row, col + 1));
-                //_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col));
-                //_availableSpotsOnGrid.Remove(CalculateIndex(row + 1, col + 1));
+						_availableSpotsOnGrid.Remove(CalculateIndex(row + i, col + j));
+					}
+				}
             }
 
             _availableSpotsOnGrid.Remove(index);
@@ -199,28 +185,37 @@ namespace Coding4Fun.Phone.Controls
     		if (_availableSpotsOnGrid.Count != 0) 
 				return;
 
+			var currentTimerState = _changeImageTimer.IsEnabled;
+			_changeImageTimer.Stop();
+			
 			AlterCycleState();
 
 			if (_imageTileLayoutState == ImageTileLayoutStates.ForceOverwriteOfBigImage)
 			{
 				// we want to force an over write on top of the large tile
 				_availableSpotsOnGrid.Add(_largeImageIndex);
-
-				return;
 			}
-
-			for (int row = 0; row < Rows; row++)
+			else
 			{
-				for (int col = 0; col < Columns; col++)
+				for (int row = 0; row < Rows; row++)
 				{
-					_availableSpotsOnGrid.Add(CalculateIndex(row, col));
+					for (int col = 0; col < Columns; col++)
+					{
+						_availableSpotsOnGrid.Add(CalculateIndex(row, col));
+					}
+				}
+
+				if (_imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
+				{
+					_availableSpotsOnGrid.Remove(_largeImageIndex);
 				}
 			}
 
-			if (_imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
-		    {
-			    _availableSpotsOnGrid.Remove(_largeImageIndex);
-		    }
+			Debug.WriteLine(_imageTileLayoutState);
+			Debug.WriteLine(_availableSpotsOnGrid.Count);
+
+			if (currentTimerState)
+				_changeImageTimer.Start();
     	}
 
 		private void AlterCycleState()
@@ -251,7 +246,8 @@ namespace Coding4Fun.Phone.Controls
                                 HorizontalAlignment = HorizontalAlignment.Center,
                                 VerticalAlignment = VerticalAlignment.Center,
                                 Stretch = Stretch.UniformToFill,
-                                Name = Guid.NewGuid().ToString()
+                                Name = Guid.NewGuid().ToString(),
+								//Opacity = .5
                             };
 
             img.SetValue(Grid.ColumnProperty, col);
@@ -270,7 +266,13 @@ namespace Coding4Fun.Phone.Controls
 
     	private void TrackAnimationForImageRemoval(int row, int col, Storyboard sb, bool forceLargeImageCleanup)
     	{
-    		var tileState = new ImageTileState {Storyboard = sb, Row = row, Column = col, ForceLargeImageCleanup = forceLargeImageCleanup};
+    		var tileState = new ImageTileState 
+			{
+				Storyboard = sb, 
+				Row = row, 
+				Column = col, 
+				ForceLargeImageCleanup = forceLargeImageCleanup
+			};
 
     		_animationTracking.Add(tileState);
     	}
@@ -296,26 +298,18 @@ namespace Coding4Fun.Phone.Controls
 
             var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
-			//if (result == null) 
-			//    return;
-
 			if (result.ForceLargeImageCleanup)
 			{
-				// TODO make this configurable
-				// removing other spots so it doesn't have stuff on top of it right away
+				for (int i = 0; i < LargeTileRows; i++)
+				{
+					for (int j = 0; j < LargeTileColumns; j++)
+					{
+						if (i == 0 && j == 0)
+							continue;
 
-                for(int i = 0; i < LargeTileRows; i++)
-                    for (int j = 0; j < LargeTileColumns; j++)
-                    {
-                        if (i == 0 && j == 0)
-                            continue;
-
-                        RemoveOldImagesFromGrid(i, _lastIdCol + j);
-                    }
-
-                //RemoveOldImagesFromGrid(_lastIdRow, _lastIdCol + 1);
-                //RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol);
-                //RemoveOldImagesFromGrid(_lastIdRow + 1, _lastIdCol + 1);
+						RemoveOldImagesFromGrid(i + result.Row, j + result.Column, true);
+					}
+				}
 			}
 
 	        RemoveOldImagesFromGrid(result.Row, result.Column);
@@ -323,15 +317,18 @@ namespace Coding4Fun.Phone.Controls
 	        _animationTracking.Remove(result);
         }
 
-    	private void RemoveOldImagesFromGrid(int row, int col)
+    	private void RemoveOldImagesFromGrid(int row, int col, bool forceRemoval = false)
     	{
+			Debug.WriteLine("removing: " + row + ":" + col + "  :: " + forceRemoval);
+
     		var items =
     			_imageContainer.Children.Where(
     				x => (int) x.GetValue(Grid.RowProperty) == row
 						&& (int) x.GetValue(Grid.ColumnProperty) == col).
     				ToArray();
 
-    		for (int i = 0; i < items.Count() - 1; i++)
+			var offset = forceRemoval ? 0 : 1;
+			for (int i = 0; i < items.Count() - offset; i++)
     		{
     			var img = items[i] as Image;
 
@@ -539,11 +536,13 @@ namespace Coding4Fun.Phone.Controls
 
 		private void ImageCycleIntervalChanged()
 		{
+			var currentState = _changeImageTimer.IsEnabled;
+
 			_changeImageTimer.Stop();
 
 			_changeImageTimer.Interval = TimeSpan.FromMilliseconds(ImageCycleInterval);
 
-			if (_changeImageTimer.IsEnabled)
+			if (currentState)
 				_changeImageTimer.Start();
 		}
 
@@ -624,7 +623,7 @@ namespace Coding4Fun.Phone.Controls
 			if (Rows < 1)
 			{
 				//Rows = 1;
-				throw new ArgumentOutOfRangeException("Rows", "Rows must be greater than 0");
+				throw new ArgumentOutOfRangeException(RowsProperty.Name, "Rows must be greater than 0");
 			}
 
 			if (Columns < 1)
