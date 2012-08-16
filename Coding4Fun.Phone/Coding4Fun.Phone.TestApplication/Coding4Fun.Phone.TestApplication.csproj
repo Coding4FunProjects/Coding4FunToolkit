@@ -142,20 +142,20 @@
     <Compile Include="Samples\PromptStressTest.xaml.cs">
       <DependentUpon>PromptStressTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Prompts\AboutPrompt.xaml.cs">
-      <DependentUpon>AboutPrompt.xaml</DependentUpon>
+    <Compile Include="Samples\Prompts\AboutPrompts.xaml.cs">
+      <DependentUpon>AboutPrompts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Prompts\InputPrompt.xaml.cs">
-      <DependentUpon>InputPrompt.xaml</DependentUpon>
+    <Compile Include="Samples\Prompts\InputPrompts.xaml.cs">
+      <DependentUpon>InputPrompts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Prompts\MessagePrompt.xaml.cs">
-      <DependentUpon>MessagePrompt.xaml</DependentUpon>
+    <Compile Include="Samples\Prompts\MessagePrompts.xaml.cs">
+      <DependentUpon>MessagePrompts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Prompts\PasswordInputPrompt.xaml.cs">
-      <DependentUpon>PasswordInputPrompt.xaml</DependentUpon>
+    <Compile Include="Samples\Prompts\PasswordInputPrompts.xaml.cs">
+      <DependentUpon>PasswordInputPrompts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\Prompts\ToastPrompt.xaml.cs">
-      <DependentUpon>ToastPrompt.xaml</DependentUpon>
+    <Compile Include="Samples\Prompts\ToastPrompts.xaml.cs">
+      <DependentUpon>ToastPrompts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
@@ -272,23 +272,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Prompts\AboutPrompt.xaml">
+    <Page Include="Samples\Prompts\AboutPrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Prompts\InputPrompt.xaml">
+    <Page Include="Samples\Prompts\InputPrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Prompts\MessagePrompt.xaml">
+    <Page Include="Samples\Prompts\MessagePrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Prompts\PasswordInputPrompt.xaml">
+    <Page Include="Samples\Prompts\PasswordInputPrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Samples\Prompts\ToastPrompt.xaml">
+    <Page Include="Samples\Prompts\ToastPrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
