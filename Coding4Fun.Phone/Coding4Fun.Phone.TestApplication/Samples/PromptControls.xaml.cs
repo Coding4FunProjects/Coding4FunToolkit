@@ -47,5 +47,10 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 			NavigationService.Navigate(new Uri("/Samples/Prompts/" + page, UriKind.Relative));
 		}
 
+        private void NavToAppBarPromptsClick(object sender, RoutedEventArgs e)
+        {
+            NavigateTo("AppBarPrompts.xaml");
+        }
+
      }
 }

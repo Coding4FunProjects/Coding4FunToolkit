@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class PhoneFlipMenuAction
+    public class AppBarPromptAction
     {
         #region NotificationCommand
 
@@ -43,14 +43,14 @@ namespace Coding4Fun.Phone.Controls
         public object Content { get; set; }
         internal ICommand Command { get; private set; }
 
-        internal PhoneFlipMenu Parent { get; set; }
+        internal AppBarPrompt Parent { get; set; }
 
-        public PhoneFlipMenuAction(object content, Action execute)
+        public AppBarPromptAction(object content, Action execute)
             : this(content, execute, () => true)
         {
         }
 
-        public PhoneFlipMenuAction(object content, Action execute, Func<bool> canExecute)
+        public AppBarPromptAction(object content, Action execute, Func<bool> canExecute)
         {
             Content = content;
             Command = new NotificationCommand(execute, canExecute, () => Parent.Hide());

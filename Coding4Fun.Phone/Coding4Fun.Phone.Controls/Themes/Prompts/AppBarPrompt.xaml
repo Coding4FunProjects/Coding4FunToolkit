@@ -30,7 +30,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:PhoneFlipMenuItem"
+    <Style TargetType="local:AppBarPromptItem"
            BasedOn="{StaticResource EmptyButtonStyle}">
         <Setter Property="HorizontalContentAlignment"
                 Value="Left" />
@@ -42,7 +42,7 @@
                 Value="{StaticResource PhoneBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:PhoneFlipMenuItem">
+                <ControlTemplate TargetType="local:AppBarPromptItem">
                     <Grid Width="800"
                           Margin="0,2,0,13">
                         <TextBlock Margin="24,0"
@@ -61,14 +61,14 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:PhoneFlipMenu">
+    <Style TargetType="local:AppBarPrompt">
         <Setter Property="FontFamily"
                 Value="{StaticResource PhoneFontFamilyNormal}" />
         <Setter Property="FontSize"
                 Value="{StaticResource PhoneFontSizeNormal}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:PhoneFlipMenu">
+                <ControlTemplate TargetType="local:AppBarPrompt">
                     <Grid x:Name="grid"
                           Height="Auto"
                           Background="{TemplateBinding Background}">

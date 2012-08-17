@@ -6,14 +6,14 @@ using Clarity.Phone.Extensions;
 
 namespace Coding4Fun.Phone.Controls
 {
-    public class PhoneFlipMenu : PopUp<string, PopUpResult> 
+    public class AppBarPrompt : PopUp<string, PopUpResult> 
     {
         protected StackPanel theStackPanel;
-        PhoneFlipMenuAction[] theActions;
+        AppBarPromptAction[] theActions;
 
-        public PhoneFlipMenu(params PhoneFlipMenuAction[] actions)
+        public AppBarPrompt(params AppBarPromptAction[] actions)
         {
-            DefaultStyleKey = typeof(PhoneFlipMenu);
+            DefaultStyleKey = typeof(AppBarPrompt);
 
             IsAppBarVisible = !CheckForApplicationBar();
             IsBackKeyOverride = false;
@@ -84,7 +84,7 @@ namespace Coding4Fun.Phone.Controls
             foreach (var action in theActions)
             {
                 action.Parent = this;
-                var menuItem = new PhoneFlipMenuItem
+                var menuItem = new AppBarPromptItem
                 {
                     Content = action.Content,
                     Command = action.Command,

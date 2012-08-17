@@ -145,6 +145,9 @@
     <Compile Include="Samples\Prompts\AboutPrompts.xaml.cs">
       <DependentUpon>AboutPrompts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Prompts\AppBarPrompts.xaml.cs">
+      <DependentUpon>AppBarPrompts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Prompts\InputPrompts.xaml.cs">
       <DependentUpon>InputPrompts.xaml</DependentUpon>
     </Compile>
@@ -276,6 +279,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Prompts\AppBarPrompts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Samples\Prompts\InputPrompts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -355,6 +362,9 @@
     <Resource Include="Media\images\8.jpg" />
     <Resource Include="Media\images\9.jpg" />
     <Resource Include="Media\images\PlaceholderPhoto.png" />
+    <Content Include="Media\icons\appbar.prompt.four.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.three.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.two.rest.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Media\c4f_26x26.png" />
