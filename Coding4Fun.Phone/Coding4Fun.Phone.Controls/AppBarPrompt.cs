@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
-using Microsoft.Phone.Controls;
+
 using Clarity.Phone.Extensions;
 
 namespace Coding4Fun.Phone.Controls
@@ -21,55 +20,36 @@ namespace Coding4Fun.Phone.Controls
 
 	    public AppBarPrompt(params AppBarPromptAction[] actions) : this()
         {
-            IsAppBarVisible = !CheckForApplicationBar();
-            IsBackKeyOverride = false;
-            
             AnimationType = DialogService.AnimationTypes.Swivel;
-            _theActions = actions;
-        }
 
-        /// <summary>
-        /// Checks for application bar.
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckForApplicationBar()
-        {
-            if (Page.ApplicationBar != null)
-            {
-                VerifyAppBarBackgroundColor();
-				VerifyAppBarForegroundColor();
-                
-				return Page.ApplicationBar.IsVisible;
-            }
-
-            return false;
+			_theActions = actions;
         }
 
 	    /// <summary>
-	    /// Checks the app bar foreground colour.
+	    /// Checks the app bar foreground color.
 	    /// </summary>
 	    /// <returns></returns>
 	    private void VerifyAppBarForegroundColor()
         {
-			var color = Page.ApplicationBar.ForegroundColor;
+			var color = AppBar.ForegroundColor;
 
-			if (color != NullColor) // Default system theme no colour is given
+			if (color != NullColor) // Default system theme no color is given
 			{
-				Foreground = new SolidColorBrush(Page.ApplicationBar.BackgroundColor);
+				Foreground = new SolidColorBrush(color);
 			}
         }
 
 	    /// <summary>
-	    /// Checks the app bar background colour.
+	    /// Checks the app bar background color.
 	    /// </summary>
 	    /// <returns></returns>
 	    private void VerifyAppBarBackgroundColor()
         {
-			var color = Page.ApplicationBar.BackgroundColor;
+			var color = AppBar.BackgroundColor;
 
-			if (color != NullColor) // Default system theme no colour is given
+			if (color != NullColor) // Default system theme no color is given
 			{
-				Background = new SolidColorBrush(Page.ApplicationBar.BackgroundColor);
+				Background = new SolidColorBrush(color);
 			}
         }
 
@@ -79,6 +59,9 @@ namespace Coding4Fun.Phone.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
+			VerifyAppBarBackgroundColor();
+			VerifyAppBarForegroundColor();
 
             // Get the stackpanel from the template so we can populate its contents with the 
             // provided actions.
@@ -99,35 +82,6 @@ namespace Coding4Fun.Phone.Controls
 					Body.Children.Add(menuItem);
 				}
 			}
-        }
-
-        internal void Close()
-        {
-            Hide();
-        }
-
-        /// <summary>
-        /// Gets the frame.
-        /// </summary>
-        /// <value>The frame.</value>
-        private static PhoneApplicationFrame Frame
-        {
-            get
-            {
-                return Application.Current.RootVisual as PhoneApplicationFrame;
-            }
-        }
-
-        /// <summary>
-        /// Gets the page.
-        /// </summary>
-        /// <value>The page.</value>
-        private static PhoneApplicationPage Page
-        {
-            get
-            {
-                return Frame.Content as PhoneApplicationPage;
-            }
         }
     }
 }
