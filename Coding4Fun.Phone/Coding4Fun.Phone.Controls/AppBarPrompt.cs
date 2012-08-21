@@ -8,20 +8,23 @@ namespace Coding4Fun.Phone.Controls
 {
     public class AppBarPrompt : PopUp<string, PopUpResult> 
     {
-        protected StackPanel theStackPanel;
-        AppBarPromptAction[] theActions;
+        protected StackPanel Body;
+		private const string BodyName = "Body";
 
-        public AppBarPrompt(params AppBarPromptAction[] actions)
+	    readonly AppBarPromptAction[] _theActions;
+
+		public AppBarPrompt()
+		{
+			DefaultStyleKey = typeof (AppBarPrompt);
+		}
+
+	    public AppBarPrompt(params AppBarPromptAction[] actions) : this()
         {
-            DefaultStyleKey = typeof(AppBarPrompt);
-
             IsAppBarVisible = !CheckForApplicationBar();
             IsBackKeyOverride = false;
-            HorizontalAlignment = HorizontalAlignment.Left;
-            VerticalAlignment = VerticalAlignment.Bottom;
-
+            
             AnimationType = DialogService.AnimationTypes.Swivel;
-            theActions = actions;
+            _theActions = actions;
         }
 
         /// <summary>
@@ -80,23 +83,28 @@ namespace Coding4Fun.Phone.Controls
 
             // Get the stackpanel from the template so we can populate its contents with the 
             // provided actions.
-            theStackPanel = GetTemplateChild("TheStackPanel") as StackPanel;
-            foreach (var action in theActions)
-            {
-                action.Parent = this;
-                var menuItem = new AppBarPromptItem
-                {
-                    Content = action.Content,
-                    Command = action.Command,
-                    Foreground = this.Foreground
-                };
-                theStackPanel.Children.Add(menuItem);
-            }
+			Body = GetTemplateChild(BodyName) as StackPanel;
+
+			if (Body != null)
+			{
+				foreach (var action in _theActions)
+				{
+					action.Parent = this;
+					var menuItem = new AppBarPromptItem
+						{
+							Content = action.Content,
+							Command = action.Command,
+							Foreground = Foreground
+						};
+
+					Body.Children.Add(menuItem);
+				}
+			}
         }
 
         internal void Close()
         {
-            base.Hide();
+            Hide();
         }
 
         /// <summary>
