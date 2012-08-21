@@ -79,11 +79,12 @@
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
 		<Setter Property="VerticalAlignment" Value="Bottom" />
+		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
 		
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AppBarPrompt">
-					<Grid>
+					<Grid Background="{TemplateBinding Background}">
 						<StackPanel x:Name="Body" />
 					</Grid>
 				</ControlTemplate>

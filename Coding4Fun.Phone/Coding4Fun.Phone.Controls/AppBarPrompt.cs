@@ -11,7 +11,8 @@ namespace Coding4Fun.Phone.Controls
         protected StackPanel Body;
 		private const string BodyName = "Body";
 
-	    readonly AppBarPromptAction[] _theActions;
+		private static readonly Color NullColor = Color.FromArgb(0, 0, 0, 0);
+		readonly AppBarPromptAction[] _theActions;
 
 		public AppBarPrompt()
 		{
@@ -35,43 +36,41 @@ namespace Coding4Fun.Phone.Controls
         {
             if (Page.ApplicationBar != null)
             {
-                Background = CheckAppBarBackgroundColour(Page.ApplicationBar.BackgroundColor);
-                Foreground = CheckAppBarForegroundColour(Page.ApplicationBar.ForegroundColor);
-                return Page.ApplicationBar.IsVisible;
+                VerifyAppBarBackgroundColor();
+				VerifyAppBarForegroundColor();
+                
+				return Page.ApplicationBar.IsVisible;
             }
+
             return false;
         }
 
-        /// <summary>
-        /// Checks the app bar foreground colour.
-        /// </summary>
-        /// <param name="color">The color.</param>
-        /// <returns></returns>
-        private Brush CheckAppBarForegroundColour(Color color)
+	    /// <summary>
+	    /// Checks the app bar foreground colour.
+	    /// </summary>
+	    /// <returns></returns>
+	    private void VerifyAppBarForegroundColor()
         {
-            if (color.ToString().Equals("#00000000")) // Default system theme no colour is given
-            {
-                // Check to see whether we're in the dark theme.
-                bool isDark = ((Visibility)Application.Current.Resources["PhoneDarkThemeVisibility"] == Visibility.Visible);
-                color = isDark ? Colors.White : Colors.Black;
-            }
-            return new SolidColorBrush(color);
+			var color = Page.ApplicationBar.ForegroundColor;
+
+			if (color != NullColor) // Default system theme no colour is given
+			{
+				Foreground = new SolidColorBrush(Page.ApplicationBar.BackgroundColor);
+			}
         }
 
-        /// <summary>
-        /// Checks the app bar background colour.
-        /// </summary>
-        /// <param name="color">The color.</param>
-        /// <returns></returns>
-        private Brush CheckAppBarBackgroundColour(Color color)
+	    /// <summary>
+	    /// Checks the app bar background colour.
+	    /// </summary>
+	    /// <returns></returns>
+	    private void VerifyAppBarBackgroundColor()
         {
-            if (color.ToString().Equals("#00000000")) // Default system theme no colour is given
-            {
-                // Check to see whether we're in the dark theme.
-                bool isDark = ((Visibility)Application.Current.Resources["PhoneDarkThemeVisibility"] == Visibility.Visible); 
-                color = isDark ? Color.FromArgb(255, 33, 32, 33) : Color.FromArgb(255, 223, 223, 223);
-            }
-            return new SolidColorBrush(color);
+			var color = Page.ApplicationBar.BackgroundColor;
+
+			if (color != NullColor) // Default system theme no colour is given
+			{
+				Background = new SolidColorBrush(Page.ApplicationBar.BackgroundColor);
+			}
         }
 
         /// <summary>
