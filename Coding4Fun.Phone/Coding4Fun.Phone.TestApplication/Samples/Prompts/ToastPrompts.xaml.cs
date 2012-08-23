@@ -69,7 +69,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 			return new ToastPrompt
 			{
 				Message = LongText,
-				ImageSource = new BitmapImage(new Uri("..\\media\\c4f_26x26.png", UriKind.RelativeOrAbsolute))
+				ImageSource = new BitmapImage(new Uri("../../media/c4f_26x26.png", UriKind.RelativeOrAbsolute))
 			};
 		}
 		#endregion
@@ -96,7 +96,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 				Title = "With Image",
 				TextOrientation = System.Windows.Controls.Orientation.Vertical,
 				Message = LongText,
-				ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+				ImageSource = new BitmapImage(new Uri("../../ApplicationIcon.png", UriKind.RelativeOrAbsolute))
 			};
 		}
 		#endregion
