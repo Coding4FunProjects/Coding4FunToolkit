@@ -77,7 +77,7 @@ namespace Coding4Fun.Phone.Controls
             if(_popUp != null)
                 _popUp.Hide();
 
-            ResetWorldAndDestroyPopUp();
+            //ResetWorldAndDestroyPopUp();
         }
 		
 		static void OnFrameTransformPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
