@@ -6,7 +6,7 @@
 	<Style TargetType="local:ToastPrompt">
 		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}"/>
-		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="Overlay" Value="{StaticResource TransparentBrush}" />

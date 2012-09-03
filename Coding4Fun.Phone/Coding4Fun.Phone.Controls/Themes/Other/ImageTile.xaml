@@ -5,7 +5,7 @@
 
 	<Style TargetType="local:ImageTile">
         <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
         <Setter Property="Margin" Value="12"/>
