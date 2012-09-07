@@ -18,8 +18,7 @@
 
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/MetroFlow.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/ProgressOverlay.xaml" />
-		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Other/ImageTile.xaml" />
-
+		
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/AboutPersonItem.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/AboutPrompt.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/InputPrompt.xaml" />
@@ -28,7 +27,8 @@
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/ToastPrompt.xaml" />
         <ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Prompts/AppBarPrompt.xaml" />
 
-        <ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/RoundButton.xaml" />
+		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/ImageTile.xaml" />
+		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/RoundButton.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/RoundToggleButton.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/OpacityToggleButton.xaml" />
 		<ResourceDictionary Source="/Coding4Fun.Phone.Controls;component/Themes/Buttons/Tile.xaml" />
