@@ -109,6 +109,10 @@
     <Compile Include="Unsupported\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\Buttons\ImageTile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Other\ChatBubble.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,10 +124,6 @@
     <Page Include="Themes\Common\CommonStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Other\ImageTile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Prompts\AboutPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
