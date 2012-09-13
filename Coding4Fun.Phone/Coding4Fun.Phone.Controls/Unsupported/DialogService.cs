@@ -140,6 +140,7 @@ namespace Clarity.Phone.Extensions
         public AnimationTypes AnimationType { get; set; }
         public double VerticalOffset { get; set; }
     	internal double ControlVerticalOffset { get; set; }
+        public bool BackButtonPressed { get; set; }
 
     	public Brush BackgroundBrush { get; set; }
 
@@ -208,6 +209,7 @@ namespace Clarity.Phone.Extensions
         public DialogService()
         {
             AnimationType = AnimationTypes.Slide;
+            BackButtonPressed = false;
         }
 
 		bool _deferredShowToLoaded;
@@ -408,6 +410,7 @@ namespace Clarity.Phone.Extensions
 			{
 				if (Closed != null)
 					Closed(this, null);
+                
 			}
 			catch (Exception)
 			{
@@ -429,6 +432,7 @@ namespace Clarity.Phone.Extensions
             if (IsOpen)
             {
                 e.Cancel = true;
+                BackButtonPressed = true;
                 Hide();
             }
         }

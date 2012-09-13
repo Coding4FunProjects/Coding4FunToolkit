@@ -76,8 +76,9 @@ namespace Coding4Fun.Phone.Controls
             
             if(_popUp != null)
                 _popUp.Hide();
-
-            //ResetWorldAndDestroyPopUp();
+            
+            if (_popUp != null && _popUp.BackButtonPressed)
+                ResetWorldAndDestroyPopUp();
         }
 		
 		static void OnFrameTransformPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
@@ -103,7 +104,6 @@ namespace Coding4Fun.Phone.Controls
 			         		BackgroundBrush = Overlay,
 			         		IsBackKeyOverride = IsBackKeyOverride
 			         	};
-
 			if (IsCalculateFrameVerticalOffset)
 			{
 				_popUp.ControlVerticalOffset = -FrameTransform;
