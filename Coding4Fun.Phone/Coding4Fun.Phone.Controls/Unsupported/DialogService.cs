@@ -331,11 +331,12 @@ namespace Clarity.Phone.Extensions
         }
 
 		void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-            Hide();
-        }
+		{
+			if (e.IsNavigationInitiator) //current app initialized navigation?
+				Hide();
+		}
 
-        public void Hide()
+	    public void Hide()
         {
             if (!IsOpen)
                 return;
