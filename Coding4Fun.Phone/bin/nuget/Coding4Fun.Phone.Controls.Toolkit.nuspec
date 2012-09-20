@@ -11,9 +11,6 @@
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
         <tags>coding4fun silverlight windows phone wp7 wp timespan</tags>
-        <dependencies>
-           <dependency id="SilverlightToolkitWP" />
-        </dependencies>
     </metadata>
     <files>
        <file 
