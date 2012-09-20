@@ -19,11 +19,6 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             MessageBox.Show("CLICK!", "Testing with Click Event", MessageBoxButton.OKCancel);
         }
 
-        private void GestureListener_Tap(object sender, GestureEventArgs e)
-        {
-            MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
-        }
-
         private void ShowOverlay(object sender, RoutedEventArgs e)
         {
             progressOverlay.Show();
@@ -76,6 +71,9 @@ namespace Coding4Fun.Phone.TestApplication.Samples
         public static readonly DependencyProperty OverlayVisProperty =
             DependencyProperty.Register("OverlayVis", typeof(Visibility), typeof(Overlays), new PropertyMetadata(Visibility.Visible));
 
-        
+		private void Button_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+		{
+			MessageBox.Show("TAP!", "Testing with Gesture Tap", MessageBoxButton.OKCancel);
+		}
     }
 }

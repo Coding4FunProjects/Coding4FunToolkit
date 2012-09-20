@@ -59,15 +59,16 @@
                 <StackPanel VerticalAlignment="Center" >
                     <Button Margin="0,0,0,-30" Content="Do I work?"
                         Click="Ding_Click" Background="Red" BorderBrush="#FFD11E1E" />
-                    <Button Margin="0, 20" Background="Red" BorderBrush="#FFD11E1E" Content="Test With Gestures">
-                        <slToolkit:GestureService.GestureListener>
-                            <slToolkit:GestureListener Tap="GestureListener_Tap"/>
-                        </slToolkit:GestureService.GestureListener>
+                    <Button 
+						Margin="0, 20" 
+						Background="Red" 
+						BorderBrush="#FFD11E1E" 
+						Content="Test With Gestures"
+						Tap="Button_Tap">
                     </Button>
                 </StackPanel>
                 <c4f:ProgressOverlay 
                     Name="progressOverlay" 
-                    c4fSlToolkitExtenderBinding:DependencyObjectBinding.CancelGestureListenerBubble="true"
                     Visibility="{Binding OverlayVis}">
                     <c4f:ProgressOverlay.Resources>
                         <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />

@@ -42,16 +42,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
-      <HintPath>..\packages\SilverlightToolkitWP.4.2011.12.14\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binding\DependencyObjectBinding.cs" />
     <Compile Include="Common\PhysicsConstants.cs" />
     <Compile Include="Common\SafeRaise.cs" />
     <Compile Include="Common\TimeSpanFormat.cs" />
@@ -64,6 +60,24 @@
     <Compile Include="TimeSpanPicker\DataSource\MinuteTimeSpanDataSource.cs" />
     <Compile Include="TimeSpanPicker\DataSource\HourTimeSpanDataSource.cs" />
     <Compile Include="TimeSpanPicker\DataSource\SecondTimeSpanDataSource.cs" />
+    <Compile Include="Transitions\ITransition.cs" />
+    <Compile Include="Transitions\NavigationInTransition.cs" />
+    <Compile Include="Transitions\NavigationOutTransition.cs" />
+    <Compile Include="Transitions\NavigationTransition.cs" />
+    <Compile Include="Transitions\TransitionElement.cs" />
+    <Compile Include="Transitions\TransitionFrame.cs" />
+    <Compile Include="Transitions\Transitions.cs" />
+    <Compile Include="Transitions\TransitionService.cs" />
+    <Compile Include="Transitions\Transitions\RollTransition.cs" />
+    <Compile Include="Transitions\Transitions\RotateTransition.cs" />
+    <Compile Include="Transitions\Transitions\RotateTransitionMode.cs" />
+    <Compile Include="Transitions\Transitions\SlideTransition.cs" />
+    <Compile Include="Transitions\Transitions\SlideTransitionMode.cs" />
+    <Compile Include="Transitions\Transitions\SwivelTransition.cs" />
+    <Compile Include="Transitions\Transitions\SwivelTransitionMode.cs" />
+    <Compile Include="Transitions\Transitions\Transition.cs" />
+    <Compile Include="Transitions\Transitions\TurnstileTransition.cs" />
+    <Compile Include="Transitions\Transitions\TurnstileTransitionMode.cs" />
     <Compile Include="ValuePickers\DataSource.cs" />
     <Compile Include="ValuePickers\ValuePickerBase.cs" />
     <Compile Include="ValuePickers\ValuePickerResources.cs" />
