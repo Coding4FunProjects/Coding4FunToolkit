@@ -22,6 +22,8 @@ namespace Coding4Fun.Phone.Controls
             IsBackKeyOverride = true;
 			IsCalculateFrameVerticalOffset = true;
 
+	        IsOverlayApplied = false;
+
             Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
             
@@ -35,17 +37,19 @@ namespace Coding4Fun.Phone.Controls
 
         void ToastPrompt_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
-            if (e.TotalManipulation.Translation.X > 200 || e.FinalVelocities.LinearVelocity.X > 1000)
-                OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.UserDismissed });
-            else if (e.TotalManipulation.Translation.X < 20)
-            {
-                OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok });
-            }
-            else
-            {
-                _translate.X = 0;
-                StartTimer();  
-            }
+			if (e.TotalManipulation.Translation.X > 200 || e.FinalVelocities.LinearVelocity.X > 1000)
+			{
+				OnCompleted(new PopUpEventArgs<string, PopUpResult> {PopUpResult = PopUpResult.UserDismissed});
+			}
+			else if (e.TotalManipulation.Translation.X < 20)
+			{
+				OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok });
+			}
+			else
+			{
+				_translate.X = 0;
+				StartTimer();
+			}
         }
 
         void ToastPrompt_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)

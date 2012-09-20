@@ -50,10 +50,17 @@ namespace Coding4Fun.Phone.Controls
     		}
     	}
 
-    	internal IApplicationBar AppBar { get; set; }
-        protected internal bool IsBackKeyOverride { get; set; }
+		public bool IsOverlayApplied
+		{
+			get { return _isOverlayApplied; }
+			set { _isOverlayApplied = value; }
+		}
+		private bool _isOverlayApplied = true;
 
-        protected DialogService.AnimationTypes AnimationType { get; set; }
+		internal IApplicationBar AppBar { get; set; }
+		protected internal bool IsBackKeyOverride { get; set; }
+		
+	    protected DialogService.AnimationTypes AnimationType { get; set; }
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 		public event EventHandler Opened;
 		
@@ -102,8 +109,10 @@ namespace Coding4Fun.Phone.Controls
 			         		AnimationType = AnimationType,
 			         		Child = this,
 			         		BackgroundBrush = Overlay,
-			         		IsBackKeyOverride = IsBackKeyOverride
+			         		IsBackKeyOverride = IsBackKeyOverride,
+							IsOverlayApplied = IsOverlayApplied,
 			         	};
+
 			if (IsCalculateFrameVerticalOffset)
 			{
 				_popUp.ControlVerticalOffset = -FrameTransform;

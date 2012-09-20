@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -24,7 +23,8 @@ namespace Clarity.Phone.Extensions
             Slide,
             SlideHorizontal,
             Swivel,
-            SwivelHorizontal
+            SwivelHorizontal,
+			Fade
         }
 
         private const string SlideUpStoryboard = @"
@@ -131,11 +131,35 @@ namespace Clarity.Phone.Extensions
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>";
 
+		private const string FadeInStoryboard =
+		@"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+            <DoubleAnimation 
+				Duration=""0:0:0.267"" 
+				Storyboard.TargetProperty=""(UIElement.Opacity)"" 
+                To=""1""/>
+        </Storyboard>";
+
+		private const string FadeOutStoryboard =
+		@"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+            <DoubleAnimation 
+				Duration=""0:0:0.267""
+				Storyboard.TargetProperty=""(UIElement.Opacity)"" 
+                To="".3""/>
+        </Storyboard>";
+
         private Panel _popupContainer;
         private Frame _rootVisual;
         private PhoneApplicationPage _page;
-        private Panel _overlay;
-        
+        private Grid _childPanel;
+		private Grid _overlay;
+
+		public bool IsOverlayApplied
+		{
+			get { return _isOverlayApplied; }
+			set { _isOverlayApplied = value; }
+		}
+		private bool _isOverlayApplied = true;
+
         public FrameworkElement Child { get; set; }
         public AnimationTypes AnimationType { get; set; }
         public double VerticalOffset { get; set; }
@@ -214,36 +238,56 @@ namespace Clarity.Phone.Extensions
 
 		bool _deferredShowToLoaded;
 		private void InitializePopup()
-        {
-            // Add overlay which is the size of RootVisual
-            _overlay = new Grid {Name = Guid.NewGuid().ToString()};
+		{
+			// Add overlay which is the size of RootVisual
+			_childPanel = CreateGrid();
 
-			Grid.SetColumnSpan(_overlay, int.MaxValue);
-			Grid.SetRowSpan(_overlay, int.MaxValue);
+			if (IsOverlayApplied)
+			{
+				_overlay = CreateGrid();
 
-			if (BackgroundBrush != null)
-				_overlay.Background = BackgroundBrush;
-
-			CalculateVerticalOffset();
-
-			_overlay.Opacity = 0;
+				if (BackgroundBrush != null)
+					_overlay.Background = BackgroundBrush;
+			}
 
 			// Initialize popup to draw the context menu over all controls
 			if (PopupContainer != null)
 			{
-				PopupContainer.Children.Add(_overlay);
-				_overlay.Children.Add(Child);
+				if(_overlay != null)
+					PopupContainer.Children.Add(_overlay);
+
+				PopupContainer.Children.Add(_childPanel);
+				_childPanel.Children.Add(Child);
 			}
 			else
 			{
 				_deferredShowToLoaded = true;
 				RootVisual.Loaded += RootVisualDeferredShowLoaded;
 			}
-        }
+		}
 
-    	internal void CalculateVerticalOffset()
+		private Grid CreateGrid()
+	    {
+			var grid = new Grid { Name = Guid.NewGuid().ToString() };
+
+			Grid.SetColumnSpan(grid, int.MaxValue);
+			Grid.SetRowSpan(grid, int.MaxValue);
+
+			grid.Opacity = 0;
+
+			CalculateVerticalOffset(grid);
+
+			return grid;
+	    }
+
+		internal void CalculateVerticalOffset()
+		{
+			CalculateVerticalOffset(_childPanel);
+		}
+
+	    internal void CalculateVerticalOffset(Panel panel)
     	{
-			if (_overlay == null)
+			if (panel == null)
 				return;
 
     		var sysTrayVerticalOffset = 0;
@@ -253,7 +297,7 @@ namespace Clarity.Phone.Extensions
 				sysTrayVerticalOffset += 32;
     		}
 
-			_overlay.Margin = new Thickness(0, VerticalOffset + sysTrayVerticalOffset + ControlVerticalOffset, 0, 0);
+			panel.Margin = new Thickness(0, VerticalOffset + sysTrayVerticalOffset + ControlVerticalOffset, 0, 0);
     	}
 		
 		void RootVisualDeferredShowLoaded(object sender, RoutedEventArgs e)
@@ -266,10 +310,10 @@ namespace Clarity.Phone.Extensions
 
         protected internal void SetAlignmentsOnOverlay(HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
         {
-            if (_overlay != null)
+            if (_childPanel != null)
             {
-                _overlay.HorizontalAlignment = horizontalAlignment;
-                _overlay.VerticalAlignment = verticalAlignment;
+                _childPanel.HorizontalAlignment = horizontalAlignment;
+                _childPanel.VerticalAlignment = verticalAlignment;
             }
         }
 
@@ -293,44 +337,55 @@ namespace Clarity.Phone.Extensions
 
                 Page.NavigationService.Navigated += OnNavigated;
 
-                Storyboard storyboard;
-                switch (AnimationType)
-                {
-                    case AnimationTypes.SlideHorizontal:
-                        storyboard = XamlReader.Load(SlideHorizontalInStoryboard) as Storyboard;
-                        _overlay.RenderTransform = new TranslateTransform();
-                        break;
-
-                    case AnimationTypes.Slide:
-                        storyboard = XamlReader.Load(SlideUpStoryboard) as Storyboard;
-                        _overlay.RenderTransform = new TranslateTransform();
-                        break;
-
-                    default:
-                        storyboard = XamlReader.Load(SwivelInStoryboard) as Storyboard;
-                        _overlay.Projection = new PlaneProjection();
-                        break;
-                } 
-                
-                if (storyboard != null)
-                {
-                    Page.Dispatcher.BeginInvoke(() =>
-                                                    {
-
-                                                        foreach (var t in storyboard.Children)
-                                                            Storyboard.SetTarget(t, _overlay);
-
-                                                        storyboard.Begin();
-
-                                                    });
-                }
+	            RunShowStoryboard(_childPanel, AnimationType);
+				RunShowStoryboard(_overlay, AnimationTypes.Fade);
 
 				if (Opened != null)
 					Opened.Invoke(this, null);
             }
         }
 
-		void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+		private void RunShowStoryboard(Grid grid, AnimationTypes animation)
+		{
+			if (grid == null)
+				return;
+
+			Storyboard storyboard;
+			switch (animation)
+			{
+				case AnimationTypes.SlideHorizontal:
+					storyboard = XamlReader.Load(SlideHorizontalInStoryboard) as Storyboard;
+					grid.RenderTransform = new TranslateTransform();
+					break;
+
+				case AnimationTypes.Slide:
+					storyboard = XamlReader.Load(SlideUpStoryboard) as Storyboard;
+					grid.RenderTransform = new TranslateTransform();
+					break;
+				case AnimationTypes.Fade:
+					storyboard = XamlReader.Load(FadeInStoryboard) as Storyboard;
+					break;
+				case AnimationTypes.Swivel:
+				case AnimationTypes.SwivelHorizontal:
+				default:
+					storyboard = XamlReader.Load(SwivelInStoryboard) as Storyboard;
+					grid.Projection = new PlaneProjection();
+					break;
+			}
+
+			if (storyboard != null)
+			{
+				Page.Dispatcher.BeginInvoke(() =>
+					{
+						foreach (var t in storyboard.Children)
+							Storyboard.SetTarget(t, grid);
+
+						storyboard.Begin();
+					});
+			}
+		}
+
+	    void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
 		{
 			if (e.IsNavigationInitiator) //current app initialized navigation?
 				Hide();
@@ -349,31 +404,43 @@ namespace Clarity.Phone.Extensions
                 _page = null;
             }
 
-            Storyboard storyboard;
+		    RunHideStoryboard(_overlay, AnimationTypes.Fade);
+		    RunHideStoryboard(_childPanel, AnimationType);
+        }
 
-            switch (AnimationType)
-            {
-                case AnimationTypes.SlideHorizontal:
-                    storyboard = XamlReader.Load(SlideHorizontalOutStoryboard) as Storyboard;
-                    break;
+		void RunHideStoryboard(Grid grid, AnimationTypes animation)
+		{
+			if (grid == null)
+				return;
 
-                case AnimationTypes.Slide:
-                    storyboard = XamlReader.Load(SlideDownStoryboard) as Storyboard;
-                    break;
+			Storyboard storyboard;
 
-                default:
-                    storyboard = XamlReader.Load(SwivelOutStoryboard) as Storyboard;
-                    break;
-            }
+			switch (animation)
+			{
+				case AnimationTypes.SlideHorizontal:
+					storyboard = XamlReader.Load(SlideHorizontalOutStoryboard) as Storyboard;
+					break;
+				case AnimationTypes.Slide:
+					storyboard = XamlReader.Load(SlideDownStoryboard) as Storyboard;
+					break;
+				case AnimationTypes.Fade:
+					storyboard = XamlReader.Load(FadeOutStoryboard) as Storyboard;
+					break;
+				case AnimationTypes.Swivel:
+				case AnimationTypes.SwivelHorizontal:
+				default:
+					storyboard = XamlReader.Load(SwivelOutStoryboard) as Storyboard;
+					break;
+			}
 
 			try
 			{
 				if (storyboard != null)
 				{
-					storyboard.Completed += _hideStoryboard_Completed;
+					storyboard.Completed += HideStoryboardCompleted;
 
 					foreach (var t in storyboard.Children)
-						Storyboard.SetTarget(t, _overlay);
+						Storyboard.SetTarget(t, grid);
 
 					storyboard.Begin();
 				}
@@ -384,11 +451,11 @@ namespace Clarity.Phone.Extensions
 				// attempting to be extremely robust here
 				// if this fails, go straight to complete
 				// and attempt to remove it from the visual tree
-				_hideStoryboard_Completed(null, null);
+				HideStoryboardCompleted(null, null);
 			}
-        }
+		}
 
-        void _hideStoryboard_Completed(object sender, EventArgs e)
+	    void HideStoryboardCompleted(object sender, EventArgs e)
         {
             IsOpen = false;
 
@@ -396,10 +463,13 @@ namespace Clarity.Phone.Extensions
 			{
 				if (PopupContainer != null && PopupContainer.Children != null)
 				{
-					PopupContainer.Children.Remove(_overlay);
+					if(_overlay != null)
+						PopupContainer.Children.Remove(_overlay);
+
+					PopupContainer.Children.Remove(_childPanel);
 				}
 			}
-			catch (Exception)
+			catch
 			{
 				// chances are user nav'ed away
 				// attempting to be extremely robust here
@@ -413,7 +483,7 @@ namespace Clarity.Phone.Extensions
 					Closed(this, null);
                 
 			}
-			catch (Exception)
+			catch
 			{
 				// chances are user nav'ed away
 				// attempting to be extremely robust here
