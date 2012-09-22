@@ -362,6 +362,7 @@
     <Resource Include="Media\images\8.jpg" />
     <Resource Include="Media\images\9.jpg" />
     <Resource Include="Media\images\PlaceholderPhoto.png" />
+    <None Include="Manifests\WP7.xml" />
     <Content Include="Media\icons\appbar.prompt.four.rest.png" />
     <Content Include="Media\icons\appbar.prompt.three.rest.png" />
     <Content Include="Media\icons\appbar.prompt.two.rest.png" />
@@ -421,4 +422,7 @@
   </Target>
   -->
   <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(ProjectDir)Manifests\WP7.xml" "$(ProjectDir)Properties\WMAppManifest.xml"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
