@@ -37,15 +37,24 @@ namespace Coding4Fun.Phone.Controls
                 sender.SetButtons();
         }
 
-        private void SetButtons()
-        {
-            if (ActionButtonArea == null)
-                return;
+		private void SetButtons()
+		{
+			if (ActionButtonArea == null)
+				return;
 
-            ActionButtonArea.Children.Clear();
+			ActionButtonArea.Children.Clear();
 
-            foreach (var button in ActionPopUpButtons)
-                ActionButtonArea.Children.Add(button);
-        }
+			var hasContent = false;
+
+			foreach (var button in ActionPopUpButtons)
+			{
+				ActionButtonArea.Children.Add(button);
+
+				hasContent |= button.Content != null;
+			}
+
+			if (hasContent)
+				ActionButtonArea.Margin = new Thickness();
+		}
     }
 }

@@ -13,8 +13,6 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="local:InputPrompt">
 					<Grid>
-						<Rectangle Fill="{StaticResource TransparentBrush}" />
-
 						<Border 
                             VerticalAlignment="Top" 
                             Margin="10" 
@@ -25,21 +23,27 @@
 							<StackPanel Margin="10">
 								<TextBlock 
 							        Text="{TemplateBinding Title}" 
-							        Margin="0,-10,-25,0" 
-							        FontSize="30" 
-							        TextWrapping="Wrap" FontFamily="Segoe WP Light" />
+							        Margin="0, -10, -25, 0" 
+							        TextWrapping="Wrap" 
+									FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+									FontSize="{StaticResource PhoneFontSizeLarge}" />
+								
 								<TextBlock 
                                     Text="{TemplateBinding Message}"
 									TextWrapping="{TemplateBinding MessageTextWrapping}"/>
+								
 								<TextBox 
                                     Name="inputBox" 
                                     Binding:TextBinding.UpdateSourceOnChange="True"
                                     InputScope="{TemplateBinding InputScope}"
-                                    Text="{TemplateBinding Value}" />
+                                    Text="{TemplateBinding Value}" 
+									Margin="-12, 0" />
+								
 								<StackPanel
                                     Name="actionButtonArea"
                                     Orientation="Horizontal"
-                                    HorizontalAlignment="Center" />
+                                    HorizontalAlignment="Center"
+									Margin="0, 0, 0, -12" />
 							</StackPanel>
 
 						</Border>

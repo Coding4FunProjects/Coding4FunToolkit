@@ -11,9 +11,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:MessagePrompt">
-					<Grid VerticalAlignment="Stretch">
-						<Rectangle Fill="{StaticResource TransparentBrush}" />
-
+					<Grid>
 						<Border 
                             VerticalAlignment="Top" 
                             Margin="10" 
@@ -24,17 +22,22 @@
 							<StackPanel Margin="10">
 								<TextBlock 
 							        Text="{TemplateBinding Title}" 
-							        Margin="0,-10,-25,10" 
-							        FontSize="30" 
-							        TextWrapping="Wrap" FontFamily="Segoe WP Light" />
-								<ContentPresenter Content="{TemplateBinding Body}" />
+							        Margin="0, -10, -25, 0" 
+							        TextWrapping="Wrap"
+									FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+									FontSize="{StaticResource PhoneFontSizeLarge}" />
+								
+								<ContentPresenter 
+									Content="{TemplateBinding Body}"
+									Margin="0, 10"
+									/>
+								
 								<StackPanel 
-                                    Margin="0,10,0,0"
+                                    Margin="0, 0, 0, -12"
                                     Name="actionButtonArea"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Center" />
 							</StackPanel>
-
 						</Border>
 					</Grid>
 				</ControlTemplate>
