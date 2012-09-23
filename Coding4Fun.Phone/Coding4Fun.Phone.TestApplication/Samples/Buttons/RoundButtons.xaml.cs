@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 using Coding4Fun.Phone.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples.Buttons
@@ -33,7 +28,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Buttons
 
 		// Using a DependencyProperty as the backing store for RoundButtonImage.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty RoundButtonImageProperty =
-			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(ButtonControls), new PropertyMetadata(RepeatIcon));
+			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(RoundButtons), new PropertyMetadata(RepeatIcon));
 
 		private void RoundButtonBasicClick(object sender, RoutedEventArgs e)
 		{

@@ -28,7 +28,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Buttons
 
 		// Using a DependencyProperty as the backing store for RoundButtonImage.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty RoundButtonImageProperty =
-			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(ButtonControls), new PropertyMetadata(RepeatIcon));
+			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(RoundToggleButtons), new PropertyMetadata(RepeatIcon));
 
 		private void RoundButtonBasicClick(object sender, RoutedEventArgs e)
 		{
