@@ -29,6 +29,7 @@
 				<Button Content="Basic" Click="InputClick" />
 				<Button Content="No enter" Click="InputNoEnterClick" />
 				<Button Content="Advanced" Click="InputAdvancedClick" />
+				<Button Content="Long Msg" Click="InputLongMsgClick" />
 			</StackPanel>
 			
 			<TextBlock

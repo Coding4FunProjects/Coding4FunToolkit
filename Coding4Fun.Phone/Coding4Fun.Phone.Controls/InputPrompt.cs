@@ -52,8 +52,20 @@ namespace Coding4Fun.Phone.Controls
             });
         }
 
-        #region public InputScope InputScope
-        /// <summary>
+		#region public TextWrapping MessageTextWrapping
+		public TextWrapping MessageTextWrapping
+		{
+			get { return (TextWrapping)GetValue(MessageTextWrappingProperty); }
+			set { SetValue(MessageTextWrappingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for MessageTextWrapping.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty MessageTextWrappingProperty =
+			DependencyProperty.Register("MessageTextWrapping", typeof(TextWrapping), typeof(InputPrompt), new PropertyMetadata(TextWrapping.NoWrap));
+		#endregion
+
+		#region public InputScope InputScope
+		/// <summary>
         /// Gets or sets the
         /// <see cref="T:System.Windows.Input.InputScope"/>
         /// used by the Text template part.

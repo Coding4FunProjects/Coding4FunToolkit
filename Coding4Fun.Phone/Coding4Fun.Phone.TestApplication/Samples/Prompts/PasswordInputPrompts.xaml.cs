@@ -14,6 +14,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 		private readonly SolidColorBrush _naturalBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 135, 189));
 		private readonly SolidColorBrush _cornFlowerBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
 
+		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
+
 		public PasswordInputPrompts()
 		{
 			InitializeComponent();
@@ -25,7 +27,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 			var passwordInput = new PasswordInputPrompt
 			{
 				Title = "Basic Input",
-				Message = "I'm a basic input prompt",
+				Message = "I'm a basic input prompt" + LongText,
 			};
 
 			passwordInput.Completed += PopUpPromptStringCompleted;
@@ -59,6 +61,20 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 				IsCancelVisible = true,
 				InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } },
 				Value = "doom"
+			};
+
+			passwordInput.Completed += PopUpPromptStringCompleted;
+
+			passwordInput.Show();
+		}
+
+		private void InputLongMsgClick(object sender, RoutedEventArgs e)
+		{
+			var passwordInput = new PasswordInputPrompt
+			{
+				Title = "Basic Input",
+				Message = LongText,
+				MessageTextWrapping = TextWrapping.Wrap,
 			};
 
 			passwordInput.Completed += PopUpPromptStringCompleted;

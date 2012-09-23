@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+
 using Coding4Fun.Phone.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
@@ -19,6 +13,8 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 		private readonly SolidColorBrush _aliceBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 240, 248, 255));
 		private readonly SolidColorBrush _naturalBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 135, 189));
 		private readonly SolidColorBrush _cornFlowerBlueSolidColorBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(200, 100, 149, 237));
+
+		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
 
 		public InputPrompts()
 		{
@@ -31,7 +27,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 			var input = new InputPrompt
 			{
 				Title = "Basic Input",
-				Message = "I'm a basic input prompt",
+				Message = "I'm a basic input prompt" + LongText,
 			};
 
 			input.Completed += PopUpPromptStringCompleted;
@@ -70,6 +66,21 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Prompts
 			input.InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } };
 			input.Show();
 		}
+
+		private void InputLongMsgClick(object sender, RoutedEventArgs e)
+		{
+			var input = new InputPrompt
+			{
+				Title = "Basic Input",
+				Message = LongText,
+				MessageTextWrapping = TextWrapping.Wrap
+			};
+
+			input.Completed += PopUpPromptStringCompleted;
+
+			input.Show();
+		}
+		
 		#endregion
 
 		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
