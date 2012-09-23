@@ -372,11 +372,11 @@
     <Resource Include="Media\head.png" />
     <Resource Include="Media\headWhite.png" />
     <Resource Include="Media\headWhite_100.png" />
-    <Resource Include="Media\icons\appbar.share.rest.png" />
+    <Content Include="Media\icons\appbar.share.rest.png" />
     <Content Include="Media\icons\appbar.add.rest.png" />
     <Content Include="Media\icons\appbar.check.rest.png" />
     <Resource Include="Media\Coding4FunProject.png" />
-    <Resource Include="Media\icons\appbar.minus.rest.png" />
+    <Content Include="Media\icons\appbar.minus.rest.png" />
     <Content Include="Media\icons\appbar.repeat.png" />
     <Resource Include="Media\images\trex_360width.jpg" />
     <Resource Include="Media\images\lamp.jpg" />

@@ -12,23 +12,25 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Buttons
 {
 	public partial class RoundToggleButtons : PhoneApplicationPage
 	{
-		static readonly ImageSource CheckIcon = new BitmapImage(new Uri("/Media/icons/appbar.check.rest.png", UriKind.RelativeOrAbsolute));
+		static readonly ImageSource AddIcon = new BitmapImage(new Uri("/Media/icons/appbar.add.rest.png", UriKind.RelativeOrAbsolute));
 		static readonly ImageSource RepeatIcon = new BitmapImage(new Uri("/Media/icons/appbar.repeat.png", UriKind.RelativeOrAbsolute));
 
 		public RoundToggleButtons()
 		{
 			InitializeComponent();
+
+			DataContext = this;
 		}
 
-		public ImageSource RoundButtonImage
+		public ImageSource RoundButtonImageSource
 		{
-			get { return (ImageSource)GetValue(RoundButtonImageProperty); }
-			set { SetValue(RoundButtonImageProperty, value); }
+			get { return (ImageSource)GetValue(RoundButtonImageSourceProperty); }
+			set { SetValue(RoundButtonImageSourceProperty, value); }
 		}
 
-		// Using a DependencyProperty as the backing store for RoundButtonImage.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty RoundButtonImageProperty =
-			DependencyProperty.Register("RoundButtonImage", typeof(ImageSource), typeof(RoundToggleButtons), new PropertyMetadata(RepeatIcon));
+		// Using a DependencyProperty as the backing store for RoundButtonImageSource.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty RoundButtonImageSourceProperty =
+			DependencyProperty.Register("RoundButtonImageSource", typeof(ImageSource), typeof(RoundToggleButtons), new PropertyMetadata(AddIcon));
 
 		private void RoundButtonBasicClick(object sender, RoutedEventArgs e)
 		{
@@ -37,7 +39,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples.Buttons
 
 		private void ToggleRoundButtonImageClick(object sender, RoutedEventArgs e)
 		{
-			RoundButtonImage = (RoundButtonImage != CheckIcon) ? CheckIcon : RepeatIcon;
+			RoundButtonImageSource = (RoundButtonImageSource != AddIcon) ? AddIcon : RepeatIcon;
 		}
 
 		private void RoundToggleButtonUnchecked(object sender, RoutedEventArgs e)

@@ -31,7 +31,7 @@
 			<StackPanel>
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundToggleButton
-							Click="RoundButtonBasicClick">
+						Click="RoundButtonBasicClick">
 						Basic
 					</c4f:RoundToggleButton>
 					<c4f:RoundToggleButton
@@ -45,7 +45,7 @@
 							Foreground="CornflowerBlue"
 							Content="Fun" />
 					<c4f:RoundToggleButton 
-							ImageSource="{Binding RoundButtonImage}"
+							ImageSource="{Binding RoundButtonImageSource}"
 							Content="toggle img" 
 							Stretch="None"
 							Click="ToggleRoundButtonImageClick" />
