@@ -1,0 +1,148 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" 
+					   Text="{StaticResource AppName}"
+					   Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="tests/samples" Margin="9,-12,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
+
+		<Image 
+			Opacity=".5"  
+			Stretch="Uniform"
+            Height="225"
+			VerticalAlignment="Bottom"
+			HorizontalAlignment="Right"
+			Source="/Coding4Fun.Toolkit.Test.WindowsPhone;component/media/head.png"
+			Margin="0, 0, -50, -50" />
+		
+		<ScrollViewer>
+			<slToolkit:WrapPanel 
+				slToolkit:TiltEffect.IsTiltEnabled="True"
+				Margin="24,120,0,0">
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Audio"
+					Click="Audio_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Au
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Binding"
+					Click="Binding_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bi
+                    </TextBlock>
+               </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Button"
+					Click="Button_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bn
+                    </TextBlock>
+                </c4f:Tile>
+
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Chat bubble"
+					Click="Chat_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ch
+                    </TextBlock>
+                </c4f:Tile>
+                
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Color"
+					Click="Colors_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Co
+					</TextBlock>
+				</c4f:Tile>
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Gzip Webclient"
+					Click="GzipWebClient_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Gz
+					</TextBlock>
+				</c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Memory"
+					Click="Memory_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Me
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="MetroFlow"
+					Click="MetroFlow_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Mf
+					</TextBlock>
+				</c4f:Tile>	
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Overlay"
+					Click="Overlays_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ov
+					</TextBlock>
+				</c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Prompt"
+					Click="Prompts_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Pr
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Storage"
+					Click="Storage_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						St
+                    </TextBlock>
+                </c4f:Tile>
+                <c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Super Slider"
+					Click="Slider_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Sl
+					</TextBlock>
+				</c4f:Tile>
+				<c4f:Tile
+					Style="{StaticResource TileStyle}"
+					Title="Timespan"
+					Click="TimeSpan_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ts
+					</TextBlock>
+				</c4f:Tile>
+		    </slToolkit:WrapPanel>
+		</ScrollViewer>
+	</Grid>
+ 
+
+</phone:PhoneApplicationPage>

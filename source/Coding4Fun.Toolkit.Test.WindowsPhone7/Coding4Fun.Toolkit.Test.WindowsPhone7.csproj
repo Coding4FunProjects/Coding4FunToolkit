@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52BCF2B5-1451-4C71-8923-3551FBB6D5CD}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Test.WindowsPhone</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Test.WindowsPhone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>fr%3bde</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Coding4Fun.Toolkit.Test.WindowsPhone.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Coding4Fun.Toolkit.Test.WindowsPhone.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.6.25\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls">
+      <HintPath>..\packages\External\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\packages\External\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Coding4FunAboutPrompt.cs">
+      <Link>Controls\Coding4FunAboutPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Coding4FunFooter.cs">
+      <Link>Controls\Coding4FunFooter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Coding4FunWaterMark.cs">
+      <Link>Controls\Coding4FunWaterMark.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\MainPage.xaml.cs">
+      <Link>MainPage.xaml.cs</Link>
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Audio.xaml.cs">
+      <Link>Samples\Audio.xaml.cs</Link>
+      <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Binding.xaml.cs">
+      <Link>Samples\Binding.xaml.cs</Link>
+      <DependentUpon>Binding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ButtonControls.xaml.cs">
+      <Link>Samples\ButtonControls.xaml.cs</Link>
+      <DependentUpon>ButtonControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\ImageTiles.xaml.cs">
+      <Link>Samples\Buttons\ImageTiles.xaml.cs</Link>
+      <DependentUpon>ImageTiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\OpacityToggleButtons.xaml.cs">
+      <Link>Samples\Buttons\OpacityToggleButtons.xaml.cs</Link>
+      <DependentUpon>OpacityToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\RoundButtons.xaml.cs">
+      <Link>Samples\Buttons\RoundButtons.xaml.cs</Link>
+      <DependentUpon>RoundButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\RoundToggleButtons.xaml.cs">
+      <Link>Samples\Buttons\RoundToggleButtons.xaml.cs</Link>
+      <DependentUpon>RoundToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\StressTests.xaml.cs">
+      <Link>Samples\Buttons\StressTests.xaml.cs</Link>
+      <DependentUpon>StressTests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\Tiles.xaml.cs">
+      <Link>Samples\Buttons\Tiles.xaml.cs</Link>
+      <DependentUpon>Tiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbleControls.xaml.cs">
+      <Link>Samples\ChatBubbleControls.xaml.cs</Link>
+      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestBasic.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTestBasic.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTestBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestColor.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTestColor.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTestColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestDirection.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTestDirection.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTestDirection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTextBoxesTestBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTextBoxesTestColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTextBoxesTestDirection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml.cs">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml.cs</Link>
+      <DependentUpon>ChatBubbleTextBoxesTestHint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ColorControls.xaml.cs">
+      <Link>Samples\ColorControls.xaml.cs</Link>
+      <DependentUpon>ColorControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorHexPicker.xaml.cs">
+      <Link>Samples\Color\ColorHexPicker.xaml.cs</Link>
+      <DependentUpon>ColorHexPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorPicker.xaml.cs">
+      <Link>Samples\Color\ColorPicker.xaml.cs</Link>
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorSlider.xaml.cs">
+      <Link>Samples\Color\ColorSlider.xaml.cs</Link>
+      <DependentUpon>ColorSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Gzip.xaml.cs">
+      <Link>Samples\Gzip.xaml.cs</Link>
+      <DependentUpon>Gzip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Memory.xaml.cs">
+      <Link>Samples\Memory.xaml.cs</Link>
+      <DependentUpon>Memory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\MetroFlow.xaml.cs">
+      <Link>Samples\MetroFlow.xaml.cs</Link>
+      <DependentUpon>MetroFlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Overlays.xaml.cs">
+      <Link>Samples\Overlays.xaml.cs</Link>
+      <DependentUpon>Overlays.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\PromptControls.xaml.cs">
+      <Link>Samples\PromptControls.xaml.cs</Link>
+      <DependentUpon>PromptControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\AboutPrompts.xaml.cs">
+      <Link>Samples\Prompts\AboutPrompts.xaml.cs</Link>
+      <DependentUpon>AboutPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\AppBarPrompts.xaml.cs">
+      <Link>Samples\Prompts\AppBarPrompts.xaml.cs</Link>
+      <DependentUpon>AppBarPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\InputPrompts.xaml.cs">
+      <Link>Samples\Prompts\InputPrompts.xaml.cs</Link>
+      <DependentUpon>InputPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\MessagePrompts.xaml.cs">
+      <Link>Samples\Prompts\MessagePrompts.xaml.cs</Link>
+      <DependentUpon>MessagePrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PasswordInputPrompts.xaml.cs">
+      <Link>Samples\Prompts\PasswordInputPrompts.xaml.cs</Link>
+      <DependentUpon>PasswordInputPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PromptStressTest.xaml.cs">
+      <Link>Samples\Prompts\PromptStressTest.xaml.cs</Link>
+      <DependentUpon>PromptStressTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\ToastPrompts.xaml.cs">
+      <Link>Samples\Prompts\ToastPrompts.xaml.cs</Link>
+      <DependentUpon>ToastPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Slider.xaml.cs">
+      <Link>Samples\Slider.xaml.cs</Link>
+      <DependentUpon>Slider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Storage.xaml.cs">
+      <Link>Samples\Storage.xaml.cs</Link>
+      <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Timespan.xaml.cs">
+      <Link>Samples\Timespan.xaml.cs</Link>
+      <DependentUpon>Timespan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Test\InheritedTextBox.cs">
+      <Link>Test\InheritedTextBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Test\TestSerializeClass.cs">
+      <Link>Test\TestSerializeClass.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\ChatBubbles\ChatBubbles.xaml.cs">
+      <DependentUpon>ChatBubbles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxes.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png" />
+    <Content Include="Background.png" />
+    <Resource Include="Media\c4f_26x26.png" />
+    <Resource Include="Media\Coding4FunProject.png" />
+    <Resource Include="Media\head.png" />
+    <Resource Include="Media\headWhite.png" />
+    <Resource Include="Media\headWhite_100.png" />
+    <Content Include="Media\icons\appbar.add.rest.png" />
+    <Content Include="Media\icons\appbar.check.rest.png" />
+    <Content Include="Media\icons\appbar.minus.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.four.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.three.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.two.rest.png" />
+    <Content Include="Media\icons\appbar.repeat.png" />
+    <Content Include="Media\icons\appbar.share.rest.png" />
+    <Resource Include="Media\images\0.jpg" />
+    <Resource Include="Media\images\1.jpg" />
+    <Resource Include="Media\images\10.jpg" />
+    <Resource Include="Media\images\11.jpg" />
+    <Resource Include="Media\images\12.jpg" />
+    <Resource Include="Media\images\13.jpg" />
+    <Resource Include="Media\images\14.jpg" />
+    <Resource Include="Media\images\15.jpg" />
+    <Resource Include="Media\images\16.jpg" />
+    <Resource Include="Media\images\17.jpg" />
+    <Resource Include="Media\images\18.jpg" />
+    <Resource Include="Media\images\19.jpg" />
+    <Resource Include="Media\images\2.jpg" />
+    <Resource Include="Media\images\20.jpg" />
+    <Resource Include="Media\images\21.jpg" />
+    <Resource Include="Media\images\22.jpg" />
+    <Resource Include="Media\images\23.jpg" />
+    <Resource Include="Media\images\24.jpg" />
+    <Resource Include="Media\images\25.jpg" />
+    <Resource Include="Media\images\26.jpg" />
+    <Resource Include="Media\images\27.jpg" />
+    <Resource Include="Media\images\28.jpg" />
+    <Resource Include="Media\images\29.jpg" />
+    <Resource Include="Media\images\3.jpg" />
+    <Resource Include="Media\images\30.jpg" />
+    <Resource Include="Media\images\31.jpg" />
+    <Resource Include="Media\images\32.jpg" />
+    <Resource Include="Media\images\33.jpg" />
+    <Resource Include="Media\images\34.jpg" />
+    <Resource Include="Media\images\4.jpg" />
+    <Resource Include="Media\images\5.jpg" />
+    <Resource Include="Media\images\6.jpg" />
+    <Resource Include="Media\images\7.jpg" />
+    <Resource Include="Media\images\8.jpg" />
+    <Resource Include="Media\images\9.jpg" />
+    <Resource Include="Media\images\lamp.jpg" />
+    <Resource Include="Media\images\PlaceholderPhoto.png" />
+    <Resource Include="Media\images\robot.jpg" />
+    <Resource Include="Media\images\Seattle.jpg" />
+    <Resource Include="Media\images\trex_360width.jpg" />
+    <Resource Include="Media\icons\dark\coding4funLogo.png" />
+    <Resource Include="Media\icons\dark\head.png" />
+    <Resource Include="Media\icons\light\coding4funLogo.png" />
+    <Resource Include="Media\icons\light\head.png" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\MainPage.xaml">
+      <Link>MainPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Audio.xaml">
+      <Link>Samples\Audio.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Binding.xaml">
+      <Link>Samples\Binding.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ButtonControls.xaml">
+      <Link>Samples\ButtonControls.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\ImageTiles.xaml">
+      <Link>Samples\Buttons\ImageTiles.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\OpacityToggleButtons.xaml">
+      <Link>Samples\Buttons\OpacityToggleButtons.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\RoundButtons.xaml">
+      <Link>Samples\Buttons\RoundButtons.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\RoundToggleButtons.xaml">
+      <Link>Samples\Buttons\RoundToggleButtons.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\StressTests.xaml">
+      <Link>Samples\Buttons\StressTests.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Buttons\Tiles.xaml">
+      <Link>Samples\Buttons\Tiles.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbleControls.xaml">
+      <Link>Samples\ChatBubbleControls.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestBasic.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTestBasic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestColor.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTestColor.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTestDirection.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTestDirection.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml">
+      <Link>Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\ColorControls.xaml">
+      <Link>Samples\ColorControls.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorHexPicker.xaml">
+      <Link>Samples\Color\ColorHexPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorPicker.xaml">
+      <Link>Samples\Color\ColorPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Color\ColorSlider.xaml">
+      <Link>Samples\Color\ColorSlider.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Gzip.xaml">
+      <Link>Samples\Gzip.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Memory.xaml">
+      <Link>Samples\Memory.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\MetroFlow.xaml">
+      <Link>Samples\MetroFlow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Overlays.xaml">
+      <Link>Samples\Overlays.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\PromptControls.xaml">
+      <Link>Samples\PromptControls.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\AboutPrompts.xaml">
+      <Link>Samples\Prompts\AboutPrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\AppBarPrompts.xaml">
+      <Link>Samples\Prompts\AppBarPrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\InputPrompts.xaml">
+      <Link>Samples\Prompts\InputPrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\MessagePrompts.xaml">
+      <Link>Samples\Prompts\MessagePrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PasswordInputPrompts.xaml">
+      <Link>Samples\Prompts\PasswordInputPrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PromptStressTest.xaml">
+      <Link>Samples\Prompts\PromptStressTest.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\ToastPrompts.xaml">
+      <Link>Samples\Prompts\ToastPrompts.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Slider.xaml">
+      <Link>Samples\Slider.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Storage.xaml">
+      <Link>Samples\Storage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Timespan.xaml">
+      <Link>Samples\Timespan.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Themes\Generic.xaml">
+      <Link>Themes\Generic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28WP7%29.csproj">
+      <Project>{A02D32D9-0392-4C6B-822A-3DE0AF384E57}</Project>
+      <Name>Coding4Fun.Toolkit.Audio %28WP7%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls %28WP7%29.csproj">
+      <Project>{6E223290-66D8-4058-99CF-501769D6A641}</Project>
+      <Name>Coding4Fun.Toolkit.Controls %28WP7%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Net\Coding4Fun.Toolkit.Net %28WP7%29.csproj">
+      <Project>{F091DEB3-A1FC-45EA-A33B-2E2B304CE625}</Project>
+      <Name>Coding4Fun.Toolkit.Net %28WP7%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28WP7%29.csproj">
+      <Project>{11431739-9EFE-4600-96AD-9779FA6D9F6B}</Project>
+      <Name>Coding4Fun.Toolkit.Storage %28WP7%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

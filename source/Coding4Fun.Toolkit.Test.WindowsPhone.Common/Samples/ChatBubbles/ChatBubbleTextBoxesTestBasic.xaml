@@ -1,0 +1,53 @@
+﻿<UserControl 
+    x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.Samples.ChatBubbles.ChatBubbleTextBoxesTestBasic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <StackPanel>
+        <c4f:ChatBubbleTextBox 
+						Text="testing normal"
+						Margin="48, 0, 0, 0" />
+        <c4f:ChatBubbleTextBox 
+						IsReadOnly="True"
+						Text="testing readonly"
+						Margin="48, 0, 0, 0" />
+
+        <c4f:ChatBubbleTextBox 
+						Text="testing wrapping: coding4fun coding4fun coding4fun"
+						TextWrapping="Wrap"
+						/>
+
+        <c4f:ChatBubbleTextBox 
+						Margin="48, 0, 0, 0"
+						Padding="24"
+						Text="testing ReadOnly wrapping: coding4fun coding4fun coding4fun coding4fun" 
+						IsReadOnly="True" 
+						TextWrapping="Wrap" />
+
+        <c4f:ChatBubbleTextBox 
+						
+						Text="testing disabled" 
+						IsEnabled="False" />
+        <TextBlock>System TextBoxes</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Text="normal" />
+            <TextBox Grid.Column="1" IsReadOnly="True" Text="readonly" />
+            <TextBox Grid.Column="2" IsEnabled="False" Text="disabled" />
+        </Grid>
+
+    </StackPanel>
+</UserControl>

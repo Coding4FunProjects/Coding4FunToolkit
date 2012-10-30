@@ -1,0 +1,165 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
+
+	<Style TargetType="local:ChatBubble">
+		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}" />
+		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
+		<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+		<Setter Property="Padding" Value="6, 2"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:ChatBubble">
+					<Grid Background="Transparent">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+								<VisualState x:Name="MouseOver"/>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentBorder">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentBorder">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="ChatBubbleDirectionStates">
+								<VisualState x:Name="UpperRight">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperRightPath">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Visible</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="UpperLeft">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperLeftPath">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Visible</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="LowerRight">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerRightPath">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Visible</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="LowerLeft">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerLeftPath">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Visible</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Border 
+							x:Name="ContentBorder" 
+							Grid.Row="1"
+							Padding="{TemplateBinding Padding}"
+							BorderThickness="{TemplateBinding BorderThickness}" 
+							BorderBrush="{TemplateBinding Background}"
+							Background="{TemplateBinding Background}">
+							<ContentControl 
+								HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								Margin="{StaticResource PhoneTextBoxInnerMargin}"
+								Content="{TemplateBinding Content}" 
+								FontSize="{TemplateBinding FontSize}" 
+								FontFamily="{TemplateBinding FontFamily}" />
+						</Border>
+						<Path 
+							Name="LowerRightPath"
+							Data="M0,0 L1,1 L1,0 "
+							Grid.Row="2"
+							Fill="{TemplateBinding Background}"
+							Stretch="Fill"
+							Margin="12,0"
+							Height="12"
+							Width="18"
+							Visibility="Collapsed"
+							HorizontalAlignment="Right" />
+						<Path 
+							Name="LowerLeftPath"
+							Data="M0,0 L0,1 L1,0"
+							Grid.Row="2"
+							Fill="{TemplateBinding Background}"
+							Stretch="Fill"
+							Margin="12,0"
+							Height="12"
+							Width="18"
+							Visibility="Collapsed"
+							HorizontalAlignment="Left" />
+						<Path 
+							Name="UpperLeftPath"
+							Data="M0,0 L1,1 L0,1 "
+							Grid.Row="0"
+							Fill="{TemplateBinding Background}"
+							Stretch="Fill"
+							Margin="12,0"
+							Height="12"
+							Width="18"
+							Visibility="Collapsed"
+							HorizontalAlignment="Left" />
+						<Path 
+							Name="UpperRightPath"
+							Data="M0,1 L1,1 L1,0 "
+							Grid.Row="0"
+							Fill="{TemplateBinding Background}"
+							Stretch="Fill"
+							Margin="12,0"
+							Height="12"
+							Width="18"
+							Visibility="Collapsed"
+							HorizontalAlignment="Right" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

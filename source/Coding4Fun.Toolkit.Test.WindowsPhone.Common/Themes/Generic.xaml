@@ -1,0 +1,53 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Test.WindowsPhone"
+    xmlns:Converters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls">
+    
+    <Converters:ThemedImageConverter x:Key="c4fThemedImageConverter" />
+        
+    <Style TargetType="local:Coding4FunFooter">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Coding4FunFooter">
+                    <StackPanel>
+                        <TextBlock 
+                            TextWrapping="Wrap"
+							Margin="0">
+							    Application has been open sourced by
+                        </TextBlock>
+                        <Image 
+                            Name="c4fLogo"
+							Margin="0,5,10,5"
+							Source="{Binding 
+                            Converter={StaticResource c4fThemedImageConverter}, 
+                            ConverterParameter=/Coding4Fun.Toolkit.Test.WindowsPhone;component/Media/icons/\{0\}/coding4funLogo.png}"
+							Stretch="None"
+							HorizontalAlignment="Right" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:Coding4FunWaterMark">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Coding4FunWaterMark">
+                    <Image 
+						Opacity=".05"  
+						Stretch="None"
+						VerticalAlignment="Bottom"
+						HorizontalAlignment="Right"
+						Source="{Binding Converter={StaticResource c4fThemedImageConverter}, ConverterParameter=/Coding4Fun.Toolkit.Test.WindowsPhone;component/Media/icons/\{0\}/head.png}"
+						Margin="-20, -20">
+
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0,0,255,274" />
+                        </Image.Clip>
+                    </Image>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

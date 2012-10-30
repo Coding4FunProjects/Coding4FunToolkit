@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.Samples.ChatBubbles.ChatBubbleTestDirection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="12" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="12" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <c4f:ChatBubble 
+							Grid.Row="0"
+							Grid.Column="0"
+							Content="UpperRight"
+							ChatBubbleDirection="UpperRight" />
+        <c4f:ChatBubble 
+							Grid.Row="0"
+							Grid.Column="2"
+							Content="UpperLeft"
+							ChatBubbleDirection="UpperLeft" />
+
+        <c4f:ChatBubble 
+							Grid.Row="2"
+							Grid.Column="0"
+							Content="LowerRight"
+							ChatBubbleDirection="LowerRight" />
+
+        <c4f:ChatBubble 
+							Grid.Row="2"
+							Grid.Column="2"
+							Content="LowerLeft"
+							ChatBubbleDirection="LowerLeft" />
+    </Grid>
+</UserControl>

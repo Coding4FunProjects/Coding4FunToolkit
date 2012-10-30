@@ -1,0 +1,171 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Color.ColorPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls" 
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+		<ms:Pivot Title="{StaticResource AppName}">
+			<ms:PivotItem Header="basic">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<c4f:ColorPicker 
+						Grid.Row="0"
+						Name="picker" 
+						ColorChanged="ColorPicker_ColorChanged">
+					</c4f:ColorPicker>
+					<c4f:ColorPicker  
+						Grid.Row="1"
+						Name="pickerClone" />
+					<StackPanel 
+						Grid.Row="2"
+						Orientation="Horizontal">
+						<StackPanel Margin="12">
+							<TextBlock>Via Binding:</TextBlock>
+							<Rectangle 
+                            Height="25"
+                            Fill="{Binding ElementName=picker, Path=SolidColorBrush}" />
+						</StackPanel>
+						<StackPanel Margin="12">
+							<TextBlock>Via Event:</TextBlock>
+							<Rectangle 
+                            Name="ColorPickerFromEvent"
+                            Height="25" />
+						</StackPanel>
+					</StackPanel>
+					
+				</Grid>
+			</ms:PivotItem>
+			<ms:PivotItem Header="colors">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.Row="0">XAML Set Color: Cyan</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="1"
+						Color="Cyan" 
+						Name="ColorPickerSetOnXamlLoadTest"/>
+
+					<TextBlock Grid.Row="2">On Load Set Color: Magenta</TextBlock>
+					<c4f:ColorPicker 
+						Grid.Row="3"
+						Name="ColorPickerSetOnLoadTest" />
+					<StackPanel
+						Grid.Row="4" 
+						HorizontalAlignment="Center"
+						Orientation="Horizontal">
+						
+						<c4f:RoundButton 
+							Content="Cyan" 
+							Click="Cyan_Click" />
+						<c4f:RoundButton 
+							Content="Yellow" 
+							Click="Yellow_Click" />
+						<c4f:RoundButton
+							Content="Orange" 
+							Click="Orange_Click" />
+						<c4f:RoundButton 
+							Content="Magenta" 
+							Click="Magenta_Click" />
+
+					</StackPanel>
+				</Grid>
+			</ms:PivotItem>
+			<ms:PivotItem Header="disabled">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					
+					<TextBlock Grid.Row="0">Disabled at compile</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="1"
+						Color="Cyan" 
+						IsEnabled="False" />
+
+					<TextBlock Grid.Row="2" Margin="0, 24, 0, 0">Disabled via event</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="3"
+						Color="Cyan" 
+						Name="IsEnabledViaEvent" />
+					<toolkit:ToggleSwitch 
+						Grid.Row="4" 
+						IsChecked="true" 
+						Unchecked="ToggleSwitch_Unchecked"
+						Checked="ToggleSwitch_Checked" />
+
+					<TextBlock Grid.Row="5">Disabled via bind</TextBlock>
+					<c4f:ColorPicker
+						Grid.Row="6"
+						Color="Cyan" 
+						IsEnabled="{Binding ElementName=isEnableVerification, Path=IsChecked}"
+						 />
+					<toolkit:ToggleSwitch 
+						Grid.Row="7" 
+						Name="isEnableVerification" 
+						IsChecked="true" 
+						/>
+					
+				</Grid>
+			</ms:PivotItem>
+			<ms:PivotItem Header="visibility">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Button 
+						Grid.Row="0"
+						Content="Toggle Vis"
+						Click="pickerVisibilityToggle_Click"
+						/>
+					<c4f:ColorPicker
+						Grid.Row="1"
+						Visibility="Collapsed"
+						Color="CornflowerBlue"
+						Name="pickerVisibilityToggle"/>
+				</Grid>
+			</ms:PivotItem>
+		</ms:Pivot>
+	</Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

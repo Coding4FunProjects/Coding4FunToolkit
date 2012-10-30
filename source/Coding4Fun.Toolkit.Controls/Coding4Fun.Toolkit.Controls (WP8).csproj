@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FCBCFD20-01F1-49A8-95F0-4BCA008E4621}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Controls</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Controls</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Debug\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Release\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\x86\Debug\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\x86\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\x86\Release\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\x86\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\ARM\Debug\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\ARM\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\ARM\Release\Windows Phone 8\</OutputPath>
+    <BaseIntermediateOutputPath>obj\ARM\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Binding\FrameworkElementBinding.cs" />
+    <Compile Include="Binding\TextBinding.cs" />
+    <Compile Include="Buttons\ButtonBaseHelper.cs" />
+    <Compile Include="Buttons\IButtonBase.cs" />
+    <Compile Include="Buttons\ImageTile.cs" />
+    <Compile Include="Buttons\ImageTileAnimationTypes.cs" />
+    <Compile Include="Buttons\ImageTileLayoutStates.cs" />
+    <Compile Include="Buttons\ImageTileState.cs" />
+    <Compile Include="Buttons\OpacityToggleButton.cs" />
+    <Compile Include="Buttons\RoundButton.cs" />
+    <Compile Include="Buttons\RoundToggleButton.cs" />
+    <Compile Include="Buttons\Tile.cs" />
+    <Compile Include="Buttons\TileNotification.cs" />
+    <Compile Include="Buttons\ToggleButtonBase.cs" />
+    <Compile Include="ChatBubble\ChatBubbleTextBox.cs" />
+    <Compile Include="Colors\ColorBaseControl.cs" />
+    <Compile Include="Colors\ColorHexagonPicker %28WP%29.cs" />
+    <Compile Include="Colors\ColorHexagonPicker.cs" />
+    <Compile Include="Colors\ColorPicker.cs" />
+    <Compile Include="Colors\ColorSlider.cs" />
+    <Compile Include="Colors\ColorSliderThumb.cs" />
+    <Compile Include="Common\ColorExtentions.cs" />
+    <Compile Include="Common\ColorSpace.cs" />
+    <Compile Include="Common\MovementMonitor.cs" />
+    <Compile Include="Common\MovementMonitorEventArgs.cs" />
+    <Compile Include="Common\PhoneHelper.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="Converters\ThemedImageConverter.cs" />
+    <Compile Include="Converters\ThemedImageConverterHelper.cs" />
+    <Compile Include="Converters\ThemedInverseImageConverter.cs" />
+    <Compile Include="Converters\VisibilityToBooleanConverter.cs" />
+    <Compile Include="Common\ControlHelper.cs" />
+    <Compile Include="Diagnostic\MemoryCounter.cs" />
+    <Compile Include="ChatBubble\ChatBubble.cs" />
+    <Compile Include="ChatBubble\ChatBubbleDirection.cs" />
+    <Compile Include="MetroFlow\MetroFlow.cs" />
+    <Compile Include="MetroFlow\MetroFlowData.cs" />
+    <Compile Include="MetroFlow\MetroFlowItem.cs" />
+    <Compile Include="MetroFlow\SelectionTapEventArgs.cs" />
+    <Compile Include="Other\ProgressOverlay.cs" />
+    <Compile Include="Other\SuperSlider.cs" />
+    <Compile Include="Prompts\AboutPrompt.cs" />
+    <Compile Include="Prompts\AboutPromptItem.cs" />
+    <Compile Include="Prompts\ActionPopUp.cs" />
+    <Compile Include="Prompts\AppBarPrompt.cs" />
+    <Compile Include="Prompts\AppBarPromptAction.cs" />
+    <Compile Include="Prompts\AppBarPromptItem.cs" />
+    <Compile Include="Prompts\InputPrompt.cs" />
+    <Compile Include="Prompts\MessagePrompt.cs" />
+    <Compile Include="Prompts\PasswordInputPrompt.cs" />
+    <Compile Include="Prompts\PopUp.cs" />
+    <Compile Include="Prompts\PopUpEventArgs.cs" />
+    <Compile Include="Prompts\PopUpResult.cs" />
+    <Compile Include="Prompts\ToastPrompt.cs" />
+    <Compile Include="Prompts\UserPrompt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Unsupported\DialogService.cs" />
+    <Compile Include="Unsupported\TemplatedVisualTreeExtensions.cs" />
+    <Compile Include="Unsupported\VisualTreeExtensions.cs" />
+    <Compile Include="ValuePicker\Common\PhysicsConstants.cs" />
+    <Compile Include="ValuePicker\Common\SafeRaise.cs" />
+    <Compile Include="ValuePicker\Common\TimeSpanFormat.cs" />
+    <Compile Include="ValuePicker\Primitives\ILoopingSelectorDataSource.cs" />
+    <Compile Include="ValuePicker\Primitives\LoopingSelector.cs" />
+    <Compile Include="ValuePicker\Primitives\LoopingSelectorItem.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\DataSource\HourTimeSpanDataSource.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\DataSource\MinuteTimeSpanDataSource.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\DataSource\SecondTimeSpanDataSource.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\DataSource\TimeSpanDataSource.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\ITimeSpanPickerPage.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\TimeSpanPicker.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\TimeSpanPickerBasePage.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml.cs">
+      <DependentUpon>TimespanPickerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValuePicker\TimeSpanPicker\TimeSpanValueChangedEventArgs.cs" />
+    <Compile Include="ValuePicker\TimeSpanPicker\TimeSpanWrapper.cs" />
+    <Compile Include="ValuePicker\Transitions\ITransition.cs" />
+    <Compile Include="ValuePicker\Transitions\NavigationInTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\NavigationOutTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\NavigationTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\TransitionElement.cs" />
+    <Compile Include="ValuePicker\Transitions\TransitionFrame.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions.cs" />
+    <Compile Include="ValuePicker\Transitions\TransitionService.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\RollTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\RotateTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\RotateTransitionMode.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\SlideTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\SlideTransitionMode.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\SwivelTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\SwivelTransitionMode.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\Transition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\TurnstileTransition.cs" />
+    <Compile Include="ValuePicker\Transitions\Transitions\TurnstileTransitionMode.cs" />
+    <Compile Include="ValuePicker\ValuePickers\DataSource.cs" />
+    <Compile Include="ValuePicker\ValuePickers\IValuePickerPage.cs" />
+    <Compile Include="ValuePicker\ValuePickers\ValueChangedEventArgs.cs" />
+    <Compile Include="ValuePicker\ValuePickers\ValuePickerBase.cs" />
+    <Compile Include="ValuePicker\ValuePickers\ValuePickerBasePage.cs" />
+    <Compile Include="ValuePicker\ValuePickers\ValuePickerResources.cs" />
+    <Compile Include="ValuePicker\ValuePickers\ValueWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\appbar.cancel.rest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile.xaml">
+      <Link>Themes\Buttons\ImageTile.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton.xaml">
+      <Link>Themes\Buttons\OpacityToggleButton.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton.xaml">
+      <Link>Themes\Buttons\RoundButton.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton.xaml">
+      <Link>Themes\Buttons\RoundToggleButton.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile.xaml">
+      <Link>Themes\Buttons\Tile.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification.xaml">
+      <Link>Themes\Buttons\TileNotification.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble.xaml">
+      <Link>Themes\ChatBubble\ChatBubble.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox.xaml">
+      <Link>Themes\ChatBubble\ChatBubbleTextBox.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorHexagonPicker\Windows Phone\ColorHexagonPicker.xaml">
+      <Link>Themes\Colors\ColorHexagonPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorPicker.xaml">
+      <Link>Themes\Colors\ColorPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorSlider.xaml">
+      <Link>Themes\Colors\ColorSlider.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Common\CommonStyles.xaml">
+      <Link>Themes\Common\CommonStyles.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Diagnostic\MemoryCounter.xaml">
+      <Link>Themes\Diagnostic\MemoryCounter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Generic\WP8\Generic.xaml">
+      <Link>Themes\Generic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\MetroFlow\MetroFlow.xaml">
+      <Link>Themes\MetroFlow\MetroFlow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay.xaml">
+      <Link>Themes\Other\ProgressOverlay.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider.xaml">
+      <Link>Themes\Other\SuperSlider.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPrompt.xaml">
+      <Link>Themes\Prompts\AboutPrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPromptItem.xaml">
+      <Link>Themes\Prompts\AboutPromptItem.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPrompt.xaml">
+      <Link>Themes\Prompts\AppBarPrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPromptItem.xaml">
+      <Link>Themes\Prompts\AppBarPromptItem.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\InputPrompt.xaml">
+      <Link>Themes\Prompts\InputPrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\MessagePrompt.xaml">
+      <Link>Themes\Prompts\MessagePrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\PasswordInputPrompt.xaml">
+      <Link>Themes\Prompts\PasswordInputPrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\ToastPrompt.xaml">
+      <Link>Themes\Prompts\ToastPrompt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelector.xaml">
+      <Link>Themes\ValuePicker\LoopingSelector.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelectorItem.xaml">
+      <Link>Themes\ValuePicker\LoopingSelectorItem.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\TimeSpanPicker.xaml">
+      <Link>Themes\ValuePicker\TimeSpanPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\appbar.check.rest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.cs.resx" />
+    <EmbeddedResource Include="Properties\Resources.de.resx" />
+    <EmbeddedResource Include="Properties\Resources.es.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr.resx" />
+    <EmbeddedResource Include="Properties\Resources.it.resx" />
+    <EmbeddedResource Include="Properties\Resources.ko.resx" />
+    <EmbeddedResource Include="Properties\Resources.pl.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx" />
+    <EmbeddedResource Include="Properties\Resources.sk.resx" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

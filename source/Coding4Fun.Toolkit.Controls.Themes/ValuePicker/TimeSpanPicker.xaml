@@ -1,0 +1,42 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ValuePicker/LoopingSelectorItem.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ValuePicker/LoopingSelector.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="local:TimeSpanPicker">
+        <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="PickerPageUri" Value="/Coding4Fun.Toolkit.Controls;component/ValuePicker/TimeSpanPicker/TimeSpanPickerPage.xaml"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TimeSpanPicker">
+                    <StackPanel>
+                        <ContentControl
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="12,0,12,-4"/>
+                        <Button
+                            x:Name="ValueButton"
+                            Content="{TemplateBinding ValueString}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Height="72"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

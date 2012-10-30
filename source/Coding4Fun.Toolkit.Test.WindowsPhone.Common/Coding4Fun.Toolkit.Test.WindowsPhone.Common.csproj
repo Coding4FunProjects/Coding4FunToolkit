@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED626532-982D-418F-9016-DF9DADC7329E}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Test.WindowsPhone</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Test.WindowsPhone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Coding4Fun.Toolkit.Test.WindowsPhone.Common.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Coding4Fun.Toolkit.Test.WindowsPhone.Common.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.6.25\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\Audio.xaml.cs">
+      <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ButtonControls.xaml.cs">
+      <DependentUpon>ButtonControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RoundButtons.xaml.cs">
+      <DependentUpon>RoundButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTestBasic.xaml.cs">
+      <DependentUpon>ChatBubbleTestBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTestColor.xaml.cs">
+      <DependentUpon>ChatBubbleTestColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTestDirection.xaml.cs">
+      <DependentUpon>ChatBubbleTestDirection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxesTestBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxesTestColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxesTestDirection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxesTestHint.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Audio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ButtonControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\Buttons\RoundButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTestBasic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTestColor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTestDirection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestBasic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestDirection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxesTestHint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Media\c4f_26x26.png" />
+    <Content Include="Media\Coding4FunProject.png" />
+    <Content Include="Media\head.png" />
+    <Content Include="Media\headWhite.png" />
+    <Content Include="Media\headWhite_100.png" />
+    <Content Include="Media\icons\appbar.add.rest.png" />
+    <Content Include="Media\icons\appbar.check.rest.png" />
+    <Content Include="Media\icons\appbar.minus.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.four.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.three.rest.png" />
+    <Content Include="Media\icons\appbar.prompt.two.rest.png" />
+    <Content Include="Media\icons\appbar.repeat.png" />
+    <Content Include="Media\icons\appbar.share.rest.png" />
+    <Content Include="Media\images\0.jpg" />
+    <Content Include="Media\images\1.jpg" />
+    <Content Include="Media\images\10.jpg" />
+    <Content Include="Media\images\11.jpg" />
+    <Content Include="Media\images\12.jpg" />
+    <Content Include="Media\images\13.jpg" />
+    <Content Include="Media\images\14.jpg" />
+    <Content Include="Media\images\15.jpg" />
+    <Content Include="Media\images\16.jpg" />
+    <Content Include="Media\images\17.jpg" />
+    <Content Include="Media\images\18.jpg" />
+    <Content Include="Media\images\19.jpg" />
+    <Content Include="Media\images\2.jpg" />
+    <Content Include="Media\images\20.jpg" />
+    <Content Include="Media\images\21.jpg" />
+    <Content Include="Media\images\22.jpg" />
+    <Content Include="Media\images\23.jpg" />
+    <Content Include="Media\images\24.jpg" />
+    <Content Include="Media\images\25.jpg" />
+    <Content Include="Media\images\26.jpg" />
+    <Content Include="Media\images\27.jpg" />
+    <Content Include="Media\images\28.jpg" />
+    <Content Include="Media\images\29.jpg" />
+    <Content Include="Media\images\3.jpg" />
+    <Content Include="Media\images\30.jpg" />
+    <Content Include="Media\images\31.jpg" />
+    <Content Include="Media\images\32.jpg" />
+    <Content Include="Media\images\33.jpg" />
+    <Content Include="Media\images\34.jpg" />
+    <Content Include="Media\images\4.jpg" />
+    <Content Include="Media\images\5.jpg" />
+    <Content Include="Media\images\6.jpg" />
+    <Content Include="Media\images\7.jpg" />
+    <Content Include="Media\images\8.jpg" />
+    <Content Include="Media\images\9.jpg" />
+    <Content Include="Media\images\lamp.jpg" />
+    <Content Include="Media\images\PlaceholderPhoto.png" />
+    <Content Include="Media\images\robot.jpg" />
+    <Content Include="Media\images\Seattle.jpg" />
+    <Content Include="Media\images\trex_360width.jpg" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls %28WP7%29.csproj">
+      <Project>{6E223290-66D8-4058-99CF-501769D6A641}</Project>
+      <Name>Coding4Fun.Toolkit.Controls %28WP7%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

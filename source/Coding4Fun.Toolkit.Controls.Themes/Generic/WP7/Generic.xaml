@@ -1,0 +1,42 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ResourceDictionary.MergedDictionaries>
+        
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/ImageTile.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/RoundButton.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/RoundToggleButton.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/OpacityToggleButton.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/Tile.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Buttons/TileNotification.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ChatBubble/ChatBubble.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ChatBubble/ChatBubbleTextBox.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Colors/ColorHexagonPicker.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Colors/ColorSlider.xaml" />        
+		<ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Colors/ColorPicker.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Diagnostic/MemoryCounter.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/MetroFlow/MetroFlow.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Other/ProgressOverlay.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Other/SuperSlider.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/AboutPrompt.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/AboutPromptItem.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/AppBarPrompt.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/AppBarPromptItem.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/InputPrompt.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/MessagePrompt.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/PasswordInputPrompt.xaml" />
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Prompts/ToastPrompt.xaml" />
+
+        <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ValuePicker/TimeSpanPicker.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
