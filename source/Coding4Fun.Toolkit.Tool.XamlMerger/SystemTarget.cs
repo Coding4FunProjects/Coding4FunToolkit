@@ -3,6 +3,7 @@
 	public enum SystemTarget
 	{
 		Invalid = -1,
+		All,
 		WindowsPhone7,
 		WindowsPhone8,
 		WindowsStore,

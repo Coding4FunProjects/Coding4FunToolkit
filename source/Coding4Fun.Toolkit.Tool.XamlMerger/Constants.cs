@@ -19,5 +19,19 @@
 		public const string ThemesFolder = "Themes";
 
 		public const string FileCmdDeclare = "file:\\";
+
+		public const string TestMode = "testmode";
+
+		public const string UsingNamespace = "using";
+		public const string Xmlns = "xmlns";
+		public const string ClrNamespace = "clr-namespace";
+
+		public const string Colon = ":";
+
+		public const string StyleNode = "Style";
+		public const string KeyAttribute = "x:Key";
+		public const string TargetTypeAttribute = "TargetType";
+
+		public const string ThemeDictionariesNodeType = "ResourceDictionary.ThemeDictionaries";
 	}
 }
