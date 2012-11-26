@@ -4,6 +4,7 @@
 	{
 		Invalid = -1,
 		All,
+        WindowsPhone,
 		WindowsPhone7,
 		WindowsPhone8,
 		WindowsStore,

@@ -11,6 +11,11 @@
 		public const string WindowsPhone8 = "Windows Phone 8";
 		public const string WindowsStore = "Windows Store";
 
+        public const string WindowsPhoneEndFileName = "(" + WindowsPhone + ").xaml";
+        public const string WindowsPhone7EndFileName = "(" + WindowsPhone7 + ").xaml";
+        public const string WindowsPhone8EndFileName = "(" + WindowsPhone8 + ").xaml";
+        public const string WindowsStoreEndFileName = "(" + WindowsStore + ").xaml";
+
 		public const string GenericThemeFolder = "Generic";
 		public const string GenericThemeFile = "Generic.xaml";
 
@@ -33,5 +38,7 @@
 		public const string TargetTypeAttribute = "TargetType";
 
 		public const string ThemeDictionariesNodeType = "ResourceDictionary.ThemeDictionaries";
+
+	    public const string PhoneOnlyResource = "{StaticResource Phone";
 	}
 }
