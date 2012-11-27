@@ -15,9 +15,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
         // if phone, we suck in default values.
 		private readonly Dictionary<string, XmlNode> _resources = new Dictionary<string, XmlNode>();
 		
-		private Dictionary<string, XmlNode> _resourcesWinStoreDefault = new Dictionary<string, XmlNode>();
-		private Dictionary<string, XmlNode> _resourcesWinStoreLight = new Dictionary<string, XmlNode>();
-		private Dictionary<string, XmlNode> _resourcesWinStoreHighContrast = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XmlNode> _resourcesWinStoreDefault = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XmlNode> _resourcesWinStoreLight = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XmlNode> _resourcesWinStoreHighContrast = new Dictionary<string, XmlNode>();
 
 		private readonly Regex _nameSpaceRegEx =
 			new Regex(String.Format("{0}{2}|{1}{2}", Constants.UsingNamespace, Constants.ClrNamespace, Constants.Colon));
@@ -60,11 +60,11 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 					case Constants.StyleNode:
 						success &= ProcessStyle(node, isGenericFile);
 						break;
-					case Constants.ThemeDictionariesNodeType:
-						// handle this properly.
+					case Constants.ThemeDictionariesNode:
+                        success &= ProcessThemedDictionary(node, isGenericFile);
 						break;
 					default:
-                        success &= ProcessResources(node, isGenericFile);
+                        success &= ProcessResources(node, _resources, isGenericFile);
 						break;
 				}
 			}
@@ -113,17 +113,73 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return true;
 		}
 
-		private bool ProcessResources(XmlNode node, bool isGenericFile)
+        private bool ProcessThemedDictionary(XmlNode root, bool isGenericFile)
+	    {
+            var success = true;
+
+            var isWinStore = (_target == SystemTarget.WindowsStore);
+
+            foreach (XmlNode node in root.ChildNodes)
+            {
+                switch (node.Attributes[Constants.KeyAttribute].Value)
+                {
+                    case Constants.DefaultTheme:
+                        var store = isWinStore ? _resourcesWinStoreDefault : _resources;
+
+                        success &= ProcessThemedResources(node, store, isGenericFile);
+                        break;
+                     case Constants.LightTheme:
+                        if (_target != SystemTarget.WindowsStore)
+                            continue;
+
+                        success &= ProcessThemedResources(node, _resourcesWinStoreLight, isGenericFile);
+                        break;
+                    
+                    case Constants.HighContrastTheme:
+                        if (_target != SystemTarget.WindowsStore)
+                            continue;
+
+                        success &= ProcessThemedResources(node, _resourcesWinStoreHighContrast, isGenericFile);
+                        break;
+                   
+                }
+            }
+
+            if (isWinStore)
+            {
+                if (_resourcesWinStoreDefault.Count != _resourcesWinStoreLight.Count ||
+                    _resourcesWinStoreDefault.Count != _resourcesWinStoreHighContrast.Count)
+                {
+                    WriteError("Themed resources have a different quantity");
+
+                    success = false;
+                }
+            }
+
+            return success;
+	    }
+
+	    private bool ProcessThemedResources(XmlNode root, Dictionary<string, XmlNode> store, bool isGenericFile)
+	    {
+            var success = true;
+
+	        foreach (XmlNode node in root.ChildNodes)
+	        {
+                success &= ProcessResources(node, store, isGenericFile);
+	        }
+
+	        return success;
+	    }
+
+	    private bool ProcessResources(XmlNode node, Dictionary<string, XmlNode> store, bool isGenericFile)
 		{
             if (VerifyIsGeneric(node, isGenericFile))
                 return false;
 
 		    var key = node.Attributes[Constants.KeyAttribute].Value;
 
-            return AddToDictionary(_resources, key, node);
+            return AddToDictionary(store, key, node);
 		}
-
-	    
 
 	    private bool ProcessStyle(XmlNode node, bool isGenericFile)
 		{
@@ -151,19 +207,37 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
         private bool VerifyIsGeneric(XmlNode node, bool isGenericFile)
         {
-            if (isGenericFile && node.InnerText.Contains(Constants.PhoneOnlyResource))
+            if (isGenericFile && node.OuterXml.Contains(Constants.PhoneOnlyResource))
             {
-                WriteError("The generic file contains phone only static resource");
 
-                return false;
+                var key = "";
+
+                try
+                {
+                    key = node.Attributes[Constants.KeyAttribute].Value;
+                }
+                catch { }
+
+                if (string.IsNullOrEmpty(key))
+                {
+                    try
+                    {
+                        key = node.Attributes[Constants.TargetTypeAttribute].Value;
+                    }
+                    catch { }
+                }
+                
+                WriteError("Phone only static resource.  Key: " + key);
+
+                return true;
             }
 
-            return true;
+            return false;
         }
 
 		private void WriteError(string error)
 		{
-			Debug.WriteLine(
+			Console.WriteLine(
 				_currentFile + Environment.NewLine +
 				error + Environment.NewLine);
 		}

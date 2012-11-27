@@ -33,12 +33,17 @@
 
 		public const string Colon = ":";
 
-		public const string StyleNode = "Style";
 		public const string KeyAttribute = "x:Key";
 		public const string TargetTypeAttribute = "TargetType";
 
-		public const string ThemeDictionariesNodeType = "ResourceDictionary.ThemeDictionaries";
+        public const string StyleNode = "Style";
+	    public const string ResourceDictionaryNode = "ResourceDictionary";
+		public const string ThemeDictionariesNode = "ResourceDictionary.ThemeDictionaries";
 
 	    public const string PhoneOnlyResource = "{StaticResource Phone";
+
+        public const string DefaultTheme = "Default";
+        public const string LightTheme = "Light";
+        public const string HighContrastTheme = "HighContrast";
 	}
 }

@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Coding4Fun.Toolkit.Tool.XamlMerger
 {
@@ -15,12 +7,10 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 	{
 		private static readonly char[] ArgDelimiters = new[] {'-', '/', '\\'};
 
-		
-
 		static int Main(string[] args)
 		{
 			var targetPlatformArg = "";
-			var successfulMerge = false;
+			var successfulMerge = true;
 			var isTestMode = false;
 
 			if (args.Length > 0)
@@ -32,11 +22,19 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);
 
+		    targetPlatform = SystemTarget.WindowsStore;
 			var engine = new Merger(targetPlatform);
-			engine.ProcessFile("WinPhone.xaml");
+            successfulMerge &= engine.ProcessFile("WinPhone.xaml");
 
-			Console.ReadLine();
-			return successfulMerge ? 0 : -1;
+		    if (!successfulMerge)
+		    {
+		        Console.WriteLine("There are errors, please fix");
+                Console.WriteLine("Press any key to exit");
+
+		        Console.Read();
+		    }
+
+		    return successfulMerge ? 0 : -1;
 		}
 
 		
