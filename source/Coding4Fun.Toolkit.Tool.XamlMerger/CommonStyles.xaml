@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls"
+    xmlns:converters="clr-namespace:Coding4Fun.Toolkit.Converters">
+
+    <SolidColorBrush x:Key="FlyoutBorderBrush" Value="{StaticResource ContrastBackgroundBrush}" />
+	<SolidColorBrush x:Key="FlyoutBackgroundBrush">#FFFFFFFF</SolidColorBrush>
+	<x:String x:Key="SettingsFlyoutBackButtonGlyph">&#xE0BA;</x:String>
+	
+	<converters:BrushToColorConverter x:Key="BrushToColor" />
+	<converters:ColorBrightnessConverter x:Key="ColorBrightness" />
+	<converters:ColorContrastConverter x:Key="ColorContrast" />
+	
+	<x:String x:Key="SettingsFlyoutHeaderTextDefault">Application Setting</x:String>
+</ResourceDictionary>

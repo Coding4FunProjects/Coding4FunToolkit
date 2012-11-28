@@ -4,6 +4,7 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls"
     xmlns:converters="clr-namespace:Coding4Fun.Toolkit.Converters">
 
+    <!--
     <SolidColorBrush x:Key="FlyoutBorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}" />
 	<SolidColorBrush x:Key="FlyoutBackgroundBrush">#FFFFFFFF</SolidColorBrush>
 	<x:String x:Key="SettingsFlyoutBackButtonGlyph">&#xE0BA;</x:String>
@@ -13,8 +14,9 @@
 	<converters:ColorContrastConverter x:Key="ColorContrast" />
 	
 	<x:String x:Key="SettingsFlyoutHeaderTextDefault">Application Setting</x:String>
+    -->
 
-	<Style TargetType="local:RoundButton">
+	<Style TargetType="local:RoundButtonPhone">
 		<Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
 		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>

@@ -37,12 +37,73 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		public bool Process()
 		{
 			var di = new DirectoryInfo(_rootFolderPath);
-			var files = di.GetFiles("*.xaml", SearchOption.AllDirectories);
+			var files = new List<FileInfo>(di.GetFiles("*.xaml", SearchOption.AllDirectories).AsEnumerable());
 
-			return files.Aggregate(true, (current, file) => current & ProcessFile(file.FullName));
+            // purging non-platform files
+            switch (_target)
+            {
+                case SystemTarget.WindowsPhone7:
+                    UpdateFileList(files, Constants.WindowsStoreEndFileName);
+                    UpdateFileList(files, Constants.WindowsPhone8EndFileName);
+                    break;
+                case SystemTarget.WindowsPhone8:
+                    UpdateFileList(files, Constants.WindowsStoreEndFileName);
+                    UpdateFileList(files, Constants.WindowsPhone7EndFileName);
+                    break;
+                case SystemTarget.WindowsStore:
+                    UpdateFileList(files, Constants.WindowsPhoneEndFileName);
+                    UpdateFileList(files, Constants.WindowsPhone7EndFileName);
+                    UpdateFileList(files, Constants.WindowsPhone8EndFileName);
+                    break;
+            }
+
+            var success = true;
+            success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleThemeXaml);
+
+            switch (_target)
+            {
+                case SystemTarget.WindowsPhone7:
+                    success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinPhoneThemeXaml);
+                    success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinPhone7ThemeXaml);
+                    break;
+                case SystemTarget.WindowsPhone8:
+                    success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinPhoneThemeXaml);
+                    success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinPhone8ThemeXaml);
+                    break;
+                case SystemTarget.WindowsStore:
+                    success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinStoreThemeXaml);
+                    break;
+            }
+
+            
+
+		    success &= files.Aggregate(true, (current, file) => current & ProcessFile(file.FullName));
+
+		    return success;
 		}
 
-		public bool ProcessFile(string fileName)
+	    private bool ProcessAndUpdateFileListForCommonStyle(List<FileInfo> files, string targetFile)
+	    {
+            var success = true;
+
+            var commonStyles = files.FirstOrDefault(fi => fi.Name.ToLower() == targetFile);
+
+	        if (commonStyles != null)
+	        {
+	            success &= ProcessFile(commonStyles.FullName);
+
+	            files.Remove(commonStyles);
+	        }
+
+	        return success;
+	    }
+
+        private void UpdateFileList(List<FileInfo> files, string targetToRemove)
+        {
+            files.RemoveAll(file => files.All(fi => file.Name.ToLower().EndsWith(targetToRemove, true, null)));
+        }
+
+	    public bool ProcessFile(string fileName)
 		{
 			var doc = new XmlDocument();
 			var success = true;
@@ -62,6 +123,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			foreach (XmlNode node in rootNode.ChildNodes)
 			{
+			    if (node.NodeType != XmlNodeType.Element)
+			        continue;
+
 				switch (node.Name)
 				{
 					case Constants.StyleNode:
@@ -168,14 +232,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 	    private bool ProcessThemedResources(XmlNode root, Dictionary<string, XmlNode> store, bool isGenericFile)
 	    {
-            var success = true;
-
-	        foreach (XmlNode node in root.ChildNodes)
-	        {
-                success &= ProcessResources(node, store, isGenericFile);
-	        }
-
-	        return success;
+	        return root.ChildNodes.Cast<XmlNode>().Aggregate(true, (current, node) => current & ProcessResources(node, store, isGenericFile));
 	    }
 
 	    private bool ProcessResources(XmlNode node, Dictionary<string, XmlNode> store, bool isGenericFile)
@@ -262,7 +319,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 	    private void HasTargetedStyleError(XmlNode node, string platform)
 	    {
 	        var key = "";
-
+            
 	        try
 	        {
 	            key = node.Attributes[Constants.KeyAttribute].Value;
