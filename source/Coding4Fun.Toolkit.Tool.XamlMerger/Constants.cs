@@ -43,7 +43,8 @@
 	    public const string ResourceDictionaryNode = "ResourceDictionary";
 		public const string ThemeDictionariesNode = "ResourceDictionary.ThemeDictionaries";
 
-	    public const string PhoneOnlyResource = "{StaticResource Phone";
+	    public const string WinPhoneOnlyResource = "{StaticResource Phone";
+	    public const string WinStoreOnlyResource = "{StaticResource System";
 
         public const string DefaultTheme = "Default";
         public const string LightTheme = "Light";

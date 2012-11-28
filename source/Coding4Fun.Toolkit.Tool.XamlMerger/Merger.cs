@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -20,12 +19,11 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		private readonly Dictionary<string, XmlNode> _resourcesWinStoreLight = new Dictionary<string, XmlNode>();
 		private readonly Dictionary<string, XmlNode> _resourcesWinStoreHighContrast = new Dictionary<string, XmlNode>();
 
-		private readonly Regex _nameSpaceRegEx =
-			new Regex(String.Format("{0}{2}|{1}{2}", Constants.UsingNamespace, Constants.ClrNamespace, Constants.Colon));
+		private readonly Regex _nameSpaceRegEx = new Regex(String.Format("{0}{2}|{1}{2}", Constants.UsingNamespace, Constants.ClrNamespace, Constants.Colon));
 
 		private readonly SystemTarget _target;
-		private string _currentFile;
-		private string _rootFolderPath;
+		private readonly string _rootFolderPath;
+        private string _currentFile;
 
 		public Merger(SystemTarget target, bool isTestMode)
 		{
@@ -216,42 +214,85 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
         private bool VerifyIsGeneric(XmlNode node, bool isGenericFile)
         {
-            if (isGenericFile && node.OuterXml.Contains(Constants.PhoneOnlyResource))
+            var hasWinPhoneStyle = node.OuterXml.Contains(Constants.WinPhoneOnlyResource);
+            var hasWinStoreStyle = node.OuterXml.Contains(Constants.WinStoreOnlyResource);
+
+            if (isGenericFile)
             {
-
-                var key = "";
-
-                try
+                if (hasWinPhoneStyle)
                 {
-                    key = node.Attributes[Constants.KeyAttribute].Value;
+                    HasTargetedStyleError(node, "Phone");
+
+                    return true;
                 }
-                catch { }
 
-                if (string.IsNullOrEmpty(key))
+                if(hasWinStoreStyle)
                 {
-                    try
+                     HasTargetedStyleError(node, "Store");
+
+                    return true;
+                }
+
+            }
+            else
+            {
+                if (_target == SystemTarget.WindowsStore)
+                {
+                    if (hasWinPhoneStyle)
                     {
-                        key = node.Attributes[Constants.TargetTypeAttribute].Value;
-                    }
-                    catch { }
-                }
-                
-                WriteError("Phone only static resource.  Key: " + key);
+                        HasTargetedStyleError(node, "Phone");
 
-                return true;
+                        return true;
+                    }
+                }
+                else // can assume WinPhone at this point
+                {
+                    if (hasWinStoreStyle)
+                    {
+                        HasTargetedStyleError(node, "Store");
+
+                        return true;
+                    }
+                }
             }
 
             return false;
         }
 
-		private void WriteError(string error)
+	    private void HasTargetedStyleError(XmlNode node, string platform)
+	    {
+	        var key = "";
+
+	        try
+	        {
+	            key = node.Attributes[Constants.KeyAttribute].Value;
+	        }
+	        catch
+	        {
+	        }
+
+	        if (string.IsNullOrEmpty(key))
+	        {
+	            try
+	            {
+	                key = node.Attributes[Constants.TargetTypeAttribute].Value;
+	            }
+	            catch
+	            {
+	            }
+	        }
+
+	        WriteError(string.Format("{0} only static resource.  Key: {1}", platform, key));
+	    }
+
+	    private void WriteError(string error)
 		{
 			Console.WriteLine(
 				_currentFile + Environment.NewLine +
 				error + Environment.NewLine);
 		}
 
-	    private string GetFileTypeByTarget(SystemTarget target)
+	    private static string GetFileTypeByTarget(SystemTarget target)
 	    {
 	        switch (target)
 	        {
