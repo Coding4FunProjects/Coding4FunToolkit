@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -24,15 +25,23 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		private readonly SystemTarget _target;
 		private string _currentFile;
+		private string _rootFolderPath;
 
-		public Merger(SystemTarget target)
+		public Merger(SystemTarget target, bool isTestMode)
 		{
 			_target = target;
+
+			_rootFolderPath = !isTestMode ? 
+				FilePaths.GenerateGenericFilePath(_target) :
+				FilePaths.GetExecutingAssemblyFilePath();
 		}
 
-		public bool ProcessPath()
+		public bool Process()
 		{
-			return true;
+			var di = new DirectoryInfo(_rootFolderPath);
+			var files = di.GetFiles("*.xaml", SearchOption.AllDirectories);
+
+			return files.Aggregate(true, (current, file) => current & ProcessFile(file.FullName));
 		}
 
 		public bool ProcessFile(string fileName)

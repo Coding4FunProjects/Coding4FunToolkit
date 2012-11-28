@@ -21,10 +21,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			}
 
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);
+		    var engine = new Merger(targetPlatform, isTestMode);
 
-		    targetPlatform = SystemTarget.WindowsStore;
-			var engine = new Merger(targetPlatform);
-            successfulMerge &= engine.ProcessFile("WinPhone.xaml");
+            successfulMerge &= engine.Process();
 
 		    if (!successfulMerge)
 		    {
@@ -35,17 +34,6 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		    }
 
 		    return successfulMerge ? 0 : -1;
-		}
-
-		
-
-		private static bool ProcessFiles(SystemTarget target)
-		{
-			string path = FilePaths.GenerateGenericFilePath(target);
-
-			Console.WriteLine(path);
-
-			return true;
 		}
 	}
 }
