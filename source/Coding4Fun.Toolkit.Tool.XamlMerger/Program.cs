@@ -5,7 +5,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 {
 	class Program
 	{
-		private static readonly char[] ArgDelimiters = new[] {'-', '/', '\\'};
+		
 
 		static int Main(string[] args)
 		{
@@ -15,9 +15,10 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			if (args.Length > 0)
 			{
-				targetPlatformArg = args[0].TrimStart(ArgDelimiters);
+			    targetPlatformArg = Constants.TargetPlatformArgChoices.FirstOrDefault(
+                    target => args.Any(s => target == s.TrimStart(Constants.ArgDelimiters)));
 
-				isTestMode = args.Any(s => s.ToLower().TrimStart(ArgDelimiters) == Constants.TestMode);
+                isTestMode = args.Any(s => s.ToLower().TrimStart(Constants.ArgDelimiters) == Constants.TestMode);
 			}
 
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);

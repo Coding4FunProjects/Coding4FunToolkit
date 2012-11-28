@@ -2,6 +2,9 @@
 {
 	public class Constants
 	{
+        public static readonly char[] ArgDelimiters = new[] { '-', '/', '\\' };
+        public static readonly string[] TargetPlatformArgChoices = new[] { WindowsPhone7Arg, WindowsPhone8Arg, WindowsStoreArg };
+
 		public const string WindowsPhone7Arg = "wp7";
 		public const string WindowsPhone8Arg = "wp8";
 		public const string WindowsStoreArg = "winstore";

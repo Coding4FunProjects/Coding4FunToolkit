@@ -14,6 +14,9 @@
 	{
 		public static SystemTarget GetSystemTargetFromArgument(string value)
 		{
+		    if (value == null)
+		        value = "";
+
 			switch (value.ToLower())
 			{
 				case "":
