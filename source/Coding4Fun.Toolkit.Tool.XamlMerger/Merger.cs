@@ -68,15 +68,15 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			var root = new XElement(defaultNameSpace + Constants.ResourceDictionaryNode);
 			foreach (var ns in nameSpaces)
-			{
 				root.Add(ns);
-			}
 
 			foreach (var resource in _resources)
-			{
-				//var item = resource.Value.ToXElement();
 				root.Add(resource.Value);
-			}
+
+			// TODO: WinStore Resources
+
+			foreach (var style in _styles)
+				root.Add(style.Value);
 
 			return root.ToString();
 		}
