@@ -4,7 +4,7 @@
 	{
 		Invalid = -1,
 		All,
-        WindowsPhone,
+		WindowsPhone,
 		WindowsPhone7,
 		WindowsPhone8,
 		WindowsStore,
@@ -14,8 +14,8 @@
 	{
 		public static SystemTarget GetSystemTargetFromArgument(string value)
 		{
-		    if (value == null)
-		        value = "";
+			if (value == null)
+				value = "";
 
 			switch (value.ToLower())
 			{

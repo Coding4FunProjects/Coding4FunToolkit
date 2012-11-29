@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Coding4Fun.Toolkit.Tool.XamlMerger
 {
-	class Program
+	internal class Program
 	{
-		static int Main(string[] args)
+		private static int Main(string[] args)
 		{
 			var targetPlatformArg = "";
 			var successfulMerge = true;
@@ -13,28 +13,28 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			if (args.Length > 0)
 			{
-			    targetPlatformArg = Constants.TargetPlatformArgChoices.FirstOrDefault(
-                    target => args.Any(s => target == s.TrimStart(Constants.ArgDelimiters)));
+				targetPlatformArg = Constants.TargetPlatformArgChoices.FirstOrDefault(
+					target => args.Any(s => target == s.TrimStart(Constants.ArgDelimiters)));
 
-                isTestMode = args.Any(s => s.ToLower().TrimStart(Constants.ArgDelimiters) == Constants.TestMode);
+				isTestMode = args.Any(s => s.ToLower().TrimStart(Constants.ArgDelimiters) == Constants.TestMode);
 			}
 
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);
-		    var engine = new Merger(targetPlatform, isTestMode);
+			var engine = new Merger(targetPlatform, isTestMode);
 
-            successfulMerge &= engine.ProcessXamlFiles();
+			successfulMerge &= engine.ProcessXamlFiles();
 
-		    if (!successfulMerge)
-		    {
-		        Console.WriteLine("There are errors, please fix");
-                Console.WriteLine("Press any key to exit");
+			if (!successfulMerge)
+			{
+				Console.WriteLine("There are errors, please fix");
+				Console.WriteLine("Press any key to exit");
 
-		        Console.Read();
-		    }
+				Console.Read();
+			}
 
-		    var returnVal = engine.GenerateGenericXamlFile();
+			var returnVal = engine.GenerateGenericXamlFile();
 
-		    return successfulMerge ? 0 : -1;
+			return successfulMerge ? 0 : -1;
 		}
 	}
 }

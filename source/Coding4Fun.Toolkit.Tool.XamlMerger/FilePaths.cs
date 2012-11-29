@@ -34,6 +34,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		}
 
 		private static string _baseFolderPath;
+
 		public static string BaseFolderPath
 		{
 			get
