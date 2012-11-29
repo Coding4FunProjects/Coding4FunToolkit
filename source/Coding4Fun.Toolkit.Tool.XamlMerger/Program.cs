@@ -5,8 +5,6 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 {
 	class Program
 	{
-		
-
 		static int Main(string[] args)
 		{
 			var targetPlatformArg = "";
@@ -34,7 +32,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		        Console.Read();
 		    }
 
-		    engine.GenerateGenericXamlFile();
+		    var returnVal = engine.GenerateGenericXamlFile();
 
 		    return successfulMerge ? 0 : -1;
 		}

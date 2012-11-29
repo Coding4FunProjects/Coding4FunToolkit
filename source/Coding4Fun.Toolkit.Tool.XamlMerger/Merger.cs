@@ -80,9 +80,15 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 	            root.Add(ns);
 	        }
 
-            return new XDocument(root).ToString();
+	        foreach (var resource in _resources)
+	        {
+	            var item = resource.Value.ToXElement();
+                root.Add(item); 
+	        }
+            
+	        return root.ToString(SaveOptions.OmitDuplicateNamespaces);
 	    }
-
+        
 	    public bool ProcessXamlFiles()
 		{
 			var di = new DirectoryInfo(_rootFolderPath);
