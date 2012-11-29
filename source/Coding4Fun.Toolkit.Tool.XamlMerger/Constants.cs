@@ -44,6 +44,7 @@
 		public const string UsingNamespace = "using";
 		public const string Xmlns = "xmlns";
 		public const string ClrNamespace = "clr-namespace";
+        public const string Http = "http://";
 
 		public const string KeyAttribute = "x:Key";
 		public const string TargetTypeAttribute = "TargetType";

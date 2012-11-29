@@ -46,6 +46,7 @@
     <Compile Include="Merger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtentions.cs" />
     <Compile Include="SystemTarget.cs" />
   </ItemGroup>
   <ItemGroup>

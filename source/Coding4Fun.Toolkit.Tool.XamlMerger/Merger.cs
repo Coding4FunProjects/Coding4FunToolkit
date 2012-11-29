@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Coding4Fun.Toolkit.Tool.XamlMerger
 {
@@ -34,7 +35,55 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				FilePaths.GetExecutingAssemblyFilePath();
 		}
 
-		public bool Process()
+	    public string GenerateGenericXamlFile()
+	    {
+            var nameSpace = "";
+            switch (_target)
+            {
+                case SystemTarget.WindowsPhone7:
+                case SystemTarget.WindowsPhone8:
+                    nameSpace = Constants.ClrNamespace;
+                    break;
+                case SystemTarget.WindowsStore:
+                    nameSpace = Constants.UsingNamespace;
+                    break;
+            }
+
+	        var nameSpaces = new List<XAttribute>();
+	        XNamespace defaultNameSpace = "";
+
+	        foreach (var ns in _nameSpaces)
+	        {
+	            var key = ns.Key;
+
+	            if (key.StartsWith(Constants.Xmlns))
+	            {
+	                key = key.TrimStart(Constants.Xmlns).TrimStart(Constants.Colon);
+	            }
+
+	            var value = ns.Value.StartsWith(Constants.Http, StringComparison.InvariantCultureIgnoreCase) ? ns.Value :  string.Format("{0}{1}{2}", nameSpace, Constants.Colon, ns.Value);
+
+	            if (string.IsNullOrEmpty(key))
+	            {
+                    defaultNameSpace = value;
+                    nameSpaces.Add(new XAttribute(Constants.Xmlns, value));
+	            }
+	            else
+	            {
+                    nameSpaces.Add(new XAttribute(XNamespace.Xmlns + key, value));
+	            }
+	        }
+	        
+            var root = new XElement(defaultNameSpace + Constants.ResourceDictionaryNode);
+	        foreach (var ns in nameSpaces)
+	        {
+	            root.Add(ns);
+	        }
+
+            return new XDocument(root).ToString();
+	    }
+
+	    public bool ProcessXamlFiles()
 		{
 			var di = new DirectoryInfo(_rootFolderPath);
 			var files = new List<FileInfo>(di.GetFiles("*.xaml", SearchOption.AllDirectories).AsEnumerable());
@@ -74,8 +123,6 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
                     success &= ProcessAndUpdateFileListForCommonStyle(files, Constants.CommonStyleWinStoreThemeXaml);
                     break;
             }
-
-            
 
 		    success &= files.Aggregate(true, (current, file) => current & ProcessFile(file.FullName));
 

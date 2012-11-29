@@ -24,7 +24,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);
 		    var engine = new Merger(targetPlatform, isTestMode);
 
-            successfulMerge &= engine.Process();
+            successfulMerge &= engine.ProcessXamlFiles();
 
 		    if (!successfulMerge)
 		    {
@@ -33,6 +33,8 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		        Console.Read();
 		    }
+
+		    engine.GenerateGenericXamlFile();
 
 		    return successfulMerge ? 0 : -1;
 		}
