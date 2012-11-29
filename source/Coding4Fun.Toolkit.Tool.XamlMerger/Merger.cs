@@ -73,12 +73,37 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			foreach (var resource in _resources)
 				root.Add(resource.Value);
 
-			// TODO: WinStore Resources
+			if (_target == SystemTarget.WindowsStore)
+			{
+				var rootThemeNode = new XElement(defaultNameSpace + Constants.ThemeDictionariesNode);
+				root.Add(rootThemeNode);
+
+				CreateThemedResourceNode(_resourcesWinStoreDefault, Constants.DefaultTheme, rootThemeNode, defaultNameSpace);
+				CreateThemedResourceNode(_resourcesWinStoreLight, Constants.LightTheme, rootThemeNode, defaultNameSpace);
+				CreateThemedResourceNode(_resourcesWinStoreHighContrast, Constants.HighContrastTheme, rootThemeNode, defaultNameSpace);
+			}
 
 			foreach (var style in _styles)
 				root.Add(style.Value);
 
 			return root.ToString();
+		}
+
+		private void CreateThemedResourceNode(
+			Dictionary<string, XElement> resources, string themeKey,
+			XElement rootThemeNode, XNamespace defaultNameSpace)
+		{
+			var keyNamespace = GetNamespaceOfKeyNamespace(rootThemeNode);
+
+			var themeNode = new XElement(defaultNameSpace + Constants.ResourceDictionaryNode);
+			themeNode.Add(new XAttribute(keyNamespace + GetKeyNamespaceValue(), themeKey));
+
+			foreach (var resource in resources)
+			{
+				themeNode.Add(resource.Value);
+			}
+
+			rootThemeNode.Add(themeNode);
 		}
 
 		private string GetValidNameSpaceDeclareStyle()
@@ -329,10 +354,21 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		private static string GetKeyFromNode(XElement node)
 		{
-			var keyValue = Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[1];
-			var ns = node.GetNamespaceOfPrefix(Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[0]);
+			var keyValue = GetKeyNamespaceValue();
+			var ns = GetNamespaceOfKeyNamespace(node);
 			var key = node.Attribute(ns + keyValue).Value;
+
 			return key;
+		}
+
+		private static XNamespace GetNamespaceOfKeyNamespace(XElement node)
+		{
+			return node.GetNamespaceOfPrefix(Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[0]);
+		}
+
+		private static string GetKeyNamespaceValue()
+		{
+			return Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[1];
 		}
 
 		private bool ProcessStyle(XElement node, bool isGenericFile)
