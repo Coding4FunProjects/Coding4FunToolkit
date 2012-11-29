@@ -11,14 +11,14 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 	public class Merger
 	{
 		private readonly Dictionary<string, string> _nameSpaces = new Dictionary<string, string>();
-		private readonly Dictionary<string, XmlNode> _styles = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XElement> _styles = new Dictionary<string, XElement>();
 
 		// if phone, we suck in default values.
-		private readonly Dictionary<string, XmlNode> _resources = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XElement> _resources = new Dictionary<string, XElement>();
 
-		private readonly Dictionary<string, XmlNode> _resourcesWinStoreDefault = new Dictionary<string, XmlNode>();
-		private readonly Dictionary<string, XmlNode> _resourcesWinStoreLight = new Dictionary<string, XmlNode>();
-		private readonly Dictionary<string, XmlNode> _resourcesWinStoreHighContrast = new Dictionary<string, XmlNode>();
+		private readonly Dictionary<string, XElement> _resourcesWinStoreDefault = new Dictionary<string, XElement>();
+		private readonly Dictionary<string, XElement> _resourcesWinStoreLight = new Dictionary<string, XElement>();
+		private readonly Dictionary<string, XElement> _resourcesWinStoreHighContrast = new Dictionary<string, XElement>();
 
 		private readonly Regex _nameSpaceRegEx =
 			new Regex(String.Format("{0}{2}|{1}{2}", Constants.UsingNamespace, Constants.ClrNamespace, Constants.Colon));
@@ -38,18 +38,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		public string GenerateGenericXamlFile()
 		{
-			var nameSpace = "";
-			switch (_target)
-			{
-				case SystemTarget.WindowsPhone7:
-				case SystemTarget.WindowsPhone8:
-					nameSpace = Constants.ClrNamespace;
-					break;
-				case SystemTarget.WindowsStore:
-					nameSpace = Constants.UsingNamespace;
-					break;
-			}
-
+			var nameSpace = GetValidNameSpaceDeclareStyle();
 			var nameSpaces = new List<XAttribute>();
 			XNamespace defaultNameSpace = "";
 
@@ -85,11 +74,46 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 			foreach (var resource in _resources)
 			{
-				var item = resource.Value.ToXElement();
-				root.Add(item);
+				//var item = resource.Value.ToXElement();
+				root.Add(resource.Value);
 			}
 
-			return root.ToString(SaveOptions.OmitDuplicateNamespaces);
+			return root.ToString();
+		}
+
+		private string GetValidNameSpaceDeclareStyle()
+		{
+			var nameSpace = "";
+			switch (_target)
+			{
+				case SystemTarget.WindowsPhone7:
+				case SystemTarget.WindowsPhone8:
+					nameSpace = Constants.ClrNamespace;
+					break;
+				case SystemTarget.WindowsStore:
+					nameSpace = Constants.UsingNamespace;
+					break;
+			}
+
+			return nameSpace;
+		}
+
+		private string GetInvalidNamespaceDeclare()
+		{
+			var nameSpace = "";
+
+			switch (_target)
+			{
+				case SystemTarget.WindowsPhone7:
+				case SystemTarget.WindowsPhone8:
+					nameSpace = Constants.UsingNamespace;
+					break;
+				case SystemTarget.WindowsStore:
+					nameSpace = Constants.ClrNamespace;
+					break;
+			}
+
+			return nameSpace;
 		}
 
 		public bool ProcessXamlFiles()
@@ -161,7 +185,6 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		public bool ProcessFile(string fileName)
 		{
-			var doc = new XmlDocument();
 			var success = true;
 
 			_currentFile = fileName;
@@ -171,42 +194,45 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			if (_target == SystemTarget.WindowsPhone7 || _target == SystemTarget.WindowsPhone8)
 				isGenericFile &= !fileName.EndsWith(GetFileTypeByTarget(SystemTarget.WindowsPhone), true, null);
 
-			doc.LoadXml(File.ReadAllText(fileName));
 
-			var rootNode = doc.FirstChild;
+			var data = File.ReadAllText(fileName);
+
+
+			data = data.Replace(GetInvalidNamespaceDeclare(), GetValidNameSpaceDeclareStyle());
+
+			var doc = XDocument.Parse(data);
+			var rootNode = doc.Root;
+			
 
 			success &= ProcessNameSpaces(rootNode);
 
-			foreach (XmlNode node in rootNode.ChildNodes)
+			if (rootNode != null)
 			{
-				if (node.NodeType != XmlNodeType.Element)
-					continue;
-
-				switch (node.Name)
+				foreach (var node in rootNode.Elements().Where(node => node.NodeType == XmlNodeType.Element))
 				{
-					case Constants.StyleNode:
-						success &= ProcessStyle(node, isGenericFile);
-						break;
-					case Constants.ThemeDictionariesNode:
-						success &= ProcessThemedDictionary(node, isGenericFile);
-						break;
-					default:
-						success &= ProcessResources(node, _resources, isGenericFile);
-						break;
+					switch (node.Name.LocalName)
+					{
+						case Constants.StyleNode:
+							success &= ProcessStyle(node, isGenericFile);
+							break;
+						case Constants.ThemeDictionariesNode:
+							success &= ProcessThemedDictionary(node, isGenericFile);
+							break;
+						default:
+							success &= ProcessResources(node, _resources, isGenericFile);
+							break;
+					}
 				}
 			}
 
 			return success;
 		}
 
-		private bool ProcessNameSpaces(XmlNode node)
+		private bool ProcessNameSpaces(XElement node)
 		{
-			if (node.Attributes == null)
-				return false;
-
-			foreach (XmlAttribute attribute in node.Attributes)
+			foreach (var attribute in node.Attributes())
 			{
-				var key = attribute.Name;
+				var key = attribute.Name.LocalName;
 				var value = attribute.Value;
 
 				value = _nameSpaceRegEx.Replace(value, String.Empty);
@@ -240,15 +266,15 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return true;
 		}
 
-		private bool ProcessThemedDictionary(XmlNode root, bool isGenericFile)
+		private bool ProcessThemedDictionary(XElement root, bool isGenericFile)
 		{
 			var success = true;
 
 			var isWinStore = (_target == SystemTarget.WindowsStore);
 
-			foreach (XmlNode node in root.ChildNodes)
+			foreach (var node in root.Elements())
 			{
-				switch (node.Attributes[Constants.KeyAttribute].Value)
+				switch (GetKeyFromNode(node))
 				{
 					case Constants.DefaultTheme:
 						var store = isWinStore ? _resourcesWinStoreDefault : _resources;
@@ -286,33 +312,40 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return success;
 		}
 
-		private bool ProcessThemedResources(XmlNode root, Dictionary<string, XmlNode> store, bool isGenericFile)
+		private bool ProcessThemedResources(XElement root, Dictionary<string, XElement> store, bool isGenericFile)
 		{
-			return root.ChildNodes.Cast<XmlNode>()
-			           .Aggregate(true, (current, node) => current & ProcessResources(node, store, isGenericFile));
+			return root.Elements().Aggregate(true, (current, node) => current & ProcessResources(node, store, isGenericFile));
 		}
 
-		private bool ProcessResources(XmlNode node, Dictionary<string, XmlNode> store, bool isGenericFile)
+		private bool ProcessResources(XElement node, Dictionary<string, XElement> store, bool isGenericFile)
 		{
 			if (VerifyIsGeneric(node, isGenericFile))
 				return false;
 
-			var key = node.Attributes[Constants.KeyAttribute].Value;
+			var key = GetKeyFromNode(node);
 
 			return AddToDictionary(store, key, node);
 		}
 
-		private bool ProcessStyle(XmlNode node, bool isGenericFile)
+		private static string GetKeyFromNode(XElement node)
+		{
+			var keyValue = Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[1];
+			var ns = node.GetNamespaceOfPrefix(Constants.KeyAttribute.Split(Constants.Colon.ToCharArray())[0]);
+			var key = node.Attribute(ns + keyValue).Value;
+			return key;
+		}
+
+		private bool ProcessStyle(XElement node, bool isGenericFile)
 		{
 			if (VerifyIsGeneric(node, isGenericFile))
 				return false;
 
-			var key = node.Attributes[Constants.TargetTypeAttribute].Value;
+			var key = node.Attribute(Constants.TargetTypeAttribute).Value;
 
 			return AddToDictionary(_styles, key, node);
 		}
 
-		private bool AddToDictionary(IDictionary<string, XmlNode> target, string key, XmlNode value)
+		private bool AddToDictionary(IDictionary<string, XElement> target, string key, XElement value)
 		{
 			if (target.ContainsKey(key))
 			{
@@ -326,10 +359,10 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return true;
 		}
 
-		private bool VerifyIsGeneric(XmlNode node, bool isGenericFile)
+		private bool VerifyIsGeneric(XElement node, bool isGenericFile)
 		{
-			var hasWinPhoneStyle = node.OuterXml.Contains(Constants.WinPhoneOnlyResource);
-			var hasWinStoreStyle = node.OuterXml.Contains(Constants.WinStoreOnlyResource);
+			var hasWinPhoneStyle = node.ToString().Contains(Constants.WinPhoneOnlyResource);
+			var hasWinStoreStyle = node.ToString().Contains(Constants.WinStoreOnlyResource);
 
 			if (isGenericFile)
 			{
@@ -373,13 +406,13 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return false;
 		}
 
-		private void HasTargetedStyleError(XmlNode node, string platform)
+		private void HasTargetedStyleError(XElement node, string platform)
 		{
 			var key = "";
 
 			try
 			{
-				key = node.Attributes[Constants.KeyAttribute].Value;
+				key = node.Attribute(Constants.KeyAttribute).Value;
 			}
 			catch
 			{
@@ -389,7 +422,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			{
 				try
 				{
-					key = node.Attributes[Constants.TargetTypeAttribute].Value;
+					key = node.Attribute(Constants.TargetTypeAttribute).Value;
 				}
 				catch
 				{
