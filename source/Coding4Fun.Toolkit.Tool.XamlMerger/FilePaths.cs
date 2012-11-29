@@ -23,6 +23,11 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			return Path.Combine(BaseFilePath, SystemTargets.GetSystemTargetPath(target), Constants.GenericThemeXaml);
 		}
 
+		public static string GenerateXamlSearchFolderPath()
+		{
+			return Path.Combine(BaseFolderPath, Constants.ControlFolder, Constants.ThemesFolder);
+		}
+
 		public static string GetExecutingAssemblyFilePath()
 		{
 			var returnVal = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);

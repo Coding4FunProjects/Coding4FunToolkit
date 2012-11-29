@@ -32,7 +32,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			_target = target;
 
 			_rootFolderPath = !isTestMode
-				                  ? FilePaths.GenerateGenericFilePath(_target)
+				                  ? FilePaths.GenerateXamlSearchFolderPath()
 				                  : FilePaths.GetExecutingAssemblyFilePath();
 		}
 
@@ -146,6 +146,8 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			var di = new DirectoryInfo(_rootFolderPath);
 			var files = new List<FileInfo>(di.GetFiles("*.xaml", SearchOption.AllDirectories).AsEnumerable());
 
+			UpdateFileList(files, Constants.GenericThemeXaml);
+
 			// purging non-platform files
 			switch (_target)
 			{
@@ -237,6 +239,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				{
 					switch (node.Name.LocalName)
 					{
+						case Constants.MergedDictionariesNode:
+							// skip
+							break;
 						case Constants.StyleNode:
 							success &= ProcessStyle(node, isGenericFile);
 							break;
@@ -278,8 +283,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 					if (_nameSpaces.ContainsValue(value))
 					{
 						WriteError("Contains Name Space but not Key" + Environment.NewLine +
-						           "file key: " + key + " :: file value: " + value + Environment.NewLine +
-						           "sys key: " + key + " :: sys value: " + _nameSpaces[key]);
+						           "file key: " + key + " :: file value: " + value + Environment.NewLine);
 
 						return false;
 					}

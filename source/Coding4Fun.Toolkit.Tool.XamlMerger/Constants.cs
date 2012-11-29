@@ -51,7 +51,8 @@
 
 		public const string StyleNode = "Style";
 		public const string ResourceDictionaryNode = "ResourceDictionary";
-		public const string ThemeDictionariesNode = "ResourceDictionary.ThemeDictionaries";
+		public const string ThemeDictionariesNode = ResourceDictionaryNode + ".ThemeDictionaries";
+		public const string MergedDictionariesNode = ResourceDictionaryNode + ".MergedDictionaries";
 
 		public const string WinPhoneOnlyResource = "{StaticResource Phone";
 		public const string WinStoreOnlyResource = "{StaticResource System";
