@@ -4,8 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls", "Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls.csproj", "{F0A56304-E80F-4270-85AA-ABC02C8D413F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls (WP8)", "Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls (WP8).csproj", "{FCBCFD20-01F1-49A8-95F0-4BCA008E4621}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0A56304-E80F-4270-85AA-ABC02C8D413F} = {F0A56304-E80F-4270-85AA-ABC02C8D413F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls (WP7)", "Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls (WP7).csproj", "{6E223290-66D8-4058-99CF-501769D6A641}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0A56304-E80F-4270-85AA-ABC02C8D413F} = {F0A56304-E80F-4270-85AA-ABC02C8D413F}
+		{FCBCFD20-01F1-49A8-95F0-4BCA008E4621} = {FCBCFD20-01F1-49A8-95F0-4BCA008E4621}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Audio", "Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio.csproj", "{F78F9EB4-0744-46D1-84FC-1FDB7B20714D}"
 EndProject
