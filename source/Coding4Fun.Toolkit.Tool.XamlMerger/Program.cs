@@ -16,7 +16,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				targetPlatformArg = Constants.TargetPlatformArgChoices.FirstOrDefault(
 					target => args.Any(s => target == s.TrimStart(Constants.ArgDelimiters)));
 
-				isTestMode = args.Any(s => s.ToLower().TrimStart(Constants.ArgDelimiters) == Constants.TestMode);
+				isTestMode = args.Any(s => s.ToLowerInvariant().TrimStart(Constants.ArgDelimiters) == Constants.TestMode);
 			}
 
 			var targetPlatform = SystemTargets.GetSystemTargetFromArgument(targetPlatformArg);

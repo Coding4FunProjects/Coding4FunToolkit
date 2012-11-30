@@ -88,7 +88,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		private static bool IsBase(FileSystemInfo di)
 		{
-			return (di.Name.ToLower() == Constants.BaseFolder.ToLower());
+			return (di.Name.ToLowerInvariant() == Constants.BaseFolder.ToLowerInvariant());
 		}
 	}
 }

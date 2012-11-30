@@ -195,7 +195,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		{
 			var success = true;
 
-			var commonStyles = files.FirstOrDefault(fi => fi.Name.ToLower() == targetFile);
+			var commonStyles = files.FirstOrDefault(fi => fi.Name.ToLowerInvariant() == targetFile);
 
 			if (commonStyles != null)
 			{
@@ -209,7 +209,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		private void UpdateFileList(List<FileInfo> files, string targetToRemove)
 		{
-			files.RemoveAll(file => files.All(fi => file.Name.ToLower().EndsWith(targetToRemove, true, null)));
+			files.RemoveAll(file => files.All(fi => file.Name.ToLowerInvariant().EndsWith(targetToRemove, true, null)));
 		}
 
 		public bool ProcessFile(string fileName)

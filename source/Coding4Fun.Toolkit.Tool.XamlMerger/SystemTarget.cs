@@ -17,14 +17,14 @@
 			if (value == null)
 				value = "";
 
-			switch (value.ToLower())
+			switch (value.ToLowerInvariant())
 			{
 				case "":
-				case Constants.WindowsStore:
+				case Constants.WindowsStoreArg:
 					return SystemTarget.WindowsStore;
 				case Constants.WindowsPhone7Arg:
 					return SystemTarget.WindowsPhone7;
-				case Constants.WindowsPhone8:
+				case Constants.WindowsPhone8Arg:
 					return SystemTarget.WindowsPhone8;
 				default:
 					return SystemTarget.Invalid;
