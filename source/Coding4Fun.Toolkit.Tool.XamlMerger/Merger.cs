@@ -67,6 +67,8 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			}
 
 			var root = new XElement(defaultNameSpace + Constants.ResourceDictionaryNode);
+			root.Add(new XComment(_target.ToString()));
+
 			foreach (var ns in nameSpaces)
 				root.Add(ns);
 
