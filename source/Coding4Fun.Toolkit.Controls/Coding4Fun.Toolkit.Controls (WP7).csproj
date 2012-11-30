@@ -166,146 +166,118 @@
     <Resource Include="Media\appbar.check.rest.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile.xaml">
-      <Link>Themes\Buttons\ImageTile.xaml</Link>
+    <None Include="Themes\Buttons\ImageTile %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\OpacityToggleButton %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\RoundButton %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\RoundToggleButton %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\Tile %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\TileNotification %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\ChatBubble\ChatBubble %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\ChatBubble\ChatBubbleTextBox %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Colors\ColorHexagonPicker %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Colors\ColorPicker %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Colors\ColorSlider %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Common\CommonStyles %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Diagnostic\MemoryCounter %28Windows Phone%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton.xaml">
-      <Link>Themes\Buttons\OpacityToggleButton.xaml</Link>
+    <None Include="Themes\MetroFlow\MetroFlow %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton.xaml">
-      <Link>Themes\Buttons\RoundButton.xaml</Link>
+    </None>
+    <None Include="Themes\Other\ProgressOverlay %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton.xaml">
-      <Link>Themes\Buttons\RoundToggleButton.xaml</Link>
+    </None>
+    <None Include="Themes\Other\SuperSlider %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile.xaml">
-      <Link>Themes\Buttons\Tile.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\AboutPrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification.xaml">
-      <Link>Themes\Buttons\TileNotification.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\AboutPromptItem %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble.xaml">
-      <Link>Themes\ChatBubble\ChatBubble.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\AppBarPrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox.xaml">
-      <Link>Themes\ChatBubble\ChatBubbleTextBox.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\AppBarPromptItem %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorHexagonPicker\Windows Phone\ColorHexagonPicker.xaml">
-      <Link>Themes\Colors\ColorHexagonPicker.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\InputPrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorPicker.xaml">
-      <Link>Themes\Colors\ColorPicker.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\MessagePrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorSlider.xaml">
-      <Link>Themes\Colors\ColorSlider.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\PasswordInputPrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Common\CommonStyles.xaml">
-      <Link>Themes\Common\CommonStyles.xaml</Link>
+    </None>
+    <None Include="Themes\Prompts\ToastPrompt %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Diagnostic\MemoryCounter.xaml">
-      <Link>Themes\Diagnostic\MemoryCounter.xaml</Link>
+    </None>
+    <None Include="Themes\ValuePicker\LoopingSelector %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Generic\WP7\Generic.xaml">
-      <Link>Themes\Generic.xaml</Link>
+    </None>
+    <None Include="Themes\ValuePicker\LoopingSelectorItem %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\MetroFlow\MetroFlow.xaml">
-      <Link>Themes\MetroFlow\MetroFlow.xaml</Link>
+    </None>
+    <None Include="Themes\ValuePicker\TimeSpanPicker %28Windows Phone%29.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay.xaml">
-      <Link>Themes\Other\ProgressOverlay.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider.xaml">
-      <Link>Themes\Other\SuperSlider.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPrompt.xaml">
-      <Link>Themes\Prompts\AboutPrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPromptItem.xaml">
-      <Link>Themes\Prompts\AboutPromptItem.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPrompt.xaml">
-      <Link>Themes\Prompts\AppBarPrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPromptItem.xaml">
-      <Link>Themes\Prompts\AppBarPromptItem.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\InputPrompt.xaml">
-      <Link>Themes\Prompts\InputPrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\MessagePrompt.xaml">
-      <Link>Themes\Prompts\MessagePrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\PasswordInputPrompt.xaml">
-      <Link>Themes\Prompts\PasswordInputPrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Prompts\ToastPrompt.xaml">
-      <Link>Themes\Prompts\ToastPrompt.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelector.xaml">
-      <Link>Themes\ValuePicker\LoopingSelector.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelectorItem.xaml">
-      <Link>Themes\ValuePicker\LoopingSelectorItem.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\ValuePicker\TimeSpanPicker.xaml">
-      <Link>Themes\ValuePicker\TimeSpanPicker.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Include="ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -332,6 +304,9 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)Coding4Fun.Toolkit.Tool.XamlMerger\bin\Debug\Coding4Fun.Toolkit.Tool.XamlMerger.exe -wp7</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

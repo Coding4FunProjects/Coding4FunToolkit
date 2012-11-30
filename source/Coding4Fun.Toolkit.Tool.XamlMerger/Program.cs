@@ -31,8 +31,10 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 				Console.Read();
 			}
-
-			var returnVal = engine.GenerateGenericXamlFile();
+			else
+			{
+				var returnVal = engine.GenerateGenericXamlFile();
+			}
 
 			return successfulMerge ? 0 : -1;
 		}

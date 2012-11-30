@@ -86,6 +86,8 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			foreach (var style in _styles)
 				root.Add(style.Value);
 
+			root.Save(FilePaths.GenerateGenericFilePath(_target));
+
 			return root.ToString();
 		}
 
@@ -282,7 +284,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				{
 					if (_nameSpaces.ContainsValue(value))
 					{
-						WriteError("Contains Name Space but not Key" + Environment.NewLine +
+						WriteError("Contains Namespace but not Key" + Environment.NewLine +
 						           "file key: " + key + " :: file value: " + value + Environment.NewLine);
 
 						return false;
@@ -360,7 +362,8 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		{
 			var keyValue = GetKeyNamespaceValue();
 			var ns = GetNamespaceOfKeyNamespace(node);
-			var key = node.Attribute(ns + keyValue).Value;
+
+			var key = (node.Attributes().Any(att => att.Name == ns + keyValue)) ? node.Attribute(ns + keyValue).Value : null;
 
 			return key;
 		}
@@ -381,6 +384,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				return false;
 
 			var key = node.Attribute(Constants.TargetTypeAttribute).Value;
+
+			if (GetKeyFromNode(node) != null)
+				key = GetKeyFromNode(node);
 
 			return AddToDictionary(_styles, key, node);
 		}
