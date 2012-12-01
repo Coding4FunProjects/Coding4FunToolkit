@@ -115,13 +115,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Colors\ColorHexagonPicker\Windows Store\ColorHexagonPicker.xaml">
-      <Link>Themes\Colors\ColorHexagonPicker.xaml</Link>
+    <None Include="Themes\Colors\ColorHexagonPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Controls.Themes\Generic\Windows Store\Generic.xaml">
-      <Link>Themes\Generic.xaml</Link>
+    </None>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,6 +138,9 @@
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe -winstore</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
