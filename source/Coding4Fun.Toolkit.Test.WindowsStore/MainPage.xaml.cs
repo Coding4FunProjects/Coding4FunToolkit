@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,13 +27,16 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-        }
+		private void ColorControl_ColorChanged(object sender, Windows.UI.Color color)
+		{
+			_colorFromEvent.Fill = new SolidColorBrush(color);
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			//ColorControl.Color = System.Windows.Media.Color.FromArgb(255, 255, 0, 0);
+			//this.co
+			_myColorControl.Color = Colors.Red;
+		}
     }
 }
