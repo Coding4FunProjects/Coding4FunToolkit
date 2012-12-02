@@ -33,6 +33,69 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls (WP8)", "Coding4Fun.Toolkit.Controls.WindowsPhone8\Coding4Fun.Toolkit.Controls (WP8).csproj", "{FCBCFD20-01F1-49A8-95F0-4BCA008E4621}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buttons", "Buttons", "{9A8C90FF-6378-4D4F-ABE6-E14A23ACA9C9}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C93E2547-69B4-4C46-9216-30F3F9D859AA}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Common\CommonStyles (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Common\CommonStyles (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Colors", "Colors", "{32C332E7-E102-446D-80C3-DF508FF5290C}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Colors\ColorHexagonPicker.xaml = Coding4Fun.Toolkit.Controls.Themes\Colors\ColorHexagonPicker.xaml
+		Coding4Fun.Toolkit.Controls.Themes\Colors\ColorPicker (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Colors\ColorPicker (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Colors\ColorSlider (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Colors\ColorSlider (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatBubble", "ChatBubble", "{8358140C-E6AD-453E-86C0-348A89A6B786}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagnostic", "Diagnostic", "{A7856CB0-5DBA-4EED-AA81-2C2AC6CE44D5}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Diagnostic\MemoryCounter (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Diagnostic\MemoryCounter (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MetroFlow", "MetroFlow", "{4E298059-9BAD-4CE1-A2CD-B55F1BA9797C}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\MetroFlow\MetroFlow (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\MetroFlow\MetroFlow (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{91B366BD-B0BB-495C-96A5-FF5AC1668FAA}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValuePicker", "ValuePicker", "{EA183D62-0C6F-4C0D-B69C-55C53D026044}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelector (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelector (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelectorItem (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ValuePicker\LoopingSelectorItem (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\ValuePicker\TimeSpanPicker (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ValuePicker\TimeSpanPicker (Windows Phone).xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prompts", "Prompts", "{38DF6BD6-FA70-4B35-A9D3-2DBD0AF49FC1}"
+	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPrompt (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPromptItem (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\AboutPromptItem (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPrompt (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPromptItem (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\AppBarPromptItem (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\InputPrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\InputPrompt (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\MessagePrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\MessagePrompt (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\PasswordInputPrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\PasswordInputPrompt (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Prompts\ToastPrompt (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Prompts\ToastPrompt (Windows Phone).xaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -264,5 +327,16 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A8C90FF-6378-4D4F-ABE6-E14A23ACA9C9} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{C93E2547-69B4-4C46-9216-30F3F9D859AA} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{32C332E7-E102-446D-80C3-DF508FF5290C} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{8358140C-E6AD-453E-86C0-348A89A6B786} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{A7856CB0-5DBA-4EED-AA81-2C2AC6CE44D5} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{4E298059-9BAD-4CE1-A2CD-B55F1BA9797C} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{91B366BD-B0BB-495C-96A5-FF5AC1668FAA} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{EA183D62-0C6F-4C0D-B69C-55C53D026044} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
+		{38DF6BD6-FA70-4B35-A9D3-2DBD0AF49FC1} = {E4DF098E-A2DF-44D2-9844-F56D5A90C633}
 	EndGlobalSection
 EndGlobal
