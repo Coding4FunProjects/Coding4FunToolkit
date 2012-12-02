@@ -107,33 +107,30 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Colors\ColorBaseControl.cs" />
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
+      <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
+      <Link>Colors\ColorHexagonPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtentions.cs">
+      <Link>Common\ColorExtentions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
+      <Link>Common\ColorSpace.cs</Link>
+    </Compile>
     <Compile Include="Colors\ColorHexagonPicker %28WindowsStore%29.cs" />
-    <Compile Include="Colors\ColorHexagonPicker.cs" />
-    <Compile Include="Common\ColorExtentions.cs" />
-    <Compile Include="Common\ColorSpace.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Themes\Colors\ColorHexagonPicker.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Themes\Buttons\" />
-    <Folder Include="Themes\ChatBubble\" />
-    <Folder Include="Themes\Common\" />
-    <Folder Include="Themes\Diagnostic\" />
-    <Folder Include="Themes\MetroFlow\" />
-    <Folder Include="Themes\Other\" />
-    <Folder Include="Themes\Prompts\" />
-    <Folder Include="Themes\ValuePicker\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>

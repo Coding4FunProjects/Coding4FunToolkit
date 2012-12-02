@@ -19,12 +19,16 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 
 		public static string GenerateGenericFilePath(SystemTarget target)
 		{
-			return Path.Combine(BaseFilePath, Constants.GenericThemeXaml);
+			return Path.Combine(
+				BaseFolderPath,
+				Constants.ControlFolder + "." + SystemTargets.GetSystemTargetPath(target).Replace(" ", ""),
+				Constants.ThemesFolder,
+				Constants.GenericThemeXaml);
 		}
 
 		public static string GenerateXamlSearchFolderPath()
 		{
-			return Path.Combine(BaseFolderPath, Constants.ControlFolder, Constants.ThemesFolder);
+			return Path.Combine(BaseFolderPath, Constants.ControlThemeFolder);
 		}
 
 		public static string GetExecutingAssemblyFilePath()

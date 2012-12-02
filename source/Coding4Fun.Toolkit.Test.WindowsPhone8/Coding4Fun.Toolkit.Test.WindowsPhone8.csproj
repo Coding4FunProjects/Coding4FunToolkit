@@ -589,7 +589,7 @@
       <Project>{345CE3E8-C2E1-4AA2-8164-7F1CC55A84EB}</Project>
       <Name>Coding4Fun.Toolkit.Audio %28WP8%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls %28WP8%29.csproj">
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsPhone8\Coding4Fun.Toolkit.Controls %28WP8%29.csproj">
       <Project>{FCBCFD20-01F1-49A8-95F0-4BCA008E4621}</Project>
       <Name>Coding4Fun.Toolkit.Controls %28WP8%29</Name>
     </ProjectReference>

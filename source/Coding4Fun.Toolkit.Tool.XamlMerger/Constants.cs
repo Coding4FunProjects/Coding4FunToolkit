@@ -36,6 +36,7 @@
 		public const string BaseFolder = "source";
 		public const string ControlFolder = "Coding4Fun.Toolkit.Controls";
 		public const string ThemesFolder = "Themes";
+		public const string ControlThemeFolder = ControlFolder + "." + ThemesFolder;
 
 		public const string FileCmdDeclare = "file:\\";
 

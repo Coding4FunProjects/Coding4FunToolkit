@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E223290-66D8-4058-99CF-501769D6A641}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Controls</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Debug\Windows Phone 7\</OutputPath>
+    <BaseIntermediateOutputPath>obj\Debug\Windows Phone 7\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Release\Windows Phone 7\</OutputPath>
+    <BaseIntermediateOutputPath>obj\Release\Windows Phone 7\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls.WindowsPhone\Colors\ColorHexagonPicker %28Windows Phone%29.cs">
+      <Link>Colors\ColorHexagonPicker %28Windows Phone%29.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
+      <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\TextBinding.cs">
+      <Link>Binding\TextBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper.cs">
+      <Link>Buttons\ButtonBaseHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\IButtonBase.cs">
+      <Link>Buttons\IButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTile.cs">
+      <Link>Buttons\ImageTile.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileAnimationTypes.cs">
+      <Link>Buttons\ImageTileAnimationTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileLayoutStates.cs">
+      <Link>Buttons\ImageTileLayoutStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileState.cs">
+      <Link>Buttons\ImageTileState.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
+      <Link>Buttons\OpacityToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton.cs">
+      <Link>Buttons\RoundButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundToggleButton.cs">
+      <Link>Buttons\RoundToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\Tile.cs">
+      <Link>Buttons\Tile.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\TileNotification.cs">
+      <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
+      <Link>Buttons\ToggleButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubble.cs">
+      <Link>ChatBubble\ChatBubble.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleDirection.cs">
+      <Link>ChatBubble\ChatBubbleDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleTextBox.cs">
+      <Link>ChatBubble\ChatBubbleTextBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
+      <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
+      <Link>Colors\ColorHexagonPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorPicker.cs">
+      <Link>Colors\ColorPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorSlider.cs">
+      <Link>Colors\ColorSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorSliderThumb.cs">
+      <Link>Colors\ColorSliderThumb.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtentions.cs">
+      <Link>Common\ColorExtentions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
+      <Link>Common\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ControlHelper.cs">
+      <Link>Common\ControlHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
+      <Link>Common\MovementMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitorEventArgs.cs">
+      <Link>Common\MovementMonitorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\PhoneHelper.cs">
+      <Link>Common\PhoneHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\StringToVisibilityConverter.cs">
+      <Link>Converters\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverter.cs">
+      <Link>Converters\ThemedImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverterHelper.cs">
+      <Link>Converters\ThemedImageConverterHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedInverseImageConverter.cs">
+      <Link>Converters\ThemedInverseImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\VisibilityToBooleanConverter.cs">
+      <Link>Converters\VisibilityToBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Diagnostic\MemoryCounter.cs">
+      <Link>Diagnostic\MemoryCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\MetroFlow.cs">
+      <Link>MetroFlow\MetroFlow.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\MetroFlowData.cs">
+      <Link>MetroFlow\MetroFlowData.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\MetroFlowItem.cs">
+      <Link>MetroFlow\MetroFlowItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\SelectionTapEventArgs.cs">
+      <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
+      <Link>Other\ProgressOverlay.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperSlider.cs">
+      <Link>Other\SuperSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AboutPrompt.cs">
+      <Link>Prompts\AboutPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AboutPromptItem.cs">
+      <Link>Prompts\AboutPromptItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ActionPopUp.cs">
+      <Link>Prompts\ActionPopUp.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AppBarPrompt.cs">
+      <Link>Prompts\AppBarPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AppBarPromptAction.cs">
+      <Link>Prompts\AppBarPromptAction.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AppBarPromptItem.cs">
+      <Link>Prompts\AppBarPromptItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\InputPrompt.cs">
+      <Link>Prompts\InputPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\MessagePrompt.cs">
+      <Link>Prompts\MessagePrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PasswordInputPrompt.cs">
+      <Link>Prompts\PasswordInputPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
+      <Link>Prompts\PopUp.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpEventArgs.cs">
+      <Link>Prompts\PopUpEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpResult.cs">
+      <Link>Prompts\PopUpResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ToastPrompt.cs">
+      <Link>Prompts\ToastPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\UserPrompt.cs">
+      <Link>Prompts\UserPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\DialogService.cs">
+      <Link>Unsupported\DialogService.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\TemplatedVisualTreeExtensions.cs">
+      <Link>Unsupported\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\VisualTreeExtensions.cs">
+      <Link>Unsupported\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\PhysicsConstants.cs">
+      <Link>ValuePicker\Common\PhysicsConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\SafeRaise.cs">
+      <Link>ValuePicker\Common\SafeRaise.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\TimeSpanFormat.cs">
+      <Link>ValuePicker\Common\TimeSpanFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\Tuple.cs">
+      <Link>ValuePicker\Common\Tuple.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Primitives\ILoopingSelectorDataSource.cs">
+      <Link>ValuePicker\Primitives\ILoopingSelectorDataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Primitives\LoopingSelector.cs">
+      <Link>ValuePicker\Primitives\LoopingSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Primitives\LoopingSelectorItem.cs">
+      <Link>ValuePicker\Primitives\LoopingSelectorItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\DataSource\HourTimeSpanDataSource.cs">
+      <Link>ValuePicker\TimeSpanPicker\DataSource\HourTimeSpanDataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\DataSource\MinuteTimeSpanDataSource.cs">
+      <Link>ValuePicker\TimeSpanPicker\DataSource\MinuteTimeSpanDataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\DataSource\SecondTimeSpanDataSource.cs">
+      <Link>ValuePicker\TimeSpanPicker\DataSource\SecondTimeSpanDataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\DataSource\TimeSpanDataSource.cs">
+      <Link>ValuePicker\TimeSpanPicker\DataSource\TimeSpanDataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\ITimeSpanPickerPage.cs">
+      <Link>ValuePicker\TimeSpanPicker\ITimeSpanPickerPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimeSpanPicker.cs">
+      <Link>ValuePicker\TimeSpanPicker\TimeSpanPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimeSpanPickerBasePage.cs">
+      <Link>ValuePicker\TimeSpanPicker\TimeSpanPickerBasePage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml.cs">
+      <Link>ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimeSpanValueChangedEventArgs.cs">
+      <Link>ValuePicker\TimeSpanPicker\TimeSpanValueChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimeSpanWrapper.cs">
+      <Link>ValuePicker\TimeSpanPicker\TimeSpanWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\ITransition.cs">
+      <Link>ValuePicker\Transitions\ITransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\NavigationInTransition.cs">
+      <Link>ValuePicker\Transitions\NavigationInTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\NavigationOutTransition.cs">
+      <Link>ValuePicker\Transitions\NavigationOutTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\NavigationTransition.cs">
+      <Link>ValuePicker\Transitions\NavigationTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\TransitionElement.cs">
+      <Link>ValuePicker\Transitions\TransitionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\TransitionFrame.cs">
+      <Link>ValuePicker\Transitions\TransitionFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions.cs">
+      <Link>ValuePicker\Transitions\Transitions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\TransitionService.cs">
+      <Link>ValuePicker\Transitions\TransitionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\RollTransition.cs">
+      <Link>ValuePicker\Transitions\Transitions\RollTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\RotateTransition.cs">
+      <Link>ValuePicker\Transitions\Transitions\RotateTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\RotateTransitionMode.cs">
+      <Link>ValuePicker\Transitions\Transitions\RotateTransitionMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\SlideTransition.cs">
+      <Link>ValuePicker\Transitions\Transitions\SlideTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\SlideTransitionMode.cs">
+      <Link>ValuePicker\Transitions\Transitions\SlideTransitionMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\SwivelTransition.cs">
+      <Link>ValuePicker\Transitions\Transitions\SwivelTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\SwivelTransitionMode.cs">
+      <Link>ValuePicker\Transitions\Transitions\SwivelTransitionMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Transition.cs">
+      <Link>ValuePicker\Transitions\Transitions\Transition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\TurnstileTransition.cs">
+      <Link>ValuePicker\Transitions\Transitions\TurnstileTransition.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\TurnstileTransitionMode.cs">
+      <Link>ValuePicker\Transitions\Transitions\TurnstileTransitionMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\DataSource.cs">
+      <Link>ValuePicker\ValuePickers\DataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\IValuePickerPage.cs">
+      <Link>ValuePicker\ValuePickers\IValuePickerPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\ValueChangedEventArgs.cs">
+      <Link>ValuePicker\ValuePickers\ValueChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\ValuePickerBase.cs">
+      <Link>ValuePicker\ValuePickers\ValuePickerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\ValuePickerBasePage.cs">
+      <Link>ValuePicker\ValuePickers\ValuePickerBasePage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\ValuePickerResources.cs">
+      <Link>ValuePicker\ValuePickers\ValuePickerResources.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\ValuePickers\ValueWrapper.cs">
+      <Link>ValuePicker\ValuePickers\ValueWrapper.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml">
+      <Link>ValuePicker\TimeSpanPicker\TimespanPickerPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+    </Compile>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.cs.resx">
+      <Link>Properties\Resources.cs.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.de.resx">
+      <Link>Properties\Resources.de.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.es.resx">
+      <Link>Properties\Resources.es.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.fr.resx">
+      <Link>Properties\Resources.fr.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.it.resx">
+      <Link>Properties\Resources.it.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.ko.resx">
+      <Link>Properties\Resources.ko.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.pl.resx">
+      <Link>Properties\Resources.pl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.ru.resx">
+      <Link>Properties\Resources.ru.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.sk.resx">
+      <Link>Properties\Resources.sk.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Coding4Fun.Toolkit.Controls\Media\appbar.cancel.rest.png">
+      <Link>Media\appbar.cancel.rest.png</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Controls\Media\appbar.check.rest.png">
+      <Link>Media\appbar.check.rest.png</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe -wp7</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
