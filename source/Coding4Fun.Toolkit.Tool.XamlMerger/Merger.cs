@@ -72,9 +72,6 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 			foreach (var ns in nameSpaces)
 				root.Add(ns);
 
-			foreach (var resource in _resources)
-				root.Add(resource.Value);
-
 			if (_target == SystemTarget.WindowsStore)
 			{
 				var rootThemeNode = new XElement(defaultNameSpace + Constants.ThemeDictionariesNode);
@@ -84,6 +81,9 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 				CreateThemedResourceNode(_resourcesWinStoreLight, Constants.LightTheme, rootThemeNode, defaultNameSpace);
 				CreateThemedResourceNode(_resourcesWinStoreHighContrast, Constants.HighContrastTheme, rootThemeNode, defaultNameSpace);
 			}
+
+			foreach (var resource in _resources)
+				root.Add(resource.Value);
 
 			foreach (var style in _styles)
 				root.Add(style.Value);
@@ -197,7 +197,7 @@ namespace Coding4Fun.Toolkit.Tool.XamlMerger
 		{
 			var success = true;
 
-			var commonStyles = files.FirstOrDefault(fi => fi.Name.ToLowerInvariant() == targetFile);
+			var commonStyles = files.FirstOrDefault(fi => fi.Name.ToLowerInvariant() == targetFile.ToLowerInvariant());
 
 			if (commonStyles != null)
 			{

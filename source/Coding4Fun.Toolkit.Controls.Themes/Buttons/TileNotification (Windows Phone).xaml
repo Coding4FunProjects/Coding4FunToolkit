@@ -4,10 +4,10 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
     <Style TargetType="local:TileNotification">
-		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
-		<Setter Property="Foreground" Value="White"/>
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
-		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
 		<Setter Property="Margin" Value="12"/>
 		<Setter Property="Padding" Value="8,0"/>
 		<Setter Property="VerticalAlignment" Value="Top"/>
@@ -26,7 +26,6 @@
 						<ContentControl
                             Padding="{TemplateBinding Padding}"
 							Margin="0, 0, 0, 3"
-                            
                             Content="{TemplateBinding Content}" 
                             FontSize="{TemplateBinding FontSize}"
                             VerticalAlignment="Center" 

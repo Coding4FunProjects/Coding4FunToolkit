@@ -1,11 +1,23 @@
-﻿using System.Windows;
+﻿#if WINDOWS_STORE
+
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Markup;
+
+#elif WINDOWS_PHONE
+
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
+#endif
+
 namespace Coding4Fun.Toolkit.Controls
 {
-    [ContentProperty("Content")]
-    public class Tile : Button
+#if !WINDOWS_STORE
+	[ContentProperty("Content")]
+#endif
+	public class Tile : Button
     {
         public Tile()
 		{

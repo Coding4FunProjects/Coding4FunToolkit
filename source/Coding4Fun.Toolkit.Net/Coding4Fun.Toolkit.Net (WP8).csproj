@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="GzipExtensions.cs" />
     <Compile Include="GzipWebClient.cs" />
+    <Compile Include="HttpWebRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

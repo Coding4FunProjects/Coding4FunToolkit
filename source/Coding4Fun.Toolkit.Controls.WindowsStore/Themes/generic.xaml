@@ -6,6 +6,28 @@
     <ResourceDictionary x:Key="Light" />
     <ResourceDictionary x:Key="HighContrast" />
   </ResourceDictionary.ThemeDictionaries>
+  <SolidColorBrush x:Key="DefaultAccentBrush" Color="#00AAFF" />
+  <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
+  <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
+  <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
+  <Style x:Key="AppBarText" TargetType="ContentControl">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="Margin" Value="0" />
+  </Style>
+  <Style TargetType="local:Tile">
+    <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:Tile">
+          <Grid Background="{TemplateBinding Background}">
+            <ContentPresenter Content="{TemplateBinding Content}" />
+            <TextBlock TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Bottom" Padding="12, 0" Margin="0, 0, 0, 7" Text="{TemplateBinding Title}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
   <Style TargetType="local:ColorHexagonPicker">
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="HorizontalAlignment" Value="Center" />

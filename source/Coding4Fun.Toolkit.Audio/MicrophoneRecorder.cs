@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace Coding4Fun.Toolkit.Audio
 {
-    public class MicrophoneRecorder
+	public class MicrophoneRecorder : Recorder
     {
 		private MemoryStream _recordStream;
 		private Microphone _microphone;
@@ -14,20 +14,12 @@ namespace Coding4Fun.Toolkit.Audio
 
 		private bool _shouldCallStopInTimeout;
 
-		public event EventHandler<EventArgs> BufferReady;
-
 		public MicrophoneRecorder()
 		{
 			InitMicrophone();
 		}
 
-		public byte[] Buffer
-		{
-			get;
-			private set;
-		}
-
-		public int SampleRate
+		public override int SampleRate
 		{
 			get
 			{
@@ -37,7 +29,7 @@ namespace Coding4Fun.Toolkit.Audio
 			}
 		}
 
-    	public void Start()
+    	public override void Start()
 		{
 			_microphone.BufferReady += MicrophoneBufferReady;
 
@@ -50,7 +42,7 @@ namespace Coding4Fun.Toolkit.Audio
 			_microphone.Start();
 		}
 
-    	public void Start(TimeSpan timeout)
+    	public override void Start(TimeSpan timeout)
 		{
 			Start();
 			_shouldCallStopInTimeout = true;
@@ -65,12 +57,7 @@ namespace Coding4Fun.Toolkit.Audio
 				});
 		}
 
-		public void Start(int millisecondsTimeout)
-		{
-			Start(TimeSpan.FromMilliseconds(millisecondsTimeout));
-		}
-
-		public void Stop()
+		public override void Stop()
 		{
 			_shouldCallStopInTimeout = false;
 			_microphone.Stop();

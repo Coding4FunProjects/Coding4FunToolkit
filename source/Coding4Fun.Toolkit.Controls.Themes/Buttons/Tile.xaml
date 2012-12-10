@@ -4,8 +4,8 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
 	<Style TargetType="local:Tile">
-		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
-		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:Tile">
