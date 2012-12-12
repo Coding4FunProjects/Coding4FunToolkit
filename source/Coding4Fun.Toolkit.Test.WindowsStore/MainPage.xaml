@@ -16,19 +16,6 @@
 		</Grid.RowDefinitions>
 
 		<Common:BaseHeader Title="{StaticResource AppName}" ApplicationTitleVisibility="Collapsed" />
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
-			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-			<StackPanel Grid.Column="1" Margin="0, 0, 0, 40" VerticalAlignment="Bottom">
-				
-				<TextBlock x:Name="pageTitle" Text="" Style="{StaticResource PageHeaderTextStyle}" Margin="0"/>
-			</StackPanel>
-		</Grid>
-
-		
 		
 		<GridView
             AutomationProperties.AutomationId="ItemsGridView"
@@ -47,38 +34,5 @@
 				</TextBlock>
 			</Coding4Fun:Tile>
 		</GridView>
-		
-		
-		<VisualStateManager.VisualStateGroups>
-
-			<!-- Visual states reflect the application's view state -->
-			<VisualStateGroup x:Name="ApplicationViewStates">
-				<VisualState x:Name="FullScreenLandscape"/>
-				<VisualState x:Name="Filled"/>
-
-				<!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-				<VisualState x:Name="FullScreenPortrait">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-							<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-
-				<!-- The back button and title have different styles when snapped -->
-				<VisualState x:Name="Snapped">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-							<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-							<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
 	</Grid>
-	
-	
 </Common:LayoutAwarePage>
