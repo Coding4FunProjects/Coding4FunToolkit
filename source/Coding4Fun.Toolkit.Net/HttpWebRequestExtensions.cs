@@ -10,6 +10,9 @@ namespace Coding4Fun.Toolkit.Net
 		{
 			var taskComplete = new TaskCompletionSource<Stream>();
 
+			request.AllowReadStreamBuffering = true;
+			request.AllowWriteStreamBuffering = true;
+
 			request.BeginGetRequestStream(ar =>
 			{
 				var requestStream = request.EndGetRequestStream(ar);
@@ -22,6 +25,10 @@ namespace Coding4Fun.Toolkit.Net
 		public static Task<WebResponse> GetResponseAsync(this HttpWebRequest request)
 		{
 			var taskComplete = new TaskCompletionSource<WebResponse>();
+
+			request.AllowReadStreamBuffering = true;
+			request.AllowWriteStreamBuffering = true;
+
 			request.BeginGetResponse(asyncResponse =>
 			{
 				try
