@@ -15,16 +15,20 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<!-- Back button and page title -->
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-			<TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
+			<StackPanel Grid.Column="1" Margin="0, 0, 0, 40" VerticalAlignment="Bottom">
+				
+				<TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0"/>
+			</StackPanel>
 		</Grid>
 
+		
+		
 		<GridView
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
