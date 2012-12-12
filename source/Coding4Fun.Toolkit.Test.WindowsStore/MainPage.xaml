@@ -9,7 +9,14 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 		<StackPanel Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
-			<Coding4Fun:Tile Height="150" Width="150" Background="CornflowerBlue" Title="Color Hexagon Picker" Click="ColorHex" />
+			<Coding4Fun:Tile 
+				Title="Color Hexagon Picker" 
+				Click="ColorHex" 
+				Style="{StaticResource TileStyle}">
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Co
+				</TextBlock>
+			</Coding4Fun:Tile>
 		</StackPanel>
 	</Grid>
 </Page>
