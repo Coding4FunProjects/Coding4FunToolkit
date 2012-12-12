@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common">
+	<Style TargetType="Common:BaseHeader">
+		
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Common:BaseHeader">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Button 
+							x:Name="backButton" 
+							Style="{StaticResource BackButtonStyle}"/>
+						<StackPanel Grid.Column="1" Margin="0, 0, 0, 40" VerticalAlignment="Bottom">
+							<TextBlock 
+								x:Name="appTitle" 
+								Text="{StaticResource AppName}" 
+								Style="{StaticResource PageHeaderTextStyle}" 
+								FontSize="20" 
+								Margin="2, 0, 0, 5"
+								Visibility="{TemplateBinding ApplicationTitleVisibility}" />
+							<TextBlock 
+								x:Name="pageTitle" 
+								Text="{TemplateBinding Title}" 
+								Style="{StaticResource PageHeaderTextStyle}" 
+								Margin="0"/>
+						</StackPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

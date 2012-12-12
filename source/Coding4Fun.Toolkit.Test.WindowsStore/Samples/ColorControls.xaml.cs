@@ -17,8 +17,6 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 		public ColorControls()
 		{
 			InitializeComponent();
-
-			DataContext = this;
 		}
 
 		private void ColorHex(object sender, RoutedEventArgs e)

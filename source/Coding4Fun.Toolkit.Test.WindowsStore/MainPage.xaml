@@ -15,6 +15,7 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
+		<Common:BaseHeader Title="{StaticResource AppName}" ApplicationTitleVisibility="Collapsed" />
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
@@ -23,7 +24,7 @@
 			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
 			<StackPanel Grid.Column="1" Margin="0, 0, 0, 40" VerticalAlignment="Bottom">
 				
-				<TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0"/>
+				<TextBlock x:Name="pageTitle" Text="" Style="{StaticResource PageHeaderTextStyle}" Margin="0"/>
 			</StackPanel>
 		</Grid>
 
