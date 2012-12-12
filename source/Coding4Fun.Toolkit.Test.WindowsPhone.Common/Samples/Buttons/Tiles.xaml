@@ -99,8 +99,7 @@
 						<c4f:TileNotification
                                 Padding="18, 0"
                                 Background="{StaticResource PhoneAccentBrush}">
-							<TextBlock>rawr?</TextBlock>
-							<!-- in 7.1, you can skip the need for TextBlock -->
+							rawr?
 						</c4f:TileNotification>
 					</Grid>
 				</c4f:Tile>
@@ -127,9 +126,11 @@
 						<c4f:TileNotification
                                 Padding="0"
                                 Background="Transparent"
-                                HorizontalAlignment="Left">
+                                HorizontalAlignment="Left"
+								Margin="0">
 							<StackPanel Orientation="Horizontal">
 								<Image 
+									
                                         Height="35"
                                         Stretch="Uniform"
                                         Source="../../Media/icons/appbar.share.rest.png" />

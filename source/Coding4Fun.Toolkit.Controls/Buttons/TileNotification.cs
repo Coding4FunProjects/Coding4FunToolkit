@@ -14,9 +14,11 @@ using System.Windows.Markup;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-#if !WINDOWS_STORE
-    [ContentProperty("Content")]
-#endif
+	[ContentProperty(
+	#if WINDOWS_STORE
+		Name =
+	#endif
+		"Content")]
 	public class TileNotification : Control
     {
         public TileNotification()

@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buttons", "Buttons", "{9A8C
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile.xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\Tile.xaml
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Store).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\TileNotification (Windows Store).xaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C93E2547-69B4-4C46-9216-30F3F9D859AA}"

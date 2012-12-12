@@ -1,7 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+
+#if WINDOWS_STORE
+
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Imaging;
+
+#elif WINDOWS_PHONE
+
 using System.Windows;
 using System.Windows.Media.Imaging;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls.Converters
 {
@@ -14,8 +24,13 @@ namespace Coding4Fun.Toolkit.Controls.Converters
             if (string.IsNullOrEmpty(path))
                 return null;
 
-			var isDarkTheme = (Application.Current.Resources.Contains("PhoneDarkThemeVisibility") &&
+			var isDarkTheme =
+#if WINDOWS_STORE
+				Application.Current.RequestedTheme == ApplicationTheme.Dark;
+#elif WINDOWS_PHONE
+				(Application.Current.Resources.Contains("PhoneDarkThemeVisibility") &&
 			                   ((Visibility) Application.Current.Resources["PhoneDarkThemeVisibility"]) == Visibility.Visible);
+#endif
 
 			if (negateResult)
 				isDarkTheme = !isDarkTheme;

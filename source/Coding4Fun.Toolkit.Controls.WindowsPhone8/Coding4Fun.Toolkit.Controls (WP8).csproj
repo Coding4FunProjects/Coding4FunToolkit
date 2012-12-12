@@ -88,7 +88,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-    <ItemGroup>
+  <ItemGroup>
     <Compile Include="..\Coding4Fun.Toolkit.Controls.WindowsPhone\Colors\ColorHexagonPicker %28Windows Phone%29.cs">
       <Link>Colors\ColorHexagonPicker %28Windows Phone%29.cs</Link>
     </Compile>
@@ -179,6 +179,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
       <Link>Converters\BooleanToVisibilityConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\NumberMultiplierConverter.cs">
+      <Link>Converters\NumberMultiplierConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\StringToVisibilityConverter.cs">
       <Link>Converters\StringToVisibilityConverter.cs</Link>
     </Compile>
@@ -190,6 +193,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedInverseImageConverter.cs">
       <Link>Converters\ThemedInverseImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ValueConverter.cs">
+      <Link>Converters\ValueConverter.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\VisibilityToBooleanConverter.cs">
       <Link>Converters\VisibilityToBooleanConverter.cs</Link>
@@ -450,7 +456,6 @@
       <Link>Media\appbar.check.rest.png</Link>
     </Content>
   </ItemGroup>
-
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

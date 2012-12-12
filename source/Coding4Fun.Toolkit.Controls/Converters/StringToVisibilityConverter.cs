@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Globalization;
+
+#if WINDOWS_STORE
+
+using Windows.UI.Xaml;
+
+#elif WINDOWS_PHONE
+
 using System.Windows;
-using System.Windows.Data;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls.Converters
 {
-    public class StringToVisibilityConverter : IValueConverter
+	public class StringToVisibilityConverter : ValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
             return string.IsNullOrEmpty(value as string) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
             throw new NotImplementedException();
         }

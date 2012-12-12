@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -24,19 +25,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-		private void ColorControl_ColorChanged(object sender, Windows.UI.Color color)
+		private void ColorHex(object sender, RoutedEventArgs e)
 		{
-			_colorFromEvent.Fill = new SolidColorBrush(color);
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			//ColorControl.Color = System.Windows.Media.Color.FromArgb(255, 255, 0, 0);
-			//this.co
-			_myColorControl.Color = Colors.Red;
+			Frame.Navigate(typeof (ColorHexPicker));
 		}
     }
 }

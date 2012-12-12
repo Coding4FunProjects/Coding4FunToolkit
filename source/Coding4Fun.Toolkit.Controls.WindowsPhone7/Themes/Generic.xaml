@@ -234,8 +234,8 @@
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
-    <Setter Property="Margin" Value="12" />
-    <Setter Property="Padding" Value="8,0" />
+    <Setter Property="Margin" Value="10" />
+    <Setter Property="Padding" Value="9, -2, 8, 0" />
     <Setter Property="VerticalAlignment" Value="Top" />
     <Setter Property="HorizontalAlignment" Value="Right" />
     <Setter Property="MinWidth" Value="36" />
@@ -245,7 +245,7 @@
         <ControlTemplate TargetType="local:TileNotification">
           <Grid>
             <Rectangle Fill="{TemplateBinding Background}" RadiusX="18" RadiusY="18" />
-            <ContentControl Padding="{TemplateBinding Padding}" Margin="0, 0, 0, 3" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <ContentPresenter Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>

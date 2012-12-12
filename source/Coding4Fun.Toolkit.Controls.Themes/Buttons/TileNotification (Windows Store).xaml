@@ -1,32 +1,32 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
+    xmlns:local="using:Coding4Fun.Toolkit.Controls">
 
-	<Style TargetType="local:TileNotification">
+    <Style TargetType="local:TileNotification">
 		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="FontWeight" Value="SemiBold"/>
 		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
 		<Setter Property="Margin" Value="10"/>
-		<Setter Property="Padding" Value="9, -2, 8, 0"/>
+		<Setter Property="Padding" Value="9, -3, 9, -5"/>
 		<Setter Property="VerticalAlignment" Value="Top"/>
 		<Setter Property="HorizontalAlignment" Value="Right"/>
-		<Setter Property="MinWidth" Value="36"/>
-		<Setter Property="MinHeight" Value="36"/>
+		<Setter Property="MinWidth" Value="30"/>
+		<Setter Property="MinHeight" Value="30"/>
 
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:TileNotification">
 					<Grid>
 						<Rectangle 
-						    Fill="{TemplateBinding Background}"
-						    RadiusX="18"
-						    RadiusY="18" />
+							Fill="{TemplateBinding Background}"
+							RadiusX="15"
+							RadiusY="15" />
 						<ContentPresenter
 							Margin="{TemplateBinding Padding}"
-                            Content="{TemplateBinding Content}" 
-                            VerticalAlignment="Center" 
+							Content="{TemplateBinding Content}" 
+							VerticalAlignment="Center" 
 							HorizontalAlignment="Center" />
 					</Grid>
 				</ControlTemplate>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows.Data;
 
 namespace Coding4Fun.Toolkit.Controls.Converters
 {
-    public class ThemedImageConverter : IValueConverter
+    public class ThemedImageConverter : ValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		public override object Convert(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
             var formatString = parameter as string;
 
@@ -16,7 +15,7 @@ namespace Coding4Fun.Toolkit.Controls.Converters
             return ThemedImageConverterHelper.GetImage(formatString);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
             throw new NotImplementedException();
         }

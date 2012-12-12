@@ -6,7 +6,7 @@
     <ResourceDictionary x:Key="Light" />
     <ResourceDictionary x:Key="HighContrast" />
   </ResourceDictionary.ThemeDictionaries>
-  <SolidColorBrush x:Key="DefaultAccentBrush" Color="#00AAFF" />
+  <SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
@@ -23,6 +23,28 @@
           <Grid Background="{TemplateBinding Background}">
             <ContentPresenter Content="{TemplateBinding Content}" />
             <TextBlock TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Bottom" Padding="12, 0" Margin="0, 0, 0, 7" Text="{TemplateBinding Title}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:TileNotification">
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Margin" Value="10" />
+    <Setter Property="Padding" Value="9, -3, 9, -5" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="MinWidth" Value="30" />
+    <Setter Property="MinHeight" Value="30" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:TileNotification">
+          <Grid>
+            <Rectangle Fill="{TemplateBinding Background}" RadiusX="15" RadiusY="15" />
+            <ContentPresenter Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>

@@ -9,7 +9,7 @@
     </Style>
 
 	<!-- brushes -->
-	<SolidColorBrush x:Key="DefaultAccentBrush" Color="#00AAFF" />
+	<SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
 	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
