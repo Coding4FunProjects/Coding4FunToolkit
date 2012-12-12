@@ -1,20 +1,23 @@
-﻿using Windows.UI;
+﻿using System;
+using System.Collections.Generic;
+using Coding4Fun.Toolkit.Test.WindowsStore.Common;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-	public sealed partial class ColorHexPicker : Page
+	public sealed partial class ColorHexPicker
     {
         public ColorHexPicker()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
+			DataContext = this;
         }
 
 		private void ColorControl_ColorChanged(object sender, Windows.UI.Color color)
@@ -28,5 +31,6 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color
 			//this.co
 			_myColorControl.Color = Colors.Red;
 		}
+
     }
 }
