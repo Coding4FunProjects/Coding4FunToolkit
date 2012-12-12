@@ -20,9 +20,14 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
             InitializeComponent();
         }
 
-		private void ColorHex(object sender, RoutedEventArgs e)
+		private void ColorControls(object sender, RoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ColorControls));
+		}
+
+		private void ButtonControls(object sender, RoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(ButtonControls));
 		}
     }
 }

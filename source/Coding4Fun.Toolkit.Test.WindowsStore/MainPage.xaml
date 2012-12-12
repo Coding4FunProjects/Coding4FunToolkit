@@ -27,19 +27,18 @@
             IsSwipeEnabled="false">
 			<Coding4Fun:Tile 
 					Title="Color" 
-					Click="ColorHex" 
+					Click="ColorControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Co
 				</TextBlock>
 			</Coding4Fun:Tile>
 			<Coding4Fun:Tile 
-				IsEnabled="False" 
-				Title="Color" 
-				Click="ColorHex" 
+				Title="Button" 
+				Click="ButtonControls" 
 				Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Co
+						Bu
 				</TextBlock>
 			</Coding4Fun:Tile>
 		</GridView>
