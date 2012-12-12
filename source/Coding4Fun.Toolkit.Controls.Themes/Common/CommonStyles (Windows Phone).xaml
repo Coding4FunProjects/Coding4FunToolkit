@@ -13,7 +13,11 @@
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="{StaticResource PhoneChromeColor}" />
 	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="{StaticResource PhoneForegroundColor}" />
+	
+	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{StaticResource PhoneDisabledColor}" />
+	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{StaticResource PhoneChromeColor}" />
 
+	
 	<!-- font sizes -->
 	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double> <!--{StaticResource PhoneFontSizeNormal}-->
 	

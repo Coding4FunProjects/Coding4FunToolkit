@@ -14,19 +14,19 @@ using System.Windows.Markup;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	[ContentProperty(
-	#if WINDOWS_STORE
-		Name = 
-	#endif
-		"Content")]
+	//[ContentProperty(
+	//#if WINDOWS_STORE
+	//	Name = 
+	//#endif
+	//	"Content")]
 	public class Tile : Button
     {
-        public Tile()
+		public Tile()
 		{
-            DefaultStyleKey = typeof(Tile);
+			DefaultStyleKey = typeof (Tile);
 		}
-
-        public string Title
+		
+		public string Title
         {
             get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }

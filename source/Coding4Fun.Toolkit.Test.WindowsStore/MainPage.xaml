@@ -33,6 +33,15 @@
 						Co
 				</TextBlock>
 			</Coding4Fun:Tile>
+			<Coding4Fun:Tile 
+				IsEnabled="False" 
+				Title="Color" 
+				Click="ColorHex" 
+				Style="{StaticResource TileStyle}">
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Co
+				</TextBlock>
+			</Coding4Fun:Tile>
 		</GridView>
 	</Grid>
 </Common:LayoutAwarePage>

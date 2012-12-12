@@ -77,6 +77,12 @@
                                 Width="100"
                                 Height="100"/>
 					</c4f:Tile>
+					<c4f:Tile 
+						IsEnabled="False"
+                        Width="72"
+                        Height="72"
+                        Title="disabled">
+					</c4f:Tile>
 				</StackPanel>
 				<c4f:Tile 
                         HorizontalAlignment="Left"
