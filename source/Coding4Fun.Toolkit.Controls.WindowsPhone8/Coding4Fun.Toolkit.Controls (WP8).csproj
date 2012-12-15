@@ -281,9 +281,6 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\TimeSpanFormat.cs">
       <Link>ValuePicker\Common\TimeSpanFormat.cs</Link>
     </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\Tuple.cs">
-      <Link>ValuePicker\Common\Tuple.cs</Link>
-    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Primitives\ILoopingSelectorDataSource.cs">
       <Link>ValuePicker\Primitives\ILoopingSelectorDataSource.cs</Link>
     </Compile>
@@ -449,18 +446,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Coding4Fun.Toolkit.Controls\Media\appbar.cancel.rest.png">
-      <Link>Media\appbar.cancel.rest.png</Link>
-    </Content>
-    <Content Include="..\Coding4Fun.Toolkit.Controls\Media\appbar.check.rest.png">
-      <Link>Media\appbar.check.rest.png</Link>
-    </Content>
+    <Resource Include="Media\appbar.cancel.rest.png" />
+    <Resource Include="Media\appbar.check.rest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe -wp8</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe" -wp8</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

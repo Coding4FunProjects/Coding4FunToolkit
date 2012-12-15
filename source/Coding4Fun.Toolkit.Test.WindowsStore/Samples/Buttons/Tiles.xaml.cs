@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 
-using Coding4Fun.Toolkit.Test.WindowsStore.Common;
-using Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color;
-
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Buttons
 {
@@ -19,6 +15,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Buttons
 			InitializeComponent();
 		}
 
-		
+		private async void TileClick(object sender, RoutedEventArgs e)
+		{
+			var msg = new MessageDialog("You clicked the tile!");
+			await msg.ShowAsync();
+		}
 	}
 }

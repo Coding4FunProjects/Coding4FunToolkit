@@ -23,7 +23,7 @@
 						    Fill="{TemplateBinding Background}"
 						    RadiusX="18"
 						    RadiusY="18" />
-						<ContentPresenter
+						<ContentControl
 							Margin="{TemplateBinding Padding}"
                             Content="{TemplateBinding Content}" 
                             VerticalAlignment="Center" 

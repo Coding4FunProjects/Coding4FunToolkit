@@ -6,6 +6,24 @@
     xmlns:Coding4Fun="using:Coding4Fun.Toolkit.Controls">
 
     <Grid Style="{StaticResource LayoutRootStyle}">
+		<Grid.Triggers>
+			<EventTrigger RoutedEvent="Grid.Loaded" >
+				<BeginStoryboard>
+					<Storyboard 
+						x:Name="trexStoryboard" 
+						AutoReverse="True" 
+						RepeatBehavior="Forever">
+						<DoubleAnimationUsingKeyFrames 
+							Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+							Storyboard.TargetName="image">
+							<SplineDoubleKeyFrame KeyTime="0:0:1"/>
+							<SplineDoubleKeyFrame KeyTime="0:0:36" Value="-307"/>
+							<SplineDoubleKeyFrame KeyTime="0:0:37" Value="-307" />
+						</DoubleAnimationUsingKeyFrames>
+					</Storyboard>
+				</BeginStoryboard>
+			</EventTrigger>
+		</Grid.Triggers>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -20,12 +38,118 @@
             Padding="116, 0,116,46"
             SelectionMode="None"
             IsSwipeEnabled="false">
+			<StackPanel Orientation="Horizontal">
+				<Coding4Fun:Tile 
+                            Margin="0, 0, 12, 0"
+                            Width="173"
+                            Height="173"
+                            Title="Click Me"
+							Click="TileClick">
+					<Grid>
+						<Image 
+                                    Source="../../Media/headWhite_100.png" 
+                                    Stretch="None" />
+						<Coding4Fun:TileNotification 
+                                    Content="99" />
+					</Grid>
+				</Coding4Fun:Tile>
+				<Coding4Fun:Tile 
+                            Margin="0, 0, 12, 0"
+                            Width="173"
+                            Height="173"
+                            TextWrapping="Wrap"
+                            Title="Testing Text Wrapping">
+					<Image 
+                                Source="../../Media/head.png" 
+                                Width="100"
+                                Height="100"/>
+				</Coding4Fun:Tile>
+				<Coding4Fun:Tile 
+						IsEnabled="False"
+                        Width="72"
+                        Height="72"
+                        Title="disabled">
+				</Coding4Fun:Tile>
+			</StackPanel>
 			<Coding4Fun:Tile 
-					Title="sample" 
-					Style="{StaticResource TileStyle}">
-				<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						fds
-				</TextBlock>
+                        HorizontalAlignment="Left"
+                        Width="358"
+                        Height="173"
+                        
+                        Title="Coding4Fun Phone Toolkit">
+				<!--c4fBinding:FrameworkElementBinding.ClipToBounds="True"-->
+				<Grid>
+					<Canvas>
+						<Image 
+					                x:Name="image" 
+	        		                Source="../../Media/images/trex_360width.jpg" 
+	        		                Stretch="None">
+							<Image.RenderTransform>
+								<CompositeTransform />
+							</Image.RenderTransform>
+						</Image>
+					</Canvas>
+					<Coding4Fun:TileNotification
+                                Padding="18, 0"
+                                Background="Orange">
+						rawr?
+					</Coding4Fun:TileNotification>
+				</Grid>
+			</Coding4Fun:Tile>
+
+			<Coding4Fun:Tile 
+                        Height="100"
+                        Title="Coding4Fun Phone Toolkit">
+				<Grid>
+					<StackPanel 
+                                Orientation="Horizontal" 
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Margin="12, 0">
+						<TextBlock VerticalAlignment="Bottom">
+									<Run>Fri</Run>
+									<Run 
+										FontSize="54"
+										FontWeight="Bold">
+										15
+									</Run>
+						</TextBlock>
+					</StackPanel>
+					<Coding4Fun:TileNotification
+                                Padding="0"
+                                Background="Transparent"
+                                HorizontalAlignment="Left"
+								Margin="0">
+						<StackPanel Orientation="Horizontal">
+							<Image 
+									
+                                        Height="35"
+                                        Stretch="Uniform"
+                                        Source="../../Media/icons/appbar.share.rest.png" />
+							<TextBlock 
+                                        VerticalAlignment="Center">
+										Birthday
+							</TextBlock>
+						</StackPanel>
+					</Coding4Fun:TileNotification>
+				</Grid>
+			</Coding4Fun:Tile>
+			<Coding4Fun:Tile 
+                    Margin="0, 12"
+                    Height="100"
+                    Background="Orange"
+                    
+                    FontSize="28"
+                    Foreground="SlateBlue"
+                    Title="Coding4Fun Phone Toolkit">
+				<!--c4fBinding:FrameworkElementBinding.ClipToBounds="True"-->
+				<Image 
+                        HorizontalAlignment="Right"
+                        Source="../../Media/headWhite.png" 
+                        Stretch="Uniform" 
+                        Height="150"
+                        Width="150"
+                        Margin="0, -25, -28, 0" />
 			</Coding4Fun:Tile>
 		</GridView>
     </Grid>

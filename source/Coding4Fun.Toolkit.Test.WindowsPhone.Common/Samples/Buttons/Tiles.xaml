@@ -71,7 +71,7 @@
                             Width="173"
                             Height="173"
                             TextWrapping="Wrap"
-                            Title="Testing Text Wrapping">
+                            Title="Testing Text Wrapping"> 
 						<Image 
                                 Source="../../Media/head.png" 
                                 Width="100"
