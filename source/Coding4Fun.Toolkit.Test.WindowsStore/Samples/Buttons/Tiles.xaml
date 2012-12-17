@@ -3,19 +3,20 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common"
-    xmlns:Coding4Fun="using:Coding4Fun.Toolkit.Controls">
+    xmlns:Coding4Fun="using:Coding4Fun.Toolkit.Controls" 
+	xmlns:c4fBinding="using:Coding4Fun.Toolkit.Controls.Binding">
 
-    <Grid Style="{StaticResource LayoutRootStyle}">
+	<Grid Style="{StaticResource LayoutRootStyle}">
+		
 		<Grid.Triggers>
 			<EventTrigger RoutedEvent="Grid.Loaded" >
 				<BeginStoryboard>
-					<Storyboard 
-						x:Name="trexStoryboard" 
+					<Storyboard
 						AutoReverse="True" 
 						RepeatBehavior="Forever">
 						<DoubleAnimationUsingKeyFrames 
 							Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-							Storyboard.TargetName="image">
+							Storyboard.TargetName="img">
 							<SplineDoubleKeyFrame KeyTime="0:0:1"/>
 							<SplineDoubleKeyFrame KeyTime="0:0:36" Value="-307"/>
 							<SplineDoubleKeyFrame KeyTime="0:0:37" Value="-307" />
@@ -47,10 +48,9 @@
 							Click="TileClick">
 					<Grid>
 						<Image 
-                                    Source="../../Media/headWhite_100.png" 
-                                    Stretch="None" />
-						<Coding4Fun:TileNotification 
-                                    Content="99" />
+                            Source="../../Media/headWhite_100.png" 
+                            Stretch="None" />
+						<Coding4Fun:TileNotification  Content="99" />
 					</Grid>
 				</Coding4Fun:Tile>
 				<Coding4Fun:Tile 
@@ -72,18 +72,17 @@
 				</Coding4Fun:Tile>
 			</StackPanel>
 			<Coding4Fun:Tile 
-                        HorizontalAlignment="Left"
-                        Width="358"
-                        Height="173"
-                        
-                        Title="Coding4Fun Phone Toolkit">
-				<!--c4fBinding:FrameworkElementBinding.ClipToBounds="True"-->
+				c4fBinding:FrameworkElementBinding.ClipToBounds="True"
+                HorizontalAlignment="Left"
+                Width="358"
+                Height="173"
+                Title="Coding4Fun Phone Toolkit">
 				<Grid>
 					<Canvas>
 						<Image 
-					                x:Name="image" 
-	        		                Source="../../Media/images/trex_360width.jpg" 
-	        		                Stretch="None">
+					        Name="img" 
+	        		        Source="../../Media/images/trex_360width.jpg" 
+	        		        Stretch="None">
 							<Image.RenderTransform>
 								<CompositeTransform />
 							</Image.RenderTransform>
@@ -122,27 +121,25 @@
 								Margin="0">
 						<StackPanel Orientation="Horizontal">
 							<Image 
-									
-                                        Height="35"
-                                        Stretch="Uniform"
-                                        Source="../../Media/icons/appbar.share.rest.png" />
+                                Height="35"
+                                Stretch="Uniform"
+                                Source="../../Media/icons/appbar.share.rest.png" />
 							<TextBlock 
-                                        VerticalAlignment="Center">
-										Birthday
+                                VerticalAlignment="Center">
+								Birthday
 							</TextBlock>
 						</StackPanel>
 					</Coding4Fun:TileNotification>
 				</Grid>
 			</Coding4Fun:Tile>
 			<Coding4Fun:Tile 
-                    Margin="0, 12"
-                    Height="100"
-                    Background="Orange"
-                    
-                    FontSize="28"
-                    Foreground="SlateBlue"
-                    Title="Coding4Fun Phone Toolkit">
-				<!--c4fBinding:FrameworkElementBinding.ClipToBounds="True"-->
+				c4fBinding:FrameworkElementBinding.ClipToBounds="True"
+                Margin="0, 12"
+                Height="100"
+                Background="Orange"
+                FontSize="28"
+                Foreground="SlateBlue"
+                Title="Coding4Fun Phone Toolkit">
 				<Image 
                         HorizontalAlignment="Right"
                         Source="../../Media/headWhite.png" 

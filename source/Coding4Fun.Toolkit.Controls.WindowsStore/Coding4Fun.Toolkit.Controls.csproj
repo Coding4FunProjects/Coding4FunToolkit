@@ -107,6 +107,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
+      <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\Tile.cs">
       <Link>Buttons\Tile.cs</Link>
     </Compile>

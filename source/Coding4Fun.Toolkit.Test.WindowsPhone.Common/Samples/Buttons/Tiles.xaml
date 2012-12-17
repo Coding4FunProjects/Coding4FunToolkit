@@ -24,7 +24,7 @@
 						RepeatBehavior="Forever">
 						<DoubleAnimationUsingKeyFrames 
 							Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-							Storyboard.TargetName="image">
+							Storyboard.TargetName="img">
 							<SplineDoubleKeyFrame KeyTime="0:0:1"/>
 							<SplineDoubleKeyFrame KeyTime="0:0:36" Value="-307"/>
 							<SplineDoubleKeyFrame KeyTime="0:0:37" Value="-307" />
@@ -94,7 +94,7 @@
 					<Grid>
 						<Canvas>
 							<Image 
-					                x:Name="image" 
+					                x:Name="img" 
 	        		                Source="../../Media/images/trex_360width.jpg" 
 	        		                Stretch="None">
 								<Image.RenderTransform>
