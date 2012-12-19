@@ -420,7 +420,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe" -wp7</PreBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)..\..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe" -wp7</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
