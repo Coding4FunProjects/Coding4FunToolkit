@@ -102,41 +102,47 @@ namespace Coding4Fun.Toolkit.Controls
 			sender._popUp.CalculateVerticalOffset();
 		}
 
-    	public virtual void Show()
-		{
-			_popUp = new DialogService
-			         	{
-			         		AnimationType = AnimationType,
-			         		Child = this,
-			         		BackgroundBrush = Overlay,
-			         		IsBackKeyOverride = IsBackKeyOverride,
-							IsOverlayApplied = IsOverlayApplied,
-			         	};
+	    public virtual void Show()
+	    {
+		    _popUp = new DialogService
+			             {
+				             AnimationType = AnimationType,
+				             Child = this,
+				             BackgroundBrush = Overlay,
+				             IsBackKeyOverride = IsBackKeyOverride,
+				             IsOverlayApplied = IsOverlayApplied,
+			             };
 
-			if (IsCalculateFrameVerticalOffset)
-			{
-				_popUp.ControlVerticalOffset = -FrameTransform;
-			}
+			// this will happen if the user comes in OnNavigate or 
+			// something where the DOM hasn't been created yet.
+		    if (_popUp.Page == null)
+		    {
+			    Dispatcher.BeginInvoke(Show);
 
-    		_popUp.Closed += PopUpClosed;
-			_popUp.Opened += PopUpOpened;
+			    return;
+		    }
 
-			Dispatcher.BeginInvoke(
-				() =>
-					{
-						if (!IsAppBarVisible)
-						{
-							AppBar = _popUp.Page.ApplicationBar;
-							_popUp.Page.ApplicationBar = null;
-						}
+		    if (IsCalculateFrameVerticalOffset)
+		    {
+			    _popUp.ControlVerticalOffset = -FrameTransform;
+		    }
 
-						_startingPage = _popUp.Page;
+		    _popUp.Closed += PopUpClosed;
+		    _popUp.Opened += PopUpOpened;
 
-						_popUp.Show();
-					});
-		}
 
-    	void PopUpOpened(object sender, EventArgs e)
+		    if (!IsAppBarVisible)
+		    {
+			    AppBar = _popUp.Page.ApplicationBar;
+			    _popUp.Page.ApplicationBar = null;
+		    }
+
+		    _startingPage = _popUp.Page;
+
+		    _popUp.Show();
+	    }
+
+	    void PopUpOpened(object sender, EventArgs e)
 		{
 			if (Opened != null)
 				Opened(sender, e);
