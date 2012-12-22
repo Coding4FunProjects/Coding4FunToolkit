@@ -5,8 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    xmlns:slToolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -30,9 +31,9 @@
 			Source="/Coding4Fun.Toolkit.Test.WindowsPhone;component/media/head.png"
 			Margin="0, 0, -50, -50" />
 		
-		<ScrollViewer>
+		<ScrollViewer Margin="0">
 			<slToolkit:WrapPanel 
-				slToolkit:TiltEffect.IsTiltEnabled="True"
+				c4f:TiltEffect.IsTiltEnabled="True"
 				Margin="24,120,0,0">
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"

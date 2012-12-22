@@ -7,8 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Coding4Fun="using:Coding4Fun.Toolkit.Controls"
     xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common"
-    mc:Ignorable="d">
-
+	Coding4Fun:TiltEffect.IsTiltEnabled="True"
+	mc:Ignorable="d">
+	<Common:LayoutAwarePage.Resources>
+		<Style x:Key="RemoveMouseOverlayStyle" TargetType="GridViewItem">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="GridViewItem">
+						<ContentPresenter 
+							ContentTransitions="{TemplateBinding ContentTransitions}" 
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+							Margin="{TemplateBinding Padding}"
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Common:LayoutAwarePage.Resources>
 	<Grid Style="{StaticResource LayoutRootStyle}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140"/>
@@ -18,6 +34,7 @@
 		<Common:BaseHeader Title="{StaticResource AppName}" ApplicationTitleVisibility="Collapsed" />
 		
 		<GridView
+			ItemContainerStyle="{StaticResource RemoveMouseOverlayStyle}"
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
             TabIndex="1"
@@ -25,20 +42,22 @@
             Padding="116,0,116,46"
             SelectionMode="None"
             IsSwipeEnabled="false">
+			
+			<Coding4Fun:Tile 
+				Title="Button" 
+				Click="ButtonControls"
+				Style="{StaticResource TileStyle}">
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bu
+				</TextBlock>
+			</Coding4Fun:Tile>
+			
 			<Coding4Fun:Tile 
 					Title="Color" 
 					Click="ColorControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Co
-				</TextBlock>
-			</Coding4Fun:Tile>
-			<Coding4Fun:Tile 
-				Title="Button" 
-				Click="ButtonControls" 
-				Style="{StaticResource TileStyle}">
-				<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Bu
 				</TextBlock>
 			</Coding4Fun:Tile>
 		</GridView>

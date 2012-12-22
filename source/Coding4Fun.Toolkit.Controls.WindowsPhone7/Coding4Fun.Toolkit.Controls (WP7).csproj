@@ -139,6 +139,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\PhoneHelper.cs">
       <Link>Common\PhoneHelper.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
+      <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
+      <Link>Common\VisualTreeExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
       <Link>Converters\BooleanToVisibilityConverter.cs</Link>
     </Compile>
@@ -165,6 +171,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Diagnostic\MemoryCounter.cs">
       <Link>Diagnostic\MemoryCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
+      <Link>Effects\TiltEffect.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\MetroFlow.cs">
       <Link>MetroFlow\MetroFlow.cs</Link>
@@ -228,12 +237,6 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\DialogService.cs">
       <Link>Unsupported\DialogService.cs</Link>
-    </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\TemplatedVisualTreeExtensions.cs">
-      <Link>Unsupported\TemplatedVisualTreeExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\VisualTreeExtensions.cs">
-      <Link>Unsupported\VisualTreeExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Common\PhysicsConstants.cs">
       <Link>ValuePicker\Common\PhysicsConstants.cs</Link>

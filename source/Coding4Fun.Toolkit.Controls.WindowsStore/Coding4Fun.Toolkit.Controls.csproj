@@ -128,6 +128,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
       <Link>Common\ColorSpace.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
+      <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
+      <Link>Common\VisualTreeExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
       <Link>Converters\BooleanToVisibilityConverter.cs</Link>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\VisibilityToBooleanConverter.cs">
       <Link>Converters\VisibilityToBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
+      <Link>Effects\TiltEffect.cs</Link>
     </Compile>
     <Compile Include="Colors\ColorHexagonPicker %28WindowsStore%29.cs" />
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">

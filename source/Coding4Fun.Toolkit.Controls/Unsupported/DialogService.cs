@@ -10,6 +10,8 @@ using System.Windows.Media.Animation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
+using Coding4Fun.Toolkit.Controls;
+
 namespace Clarity.Phone.Extensions
 {
     // this code has been modified from the orginal code
