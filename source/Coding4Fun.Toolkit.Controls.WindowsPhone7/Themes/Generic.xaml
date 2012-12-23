@@ -89,7 +89,7 @@
     </Setter>
   </Style>
   <Style TargetType="local:RoundButton">
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
@@ -106,9 +106,6 @@
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ObjectAnimationUsingKeyFrames>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -153,7 +150,7 @@
     </Setter>
   </Style>
   <Style TargetType="local:RoundToggleButton">
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
@@ -168,9 +165,6 @@
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ObjectAnimationUsingKeyFrames>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
