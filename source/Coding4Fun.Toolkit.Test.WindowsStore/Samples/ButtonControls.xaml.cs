@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Windows.UI.Xaml.Input;
 
-using Coding4Fun.Toolkit.Test.WindowsStore.Common;
 using Coding4Fun.Toolkit.Test.WindowsStore.Samples.Buttons;
-using Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color;
-
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 {
@@ -20,7 +14,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			InitializeComponent();
 		}
 
-		private void TileControls(object sender, RoutedEventArgs e)
+		private void TileControls(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(Tiles));
 		}

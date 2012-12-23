@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -23,12 +24,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
             InitializeComponent();
         }
 
-		private void ColorControls(object sender, RoutedEventArgs e)
+		private void ColorControls(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ColorControls));
 		}
 
-		private void ButtonControls(object sender, RoutedEventArgs e)
+		private void ButtonControls(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ButtonControls));
 		}

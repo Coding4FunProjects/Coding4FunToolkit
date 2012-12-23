@@ -38,7 +38,7 @@
             IsSwipeEnabled="false">
 			<Coding4Fun:Tile 
 					Title="Tiles" 
-					Click="TileControls" 
+					Tapped="TileControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Ti

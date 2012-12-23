@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Windows.UI.Xaml.Input;
 
-using Coding4Fun.Toolkit.Test.WindowsStore.Common;
 using Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color;
-
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 {
@@ -19,7 +14,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			InitializeComponent();
 		}
 
-		private void ColorHex(object sender, RoutedEventArgs e)
+		private void ColorHex(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ColorHexPicker));
 		}
