@@ -92,6 +92,7 @@
     <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
+    <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="12" />
     <Setter Property="Template">
       <Setter.Value>
@@ -104,13 +105,13 @@
                 <VisualState x:Name="Pressed">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -143,7 +144,7 @@
                     </Ellipse.OpacityMask>
                   </Ellipse>
                 </Grid>
-                <ContentControl x:Name="ContentBody" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource AppBarText}" />
+                <ContentControl x:Name="ContentBody" Margin="0" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
           </Grid>
@@ -155,6 +156,7 @@
     <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
+    <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="12" />
     <Setter Property="Template">
       <Setter.Value>
@@ -165,13 +167,13 @@
                 <VisualState x:Name="Checked">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>

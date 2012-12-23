@@ -19,6 +19,17 @@ namespace Coding4Fun.Toolkit.Controls
         }
 
         #region dependency properties
+
+		public Brush SelectionBrush
+		{
+			get { return (Brush)GetValue(SelectionBrushProperty); }
+			set { SetValue(SelectionBrushProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for SelectionBrush.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty SelectionBrushProperty =
+			DependencyProperty.Register("SelectionBrush", typeof(Brush), typeof(ToggleButtonBase), new PropertyMetadata(null));
+
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
