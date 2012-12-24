@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\bin\Debug\Windows Store\AnyCpu</OutputPath>
-    <BaseIntermediateOutputPath>obj\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\Debug\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\Release\Windows Store\AnyCpu</OutputPath>
-    <BaseIntermediateOutputPath>obj\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\Debug\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -37,7 +37,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\..\bin\Debug\Windows Store\ARM</OutputPath>
-    <BaseIntermediateOutputPath>obj\ARM\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\ARM\Debug\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -48,7 +48,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>..\..\bin\Release\Windows Store\ARM\</OutputPath>
-    <BaseIntermediateOutputPath>obj\ARM\Release\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\ARM\Release\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
@@ -61,7 +61,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\..\bin\Debug\Windows Store\x64\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x64\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x64\Debug\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -72,7 +72,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\..\bin\Release\Windows Store\x64\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x64\Release\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x64\Release\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
@@ -85,7 +85,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\..\bin\Debug\Windows Store\x86\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x86\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x86\Debug\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -96,7 +96,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>..\..\bin\Release\Windows Store\x86\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x86\Release\Windows Store\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x86\Release\Windows Store\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>

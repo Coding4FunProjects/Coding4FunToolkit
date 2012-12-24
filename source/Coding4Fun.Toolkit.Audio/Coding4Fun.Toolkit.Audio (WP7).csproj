@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\Bin\Debug\Windows Phone 7\</OutputPath>
-    <BaseIntermediateOutputPath>obj\Debug\Windows Phone 7\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\Debug\Windows Phone 7\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -35,7 +35,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\Release\Windows Phone 7\</OutputPath>
-    <BaseIntermediateOutputPath>obj\Release\Windows Phone 7\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\Release\Windows Phone 7\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>

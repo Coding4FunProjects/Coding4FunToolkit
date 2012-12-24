@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\Bin\Debug\Windows Phone 8\AnyCPU\</OutputPath>
-    <BaseIntermediateOutputPath>obj\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\debug\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -35,7 +35,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\Release\Windows Phone 8\AnyCPU\</OutputPath>
-    <BaseIntermediateOutputPath>obj\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\release\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -47,7 +47,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\Bin\Debug\Windows Phone 8\x86\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x86\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x86\debug\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -58,7 +58,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\Release\Windows Phone 8\x86\</OutputPath>
-    <BaseIntermediateOutputPath>obj\x86\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\x86\release\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -70,7 +70,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\Bin\Debug\Windows Phone 8\ARM\</OutputPath>
-    <BaseIntermediateOutputPath>obj\ARM\debug\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\ARM\debug\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -81,7 +81,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\Release\Windows Phone 8\ARM\</OutputPath>
-    <BaseIntermediateOutputPath>obj\ARM\release\Windows Phone 8\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Audio\ARM\release\Windows Phone 8\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
