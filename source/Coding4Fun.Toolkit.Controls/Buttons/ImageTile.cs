@@ -7,12 +7,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	public class ImageTile : Button
+	public class ImageTile : Button, IDisposable
 	{
 		readonly DispatcherTimer _changeImageTimer = new DispatcherTimer();
 		readonly Random _rand = new Random();
@@ -36,7 +37,7 @@ namespace Coding4Fun.Toolkit.Controls
 		{
             DefaultStyleKey = typeof(ImageTile);
 		}
-
+		
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -57,6 +58,11 @@ namespace Coding4Fun.Toolkit.Controls
 						CycleImage(i, j);
 					}
 				}
+
+				var frame = Application.Current.RootVisual as Frame;
+				
+				if (frame != null)
+					frame.Navigated += FrameNavigated;
 			}
 
 	        _createAnimation = true;
@@ -684,5 +690,15 @@ namespace Coding4Fun.Toolkit.Controls
 			_availableSpotsOnGrid.Remove(index);
 		}
 		#endregion
+
+		public void Dispose()
+		{
+			_changeImageTimer.Stop();
+		}
+
+		void FrameNavigated(object sender, NavigationEventArgs e)
+		{
+			Dispose();
+		}
 	}
 }
