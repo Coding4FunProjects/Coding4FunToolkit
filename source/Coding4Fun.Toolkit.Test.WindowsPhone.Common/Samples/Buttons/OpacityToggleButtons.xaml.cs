@@ -25,12 +25,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 
 		private void OpacityToggleButtonUnchecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<OpacityToggleButton>(opacityButtons, false);
+			SetIsEnableToType<OpacityToggleButton>(DisableViewStateTest, false);
 		}
 
 		private void OpacityToggleButtonChecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<OpacityToggleButton>(opacityButtons, true);
+			SetIsEnableToType<OpacityToggleButton>(DisableViewStateTest, true);
 		}
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control

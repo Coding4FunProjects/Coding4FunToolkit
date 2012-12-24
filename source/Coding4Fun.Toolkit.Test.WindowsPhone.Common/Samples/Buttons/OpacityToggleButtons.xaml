@@ -28,9 +28,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
-				<StackPanel 
-						Name="opacityButtons"
-						Orientation="Horizontal">
+				<StackPanel Orientation="Horizontal">
 					<c4f:OpacityToggleButton />
 					<c4f:OpacityToggleButton
 							Background="Red"
@@ -61,6 +59,17 @@
 							CheckedOpacity=".9"
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 							Content="disabled"/>
+				</StackPanel>
+				<StackPanel Name="DisableViewStateTest">
+					<TextBlock>Disable Test</TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton />
+						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton />
+						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton />
+					</StackPanel>
 				</StackPanel>
 				<sltoolkit:ToggleSwitch 
 						IsChecked="True" 
