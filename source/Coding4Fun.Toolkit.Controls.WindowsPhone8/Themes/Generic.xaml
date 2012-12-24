@@ -115,16 +115,16 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -179,16 +179,16 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
