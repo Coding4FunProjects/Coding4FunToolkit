@@ -8,8 +8,8 @@
 	</ResourceDictionary.MergedDictionaries>
 	
 	<Style TargetType="local:OpacityToggleButton">
-		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-		<Setter Property="Background" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
+		<Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
 		<Setter Property="FontSize" Value="12" />
 
@@ -62,7 +62,7 @@
 										x:Name="ButtonForeground" 
 										Fill="{TemplateBinding Background}" 
 										Opacity="{TemplateBinding UncheckedOpacity}"
-										Margin="{StaticResource PhoneTouchTargetOverhang}">
+										Margin="10">
 										<Rectangle.OpacityMask>
 											<ImageBrush 
 												x:Name="OpacityImageBrush" 

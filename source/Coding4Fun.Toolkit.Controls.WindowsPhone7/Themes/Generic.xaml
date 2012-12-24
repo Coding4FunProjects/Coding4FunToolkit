@@ -37,8 +37,8 @@
     </Setter>
   </Style>
   <Style TargetType="local:OpacityToggleButton">
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Background" Value="{StaticResource PhoneForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
     <Setter Property="FontSize" Value="12" />
     <Setter Property="Template">
@@ -74,7 +74,7 @@
             <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Background}" Opacity="{TemplateBinding UncheckedOpacity}" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Background}" Opacity="{TemplateBinding UncheckedOpacity}" Margin="10">
                     <Rectangle.OpacityMask>
                       <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Rectangle.OpacityMask>
