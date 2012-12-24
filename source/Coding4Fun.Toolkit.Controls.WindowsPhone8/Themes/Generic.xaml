@@ -61,10 +61,10 @@
                       <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
