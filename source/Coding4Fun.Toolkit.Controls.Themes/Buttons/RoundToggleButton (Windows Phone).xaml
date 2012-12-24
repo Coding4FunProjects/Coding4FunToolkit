@@ -4,8 +4,8 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 	
 	<Style TargetType="local:RoundToggleButton">
-		<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
-		<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
 		<Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
 		<Setter Property="FontSize" Value="12" />
@@ -72,11 +72,11 @@
 										Stroke="{TemplateBinding BorderBrush}" 
 										StrokeThickness="3" 
 										Fill="{TemplateBinding Background}" 
-										Margin="{StaticResource PhoneTouchTargetOverhang}" />
+										Margin="10" />
 									<Ellipse
 										x:Name="ButtonForeground" 
 										Fill="{TemplateBinding Foreground}" 
-										Margin="{StaticResource PhoneTouchTargetOverhang}">
+										Margin="10">
 										<Ellipse.OpacityMask>
 											<ImageBrush 
 												x:Name="OpacityImageBrush" 

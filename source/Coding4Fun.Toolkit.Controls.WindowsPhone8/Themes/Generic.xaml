@@ -89,8 +89,8 @@
     </Setter>
   </Style>
   <Style TargetType="local:RoundButton">
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="12" />
@@ -134,8 +134,8 @@
             <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}" />
-                  <Ellipse x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                  <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
+                  <Ellipse x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
                     <Ellipse.OpacityMask>
                       <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Ellipse.OpacityMask>
@@ -150,8 +150,8 @@
     </Setter>
   </Style>
   <Style TargetType="local:RoundToggleButton">
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="12" />
@@ -198,8 +198,8 @@
             <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}" />
-                  <Ellipse x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                  <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
+                  <Ellipse x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
                     <Ellipse.OpacityMask>
                       <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Ellipse.OpacityMask>
