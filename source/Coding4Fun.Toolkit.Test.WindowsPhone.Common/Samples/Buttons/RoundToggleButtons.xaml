@@ -76,6 +76,7 @@
 						</c4f:RoundToggleButton>
 						<c4f:RoundToggleButton
 							IsEnabled="False"
+							IsChecked="true"
 							FontSize="18"
 							Content="Coding"
 							BorderBrush="CornflowerBlue" />
@@ -89,6 +90,7 @@
 							Content="Fun" />
 						<c4f:RoundToggleButton 
 							IsEnabled="False"
+							IsChecked="true"
 							ImageSource="{Binding RoundButtonImage}"
 							Content="toggle img" 
 							Click="ToggleRoundButtonImageClick" />

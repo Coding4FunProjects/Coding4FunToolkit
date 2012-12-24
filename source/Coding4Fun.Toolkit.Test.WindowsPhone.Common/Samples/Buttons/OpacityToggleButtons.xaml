@@ -31,34 +31,34 @@
 				<StackPanel Orientation="Horizontal">
 					<c4f:OpacityToggleButton />
 					<c4f:OpacityToggleButton
-							Background="Red"
-							UncheckedOpacity=".5"
-							CheckedOpacity=".9"
-							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png"  />
+						Background="Red"
+						UncheckedOpacity=".5"
+						CheckedOpacity=".9"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png"  />
 					<c4f:OpacityToggleButton>
 						Testing
 					</c4f:OpacityToggleButton>
 					<c4f:OpacityToggleButton
-							Background="CornflowerBlue"
-							Foreground="lime"
-							UncheckedOpacity=".9"
-							CheckedOpacity=".4"
-							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Content="foo" />
+						Background="CornflowerBlue"
+						Foreground="lime"
+						UncheckedOpacity=".9"
+						CheckedOpacity=".4"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Content="foo" />
 					<c4f:OpacityToggleButton
-							Background="Red"
-							UncheckedOpacity=".4"
-							CheckedOpacity=".9"
-							Padding="12"
-							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Content="12 pad" />
+						Background="Red"
+						UncheckedOpacity=".4"
+						CheckedOpacity=".9"
+						Padding="12"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Content="12 pad" />
 					<c4f:OpacityToggleButton
-							Background="Red"
-							IsEnabled="False"
-							UncheckedOpacity=".1"
-							CheckedOpacity=".9"
-							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Content="disabled"/>
+						Background="Red"
+						IsEnabled="False"
+						UncheckedOpacity=".1"
+						CheckedOpacity=".9"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Content="disabled"/>
 				</StackPanel>
 				<StackPanel Name="DisableViewStateTest">
 					<TextBlock>Disable Test</TextBlock>
