@@ -9,8 +9,8 @@
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="Purple" />
-  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="Orange" />
+  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#C888" />
+  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#000000" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />

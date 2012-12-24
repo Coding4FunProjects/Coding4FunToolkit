@@ -2,10 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+	
 	<Style x:Key="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0" />
-        
     </Style>
 
 	<!-- brushes -->
@@ -13,8 +13,9 @@
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
 	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
-	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="Purple" />
-	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="Orange" />
+	
+	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#C888" />
+	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#000000" />
 	
 	<!-- font sizes -->
 	<x:Double x:Key="DefaultFontSizeNormal">20</x:Double> <!--{StaticResource PhoneFontSizeNormal}-->
