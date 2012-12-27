@@ -11,6 +11,13 @@ namespace Coding4Fun.Toolkit.Controls
 		public OpacityToggleButton()
 		{
 			DefaultStyleKey = typeof(OpacityToggleButton);
+
+			this.IsEnabledChanged += OpacityToggleButton_IsEnabledChanged;
+		}
+
+		void OpacityToggleButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			//throw new NotImplementedException();
 		}
 
 		public override void OnApplyTemplate()

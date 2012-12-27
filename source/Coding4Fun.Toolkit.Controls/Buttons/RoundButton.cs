@@ -33,7 +33,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for SelectionBrush.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty SelectionBrushProperty =
-			DependencyProperty.Register("SelectionBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(null));
+			DependencyProperty.Register("SelectionBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(new SolidColorBrush()));
 
         public Orientation Orientation
         {

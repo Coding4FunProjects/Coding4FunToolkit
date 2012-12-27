@@ -3,10 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
-	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/Common/CommonStyles.xaml" />
-	</ResourceDictionary.MergedDictionaries>
-	
 	<Style TargetType="local:OpacityToggleButton">
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}"/>
@@ -43,6 +39,7 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
+						
 						<Rectangle Fill="Transparent" />
 						<Border 
 							Height="{TemplateBinding Height}"

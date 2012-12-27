@@ -9,8 +9,8 @@
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#C888" />
-  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#000000" />
+  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#6FFF" />
+  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -56,17 +56,17 @@
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
-    <Setter Property="Margin" Value="10" />
-    <Setter Property="Padding" Value="9, -3, 9, -5" />
+    <Setter Property="Margin" Value="5" />
+    <Setter Property="Padding" Value="9, 0, 9, -1" />
     <Setter Property="VerticalAlignment" Value="Top" />
     <Setter Property="HorizontalAlignment" Value="Right" />
-    <Setter Property="MinWidth" Value="30" />
-    <Setter Property="MinHeight" Value="30" />
+    <Setter Property="MinWidth" Value="28" />
+    <Setter Property="MinHeight" Value="28" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:TileNotification">
           <Grid>
-            <Rectangle Fill="{TemplateBinding Background}" RadiusX="15" RadiusY="15" />
+            <Rectangle Fill="{TemplateBinding Background}" RadiusX="14" RadiusY="14" />
             <ContentControl Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
           </Grid>
         </ControlTemplate>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
+using System.Windows.Media.Animation;
 using Clarity.Phone.Extensions;
 
 using Microsoft.Phone.Controls;
@@ -14,11 +15,11 @@ namespace Coding4Fun.Toolkit.Controls
 {
     public abstract class PopUp<T, TPopUpResult> : Control
     {
-        private DialogService _popUp;
+        internal DialogService PopUpService;
 		private PhoneApplicationPage _startingPage;
         private bool _alreadyFired;
 
-        public bool IsOpen { get { return _popUp != null && _popUp.IsOpen; } }
+        public bool IsOpen { get { return PopUpService != null && PopUpService.IsOpen; } }
         public bool IsAppBarVisible { get; set; }
     	
 		// adjust for SIP
@@ -57,10 +58,12 @@ namespace Coding4Fun.Toolkit.Controls
 		}
 		private bool _isOverlayApplied = true;
 
-		internal IApplicationBar AppBar { get; set; }
+		internal bool IsSetAppBarVisibiilty { get; set; }
+		internal TimeSpan MainBodyDelay { get; set; }
+
 		protected internal bool IsBackKeyOverride { get; set; }
-		
 	    protected DialogService.AnimationTypes AnimationType { get; set; }
+
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 		public event EventHandler Opened;
 		
@@ -68,9 +71,9 @@ namespace Coding4Fun.Toolkit.Controls
         {
             base.OnApplyTemplate();
 
-            if (_popUp != null)
+            if (PopUpService != null)
             {
-                _popUp.SetAlignmentsOnOverlay(HorizontalAlignment, VerticalAlignment);
+                PopUpService.SetAlignmentsOnOverlay(HorizontalAlignment, VerticalAlignment);
             }
         }
 
@@ -81,10 +84,10 @@ namespace Coding4Fun.Toolkit.Controls
             if (Completed != null)
                 Completed(this, result);
             
-            if(_popUp != null)
-                _popUp.Hide();
+            if(PopUpService != null)
+                PopUpService.Hide();
             
-            if (_popUp != null && _popUp.BackButtonPressed)
+            if (PopUpService != null && PopUpService.BackButtonPressed)
                 ResetWorldAndDestroyPopUp();
         }
 		
@@ -92,30 +95,31 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			var sender = source as PopUp<T, TPopUpResult>;
 
-			if (sender == null || sender._popUp == null)
+			if (sender == null || sender.PopUpService == null)
 				return;
 
 			if (!sender.IsCalculateFrameVerticalOffset)
 				return;
 
-			sender._popUp.ControlVerticalOffset = -sender.FrameTransform;
-			sender._popUp.CalculateVerticalOffset();
+			sender.PopUpService.ControlVerticalOffset = -sender.FrameTransform;
+			sender.PopUpService.CalculateVerticalOffset();
 		}
 
 	    public virtual void Show()
 	    {
-		    _popUp = new DialogService
+		    PopUpService = new DialogService
 			             {
 				             AnimationType = AnimationType,
 				             Child = this,
 				             BackgroundBrush = Overlay,
 				             IsBackKeyOverride = IsBackKeyOverride,
 				             IsOverlayApplied = IsOverlayApplied,
+							 MainBodyDelay = MainBodyDelay,
 			             };
 
 			// this will happen if the user comes in OnNavigate or 
 			// something where the DOM hasn't been created yet.
-		    if (_popUp.Page == null)
+		    if (PopUpService.Page == null)
 		    {
 			    Dispatcher.BeginInvoke(Show);
 
@@ -124,22 +128,23 @@ namespace Coding4Fun.Toolkit.Controls
 
 		    if (IsCalculateFrameVerticalOffset)
 		    {
-			    _popUp.ControlVerticalOffset = -FrameTransform;
+			    PopUpService.ControlVerticalOffset = -FrameTransform;
 		    }
 
-		    _popUp.Closed += PopUpClosed;
-		    _popUp.Opened += PopUpOpened;
+		    PopUpService.Closed += PopUpClosed;
+		    PopUpService.Opened += PopUpOpened;
 
 
-		    if (!IsAppBarVisible)
+			if (!IsAppBarVisible && PopUpService.Page.ApplicationBar != null && PopUpService.Page.ApplicationBar.IsVisible)
 		    {
-			    AppBar = _popUp.Page.ApplicationBar;
-			    _popUp.Page.ApplicationBar = null;
+			    PopUpService.Page.ApplicationBar.IsVisible = false;
+
+				IsSetAppBarVisibiilty = true;
 		    }
 
-		    _startingPage = _popUp.Page;
+		    _startingPage = PopUpService.Page;
 
-		    _popUp.Show();
+		    PopUpService.Show();
 	    }
 
 	    void PopUpOpened(object sender, EventArgs e)
@@ -171,17 +176,17 @@ namespace Coding4Fun.Toolkit.Controls
 
     	private void ResetWorldAndDestroyPopUp()
     	{
-    		if (_popUp != null)
+    		if (PopUpService != null)
     		{
-				if (!IsAppBarVisible && AppBar != null && _startingPage != null)
+				if (!IsAppBarVisible && IsSetAppBarVisibiilty)
     			{
-    				_startingPage.ApplicationBar = AppBar;
+					_startingPage.ApplicationBar.IsVisible = IsSetAppBarVisibiilty;
     			}
 				
 				_startingPage = null;
     			
-                _popUp.Child = null;
-    			_popUp = null;
+                PopUpService.Child = null;
+    			PopUpService = null;
     		}
     	}
 
@@ -195,7 +200,7 @@ namespace Coding4Fun.Toolkit.Controls
 			  "FrameTransform",
 			  typeof(double),
 			  typeof(PopUp<T, TPopUpResult>),
-			  new PropertyMetadata((double)0, OnFrameTransformPropertyChanged));
+			  new PropertyMetadata(0.0, OnFrameTransformPropertyChanged));
 
     	public Brush Overlay
         {
@@ -205,7 +210,6 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
-            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(
-				(!DesignerProperties.IsInDesignTool) ? Application.Current.Resources["PhoneSemitransparentBrush"] : null));
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(new SolidColorBrush()));
 	}
 }

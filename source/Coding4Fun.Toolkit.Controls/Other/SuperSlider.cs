@@ -196,7 +196,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Fill.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill", typeof(Brush), typeof(SuperSlider), new PropertyMetadata(null));
+			DependencyProperty.Register("Fill", typeof(Brush), typeof(SuperSlider), new PropertyMetadata(new SolidColorBrush()));
         #endregion
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)

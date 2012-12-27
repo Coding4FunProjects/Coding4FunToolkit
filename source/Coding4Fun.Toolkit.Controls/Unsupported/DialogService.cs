@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -98,9 +99,10 @@ namespace Clarity.Phone.Extensions
         </Storyboard>";
 
         private const string SwivelInStoryboard =
-        @"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
-            <DoubleAnimation BeginTime=""0:0:0"" Duration=""0"" To="".5""
-                                Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" />
+		@"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+            <DoubleAnimation 
+				To="".5""
+                Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.CenterOfRotationY)"" />
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty=""(UIElement.Projection).(PlaneProjection.RotationX)"">
                 <EasingDoubleKeyFrame KeyTime=""0"" Value=""-30""/>
                 <EasingDoubleKeyFrame KeyTime=""0:0:0.35"" Value=""0"">
@@ -136,7 +138,7 @@ namespace Clarity.Phone.Extensions
 		private const string FadeInStoryboard =
 		@"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
             <DoubleAnimation 
-				Duration=""0:0:0.267"" 
+				Duration=""0:0:0.2"" 
 				Storyboard.TargetProperty=""(UIElement.Opacity)"" 
                 To=""1""/>
         </Storyboard>";
@@ -144,9 +146,9 @@ namespace Clarity.Phone.Extensions
 		private const string FadeOutStoryboard =
 		@"<Storyboard xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
             <DoubleAnimation 
-				Duration=""0:0:0.267""
+				Duration=""0:0:0.2""
 				Storyboard.TargetProperty=""(UIElement.Opacity)"" 
-                To="".3""/>
+                To=""0""/>
         </Storyboard>";
 
         private Panel _popupContainer;
@@ -164,7 +166,9 @@ namespace Clarity.Phone.Extensions
 
         public FrameworkElement Child { get; set; }
         public AnimationTypes AnimationType { get; set; }
-        public double VerticalOffset { get; set; }
+	    public TimeSpan MainBodyDelay { get; set; }
+
+	    public double VerticalOffset { get; set; }
     	internal double ControlVerticalOffset { get; set; }
         public bool BackButtonPressed { get; set; }
 
@@ -324,30 +328,36 @@ namespace Clarity.Phone.Extensions
         /// Shows the context menu.
         /// </summary>
         public void Show()
-        {
-            lock (Lockobj)
-            {
-                IsOpen = true;
+		{
+			lock (Lockobj)
+			{
+				IsOpen = true;
 
-                InitializePopup();
+				InitializePopup();
 
 				if (_deferredShowToLoaded)
 					return;
 
-                if (!IsBackKeyOverride)
-                    Page.BackKeyPress += OnBackKeyPress;
+				if (!IsBackKeyOverride)
+					Page.BackKeyPress += OnBackKeyPress;
 
-                Page.NavigationService.Navigated += OnNavigated;
+				Page.NavigationService.Navigated += OnNavigated;
 
-	            RunShowStoryboard(_childPanel, AnimationType);
 				RunShowStoryboard(_overlay, AnimationTypes.Fade);
+				RunShowStoryboard(_childPanel, AnimationType, MainBodyDelay);
 
 				if (Opened != null)
 					Opened.Invoke(this, null);
-            }
-        }
 
-		private void RunShowStoryboard(Grid grid, AnimationTypes animation)
+			}
+		}
+
+	    private void RunShowStoryboard(UIElement grid, AnimationTypes animation)
+	    {
+		    RunShowStoryboard(grid, animation, TimeSpan.MinValue);
+	    }
+
+	    private void RunShowStoryboard(UIElement grid, AnimationTypes animation, TimeSpan delay)
 		{
 			if (grid == null)
 				return;
@@ -377,6 +387,19 @@ namespace Clarity.Phone.Extensions
 
 			if (storyboard != null)
 			{
+				foreach (var storyboardAnimation in storyboard.Children)
+				{
+					if (!(storyboardAnimation is DoubleAnimationUsingKeyFrames)) 
+						continue;
+
+					var doubleKey = storyboardAnimation as DoubleAnimationUsingKeyFrames;
+
+					foreach (var frame in doubleKey.KeyFrames)
+					{
+						frame.KeyTime = KeyTime.FromTimeSpan(frame.KeyTime.TimeSpan.Add(delay));
+					}
+				}
+
 				Page.Dispatcher.BeginInvoke(() =>
 					{
 						foreach (var t in storyboard.Children)

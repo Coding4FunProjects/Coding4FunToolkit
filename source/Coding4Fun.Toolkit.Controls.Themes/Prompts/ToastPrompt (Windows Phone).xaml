@@ -10,6 +10,7 @@
 		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="Overlay" Value="{StaticResource TransparentBrush}" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:ToastPrompt">

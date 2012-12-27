@@ -328,24 +328,25 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			var element = sender as FrameworkElement;
 
-			#if WINDOWS_STORE
+			if (_hasStarted) 
+				return;
 
-			if (!_hasStarted &&
-				((e.Pointer.PointerDeviceType == PointerDeviceType.Touch) || 
+#if WINDOWS_STORE
+
+			if (
+				(e.Pointer.PointerDeviceType == PointerDeviceType.Touch) ||
 				(e.Pointer.PointerDeviceType != PointerDeviceType.Touch && e.Pointer.IsInContact) // mouse and pen
-				))
+				)
 			{
 				if (e.Pointer.PointerDeviceType == PointerDeviceType.Touch && element != null)
 				{
 					element.PointerExited += TiltEffectExited;
 				}
-#endif
-				TryStartTiltEffect(element, e);
-
-				_hasStarted = true;
-#if WINDOWS_STORE
 			}
 #endif
+
+			TryStartTiltEffect(element, e);
+			_hasStarted = true;
 		}
 #if WINDOWS_STORE
 

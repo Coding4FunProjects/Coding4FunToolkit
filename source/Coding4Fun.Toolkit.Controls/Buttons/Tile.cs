@@ -14,11 +14,11 @@ using System.Windows.Markup;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	//[ContentProperty(
-	//#if WINDOWS_STORE
-	//	Name = 
-	//#endif
-	//	"Content")]
+	[ContentProperty(
+#if WINDOWS_STORE
+		Name = 
+#endif
+"Content")]
 	public class Tile : Button
     {
 		public Tile()

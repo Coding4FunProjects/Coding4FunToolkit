@@ -44,12 +44,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 
 		private void RoundToggleButtonUnchecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, false);
+			SetIsEnableToType<RoundToggleButton>(DisabledRoundToggleButtons, false);
 		}
 
 		private void RoundToggleButtonChecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<RoundToggleButton>(disabledRoundToggleButtons, true);
+			SetIsEnableToType<RoundToggleButton>(DisabledRoundToggleButtons, true);
 		}
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control

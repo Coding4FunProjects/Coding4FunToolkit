@@ -1,22 +1,25 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:System="clr-namespace:System;assembly=mscorlib">
+	xmlns:System="clr-namespace:System;assembly=mscorlib"
+	xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls">
 
+	<c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
+	
 	<Style x:Key="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0" />
     </Style>
 	
 	<!-- brushes -->
-	<SolidColorBrush x:Key="DefaultAccentBrush" Color="{StaticResource PhoneAccentColor}" />
-	<SolidColorBrush x:Key="DefaultChromeBrush" Color="{StaticResource PhoneChromeColor}" />
+	<SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
-	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="{StaticResource PhoneForegroundColor}" />
-	
-	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{StaticResource PhoneDisabledColor}" />
-	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{StaticResource PhoneChromeColor}" />
+	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
 
+	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
 	
 	<!-- font sizes -->
 	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double> <!--{StaticResource PhoneFontSizeNormal}-->

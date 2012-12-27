@@ -8,8 +8,9 @@
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
 		<Setter Property="VerticalAlignment" Value="Bottom" />
 		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
-		
-        <Setter Property="Template">
+		<Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
+
+		<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AppBarPrompt">
 					<Grid Background="{TemplateBinding Background}">

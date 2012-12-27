@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 using Clarity.Phone.Extensions;
@@ -16,6 +17,7 @@ namespace Coding4Fun.Toolkit.Controls
 		public AppBarPrompt()
 		{
 			DefaultStyleKey = typeof (AppBarPrompt);
+			MainBodyDelay = TimeSpan.FromMilliseconds(100);
 		}
 
 	    public AppBarPrompt(params AppBarPromptAction[] actions) : this()
@@ -31,7 +33,7 @@ namespace Coding4Fun.Toolkit.Controls
 	    /// <returns></returns>
 	    private void VerifyAppBarForegroundColor()
         {
-			var color = AppBar.ForegroundColor;
+			var color = PopUpService.Page.ApplicationBar.BackgroundColor;
 
 			if (color != NullColor) // Default system theme no color is given
 			{
@@ -45,7 +47,7 @@ namespace Coding4Fun.Toolkit.Controls
 	    /// <returns></returns>
 	    private void VerifyAppBarBackgroundColor()
         {
-			var color = AppBar.BackgroundColor;
+			var color = PopUpService.Page.ApplicationBar.BackgroundColor;
 
 			if (color != NullColor) // Default system theme no color is given
 			{
