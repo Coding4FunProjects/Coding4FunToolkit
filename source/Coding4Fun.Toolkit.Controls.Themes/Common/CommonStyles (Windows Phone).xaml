@@ -27,4 +27,7 @@
 	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double> <!--{StaticResource PhoneFontSizeNormal}-->
 	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
 	
+	<!-- default sizing -->
+	<System:Double x:Key="DefaultTileSize">173</System:Double>
+
 </ResourceDictionary>

@@ -11,6 +11,7 @@
   <System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
   <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+  <System:Double x:Key="DefaultTileSize">173</System:Double>
   <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" />
   </ControlTemplate>
@@ -20,22 +21,22 @@
     <Setter Property="Margin" Value="0" />
   </Style>
   <Style TargetType="local:ImageTile">
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="Foreground" Value="White" />
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
-    <Setter Property="Margin" Value="12" />
-    <Setter Property="Padding" Value="8,0" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Margin" Value="10" />
+    <Setter Property="Padding" Value="10,0" />
     <Setter Property="VerticalAlignment" Value="Top" />
     <Setter Property="HorizontalAlignment" Value="Right" />
     <Setter Property="MinWidth" Value="36" />
     <Setter Property="MinHeight" Value="36" />
-    <Setter Property="Width" Value="173" />
-    <Setter Property="Height" Value="173" />
+    <Setter Property="Width" Value="{StaticResource DefaultTileSize}" />
+    <Setter Property="Height" Value="{StaticResource DefaultTileSize}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:ImageTile">
-          <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{StaticResource PhoneAccentBrush}"></Grid>
+          <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}"></Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

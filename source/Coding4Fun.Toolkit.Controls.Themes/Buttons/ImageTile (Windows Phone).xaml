@@ -4,18 +4,18 @@
 	xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
 	<Style TargetType="local:ImageTile">
-        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
-        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
-        <Setter Property="Margin" Value="12"/>
-        <Setter Property="Padding" Value="8,0"/>
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}"/>
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Padding" Value="10,0"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="MinWidth" Value="36"/>
         <Setter Property="MinHeight" Value="36"/>
-        <Setter Property="Width" Value="173"/>
-        <Setter Property="Height" Value="173"/>
+		<Setter Property="Width" Value="{StaticResource DefaultTileSize}"/>
+		<Setter Property="Height" Value="{StaticResource DefaultTileSize}"/>
         
         <Setter Property="Template">
             <Setter.Value>
@@ -24,7 +24,7 @@
 						x:Name="ImageContainer" 
 						Width="{TemplateBinding Width}" 
 						Height="{TemplateBinding Height}" 
-						Background="{StaticResource PhoneAccentBrush}">
+						Background="{TemplateBinding Background}">
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
