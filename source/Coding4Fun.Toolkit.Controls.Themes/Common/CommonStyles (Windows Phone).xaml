@@ -14,13 +14,12 @@
 	<!-- brushes -->
 	<SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
-	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
+	<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{Binding Source={StaticResource PhoneBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
 
 	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
-	
 	
 	<!-- font Stuff -->
 	<System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
@@ -29,5 +28,6 @@
 	
 	<!-- default sizing -->
 	<System:Double x:Key="DefaultTileSize">173</System:Double>
-
+	<System:Double x:Key="DefaultAppButtonSize">72</System:Double>
+	
 </ResourceDictionary>

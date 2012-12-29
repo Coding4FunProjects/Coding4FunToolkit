@@ -40,9 +40,9 @@
 					Rows="{Binding ElementName=rows, Path=Value}"
 					Columns="{Binding ElementName=cols, Path=Value}"
                     LargeTileRows="{Binding ElementName=largerows, Path=Value, Mode=TwoWay}"
-					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}"
-					Width="300"
-					Height="300"/>
+					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}">
+					Image Tile
+				</c4f:ImageTile>
 				<Grid Grid.Row="1">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />
@@ -54,7 +54,7 @@
 						<RowDefinition Height="Auto" />
 						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
-                    <!--<c4f:SuperSlider 
+                    <c4f:SuperSlider 
 					    Title="Rows" 
 					    Name="rows"
 					    Value="3" 
@@ -76,7 +76,7 @@
 					    Value="2" 
 					    Step="1" 
 					    Minimum="0"
-					    Maximum="10" 
+					    Maximum="{Binding Value, ElementName=rows}" 
                         Grid.Row="1" Grid.Column="0"/>
 					<c4f:SuperSlider 
 					    Title="Large Tile Columns" 
@@ -84,7 +84,7 @@
 					    Value="2" 
 					    Step="1" 
 					    Minimum="0"
-					    Maximum="10" 
+					    Maximum="{Binding Value, ElementName=cols}" 
                         Grid.Row="1" Grid.Column="1"/>
 					<c4f:SuperSlider 
 					    Title="Test Dataset size" 
@@ -92,8 +92,9 @@
 					    Value="15" 
 					    Step="1" 
 					    Minimum="0"
-					    Maximum="40" ValueChanged="DataValueChanged" 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"/>-->
+					    Maximum="40" 
+						ValueChanged="DataValueChanged" 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"/>
 					<Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />

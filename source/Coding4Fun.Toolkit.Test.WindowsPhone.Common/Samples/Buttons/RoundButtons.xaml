@@ -67,6 +67,7 @@
 							Content="horizontal text" />
 					<c4f:RoundButton 
 							Padding="24" Content="24 pad" />
+					<c4f:RoundButton Margin="0" Padding="0" />
 				</StackPanel>
 				<TextBlock Margin="0, 18, 0, 0">Disabled</TextBlock>
 				<StackPanel Name="disabledRoundButtons">

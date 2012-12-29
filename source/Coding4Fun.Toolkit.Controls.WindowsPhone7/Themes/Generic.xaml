@@ -4,6 +4,7 @@
   <c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{Binding Source={StaticResource PhoneBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
@@ -12,6 +13,7 @@
   <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
   <System:Double x:Key="DefaultTileSize">173</System:Double>
+  <System:Double x:Key="DefaultAppButtonSize">72</System:Double>
   <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" />
   </ControlTemplate>
@@ -27,8 +29,8 @@
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
     <Setter Property="Margin" Value="10" />
     <Setter Property="Padding" Value="10,0" />
-    <Setter Property="VerticalAlignment" Value="Top" />
-    <Setter Property="HorizontalAlignment" Value="Right" />
+    <!--<Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>-->
     <Setter Property="MinWidth" Value="36" />
     <Setter Property="MinHeight" Value="36" />
     <Setter Property="Width" Value="{StaticResource DefaultTileSize}" />
@@ -36,7 +38,10 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:ImageTile">
-          <Grid x:Name="ImageContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}"></Grid>
+          <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+            <Grid x:Name="ImageContainer" />
+            <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
