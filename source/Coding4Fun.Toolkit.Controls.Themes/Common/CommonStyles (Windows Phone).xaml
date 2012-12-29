@@ -21,7 +21,10 @@
 	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
 	
-	<!-- font sizes -->
+	
+	<!-- font Stuff -->
+	<System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
 	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double> <!--{StaticResource PhoneFontSizeNormal}-->
+	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
 	
 </ResourceDictionary>

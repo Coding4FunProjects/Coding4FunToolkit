@@ -6,8 +6,8 @@
 	<Style TargetType="local:OpacityToggleButton">
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}"/>
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
-		<Setter Property="FontSize" Value="12" />
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}"/>
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
 
 		<Setter Property="Template">
 			<Setter.Value>

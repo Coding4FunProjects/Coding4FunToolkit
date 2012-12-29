@@ -8,7 +8,9 @@
   <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
+  <System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
   <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
+  <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
   <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" />
   </ControlTemplate>
@@ -41,8 +43,8 @@
   <Style TargetType="local:OpacityToggleButton">
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}" />
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
-    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:OpacityToggleButton">
@@ -93,9 +95,9 @@
   <Style TargetType="local:RoundButton">
     <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
-    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:RoundButton">
@@ -154,9 +156,9 @@
   <Style TargetType="local:RoundToggleButton">
     <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
-    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:RoundToggleButton">

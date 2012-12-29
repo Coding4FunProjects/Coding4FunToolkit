@@ -6,9 +6,9 @@
 	<Style TargetType="local:RoundToggleButton">
 		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}"/>
 		<Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
-		<Setter Property="FontSize" Value="12" />
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
 		
 		<Setter Property="Template">
 			<Setter.Value>
