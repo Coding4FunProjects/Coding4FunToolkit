@@ -5,7 +5,7 @@
 
 	<Style TargetType="local:ImageTile">
 		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
-        <Setter Property="Foreground" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
 		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}"/>
 		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
         <Setter Property="Margin" Value="10"/>
