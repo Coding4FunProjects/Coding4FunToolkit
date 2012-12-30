@@ -10,8 +10,8 @@
 		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Padding" Value="10,0"/>
-        <!--<Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>-->
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="MinWidth" Value="36"/>
         <Setter Property="MinHeight" Value="36"/>
 		<Setter Property="Width" Value="{StaticResource DefaultTileSize}"/>

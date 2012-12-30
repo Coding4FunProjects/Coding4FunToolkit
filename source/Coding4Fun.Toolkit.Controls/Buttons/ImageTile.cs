@@ -1,8 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+
+#if WINDOWS_STORE
+
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
+
+#elif WINDOWS_PHONE
+
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,6 +21,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -37,8 +50,12 @@ namespace Coding4Fun.Toolkit.Controls
 		{
             DefaultStyleKey = typeof(ImageTile);
 		}
-		
-        public override void OnApplyTemplate()
+
+#if WINDOWS_STORE
+		protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -49,7 +66,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			_createAnimation = false;
 
-			if (!DesignerProperties.IsInDesignTool)
+			if (!DevelopmentHelpers.IsDesignMode)
 			{
 				for (var i = 0; i < Rows; i++)
 				{
@@ -59,10 +76,14 @@ namespace Coding4Fun.Toolkit.Controls
 					}
 				}
 
-				var frame = Application.Current.RootVisual as Frame;
-				
-				if (frame != null)
-					frame.Navigated += FrameNavigated;
+#if WINDOWS_STORE
+				var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+				var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+				if (rootFrame != null)
+					rootFrame.Navigated += FrameNavigated;
 			}
 
 	        _createAnimation = true;
@@ -78,8 +99,12 @@ namespace Coding4Fun.Toolkit.Controls
 			return row * (Columns) + col;
 		}
 
-        void ChangeImageTimerTick(object sender, EventArgs e)
-        {
+#if WINDOWS_STORE
+		void ChangeImageTimerTick(object sender, object e)
+#elif WINDOWS_PHONE
+		void ChangeImageTimerTick(object sender, EventArgs e)
+#endif
+		{
 	        CycleImage();
         }
 
@@ -122,6 +147,7 @@ namespace Coding4Fun.Toolkit.Controls
 				sb.Begin();
 			}
 	    }
+
 
         private void CalculateNextValidItem(out int index, ref int row, ref int col, out bool isLargeImage)
         {
@@ -282,12 +308,21 @@ namespace Coding4Fun.Toolkit.Controls
             };
 
             Storyboard.SetTarget(doubleAni, target);
-            Storyboard.SetTargetProperty(doubleAni, new PropertyPath(propertyPath));
+
+#if WINDOWS_STORE
+			Storyboard.SetTargetProperty(doubleAni, propertyPath);
+#elif WINDOWS_PHONE
+			Storyboard.SetTargetProperty(doubleAni, new PropertyPath(propertyPath));
+#endif
 
             sb.Children.Add(doubleAni);
         }
 
-        void AnimationCompleted(object sender, EventArgs e)
+#if WINDOWS_STORE
+		void AnimationCompleted(object sender, object e)
+#elif WINDOWS_PHONE
+		void AnimationCompleted(object sender, EventArgs e)
+#endif
         {
             var itemStoryboard = sender as Storyboard;
 

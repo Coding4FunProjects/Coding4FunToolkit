@@ -39,7 +39,7 @@ namespace Coding4Fun.Toolkit.Controls
                 
                 HookUpEventForIsSubmitOnEnterKey();
 
-				if (!DesignerProperties.IsInDesignTool)
+				if (!DevelopmentHelpers.IsDesignMode)
 	                ThreadPool.QueueUserWorkItem(DelayInputSelect);
             }
         }

@@ -63,7 +63,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			if (_layoutGrid != null)
 			{
-				if(!DesignerProperties.IsInDesignTool || Items.Count > 0)
+				if (!DevelopmentHelpers.IsDesignMode || Items.Count > 0)
 					ControlLoaded();
 			}
 		}

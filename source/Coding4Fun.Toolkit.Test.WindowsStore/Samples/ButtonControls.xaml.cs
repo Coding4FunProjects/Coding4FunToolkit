@@ -14,6 +14,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			InitializeComponent();
 		}
 
+		private void ImageTileControls(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(ImageTiles));
+		}
+
 		private void TileControls(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(Tiles));

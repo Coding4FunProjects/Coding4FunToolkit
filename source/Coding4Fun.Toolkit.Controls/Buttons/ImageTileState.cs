@@ -1,4 +1,12 @@
-﻿using System.Windows.Media.Animation;
+﻿#if WINDOWS_STORE
+
+using Windows.UI.Xaml.Media.Animation;
+
+#elif WINDOWS_PHONE
+
+using System.Windows.Media.Animation;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {

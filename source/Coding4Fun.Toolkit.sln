@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buttons", "Buttons", "{9A8C90FF-6378-4D4F-ABE6-E14A23ACA9C9}"
 	ProjectSection(SolutionItems) = preProject
-		Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile.xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\ImageTile.xaml
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\OpacityToggleButton (Windows Phone).xaml
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundButton (Windows Phone).xaml
 		Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Buttons\RoundToggleButton (Windows Phone).xaml

@@ -110,6 +110,18 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTile.cs">
+      <Link>Buttons\ImageTile.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileAnimationTypes.cs">
+      <Link>Buttons\ImageTileAnimationTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileLayoutStates.cs">
+      <Link>Buttons\ImageTileLayoutStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileState.cs">
+      <Link>Buttons\ImageTileState.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\Tile.cs">
       <Link>Buttons\Tile.cs</Link>
     </Compile>
@@ -127,6 +139,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
       <Link>Common\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
+      <Link>Common\DevelopmentHelpers.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
       <Link>Common\TemplatedVisualTreeExtensions.cs</Link>

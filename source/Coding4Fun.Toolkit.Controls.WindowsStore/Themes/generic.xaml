@@ -8,13 +8,42 @@
   </ResourceDictionary.ThemeDictionaries>
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
+  <SolidColorBrush x:Key="DefaultBackgroundBrush" Color="#000000" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
   <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#6FFF" />
   <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
+  <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
+  <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+  <x:Double x:Key="DefaultTileSize">173</x:Double>
+  <x:Double x:Key="DefaultAppButtonSize">72</x:Double>
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="Margin" Value="0" />
+  </Style>
+  <Style TargetType="local:ImageTile">
+    <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Margin" Value="10" />
+    <Setter Property="Padding" Value="10,0" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="MinWidth" Value="36" />
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="Width" Value="{StaticResource DefaultTileSize}" />
+    <Setter Property="Height" Value="{StaticResource DefaultTileSize}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:ImageTile">
+          <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+            <Grid x:Name="ImageContainer" />
+            <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
   </Style>
   <Style TargetType="local:Tile">
     <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />

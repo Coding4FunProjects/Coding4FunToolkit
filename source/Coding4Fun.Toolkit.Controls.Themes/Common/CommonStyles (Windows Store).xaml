@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
 	
 	<Style x:Key="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -11,7 +10,7 @@
 	<!-- brushes -->
 	<SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
-	<!--<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{StaticResource PhoneChromeBrush}" />-->
+	<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="#000000" />	<!-- TODO: CORRECT THIS -->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
 
 	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#6FFF" />
@@ -19,5 +18,11 @@
 	
 	<!-- font sizes -->
 	<x:Double x:Key="DefaultFontSizeNormal">20</x:Double> <!--{StaticResource PhoneFontSizeNormal}-->
+	<x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
+	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
 
+	<!-- Default Sizing -->
+	<x:Double x:Key="DefaultTileSize">173</x:Double>	<!-- TODO: CORRECT THIS -->
+	<x:Double x:Key="DefaultAppButtonSize">72</x:Double>	<!-- TODO: CORRECT THIS -->
+	
 </ResourceDictionary>
