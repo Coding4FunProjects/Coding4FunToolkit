@@ -12,7 +12,8 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
-    <!--LayoutRoot is the root grid where all page content is placed-->
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,25 +34,23 @@
 					<c4f:OpacityToggleButton
 						Background="Red"
 						UncheckedOpacity=".5"
-						CheckedOpacity=".9"
-						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png"  />
-					<c4f:OpacityToggleButton>
-						Testing
+						CheckedOpacity="1"
+						IsChecked="true"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" >
+						Checked
+					</c4f:OpacityToggleButton>
+					<c4f:OpacityToggleButton IsChecked="true">
+						Checked
 					</c4f:OpacityToggleButton>
 					<c4f:OpacityToggleButton
 						Background="CornflowerBlue"
 						Foreground="lime"
 						UncheckedOpacity=".9"
 						CheckedOpacity=".4"
-						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="foo" />
-					<c4f:OpacityToggleButton
-						Background="Red"
-						UncheckedOpacity=".4"
-						CheckedOpacity=".9"
 						Padding="12"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="12 pad" />
+						Content="opa + pad" />
+					
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
@@ -59,16 +58,40 @@
 						CheckedOpacity=".9"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 						Content="disabled"/>
+					<c4f:OpacityToggleButton
+						Background="Red"
+						IsEnabled="False"
+						IsChecked="True"
+						UncheckedOpacity=".1"
+						CheckedOpacity=".9"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Content="dis + chk"/>
 				</StackPanel>
 				<StackPanel Name="DisableViewStateTest">
 					<TextBlock>Disable Test</TextBlock>
 					<StackPanel Orientation="Horizontal">
-						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton IsChecked="true">
+							Checked
+						</c4f:OpacityToggleButton>
 						<c4f:OpacityToggleButton />
-						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton IsChecked="true">
+							Checked
+						</c4f:OpacityToggleButton>
 						<c4f:OpacityToggleButton />
-						<c4f:OpacityToggleButton IsChecked="true" />
-						<c4f:OpacityToggleButton />
+						<c4f:OpacityToggleButton Background="Gold" IsChecked="true">
+							Checked
+						</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton Background="Gold"/>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<ToggleButton IsChecked="true">
+							Checked
+						</ToggleButton>
+						<ToggleButton />
+						<ToggleButton Background="Gold" IsChecked="true">
+							Checked
+						</ToggleButton>
+						<ToggleButton Background="Gold"/>
 					</StackPanel>
 				</StackPanel>
 				<sltoolkit:ToggleSwitch 

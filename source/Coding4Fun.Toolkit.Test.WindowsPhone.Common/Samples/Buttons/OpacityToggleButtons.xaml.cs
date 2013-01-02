@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 using Coding4Fun.Toolkit.Controls;
@@ -25,12 +26,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 
 		private void OpacityToggleButtonUnchecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<OpacityToggleButton>(DisableViewStateTest, false);
+			SetIsEnableToType<ToggleButton>(DisableViewStateTest, false);
 		}
 
 		private void OpacityToggleButtonChecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<OpacityToggleButton>(DisableViewStateTest, true);
+			SetIsEnableToType<ToggleButton>(DisableViewStateTest, true);
 		}
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control

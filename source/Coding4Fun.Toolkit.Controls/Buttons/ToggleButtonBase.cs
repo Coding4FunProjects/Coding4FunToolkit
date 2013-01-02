@@ -7,15 +7,19 @@ namespace Coding4Fun.Toolkit.Controls
 	public abstract class ToggleButtonBase : CheckBox, IButtonBase
 	{
 		protected ImageBrush OpacityImageBrush;
+		protected ImageBrush DisabledOpacityImageBrush;
+		
 
 		public override void OnApplyTemplate()
 		{
 			base.OnApplyTemplate();
 
 			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
+			DisabledOpacityImageBrush = GetTemplateChild(ButtonBaseConstants.DisabledOpacityImageBrushName) as ImageBrush;
 			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
 
 			ButtonBaseHelper.ApplyTemplate(this, OpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
+			ButtonBaseHelper.ApplyTemplate(this, DisabledOpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
         }
 
         #region dependency properties
