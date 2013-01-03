@@ -34,13 +34,89 @@
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundButton>round</c4f:RoundButton>
 					<c4f:RoundToggleButton>toggle</c4f:RoundToggleButton>
-					<c4f:RoundButton>round</c4f:RoundButton>
-					<c4f:RoundToggleButton>toggle</c4f:RoundToggleButton>
 					<c4f:OpacityToggleButton>opacity</c4f:OpacityToggleButton>
 					<c4f:RoundButton>round</c4f:RoundButton>
-					<c4f:RoundToggleButton>toggle</c4f:RoundToggleButton>
-					<c4f:OpacityToggleButton>opacity</c4f:OpacityToggleButton>
+					<c4f:RoundToggleButton IsChecked="true">toggle</c4f:RoundToggleButton>
+					<c4f:OpacityToggleButton IsChecked="true">opacity</c4f:OpacityToggleButton>
+					<c4f:RoundButton IsEnabled="False">round</c4f:RoundButton>
+					<c4f:RoundToggleButton IsEnabled="False">toggle</c4f:RoundToggleButton>
+					<c4f:OpacityToggleButton IsEnabled="False">opacity</c4f:OpacityToggleButton>
+					<c4f:RoundButton IsEnabled="False">round</c4f:RoundButton>
+					<c4f:RoundToggleButton IsEnabled="False" IsChecked="true">toggle</c4f:RoundToggleButton>
+					<c4f:OpacityToggleButton IsEnabled="False" IsChecked="true">opacity</c4f:OpacityToggleButton>
 				</StackPanel>
+				<Grid>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundButton BorderBrush="Red" Foreground="Cyan">c4f</c4f:RoundButton>
+						<c4f:RoundButton>round</c4f:RoundButton>
+						<c4f:RoundButton />
+						<c4f:RoundButton />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundToggleButton BorderBrush="Green" Foreground="Blue">c4f</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsChecked="true">toggle</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton />
+						<c4f:RoundToggleButton IsChecked="true" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:OpacityToggleButton>c4f</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsChecked="true">opacity</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton />
+						<c4f:OpacityToggleButton IsChecked="true" />
+					</StackPanel>
+				</Grid>
+				<Grid>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundButton IsEnabled="False">c4f</c4f:RoundButton>
+						<c4f:RoundButton IsEnabled="False">round</c4f:RoundButton>
+						<c4f:RoundButton IsEnabled="False" />
+						<c4f:RoundButton IsEnabled="False" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundToggleButton IsEnabled="False">c4f</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsEnabled="False" IsChecked="true">toggle</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsEnabled="False" />
+						<c4f:RoundToggleButton IsEnabled="False" IsChecked="true" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:OpacityToggleButton IsEnabled="False">Xs4</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsEnabled="False" IsChecked="true">opacity</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsEnabled="False" />
+						<c4f:OpacityToggleButton IsEnabled="False" IsChecked="true" />
+					</StackPanel>
+				</Grid>
+				<Grid>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundButton>Xs4</c4f:RoundButton>
+						<c4f:RoundButton>round</c4f:RoundButton>
+						<c4f:RoundButton />
+						<c4f:RoundButton />
+						<c4f:RoundButton IsEnabled="False">round</c4f:RoundButton>
+						<c4f:RoundButton IsEnabled="False">round</c4f:RoundButton>
+						<c4f:RoundButton IsEnabled="False" />
+						<c4f:RoundButton IsEnabled="False" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:RoundToggleButton>Xs4</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsChecked="true">toggle</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton />
+						<c4f:RoundToggleButton IsChecked="true" />
+						<c4f:RoundToggleButton IsEnabled="False">toggle</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsEnabled="False" IsChecked="true">toggle</c4f:RoundToggleButton>
+						<c4f:RoundToggleButton IsEnabled="False" />
+						<c4f:RoundToggleButton IsEnabled="False" IsChecked="true" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Opacity=".4">
+						<c4f:OpacityToggleButton>Xs4</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsChecked="true">opacity</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton />
+						<c4f:OpacityToggleButton IsChecked="true" />
+						<c4f:OpacityToggleButton IsEnabled="False">opacity</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsEnabled="False" IsChecked="true">opacity</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton IsEnabled="False" />
+						<c4f:OpacityToggleButton IsEnabled="False" IsChecked="true" />
+					</StackPanel>
+				</Grid>
 			</StackPanel>
 		</Grid>
     </Grid>

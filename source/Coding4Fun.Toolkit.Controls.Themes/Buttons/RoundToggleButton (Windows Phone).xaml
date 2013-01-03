@@ -4,9 +4,9 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 	
 	<Style TargetType="local:RoundToggleButton">
-		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}"/>
-		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
-		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
 		<Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
 		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
 		
@@ -69,59 +69,61 @@
 						</VisualStateManager.VisualStateGroups>
 						
 						<Border 
-								Name="EnabledBackground" 
-								BorderThickness="0" 
-								BorderBrush="Transparent" 
-								Background="Transparent" 
-								Margin="{StaticResource PhoneTouchTargetOverhang}">
-							<StackPanel
-								Orientation="{TemplateBinding Orientation}"
-								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+							Name="EnabledBackground" 
+							Height="{TemplateBinding Height}"
+							Width="{TemplateBinding Width}"
+							Padding="{TemplateBinding Padding}" 
+							BorderThickness="0" 
+							BorderBrush="Transparent" 
+							Background="Transparent" 
+							Margin="{StaticResource PhoneTouchTargetOverhang}">
+							<StackPanel Orientation="{TemplateBinding Orientation}">
+								
 								<Grid 
 									Width="{TemplateBinding ButtonWidth}" 
 									Height="{TemplateBinding ButtonHeight}" 
 									Margin="0,-10, 0, 0">
+									
 									<Ellipse
-											x:Name="ButtonBackground"
-											Stroke="{TemplateBinding BorderBrush}" 
-											StrokeThickness="3" 
-											Fill="{TemplateBinding Background}" 
-											Margin="10" />
+										x:Name="ButtonBackground"
+										Stroke="{TemplateBinding BorderBrush}" 
+										StrokeThickness="3" 
+										Fill="{TemplateBinding Background}" 
+										Margin="10" />
+									
 									<Rectangle
-											x:Name="ButtonForeground" 
-											Fill="{TemplateBinding Foreground}" 
-											Margin="10">
+										x:Name="ButtonForeground" 
+										Fill="{TemplateBinding Foreground}" 
+										Margin="10">
 										<Rectangle.OpacityMask>
 											<ImageBrush 
-													x:Name="OpacityImageBrush" 
-													Stretch="{TemplateBinding Stretch}" />
+												x:Name="OpacityImageBrush" 
+												Stretch="{TemplateBinding Stretch}" />
 										</Rectangle.OpacityMask>
 									</Rectangle>
 								</Grid>
-								<ContentControl 
-									Name="EnabledContent" 
-									ContentTemplate="{TemplateBinding ContentTemplate}" 
-									Content="{TemplateBinding Content}" 
-									Foreground="{TemplateBinding Foreground}" 
-									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-									Margin="{TemplateBinding Padding}" 
-									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-									Style="{StaticResource AppBarText}"/>
+								<Grid Margin="0, -4, 0, 0">
+									<ContentControl 
+										Name="EnabledContent" 
+										Content="{TemplateBinding Content}" 
+										Foreground="{TemplateBinding Foreground}" 
+										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+										Style="{StaticResource AppBarText}"/>
+								</Grid>
 							</StackPanel>
 						</Border>
 						<Border 
-								Name="DisabledBackground" 
-								BorderThickness="0" 
-								BorderBrush="Transparent" 
-								Background="Transparent" 
-								IsHitTestVisible="False" 
-								Margin="{StaticResource PhoneTouchTargetOverhang}" 
-								Visibility="Collapsed">
-							<StackPanel
-								Orientation="{TemplateBinding Orientation}"
-								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+							Name="DisabledBackground" 
+							Height="{TemplateBinding Height}"
+							Width="{TemplateBinding Width}"
+							Padding="{TemplateBinding Padding}" 
+							BorderThickness="0" 
+							BorderBrush="Transparent" 
+							Background="Transparent" 
+							Margin="{StaticResource PhoneTouchTargetOverhang}"
+							Visibility="Collapsed">
+							<StackPanel Orientation="{TemplateBinding Orientation}">
 								<Grid 
 									Width="{TemplateBinding ButtonWidth}" 
 									Height="{TemplateBinding ButtonHeight}" 
@@ -142,15 +144,15 @@
 										</Rectangle.OpacityMask>
 									</Rectangle>
 								</Grid>
-								<ContentControl 
-									Name="DisabledContent" 
-									ContentTemplate="{TemplateBinding ContentTemplate}" 
-									Content="{TemplateBinding Content}" 
-									Foreground="{StaticResource PhoneDisabledBrush}" 
-									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-									Margin="{TemplateBinding Padding}" 
-									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-									Style="{StaticResource AppBarText}"/>
+								<Grid Margin="0, -4, 0, 0">
+									<ContentControl 
+										Name="DisabledContent" 
+										Content="{TemplateBinding Content}" 
+										Foreground="{StaticResource PhoneDisabledBrush}" 
+										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+										Style="{StaticResource AppBarText}" />
+								</Grid>
 							</StackPanel>
 						</Border>
 					</Grid>
