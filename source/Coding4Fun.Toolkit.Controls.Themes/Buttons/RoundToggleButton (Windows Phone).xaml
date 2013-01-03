@@ -75,8 +75,7 @@
 							Padding="{TemplateBinding Padding}" 
 							BorderThickness="0" 
 							BorderBrush="Transparent" 
-							Background="Transparent" 
-							Margin="10">
+							Background="Transparent">
 							<StackPanel Orientation="{TemplateBinding Orientation}">
 								
 								<Grid 
@@ -121,7 +120,6 @@
 							BorderThickness="0" 
 							BorderBrush="Transparent" 
 							Background="Transparent" 
-							Margin="10"
 							Visibility="Collapsed">
 							<StackPanel Orientation="{TemplateBinding Orientation}">
 								<Grid 

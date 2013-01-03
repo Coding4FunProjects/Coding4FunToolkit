@@ -98,7 +98,7 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Background}" Margin="10">
@@ -112,7 +112,7 @@
                 </Grid>
               </StackPanel>
             </Border>
-            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10" Visibility="Collapsed">
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource DefaultDisabledBrush}" Margin="10">
@@ -175,7 +175,7 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
@@ -257,7 +257,7 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
@@ -272,7 +272,7 @@
                 </Grid>
               </StackPanel>
             </Border>
-            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10" Visibility="Collapsed">
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="DisabledButtonBackground" Stroke="{StaticResource DefaultDisabledBrush}" StrokeThickness="3" Margin="10" />
