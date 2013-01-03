@@ -15,10 +15,151 @@
 					<Grid>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CheckStates">
+								<VisualState x:Name="Checked">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+										</ObjectAnimationUsingKeyFrames>
+
+										<DoubleAnimation 
+											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
+											To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
+											Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="ButtonForeground" />
+
+										<DoubleAnimation 
+											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
+											To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
+											Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="DisabledButtonForeground" />
+
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unchecked">
+									<Storyboard>
+										<DoubleAnimation 
+											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
+											To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
+											Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="ButtonForeground" />
+
+										<DoubleAnimation 
+											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
+											To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
+											Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="DisabledButtonForeground" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Indeterminate"/>
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBackground">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Collapsed</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledBackground">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<Visibility>Visible</Visibility>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+
+						<Border 
+								Name="EnabledBackground" 
+								BorderThickness="0" 
+								BorderBrush="Transparent" 
+								Background="Transparent" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}">
+							<StackPanel
+								Orientation="{TemplateBinding Orientation}"
+								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+								<Grid 
+									Width="{TemplateBinding ButtonWidth}" 
+									Height="{TemplateBinding ButtonHeight}" 
+									Margin="0,-10, 0, 0">
+									
+									<Rectangle
+										x:Name="ButtonForeground" 
+										
+										Fill="{TemplateBinding Foreground}" 
+										Margin="10">
+										<Rectangle.OpacityMask>
+											<ImageBrush 
+													x:Name="OpacityImageBrush" 
+													Stretch="{TemplateBinding Stretch}" />
+										</Rectangle.OpacityMask>
+									</Rectangle>
+								</Grid>
+								<ContentControl 
+									Name="EnabledContent" 
+									ContentTemplate="{TemplateBinding ContentTemplate}" 
+									Content="{TemplateBinding Content}" 
+									Foreground="{TemplateBinding Foreground}" 
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+									Margin="{TemplateBinding Padding}" 
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									Style="{StaticResource AppBarText}"/>
+							</StackPanel>
+						</Border>
+						<Border 
+								Name="DisabledBackground" 
+								BorderThickness="0" 
+								BorderBrush="Transparent" 
+								Background="Transparent" 
+								IsHitTestVisible="False" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}" 
+								Visibility="Collapsed">
+							<StackPanel
+								Orientation="{TemplateBinding Orientation}"
+								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+								<Grid 
+									Width="{TemplateBinding ButtonWidth}" 
+									Height="{TemplateBinding ButtonHeight}" 
+									Margin="0,-10, 0, 0">
+									
+									<Rectangle
+										x:Name="DisabledButtonForeground" 
+										
+										Fill="{StaticResource PhoneDisabledBrush}" 
+										Margin="10">
+										<Rectangle.OpacityMask>
+											<ImageBrush 
+													x:Name="DisabledOpacityImageBrush" 
+													Stretch="{TemplateBinding Stretch}" />
+										</Rectangle.OpacityMask>
+									</Rectangle>
+								</Grid>
+								<ContentControl 
+									Name="DisabledContent" 
+									ContentTemplate="{TemplateBinding ContentTemplate}" 
+									Content="{TemplateBinding Content}" 
+									Foreground="{StaticResource PhoneDisabledBrush}" 
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+									Margin="{TemplateBinding Padding}" 
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									Style="{StaticResource AppBarText}"/>
+							</StackPanel>
+						</Border>
+					</Grid>
+					<!--<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked" />
-								<!-- set in code behind-->
 								<VisualState x:Name="Unchecked" />
-								<!-- set in code behind-->
+								
 								<VisualState x:Name="Indeterminate"/>
 							</VisualStateGroup>
 							<VisualStateGroup x:Name="CommonStates">
@@ -77,7 +218,7 @@
 
 							</StackPanel>
 						</Border>
-					</Grid>
+					</Grid>-->
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

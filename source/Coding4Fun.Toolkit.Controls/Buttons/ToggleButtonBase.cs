@@ -13,7 +13,7 @@ namespace Coding4Fun.Toolkit.Controls
 		public override void OnApplyTemplate()
 		{
 			base.OnApplyTemplate();
-
+			
 			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
 			DisabledOpacityImageBrush = GetTemplateChild(ButtonBaseConstants.DisabledOpacityImageBrushName) as ImageBrush;
 			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
