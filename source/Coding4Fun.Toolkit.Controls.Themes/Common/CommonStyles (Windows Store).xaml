@@ -13,8 +13,8 @@
 	<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="#000000" />	<!-- TODO: CORRECT THIS -->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
 
-	<SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#6FFF" />
-	<SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#1F1F1F" />
+	<SolidColorBrush x:Key="DefaultDisabledBrush" Color="#6FFF" />
+	<SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
 	
 	<!-- font sizes -->
 	<x:Double x:Key="DefaultFontSizeNormal">20</x:Double> <!--{StaticResource PhoneFontSizeNormal}-->

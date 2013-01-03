@@ -10,8 +10,8 @@
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
   <SolidColorBrush x:Key="DefaultBackgroundBrush" Color="#000000" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="#6FFF" />
-  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="#1F1F1F" />
+  <SolidColorBrush x:Key="DefaultDisabledBrush" Color="#6FFF" />
+  <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
@@ -61,13 +61,13 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="titleText">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="contentContainer">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="root">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>

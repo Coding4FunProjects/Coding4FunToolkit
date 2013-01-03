@@ -6,8 +6,8 @@
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{Binding Source={StaticResource PhoneBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
-  <SolidColorBrush x:Key="DefaultBackgroundDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
-  <SolidColorBrush x:Key="DefaultForegroundDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
   <System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
   <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
@@ -51,6 +51,8 @@
     <Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
+    <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:OpacityToggleButton">
@@ -60,7 +62,7 @@
                 <VisualState x:Name="Checked">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonForeground" />
                     <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledButtonForeground" />
@@ -96,96 +98,35 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border Name="EnabledBackground" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}">
-              <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
+                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Background}" Margin="10">
                     <Rectangle.OpacityMask>
                       <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Rectangle.OpacityMask>
                   </Rectangle>
                 </Grid>
-                <ContentControl Name="EnabledContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <Grid Margin="0, -4, 0, 0">
+                  <ContentControl Name="EnabledContent" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                </Grid>
               </StackPanel>
             </Border>
-            <Border Name="DisabledBackground" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" IsHitTestVisible="False" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed">
-              <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10" Visibility="Collapsed">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource PhoneDisabledBrush}" Margin="10">
+                  <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource DefaultDisabledBrush}" Margin="10">
                     <Rectangle.OpacityMask>
                       <ImageBrush x:Name="DisabledOpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Rectangle.OpacityMask>
                   </Rectangle>
                 </Grid>
-                <ContentControl Name="DisabledContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{StaticResource PhoneDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <Grid Margin="0, -4, 0, 0">
+                  <ContentControl Name="DisabledContent" Content="{TemplateBinding Content}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                </Grid>
               </StackPanel>
             </Border>
           </Grid>
-          <!--<Grid>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CheckStates">
-								<VisualState x:Name="Checked" />
-								<VisualState x:Name="Unchecked" />
-								
-								<VisualState x:Name="Indeterminate"/>
-							</VisualStateGroup>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal"/>
-
-								<VisualState x:Name="Disabled">
-									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ButtonForeground">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="1"/>
-										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
-						
-						<Rectangle Fill="Transparent" />
-						<Border 
-							Height="{TemplateBinding Height}"
-							Width="{TemplateBinding Width}"
-							Padding="{TemplateBinding Padding}" 
-							BorderThickness="0" 
-							BorderBrush="Transparent">
-							<StackPanel 
-								Orientation="{TemplateBinding Orientation}"
-								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-								<Grid 
-									Width="{TemplateBinding ButtonWidth}" 
-									Height="{TemplateBinding ButtonHeight}" 
-									Margin="0,-10, 0, 0">
-									<Rectangle
-										x:Name="ButtonForeground" 
-										Fill="{TemplateBinding Background}" 
-										Opacity="{TemplateBinding UncheckedOpacity}"
-										Margin="10">
-										<Rectangle.OpacityMask>
-											<ImageBrush 
-												x:Name="OpacityImageBrush" 
-												Stretch="{TemplateBinding Stretch}" />
-										</Rectangle.OpacityMask>
-									</Rectangle>
-								</Grid>
-
-								<ContentControl 
-									x:Name="ContentBody" 
-									Margin="0"
-									Content="{TemplateBinding Content}" 
-									FontSize="{TemplateBinding FontSize}"
-									Style="{StaticResource AppBarText}"/>
-
-							</StackPanel>
-						</Border>
-					</Grid>-->
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -196,6 +137,8 @@
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
     <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
+    <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:RoundButton">
@@ -217,33 +160,34 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Rectangle Fill="Transparent" />
-            <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent">
-              <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
-                  <Ellipse x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
-                    <Ellipse.OpacityMask>
+                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
+                    <Rectangle.OpacityMask>
                       <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
-                    </Ellipse.OpacityMask>
-                  </Ellipse>
+                    </Rectangle.OpacityMask>
+                  </Rectangle>
                 </Grid>
-                <ContentControl x:Name="ContentBody" Margin="0" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource AppBarText}" />
+                <Grid>
+                  <ContentControl x:Name="ContentBody" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                </Grid>
               </StackPanel>
             </Border>
           </Grid>
@@ -275,16 +219,16 @@
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="DisabledButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="StrokeThickness" Storyboard.TargetName="DisabledButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="DisabledButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="DisabledContent">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -313,8 +257,8 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border Name="EnabledBackground" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}">
-              <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="{TemplateBinding Background}" Margin="10" />
                   <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Foreground}" Margin="10">
@@ -323,20 +267,24 @@
                     </Rectangle.OpacityMask>
                   </Rectangle>
                 </Grid>
-                <ContentControl Name="EnabledContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <Grid Margin="0, -4, 0, 0">
+                  <ContentControl Name="EnabledContent" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                </Grid>
               </StackPanel>
             </Border>
-            <Border Name="DisabledBackground" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" IsHitTestVisible="False" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed">
-              <StackPanel Orientation="{TemplateBinding Orientation}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="10" Visibility="Collapsed">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Ellipse x:Name="DisabledButtonBackground" Stroke="{StaticResource PhoneDisabledBrush}" StrokeThickness="3" Margin="10" />
-                  <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource PhoneDisabledBrush}" Margin="10">
+                  <Ellipse x:Name="DisabledButtonBackground" Stroke="{StaticResource DefaultDisabledBrush}" StrokeThickness="3" Margin="10" />
+                  <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource DefaultDisabledBrush}" Margin="10">
                     <Rectangle.OpacityMask>
                       <ImageBrush x:Name="DisabledOpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
                     </Rectangle.OpacityMask>
                   </Rectangle>
                 </Grid>
-                <ContentControl Name="DisabledContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{StaticResource PhoneDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <Grid Margin="0, -4, 0, 0">
+                  <ContentControl Name="DisabledContent" Content="{TemplateBinding Content}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                </Grid>
               </StackPanel>
             </Border>
           </Grid>
@@ -360,13 +308,13 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="titleText">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="contentContainer">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="root">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -420,22 +368,22 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>

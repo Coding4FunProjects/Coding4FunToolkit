@@ -19,13 +19,13 @@
 								<VisualState x:Name="Disabled">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="titleText">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="contentContainer">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="root">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 									</Storyboard>
 								</VisualState>
@@ -49,54 +49,4 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<!--
-	<Style TargetType="local:Tile">
-		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
-		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="local:Tile">
-					<Grid Name="root" Background="{TemplateBinding Background}">
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal"/>
-								<VisualState x:Name="MouseOver" />
-								<VisualState x:Name="Pressed" />
-								<VisualState x:Name="Disabled">
-									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="titleText">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="contentContainer">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultForegroundDisabledBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="root">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
-
-						<ContentControl 
-							Name="contentContainer"
-							Content="{TemplateBinding Content}" 
-							ContentTemplate="{TemplateBinding ContentTemplate}" 
-							Foreground="{TemplateBinding Foreground}"
-							HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-							Padding="{TemplateBinding Padding}" 
-							VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-						
-						<TextBlock
-							Name="titleText"
-							TextWrapping="{TemplateBinding TextWrapping}"
-							VerticalAlignment="Bottom"
-							Padding="12, 0"
-							Margin="0, 0, 0, 7"
-							Text="{TemplateBinding Title}" />
-					</Grid>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>-->
 </ResourceDictionary>

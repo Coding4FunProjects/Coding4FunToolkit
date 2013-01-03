@@ -22,23 +22,23 @@
 								<VisualState x:Name="Disabled">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentBorder">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentBorder">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 
 									</Storyboard>
