@@ -1,5 +1,14 @@
 ﻿using System;
+
+#if WINDOWS_STORE
+
+using Windows.UI.Xaml;
+
+#elif WINDOWS_PHONE
+
 using System.Windows;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
