@@ -14,14 +14,14 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
 						<Grid.Resources>
-							<Storyboard x:Name="fadeOut">
+							<Storyboard x:Key="fadeOut" x:Name="FadeOutStoryboard">
 								<DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
 							</Storyboard>
-							<Storyboard x:Name="fadeIn">
+							<Storyboard x:Key="fadeIn" x:Name="FadeInStoryboard">
 								<DoubleAnimation Duration="0:0:0.5" From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutGrid" />
 							</Storyboard>
 						</Grid.Resources>
-						<Rectangle Fill="{StaticResource TransparentBrush}" />
+						<Rectangle Fill="Transparent" />
 						<Grid>
 							<ContentControl Content="{TemplateBinding Content}" HorizontalContentAlignment="Stretch" />
 						</Grid>

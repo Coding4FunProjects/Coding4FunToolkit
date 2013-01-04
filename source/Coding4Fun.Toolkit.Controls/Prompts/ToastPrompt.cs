@@ -24,7 +24,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 	        IsOverlayApplied = false;
 
-            Overlay = (Brush)Application.Current.Resources["TransparentBrush"];
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
             
             ManipulationStarted += ToastPromptManipulationStarted;

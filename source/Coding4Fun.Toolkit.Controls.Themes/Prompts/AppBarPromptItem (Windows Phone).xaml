@@ -51,7 +51,7 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 
-						<Rectangle Fill="{StaticResource TransparentBrush}" />
+						<Rectangle Fill="Transparent" />
 
 						<TextBlock 
 							Name="ContentContainer"

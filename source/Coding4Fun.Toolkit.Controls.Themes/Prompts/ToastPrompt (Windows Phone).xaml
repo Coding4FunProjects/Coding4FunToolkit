@@ -9,7 +9,7 @@
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
 		<Setter Property="VerticalAlignment" Value="Top" />
-		<Setter Property="Overlay" Value="{StaticResource TransparentBrush}" />
+		<Setter Property="Overlay" Value="Transparent" />
 		
 		<Setter Property="Template">
 			<Setter.Value>
