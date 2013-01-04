@@ -26,7 +26,7 @@
 										<ObjectAnimationUsingKeyFrames
                                             Storyboard.TargetProperty="Fill" 
 											Storyboard.TargetName="SelectedColor">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 
 									</Storyboard>

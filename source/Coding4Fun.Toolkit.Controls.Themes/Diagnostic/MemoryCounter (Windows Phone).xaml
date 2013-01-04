@@ -13,7 +13,7 @@
 							<ColumnDefinition Width="75"/>
 							<ColumnDefinition Width="75"/>
 						</Grid.ColumnDefinitions>
-						<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource PhoneSemitransparentBrush}" />
+						<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource DefaultSemiTransparentBrush}" />
 
 						<TextBlock Padding="0,0,10,0" Grid.Column="0" HorizontalAlignment="Right" Text="{TemplateBinding CurrentMemory}"/>
 						<TextBlock Padding="0,0,10,0" Grid.Column="1" HorizontalAlignment="Right" Text="{TemplateBinding PeakMemory}"/>

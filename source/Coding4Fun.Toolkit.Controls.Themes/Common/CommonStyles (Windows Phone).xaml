@@ -23,11 +23,15 @@
 	
 	<!-- Font Stuff -->
 	<System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
-	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double> <!--{StaticResource PhoneFontSizeNormal}-->
-	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+	<System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
+	<System:Double x:Key="DefaultFontSizeLarge">32</System:Double>
 	
+	<FontFamily x:Key="FontFamilySegoeNormal">Segoe WP</FontFamily>
+	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+	<FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
+
 	<!-- Default Sizing -->
-	<System:Double x:Key="DefaultTileSize">173</System:Double>
 	<System:Double x:Key="DefaultAppButtonSize">72</System:Double>
+	<System:Double x:Key="DefaultTileSize">173</System:Double>
 	
 </ResourceDictionary>

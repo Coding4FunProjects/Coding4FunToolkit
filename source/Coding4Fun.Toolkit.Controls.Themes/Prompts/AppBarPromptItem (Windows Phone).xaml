@@ -30,7 +30,7 @@
     <Style TargetType="local:AppBarPromptItem" BasedOn="{StaticResource EmptyButtonStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
-        <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -43,7 +43,7 @@
 								<VisualState x:Name="Pressed">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultAccentBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 									</Storyboard>
 								</VisualState>
@@ -63,7 +63,7 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Style="{StaticResource PhoneTextNormalStyle}"
                             FontSize="{StaticResource PhoneFontSizeExtraLarge}"
-                            FontFamily="Segoe WP SemiLight" />
+                            FontFamily="{StaticResource FontFamilySegoeSemiLight}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

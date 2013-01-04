@@ -4,10 +4,10 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
     <Style TargetType="local:AppBarPrompt">
-        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
-        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
 		<Setter Property="VerticalAlignment" Value="Bottom" />
-		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
 		<Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
 
 		<Setter Property="Template">

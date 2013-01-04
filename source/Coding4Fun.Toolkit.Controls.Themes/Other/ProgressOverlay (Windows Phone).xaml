@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
 	<Style TargetType="local:ProgressOverlay">
-		<Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
+		<Setter Property="Background" Value="{StaticResource DefaultSemiTransparentBrush}"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:ProgressOverlay">

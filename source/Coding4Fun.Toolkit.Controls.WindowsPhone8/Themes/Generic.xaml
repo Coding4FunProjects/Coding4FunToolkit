@@ -11,9 +11,12 @@
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
   <System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
   <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
+  <System:Double x:Key="DefaultFontSizeLarge">32</System:Double>
+  <FontFamily x:Key="FontFamilySegoeNormal">Segoe WP</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
-  <System:Double x:Key="DefaultTileSize">173</System:Double>
+  <FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
   <System:Double x:Key="DefaultAppButtonSize">72</System:Double>
+  <System:Double x:Key="DefaultTileSize">173</System:Double>
   <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" />
   </ControlTemplate>
@@ -351,7 +354,7 @@
   </Style>
   <Style TargetType="local:ChatBubble">
     <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
     <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
     <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}" />
     <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
@@ -453,12 +456,12 @@
     </Setter>
   </Style>
   <Style TargetType="local:ChatBubbleTextBox">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
     <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
     <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}" />
     <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}" />
     <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}" />
-    <Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}" />
+    <Setter Property="SelectionBackground" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}" />
     <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
     <Setter Property="Padding" Value="6, 2" />
@@ -487,16 +490,16 @@
                       </DiscreteObjectKeyFrame>
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -611,8 +614,8 @@
                 <ContentControl x:Name="ContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource PhoneTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
               </Grid>
             </Border>
-            <Border x:Name="DisabledOrReadonlyBorder" Grid.Row="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource PhoneDisabledBrush}" Padding="{TemplateBinding Padding}" Visibility="Collapsed">
-              <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource PhoneDisabledBrush}" IsReadOnly="True" SelectionForeground="{TemplateBinding SelectionForeground}" SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}" />
+            <Border x:Name="DisabledOrReadonlyBorder" Grid.Row="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource DefaultDisabledBrush}" Padding="{TemplateBinding Padding}" Visibility="Collapsed">
+              <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource DefaultDisabledBrush}" IsReadOnly="True" SelectionForeground="{TemplateBinding SelectionForeground}" SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}" />
             </Border>
             <Path Name="LowerRightPath" Data="M0,0 L1,1 L1,0 " Grid.Row="2" Fill="{TemplateBinding Background}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
             <Path Name="LowerLeftPath" Data="M0,0 L0,1 L1,0" Grid.Row="2" Fill="{TemplateBinding Background}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
@@ -654,7 +657,7 @@
                       <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectedColor">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -724,7 +727,7 @@
                       <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="IsEnabledRectangle">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneChromeBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultChromeBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="IsEnabledRectangle">
                       <DiscreteObjectKeyFrame KeyTime="0" Value=".5" />
@@ -756,7 +759,7 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectedColor">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -779,7 +782,7 @@
               <ColumnDefinition Width="75" />
               <ColumnDefinition Width="75" />
             </Grid.ColumnDefinitions>
-            <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource PhoneSemitransparentBrush}" />
+            <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource DefaultSemiTransparentBrush}" />
             <TextBlock Padding="0,0,10,0" Grid.Column="0" HorizontalAlignment="Right" Text="{TemplateBinding CurrentMemory}" />
             <TextBlock Padding="0,0,10,0" Grid.Column="1" HorizontalAlignment="Right" Text="{TemplateBinding PeakMemory}" />
           </Grid>
@@ -794,7 +797,7 @@
     <Setter Property="VerticalAlignment" Value="Bottom" />
   </Style>
   <Style x:Key="MetroFlowItemRectangleUnderlay" TargetType="Rectangle">
-    <Setter Property="Fill" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="Fill" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Margin" Value="0, -.5" />
     <Setter Property="Opacity" Value=".8" />
   </Style>
@@ -805,7 +808,7 @@
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style x:Key="MetroFlowItemMainBody" TargetType="Panel">
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Margin" Value="6, 0" />
   </Style>
   <Style TargetType="local:MetroFlowItem">
@@ -814,7 +817,7 @@
         <ControlTemplate TargetType="local:MetroFlowItem">
           <Grid>
             <Grid Style="{StaticResource MetroFlowItemMainBody}">
-              <Rectangle Fill="{StaticResource PhoneAccentBrush}" />
+              <Rectangle Fill="{StaticResource DefaultAccentBrush}" />
               <Image Source="{TemplateBinding ImageSource}" Visibility="{TemplateBinding ImageVisibility}" Opacity="{TemplateBinding ImageOpacity}" Style="{StaticResource MetroFlowItemImage}" />
               <Grid VerticalAlignment="Bottom">
                 <Rectangle Style="{StaticResource MetroFlowItemRectangleUnderlay}" />
@@ -841,7 +844,7 @@
     </Setter>
   </Style>
   <Style TargetType="local:ProgressOverlay">
-    <Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultSemiTransparentBrush}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:ProgressOverlay">
@@ -864,8 +867,8 @@
     </Setter>
   </Style>
   <Style TargetType="local:SuperSlider">
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
-    <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
+    <Setter Property="Fill" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="Padding" Value="0, 3, 0, 36" />
     <Setter Property="Template">
       <Setter.Value>
@@ -881,10 +884,10 @@
                 <VisualState x:Name="Disabled">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ProgressRectangle">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundRectangle">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneChromeBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultChromeBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -912,7 +915,7 @@
         <ControlTemplate TargetType="local:AboutPrompt">
           <Grid>
             <Rectangle Fill="Transparent" />
-            <Border VerticalAlignment="Center" Width="460" Height="460" Background="{StaticResource PhoneChromeBrush}" BorderThickness="1" BorderBrush="{StaticResource PhoneForegroundBrush}">
+            <Border VerticalAlignment="Center" Width="460" Height="460" Background="{StaticResource DefaultChromeBrush}" BorderThickness="1" BorderBrush="{StaticResource DefaultForegroundBrush}">
               <Grid>
                 <ContentPresenter Content="{TemplateBinding WaterMark}" />
                 <Grid Margin="10">
@@ -970,10 +973,10 @@
     </Setter>
   </Style>
   <Style TargetType="local:AppBarPrompt">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
     <Setter Property="VerticalAlignment" Value="Bottom" />
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1001,7 +1004,7 @@
   <Style TargetType="local:AppBarPromptItem" BasedOn="{StaticResource EmptyButtonStyle}">
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Top" />
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1014,7 +1017,7 @@
                 <VisualState x:Name="Pressed">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultAccentBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -1022,25 +1025,25 @@
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
             <Rectangle Fill="Transparent" />
-            <TextBlock Name="ContentContainer" Margin="24,0" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" FontFamily="Segoe WP SemiLight" />
+            <TextBlock Name="ContentContainer" Margin="24,0" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}" FontFamily="{StaticResource FontFamilySegoeSemiLight}" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
   </Style>
   <Style TargetType="local:InputPrompt">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:InputPrompt">
           <Grid>
-            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource PhoneForegroundBrush}">
+            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource DefaultForegroundBrush}">
               <StackPanel Margin="10">
-                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource FontFamilySegoeSemiLight}" FontSize="{StaticResource DefaultFontSizeLarge}" />
                 <TextBlock Text="{TemplateBinding Message}" TextWrapping="{TemplateBinding MessageTextWrapping}" />
                 <TextBox Name="inputBox" Binding:TextBinding.UpdateSourceOnChange="True" InputScope="{TemplateBinding InputScope}" Text="{TemplateBinding Value}" Margin="-12, 0" />
                 <StackPanel Name="actionButtonArea" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, -12" />
@@ -1052,18 +1055,18 @@
     </Setter>
   </Style>
   <Style TargetType="local:MessagePrompt">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:MessagePrompt">
           <Grid>
-            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource PhoneForegroundBrush}">
+            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource DefaultForegroundBrush}">
               <StackPanel Margin="10">
-                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource FontFamilySegoeSemiLight}" FontSize="{StaticResource DefaultFontSizeLarge}" />
                 <ContentPresenter Content="{TemplateBinding Body}" Margin="0, 10" />
                 <StackPanel Margin="0, 0, 0, -12" Name="actionButtonArea" Orientation="Horizontal" HorizontalAlignment="Center" />
               </StackPanel>
@@ -1074,18 +1077,18 @@
     </Setter>
   </Style>
   <Style TargetType="local:PasswordInputPrompt">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
-    <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="Overlay" Value="{StaticResource DefaultSemiTransparentBrush}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:PasswordInputPrompt">
           <Grid>
-            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource PhoneForegroundBrush}">
+            <Border VerticalAlignment="Top" Margin="10" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{StaticResource DefaultForegroundBrush}">
               <StackPanel Margin="10">
-                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                <TextBlock Text="{TemplateBinding Title}" Margin="0, -10, -25, 0" TextWrapping="Wrap" FontFamily="{StaticResource FontFamilySegoeSemiLight}" FontSize="{StaticResource DefaultFontSizeLarge}" />
                 <TextBlock Text="{TemplateBinding Message}" TextWrapping="{TemplateBinding MessageTextWrapping}" />
                 <TextBox Name="inputBox" InputScope="{TemplateBinding InputScope}" Binding:TextBinding.UpdateSourceOnChange="True" Margin="-12, 0" />
                 <StackPanel Name="actionButtonArea" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, -12" />
@@ -1097,10 +1100,10 @@
     </Setter>
   </Style>
   <Style TargetType="local:ToastPrompt">
-    <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
     <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
     <Setter Property="Foreground" Value="White" />
-    <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
     <Setter Property="VerticalAlignment" Value="Top" />
     <Setter Property="Overlay" Value="Transparent" />
     <Setter Property="Template">
@@ -1138,7 +1141,7 @@
     </Setter>
   </Style>
   <Style TargetType="Primitives:LoopingSelectorItem">
-    <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Padding" Value="6" />
     <Setter Property="Template">
       <Setter.Value>

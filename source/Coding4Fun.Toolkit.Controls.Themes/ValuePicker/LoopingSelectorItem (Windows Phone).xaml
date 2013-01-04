@@ -4,7 +4,7 @@
     xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
 
     <Style TargetType="Primitives:LoopingSelectorItem">
-        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
         <Setter Property="Padding" Value="6"/>
         <Setter Property="Template">
             <Setter.Value>

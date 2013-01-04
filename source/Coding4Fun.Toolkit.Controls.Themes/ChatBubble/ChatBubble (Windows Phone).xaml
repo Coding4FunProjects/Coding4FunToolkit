@@ -5,7 +5,7 @@
 
 	<Style TargetType="local:ChatBubble">
 		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
 		<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>

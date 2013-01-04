@@ -4,10 +4,10 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
 	<Style TargetType="local:ToastPrompt">
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}"/>
 		<Setter Property="Foreground" Value="White"/>
-		<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}"/>
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="Overlay" Value="Transparent" />
 		

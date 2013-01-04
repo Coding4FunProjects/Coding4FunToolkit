@@ -14,12 +14,12 @@
 	</ControlTemplate>
 
 	<Style TargetType="local:ChatBubbleTextBox">
-		<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
 		<Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
-		<Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}"/>
+		<Setter Property="SelectionBackground" Value="{StaticResource DefaultAccentBrush}"/>
 		<Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}"/>
 		<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
 		<Setter Property="Padding" Value="6, 2"/>
@@ -51,16 +51,16 @@
 										</ObjectAnimationUsingKeyFrames>
 
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 
 									</Storyboard>
@@ -206,13 +206,13 @@
 							x:Name="DisabledOrReadonlyBorder" 
 							Grid.Row="1"
 							BorderThickness="{TemplateBinding BorderThickness}" 
-							BorderBrush="{StaticResource PhoneDisabledBrush}" 
+							BorderBrush="{StaticResource DefaultDisabledBrush}" 
 							Padding="{TemplateBinding Padding}"	
 							Visibility="Collapsed">
 							<TextBox 
 								x:Name="DisabledOrReadonlyContent"
 								Background="Transparent"
-								Foreground="{StaticResource PhoneDisabledBrush}"
+								Foreground="{StaticResource DefaultDisabledBrush}"
 								IsReadOnly="True"
 								SelectionForeground="{TemplateBinding SelectionForeground}" 
 								SelectionBackground="{TemplateBinding SelectionBackground}"

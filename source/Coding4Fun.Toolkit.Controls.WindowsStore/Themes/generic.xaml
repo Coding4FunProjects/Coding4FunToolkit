@@ -12,11 +12,14 @@
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
   <SolidColorBrush x:Key="DefaultDisabledBrush" Color="#6FFF" />
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
-  <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
+  <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
+  <x:Double x:Key="DefaultFontSizeLarge">32</x:Double>
+  <FontFamily x:Key="FontFamilySegoeNormal">Segoe UI</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe UI Semibold</FontFamily>
-  <x:Double x:Key="DefaultTileSize">173</x:Double>
+  <FontFamily x:Key="FontFamilySegoeSemiLight">Segoe UI SemiLight</FontFamily>
   <x:Double x:Key="DefaultAppButtonSize">72</x:Double>
+  <x:Double x:Key="DefaultTileSize">173</x:Double>
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="Margin" Value="0" />

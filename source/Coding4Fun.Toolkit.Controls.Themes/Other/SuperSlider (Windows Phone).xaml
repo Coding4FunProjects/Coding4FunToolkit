@@ -4,8 +4,8 @@
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 	
 	<Style TargetType="local:SuperSlider">
-		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
-		<Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
+		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
+		<Setter Property="Fill" Value="{StaticResource DefaultAccentBrush}" />
 		<Setter Property="Padding" Value="0, 3, 0, 36" />
 
 		<Setter Property="Template">
@@ -24,13 +24,13 @@
 										<ObjectAnimationUsingKeyFrames
 													Storyboard.TargetProperty="Fill" 
 													Storyboard.TargetName="ProgressRectangle">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames
 													Storyboard.TargetProperty="Fill" 
 													Storyboard.TargetName="BackgroundRectangle">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneChromeBrush}"/>
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultChromeBrush}"/>
 										</ObjectAnimationUsingKeyFrames>
 									</Storyboard>
 								</VisualState>

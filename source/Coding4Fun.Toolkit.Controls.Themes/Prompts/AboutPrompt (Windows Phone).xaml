@@ -13,9 +13,9 @@
 						<Border 
                             VerticalAlignment="Center"
 		                    Width="460" Height="460"
-                            Background="{StaticResource PhoneChromeBrush}"
+                            Background="{StaticResource DefaultChromeBrush}"
                             BorderThickness="1" 
-                            BorderBrush="{StaticResource PhoneForegroundBrush}">
+                            BorderBrush="{StaticResource DefaultForegroundBrush}">
 							<Grid>
 								<ContentPresenter 
                                     Content="{TemplateBinding WaterMark}" />
