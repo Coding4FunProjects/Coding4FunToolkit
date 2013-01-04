@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup;
 using System.Windows.Media.Animation;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    [ContentProperty("Content")]
-    public class ProgressOverlay : Control
+    public class ProgressOverlay : ContentControl
     {
         private Storyboard _fadeIn;
         private Storyboard _fadeOut;
         private Grid _layoutGrid;
-        
-        private const string FadeInName = "fadeIn";
-        private const string FadeOutName = "fadeOut";
+
+		private const string FadeInName = "FadeInStoryboard";
+        private const string FadeOutName = "FadeOutStoryboard";
         private const string LayoutGridName = "LayoutGrid";
         
         public ProgressOverlay()
@@ -32,16 +30,6 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty ProgressControlProperty =
             DependencyProperty.Register("ProgressControl", typeof(object), typeof(ProgressOverlay), new PropertyMetadata(null));
 
-        public object Content
-        {
-            get { return GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(ProgressOverlay), new PropertyMetadata(null));
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -51,10 +39,10 @@ namespace Coding4Fun.Toolkit.Controls
             _layoutGrid = GetTemplateChild(LayoutGridName) as Grid;
             
             if(_fadeOut != null)
-                _fadeOut.Completed += fadeOut_Completed;
+                _fadeOut.Completed += FadeOutCompleted;
         }
 
-        void fadeOut_Completed(object sender, EventArgs e)
+        void FadeOutCompleted(object sender, EventArgs e)
         {
             _layoutGrid.Opacity = 1;
             Visibility = Visibility.Collapsed;
