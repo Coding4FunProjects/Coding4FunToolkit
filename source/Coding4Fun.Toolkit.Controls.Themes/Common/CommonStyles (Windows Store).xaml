@@ -19,7 +19,7 @@
 	<!-- font sizes -->
 	<x:Double x:Key="DefaultFontSizeNormal">20</x:Double> <!--{StaticResource PhoneFontSizeNormal}-->
 	<x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
-	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe UI Semibold</FontFamily>
 
 	<!-- Default Sizing -->
 	<x:Double x:Key="DefaultTileSize">173</x:Double>	<!-- TODO: CORRECT THIS -->

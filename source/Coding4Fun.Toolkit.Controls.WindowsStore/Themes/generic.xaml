@@ -14,7 +14,7 @@
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
-  <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
+  <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe UI Semibold</FontFamily>
   <x:Double x:Key="DefaultTileSize">173</x:Double>
   <x:Double x:Key="DefaultAppButtonSize">72</x:Double>
   <Style x:Key="AppBarText" TargetType="ContentControl">
