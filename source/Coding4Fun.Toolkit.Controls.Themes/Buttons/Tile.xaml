@@ -6,6 +6,7 @@
 	<Style TargetType="local:Tile">
 		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:Tile">
@@ -40,6 +41,8 @@
 						<TextBlock
 							Name="titleText"
                             TextWrapping="{TemplateBinding TextWrapping}"
+							FontSize="{TemplateBinding FontSize}"
+							FontFamily="{TemplateBinding FontFamily}"
                             VerticalAlignment="Bottom"
                             Padding="12, 0"
                             Margin="0, 0, 0, 7"
