@@ -7,7 +7,7 @@
 		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
 		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
 		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
-		<Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
+		<Setter Property="CheckedBrush" Value="{StaticResource DefaultAccentBrush}" />
 		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
 		
 		<Setter Property="Template">
@@ -19,7 +19,7 @@
 								<VisualState x:Name="Checked">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding CheckedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />

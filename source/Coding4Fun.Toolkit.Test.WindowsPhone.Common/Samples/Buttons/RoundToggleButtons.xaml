@@ -44,7 +44,7 @@
 						Foreground="CornflowerBlue"
 						Content="Fun" />
 					<c4f:RoundToggleButton 
-						SelectionBrush="Lavender"
+						CheckedBrush="Lavender"
 						ImageSource="{Binding RoundButtonImageSource}"
 						Content="toggle img" 
 						Stretch="None"

@@ -38,16 +38,25 @@ namespace Coding4Fun.Toolkit.Controls
         }
         #region dependency properties
 
-
-		public Brush SelectionBrush
+		public string Label
 		{
-			get { return (Brush)GetValue(SelectionBrushProperty); }
-			set { SetValue(SelectionBrushProperty, value); }
+			get { return (string)GetValue(LabelProperty); }
+			set { SetValue(LabelProperty, value); }
 		}
 
-		// Using a DependencyProperty as the backing store for SelectionBrush.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty SelectionBrushProperty =
-			DependencyProperty.Register("SelectionBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(new SolidColorBrush()));
+		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty LabelProperty =
+			DependencyProperty.Register("Label", typeof(string), typeof(RoundButton), new PropertyMetadata(""));
+
+		public Brush PressedBrush
+		{
+			get { return (Brush)GetValue(PressedBrushProperty); }
+			set { SetValue(PressedBrushProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for PressedBrush.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty PressedBrushProperty =
+			DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(new SolidColorBrush()));
 
         public Orientation Orientation
         {

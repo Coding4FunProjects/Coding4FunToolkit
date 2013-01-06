@@ -46,7 +46,7 @@
 							Content="Fun" />
 					<c4f:RoundButton 
 						Stretch="None"
-						SelectionBrush="Lavender"
+						PressedBrush="Lavender"
 						ImageSource="{Binding RoundButtonImageSource}"
 						Content="toggle img" 
 						Click="ToggleRoundButtonImageClick" />

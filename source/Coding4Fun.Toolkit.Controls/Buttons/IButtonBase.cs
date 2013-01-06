@@ -17,6 +17,7 @@ namespace Coding4Fun.Toolkit.Controls
 		Orientation Orientation { get; set; }
 		Stretch Stretch { get; set; }
 		ImageSource ImageSource { get; set; }
+		string Label { get; set; }
 		double ButtonWidth { get; set; }
 		double ButtonHeight { get; set; }
 	}
