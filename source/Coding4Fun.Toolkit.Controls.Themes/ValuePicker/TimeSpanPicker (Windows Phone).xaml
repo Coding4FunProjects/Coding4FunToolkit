@@ -21,7 +21,7 @@
                         <ContentControl
                             Content="{TemplateBinding Header}"
                             ContentTemplate="{TemplateBinding HeaderTemplate}"
-                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            Foreground="{StaticResource DefaultSubtleBrush}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             Margin="12,0,12,-4"/>
                         <Button

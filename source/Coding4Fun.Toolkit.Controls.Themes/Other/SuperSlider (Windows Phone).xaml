@@ -38,7 +38,7 @@
 						</VisualStateManager.VisualStateGroups>
 						<TextBlock 
 							Text="{TemplateBinding Title}" 
-							Foreground="{StaticResource PhoneSubtleBrush}" />
+							Foreground="{StaticResource DefaultSubtleBrush}" />
 						<Grid Grid.Row="1">
 							<Border Margin="{TemplateBinding Padding}">
 								<Grid Name="BarBody">

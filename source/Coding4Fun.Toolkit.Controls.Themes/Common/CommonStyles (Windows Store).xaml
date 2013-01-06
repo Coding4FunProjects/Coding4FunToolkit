@@ -12,7 +12,8 @@
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
 	<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="#000000" />	<!-- TODO: CORRECT THIS -->
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="#FFFFFF" />
-
+	<SolidColorBrush x:Key="DefaultSubtleBrush" Color="#99FFFFFF" />
+	
 	<SolidColorBrush x:Key="DefaultDisabledBrush" Color="#6FFF" />
 	<SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
 	

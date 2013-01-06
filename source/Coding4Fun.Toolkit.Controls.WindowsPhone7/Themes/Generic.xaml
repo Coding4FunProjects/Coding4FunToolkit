@@ -6,6 +6,7 @@
   <SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{Binding Source={StaticResource PhoneBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultSubtleBrush" Color="{Binding Source={StaticResource PhoneSubtleBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
@@ -138,7 +139,7 @@
     <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
-    <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="PressedBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
     <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
     <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
@@ -153,7 +154,7 @@
                 <VisualState x:Name="Pressed">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PressedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -202,7 +203,7 @@
     <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
-    <Setter Property="SelectionBrush" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="CheckedBrush" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
     <Setter Property="Template">
       <Setter.Value>
@@ -213,7 +214,7 @@
                 <VisualState x:Name="Checked">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding SelectionBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding CheckedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -894,7 +895,7 @@
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <TextBlock Text="{TemplateBinding Title}" Foreground="{StaticResource PhoneSubtleBrush}" />
+            <TextBlock Text="{TemplateBinding Title}" Foreground="{StaticResource DefaultSubtleBrush}" />
             <Grid Grid.Row="1">
               <Border Margin="{TemplateBinding Padding}">
                 <Grid Name="BarBody">
@@ -1193,7 +1194,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="local:TimeSpanPicker">
           <StackPanel>
-            <ContentControl Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Foreground="{StaticResource PhoneSubtleBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="12,0,12,-4" />
+            <ContentControl Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Foreground="{StaticResource DefaultSubtleBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="12,0,12,-4" />
             <Button x:Name="ValueButton" Content="{TemplateBinding ValueString}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" Height="72" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
           </StackPanel>
         </ControlTemplate>

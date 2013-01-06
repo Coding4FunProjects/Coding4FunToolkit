@@ -16,7 +16,8 @@
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultBackgroundBrush" Color="{Binding Source={StaticResource PhoneBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultForegroundBrush" Color="{Binding Source={StaticResource PhoneForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
-
+	<SolidColorBrush x:Key="DefaultSubtleBrush" Color="{Binding Source={StaticResource PhoneSubtleBrush}, Converter={StaticResource BrushToBrush}}" />
+	
 	<SolidColorBrush x:Key="DefaultDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
