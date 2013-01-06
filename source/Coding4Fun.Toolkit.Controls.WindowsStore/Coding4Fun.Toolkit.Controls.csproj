@@ -134,6 +134,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
       <Link>Buttons\OpacityToggleButton.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton %28Windows Store%29.cs">
+      <Link>Buttons\RoundButton %28Windows Store%29.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton.cs">
       <Link>Buttons\RoundButton.cs</Link>
     </Compile>
@@ -146,11 +149,17 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\TileNotification.cs">
       <Link>Buttons\TileNotification.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase %28Windows Store%29.cs">
+      <Link>Buttons\ToggleButtonBase %28Windows Store%29.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
       <Link>Buttons\ToggleButtonBase.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
       <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker %28Windows Store%29.cs">
+      <Link>Colors\ColorHexagonPicker %28Windows Store%29.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
       <Link>Colors\ColorHexagonPicker.cs</Link>
@@ -197,7 +206,6 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
       <Link>Effects\TiltEffect.cs</Link>
     </Compile>
-    <Compile Include="Colors\ColorHexagonPicker %28WindowsStore%29.cs" />
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>

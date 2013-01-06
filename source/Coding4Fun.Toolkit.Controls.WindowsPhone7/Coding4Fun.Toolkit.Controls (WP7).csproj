@@ -82,6 +82,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
       <Link>Buttons\OpacityToggleButton.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton %28Windows Phone%29.cs">
+      <Link>Buttons\RoundButton %28Windows Phone%29.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton.cs">
       <Link>Buttons\RoundButton.cs</Link>
     </Compile>
@@ -93,6 +96,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\TileNotification.cs">
       <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase %28Windows Phone%29.cs">
+      <Link>Buttons\ToggleButtonBase %28Windows Phone%29.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
       <Link>Buttons\ToggleButtonBase.cs</Link>
