@@ -24,9 +24,9 @@
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
 										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="EnabledContent">
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="EnabledContent">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundBrush}"/>
-										</ObjectAnimationUsingKeyFrames>
+										</ObjectAnimationUsingKeyFrames>-->
 
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="DisabledButtonBackground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
@@ -104,7 +104,7 @@
 								<Grid Margin="0, -4, 0, 0">
 									<ContentControl 
 										Name="EnabledContent" 
-										Content="{TemplateBinding Content}" 
+										Content="{TemplateBinding Title}" 
 										Foreground="{TemplateBinding Foreground}" 
 										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -145,7 +145,7 @@
 								<Grid Margin="0, -4, 0, 0">
 									<ContentControl 
 										Name="DisabledContent" 
-										Content="{TemplateBinding Content}" 
+										Content="{TemplateBinding Title}" 
 										Foreground="{StaticResource DefaultDisabledBrush}" 
 										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

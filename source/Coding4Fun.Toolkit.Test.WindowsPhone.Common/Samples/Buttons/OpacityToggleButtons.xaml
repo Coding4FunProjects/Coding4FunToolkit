@@ -36,20 +36,14 @@
 						UncheckedOpacity=".5"
 						CheckedOpacity="1"
 						IsChecked="true"
-						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" >
-						Checked
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png">
+						<c4f:OpacityToggleButton.Title>
+							Checked
+						</c4f:OpacityToggleButton.Title>
 					</c4f:OpacityToggleButton>
-					<c4f:OpacityToggleButton IsChecked="true">
-						Checked
-					</c4f:OpacityToggleButton>
-					<c4f:OpacityToggleButton
-						Background="CornflowerBlue"
-						Foreground="lime"
-						UncheckedOpacity=".9"
-						CheckedOpacity=".4"
-						Padding="12"
-						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="opa + pad" />
+					<c4f:OpacityToggleButton 
+						IsChecked="true"
+						Title="Checked" />
 					
 					<c4f:OpacityToggleButton
 						Background="Red"
@@ -57,7 +51,7 @@
 						UncheckedOpacity=".1"
 						CheckedOpacity=".9"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="disabled"/>
+						Title="disabled"/>
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
@@ -65,26 +59,58 @@
 						UncheckedOpacity=".1"
 						CheckedOpacity=".9"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="dis + chk"/>
+						Title="dis + chk"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<c4f:OpacityToggleButton
+						Orientation="Horizontal"
+						Title="hor" />
+					<c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							IsChecked="true"
+							Title="hor/chk"/>
+					<c4f:OpacityToggleButton
+						Background="CornflowerBlue"
+						Foreground="lime"
+						UncheckedOpacity=".9"
+						CheckedOpacity=".4"
+						Padding="12"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Title="opa + pad" />
+					
 				</StackPanel>
 				<StackPanel Name="DisableViewStateTest">
 					<TextBlock>Disable Test</TextBlock>
 					<StackPanel Orientation="Horizontal">
-						<c4f:OpacityToggleButton IsChecked="true">
-							Checked
-						</c4f:OpacityToggleButton>
+						<c4f:OpacityToggleButton 
+							IsChecked="true"
+							Title="Checked" />
 						<c4f:OpacityToggleButton />
-						<c4f:OpacityToggleButton Background="Gold" IsChecked="true">
-							Checked
-						</c4f:OpacityToggleButton>
-						<c4f:OpacityToggleButton Background="Gold"/>
+						<c4f:OpacityToggleButton 
+							Background="Gold" 
+							IsChecked="true"
+							Title="Checked" />
+						<c4f:OpacityToggleButton 
+							Background="Gold"/>
 					</StackPanel>
 					<StackPanel Orientation="Horizontal">
-						<ToggleButton IsChecked="true">
+						<c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							Title="hor"/>
+						<c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							IsChecked="true"
+							Title="hor/chk"/>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<ToggleButton 
+							IsChecked="true">
 							Checked
 						</ToggleButton>
 						<ToggleButton />
-						<ToggleButton Background="Gold" IsChecked="true">
+						<ToggleButton 
+							Background="Gold" 
+							IsChecked="true">
 							Checked
 						</ToggleButton>
 						<ToggleButton Background="Gold"/>

@@ -14,7 +14,7 @@ using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	public abstract class ToggleButtonBase : CheckBox, IButtonBase
+	public abstract class ToggleButtonBase : CheckBox, IButtonBase, IImageSourceButton, IAppBarButton
 	{
 		protected ImageBrush OpacityImageBrush;
 		protected ImageBrush DisabledOpacityImageBrush;
@@ -38,15 +38,15 @@ namespace Coding4Fun.Toolkit.Controls
 
         #region dependency properties
 
-		public string Label
+		public object Title
 		{
-			get { return (string)GetValue(LabelProperty); }
-			set { SetValue(LabelProperty, value); }
+			get { return GetValue(TitleProperty); }
+			set { SetValue(TitleProperty, value); }
 		}
 
 		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty LabelProperty =
-			DependencyProperty.Register("Label", typeof(string), typeof(ToggleButtonBase), new PropertyMetadata(""));
+		public static readonly DependencyProperty TitleProperty =
+			DependencyProperty.Register("Title", typeof(object), typeof(ToggleButtonBase), new PropertyMetadata(new object()));
 
 		public Brush CheckedBrush
 		{

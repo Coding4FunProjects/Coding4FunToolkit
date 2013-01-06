@@ -30,79 +30,79 @@
 			<StackPanel>
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundToggleButton
-						Click="RoundButtonBasicClick">
-						Basic
-					</c4f:RoundToggleButton>
+						Click="RoundButtonBasicClick"
+						Title="Basic" />
 					<c4f:RoundToggleButton
 						FontSize="18"
-						Content="Coding"
+						Title="Coding"
 						BorderBrush="CornflowerBlue" />
 					<c4f:RoundToggleButton
-						Content="4"
+						Title="4"
 						Background="CornflowerBlue" />
 					<c4f:RoundToggleButton 
 						Foreground="CornflowerBlue"
-						Content="Fun" />
+						Title="Fun" />
 					<c4f:RoundToggleButton 
 						CheckedBrush="Lavender"
 						ImageSource="{Binding RoundButtonImageSource}"
-						Content="toggle img" 
+						Title="toggle img" 
 						Stretch="None"
 						Click="ToggleRoundButtonImageClick" />
 					<c4f:RoundToggleButton
 						ButtonWidth="100"
 						ButtonHeight="100"
 						Stretch="None"
-						Click="RoundButtonBasicClick">
-						Custom Size
-					</c4f:RoundToggleButton>
+						Click="RoundButtonBasicClick"
+						Title="Custom Size" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
+					<c4f:RoundToggleButton 
+						Orientation="Horizontal"
+						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
+						Title="horizontal text" />
 					<c4f:RoundToggleButton 
 						IsChecked="True"
 						Orientation="Horizontal"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Content="horizontal text" />
+						Title="horizontal text" />
 					<c4f:RoundToggleButton 
 						Padding="24" 
-						Content="24 pad" />
+						Title="24 pad" />
 				</StackPanel>
 				<TextBlock Margin="0, 18, 0, 0">Disabled</TextBlock>
 				<StackPanel Name="DisabledRoundToggleButtons">
 					<StackPanel Orientation="Horizontal">
 						<c4f:RoundToggleButton
 							IsEnabled="False"
-							Click="RoundButtonBasicClick">
-							Basic
-						</c4f:RoundToggleButton>
+							Click="RoundButtonBasicClick"
+							Title="Basic" />
 						<c4f:RoundToggleButton
 							IsEnabled="False"
 							IsChecked="true"
 							FontSize="18"
-							Content="Coding"
+							Title="Coding"
 							BorderBrush="CornflowerBlue" />
 						<c4f:RoundToggleButton
 							IsEnabled="False"
-							Content="4"
+							Title="4"
 							Background="CornflowerBlue" />
 						<c4f:RoundToggleButton
 							IsEnabled="False"
 							Foreground="CornflowerBlue"
-							Content="Fun" />
+							Title="Fun" />
 						<c4f:RoundToggleButton 
 							IsEnabled="False"
 							IsChecked="true"
 							ImageSource="{Binding RoundButtonImage}"
-							Content="toggle img" 
+							Title="toggle img" 
 							Click="ToggleRoundButtonImageClick" />
 						<c4f:RoundToggleButton
 							IsEnabled="False"
 							ButtonWidth="100"
 							ButtonHeight="100"
 							Stretch="None"
-							Click="RoundButtonBasicClick">
-							Custom Size
-						</c4f:RoundToggleButton>
+							Click="RoundButtonBasicClick"
+							Title="Custom Size" />
 					</StackPanel>
 					<Grid>
 						<c4f:RoundToggleButton 
@@ -110,7 +110,7 @@
 							IsEnabled="False"
 							Orientation="Horizontal"
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Content="horizontal text" />
+							Title="horizontal text" />
 						<sltoolkit:ToggleSwitch 
 							HorizontalAlignment="Right"
 							IsChecked="false" 

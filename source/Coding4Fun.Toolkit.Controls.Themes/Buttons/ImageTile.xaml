@@ -25,9 +25,15 @@
 						Height="{TemplateBinding Height}" 
 						Background="{TemplateBinding Background}">
 						<Grid x:Name="ImageContainer" />
-						
+
 						<ContentControl 
 							Content="{TemplateBinding Content}" 
+							FontSize="{TemplateBinding FontSize}"
+							FontFamily="{TemplateBinding FontFamily}"
+							FontWeight="{TemplateBinding FontWeight}" />
+						
+						<ContentControl 
+							Content="{TemplateBinding Title}" 
 							FontSize="{TemplateBinding FontSize}"
 							FontFamily="{TemplateBinding FontFamily}"
 							FontWeight="{TemplateBinding FontWeight}"

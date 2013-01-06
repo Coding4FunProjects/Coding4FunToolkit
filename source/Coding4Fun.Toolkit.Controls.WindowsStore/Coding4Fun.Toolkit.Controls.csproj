@@ -110,6 +110,15 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBase.cs">
+      <Link>Buttons\ButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper.cs">
+      <Link>Buttons\ButtonBaseHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\IButtonBase.cs">
+      <Link>Buttons\IButtonBase.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTile.cs">
       <Link>Buttons\ImageTile.cs</Link>
     </Compile>
@@ -122,11 +131,23 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileState.cs">
       <Link>Buttons\ImageTileState.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
+      <Link>Buttons\OpacityToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton.cs">
+      <Link>Buttons\RoundButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundToggleButton.cs">
+      <Link>Buttons\RoundToggleButton.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\Tile.cs">
       <Link>Buttons\Tile.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\TileNotification.cs">
       <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
+      <Link>Buttons\ToggleButtonBase.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
       <Link>Colors\ColorBaseControl.cs</Link>

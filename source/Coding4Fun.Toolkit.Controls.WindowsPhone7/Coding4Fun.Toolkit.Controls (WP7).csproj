@@ -61,6 +61,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\TextBinding.cs">
       <Link>Binding\TextBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBase.cs">
+      <Link>Buttons\ButtonBase.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper.cs">
       <Link>Buttons\ButtonBaseHelper.cs</Link>
     </Compile>

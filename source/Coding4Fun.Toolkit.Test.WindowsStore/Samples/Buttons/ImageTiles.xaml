@@ -45,9 +45,8 @@
 					x:Name="fadeTile"
 					AnimationType="Fade"
 					AnimationDuration="250"
-					ImageCycleInterval="500">
-					Image Tile
-				</Coding4Fun:ImageTile>
+					ImageCycleInterval="500"
+					Title="Image Tile" />
 			</VariableSizedWrapGrid>
 		</GridView>
 	</Grid>

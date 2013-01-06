@@ -14,12 +14,21 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public interface IButtonBase
 	{
-		Orientation Orientation { get; set; }
-		Stretch Stretch { get; set; }
-		ImageSource ImageSource { get; set; }
-		string Label { get; set; }
+		object Title { get; set; }
+	}
+
+	public interface IAppBarButton
+	{
 		double ButtonWidth { get; set; }
 		double ButtonHeight { get; set; }
+
+		Orientation Orientation { get; set; }
+	}
+
+	public interface IImageSourceButton
+	{
+		Stretch Stretch { get; set; }
+		ImageSource ImageSource { get; set; }
 	}
 
 	internal struct ButtonBaseConstants

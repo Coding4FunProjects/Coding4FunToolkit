@@ -14,7 +14,7 @@ using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class RoundButton : Button, IButtonBase
+	public class RoundButton : ButtonBase, IImageSourceButton, IAppBarButton
     {
         protected ImageBrush OpacityImageBrush;
         
@@ -37,16 +37,6 @@ namespace Coding4Fun.Toolkit.Controls
 			ButtonBaseHelper.ApplyTemplate(this, OpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
         }
         #region dependency properties
-
-		public string Label
-		{
-			get { return (string)GetValue(LabelProperty); }
-			set { SetValue(LabelProperty, value); }
-		}
-
-		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty LabelProperty =
-			DependencyProperty.Register("Label", typeof(string), typeof(RoundButton), new PropertyMetadata(""));
 
 		public Brush PressedBrush
 		{

@@ -43,7 +43,8 @@
         <ControlTemplate TargetType="local:ImageTile">
           <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
             <Grid x:Name="ImageContainer" />
-            <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
+            <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" />
+            <ContentControl Content="{TemplateBinding Title}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>

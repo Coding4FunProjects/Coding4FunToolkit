@@ -40,9 +40,8 @@
 					Rows="{Binding ElementName=rows, Path=Value}"
 					Columns="{Binding ElementName=cols, Path=Value}"
                     LargeTileRows="{Binding ElementName=largerows, Path=Value, Mode=TwoWay}"
-					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}">
-					Image Tile
-				</c4f:ImageTile>
+					LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}"
+					Title="Image Tile" />
 				<Grid Grid.Row="1">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />

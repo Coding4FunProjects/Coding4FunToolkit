@@ -26,7 +26,7 @@ using System.Windows.Media.Imaging;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	public class ImageTile : Button, IDisposable
+	public class ImageTile : ButtonBase, IDisposable
 	{
 		readonly DispatcherTimer _changeImageTimer = new DispatcherTimer();
 		readonly Random _rand = new Random();
@@ -459,6 +459,7 @@ namespace Coding4Fun.Toolkit.Controls
 		}
 
 		#region dependency properties
+
 		public int Columns
 		{
 			get { return (int)GetValue(ColumnProperty); }
