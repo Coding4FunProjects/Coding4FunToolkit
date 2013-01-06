@@ -89,9 +89,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls.WindowsPhone\Colors\ColorHexagonPicker %28Windows Phone%29.cs">
-      <Link>Colors\ColorHexagonPicker %28Windows Phone%29.cs</Link>
-    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
@@ -148,6 +145,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
       <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker %28Windows Phone%29.cs">
+      <Link>Colors\ColorHexagonPicker %28Windows Phone%29.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
       <Link>Colors\ColorHexagonPicker.cs</Link>
