@@ -157,9 +157,6 @@
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PressedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Disabled">
@@ -217,12 +214,6 @@
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding CheckedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                     </ObjectAnimationUsingKeyFrames>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ObjectAnimationUsingKeyFrames>
-                    <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="EnabledContent">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultBackgroundBrush}"/>
-										</ObjectAnimationUsingKeyFrames>-->
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="DisabledButtonBackground">
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
                     </ObjectAnimationUsingKeyFrames>

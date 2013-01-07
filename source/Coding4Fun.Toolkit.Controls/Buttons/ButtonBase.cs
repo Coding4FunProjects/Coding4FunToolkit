@@ -35,7 +35,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty TitleProperty =
-			DependencyProperty.Register("Title", typeof(object), typeof(ButtonBase), new PropertyMetadata(new object()));
+			DependencyProperty.Register("Title", typeof(object), typeof(ButtonBase), new PropertyMetadata(string.Empty));
 #endregion
 	}
 }
