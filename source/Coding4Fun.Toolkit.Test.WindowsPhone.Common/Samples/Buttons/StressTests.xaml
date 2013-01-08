@@ -98,8 +98,12 @@
 				</Grid>
 				<Grid>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
-						<coding4Fun:RoundButton IsEnabled="False">c4f</coding4Fun:RoundButton>
-						<coding4Fun:RoundButton IsEnabled="False">round</coding4Fun:RoundButton>
+						<coding4Fun:RoundButton 
+							IsEnabled="False"
+							Title="c4f" />
+						<coding4Fun:RoundButton 
+							IsEnabled="False"
+							Title="round" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 					</StackPanel>
