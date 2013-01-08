@@ -30,6 +30,9 @@ namespace Coding4Fun.Toolkit.Controls
             base.OnApplyTemplate();
 
 			ApplyingTemplate();
+			
+			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
+			ButtonBaseHelper.ApplyTitleOffset(GetTemplateChild(ButtonBaseConstants.ContentTitleName) as ContentControl);
         }
         #region dependency properties
 

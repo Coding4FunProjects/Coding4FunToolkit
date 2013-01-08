@@ -38,7 +38,7 @@
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
 										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentTitle">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
 										</ObjectAnimationUsingKeyFrames>
 									</Storyboard>
@@ -55,7 +55,6 @@
 							BorderBrush="Transparent" 
 							Background="Transparent">
 							<StackPanel Orientation="{TemplateBinding Orientation}">
-
 								<Grid 
 									Width="{TemplateBinding ButtonWidth}" 
 									Height="{TemplateBinding ButtonHeight}" 
@@ -67,6 +66,12 @@
 										Fill="{TemplateBinding Background}" 
 										Margin="10" />
 
+									<ContentControl
+										Name="ContentBody"
+										Content="{TemplateBinding Content}" 
+										Foreground="{TemplateBinding Foreground}" 
+										/>
+									
 									<Rectangle
 										x:Name="ButtonForeground" 
 										Fill="{TemplateBinding Foreground}" 
@@ -85,15 +90,15 @@
 										Fill="Transparent" 
 										Margin="10" />
 								</Grid>
-								<Grid>
-									<ContentControl 
-										x:Name="ContentBody" 
-										Content="{TemplateBinding Title}" 
-										Foreground="{TemplateBinding Foreground}" 
-										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-										Style="{StaticResource AppBarText}"/>
-								</Grid>
+								
+								<ContentControl 
+									x:Name="ContentTitle" 
+									Content="{TemplateBinding Title}" 
+									Foreground="{TemplateBinding Foreground}" 
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									Style="{StaticResource AppBarText}"/>
+								
 							</StackPanel>
 						</Border>
 					</Grid>

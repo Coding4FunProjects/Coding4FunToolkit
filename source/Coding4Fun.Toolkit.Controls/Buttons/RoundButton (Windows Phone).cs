@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Controls
@@ -10,12 +9,10 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void ApplyingTemplate()
         {
-            base.OnApplyTemplate();
+            OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
 
-			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
-			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
-
-			ButtonBaseHelper.ApplyTemplate(this, OpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
+			ButtonBaseHelper.ApplyOpacityImageBrush(this, OpacityImageBrush, ImageSourceProperty);
+			ButtonBaseHelper.ApplyStretch(OpacityImageBrush, Stretch);
         }
         #region dependency properties
 
@@ -61,6 +58,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 			ButtonBaseHelper.OnStretch(e, sender.OpacityImageBrush);
 		}
-        #endregion
+        #endregion		
     }
 }

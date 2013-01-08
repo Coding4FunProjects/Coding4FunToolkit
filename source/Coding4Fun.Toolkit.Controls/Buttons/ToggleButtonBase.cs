@@ -26,6 +26,9 @@ namespace Coding4Fun.Toolkit.Controls
 			base.OnApplyTemplate();
 
 			ApplyingTemplate();
+
+			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
+			ButtonBaseHelper.ApplyTitleOffset(GetTemplateChild(ButtonBaseConstants.ContentTitleName) as ContentControl);
 		}
 
 		#region dependency properties
@@ -38,7 +41,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty TitleProperty =
-			DependencyProperty.Register("Title", typeof (object), typeof (ToggleButtonBase), new PropertyMetadata(string.Empty));
+			DependencyProperty.Register("Title", typeof (object), typeof (ToggleButtonBase), 
+				new PropertyMetadata(string.Empty));
 
 		public Brush CheckedBrush
 		{
@@ -49,7 +53,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for CheckedBrush.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty CheckedBrushProperty =
 			DependencyProperty.Register("CheckedBrush", typeof (Brush), typeof (ToggleButtonBase),
-			                            new PropertyMetadata(new SolidColorBrush()));
+				new PropertyMetadata(new SolidColorBrush()));
 
 		public Orientation Orientation
 		{
@@ -60,7 +64,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty OrientationProperty =
 			DependencyProperty.Register("Orientation", typeof (Orientation), typeof (ToggleButtonBase),
-			                            new PropertyMetadata(Orientation.Vertical));
+				new PropertyMetadata(Orientation.Vertical));
 
 		public double ButtonWidth
 		{
@@ -70,7 +74,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonWidth.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonWidthProperty =
-			DependencyProperty.Register("ButtonWidth", typeof (double), typeof (ToggleButtonBase), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonWidth", typeof (double), typeof (ToggleButtonBase), 
+				new PropertyMetadata(72d));
 
 		public double ButtonHeight
 		{
@@ -80,7 +85,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonHeightProperty =
-			DependencyProperty.Register("ButtonHeight", typeof (double), typeof (ToggleButtonBase), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonHeight", typeof (double), typeof (ToggleButtonBase), 
+				new PropertyMetadata(72d));
 
 		#endregion
 	}

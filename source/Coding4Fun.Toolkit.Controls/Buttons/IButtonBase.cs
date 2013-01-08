@@ -35,6 +35,8 @@ namespace Coding4Fun.Toolkit.Controls
 	{
 		public const string OpacityImageBrushName = "OpacityImageBrush";
 		public const string DisabledOpacityImageBrushName = "DisabledOpacityImageBrush";
+		
 		public const string ContentBodyName = "ContentBody";
+		public const string ContentTitleName = "ContentTitle";
 	}
 }

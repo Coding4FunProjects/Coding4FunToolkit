@@ -1,19 +1,20 @@
 ﻿using System;
 
 #if WINDOWS_STORE
-
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-
+using Windows.UI.Xaml.Shapes;
 
 #elif WINDOWS_PHONE
-
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 #endif
 
@@ -53,24 +54,74 @@ namespace Coding4Fun.Toolkit.Controls
 			brush.Stretch = stretch;
 		}
 
-		public static void ApplyTemplate(FrameworkElement item, ImageBrush brush, ContentControl contentBody, Stretch stretch, DependencyProperty imageDependencyProperty)
+		public static void ApplyOpacityImageBrush(FrameworkElement item, ImageBrush brush, DependencyProperty imageDependencyProperty)
 		{
-			SetStretch(brush, stretch);
-
-			if (contentBody != null)
-			{
-				var bottom = -(contentBody.FontSize / 8.0);
-				var top = -(contentBody.FontSize / 2.0) - bottom;
-
-				contentBody.Margin = new Thickness(0, top, 0, bottom);
-			}
-			
 			var image = item.GetValue(imageDependencyProperty) as ImageSource;
 
 			if (image == null)
 				item.SetValue(imageDependencyProperty, new BitmapImage(new Uri("/Coding4Fun.Toolkit.Controls;component/Media/appbar.check.rest.png", UriKind.RelativeOrAbsolute)));
 			else 
 				SetImageBrush(brush, image);
+		}
+
+		public static void ApplyStretch(ImageBrush brush, Stretch stretch)
+		{
+			SetStretch(brush, stretch);
+		}
+
+		public static void ApplyTitleOffset(ContentControl contentTitle)
+		{
+			if (contentTitle == null) 
+				return;
+
+			var bottom = -(contentTitle.FontSize / 8.0);
+			var top = -(contentTitle.FontSize / 2.0) - bottom;
+
+			contentTitle.Margin = new Thickness(0, top, 0, bottom);
+		}
+
+		public static void ApplyForegroundToFillBinding(ContentControl control)
+		{
+			if (control == null)
+				return;
+
+			var element = control.Content as FrameworkElement;
+
+			if (element == null) 
+				return;
+
+			if (element.GetType() == typeof(Shape))
+			{
+				ApplyForegroundToFillBinding(control, element);
+			}
+			else
+			{
+				var children = element.GetLogicalChildrenByType<Shape>(false).Where(child => child.Fill == null);
+
+				foreach (var child in children)
+				{
+					ApplyForegroundToFillBinding(control, child);
+				}
+			}
+		}
+
+		public static void ApplyForegroundToFillBinding(FrameworkElement source, FrameworkElement target)
+		{
+			ApplyBinding(source, target, "Foreground", Shape.FillProperty);
+		}
+
+		private static void ApplyBinding(FrameworkElement source, FrameworkElement target, string propertyPath, DependencyProperty property)
+		{
+#if WINDOWS_STORE
+			var binding = new Windows.UI.Xaml.Data.Binding();
+#elif WINDOWS_PHONE
+			var binding = new System.Windows.Data.Binding();;
+#endif
+
+			binding.Source = source;
+			binding.Path = new PropertyPath(propertyPath);
+
+			target.SetBinding(property, binding);
 		}
 	}
 }

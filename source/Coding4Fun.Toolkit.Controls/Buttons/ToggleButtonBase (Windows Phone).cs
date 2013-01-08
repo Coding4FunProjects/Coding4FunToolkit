@@ -11,14 +11,14 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void ApplyingTemplate()
 		{
-			base.OnApplyTemplate();
-			
 			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
 			DisabledOpacityImageBrush = GetTemplateChild(ButtonBaseConstants.DisabledOpacityImageBrushName) as ImageBrush;
-			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
+			
+			ButtonBaseHelper.ApplyOpacityImageBrush(this, OpacityImageBrush, ImageSourceProperty);
+			ButtonBaseHelper.ApplyOpacityImageBrush(this, DisabledOpacityImageBrush, ImageSourceProperty);
 
-			ButtonBaseHelper.ApplyTemplate(this, OpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
-			ButtonBaseHelper.ApplyTemplate(this, DisabledOpacityImageBrush, contentBody, Stretch, ImageSourceProperty);
+			ButtonBaseHelper.ApplyStretch(OpacityImageBrush, Stretch);
+			ButtonBaseHelper.ApplyStretch(DisabledOpacityImageBrush, Stretch);
         }
 
         #region dependency properties

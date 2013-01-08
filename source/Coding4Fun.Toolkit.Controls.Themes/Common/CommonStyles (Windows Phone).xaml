@@ -32,7 +32,7 @@
 	<FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
 
 	<!-- Default Sizing -->
-	<System:Double x:Key="DefaultAppButtonSize">72</System:Double>
+	<System:Double x:Key="DefaultAppButtonSize">70</System:Double>
 	<System:Double x:Key="DefaultTileSize">173</System:Double>
 	
 </ResourceDictionary>

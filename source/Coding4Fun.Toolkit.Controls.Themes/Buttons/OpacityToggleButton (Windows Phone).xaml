@@ -102,15 +102,15 @@
 										</Rectangle.OpacityMask>
 									</Rectangle>
 								</Grid>
-								<Grid Margin="0, -4, 0, 0">
-									<ContentControl 
-										Name="EnabledContent" 
-										Content="{TemplateBinding Title}" 
-										Foreground="{TemplateBinding Foreground}" 
-										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-										Style="{StaticResource AppBarText}"/>
-								</Grid>
+
+								<ContentControl 
+									Name="ContentTitle" 
+									Content="{TemplateBinding Title}" 
+									Foreground="{TemplateBinding Foreground}" 
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									Style="{StaticResource AppBarText}"/>
+
 							</StackPanel>
 						</Border>
 						<Border 
@@ -139,15 +139,15 @@
 										</Rectangle.OpacityMask>
 									</Rectangle>
 								</Grid>
-								<Grid Margin="0, -4, 0, 0">
-									<ContentControl 
-										Name="DisabledContent" 
-										Content="{TemplateBinding Title}" 
-										Foreground="{StaticResource DefaultDisabledBrush}" 
-										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-										Style="{StaticResource AppBarText}"/>
-								</Grid>
+								
+								<ContentControl 
+									Content="{TemplateBinding Title}" 
+									Foreground="{StaticResource DefaultDisabledBrush}" 
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									Margin="{Binding Margin, ElementName=ContentTitle}"
+									Style="{StaticResource AppBarText}"/>
+
 							</StackPanel>
 						</Border>
 					</Grid>
