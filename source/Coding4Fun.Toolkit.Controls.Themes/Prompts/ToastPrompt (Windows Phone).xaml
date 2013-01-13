@@ -7,7 +7,7 @@
 		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}"/>
 		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}"/>
 		<Setter Property="Foreground" Value="White"/>
-		<Setter Property="Background" Value="{StaticResource DefaultChromeBrush}"/>
+		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}"/>
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="Overlay" Value="Transparent" />
 		
