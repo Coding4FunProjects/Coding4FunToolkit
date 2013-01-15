@@ -23,12 +23,9 @@ using System.Linq;
 
 #if WINDOWS_STORE
 
-using System.Reflection;
-
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
@@ -38,7 +35,6 @@ using Windows.UI.Xaml.Media.Animation;
 
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -275,14 +271,7 @@ namespace Coding4Fun.Toolkit.Controls
 			bool isForcedSuppress = element.ReadLocalValue(SuppressTiltProperty) is bool && (bool) element.ReadLocalValue(SuppressTiltProperty);
 			
 			
-			if (
-				!isForcedSuppress && 
-#if WINDOWS_STORE
-				TiltableItems.Any(t => element.GetType().GetTypeInfo().IsSubclassOf(t))
-#elif WINDOWS_PHONE
-					TiltableItems.Any(t => t.IsInstanceOfType(element))
-#endif
-				)
+			if (!isForcedSuppress && TiltableItems.Any(element.IsTypeOf))
 		    {
 			    isTiltable = true;
 
