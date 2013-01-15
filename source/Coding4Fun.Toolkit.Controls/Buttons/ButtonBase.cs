@@ -1,14 +1,10 @@
 ﻿#if WINDOWS_STORE
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 #elif WINDOWS_PHONE
-
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 #endif
 
@@ -23,7 +19,7 @@ namespace Coding4Fun.Toolkit.Controls
 #endif
 		{
 			base.OnApplyTemplate();
-        }
+		}
 
 #region dependency properties
 
@@ -35,7 +31,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty TitleProperty =
-			DependencyProperty.Register("Title", typeof(object), typeof(ButtonBase), new PropertyMetadata(string.Empty));
+			DependencyProperty.Register("Title", typeof (object), typeof (ButtonBase), new PropertyMetadata(string.Empty));
+
 #endregion
 	}
 }

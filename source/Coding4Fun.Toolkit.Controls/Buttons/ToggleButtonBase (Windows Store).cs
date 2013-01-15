@@ -6,5 +6,10 @@
 		{
 
 		}
+
+		private bool IsContentEmpty(object content)
+		{
+			return content == null;
+		}
 	}
 }

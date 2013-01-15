@@ -61,6 +61,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBase.cs">
       <Link>Buttons\ButtonBase.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper %28Windows Phone%29.cs">
+      <Link>Buttons\ButtonBaseHelper %28Windows Phone%29.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper.cs">
       <Link>Buttons\ButtonBaseHelper.cs</Link>
     </Compile>

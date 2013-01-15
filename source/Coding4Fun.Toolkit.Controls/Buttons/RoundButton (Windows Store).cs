@@ -5,5 +5,10 @@
 		private void ApplyingTemplate()
         {
         }
+
+		private bool IsContentEmpty(object content)
+		{
+			return content == null;
+		}
     }
 }

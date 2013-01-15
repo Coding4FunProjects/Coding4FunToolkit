@@ -6,20 +6,15 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public abstract partial class ToggleButtonBase : IImageSourceButton
 	{
-		protected ImageBrush OpacityImageBrush;
-		protected ImageBrush DisabledOpacityImageBrush;
+		private bool IsContentEmpty(object content)
+		{
+			return content == null && ImageSource == null;
+		}
 
 		private void ApplyingTemplate()
 		{
-			OpacityImageBrush = GetTemplateChild(ButtonBaseConstants.OpacityImageBrushName) as ImageBrush;
-			DisabledOpacityImageBrush = GetTemplateChild(ButtonBaseConstants.DisabledOpacityImageBrushName) as ImageBrush;
-			
-			ButtonBaseHelper.ApplyOpacityImageBrush(this, OpacityImageBrush, ImageSourceProperty);
-			ButtonBaseHelper.ApplyOpacityImageBrush(this, DisabledOpacityImageBrush, ImageSourceProperty);
-
-			ButtonBaseHelper.ApplyStretch(OpacityImageBrush, Stretch);
-			ButtonBaseHelper.ApplyStretch(DisabledOpacityImageBrush, Stretch);
-        }
+			UpdateImageSource();
+		}
 
         #region dependency properties
 		
@@ -31,7 +26,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty StretchProperty =
-			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(ToggleButtonBase), new PropertyMetadata(Stretch.Fill, OnStretch));
+			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(ToggleButtonBase), new PropertyMetadata(Stretch.None, OnUpdate));
 
 		public ImageSource ImageSource
         {
@@ -42,29 +37,29 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageSourceProperty =
 			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ToggleButtonBase),
-            new PropertyMetadata(null, OnImageSource));
+			new PropertyMetadata(null, OnUpdate));
 		#endregion
 
 		#region dp onchange callbacks
-		private static void OnImageSource(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-			var sender = o as ToggleButtonBase;
 
-			if (sender == null)
-				return;
-
-			ButtonBaseHelper.OnImageChange(e, sender.OpacityImageBrush);
-        }
-
-		private static void OnStretch(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		private static void OnUpdate(DependencyObject o, DependencyPropertyChangedEventArgs e)
 		{
 			var sender = o as ToggleButtonBase;
 
 			if (sender == null)
 				return;
 
-			ButtonBaseHelper.OnStretch(e, sender.OpacityImageBrush);
+			sender.UpdateImageSource();
 		}
-        #endregion
+
+		#endregion
+
+		private void UpdateImageSource()
+		{
+			var hostContainer = GetTemplateChild(ButtonBaseConstants.ContentHostName) as Grid;
+			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as FrameworkElement;
+
+			ButtonBaseHelper.UpdateImageSource(contentBody, hostContainer, ImageSource, Stretch);
+		}
 	}
 }

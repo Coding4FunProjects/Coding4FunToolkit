@@ -1,11 +1,9 @@
 ﻿#if WINDOWS_STORE
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 #elif WINDOWS_PHONE
-
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -16,6 +14,59 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public abstract partial class ToggleButtonBase : CheckBox, IButtonBase, IAppBarButton
 	{
+		protected ToggleButtonBase()
+		{
+			IsEnabledChanged += IsEnabledStateChanged;
+		}
+
+		void IsEnabledStateChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			IsEnabledStateChanged();
+		}
+
+		private void IsEnabledStateChanged()
+		{
+			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as FrameworkElement;
+			var enabledContentControl = GetTemplateChild(ButtonBaseConstants.EnabledContentControlName) as ContentControl;
+			var disabledContentControl = GetTemplateChild(ButtonBaseConstants.DisabledContentControlName) as ContentControl;
+
+			if (contentBody != null)
+			{
+				var content = contentBody.Parent as ContentControl;
+				
+				if(content != null)
+					content.Content = null;
+			}
+
+			if (IsEnabled)
+			{
+				if (enabledContentControl != null) 
+					enabledContentControl.Content = contentBody;
+			}
+			else
+			{
+				if (disabledContentControl != null)
+					disabledContentControl.Content = contentBody;
+			}
+
+			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
+		}
+
+		protected override void OnContentChanged(object oldContent, object newContent)
+		{
+			base.OnContentChanged(oldContent, newContent);
+
+			if (oldContent != newContent)
+				AppendCheck(Content);
+		}
+
+		private void AppendCheck(object content)
+		{
+			if (!IsContentEmpty(content))
+				return;
+
+			Content = ButtonBaseHelper.CreateXamlCheck(this);
+		}
 
 #if WINDOWS_STORE
 		protected override void OnApplyTemplate()
@@ -27,7 +78,10 @@ namespace Coding4Fun.Toolkit.Controls
 
 			ApplyingTemplate();
 
-			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
+			AppendCheck(Content);
+			
+			IsEnabledStateChanged();
+
 			ButtonBaseHelper.ApplyTitleOffset(GetTemplateChild(ButtonBaseConstants.ContentTitleName) as ContentControl);
 		}
 
@@ -75,7 +129,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for ButtonWidth.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonWidthProperty =
 			DependencyProperty.Register("ButtonWidth", typeof (double), typeof (ToggleButtonBase), 
-				new PropertyMetadata(72d));
+				new PropertyMetadata(double.NaN));
 
 		public double ButtonHeight
 		{
@@ -86,7 +140,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for ButtonHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonHeightProperty =
 			DependencyProperty.Register("ButtonHeight", typeof (double), typeof (ToggleButtonBase), 
-				new PropertyMetadata(72d));
+				new PropertyMetadata(double.NaN));
 
 		#endregion
 	}

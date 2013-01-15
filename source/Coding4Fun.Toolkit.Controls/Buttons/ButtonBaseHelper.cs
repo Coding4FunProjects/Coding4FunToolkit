@@ -1,74 +1,27 @@
-﻿using System;
+﻿using System.Linq;
 
 #if WINDOWS_STORE
-using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Shapes;
 
 #elif WINDOWS_PHONE
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Windows.Data;
+using System.Windows.Markup;
 using System.Windows.Shapes;
 
 #endif
 
+using Coding4Fun.Toolkit.Controls.Converters;
+
 namespace Coding4Fun.Toolkit.Controls
 {
-	internal static class ButtonBaseHelper
+	internal static partial class ButtonBaseHelper
 	{
-		public static void OnImageChange(DependencyPropertyChangedEventArgs e, ImageBrush brush)
-		{ 
-            if (e.NewValue == e.OldValue)
-                return;
-
-            SetImageBrush(brush, e.NewValue as ImageSource);
-		}
-
-		public static void SetImageBrush(ImageBrush brush, ImageSource imageSource)
-		{
-			if (brush == null)
-				return;
-
-			brush.ImageSource = imageSource;
-		}
-
-		public static void OnStretch(DependencyPropertyChangedEventArgs e, ImageBrush brush)
-		{
-			if (e.NewValue == e.OldValue)
-				return;
-
-			SetStretch(brush, (Stretch)e.NewValue);
-		}
-
-		public static void SetStretch(ImageBrush brush, Stretch stretch)
-		{
-			if (brush == null)
-				return;
-
-			brush.Stretch = stretch;
-		}
-
-		public static void ApplyOpacityImageBrush(FrameworkElement item, ImageBrush brush, DependencyProperty imageDependencyProperty)
-		{
-			var image = item.GetValue(imageDependencyProperty) as ImageSource;
-
-			if (image == null)
-				item.SetValue(imageDependencyProperty, new BitmapImage(new Uri("/Coding4Fun.Toolkit.Controls;component/Media/appbar.check.rest.png", UriKind.RelativeOrAbsolute)));
-			else 
-				SetImageBrush(brush, image);
-		}
-
-		public static void ApplyStretch(ImageBrush brush, Stretch stretch)
-		{
-			SetStretch(brush, stretch);
-		}
-
 		public static void ApplyTitleOffset(ContentControl contentTitle)
 		{
 			if (contentTitle == null) 
@@ -80,6 +33,7 @@ namespace Coding4Fun.Toolkit.Controls
 			contentTitle.Margin = new Thickness(0, top, 0, bottom);
 		}
 
+
 		public static void ApplyForegroundToFillBinding(ContentControl control)
 		{
 			if (control == null)
@@ -90,9 +44,15 @@ namespace Coding4Fun.Toolkit.Controls
 			if (element == null) 
 				return;
 
-			if (element.GetType() == typeof(Shape))
+			if (element.IsTypeOf(typeof(Shape)))
 			{
-				ApplyForegroundToFillBinding(control, element);
+				var shape = element as Shape;
+
+				if (shape != null)
+				{
+					shape.Fill = null;
+					ApplyForegroundToFillBinding(control, shape);
+				}
 			}
 			else
 			{
@@ -100,17 +60,19 @@ namespace Coding4Fun.Toolkit.Controls
 
 				foreach (var child in children)
 				{
+					child.Fill = null;
 					ApplyForegroundToFillBinding(control, child);
 				}
 			}
 		}
 
-		public static void ApplyForegroundToFillBinding(FrameworkElement source, FrameworkElement target)
+		internal static void ApplyForegroundToFillBinding(FrameworkElement source, FrameworkElement target)
 		{
 			ApplyBinding(source, target, "Foreground", Shape.FillProperty);
 		}
 
-		private static void ApplyBinding(FrameworkElement source, FrameworkElement target, string propertyPath, DependencyProperty property)
+
+		public static void ApplyBinding(FrameworkElement source, FrameworkElement target, string propertyPath, DependencyProperty property, IValueConverter converter = null, object converterParameter = null)
 		{
 #if WINDOWS_STORE
 			var binding = new Windows.UI.Xaml.Data.Binding();
@@ -121,7 +83,27 @@ namespace Coding4Fun.Toolkit.Controls
 			binding.Source = source;
 			binding.Path = new PropertyPath(propertyPath);
 
+			binding.Converter = converter;
+			binding.ConverterParameter = converterParameter;
+
 			target.SetBinding(property, binding);
+		}
+
+
+		public static Path CreateXamlCheck(FrameworkElement control)
+		{
+			var check = XamlReader.Load(@"<Path 
+					xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
+					Stretch=""Uniform"" 
+					Data=""F1M227.2217,408.499L226.4427,407.651C226.2357,407.427,226.2467,407.075,226.4737,406.865L228.7357,404.764C228.8387,404.668,228.9737,404.615,229.1147,404.615C229.2707,404.615,229.4147,404.679,229.5207,404.792L235.7317,411.479L246.4147,397.734C246.5207,397.601,246.6827,397.522,246.8547,397.522C246.9797,397.522,247.0987,397.563,247.1967,397.639L249.6357,399.533C249.7507,399.624,249.8257,399.756,249.8447,399.906C249.8627,400.052,249.8237,400.198,249.7357,400.313L236.0087,417.963z""
+					/>") as Path;
+
+			if (check != null)
+			{
+				ApplyBinding(control, check, "ButtonHeight", FrameworkElement.HeightProperty, new NumberMultiplierConverter(), .25);
+			}
+
+			return check;
 		}
 	}
 }

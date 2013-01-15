@@ -25,6 +25,7 @@
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PressedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
 										</ObjectAnimationUsingKeyFrames>
+										
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Disabled">
@@ -35,7 +36,8 @@
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
 										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
 										</ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentTitle">
@@ -48,8 +50,6 @@
 
 						<Border 
 							Name="EnabledBackground" 
-							Height="{TemplateBinding Height}"
-							Width="{TemplateBinding Width}"
 							Padding="{TemplateBinding Padding}" 
 							BorderThickness="0" 
 							BorderBrush="Transparent" 
@@ -66,22 +66,13 @@
 										Fill="{TemplateBinding Background}" 
 										Margin="10" />
 
-									<ContentControl
-										Name="ContentBody"
-										Content="{TemplateBinding Content}" 
-										Foreground="{TemplateBinding Foreground}" 
-										/>
-									
-									<Rectangle
-										x:Name="ButtonForeground" 
-										Fill="{TemplateBinding Foreground}" 
-										Margin="10">
-										<Rectangle.OpacityMask>
-											<ImageBrush 
-												x:Name="OpacityImageBrush" 
-												Stretch="{TemplateBinding Stretch}" />
-										</Rectangle.OpacityMask>
-									</Rectangle>
+									<Grid Name="ContentHost">
+										<ContentControl
+											Name="ContentBody"
+											Content="{TemplateBinding Content}" 
+											Foreground="{TemplateBinding Foreground}" 
+											/>
+									</Grid>
 
 									<Ellipse
 										x:Name="ButtonRing"

@@ -1,11 +1,9 @@
 ﻿#if WINDOWS_STORE
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 #elif WINDOWS_PHONE
-
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,6 +19,22 @@ namespace Coding4Fun.Toolkit.Controls
 			DefaultStyleKey = typeof(RoundButton);
 		}
 
+		protected override void OnContentChanged(object oldContent, object newContent)
+		{
+			base.OnContentChanged(oldContent, newContent);
+
+			if(oldContent != newContent)
+				AppendCheck(Content);
+		}
+
+		private void AppendCheck(object content)
+		{
+			if (!IsContentEmpty(content))
+				return;
+
+			Content = ButtonBaseHelper.CreateXamlCheck(this);
+		}
+
 #if WINDOWS_STORE
 		protected override void OnApplyTemplate()
 #elif WINDOWS_PHONE
@@ -30,7 +44,9 @@ namespace Coding4Fun.Toolkit.Controls
             base.OnApplyTemplate();
 
 			ApplyingTemplate();
-			
+
+			AppendCheck(Content);
+
 			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
 			ButtonBaseHelper.ApplyTitleOffset(GetTemplateChild(ButtonBaseConstants.ContentTitleName) as ContentControl);
         }
@@ -64,7 +80,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonWidth.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonWidthProperty =
-			DependencyProperty.Register("ButtonWidth", typeof(double), typeof(RoundButton), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonWidth", typeof(double), typeof(RoundButton), new PropertyMetadata(double.NaN));
 
 		public double ButtonHeight
 		{
@@ -74,7 +90,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for ButtonHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ButtonHeightProperty =
-			DependencyProperty.Register("ButtonHeight", typeof(double), typeof(RoundButton), new PropertyMetadata(72d));
+			DependencyProperty.Register("ButtonHeight", typeof(double), typeof(RoundButton), new PropertyMetadata(double.NaN));
         #endregion
     }
 }
