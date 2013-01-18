@@ -94,7 +94,7 @@
 									<Grid Name="ContentHost">
 										<ContentControl 
 											Name="EnabledContent"
-											Foreground="{TemplateBinding Foreground}">
+											Foreground="{TemplateBinding Background}">
 											<ContentControl
 												Name="ContentBody" 
 												Content="{TemplateBinding Content}" />

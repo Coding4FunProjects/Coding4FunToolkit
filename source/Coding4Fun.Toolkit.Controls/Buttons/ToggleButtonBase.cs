@@ -26,7 +26,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void IsEnabledStateChanged()
 		{
-			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as FrameworkElement;
+			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
 			var enabledContentControl = GetTemplateChild(ButtonBaseConstants.EnabledContentControlName) as ContentControl;
 			var disabledContentControl = GetTemplateChild(ButtonBaseConstants.DisabledContentControlName) as ContentControl;
 
@@ -49,7 +49,7 @@ namespace Coding4Fun.Toolkit.Controls
 					disabledContentControl.Content = contentBody;
 			}
 
-			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
+			ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody);
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)
