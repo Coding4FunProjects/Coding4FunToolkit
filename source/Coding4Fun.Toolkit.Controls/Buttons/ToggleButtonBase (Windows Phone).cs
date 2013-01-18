@@ -57,9 +57,13 @@ namespace Coding4Fun.Toolkit.Controls
 		private void UpdateImageSource()
 		{
 			var hostContainer = GetTemplateChild(ButtonBaseConstants.ContentHostName) as Grid;
-			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as FrameworkElement;
+			var hostContainerDisabled = GetTemplateChild(ButtonBaseConstants.DisabledContentHostName) as Grid;
 
-			ButtonBaseHelper.UpdateImageSource(contentBody, hostContainer, ImageSource, Stretch);
+			var contentEnabled = GetTemplateChild(ButtonBaseConstants.EnabledContentControlName) as FrameworkElement;
+			var contentDisabled = GetTemplateChild(ButtonBaseConstants.DisabledContentControlName) as FrameworkElement;
+
+			ButtonBaseHelper.UpdateImageSource(contentEnabled, hostContainer, ImageSource, Stretch);
+			ButtonBaseHelper.UpdateImageSource(contentDisabled, hostContainerDisabled, ImageSource, Stretch);
 		}
 	}
 }

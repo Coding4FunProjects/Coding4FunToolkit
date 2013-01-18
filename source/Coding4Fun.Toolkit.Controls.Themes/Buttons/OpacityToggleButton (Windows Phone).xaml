@@ -19,21 +19,21 @@
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
-										</ObjectAnimationUsingKeyFrames>
+										</ObjectAnimationUsingKeyFrames>-->
 
 										<DoubleAnimation 
 											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
 											To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
 											Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="ButtonForeground" />
+											Storyboard.TargetName="ContentHost" />
 
 										<DoubleAnimation 
 											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
 											To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
 											Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="DisabledButtonForeground" />
+											Storyboard.TargetName="DisabledContentHost" />
 
 									</Storyboard>
 								</VisualState>
@@ -43,13 +43,13 @@
 											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
 											To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
 											Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="ButtonForeground" />
+											Storyboard.TargetName="ContentHost" />
 
 										<DoubleAnimation 
 											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
 											To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 
 											Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="DisabledButtonForeground" />
+											Storyboard.TargetName="DisabledContentHost" />
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Indeterminate"/>
@@ -90,21 +90,19 @@
 									Width="{TemplateBinding ButtonWidth}" 
 									Height="{TemplateBinding ButtonHeight}" 
 									Margin="0,-10, 0, 0">
-									
-									<Rectangle
-										x:Name="ButtonForeground" 
-										Fill="{TemplateBinding Background}" 
-										Margin="10">
-										<Rectangle.OpacityMask>
-											<ImageBrush 
-													x:Name="OpacityImageBrush" 
-													Stretch="{TemplateBinding Stretch}" />
-										</Rectangle.OpacityMask>
-									</Rectangle>
+
+									<Grid Name="ContentHost">
+										<ContentControl 
+											Name="EnabledContent"
+											Foreground="{TemplateBinding Foreground}">
+											<ContentControl
+												Name="ContentBody" 
+												Content="{TemplateBinding Content}" />
+										</ContentControl>
+									</Grid>
 								</Grid>
 
 								<ContentControl 
-									Name="ContentTitle" 
 									Content="{TemplateBinding Title}" 
 									Foreground="{TemplateBinding Foreground}" 
 									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -127,17 +125,12 @@
 									Width="{TemplateBinding ButtonWidth}" 
 									Height="{TemplateBinding ButtonHeight}" 
 									Margin="0,-10, 0, 0">
-									
-									<Rectangle
-										x:Name="DisabledButtonForeground" 
-										Fill="{StaticResource DefaultDisabledBrush}" 
-										Margin="10">
-										<Rectangle.OpacityMask>
-											<ImageBrush 
-													x:Name="DisabledOpacityImageBrush" 
-													Stretch="{TemplateBinding Stretch}" />
-										</Rectangle.OpacityMask>
-									</Rectangle>
+
+									<Grid Name="DisabledContentHost">
+										<ContentControl 
+											Name="DisabledContent" 
+											Foreground="{StaticResource DefaultDisabledBrush}" />
+									</Grid>
 								</Grid>
 								
 								<ContentControl 

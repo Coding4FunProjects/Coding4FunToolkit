@@ -95,6 +95,7 @@
 					</StackPanel>
 					<StackPanel Orientation="Horizontal">
 						<c4f:OpacityToggleButton
+							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 							Orientation="Horizontal"
 							Title="hor"/>
 						<c4f:OpacityToggleButton
@@ -117,13 +118,11 @@
 					</StackPanel>
 				</StackPanel>
 				<sltoolkit:ToggleSwitch 
-						IsChecked="True" 
-						Unchecked="OpacityToggleButtonUnchecked"
-						Checked="OpacityToggleButtonChecked">
-					<sltoolkit:ToggleSwitch.Header>
-						<TextBlock Text="Is Enabled"/>
-					</sltoolkit:ToggleSwitch.Header>
-				</sltoolkit:ToggleSwitch>
+					Name="ToggleCheck"
+					HorizontalAlignment="Right"
+					IsChecked="false" 
+					Unchecked="ToggleChecked"
+					Checked="ToggleChecked" />
 			</StackPanel>
 			<Button 
 					Content="Toggle background" 

@@ -100,7 +100,6 @@
 								</Grid>
 
 								<ContentControl 
-									Name="ContentTitle" 
 									Content="{TemplateBinding Title}" 
 									Foreground="{TemplateBinding Foreground}" 
 									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 

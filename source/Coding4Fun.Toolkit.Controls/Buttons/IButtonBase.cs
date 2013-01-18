@@ -38,7 +38,8 @@ namespace Coding4Fun.Toolkit.Controls
 		public const string EnabledContentControlName = "EnabledContent";
 
 		public const string ContentHostName = "ContentHost";
-
+		public const string DisabledContentHostName = "DisabledContentHost";
+		
 		public const string ContentTitleName = "ContentTitle";
 	}
 }

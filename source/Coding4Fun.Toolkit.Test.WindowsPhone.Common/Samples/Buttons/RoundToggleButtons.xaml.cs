@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -20,6 +21,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 			InitializeComponent();
 
 			DataContext = this;
+
+			ToggleChecked(null, null);
 		}
 
 		public ImageSource RoundButtonImageSource
@@ -42,14 +45,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 			RoundButtonImageSource = (RoundButtonImageSource != AddIcon) ? AddIcon : RepeatIcon;
 		}
 
-		private void RoundToggleButtonUnchecked(object sender, RoutedEventArgs e)
+		private void ToggleChecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<RoundToggleButton>(DisabledRoundToggleButtons, false);
-		}
+			var isChecked = ToggleCheck.IsChecked.HasValue && ToggleCheck.IsChecked.Value;
 
-		private void RoundToggleButtonChecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<RoundToggleButton>(DisabledRoundToggleButtons, true);
+			SetIsEnableToType<ToggleButtonBase>(DisableViewStateTest, isChecked);
 		}
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control

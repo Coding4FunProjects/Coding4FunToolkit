@@ -66,17 +66,17 @@
               <VisualStateGroup x:Name="CheckStates">
                 <VisualState x:Name="Checked">
                   <Storyboard>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ObjectAnimationUsingKeyFrames>
-                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonForeground" />
-                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledButtonForeground" />
+                    <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+										</ObjectAnimationUsingKeyFrames>-->
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ContentHost" />
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledContentHost" />
                   </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Unchecked">
                   <Storyboard>
-                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonForeground" />
-                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledButtonForeground" />
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ContentHost" />
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledContentHost" />
                   </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Indeterminate" />
@@ -106,23 +106,21 @@
             <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="ButtonForeground" Fill="{TemplateBinding Background}" Margin="10">
-                    <Rectangle.OpacityMask>
-                      <ImageBrush x:Name="OpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
-                    </Rectangle.OpacityMask>
-                  </Rectangle>
+                  <Grid Name="ContentHost">
+                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Foreground}">
+                      <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" />
+                    </ContentControl>
+                  </Grid>
                 </Grid>
-                <ContentControl Name="ContentTitle" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="DisabledButtonForeground" Fill="{StaticResource DefaultDisabledBrush}" Margin="10">
-                    <Rectangle.OpacityMask>
-                      <ImageBrush x:Name="DisabledOpacityImageBrush" Stretch="{TemplateBinding Stretch}" />
-                    </Rectangle.OpacityMask>
-                  </Rectangle>
+                  <Grid Name="DisabledContentHost">
+                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
+                  </Grid>
                 </Grid>
                 <ContentControl Content="{TemplateBinding Title}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
               </StackPanel>
@@ -256,7 +254,7 @@
                   </Grid>
                   <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
-                <ContentControl Name="ContentTitle" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">

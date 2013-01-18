@@ -94,7 +94,7 @@
 						Title="no pad/marg" />
 				</StackPanel>
 				<TextBlock Margin="0, 18, 0, 0">Disabled</TextBlock>
-				<StackPanel Name="disabledRoundButtons">
+				<StackPanel Name="DisableViewStateTest">
 					<StackPanel Orientation="Horizontal">
 						<c4f:RoundButton
 							IsEnabled="False"
@@ -134,10 +134,11 @@
 								ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 								Title="horizontal text" />
 						<sltoolkit:ToggleSwitch 
-								HorizontalAlignment="Right"
-								IsChecked="false" 
-								Unchecked="RoundButtonUnchecked"
-								Checked="RoundButtonChecked" />
+							Name="ToggleCheck"
+							HorizontalAlignment="Right"
+							IsChecked="true" 
+							Unchecked="ToggleChecked"
+							Checked="ToggleChecked" />
 					</Grid>
 				</StackPanel>
 				<TextBlock Margin="0, 18, 0, 0">System buttons as a base</TextBlock>

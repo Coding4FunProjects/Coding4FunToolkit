@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 using Coding4Fun.Toolkit.Controls;
@@ -14,6 +13,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 		public OpacityToggleButtons()
 		{
 			InitializeComponent();
+
+			ToggleChecked(null, null);
 		}
 
 		bool _isRed;
@@ -24,14 +25,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 			LayoutRoot.Background = new SolidColorBrush(_isRed ? Colors.Red : Colors.Transparent);
 		}
 
-		private void OpacityToggleButtonUnchecked(object sender, RoutedEventArgs e)
+		private void ToggleChecked(object sender, RoutedEventArgs e)
 		{
-			SetIsEnableToType<ToggleButton>(DisableViewStateTest, false);
-		}
+			var isChecked = ToggleCheck.IsChecked.HasValue && ToggleCheck.IsChecked.Value;
 
-		private void OpacityToggleButtonChecked(object sender, RoutedEventArgs e)
-		{
-			SetIsEnableToType<ToggleButton>(DisableViewStateTest, true);
+			SetIsEnableToType<ToggleButtonBase>(DisableViewStateTest, isChecked);
 		}
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control
