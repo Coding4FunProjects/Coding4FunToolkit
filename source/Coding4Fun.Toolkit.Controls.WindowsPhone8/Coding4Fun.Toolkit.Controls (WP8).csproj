@@ -204,7 +204,7 @@
       <Link>Converters\NumberMultiplierConverter.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\SolidColorBrushToColorConverter.cs">
-      <Link>Common\SolidColorBrushToColorConverter.cs</Link>
+      <Link>Converters\SolidColorBrushToColorConverter.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\StringToVisibilityConverter.cs">
       <Link>Converters\StringToVisibilityConverter.cs</Link>

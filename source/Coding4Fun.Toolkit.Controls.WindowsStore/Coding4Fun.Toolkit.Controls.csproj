@@ -170,6 +170,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
       <Link>Common\ColorSpace.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ControlHelper.cs">
+      <Link>Common\ControlHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
       <Link>Common\DevelopmentHelpers.cs</Link>
     </Compile>

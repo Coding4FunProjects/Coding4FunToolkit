@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-#if WINDOWS_STORE
+using Coding4Fun.Toolkit.Controls.Common;
 
+#if WINDOWS_STORE
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -13,7 +14,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 #elif WINDOWS_PHONE
-
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -131,15 +131,15 @@ namespace Coding4Fun.Toolkit.Controls
 				{
 					case
 						ImageTileAnimationTypes.Fade:
-						CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
+						ControlHelper.CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
 						break;
 					case ImageTileAnimationTypes.HorizontalExpand:
 						img.Projection = new PlaneProjection();
-						CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
+						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
 						break;
 					case ImageTileAnimationTypes.VerticalExpand:
 						img.Projection = new PlaneProjection();
-						CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
+						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
 						break;
 				}
 
@@ -297,26 +297,6 @@ namespace Coding4Fun.Toolkit.Controls
 
     		_animationTracking.Add(tileState);
     	}
-
-    	private static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0, int speed = 500)
-        {
-            var doubleAni = new DoubleAnimation
-            {
-                To = toValue,
-                From = fromValue,
-                Duration = new Duration(TimeSpan.FromMilliseconds(speed)),
-            };
-
-            Storyboard.SetTarget(doubleAni, target);
-
-#if WINDOWS_STORE
-			Storyboard.SetTargetProperty(doubleAni, propertyPath);
-#elif WINDOWS_PHONE
-			Storyboard.SetTargetProperty(doubleAni, new PropertyPath(propertyPath));
-#endif
-
-            sb.Children.Add(doubleAni);
-        }
 
 #if WINDOWS_STORE
 		void AnimationCompleted(object sender, object e)

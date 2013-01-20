@@ -276,6 +276,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -302,6 +303,11 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Media\c4f_26x26.png" />
     <Resource Include="Media\Coding4FunProject.png" />
     <Resource Include="Media\head.png" />
@@ -359,10 +365,6 @@
     <Resource Include="Media\icons\dark\head.png" />
     <Resource Include="Media\icons\light\coding4funLogo.png" />
     <Resource Include="Media\icons\light\head.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.de.resx" />
@@ -574,8 +576,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\SilverlighttoolkitWP8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Controls">
       <HintPath>..\packages\External\System.Windows.Controls.dll</HintPath>

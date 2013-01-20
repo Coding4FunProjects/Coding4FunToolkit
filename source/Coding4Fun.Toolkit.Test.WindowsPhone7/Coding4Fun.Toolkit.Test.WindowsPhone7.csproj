@@ -49,8 +49,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\SilverlightToolkitWP.4.2012.6.25\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Windows" />
@@ -255,6 +256,11 @@
   <ItemGroup>
     <Content Include="ApplicationIcon.png" />
     <Content Include="Background.png" />
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Media\c4f_26x26.png" />
     <Resource Include="Media\Coding4FunProject.png" />
     <Resource Include="Media\head.png" />
@@ -313,10 +319,6 @@
     <Resource Include="Media\icons\light\coding4funLogo.png" />
     <Resource Include="Media\icons\light\head.png" />
     <Content Include="SplashScreenImage.jpg" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\MainPage.xaml">

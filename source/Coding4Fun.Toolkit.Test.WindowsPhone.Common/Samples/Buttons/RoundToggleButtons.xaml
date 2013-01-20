@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
-    xmlns:sltoolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -111,7 +111,7 @@
 							Orientation="Horizontal"
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 							Title="horizontal text" />
-						<sltoolkit:ToggleSwitch 
+						<toolkit:ToggleSwitch 
 							Name="ToggleCheck"
 							HorizontalAlignment="Right"
 							IsChecked="false" 
