@@ -44,7 +44,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 		public static readonly DependencyProperty TogglingContentProperty =
 			DependencyProperty.Register("TogglingContent", typeof(object), typeof(RoundButtons), new PropertyMetadata(null));
 
-		private void RoundButtonBasicClick(object sender, RoutedEventArgs e)
+		private void BasicClick(object sender, RoutedEventArgs e)
 		{
 			MessageBox.Show("Ding!");
 		}
