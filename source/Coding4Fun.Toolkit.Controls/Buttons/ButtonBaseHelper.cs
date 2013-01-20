@@ -74,6 +74,9 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public static void ApplyBinding(FrameworkElement source, FrameworkElement target, string propertyPath, DependencyProperty property, IValueConverter converter = null, object converterParameter = null)
 		{
+			if (source == null || target == null)
+				return;
+
 #if WINDOWS_STORE
 			var binding = new Windows.UI.Xaml.Data.Binding();
 #elif WINDOWS_PHONE

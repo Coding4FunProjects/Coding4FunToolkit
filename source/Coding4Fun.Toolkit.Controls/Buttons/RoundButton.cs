@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 #elif WINDOWS_PHONE
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -23,8 +24,15 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			base.OnContentChanged(oldContent, newContent);
 
-			if(oldContent != newContent)
-				AppendCheck(Content);
+			if (oldContent == newContent)
+				return;
+
+			AppendCheck(Content);
+
+			// content changed, wait a tick
+			Dispatcher.BeginInvoke(() =>
+			                       ButtonBaseHelper.ApplyForegroundToFillBinding(
+				                       GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl));
 		}
 
 		private void AppendCheck(object content)
@@ -41,14 +49,14 @@ namespace Coding4Fun.Toolkit.Controls
 		public override void OnApplyTemplate()
 #endif
         {
-            base.OnApplyTemplate();
-
 			ApplyingTemplate();
 
 			AppendCheck(Content);
 
 			ButtonBaseHelper.ApplyForegroundToFillBinding(GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
 			ButtonBaseHelper.ApplyTitleOffset(GetTemplateChild(ButtonBaseConstants.ContentTitleName) as ContentControl);
+
+			base.OnApplyTemplate();
         }
         #region dependency properties
 

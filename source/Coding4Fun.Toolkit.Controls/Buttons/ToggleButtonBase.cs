@@ -49,15 +49,18 @@ namespace Coding4Fun.Toolkit.Controls
 					disabledContentControl.Content = contentBody;
 			}
 
-			ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody);
+			Dispatcher.BeginInvoke(() =>
+				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)
 		{
 			base.OnContentChanged(oldContent, newContent);
 
-			if (oldContent != newContent)
-				AppendCheck(Content);
+			if (oldContent == newContent)
+				return;
+
+			AppendCheck(Content);
 		}
 
 		private void AppendCheck(object content)
