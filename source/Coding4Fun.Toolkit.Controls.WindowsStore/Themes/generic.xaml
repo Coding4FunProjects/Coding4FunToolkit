@@ -50,6 +50,229 @@
       </Setter.Value>
     </Setter>
   </Style>
+  <Style TargetType="local:OpacityToggleButton">
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Background" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
+    <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:OpacityToggleButton">
+          <Grid>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CheckStates">
+                <VisualState x:Name="Checked">
+                  <Storyboard>
+                    <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+										</ObjectAnimationUsingKeyFrames>-->
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ContentHost" />
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledContentHost" />
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unchecked">
+                  <Storyboard>
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ContentHost" />
+                    <DoubleAnimation Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" To="{Binding UncheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DisabledContentHost" />
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Indeterminate" />
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
+                  <Grid Name="ContentHost">
+                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Background}">
+                      <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" />
+                    </ContentControl>
+                  </Grid>
+                </Grid>
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+              </StackPanel>
+            </Border>
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
+                  <Grid Name="DisabledContentHost">
+                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
+                  </Grid>
+                </Grid>
+                <ContentControl Content="{TemplateBinding Title}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
+              </StackPanel>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:RoundButton">
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="PressedBrush" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
+    <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:RoundButton">
+          <Grid>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="MouseOver" />
+                <VisualState x:Name="Pressed">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PressedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonRing">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentBody">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentTitle">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border Name="EnabledBackground" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
+                  <Ellipse x:Name="ButtonBackground" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="10" />
+                  <Grid Name="ContentHost">
+                    <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+                  </Grid>
+                  <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
+                </Grid>
+                <ContentControl x:Name="ContentTitle" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+              </StackPanel>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:RoundToggleButton">
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+    <Setter Property="CheckedBrush" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeExtraSmall}" />
+    <Setter Property="ButtonWidth" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="ButtonHeight" Value="{StaticResource DefaultAppButtonSize}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:RoundToggleButton">
+          <Grid>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CheckStates">
+                <VisualState x:Name="Checked">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding CheckedBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="DisabledButtonBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="StrokeThickness" Storyboard.TargetName="DisabledButtonRing">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="DisabledContent">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultContrastDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unchecked" />
+                <VisualState x:Name="Indeterminate" />
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledBackground">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border Name="EnabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
+                  <Ellipse x:Name="ButtonBackground" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="10" />
+                  <Grid Name="ContentHost">
+                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Foreground}">
+                      <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" />
+                    </ContentControl>
+                  </Grid>
+                  <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
+                </Grid>
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+              </StackPanel>
+            </Border>
+            <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
+                  <Ellipse x:Name="DisabledButtonBackground" Stroke="Transparent" Margin="10" />
+                  <Grid Name="DisabledContentHost">
+                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
+                  </Grid>
+                  <Ellipse x:Name="DisabledButtonRing" Stroke="{StaticResource DefaultDisabledBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
+                </Grid>
+                <ContentControl Content="{TemplateBinding Title}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
+              </StackPanel>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
   <Style TargetType="local:Tile">
     <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />

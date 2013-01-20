@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
   <!--WindowsPhone7-->
   <c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
@@ -10,14 +10,14 @@
   <SolidColorBrush x:Key="DefaultDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="{Binding Source={StaticResource PhoneChromeBrush}, Converter={StaticResource BrushToBrush}}" />
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
-  <System:Double x:Key="DefaultFontSizeExtraSmall">12</System:Double>
-  <System:Double x:Key="DefaultFontSizeNormal">20</System:Double>
-  <System:Double x:Key="DefaultFontSizeLarge">32</System:Double>
+  <sys:Double x:Key="DefaultFontSizeExtraSmall">12</sys:Double>
+  <sys:Double x:Key="DefaultFontSizeNormal">20</sys:Double>
+  <sys:Double x:Key="DefaultFontSizeLarge">32</sys:Double>
   <FontFamily x:Key="FontFamilySegoeNormal">Segoe WP</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
-  <System:Double x:Key="DefaultAppButtonSize">70</System:Double>
-  <System:Double x:Key="DefaultTileSize">173</System:Double>
+  <sys:Double x:Key="DefaultAppButtonSize">70</sys:Double>
+  <sys:Double x:Key="DefaultTileSize">173</sys:Double>
   <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" />
   </ControlTemplate>
