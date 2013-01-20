@@ -48,16 +48,12 @@
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
-						UncheckedOpacity=".1"
-						CheckedOpacity=".9"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 						Title="disabled"/>
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
 						IsChecked="True"
-						UncheckedOpacity=".1"
-						CheckedOpacity=".9"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 						Title="dis + chk"/>
 				</StackPanel>
@@ -120,7 +116,7 @@
 				<sltoolkit:ToggleSwitch 
 					Name="ToggleCheck"
 					HorizontalAlignment="Right"
-					IsChecked="false" 
+					IsChecked="true" 
 					Unchecked="ToggleChecked"
 					Checked="ToggleChecked" />
 			</StackPanel>

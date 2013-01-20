@@ -114,7 +114,7 @@
 						<toolkit:ToggleSwitch 
 							Name="ToggleCheck"
 							HorizontalAlignment="Right"
-							IsChecked="false" 
+							IsChecked="true" 
 							Unchecked="ToggleChecked"
 							Checked="ToggleChecked" />
 					</Grid>

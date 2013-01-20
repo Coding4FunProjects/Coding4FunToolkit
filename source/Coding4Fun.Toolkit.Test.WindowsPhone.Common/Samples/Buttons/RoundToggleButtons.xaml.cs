@@ -47,7 +47,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Buttons
 
 		private void ToggleChecked(object sender, RoutedEventArgs e)
 		{
-			var isChecked = ToggleCheck.IsChecked.HasValue && ToggleCheck.IsChecked.Value;
+			if (ContentPanel == null)
+				return;
+
+			var isChecked = ToggleCheck != null && ToggleCheck.IsChecked.HasValue && ToggleCheck.IsChecked.Value;
 
 			SetIsEnableToType<ToggleButtonBase>(DisableViewStateTest, isChecked);
 		}
