@@ -112,7 +112,7 @@
                     </ContentControl>
                   </Grid>
                 </Grid>
-                <ContentControl Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
@@ -254,7 +254,7 @@
                   </Grid>
                   <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
-                <ContentControl Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">

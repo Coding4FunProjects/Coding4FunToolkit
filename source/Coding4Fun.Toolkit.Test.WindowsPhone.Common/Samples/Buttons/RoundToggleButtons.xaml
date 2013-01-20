@@ -93,7 +93,7 @@
 						<c4f:RoundToggleButton 
 							IsEnabled="False"
 							IsChecked="true"
-							ImageSource="{Binding RoundButtonImage}"
+							ImageSource="{Binding RoundButtonImageSource}"
 							Title="toggle img" 
 							Click="ToggleRoundButtonImageClick" />
 						<c4f:RoundToggleButton
