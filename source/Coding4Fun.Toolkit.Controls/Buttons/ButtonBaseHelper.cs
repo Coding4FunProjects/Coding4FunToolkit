@@ -48,21 +48,25 @@ namespace Coding4Fun.Toolkit.Controls
 			{
 				var shape = element as Shape;
 
-				if (shape != null)
-				{
-					shape.Fill = null;
-					ApplyForegroundToFillBinding(control, shape);
-				}
+				ResetVerifyAndApplyForegroundToFillBinding(control, shape);
 			}
 			else
 			{
-				var children = element.GetLogicalChildrenByType<Shape>(false).Where(child => child.Fill == null);
+				var children = element.GetLogicalChildrenByType<Shape>(false);
 
 				foreach (var child in children)
 				{
-					child.Fill = null;
-					ApplyForegroundToFillBinding(control, child);
+					ResetVerifyAndApplyForegroundToFillBinding(control, child);
 				}
+			}
+		}
+
+		internal static void ResetVerifyAndApplyForegroundToFillBinding(FrameworkElement source, Shape target)
+		{
+			if (target != null && (target.Fill == null || target.GetBindingExpression(Shape.FillProperty) != null))
+			{
+				target.Fill = null;
+				ApplyBinding(source, target, "Foreground", Shape.FillProperty);
 			}
 		}
 
