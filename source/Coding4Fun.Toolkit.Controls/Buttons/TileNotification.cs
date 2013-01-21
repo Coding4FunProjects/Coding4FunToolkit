@@ -14,26 +14,11 @@ using System.Windows.Markup;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	[ContentProperty(
-	#if WINDOWS_STORE
-		Name =
-	#endif
-		"Content")]
-	public class TileNotification : Control
+	public class TileNotification : ContentControl
     {
         public TileNotification()
 		{
             DefaultStyleKey = typeof(TileNotification);
 		}
-
-        public object Content
-        {
-            get { return GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(TileNotification), new PropertyMetadata(null));
     }
 }
