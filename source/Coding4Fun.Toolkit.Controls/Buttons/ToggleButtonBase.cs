@@ -1,4 +1,6 @@
 ﻿#if WINDOWS_STORE
+using System;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -49,8 +51,12 @@ namespace Coding4Fun.Toolkit.Controls
 					disabledContentControl.Content = contentBody;
 			}
 
-			Dispatcher.BeginInvoke(() =>
-				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
+#if WINDOWS_STORE
+			Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+#elif WINDOWS_PHONE
+			Dispatcher.BeginInvoke(
+#endif
+			                    () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)

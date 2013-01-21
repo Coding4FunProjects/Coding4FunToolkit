@@ -63,7 +63,12 @@ namespace Coding4Fun.Toolkit.Controls
 
 		internal static void ResetVerifyAndApplyForegroundToFillBinding(FrameworkElement source, Shape target)
 		{
-			if (target != null && (target.Fill == null || target.GetBindingExpression(Shape.FillProperty) != null))
+			if (target == null)
+				return;
+
+#if WINDOWS_PHONE
+			if (target.Fill == null || target.GetBindingExpression(Shape.FillProperty) != null)
+#endif
 			{
 				target.Fill = null;
 				ApplyBinding(source, target, "Foreground", Shape.FillProperty);

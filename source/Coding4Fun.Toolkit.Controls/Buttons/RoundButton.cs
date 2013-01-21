@@ -1,4 +1,5 @@
 ﻿#if WINDOWS_STORE
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -30,7 +31,12 @@ namespace Coding4Fun.Toolkit.Controls
 			AppendCheck(Content);
 
 			// content changed, wait a tick
-			Dispatcher.BeginInvoke(() =>
+#if WINDOWS_STORE
+			Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+#elif WINDOWS_PHONE
+			Dispatcher.BeginInvoke(
+#endif
+				() => 
 			                       ButtonBaseHelper.ApplyForegroundToFillBinding(
 				                       GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl));
 		}
