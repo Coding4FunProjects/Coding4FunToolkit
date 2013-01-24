@@ -250,10 +250,9 @@ namespace Clarity.Phone.Extensions
 			if (IsOverlayApplied)
 			{
 				_overlay = CreateGrid();
-
-				if (BackgroundBrush != null)
-					_overlay.Background = BackgroundBrush;
 			}
+
+			ApplyOverlayBackground();
 
 			// Initialize popup to draw the context menu over all controls
 			if (PopupContainer != null)
@@ -271,7 +270,13 @@ namespace Clarity.Phone.Extensions
 			}
 		}
 
-		private Grid CreateGrid()
+	    internal void ApplyOverlayBackground()
+	    {
+		    if (IsOverlayApplied && BackgroundBrush != null)
+				_overlay.Background = BackgroundBrush;
+	    }
+
+	    private Grid CreateGrid()
 	    {
 			var grid = new Grid { Name = Guid.NewGuid().ToString() };
 

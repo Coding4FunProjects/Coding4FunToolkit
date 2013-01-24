@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
@@ -73,6 +74,9 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (PopUpService != null)
             {
+	            PopUpService.BackgroundBrush = Overlay;
+
+				PopUpService.ApplyOverlayBackground();
                 PopUpService.SetAlignmentsOnOverlay(HorizontalAlignment, VerticalAlignment);
             }
         }
@@ -108,17 +112,16 @@ namespace Coding4Fun.Toolkit.Controls
 	    public virtual void Show()
 	    {
 		    PopUpService = new DialogService
-			             {
-				             AnimationType = AnimationType,
-				             Child = this,
-				             BackgroundBrush = Overlay,
-				             IsBackKeyOverride = IsBackKeyOverride,
-				             IsOverlayApplied = IsOverlayApplied,
-							 MainBodyDelay = MainBodyDelay,
-			             };
+			    {
+				    AnimationType = AnimationType,
+				    Child = this,
+				    IsBackKeyOverride = IsBackKeyOverride,
+				    IsOverlayApplied = IsOverlayApplied,
+				    MainBodyDelay = MainBodyDelay,
+			    };
 
-			// this will happen if the user comes in OnNavigate or 
-			// something where the DOM hasn't been created yet.
+		    // this will happen if the user comes in OnNavigate or 
+		    // something where the DOM hasn't been created yet.
 		    if (PopUpService.Page == null)
 		    {
 			    Dispatcher.BeginInvoke(Show);
@@ -135,11 +138,11 @@ namespace Coding4Fun.Toolkit.Controls
 		    PopUpService.Opened += PopUpOpened;
 
 
-			if (!IsAppBarVisible && PopUpService.Page.ApplicationBar != null && PopUpService.Page.ApplicationBar.IsVisible)
+		    if (!IsAppBarVisible && PopUpService.Page.ApplicationBar != null && PopUpService.Page.ApplicationBar.IsVisible)
 		    {
 			    PopUpService.Page.ApplicationBar.IsVisible = false;
 
-				IsSetAppBarVisibiilty = true;
+			    IsSetAppBarVisibiilty = true;
 		    }
 
 		    _startingPage = PopUpService.Page;
