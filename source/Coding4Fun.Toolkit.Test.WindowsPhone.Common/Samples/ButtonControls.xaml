@@ -27,11 +27,11 @@
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
+				<Button Click="NavToImageTilesClick">Image Tile</Button>
+				<Button Click="NavToOpacityToggleButtonsClick">Opacity Toggle</Button>
 				<Button Click="NavToRoundButtonsClick">Round</Button>
 				<Button Click="NavToRoundToggleButtonsClick">Round Toggle</Button>
 				<Button Click="NavToTilesClick">Tile</Button>
-				<Button Click="NavToImageTilesClick">Image Tile</Button>
-				<Button Click="NavToOpacityToggleButtonsClick">Opacity Toggle</Button>
 				<Button Click="NavToStressClick">Stress Tests</Button>
 			</StackPanel>
 		</Grid>
