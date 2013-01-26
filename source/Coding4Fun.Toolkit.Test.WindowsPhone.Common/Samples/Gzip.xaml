@@ -43,7 +43,23 @@
 			   BasedOn="{StaticResource PolylineStyleBase}">
 			<Setter Property="Stroke" Value="Cyan" />
 		</Style>
-		
+
+		<Style x:Key="BeginGetResponseTextblockStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="#bbFFbb" />
+		</Style>
+
+		<Style x:Key="BeginGetCompressedResponseTextblockStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightSkyBlue" />
+		</Style>
+
+		<Style x:Key="WebClientTextblockStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Lime" />
+		</Style>
+
+		<Style x:Key="GzipWebClientTextblockStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Cyan" />
+		</Style>
+
 		<Style x:Key="LineDataPointStyle" TargetType="charting:LineDataPoint">
 			<Setter Property="Background" Value="White" />
 			<Setter Property="BorderBrush" Value="White"/>
@@ -87,8 +103,10 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
 			</Grid.RowDefinitions>
 			<charting:Chart
+				BorderBrush="Transparent"
 				Margin="-12, -50, -12, 0"
                 LegendStyle="{StaticResource Invisible}" 
 				Tap="ChartTap">
@@ -137,7 +155,29 @@
 					DataPointStyle="{StaticResource LineDataPointStyle}"
 					/>
 			</charting:Chart>
-			<Button Grid.Row="1" Click="EmailResult">email result</Button>
+			<Grid Grid.Row="1">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<TextBlock Style="{StaticResource WebClientTextblockStyle}" Grid.Row="0" Grid.Column="0">
+					Normal Client
+				</TextBlock>
+				<TextBlock Style="{StaticResource GzipWebClientTextblockStyle}" Grid.Row="1" Grid.Column="0">
+					Gzip WebClient
+				</TextBlock>
+				<TextBlock Style="{StaticResource BeginGetResponseTextblockStyle}" Grid.Row="0" Grid.Column="1">
+					Normal Response
+				</TextBlock>
+				<TextBlock Style="{StaticResource BeginGetCompressedResponseTextblockStyle}" Grid.Row="1" Grid.Column="1">
+					Compressed Response
+				</TextBlock>
+			</Grid>
+			<Button Grid.Row="2" Click="EmailResult">email result</Button>
 		</Grid>
     </Grid>
 </phone:PhoneApplicationPage>
