@@ -5,6 +5,9 @@
 // David Anson
 // http://blogs.msdn.com/b/delay/archive/2012/04/19/quot-if-i-have-seen-further-it-is-by-standing-on-the-shoulders-of-giants-quot-an-alternate-implementation-of-http-gzip-decompression-for-windows-phone.aspx
 
+// help from Morten Nielsen as well
+// http://sharpgis.net/
+
 using System;
 using System.IO;
 using System.Net;
@@ -34,10 +37,12 @@ namespace Coding4Fun.Toolkit.Net
         {
             var request = base.GetWebRequest(address);
             var httpWebRequest = request as HttpWebRequest;
+
             if (null != httpWebRequest)
             {
                 GzipExtensions.AddAcceptEncodingHeader(httpWebRequest);
             }
+
             return request;
         }
 
@@ -49,24 +54,41 @@ namespace Coding4Fun.Toolkit.Net
         /// <returns>A WebResponse containing the response for the specified WebRequest.</returns>
         protected override WebResponse GetWebResponse(WebRequest request, IAsyncResult result)
         {
-            return new WebResponseWrapper(base.GetWebResponse(request, result));
+			try
+			{
+				var response = base.GetWebResponse(request, result);
+
+				if (!(response is GZipWebResponse) && //this would be the case if WebRequestCreator was also used
+				    (response.Headers[HttpRequestHeader.ContentEncoding] == "gzip") &&
+				    response is HttpWebResponse)
+				{
+					return new GZipWebResponse(response as HttpWebResponse); //If gzipped response, uncompress
+				}
+
+				return response;
+			}
+			catch
+			{
+				return null;
+			}
+
         }
 
         /// <summary>
         /// Class that wraps WebResponse to return an uncompressed response stream when GZIP was used.
         /// </summary>
-        private class WebResponseWrapper : WebResponse
+		private class GZipWebResponse : HttpWebResponse
         {
             /// <summary>
             /// Stores the wrapped WebResponse.
             /// </summary>
-            private readonly WebResponse _response;
+			private readonly HttpWebResponse _response;
 
             /// <summary>
             /// Initializes a new instance of the WebResponseWrapper class.
             /// </summary>
             /// <param name="response">WebResponse to wrap.</param>
-            public WebResponseWrapper(WebResponse response)
+			public GZipWebResponse(HttpWebResponse response)
             {
                 _response = response;
             }
@@ -77,15 +99,14 @@ namespace Coding4Fun.Toolkit.Net
             /// <returns>An instance of the Stream class for reading data from the Internet resource.</returns>
             public override Stream GetResponseStream()
             {
-                var httpWebResponse = _response as HttpWebResponse;
-                if (null != httpWebResponse)
+                var httpWebResponse = _response;
+                
+				if (null != httpWebResponse)
                 {
                     return httpWebResponse.GetCompressedResponseStream();
                 }
-                else
-                {
-                    return _response.GetResponseStream();
-                }
+
+	            return _response.GetResponseStream();
             }
 
             // Pass-through wrapper implementations
@@ -93,26 +114,51 @@ namespace Coding4Fun.Toolkit.Net
             {
                 _response.Close();
             }
-            public override long ContentLength
+            
+			public override long ContentLength
             {
                 get { return _response.ContentLength; }
             }
-            public override string ContentType
+            
+			public override string ContentType
             {
                 get { return _response.ContentType; }
             }
-            public override WebHeaderCollection Headers
+            
+			public override WebHeaderCollection Headers
             {
                 get { return _response.Headers; }
             }
-            public override Uri ResponseUri
+            
+			public override Uri ResponseUri
             {
                 get { return _response.ResponseUri; }
             }
-            public override bool SupportsHeaders
+            
+			public override bool SupportsHeaders
             {
                 get { return _response.SupportsHeaders; }
             }
+			
+			public override string Method
+			{
+				get { return _response.Method; }
+			}
+			
+			public override HttpStatusCode StatusCode
+			{
+				get { return _response.StatusCode; }
+			}
+			
+			public override string StatusDescription
+			{
+				get { return _response.StatusDescription; }
+			}
+			
+			public override CookieCollection Cookies
+			{ 
+				get { return _response.Cookies; }
+			}
         }
     }
 }
