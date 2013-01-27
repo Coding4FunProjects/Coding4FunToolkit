@@ -26,7 +26,7 @@ namespace Coding4Fun.Toolkit.Controls
 			IsEnabledStateChanged();
 		}
 
-		private void IsEnabledStateChanged()
+		private  void IsEnabledStateChanged()
 		{
 			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
 			var enabledContentControl = GetTemplateChild(ButtonBaseConstants.EnabledContentControlName) as ContentControl;
@@ -52,11 +52,10 @@ namespace Coding4Fun.Toolkit.Controls
 			}
 
 #if WINDOWS_STORE
-			Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+			ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody);
 #elif WINDOWS_PHONE
-			Dispatcher.BeginInvoke(
+			Dispatcher.BeginInvoke(() => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
 #endif
-			                    () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)

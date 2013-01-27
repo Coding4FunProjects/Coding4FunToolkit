@@ -23,5 +23,21 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 		{
 			Frame.Navigate(typeof(Tiles));
 		}
+
+		private void RoundButtonControls(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(RoundButtons));
+		}
+		
+		private void RoundToggleButtonControls(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(RoundToggleButtons));
+		}
+
+		private void OpacityToggleButtonControls(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(OpacityToggleButtons));
+		}
+		
 	}
 }

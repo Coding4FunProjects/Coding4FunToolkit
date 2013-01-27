@@ -32,13 +32,13 @@ namespace Coding4Fun.Toolkit.Controls
 
 			// content changed, wait a tick
 #if WINDOWS_STORE
-			Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+			ButtonBaseHelper.ApplyForegroundToFillBinding(
+				GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
 #elif WINDOWS_PHONE
-			Dispatcher.BeginInvoke(
+			Dispatcher.BeginInvoke(() =>
+								   ButtonBaseHelper.ApplyForegroundToFillBinding(
+									   GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl));
 #endif
-				() => 
-			                       ButtonBaseHelper.ApplyForegroundToFillBinding(
-				                       GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl));
 		}
 
 		private void AppendCheck(object content)
