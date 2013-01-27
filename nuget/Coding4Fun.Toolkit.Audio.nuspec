@@ -10,23 +10,27 @@
         <language>en-US</language>
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
-        <tags>coding4fun silverlight winrt phone wp7 wp8 microphone windows store</tags>
+        <tags>coding4fun silverlight winrt win8 phone wp7 wp8  metro xaml audio microphone</tags>
         <frameworkAssemblies>
 		<frameworkAssembly assemblyName="Microsoft.Xna.Framework" targetFramework="wp71" />
-		<frameworkAssembly assemblyName="Microsoft.Xna.Framework" targetFramework="windowsphone8"  />
+		<frameworkAssembly assemblyName="Microsoft.Xna.Framework" targetFramework="windowsphone8" />
 	</frameworkAssemblies>
   </metadata>
 
   <files>
-	<file 
-		src="Release\Windows Phone 7\Coding4Fun.Toolkit.Audio.dll"
-		target="lib\sl4-windowsphone71" />
-	<file 
-		src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
-		target="lib\windowsphone8" />
-	<file 
-		src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
-		target="lib\windows8" />
+		<file 
+			src="Release\Windows Phone 7\Coding4Fun.Toolkit.Audio.dll"
+			target="lib\wp71" />
+		<file 
+			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
+			target="lib\windowsphone8" />
+		
+		<file 
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
+			target="lib\windows8" />
+		<file 
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.pri"
+			target="lib\windows8" />
 
   </files>
 </package>

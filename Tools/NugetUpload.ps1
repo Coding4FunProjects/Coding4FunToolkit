@@ -26,7 +26,10 @@ foreach($platform in $platforms)
 	$releaseDirs += @($dir);
 }
 
-$assemblyFiles = [System.IO.Directory]::GetFiles($currentPath, "AssemblyInfo.cs", [System.IO.SearchOption]::AllDirectories);
+$assemblyFiles = [System.IO.Directory]::GetFiles(
+	[System.IO.Path]::Combine($currentPath, "source"),
+	"AssemblyInfo.cs", [System.IO.SearchOption]::AllDirectories);
+	
 $nuspecFiles = [System.IO.Directory]::GetFiles($currentPath, "nuget/*.nuspec", [System.IO.SearchOption]::AllDirectories);
 
 echo "AssemblyInfo.cs Count: " $assemblyFiles.Length

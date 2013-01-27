@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Coding4Fun.Toolkit.Controls</id>
+		<version>2.0.0</version>
+		<title>Coding4Fun Toolkit - Controls</title>
+		<authors>Coding4Fun, Clint Rutkas</authors>
+		<description>The Coding4Fun Toolkit has multiple controls and useful items for XAML based applications.</description>
+		<summary>A toolkit with multiple controls and useful items for Windows Store and Window Phone applications</summary>
+		<language>en-US</language>
+		<licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+		<projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+		<tags>ccoding4fun silverlight winrt win8 phone wp7 wp8  metro xaml wp timespan picker toast round button message prompt color metroflow chat bubble</tags>
+	</metadata>
+	<files>
+		<file
+			src="Release\Windows Phone 7\Coding4Fun.Toolkit.Controls.dll"
+			target="lib\wp71" />
+		<file
+			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
+			target="lib\windowsphone8" />
+		<file
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
+			target="lib\windows8" />
+		<file
+			src="Release\Windows Store\AnyCpu\Themes\Generic.xaml"
+			target="lib\windows8\Themes\Generic.xaml" />
+		<file
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.pri"
+			target="lib\windows8\Coding4Fun.Toolkit.Controls.pri" />
+
+		<file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Cancel.png" />
+		<file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Check.png" />
+
+		<file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\wp71\Toolkit.Content\ApplicationBar.Cancel.png" />
+		<file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\wp71\Toolkit.Content\ApplicationBar.Check.png" />
+
+	</files>
+</package>
+<!--
+	http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+-->
