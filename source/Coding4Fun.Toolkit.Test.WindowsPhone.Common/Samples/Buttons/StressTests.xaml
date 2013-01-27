@@ -30,48 +30,48 @@
 				<Button Click="NavAway_Click">Nav Away</Button>
 				<StackPanel Orientation="Horizontal">
 					<coding4Fun:RoundButton 
-						Title="round" />
+						Label="round" />
 					<coding4Fun:RoundToggleButton 
-						Title="toggle" />
+						Label="toggle" />
 					<coding4Fun:OpacityToggleButton
-						Title="opacity" />
+						Label="opacity" />
 					<coding4Fun:RoundButton
-						Title="round" />
+						Label="round" />
 					<coding4Fun:RoundToggleButton 
 						IsChecked="true"
-						Title="toggle" />
+						Label="toggle" />
 					<coding4Fun:OpacityToggleButton 
 						IsChecked="true"
-						Title="opacity" />
+						Label="opacity" />
 					<coding4Fun:RoundButton 
 						IsEnabled="False"
-						Title="round" />
+						Label="round" />
 					<coding4Fun:RoundToggleButton 
 						IsEnabled="False"
-						Title="toggle" />
+						Label="toggle" />
 					<coding4Fun:OpacityToggleButton 
 						IsEnabled="False"
-						Title="opacity" />
+						Label="opacity" />
 					<coding4Fun:RoundButton 
 						IsEnabled="False"
-						Title="round" />
+						Label="round" />
 					<coding4Fun:RoundToggleButton 
 						IsEnabled="False" 
 						IsChecked="true"
-						Title="toggle" />
+						Label="toggle" />
 					<coding4Fun:OpacityToggleButton 
 						IsEnabled="False" 
 						IsChecked="true"
-						Title="opacity" />
+						Label="opacity" />
 				</StackPanel>
 				<Grid>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:RoundButton 
 							BorderBrush="Red" 
 							Foreground="Cyan"
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundButton
-							Title="round" />
+							Label="round" />
 						<coding4Fun:RoundButton />
 						<coding4Fun:RoundButton />
 					</StackPanel>
@@ -79,19 +79,19 @@
 						<coding4Fun:RoundToggleButton 
 							BorderBrush="Green" 
 							Foreground="Blue"
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundToggleButton 
 							IsChecked="true"
-							Title="toggle" />
+							Label="toggle" />
 						<coding4Fun:RoundToggleButton />
 						<coding4Fun:RoundToggleButton IsChecked="true" />
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:OpacityToggleButton
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:OpacityToggleButton 
 							IsChecked="true"
-							Title="opacity" />
+							Label="opacity" />
 						<coding4Fun:OpacityToggleButton />
 						<coding4Fun:OpacityToggleButton IsChecked="true" />
 					</StackPanel>
@@ -100,32 +100,32 @@
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:RoundButton 
 							IsEnabled="False"
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundButton 
 							IsEnabled="False"
-							Title="round" />
+							Label="round" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:RoundToggleButton
 							IsEnabled="False"
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundToggleButton 
 							IsEnabled="False" 
 							IsChecked="true"
-							Title="toggle" />
+							Label="toggle" />
 						<coding4Fun:RoundToggleButton IsEnabled="False" />
 						<coding4Fun:RoundToggleButton IsEnabled="False" IsChecked="true" />
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:OpacityToggleButton 
 							IsEnabled="False"
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:OpacityToggleButton 
 							IsEnabled="False"
 							IsChecked="true"
-							Title="opacity" />
+							Label="opacity" />
 						<coding4Fun:OpacityToggleButton IsEnabled="False" />
 						<coding4Fun:OpacityToggleButton IsEnabled="False" IsChecked="true" />
 					</StackPanel>
@@ -133,53 +133,53 @@
 				<Grid>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:RoundButton
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundButton
-							Title="round" />
+							Label="round" />
 						<coding4Fun:RoundButton />
 						<coding4Fun:RoundButton />
 						<coding4Fun:RoundButton 
 							IsEnabled="False"
-							Title="round" />
+							Label="round" />
 						<coding4Fun:RoundButton 
 							IsEnabled="False"
-							Title="round" />
+							Label="round" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 						<coding4Fun:RoundButton IsEnabled="False" />
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:RoundToggleButton
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:RoundToggleButton 
 							IsChecked="true"
-							Title="toggle" />
+							Label="toggle" />
 						<coding4Fun:RoundToggleButton />
 						<coding4Fun:RoundToggleButton IsChecked="true" />
 						<coding4Fun:RoundToggleButton 
 							IsEnabled="False"
-							Title="toggle" />
+							Label="toggle" />
 						<coding4Fun:RoundToggleButton 
 							IsEnabled="False" 
 							IsChecked="true"
-							Title="toggle" />
+							Label="toggle" />
 						<coding4Fun:RoundToggleButton IsEnabled="False" />
 						<coding4Fun:RoundToggleButton IsEnabled="False" IsChecked="true" />
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Opacity=".4">
 						<coding4Fun:OpacityToggleButton
-							Title="c4f" />
+							Label="c4f" />
 						<coding4Fun:OpacityToggleButton 
 							IsChecked="true"
-							Title="opacity" />
+							Label="opacity" />
 						<coding4Fun:OpacityToggleButton />
 						<coding4Fun:OpacityToggleButton IsChecked="true" />
 						<coding4Fun:OpacityToggleButton 
 							IsEnabled="False"
-							Title="opacity" />
+							Label="opacity" />
 						<coding4Fun:OpacityToggleButton 
 							IsEnabled="False" 
 							IsChecked="true"
-							Title="opacity" />
+							Label="opacity" />
 						<coding4Fun:OpacityToggleButton IsEnabled="False" />
 						<coding4Fun:OpacityToggleButton IsEnabled="False" IsChecked="true" />
 					</StackPanel>

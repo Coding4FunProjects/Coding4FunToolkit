@@ -56,7 +56,7 @@
                             Margin="0, 0, 12, 0"
                             Width="173"
                             Height="173"
-                            Title="Click Me"
+                            Label="Click Me"
 							Click="TileClick">
 						<Grid>
 							<Image 
@@ -71,7 +71,7 @@
                             Width="173"
                             Height="173"
                             TextWrapping="Wrap"
-                            Title="Testing Text Wrapping"> 
+                            Label="Testing Text Wrapping"> 
 						<Image 
                                 Source="../../Media/head.png" 
                                 Width="100"
@@ -81,7 +81,7 @@
 						IsEnabled="False"
                         Width="72"
                         Height="72"
-                        Title="disabled">
+                        Label="disabled">
 					</c4f:Tile>
 				</StackPanel>
 				<c4f:Tile 
@@ -90,7 +90,7 @@
                         Width="358"
                         Height="173"
                         c4fBinding:FrameworkElementBinding.ClipToBounds="True"
-                        Title="Coding4Fun Phone Toolkit">
+                        Label="Coding4Fun Phone Toolkit">
 					<Grid>
 						<Canvas>
 							<Image 
@@ -112,7 +112,7 @@
 
 				<c4f:Tile 
                         Height="100"
-                        Title="Coding4Fun Phone Toolkit">
+                        Label="Coding4Fun Phone Toolkit">
 					<Grid>
 						<StackPanel 
                                 Orientation="Horizontal" 
@@ -155,7 +155,7 @@
                     c4fBinding:FrameworkElementBinding.ClipToBounds="True"
                     FontSize="28"
                     Foreground="{StaticResource PhoneChromeBrush}"
-                    Title="Coding4Fun Phone Toolkit">
+                    Label="Coding4Fun Phone Toolkit">
 					<Image 
                         HorizontalAlignment="Right"
                         Source="../../Media/headWhite.png" 

@@ -23,15 +23,15 @@ namespace Coding4Fun.Toolkit.Controls
 
 #region dependency properties
 
-		public object Title
+		public object Label
 		{
-			get { return GetValue(TitleProperty); }
-			set { SetValue(TitleProperty, value); }
+			get { return GetValue(LabelProperty); }
+			set { SetValue(LabelProperty, value); }
 		}
 
 		// Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty TitleProperty =
-			DependencyProperty.Register("Title", typeof (object), typeof (ButtonBase), new PropertyMetadata(string.Empty));
+		public static readonly DependencyProperty LabelProperty =
+			DependencyProperty.Register("Label", typeof (object), typeof (ButtonBase), new PropertyMetadata(string.Empty));
 
 #endregion
 	}

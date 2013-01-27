@@ -14,7 +14,7 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public interface IButtonBase
 	{
-		object Title { get; set; }
+		object Label { get; set; }
 	}
 
 	public interface IAppBarButton

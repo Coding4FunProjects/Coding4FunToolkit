@@ -46,7 +46,7 @@
 					AnimationType="Fade"
 					AnimationDuration="250"
 					ImageCycleInterval="500"
-					Title="Image Tile" />
+					Label="Image Tile" />
 			</VariableSizedWrapGrid>
 		</GridView>
 	</Grid>

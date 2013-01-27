@@ -102,7 +102,7 @@
 								<ContentControl 
 									Name="ContentTitle"
 									Margin="0, -5, 0 , 0"
-									Content="{TemplateBinding Title}" 
+									Content="{TemplateBinding Label}" 
 									Foreground="{TemplateBinding Foreground}" 
 									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -144,7 +144,7 @@
 								</Grid>
 								
 								<ContentControl 
-									Content="{TemplateBinding Title}" 
+									Content="{TemplateBinding Label}" 
 									Foreground="{StaticResource DefaultDisabledBrush}" 
 									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

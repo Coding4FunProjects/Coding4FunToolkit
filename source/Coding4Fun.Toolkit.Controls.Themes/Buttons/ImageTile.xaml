@@ -33,7 +33,7 @@
 							FontWeight="{TemplateBinding FontWeight}" />
 						
 						<ContentControl 
-							Content="{TemplateBinding Title}" 
+							Content="{TemplateBinding Label}" 
 							FontSize="{TemplateBinding FontSize}"
 							FontFamily="{TemplateBinding FontFamily}"
 							FontWeight="{TemplateBinding FontWeight}"

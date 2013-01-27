@@ -37,7 +37,7 @@
             SelectionMode="None"
             IsSwipeEnabled="false">
 			<Coding4Fun:Tile 
-					Title="Image Tiles" 
+					Label="Image Tiles" 
 					Tapped="ImageTileControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
@@ -45,7 +45,7 @@
 				</TextBlock>
 			</Coding4Fun:Tile>
 			<Coding4Fun:Tile 
-					Title="Tiles" 
+					Label="Tiles" 
 					Tapped="TileControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">

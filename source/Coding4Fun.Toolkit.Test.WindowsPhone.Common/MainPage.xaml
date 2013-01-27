@@ -34,7 +34,7 @@
 				Margin="24,120,0,0">
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Audio"
+					Label="Audio"
 					Click="Audio_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Au
@@ -42,7 +42,7 @@
                 </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Binding"
+					Label="Binding"
 					Click="Binding_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Bi
@@ -50,7 +50,7 @@
                </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Button"
+					Label="Button"
 					Click="Button_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Bn
@@ -59,7 +59,7 @@
 
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Chat bubble"
+					Label="Chat bubble"
 					Click="Chat_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Ch
@@ -68,7 +68,7 @@
                 
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Color"
+					Label="Color"
 					Click="Colors_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Co
@@ -76,7 +76,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Gzip Webclient"
+					Label="Gzip Webclient"
 					Click="GzipWebClient_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Gz
@@ -84,7 +84,7 @@
 				</c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Memory"
+					Label="Memory"
 					Click="Memory_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Me
@@ -92,7 +92,7 @@
                 </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="MetroFlow"
+					Label="MetroFlow"
 					Click="MetroFlow_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Mf
@@ -100,7 +100,7 @@
 				</c4f:Tile>	
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Overlay"
+					Label="Overlay"
 					Click="Overlays_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Ov
@@ -108,7 +108,7 @@
 				</c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Prompt"
+					Label="Prompt"
 					Click="Prompts_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Pr
@@ -116,7 +116,7 @@
                 </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Storage"
+					Label="Storage"
 					Click="Storage_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						St
@@ -124,7 +124,7 @@
                 </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Super Slider"
+					Label="Super Slider"
 					Click="Slider_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Sl
@@ -132,7 +132,7 @@
 				</c4f:Tile>
 				<c4f:Tile
 					Style="{StaticResource TileStyle}"
-					Title="Timespan"
+					Label="Timespan"
 					Click="TimeSpan_Click">
 					<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Ts

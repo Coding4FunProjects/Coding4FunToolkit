@@ -84,7 +84,7 @@
 								
 								<ContentControl 
 									x:Name="ContentTitle" 
-									Content="{TemplateBinding Title}" 
+									Content="{TemplateBinding Label}" 
 									Foreground="{TemplateBinding Foreground}" 
 									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

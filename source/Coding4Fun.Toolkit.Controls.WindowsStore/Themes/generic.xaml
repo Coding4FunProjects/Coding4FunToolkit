@@ -44,7 +44,7 @@
           <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
             <Grid x:Name="ImageContainer" />
             <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" />
-            <ContentControl Content="{TemplateBinding Title}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
+            <ContentControl Content="{TemplateBinding Label}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -111,7 +111,7 @@
                     </ContentControl>
                   </Grid>
                 </Grid>
-                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Label}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
@@ -121,7 +121,7 @@
                     <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
                   </Grid>
                 </Grid>
-                <ContentControl Content="{TemplateBinding Title}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
+                <ContentControl Content="{TemplateBinding Label}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
           </Grid>
@@ -179,7 +179,7 @@
                   </Grid>
                   <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
-                <ContentControl x:Name="ContentTitle" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl x:Name="ContentTitle" Content="{TemplateBinding Label}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
           </Grid>
@@ -253,7 +253,7 @@
                   </Grid>
                   <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
-                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
+                <ContentControl Name="ContentTitle" Margin="0, -5, 0 , 0" Content="{TemplateBinding Label}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
             <Border Name="DisabledBackground" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed">
@@ -265,7 +265,7 @@
                   </Grid>
                   <Ellipse x:Name="DisabledButtonRing" Stroke="{StaticResource DefaultDisabledBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
-                <ContentControl Content="{TemplateBinding Title}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
+                <ContentControl Content="{TemplateBinding Label}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
               </StackPanel>
             </Border>
           </Grid>
@@ -303,7 +303,11 @@
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
             <ContentControl Name="contentContainer" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
-            <TextBlock Name="titleText" TextWrapping="{TemplateBinding TextWrapping}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" VerticalAlignment="Bottom" Padding="12, 0" Margin="0, 0, 0, 7" Text="{TemplateBinding Title}" />
+            <!-- 
+							Label is an object but TextWrapping is TextBlock Only
+							... this could blow up 
+						-->
+            <TextBlock Name="titleText" TextWrapping="{TemplateBinding TextWrapping}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" VerticalAlignment="Bottom" Padding="12, 0" Margin="0, 0, 0, 7" Text="{TemplateBinding Label}" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>

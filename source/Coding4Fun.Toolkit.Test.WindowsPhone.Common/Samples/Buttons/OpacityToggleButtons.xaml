@@ -37,34 +37,34 @@
 						CheckedOpacity="1"
 						IsChecked="true"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png">
-						<c4f:OpacityToggleButton.Title>
+						<c4f:OpacityToggleButton.Label>
 							Checked
-						</c4f:OpacityToggleButton.Title>
+						</c4f:OpacityToggleButton.Label>
 					</c4f:OpacityToggleButton>
 					<c4f:OpacityToggleButton 
 						IsChecked="true"
-						Title="Checked" />
+						Label="Checked" />
 					
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Title="disabled"/>
+						Label="disabled"/>
 					<c4f:OpacityToggleButton
 						Background="Red"
 						IsEnabled="False"
 						IsChecked="True"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Title="dis + chk"/>
+						Label="dis + chk"/>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
 					<c4f:OpacityToggleButton
 						Orientation="Horizontal"
-						Title="hor" />
+						Label="hor" />
 					<c4f:OpacityToggleButton
 							Orientation="Horizontal"
 							IsChecked="true"
-							Title="hor/chk"/>
+							Label="hor/chk"/>
 					<c4f:OpacityToggleButton
 						Background="CornflowerBlue"
 						Foreground="lime"
@@ -72,7 +72,7 @@
 						CheckedOpacity=".4"
 						Padding="12"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Title="opa + pad" />
+						Label="opa + pad" />
 					
 				</StackPanel>
 				<StackPanel Name="DisableViewStateTest">
@@ -80,12 +80,12 @@
 					<StackPanel Orientation="Horizontal">
 						<c4f:OpacityToggleButton 
 							IsChecked="true"
-							Title="Checked" />
+							Label="Checked" />
 						<c4f:OpacityToggleButton />
 						<c4f:OpacityToggleButton 
 							Background="Gold" 
 							IsChecked="true"
-							Title="Checked" />
+							Label="Checked" />
 						<c4f:OpacityToggleButton 
 							Background="Gold"/>
 					</StackPanel>
@@ -93,11 +93,11 @@
 						<c4f:OpacityToggleButton
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
 							Orientation="Horizontal"
-							Title="hor"/>
+							Label="hor"/>
 						<c4f:OpacityToggleButton
 							Orientation="Horizontal"
 							IsChecked="true"
-							Title="hor/chk"/>
+							Label="hor/chk"/>
 					</StackPanel>
 					<StackPanel Orientation="Horizontal">
 						<ToggleButton 

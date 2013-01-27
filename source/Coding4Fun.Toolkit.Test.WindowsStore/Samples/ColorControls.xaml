@@ -37,7 +37,7 @@
             SelectionMode="None"
             IsSwipeEnabled="false">
 			<Coding4Fun:Tile 
-					Title="Hexagon Picker" 
+					Label="Hexagon Picker" 
 					Tapped="ColorHex" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">

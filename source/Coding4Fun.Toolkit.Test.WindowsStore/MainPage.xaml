@@ -45,7 +45,7 @@
             IsSwipeEnabled="false">
 			
 			<coding4Fun:Tile 
-				Title="Button"
+				Label="Button"
 				Style="{StaticResource TileStyle}" 
 				Tapped="ButtonControls">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
@@ -54,7 +54,7 @@
 			</coding4Fun:Tile>
 			
 			<coding4Fun:Tile 
-					Title="Color" 
+					Label="Color" 
 					Tapped="ColorControls" 
 					Style="{StaticResource TileStyle}">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">

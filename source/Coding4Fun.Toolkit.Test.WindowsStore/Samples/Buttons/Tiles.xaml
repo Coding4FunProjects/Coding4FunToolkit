@@ -67,7 +67,7 @@
 					VariableSizedWrapGrid.ColumnSpan="15"
 					VariableSizedWrapGrid.RowSpan="15"
 					Margin="0, 0, 10, 10"
-					Title="Click Me"
+					Label="Click Me"
 					Click="TileClick">
 						<Grid>
 							<Image 
@@ -81,7 +81,7 @@
 						VariableSizedWrapGrid.RowSpan="15"
 						Margin="0, 0, 10, 10"
 						TextWrapping="Wrap"
-						Title="Testing Text	 Wrapping">
+						Label="Testing Text	 Wrapping">
 						<Image 
 							Source="../../Media/head.png" 
 							Width="100"
@@ -92,7 +92,7 @@
 					VariableSizedWrapGrid.RowSpan="15"
 					Margin="0, 0, 10, 10"
 					IsEnabled="False"
-					Title="disabled" />
+					Label="disabled" />
 				<Coding4Fun:Tile 
 					Width="400"
 					VariableSizedWrapGrid.ColumnSpan="40"
@@ -100,7 +100,7 @@
 					Margin="0, 0, 10, 10"
 					c4fBinding:FrameworkElementBinding.ClipToBounds="True"
 					HorizontalAlignment="Left"
-					Title="Coding4Fun Phone Toolkit">
+					Label="Coding4Fun Phone Toolkit">
 					<Grid>
 						<Canvas>
 							<Image 
@@ -126,7 +126,7 @@
 					VariableSizedWrapGrid.RowSpan="10"
 					Margin="0, 0, 10, 10"
 					
-					Title="Coding4Fun Phone Toolkit">
+					Label="Coding4Fun Phone Toolkit">
 					<Grid>
 						<StackPanel 
 									Orientation="Horizontal" 
@@ -168,7 +168,7 @@
 					Background="Orange"
 					FontSize="28"
 					Foreground="SlateBlue"
-					Title="Coding4Fun Phone Toolkit">
+					Label="Coding4Fun Phone Toolkit">
 					<Image 
 							HorizontalAlignment="Right"
 							Source="../../Media/headWhite.png" 

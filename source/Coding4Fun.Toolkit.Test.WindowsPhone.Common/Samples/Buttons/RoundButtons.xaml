@@ -39,11 +39,11 @@
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Stretch="None"
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Title="img source" />
+							Label="img source" />
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Foreground="Lime"
-							Title="path simple">
+							Label="path simple">
 							<Path 
 								Height="30"
 								Stretch="Uniform" 	
@@ -52,7 +52,7 @@
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Foreground="Red"
-							Title="path clr set">
+							Label="path clr set">
 							<Path 
 								Height="30"
 								Fill="Lime"
@@ -61,7 +61,7 @@
 						</c4f:RoundButton>
 						<c4f:RoundButton
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
-							Title="path complex"
+							Label="path complex"
 							Foreground="CornflowerBlue">
 
 							<Canvas Height="30">
@@ -94,7 +94,7 @@
 						</c4f:RoundButton>
 						<c4f:RoundButton
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
-							Title="coding4fun"
+							Label="coding4fun"
 							BorderBrush="Orange"
 							Foreground="Orange"
 							Background="WhiteSmoke">
@@ -109,36 +109,36 @@
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Orientation="Horizontal"
-							Title="hor path" />
+							Label="hor path" />
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Orientation="Horizontal"
 							ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-							Title="hor img" />
+							Label="hor img" />
 					</StackPanel>
 				</Grid>
 				<TextBlock>base functionality</TextBlock>
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundButton
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
-						Title="Click"
+						Label="Click"
 						Click="BasicClick" />
 					<c4f:RoundButton 
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
-						Title="PressedBrush"
+						Label="PressedBrush"
 						PressedBrush="Lavender" />
 					<c4f:RoundButton 
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 						Stretch="None"
 						ImageSource="{Binding TogglingImageSource}"
-						Title="Img Flipping" 
+						Label="Img Flipping" 
 						Click="TogglingImageSourceClick" />
 
 					<c4f:RoundButton 
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 						Stretch="None"
 						Content="{Binding TogglingContent}"
-						Title="Content Flipping" 
+						Label="Content Flipping" 
 						Click="TogglingContentClick" />
 				</StackPanel>
 				<TextBlock>misc tests</TextBlock>
@@ -147,7 +147,7 @@
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 						ButtonWidth="50"
 						ButtonHeight="50"
-						Title="size path" />
+						Label="size path" />
 
 					<c4f:RoundButton
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
@@ -155,20 +155,20 @@
 						ButtonHeight="50"
 						Stretch="Uniform"
 						ImageSource="/Toolkit.Content/ApplicationBar.Cancel.png" 
-						Title="size img" />
+						Label="size img" />
 					<c4f:RoundButton 
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 						ButtonWidth="50"
 						ButtonHeight="50"
 						Padding="10"
-						Title="pad" />
+						Label="pad" />
 					<c4f:RoundButton 
 						IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 						ButtonWidth="50"
 						ButtonHeight="50"
 						Margin="5" 
 						Padding="0" 
-						Title="no pad/ 5 marg" />
+						Label="no pad/ 5 marg" />
 				</StackPanel>
 				<toolkit:ToggleSwitch 
 					Name="ToggleEnabled"
