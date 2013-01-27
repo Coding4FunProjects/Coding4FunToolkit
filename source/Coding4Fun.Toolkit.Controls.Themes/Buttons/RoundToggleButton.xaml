@@ -84,7 +84,9 @@
 									<Grid Name="ContentHost">
 										<ContentControl 
 											Name="EnabledContent"
-											Foreground="{TemplateBinding Foreground}">
+											Foreground="{TemplateBinding Foreground}"
+											HorizontalContentAlignment="Center" 
+											VerticalContentAlignment="Center">
 											<ContentControl
 												Name="ContentBody" 
 												Content="{TemplateBinding Content}" />
@@ -132,7 +134,9 @@
 									<Grid Name="DisabledContentHost">
 										<ContentControl 
 											Name="DisabledContent" 
-											Foreground="{StaticResource DefaultDisabledBrush}" />
+											Foreground="{StaticResource DefaultDisabledBrush}"
+											HorizontalContentAlignment="Center" 
+											VerticalContentAlignment="Center" />
 									</Grid>
 
 									<Ellipse

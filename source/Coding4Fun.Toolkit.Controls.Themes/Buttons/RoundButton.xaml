@@ -71,6 +71,8 @@
 											Name="ContentBody"
 											Content="{TemplateBinding Content}" 
 											Foreground="{TemplateBinding Foreground}" 
+											HorizontalContentAlignment="Center" 
+											VerticalContentAlignment="Center"
 											/>
 									</Grid>
 

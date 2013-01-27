@@ -31,11 +31,6 @@
 
 		<Common:BaseHeader Title="Round Toggle Buttons" />
 
-		<Grid
-            Grid.Row="1"
-            Margin="116, 0">
-			
-		</Grid>
 		<GridView
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"

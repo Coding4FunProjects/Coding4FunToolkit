@@ -106,7 +106,7 @@
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Grid Name="ContentHost">
-                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Background}">
+                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Background}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                       <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" />
                     </ContentControl>
                   </Grid>
@@ -118,7 +118,7 @@
               <StackPanel Orientation="{TemplateBinding Orientation}">
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Grid Name="DisabledContentHost">
-                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
+                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                   </Grid>
                 </Grid>
                 <ContentControl Content="{TemplateBinding Label}" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{Binding Margin, ElementName=ContentTitle}" Style="{StaticResource AppBarText}" />
@@ -175,7 +175,7 @@
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="10" />
                   <Grid Name="ContentHost">
-                    <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+                    <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                   </Grid>
                   <Ellipse x:Name="ButtonRing" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
@@ -247,7 +247,7 @@
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="ButtonBackground" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="10" />
                   <Grid Name="ContentHost">
-                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Foreground}">
+                    <ContentControl Name="EnabledContent" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                       <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" />
                     </ContentControl>
                   </Grid>
@@ -261,7 +261,7 @@
                 <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
                   <Ellipse x:Name="DisabledButtonBackground" Stroke="Transparent" Margin="10" />
                   <Grid Name="DisabledContentHost">
-                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" />
+                    <ContentControl Name="DisabledContent" Foreground="{StaticResource DefaultDisabledBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                   </Grid>
                   <Ellipse x:Name="DisabledButtonRing" Stroke="{StaticResource DefaultDisabledBrush}" StrokeThickness="3" Fill="Transparent" Margin="10" />
                 </Grid>
