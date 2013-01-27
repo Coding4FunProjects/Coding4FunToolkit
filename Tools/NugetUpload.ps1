@@ -1,21 +1,4 @@
-﻿$targetZipFile;
-$appendPath;
-$zipPkg;
-
-function AppendToZip
-{
-	$uriLocation = "/" + $appendPath + $targetZipFile.Name;
-	
-	$partName = new-object System.Uri($uriLocation, [System.UriKind]::Relative);
-	$part = $zipPkg.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
-	
-	$stream = $part.GetStream();	
-	$bytes = [System.IO.File]::ReadAllBytes($targetZipFile.FullName);
-	$stream.Write($bytes, 0, $bytes.Length);
-	$stream.Dispose();
-}
-
-$versionNumber = "2.0.0";
+﻿$versionNumber = "2.0.0";
 $solutionName = "Coding4Fun.Toolkit.sln";
 
 $zipFileName = "Coding4Fun.Toolkit ({0}).zip";
@@ -100,6 +83,19 @@ if($LastExitCode -ne 0)
 }
 echo "done building"
 
+function AppendToZip($zipPkg, $targetZipFile, $appendPath)
+{
+	$uriLocation = "/" + $appendPath + $targetZipFile.Name;
+	
+	$partName = new-object System.Uri($uriLocation, [System.UriKind]::Relative);
+	$part = $zipPkg.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
+	
+	$stream = $part.GetStream();	
+	$bytes = [System.IO.File]::ReadAllBytes($targetZipFile.FullName);
+	$stream.Write($bytes, 0, $bytes.Length);
+	$stream.Dispose();
+}
+
 [System.Reflection.Assembly]::Load("WindowsBase, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")
 if($zipPkg -ne $null) 
 {
@@ -120,12 +116,10 @@ for ($index = 0; $index -lt $platforms.Count; $index++)
 	
 	foreach($file In $files)
 	{
-		$targetZipFile = $file;
-		$appendPath = "";
-		
-		AppendToZip;
+		AppendToZip $zipPkg $file "";
 	}
 
+	#images for picker page
 	if($platform -eq "Windows Phone 7" -or 
 		$platform -eq "Windows Phone 8")
 	{
@@ -133,29 +127,24 @@ for ($index = 0; $index -lt $platforms.Count; $index++)
 		
 		foreach($file In $images)
 		{
-			$targetZipFile = $file;
-			$appendPath = "Toolkit.Content/";
-			AppendToZip;
+			AppendToZip $zipPkg $file "Toolkit.Content/";
 		}
 	}
 	
+	# winstore requires theme file
 	if($platform -eq "Windows Store")
 	{
 		$xamlFiles = $releaseDir.GetFiles("generic.xaml", [System.IO.SearchOption]::AllDirectories);
 		
 		if($xamlFiles.Count -eq 1)
 		{
-			$targetZipFile = $xamlFiles[0];
-			$appendPath = "themes/";
-
-			AppendToZip;
+			AppendToZip $zipPkg $xamlFiles[0] "themes/";
 		}
 	}
 
 	#Close the package when we're done.
 	$zipPkg.Close();
 }
-
 
 echo "start nuget packaging"
 
