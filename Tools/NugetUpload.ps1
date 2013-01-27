@@ -1,15 +1,36 @@
-﻿$versionNumber = "2.0.0";
+﻿$targetZipFile;
+$appendPath;
+$zipPkg;
+
+function AppendToZip
+{
+	$uriLocation = "/" + $appendPath + $targetZipFile.Name;
+	
+	$partName = new-object System.Uri($uriLocation, [System.UriKind]::Relative);
+	$part = $zipPkg.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
+	
+	$stream = $part.GetStream();	
+	$bytes = [System.IO.File]::ReadAllBytes($targetZipFile.FullName);
+	$stream.Write($bytes, 0, $bytes.Length);
+	$stream.Dispose();
+}
+
+$versionNumber = "2.0.0";
 $solutionName = "Coding4Fun.Toolkit.sln";
 
 $zipFileName = "Coding4Fun.Toolkit ({0}).zip";
 $zipFullPaths = @();
 
 $platforms = @("Windows Phone 7", "Windows Phone 8", "Windows Store");
+$platformTargets = @("", "AnyCpu", "AnyCpu");
 
 $root = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 $currentPath = [System.IO.Directory]::GetParent($root).FullName;
 $slnPath = [System.IO.Path]::Combine($currentPath, "source", $solutionName);
+$contentDirectory =  [System.IO.Path]::Combine($currentPath, "bin", "content");
+$contentDirectory = new-object System.IO.DirectoryInfo $contentDirectory;
+
 $releaseDir = [System.IO.Directory]::GetParent($root).GetDirectories("bin", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 $releaseDir = $releaseDir.GetDirectories("Release", [System.IO.SearchOption]::TopDirectoryOnly)[0];
 $releaseDirs = @();
@@ -19,9 +40,12 @@ foreach($platform in $platforms)
 	$zipFullPaths += @([System.IO.Path]::Combine($root, [string]::Format($zipFileName, $platform)));
 }
 
-foreach($platform in $platforms)
+for ($index = 0; $index -lt $platforms.Count; $index++) 
 {
-	$path = [System.IO.Path]::Combine($releaseDir.FullName, $platform);
+	$platform = $platforms[$index];
+	$platformTarget = $platformTargets[$index];
+	
+	$path = [System.IO.Path]::Combine($releaseDir.FullName, $platform, $platformTarget);
 	$dir = new-object System.IO.DirectoryInfo $path;
 	$releaseDirs += @($dir);
 }
@@ -77,33 +101,59 @@ if($LastExitCode -ne 0)
 echo "done building"
 
 [System.Reflection.Assembly]::Load("WindowsBase, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")
-if($ZipPackage -ne $null) 
+if($zipPkg -ne $null) 
 {
-	$ZipPackage.Close();
+	$zipPkg.Close();
 }
 
-for ($index = 0; $index -lt $releaseDirs.Count; $index++) 
+for ($index = 0; $index -lt $platforms.Count; $index++) 
 {
 	$releaseDir = $releaseDirs[$index];
 	$zipFullPath = $zipFullPaths[$index];
+	$platform = $platforms[$index];
 	
-	$ZipPackage=[System.IO.Packaging.ZipPackage]::Open($zipFullPath, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite")
+	$zipPkg = [System.IO.Packaging.ZipPackage]::Open($zipFullPath, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite");
 
 	#creating relative URI
-	$dllsInDir = $releaseDir.GetFiles("*.dll");
-	ForEach ($file In $dllsInDir)
+	$files = $releaseDir.GetFiles("*.dll");
+	$files += $releaseDir.GetFiles("*.pri");
+	
+	foreach($file In $files)
 	{
-	   $bytes = [System.IO.File]::ReadAllBytes($file.FullName);
-	   $uriLocation = '/' + $file.Name;
-	   $partName = New-Object System.Uri($uriLocation, [System.UriKind]::Relative);
-	   $part = $ZipPackage.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
-	   $stream = $part.GetStream();
-	   $stream.Write($bytes, 0, $bytes.Length);
-	   $stream.Dispose();
+		$targetZipFile = $file;
+		$appendPath = "";
+		
+		AppendToZip;
+	}
+
+	if($platform -eq "Windows Phone 7" -or 
+		$platform -eq "Windows Phone 8")
+	{
+		$images = $contentDirectory.GetFiles("*.png", [System.IO.SearchOption]::AllDirectories);
+		
+		foreach($file In $images)
+		{
+			$targetZipFile = $file;
+			$appendPath = "Toolkit.Content/";
+			AppendToZip;
+		}
+	}
+	
+	if($platform -eq "Windows Store")
+	{
+		$xamlFiles = $releaseDir.GetFiles("generic.xaml", [System.IO.SearchOption]::AllDirectories);
+		
+		if($xamlFiles.Count -eq 1)
+		{
+			$targetZipFile = $xamlFiles[0];
+			$appendPath = "themes/";
+
+			AppendToZip;
+		}
 	}
 
 	#Close the package when we're done.
-	$ZipPackage.Close();
+	$zipPkg.Close();
 }
 
 
