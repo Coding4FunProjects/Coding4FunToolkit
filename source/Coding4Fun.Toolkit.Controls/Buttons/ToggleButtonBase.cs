@@ -52,10 +52,14 @@ namespace Coding4Fun.Toolkit.Controls
 			}
 
 #if WINDOWS_STORE
-			ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody);
-#elif WINDOWS_PHONE
-			Dispatcher.BeginInvoke(() => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
-#endif
+			if(DevelopmentHelpers.IsDesignMode)
+				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody); 
+			else
+				Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
+				
+ #elif WINDOWS_PHONE
+ 			Dispatcher.BeginInvoke(() => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
+ #endif
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)
@@ -66,6 +70,8 @@ namespace Coding4Fun.Toolkit.Controls
 				return;
 
 			AppendCheck(Content);
+
+			IsEnabledStateChanged();
 		}
 
 		private void AppendCheck(object content)
