@@ -29,7 +29,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
 				<TextBlock>basic content checks</TextBlock>
-				<Grid Margin="0, 0, 0, -50">
+				<Grid  Margin="0, 0, 0 , -150">
 					<StackPanel Orientation="Horizontal">
 						<c4f:RoundToggleButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
@@ -110,7 +110,9 @@
 						</c4f:RoundToggleButton>
 					</StackPanel>
 
-					<StackPanel HorizontalAlignment="Right">
+					<StackPanel 
+						Margin="0, 100, 0 , 0"
+						HorizontalAlignment="Right">
 						<c4f:RoundToggleButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							IsChecked="{Binding IsChecked, ElementName=ToggleChecked}"
