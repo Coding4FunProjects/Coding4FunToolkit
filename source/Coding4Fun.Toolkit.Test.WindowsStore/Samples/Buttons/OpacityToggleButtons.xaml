@@ -121,11 +121,13 @@
 					</StackPanel>
 				</StackPanel>
 				<CheckBox 
-					Name="ToggleCheck"
+					x:Name="ToggleCheck"
 					HorizontalAlignment="Right"
 					IsChecked="true" 
 					Unchecked="ToggleChecked"
-					Checked="ToggleChecked" />
+					Checked="ToggleChecked" >
+					Is Enabled
+				</CheckBox>
 			</StackPanel>
 			<Button 
 					Content="Toggle background" 

@@ -29,27 +29,31 @@ namespace Coding4Fun.Toolkit.Controls
 		private  void IsEnabledStateChanged()
 		{
 			var contentBody = GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl;
-			var enabledContentControl = GetTemplateChild(ButtonBaseConstants.EnabledContentControlName) as ContentControl;
-			var disabledContentControl = GetTemplateChild(ButtonBaseConstants.DisabledContentControlName) as ContentControl;
+			var enabledHolder = GetTemplateChild(ButtonBaseConstants.EnabledHolderName) as Grid;
+			var disabledHolder = GetTemplateChild(ButtonBaseConstants.DisabledHolderName) as Grid;
 
-			if (contentBody != null)
+			if (contentBody != null && disabledHolder != null && enabledHolder != null)
 			{
-				var content = contentBody.Parent as ContentControl;
-				
-				if(content != null)
-					content.Content = null;
-			}
-
-			if (IsEnabled)
-			{
-				if (enabledContentControl != null) 
-					enabledContentControl.Content = contentBody;
-			}
-			else
-			{
-				if (disabledContentControl != null)
-					disabledContentControl.Content = contentBody;
-			}
+				if (!IsEnabled)
+				{
+					enabledHolder.Children.Remove(contentBody);
+				}
+				else
+				{
+					disabledHolder.Children.Remove(contentBody);
+				}
+	
+				if (IsEnabled)
+				{
+					if(!enabledHolder.Children.Contains(contentBody))
+						enabledHolder.Children.Insert(0, contentBody);
+				}
+				else
+				{
+					if (!disabledHolder.Children.Contains(contentBody))
+						disabledHolder.Children.Insert(0, contentBody);
+				}
+ 			}
 
 #if WINDOWS_STORE
 			if(DevelopmentHelpers.IsDesignMode)

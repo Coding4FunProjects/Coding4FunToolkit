@@ -87,10 +87,12 @@
 											Foreground="{TemplateBinding Foreground}"
 											HorizontalContentAlignment="Center" 
 											VerticalContentAlignment="Center">
-											<ContentControl
-												Name="ContentBody" 
-												Content="{TemplateBinding Content}" />
-											</ContentControl>
+											<Grid Name="EnabledHolder">
+												<ContentControl
+													Name="ContentBody" 
+													Content="{TemplateBinding Content}" />
+											</Grid>
+										</ContentControl>
 									</Grid>
 									
 									<Ellipse
@@ -136,7 +138,9 @@
 											Name="DisabledContent" 
 											Foreground="{StaticResource DefaultDisabledBrush}"
 											HorizontalContentAlignment="Center" 
-											VerticalContentAlignment="Center" />
+											VerticalContentAlignment="Center">
+											<Grid Name="DisabledHolder" />
+										</ContentControl>
 									</Grid>
 
 									<Ellipse

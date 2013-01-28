@@ -94,9 +94,11 @@
 											Foreground="{TemplateBinding Background}"
 											HorizontalContentAlignment="Center" 
 											VerticalContentAlignment="Center">
-											<ContentControl
-												Name="ContentBody" 
-												Content="{TemplateBinding Content}" />
+											<Grid Name="EnabledHolder">
+												<ContentControl
+													Name="ContentBody" 
+													Content="{TemplateBinding Content}" />
+											</Grid>
 										</ContentControl>
 									</Grid>
 								</Grid>
@@ -132,7 +134,9 @@
 											Name="DisabledContent" 
 											Foreground="{StaticResource DefaultDisabledBrush}"
 											HorizontalContentAlignment="Center" 
-											VerticalContentAlignment="Center" />
+											VerticalContentAlignment="Center" >
+											<Grid Name="DisabledHolder" />
+										</ContentControl>
 									</Grid>
 								</Grid>
 								
