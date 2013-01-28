@@ -43,7 +43,7 @@
             Padding="116,0,116,46"
             SelectionMode="None"
             IsSwipeEnabled="false">
-			
+
 			<coding4Fun:Tile 
 				Label="Button"
 				Style="{StaticResource TileStyle}" 

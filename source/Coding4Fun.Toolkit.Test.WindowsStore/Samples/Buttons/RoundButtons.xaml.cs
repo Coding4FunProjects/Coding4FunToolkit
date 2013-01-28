@@ -61,7 +61,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Buttons
 		{
 			_isRed = !_isRed;
 
-			Background = new SolidColorBrush(_isRed ? Colors.Red : Colors.Transparent);
+			layoutContent.Background = new SolidColorBrush(_isRed ? Colors.Red : Colors.Transparent);
 		}
 	}
 }

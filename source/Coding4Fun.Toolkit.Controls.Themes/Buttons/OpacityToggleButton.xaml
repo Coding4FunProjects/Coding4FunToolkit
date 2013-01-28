@@ -19,10 +19,7 @@
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
-										</ObjectAnimationUsingKeyFrames>-->
-
+										
 										<DoubleAnimation 
 											Duration="{Binding AnimationDuration, RelativeSource={RelativeSource TemplatedParent}}" 
 											To="{Binding CheckedOpacity, RelativeSource={RelativeSource TemplatedParent}}" 

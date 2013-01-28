@@ -32,6 +32,7 @@
 		<Common:BaseHeader Title="Round Toggle Buttons" />
 
 		<GridView
+			Name="layoutContent"
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
 			ItemContainerStyle="{StaticResource GridViewItemStyle1}"
@@ -114,7 +115,13 @@
 								c4f
 						</TextBlock>
 					</c4f:RoundToggleButton>
+					<c4f:RoundToggleButton 
+							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
+							IsChecked="{Binding IsChecked, ElementName=ToggleChecked}"
+							Orientation="Horizontal"
+							Label="hor path" />
 				</StackPanel>
+				
 				<TextBlock>base functionality</TextBlock>
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundToggleButton

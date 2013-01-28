@@ -44,6 +44,9 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.Buttons
 
 		private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control
 		{
+			if (target == null)
+				return;
+
 			var children = target.GetLogicalChildrenByType<T>(false);
 
 			foreach (var child in children)

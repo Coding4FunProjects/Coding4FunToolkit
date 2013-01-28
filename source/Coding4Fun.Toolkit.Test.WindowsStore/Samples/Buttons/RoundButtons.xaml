@@ -32,6 +32,7 @@
 		<Common:BaseHeader Title="Round Buttons" />
 
 		<GridView
+			Name="layoutContent"
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
 			ItemContainerStyle="{StaticResource GridViewItemStyle1}"
@@ -42,8 +43,7 @@
             IsSwipeEnabled="false">
 			<StackPanel>
 				<TextBlock>basic content checks</TextBlock>
-				<Grid>
-					<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Horizontal">
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							/>
@@ -111,15 +111,11 @@
 								c4f
 							</TextBlock>
 						</c4f:RoundButton>
-					</StackPanel>
-
-					<StackPanel HorizontalAlignment="Right">
 						<c4f:RoundButton 
 							IsEnabled="{Binding IsChecked, ElementName=ToggleEnabled}"
 							Orientation="Horizontal"
 							Label="hor path" />
 					</StackPanel>
-				</Grid>
 				<TextBlock>base functionality</TextBlock>
 				<StackPanel Orientation="Horizontal">
 					<c4f:RoundButton
