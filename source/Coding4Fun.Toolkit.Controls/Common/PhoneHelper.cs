@@ -18,6 +18,9 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns></returns>
         public static string GetAppAttribute(string attributeName)
         {
+			if (DevelopmentHelpers.IsDesignMode)
+				return "";
+
             try
             {
                 var settings = new XmlReaderSettings { XmlResolver = new XmlXapResolver() };
