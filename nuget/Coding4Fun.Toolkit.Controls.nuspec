@@ -19,7 +19,8 @@
 		<file
 			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
 			target="lib\windowsphone8" />
-		<file
+
+		<!--<file
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
 			target="lib\windows8" />
 		<file
@@ -27,7 +28,7 @@
 			target="lib\windows8\Themes\Generic.xaml" />
 		<file
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.pri"
-			target="lib\windows8\Coding4Fun.Toolkit.Controls.pri" />
+			target="lib\windows8\Coding4Fun.Toolkit.Controls.pri" />-->
 
 		<file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Cancel.png" />
 		<file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Check.png" />

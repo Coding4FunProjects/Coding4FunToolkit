@@ -24,12 +24,12 @@
 			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Net.dll"
 			target="lib\windowsphone8" />
 
-		<file
+		<!--<file
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.dll"
 			target="lib\windows8" />
 		<file
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.pri"
-			target="lib\windows8" />
+			target="lib\windows8" />-->
 
 	</files>
 </package>
