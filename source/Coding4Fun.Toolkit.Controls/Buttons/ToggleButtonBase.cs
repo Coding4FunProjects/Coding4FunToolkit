@@ -32,6 +32,7 @@ namespace Coding4Fun.Toolkit.Controls
 			var enabledHolder = GetTemplateChild(ButtonBaseConstants.EnabledHolderName) as Grid;
 			var disabledHolder = GetTemplateChild(ButtonBaseConstants.DisabledHolderName) as Grid;
 
+			
 			if (contentBody != null && disabledHolder != null && enabledHolder != null)
 			{
 				if (!IsEnabled)
@@ -42,10 +43,10 @@ namespace Coding4Fun.Toolkit.Controls
 				{
 					disabledHolder.Children.Remove(contentBody);
 				}
-	
+
 				if (IsEnabled)
 				{
-					if(!enabledHolder.Children.Contains(contentBody))
+					if (!enabledHolder.Children.Contains(contentBody))
 						enabledHolder.Children.Insert(0, contentBody);
 				}
 				else
@@ -53,7 +54,9 @@ namespace Coding4Fun.Toolkit.Controls
 					if (!disabledHolder.Children.Contains(contentBody))
 						disabledHolder.Children.Insert(0, contentBody);
 				}
- 			}
+			}
+
+			UpdateLayout();
 
 #if WINDOWS_STORE
 			if(DevelopmentHelpers.IsDesignMode)
@@ -61,9 +64,11 @@ namespace Coding4Fun.Toolkit.Controls
 			else
 				Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
 				
- #elif WINDOWS_PHONE
- 			Dispatcher.BeginInvoke(() => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
- #endif
+#elif WINDOWS_PHONE
+			//Dispatcher.BeginInvoke(() =>
+			                       ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody);
+			//);
+#endif
 		}
 
 		protected override void OnContentChanged(object oldContent, object newContent)
