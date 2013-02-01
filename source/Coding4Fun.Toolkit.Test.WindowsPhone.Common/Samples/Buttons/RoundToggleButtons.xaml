@@ -12,21 +12,21 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
 			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="round toggle buttons" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+			<TextBlock x:Name="PageTitle" Text="round toggle buttons" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
 				<TextBlock>basic content checks</TextBlock>
 				<Grid  Margin="0, 0, 0 , -150">
@@ -105,7 +105,7 @@
 							Background="WhiteSmoke">
 							<TextBlock 
 								FontSize="18">
-								c4f
+								<Run Text="c4f"/>
 							</TextBlock>
 						</c4f:RoundToggleButton>
 					</StackPanel>
@@ -187,7 +187,7 @@
 						Padding="0" 
 						Label="no pad/ 5 marg" />
 				</StackPanel>
-				
+
 				<!-- Checked tests -->
 
 				<toolkit:ToggleSwitch 
@@ -195,7 +195,7 @@
 					IsChecked="true">
 					is checked
 				</toolkit:ToggleSwitch>
-				
+
 				<toolkit:ToggleSwitch 
 					Name="ToggleEnabled"
 					IsChecked="true">
@@ -255,5 +255,5 @@
 					HorizontalAlignment="Right" 
 					Click="ToggleBackgroundClick" />
 		</Grid>
-    </Grid>
+	</Grid>
 </phone:PhoneApplicationPage>

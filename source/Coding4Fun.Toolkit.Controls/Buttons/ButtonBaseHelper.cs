@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
 #elif WINDOWS_PHONE
@@ -33,7 +34,6 @@ namespace Coding4Fun.Toolkit.Controls
 			contentTitle.Margin = new Thickness(0, top, 0, bottom);
 		}
 
-
 		public static void ApplyForegroundToFillBinding(ContentControl control)
 		{
 			if (control == null)
@@ -56,6 +56,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 				foreach (var child in children)
 				{
+					var hash = child.GetHashCode();
+
 					ResetVerifyAndApplyForegroundToFillBinding(control, child);
 				}
 			}
@@ -66,9 +68,13 @@ namespace Coding4Fun.Toolkit.Controls
 			if (target == null)
 				return;
 
-#if WINDOWS_PHONE
-			if (target.Fill == null || target.GetBindingExpression(Shape.FillProperty) != null)
+#if WINDOWS_STORE
+			var hasBinding = target.ReadLocalValue(Shape.FillProperty) as Brush == null;
+#elif WINDOWS_PHONE
+			var hasBinding = target.GetBindingExpression(Shape.FillProperty) != null;			
 #endif
+
+			if (target.Fill == null || hasBinding)
 			{
 				target.Fill = null;
 				ApplyBinding(source, target, "Foreground", Shape.FillProperty);
