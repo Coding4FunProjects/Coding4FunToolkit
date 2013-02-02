@@ -37,7 +37,7 @@ $assemblyFiles = [System.IO.Directory]::GetFiles(
 	[System.IO.Path]::Combine($currentPath, "source"),
 	"AssemblyInfo.cs", [System.IO.SearchOption]::AllDirectories);
 	
-$nuspecFiles = [System.IO.Directory]::GetFiles($currentPath, "nuget/*.nuspec", [System.IO.SearchOption]::AllDirectories);
+$nuspecFiles = [System.IO.Directory]::GetFiles($currentPath, "nuget/*.nuspec", [System.IO.SearchOption]::TopTopDirectoryOnly);
 
 echo "AssemblyInfo.cs Count: " $assemblyFiles.Length
 echo "NuSpec Count: " $nuspecFiles.Length;
@@ -165,6 +165,7 @@ echo "start nuget push"
 $nupkgFiles = [System.IO.Directory]::GetFiles($currentPath, "*.nupkg", [System.IO.SearchOption]::AllDirectories);
 foreach($file in $nupkgFiles)
 {
+	echo $file;
 	nuget 'push' $file
 }
 
