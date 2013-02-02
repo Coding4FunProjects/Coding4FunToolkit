@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 
 using Coding4Fun.Toolkit.Controls.Primitives;
@@ -13,12 +11,12 @@ using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    [TemplatePart(Name = ButtonPartName, Type = typeof(ButtonBase))]
+	[TemplatePart(Name = ButtonPartName, Type = typeof(System.Windows.Controls.Primitives.ButtonBase))]
     public abstract class ValuePickerBase<T> : Control where T : struct
     {
         private const string ButtonPartName = "ValueButton";
 
-        private ButtonBase _valueButtonPart;
+		private System.Windows.Controls.Primitives.ButtonBase _valueButtonPart;
         private PhoneApplicationFrame _frame;
         private object _frameContentWhenOpened;
         private NavigationInTransition _savedNavigationInTransition;
@@ -191,7 +189,8 @@ namespace Coding4Fun.Toolkit.Controls
             base.OnApplyTemplate();
 
             // Hook up to new template
-            _valueButtonPart = GetTemplateChild(ButtonPartName) as ButtonBase;
+			_valueButtonPart = GetTemplateChild(ButtonPartName) as System.Windows.Controls.Primitives.ButtonBase;
+
             if (null != _valueButtonPart)
             {
                 _valueButtonPart.Click += OnValueButtonClick;
