@@ -165,7 +165,7 @@ echo "start nuget push"
 $nupkgFiles = [System.IO.Directory]::GetFiles($currentPath, "*.nupkg", [System.IO.SearchOption]::AllDirectories);
 foreach($file in $nupkgFiles)
 {
-	#nuget 'push' $file
+	nuget 'push' $file
 }
 
 echo "done nuget push"

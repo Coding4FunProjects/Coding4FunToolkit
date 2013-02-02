@@ -13,9 +13,12 @@ namespace Coding4Fun.Toolkit.Audio
 		private byte[] _micBuffer;
 
 		private bool _shouldCallStopInTimeout;
+		private static bool _currentlyProcessing;
 
 		public MicrophoneRecorder()
 		{
+			ValidateState();
+
 			InitMicrophone();
 		}
 
@@ -29,8 +32,17 @@ namespace Coding4Fun.Toolkit.Audio
 			}
 		}
 
-    	public override void Start()
+		private void ValidateState()
 		{
+			if (_currentlyProcessing)
+				throw new InvalidOperationException("cannot excute two records at the same time");
+		}
+
+		public override void Start()
+		{
+			ValidateState();
+
+			_currentlyProcessing = true;
 			_microphone.BufferReady += MicrophoneBufferReady;
 
 			_micBuffer = new byte[_microphone.GetSampleSizeInBytes(_microphone.BufferDuration)];
@@ -60,14 +72,16 @@ namespace Coding4Fun.Toolkit.Audio
 		public override void Stop()
 		{
 			_shouldCallStopInTimeout = false;
+			
 			_microphone.Stop();
+			_microphone.BufferReady -= MicrophoneBufferReady;
+
+			XnaFrameworkDispatcherService.StopService();
+			XnaFrameworkDispatcherService.UpdateService();
 
 			// dump remaining audio into buffer
 			// verify cleanup
 			ProcessMicrophoneBuffer();
-
-			XnaFrameworkDispatcherService.StopService();
-			_microphone.BufferReady -= MicrophoneBufferReady;
 
 			_recordStream.Close();
 			
@@ -77,6 +91,8 @@ namespace Coding4Fun.Toolkit.Audio
 
 			if (BufferReady != null)
 				BufferReady(this, new EventArgs());
+
+			_currentlyProcessing = false;
 		}
 
 		private void MicrophoneBufferReady(object sender, EventArgs e)

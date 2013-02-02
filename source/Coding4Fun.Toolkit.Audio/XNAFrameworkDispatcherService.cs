@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 
@@ -12,7 +13,19 @@ namespace Coding4Fun.Toolkit.Audio
 		
 		static void TimerAction(object state)
 		{
-			FrameworkDispatcher.Update();
+			UpdateService();
+		}
+
+		public static void UpdateService()
+		{
+			try
+			{
+				FrameworkDispatcher.Update();
+			}
+			catch (Exception ex0)
+			{
+				Debug.WriteLine(ex0);
+			}
 		}
 
 		public static void StartService()
