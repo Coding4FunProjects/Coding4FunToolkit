@@ -465,6 +465,18 @@
     <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.sk.resx">
       <Link>Properties\Resources.sk.resx</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.da.resx">
+      <Link>Properties\Resources.da.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.hu.resx">
+      <Link>Properties\Resources.hu.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.no.resx">
+      <Link>Properties\Resources.no.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Coding4Fun.Toolkit.Controls\Properties\Resources.pt.resx">
+      <Link>Properties\Resources.pt.resx</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\appbar.cancel.rest.png" />
