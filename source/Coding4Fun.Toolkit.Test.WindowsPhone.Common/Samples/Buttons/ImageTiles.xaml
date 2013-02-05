@@ -113,6 +113,8 @@
 				</Grid>
 
 			</Grid>
+			
 		</Grid>
+		<c4f:MemoryCounter />
 	</Grid>
 </phone:PhoneApplicationPage>

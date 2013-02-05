@@ -91,7 +91,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 	    private void StopAndHide()
 	    {
-		    _timer.Stop();
+			if(_timer != null)
+				_timer.Stop();
 
 		    Visibility = Visibility.Collapsed;
 	    }
