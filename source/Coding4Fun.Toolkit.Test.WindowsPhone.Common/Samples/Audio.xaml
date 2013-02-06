@@ -34,11 +34,6 @@
 					ManipulationCompleted="StopRecordingManipulationCompleted" >
 					Press (and hold) to rec
 				</Button>
-				<Button 
-					ManipulationStarted="StartRecordingManipulationWithEventStarted"
-					ManipulationCompleted="StopRecordingManipulationWithEventCompleted" >
-					Press (and hold) to rec (w/ event)
-				</Button>
 				<Button Click="RecordForThreeSecondsClick">
 					Click to record 3 sec
 				</Button>

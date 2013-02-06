@@ -1,16 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-
-using Microsoft.Xna.Framework.Audio;
+﻿using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Audio
 {
 	public class MicrophoneRecorder : Recorder
     {
-		private MemoryStream _recordStream;
-		private Microphone _microphone;
-		private byte[] _micBuffer;
+		private MemoryStreamAudioSink _audio;
+		private CaptureSource _source;
 
 		public MicrophoneRecorder()
 		{
@@ -23,68 +18,47 @@ namespace Coding4Fun.Toolkit.Audio
 			{
 				InitMicrophone();
 
-				return _microphone.SampleRate;
+				return _audio.AudioFormat.SamplesPerSecond;
 			}
 		}
 
 		public override void Start()
 		{
-			base.Start();
+			InitMicrophone();
 
-			_microphone.BufferReady += MicrophoneBufferReady;
+			_source.Dispatcher.BeginInvoke(() =>
+				                               {
+					                               _audio.ResetAudioData();
+					                               _source.Start();
 
-			_micBuffer = new byte[_microphone.GetSampleSizeInBytes(_microphone.BufferDuration)];
-			_recordStream = new MemoryStream();
-			Buffer = null;
-
-			XnaFrameworkDispatcherService.StartService();
-			
-			_microphone.Start();
+					                               base.Start();
+				                               });
 		}
 
-    	public override void Stop()
+		public override void Stop()
 		{
-			_microphone.Stop();
-			_microphone.BufferReady -= MicrophoneBufferReady;
+			_source.Dispatcher.BeginInvoke(
+				() =>
+					{
+						_source.Stop();
 
-			XnaFrameworkDispatcherService.StopService();
-			XnaFrameworkDispatcherService.UpdateService();
-
-			// dump remaining audio into buffer
-			// verify cleanup
-			ProcessMicrophoneBuffer();
-
-			_recordStream.Close();
-			
-			Buffer = _recordStream.ToArray(); 
-			
-			_recordStream.Dispose();
-
-    		base.Stop();
-		}
-
-		private void MicrophoneBufferReady(object sender, EventArgs e)
-		{
-			// dump new data into the buffer
-			ProcessMicrophoneBuffer();
-		}
-
-		private void ProcessMicrophoneBuffer()
-		{
-			var size = _microphone.GetData(_micBuffer);
-			
-			if (_recordStream.CanWrite)
-				_recordStream.Write(_micBuffer, 0, size);
+						Buffer = _audio.AudioData.ToArray();
+						base.Stop();
+					});
 		}
 
 		private void InitMicrophone()
 		{
-			if (_microphone == null)
-			{
-				_microphone = Microphone.Default;
+			if (_audio != null)
+				return;
 
-				_microphone.BufferDuration = TimeSpan.FromMilliseconds(100);
-			}
+			_source = new CaptureSource
+				          {
+					          AudioCaptureDevice = CaptureDeviceConfiguration.GetDefaultAudioCaptureDevice(),
+					          VideoCaptureDevice = null,
+				          };
+			
+			_audio = new MemoryStreamAudioSink {CaptureSource = _source};
 		}
     }
 }

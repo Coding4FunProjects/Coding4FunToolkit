@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Input;
 
 using Coding4Fun.Toolkit.Audio;
-using Coding4Fun.Toolkit.Audio.Helpers;
 
 using Microsoft.Phone.Controls;
 
@@ -15,13 +14,20 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 {
 	public partial class Audio : PhoneApplicationPage
 	{
-		MicrophoneRecorder _micRecorder = new MicrophoneRecorder();
+		readonly MicrophoneRecorder _micRecorder = new MicrophoneRecorder();
 		int _fileIndex;
 		string _currentFileName;
 
 		public Audio()
 		{
 			InitializeComponent();
+
+			_micRecorder.BufferReady += StartStopBufferReady;
+		}
+
+		private void StartStopBufferReady(object sender, EventArgs e)
+		{
+			SaveAndPlay();
 		}
 
 		#region testing start / stop
@@ -40,48 +46,30 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		#region testing events and record for timespan
 		private void RecordForThreeSecondsClick(object sender, RoutedEventArgs e)
 		{
-			_micRecorder = new MicrophoneRecorder();
-			_micRecorder.BufferReady += StartStopBufferReady;
 			_micRecorder.Start(TimeSpan.FromSeconds(3));
-		}
-		private void StartRecordingManipulationWithEventStarted(object sender, ManipulationStartedEventArgs e)
-		{
-			_micRecorder.BufferReady += StartStopBufferReady;
-			_micRecorder.Start();
-		}
-
-		private void StopRecordingManipulationWithEventCompleted(object sender, ManipulationCompletedEventArgs e)
-		{
-			_micRecorder.Stop();
-		}
-
-		private void StartStopBufferReady(object sender, EventArgs e)
-		{
-			_micRecorder.BufferReady -= StartStopBufferReady;
-
-			SaveAndPlay();
 		}
 		#endregion
 
 		private void RecordForThreeSecondsAndTerminateClick(object sender, RoutedEventArgs e)
 		{
-			_micRecorder = new MicrophoneRecorder();
-			
 			_micRecorder.Start(TimeSpan.FromSeconds(3));
 
 			ThreadPool.QueueUserWorkItem(
 				state =>
 					{
-						Thread.Sleep(TimeSpan.FromSeconds(1));
-						_micRecorder.Stop();
-
-						SaveAndPlay();
+						
+						Thread.Sleep(TimeSpan.FromSeconds(2));
+						Dispatcher.BeginInvoke(() =>
+							                       {
+								                       _micRecorder.Stop();
+								                       SaveAndPlay();
+							                       });
 					});
 		}
 
 		private void SaveAndPlay()
 		{
-			WriteFile(_micRecorder.Buffer.GetWavAsByteArray(_micRecorder.SampleRate));
+			WriteFile(_micRecorder.BufferAsWav);
 
 			PlayFile();
 		}
@@ -91,12 +79,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		// testing if nav breaks mic recording
 		private void NavTestClick(object sender, RoutedEventArgs e)
 		{
-			ThreadPool.QueueUserWorkItem(state =>
-											{
-												Thread.Sleep(500);
-												Dispatcher.BeginInvoke(() => NavigateTo("/Samples/Audio.xaml"));
-											}
-			);
+			ThreadPool.QueueUserWorkItem(
+				state =>
+					{
+						Thread.Sleep(500);
+						Dispatcher.BeginInvoke(() => NavigateTo("/Samples/Audio.xaml"));
+					});
 
 			NavigateTo("/MainPage.xaml");
 		}
@@ -108,48 +96,54 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		#endregion
 
 		#region helper methods for reading/writing/deleting files into file storage for playback
+
 		private void PlayFile()
 		{
-			Dispatcher.BeginInvoke(() =>
+			DeleteOldFile();
+
+			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
 			{
-				using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
+				if (!storageFile.FileExists(_currentFileName))
+					return;
+
+				using (var stream = new IsolatedStorageFileStream(_currentFileName, FileMode.Open, storageFile))
 				{
+					playBack.SetSource(stream);
 
-					using (var stream = new IsolatedStorageFileStream(_currentFileName, FileMode.Open, storageFile))
-					{
-						playBack.SetSource(stream);
-						DeleteOldFile();
-
-						playBack.Play();
-
-					}
-
+					playBack.Play();
 				}
-			});
+			}
 		}
 
 		private void WriteFile(byte[] bytes)
 		{
+			_fileIndex++;
+			_currentFileName = _fileIndex + ".wav";
+
+			Debug.WriteLine("Attempting to WriteFile");
+			if (bytes == null)
+				return;
+			
 			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
 			{
-				_fileIndex++;
-				_currentFileName = _fileIndex + ".wav";
-
 				using (var stream = storageFile.CreateFile(_currentFileName))
 				{
 					stream.Write(bytes, 0, bytes.Length);
 				}
 			}
+
+			Debug.WriteLine("WriteFile: " + _currentFileName);
+			Debug.WriteLine("Length: " + bytes.Length);
 		}
 
 		private void DeleteOldFile()
 		{
 			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
 			{
-				var currentFileName = (_fileIndex - 1) + ".wav";
+				var targetFileName = (_fileIndex - 1) + ".wav";
 
-				if (storageFile.FileExists(currentFileName))
-					storageFile.DeleteFile(currentFileName);
+				if (storageFile.FileExists(targetFileName))
+					storageFile.DeleteFile(targetFileName);
 			}
 		}
 		#endregion

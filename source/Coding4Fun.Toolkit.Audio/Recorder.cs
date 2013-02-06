@@ -1,5 +1,18 @@
 ﻿using System;
+
+using Coding4Fun.Toolkit.Audio.Helpers;
+
+#if WINDOWS_STORE
+using System.Threading.Tasks;
+using Windows.System.Threading;
+
+#elif WINDOWS_PHONE
 using System.Threading;
+
+#endif
+
+
+
 
 namespace Coding4Fun.Toolkit.Audio
 {
@@ -8,7 +21,7 @@ namespace Coding4Fun.Toolkit.Audio
 		private bool _shouldCallStopInTimeout;
 		private static bool _currentlyProcessing;
 
-		public EventHandler<EventArgs> BufferReady;
+		public event EventHandler<EventArgs> BufferReady;
 
 		protected Recorder()
 		{
@@ -21,6 +34,8 @@ namespace Coding4Fun.Toolkit.Audio
 			internal set;
 		}
 
+		public byte[] BufferAsWav { get { return Buffer != null ? Buffer.GetWavAsByteArray(SampleRate) : null; } }
+
 		public virtual int SampleRate { get { return 0; } }
 
 		public virtual void Start()
@@ -29,19 +44,31 @@ namespace Coding4Fun.Toolkit.Audio
 			_currentlyProcessing = true;
 		}
 
-		public virtual void Start(TimeSpan timeout)
+		public void Start(TimeSpan timeout)
 		{
 			Start();
 			_shouldCallStopInTimeout = true;
 
-			ThreadPool.QueueUserWorkItem(
+#if WINDOWS_STORE
+			ThreadPool.RunAsync(
 					state =>
+					{
+						Task.Delay(timeout);
+
+						if (_shouldCallStopInTimeout)
+							Stop();
+					});
+			
+#elif WINDOWS_PHONE
+			ThreadPool.QueueUserWorkItem(
+				state =>
 					{
 						Thread.Sleep(timeout);
 
 						if (_shouldCallStopInTimeout)
 							Stop();
 					});
+#endif
 		}
 
 		public void Start(int millisecondsTimeout)
