@@ -59,8 +59,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 					request.BeginGetResponse(ContinueScenario, request);
 					break;
 				case 1:
-					request = WebRequest.CreateHttp(_uri);
-					request.BeginGetCompressedResponse(ContinueScenario, request);
+					request = WebRequestCreator.Gzip.Create(_uri) as HttpWebRequest;
+					request.BeginGetResponse(ContinueScenario, request);
 					break;
 				case 2:
 					client = new WebClient();
@@ -90,10 +90,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 				{
 					case -1:
 					case 0:
-						ReadToEndOfStreamAndContinue(response.GetResponseStream());
-						break;
 					case 1:
-						ReadToEndOfStreamAndContinue(response.GetCompressedResponseStream());
+						ReadToEndOfStreamAndContinue(response.GetResponseStream());
 						break;
 					default:
 						Debug.Assert(false);

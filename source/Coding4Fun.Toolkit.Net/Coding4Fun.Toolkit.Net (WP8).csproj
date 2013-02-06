@@ -90,7 +90,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GzipExtensions.cs" />
+    <Compile Include="GzipHttpWebRequest.cs" />
+    <Compile Include="GzipInflateStream.cs" />
     <Compile Include="GzipWebClient.cs" />
+    <Compile Include="WebRequestCreator.cs" />
     <Compile Include="HttpWebRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
