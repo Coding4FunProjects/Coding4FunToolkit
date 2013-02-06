@@ -51,15 +51,14 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public virtual void Stop()
 		{
-			_shouldCallStopInTimeout = false;
-
 			if (BufferReady != null)
 				BufferReady(this, new EventArgs());
 
+			_shouldCallStopInTimeout = false;
 			_currentlyProcessing = false;
 		}
 
-		private void ValidateState()
+		private static void ValidateState()
 		{
 			if (_currentlyProcessing)
 				throw new InvalidOperationException("cannot excute two records at the same time");

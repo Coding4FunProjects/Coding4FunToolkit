@@ -7,13 +7,51 @@ namespace Coding4Fun.Toolkit.Audio.Helpers
 	// https://ccrma.stanford.edu/courses/422/projects/WaveFormat/
 	// http://forums.create.msdn.com/forums/p/99360/591297.aspx
 
-	public class Wav
+	public static class Wav
 	{
-		const int BitsPerSample = 16;
-		const int BytesPerSample = BitsPerSample / 8;
-
-		public static void WriteHeader(Stream stream, int sampleRate)
+		public static MemoryStream GetWavAsMemoryStream(this byte[] data, int sampleRate, int audioChannels = 1, int bitsPerSample = 16)
 		{
+			var tempBuffer = new MemoryStream();
+
+			WriteHeader(tempBuffer, sampleRate, audioChannels, bitsPerSample);
+			SeekPastHeader(tempBuffer);
+
+			tempBuffer.Write(data, 0, data.Length);
+
+			UpdateHeader(tempBuffer);
+
+			return tempBuffer;
+		}
+
+		public static MemoryStream GetWavAsMemoryStream(this Stream data, int sampleRate, int audioChannels = 1, int bitsPerSample = 16)
+		{
+			var tempBuffer = new MemoryStream();
+
+			WriteHeader(tempBuffer, sampleRate, audioChannels, bitsPerSample);
+			SeekPastHeader(tempBuffer);
+
+			data.Position = 0;
+			data.CopyTo(tempBuffer);
+
+			UpdateHeader(tempBuffer);
+
+			return tempBuffer;
+		}
+
+		public static byte[] GetWavAsByteArray(this byte[] data, int sampleRate, int audioChannels = 1, int bitsPerSample = 16)
+		{
+			return data.GetWavAsMemoryStream(sampleRate, audioChannels, bitsPerSample).ToArray();
+		}
+
+		public static byte[] GetWavAsByteArray(this Stream data, int sampleRate, int audioChannels = 1, int bitsPerSample = 16)
+		{
+			return data.GetWavAsMemoryStream(sampleRate, audioChannels, bitsPerSample).ToArray();
+		}
+
+		public static void WriteHeader(Stream stream, int sampleRate, int audioChannels = 1, int bitsPerSample = 16)
+		{
+			var bytesPerSample = bitsPerSample / 8;
+
 			var encoding = Encoding.UTF8;
             var oldPos = stream.Position;
             stream.Seek(0, SeekOrigin.Begin);
@@ -38,19 +76,19 @@ namespace Coding4Fun.Toolkit.Audio.Helpers
 			stream.Write(BitConverter.GetBytes((short)1), 0, 2);
 
 			// NumChannels Mono = 1, Stereo = 2, etc.
-			stream.Write(BitConverter.GetBytes((short)1), 0, 2);
+			stream.Write(BitConverter.GetBytes((short)audioChannels), 0, 2);
 
 			// SampleRate 8000, 44100, etc.
 			stream.Write(BitConverter.GetBytes(sampleRate), 0, 4);
 
 			// ByteRate =  SampleRate * NumChannels * BitsPerSample/8
-			stream.Write(BitConverter.GetBytes(sampleRate * BytesPerSample), 0, 4);
+			stream.Write(BitConverter.GetBytes(sampleRate * bytesPerSample * audioChannels), 0, 4);
 
 			// BlockAlign NumChannels * BitsPerSample/8 The number of bytes for one sample including all channels.
-			stream.Write(BitConverter.GetBytes((short)(BytesPerSample)), 0, 2);
+			stream.Write(BitConverter.GetBytes((short)(bytesPerSample)), 0, 2);
 
 			// BitsPerSample    8 bits = 8, 16 bits = 16, etc.
-			stream.Write(BitConverter.GetBytes((short)(BitsPerSample)), 0, 2);
+			stream.Write(BitConverter.GetBytes((short)(bitsPerSample)), 0, 2);
 
 			// Subchunk2ID Contains the letters "data" (0x64617461 big-endian form).
 			stream.Write(encoding.GetBytes("data"), 0, 4);

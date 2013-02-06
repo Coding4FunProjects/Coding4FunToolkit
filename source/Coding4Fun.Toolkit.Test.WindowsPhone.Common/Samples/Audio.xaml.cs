@@ -81,23 +81,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 
 		private void SaveAndPlay()
 		{
-			using(var tempBuffer = new MemoryStream())
-			{
-				Wav.WriteHeader(tempBuffer, _micRecorder.SampleRate);
-
-				Debug.WriteLine(tempBuffer.Length);
-				Debug.WriteLine(_micRecorder.Buffer.Length);
-
-				Wav.SeekPastHeader(tempBuffer);
-
-				Debug.WriteLine(tempBuffer.Position);
-				tempBuffer.Write(_micRecorder.Buffer, 0, _micRecorder.Buffer.Length);
-				Wav.UpdateHeader(tempBuffer);
-
-				Debug.WriteLine(tempBuffer.Length);
-
-				WriteFile(tempBuffer.ToArray());
-			}
+			WriteFile(_micRecorder.Buffer.GetWavAsByteArray(_micRecorder.SampleRate));
 
 			PlayFile();
 		}
