@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="testAudioCaptureWin8.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:testAudioCaptureWin8"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+		<StackPanel>
+			<Button Click="PrepClick">Prep</Button>
+			<Button Click="StartClick">Start Record</Button>
+			<Button Click="StopClick">Stop Record</Button>
+			<Button Click="PlayFileClick">Play File</Button>
+			<MediaElement Name="playBack" />
+		</StackPanel>
+	</Grid>
+</Page>
