@@ -39,8 +39,6 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		private void StopRecordingManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
 		{
 			_micRecorder.Stop();
-
-			SaveAndPlay();
 		}
 		#endregion
 		#region testing events and record for timespan
@@ -57,20 +55,14 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 			ThreadPool.QueueUserWorkItem(
 				state =>
 					{
-						
 						Thread.Sleep(TimeSpan.FromSeconds(2));
-						Dispatcher.BeginInvoke(() =>
-							                       {
-								                       _micRecorder.Stop();
-								                       SaveAndPlay();
-							                       });
+						Dispatcher.BeginInvoke(() => _micRecorder.Stop());
 					});
 		}
 
 		private void SaveAndPlay()
 		{
 			WriteFile(_micRecorder.BufferAsWav);
-
 			PlayFile();
 		}
 
