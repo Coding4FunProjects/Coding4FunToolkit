@@ -99,12 +99,7 @@ namespace testAudioCaptureWin8
 				    {
 						Task.Delay(TimeSpan.FromSeconds(2)).Wait();
 					    Dispatcher.RunAsync(
-						    CoreDispatcherPriority.Normal,
-						    async () =>
-							          {
-								          await _micRecorder.Stop();
-							          }
-						    );
+						    CoreDispatcherPriority.Normal, _micRecorder.Stop);
 				    });
 	    }
 

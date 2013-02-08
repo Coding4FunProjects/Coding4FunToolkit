@@ -11,7 +11,7 @@ namespace Coding4Fun.Toolkit.Audio
 	{
 		private MediaCapture _mediaCap;
 
-		public async Task<bool> InitMicrophone()
+		protected void InitMicrophone()
 		{
 			if (Buffer != null)
 				Buffer.Dispose();
@@ -19,30 +19,28 @@ namespace Coding4Fun.Toolkit.Audio
 			Buffer = new InMemoryRandomAccessStream();
 
 			if (_mediaCap != null)
-				return true;
+				return;
 
 			_mediaCap = new MediaCapture();
-			await _mediaCap.InitializeAsync(new MediaCaptureInitializationSettings {StreamingCaptureMode = StreamingCaptureMode.Audio});
+			_mediaCap.InitializeAsync(new MediaCaptureInitializationSettings {StreamingCaptureMode = StreamingCaptureMode.Audio}).AsTask().Wait();
 
 			_mediaCap.RecordLimitationExceeded += RecordLimitationExceeded;
 			_mediaCap.Failed += Failed;
-
-			return true;
 		}
 
-		public override async Task<bool> Start()
+		public override void Start()
 		{
-			await InitMicrophone();
-			await _mediaCap.StartRecordToStreamAsync(MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto), Buffer);//.AsTask().Wait();
+			InitMicrophone();
+			_mediaCap.StartRecordToStreamAsync(MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto), Buffer);//.AsTask().Wait();
 
-			return await base.Start();
+			base.Start();
 		}
 
-		public override async Task<bool> Stop()
+		public override void Stop()
 		{
-			await _mediaCap.StopRecordAsync();
+			 _mediaCap.StopRecordAsync().AsTask().Wait();
 
-			return await base.Stop();
+			base.Stop();
 		}
 
 		private void Failed(MediaCapture currentCaptureObject, MediaCaptureFailedEventArgs currentFailure)

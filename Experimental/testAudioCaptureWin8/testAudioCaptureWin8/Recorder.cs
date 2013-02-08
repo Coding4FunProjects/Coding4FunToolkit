@@ -32,7 +32,7 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public virtual int SampleRate { get { return 0; } }
 
-		public virtual async Task<bool> Start()
+		public virtual void Start()
 		{
 			ValidateState();
 
@@ -40,13 +40,11 @@ namespace Coding4Fun.Toolkit.Audio
 			FailureException = null;
 
 			_currentlyProcessing = true;
-
-			return true;
 		}
 
-		public async Task<bool> Start(TimeSpan timeout)
+		public void Start(TimeSpan timeout)
 		{
-			var returnData = await Start();
+			Start();
 			_shouldCallStopInTimeout = true;
 
 #if WINDOWS_STORE
@@ -56,7 +54,7 @@ namespace Coding4Fun.Toolkit.Audio
 						await Task.Delay(timeout);
 
 						if (_shouldCallStopInTimeout)
-							await Stop();
+							Stop();
 					});
 			
 #elif WINDOWS_PHONE
@@ -69,24 +67,20 @@ namespace Coding4Fun.Toolkit.Audio
 							Stop();
 					});
 #endif
-			return returnData;
 		}
 
-		public async Task<bool> Start(int millisecondsTimeout)
+		public void Start(int millisecondsTimeout)
 		{
-			return await Start(TimeSpan.FromMilliseconds(millisecondsTimeout));
+			Start(TimeSpan.FromMilliseconds(millisecondsTimeout));
 		}
 
-		public async virtual Task<bool> Stop()
+		public virtual void Stop()
 		{
 			_shouldCallStopInTimeout = false;
 			_currentlyProcessing = false;
 
 			if (BufferReady != null)
 				BufferReady(this, new BufferEventArgs<T> { Buffer = Buffer, Error = FailureException});
-
-
-			return true;
 		}
 
 		private static void ValidateState()
