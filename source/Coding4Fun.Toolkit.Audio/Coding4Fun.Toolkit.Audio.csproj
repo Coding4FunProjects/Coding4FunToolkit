@@ -110,7 +110,9 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BufferEventArgs.cs" />
     <Compile Include="Helpers\Wav.cs" />
+    <Compile Include="MicrophoneRecorder %28Windows Store%29.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recorder.cs" />
   </ItemGroup>

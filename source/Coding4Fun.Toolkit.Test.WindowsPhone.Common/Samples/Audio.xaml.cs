@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 
 using Coding4Fun.Toolkit.Audio;
-
+using Coding4Fun.Toolkit.Audio.Helpers;
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
@@ -25,9 +25,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 			_micRecorder.BufferReady += StartStopBufferReady;
 		}
 
-		private void StartStopBufferReady(object sender, EventArgs e)
+		void StartStopBufferReady(object sender, BufferEventArgs<MemoryStream> e)
 		{
-			SaveAndPlay();
+			WriteFile(e.Buffer.GetWavAsByteArray(_micRecorder.SampleRate));
+			PlayFile();
 		}
 
 		#region testing start / stop
@@ -59,13 +60,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 						Dispatcher.BeginInvoke(() => _micRecorder.Stop());
 					});
 		}
-
-		private void SaveAndPlay()
-		{
-			WriteFile(_micRecorder.BufferAsWav);
-			PlayFile();
-		}
-
+		
 		#region nav testing
 
 		// testing if nav breaks mic recording

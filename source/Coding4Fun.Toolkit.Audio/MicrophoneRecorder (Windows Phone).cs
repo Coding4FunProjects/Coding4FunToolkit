@@ -1,8 +1,9 @@
-﻿using System.Windows.Media;
+﻿using System.IO;
+using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Audio
 {
-	public class MicrophoneRecorder : Recorder
+	public class MicrophoneRecorder : Recorder<MemoryStream>
     {
 		private MemoryStreamAudioSink _audio;
 		private CaptureSource _source;
@@ -42,7 +43,7 @@ namespace Coding4Fun.Toolkit.Audio
 					{
 						_source.Stop();
 
-						Buffer = _audio.AudioData.ToArray();
+						Buffer = _audio.AudioData;
 						base.Stop();
 					});
 		}

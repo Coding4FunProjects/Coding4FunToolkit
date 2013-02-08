@@ -48,10 +48,11 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BufferEventArgs.cs" />
     <Compile Include="Helpers\Wav.cs" />
     <Compile Include="MemoryStreamAudioSink.cs" />
     <Compile Include="Recorder.cs" />
-    <Compile Include="MicrophoneRecorder.cs" />
+    <Compile Include="MicrophoneRecorder %28Windows Phone%29.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
