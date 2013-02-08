@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Coding4Fun.Toolkit.Test.WindowsStore.Common;
-using Coding4Fun.Toolkit.Test.WindowsStore.Samples;
-using Windows.Foundation;
-using Windows.UI.Input;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+﻿using Windows.UI.Xaml.Input;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using Coding4Fun.Toolkit.Test.WindowsStore.Samples;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore
 {
@@ -24,14 +14,19 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
             InitializeComponent();
         }
 
-		private void ColorControls(object sender, TappedRoutedEventArgs e)
+		private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ColorControls));
 		}
 
-		private void ButtonControls(object sender, TappedRoutedEventArgs e)
+		private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ButtonControls));
+		}
+
+		private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(Samples.Audio));
 		}
     }
 }

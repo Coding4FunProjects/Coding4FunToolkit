@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
@@ -10,7 +10,7 @@ namespace Coding4Fun.Toolkit.Audio
 	{
 		private MediaCapture _mediaCap;
 
-		private void InitMicrophone()
+		private async Task<bool> InitMicrophone()
 		{
 			if (Buffer != null)
 				Buffer.Dispose();
@@ -18,26 +18,40 @@ namespace Coding4Fun.Toolkit.Audio
 			Buffer = new InMemoryRandomAccessStream();
 
 			if (_mediaCap != null)
-				return;
+				return true;
+			
+			try
+			{
+				var settings = new MediaCaptureInitializationSettings {StreamingCaptureMode = StreamingCaptureMode.Audio};
+				_mediaCap = new MediaCapture();
 
-			_mediaCap = new MediaCapture();
-			_mediaCap.InitializeAsync(new MediaCaptureInitializationSettings {StreamingCaptureMode = StreamingCaptureMode.Audio}).AsTask().Wait();
+				await _mediaCap.InitializeAsync(settings);
 
-			_mediaCap.RecordLimitationExceeded += RecordLimitationExceeded;
-			_mediaCap.Failed += Failed;
+				_mediaCap.RecordLimitationExceeded += RecordLimitationExceeded;
+				_mediaCap.Failed += Failed;
+			}
+			catch (Exception ex0)
+			{
+				if (ex0.InnerException != null && ex0.InnerException.GetType() == typeof (UnauthorizedAccessException))
+					throw ex0.InnerException;
+				
+				throw;
+			}
+
+			return true;
 		}
 
-		public override void Start()
+		public async override void Start()
 		{
-			InitMicrophone();
-			_mediaCap.StartRecordToStreamAsync(MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto), Buffer);//.AsTask().Wait();
+			await InitMicrophone();
+			await _mediaCap.StartRecordToStreamAsync(MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto), Buffer);
 
 			base.Start();
 		}
 
-		public override void Stop()
+		public async override void Stop()
 		{
-			 _mediaCap.StopRecordAsync().AsTask().Wait();
+			await _mediaCap.StopRecordAsync();
 
 			base.Stop();
 		}
