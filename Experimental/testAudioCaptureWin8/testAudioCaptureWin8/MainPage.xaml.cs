@@ -1,14 +1,14 @@
 ﻿using System;
-using Windows.Media.Capture;
-using Windows.Media.MediaProperties;
+using System.Threading.Tasks;
+
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.System.Threading;
 using Windows.UI.Core;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using Coding4Fun.Toolkit.Audio;
 
 namespace testAudioCaptureWin8
 {
@@ -17,135 +17,121 @@ namespace testAudioCaptureWin8
     /// </summary>
     public sealed partial class MainPage : Page
     {
-		private bool _isRecording;
 		private const string AudioFileName = "audio.m4a";
 		private string _fileName;
-
-		private MediaCapture _mediaCap;
-		private InMemoryRandomAccessStream _memStream;
-		private StorageFile _storageFile;
+		
+		readonly MicrophoneRecorder _micRecorder = new MicrophoneRecorder();
 
         public MainPage()
         {
             InitializeComponent();
+			_micRecorder.BufferReady += StartStopBufferReady;
         }
 
-		private async void PrepClick(object sender, RoutedEventArgs e)
+	    private async void StartStopBufferReady(object sender, BufferEventArgs<InMemoryRandomAccessStream> e)
+	    {
+		    var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+
+		    if (!string.IsNullOrEmpty(_fileName))
+		    {
+			    var oldFile = await storageFolder.GetFileAsync(_fileName);
+			    oldFile.DeleteAsync();
+		    }
+
+		    Dispatcher.RunAsync(
+			    CoreDispatcherPriority.Normal,
+			    async () =>
+				          {
+					          var storageFile =
+						          await
+						          storageFolder.CreateFileAsync(AudioFileName,
+						                                        CreationCollisionOption
+							                                        .GenerateUniqueName);
+
+					          _fileName = storageFile.Name;
+
+
+					          using (
+						          var fileStream =
+							          await storageFile.OpenAsync(FileAccessMode.ReadWrite)
+						          )
+					          {
+						          await
+							          RandomAccessStream.CopyAndCloseAsync(
+								          e.Buffer.GetInputStreamAt(0),
+								          fileStream.GetOutputStreamAt(0));
+					          }
+
+
+					          var stream =
+						          await storageFile.OpenAsync(FileAccessMode.Read);
+					          playBack.SetSource(stream, storageFile.FileType);
+
+					          playBack.Play();
+				          });
+	    }
+
+	    #region testing start / stop
+		private void StartRecordingChecked(object sender, RoutedEventArgs e)
 		{
-			if (_isRecording)
-				return;
-
-			_mediaCap = new MediaCapture();
-			await _mediaCap.InitializeAsync(new MediaCaptureInitializationSettings { StreamingCaptureMode = StreamingCaptureMode.Audio });
-
-			_mediaCap.RecordLimitationExceeded += RecordLimitationExceeded;
-			_mediaCap.Failed += Failed;
+			_micRecorder.Start();
 		}
 
-		private async void StartClick(object sender, RoutedEventArgs e)
+		private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
 		{
-			if (_isRecording)
-				return;
-
-			_fileName = AudioFileName;
-
-			//_storageFile = await KnownFolders.VideosLibrary.CreateFileAsync(_fileName, CreationCollisionOption.GenerateUniqueName);
-			_storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.CreateFileAsync(_fileName, CreationCollisionOption.GenerateUniqueName);
-			_memStream = new InMemoryRandomAccessStream();
-
-			var recordProfile = MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto);
-
-			//await _mediaCap.StartRecordToStorageFileAsync(recordProfile, _storageFile);
-			await _mediaCap.StartRecordToStreamAsync(recordProfile, _memStream);
-
-			_isRecording = true;
+			_micRecorder.Stop();
 		}
 
-		private async void StopClick(object sender, RoutedEventArgs e)
+		#endregion
+		#region testing events and record for timespan
+		private void RecordForThreeSecondsClick(object sender, RoutedEventArgs e)
 		{
-			if (!_isRecording)
-				return;
-
-			await _mediaCap.StopRecordAsync();
-			_isRecording = false;
+			_micRecorder.Start(TimeSpan.FromSeconds(3));
 		}
+		#endregion
+
+	    private void RecordForThreeSecondsAndTerminateClick(object sender, RoutedEventArgs e)
+	    {
+		    _micRecorder.Start(TimeSpan.FromSeconds(3));
+
+		    ThreadPool.RunAsync(
+			    state =>
+				    {
+						Task.Delay(TimeSpan.FromSeconds(2)).Wait();
+					    Dispatcher.RunAsync(
+						    CoreDispatcherPriority.Normal,
+						    async () =>
+							          {
+								          await _micRecorder.Stop();
+							          }
+						    );
+				    });
+	    }
+
+	    #region nav testing
+
+		// testing if nav breaks mic recording
+		private void NavTestClick(object sender, RoutedEventArgs e)
+		{
+			//ThreadPool.QueueUserWorkItem(
+			//	state =>
+			//		{
+			//			Thread.Sleep(500);
+			//			Dispatcher.BeginInvoke(() => NavigateTo("/Samples/Audio.xaml"));
+			//		});
+
+			//NavigateTo("/MainPage.xaml");
+		}
+
+		private void NavigateTo(string page)
+		{
+			//NavigationService.Navigate(new Uri(page, UriKind.Relative));
+		}
+		#endregion
+
+
 		
-		private async void PlayFileClick(object sender, RoutedEventArgs e)
-		{
-			using (var fileStream = await _storageFile.OpenAsync(FileAccessMode.ReadWrite))
-			{
-				await RandomAccessStream.CopyAndCloseAsync(_memStream.GetInputStreamAt(0), fileStream.GetOutputStreamAt(0));
-			}
 
-			var stream = await _storageFile.OpenAsync(FileAccessMode.Read);
 
-			playBack.SetSource(stream, _storageFile.FileType);
-			playBack.Play();
-		}
-
-		public void Failed(MediaCapture currentCaptureObject, MediaCaptureFailedEventArgs currentFailure)
-		{
-			try
-			{
-				Dispatcher.RunAsync(
-					CoreDispatcherPriority.Normal,
-					() =>
-					{
-						try
-						{
-							ShowStatusMessage("Fatal error" + currentFailure.Message);
-						}
-						catch (Exception e)
-						{
-							ShowExceptionMessage(e);
-						}
-					});
-			}
-			catch (Exception e)
-			{
-				ShowExceptionMessage(e);
-			}
-		}
-
-		public async void RecordLimitationExceeded(MediaCapture currentCaptureObject)
-		{
-			try
-			{
-				if (_isRecording)
-				{
-					await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-					{
-						try
-						{
-							await _mediaCap.StopRecordAsync();
-							_isRecording = false;
-
-							ShowStatusMessage("Stopping Record on exceeding max record duration");
-						}
-						catch (Exception e)
-						{
-							ShowExceptionMessage(e);
-						}
-
-					});
-				}
-			}
-			catch (Exception e)
-			{
-				ShowExceptionMessage(e);
-			}
-		}
-
-		private void ShowStatusMessage(String text)
-		{
-			var msg = new MessageDialog(text);
-			msg.ShowAsync();
-		}
-
-		private void ShowExceptionMessage(Exception ex)
-		{
-			var msg = new MessageDialog(ex.Message);
-			msg.ShowAsync();
-		}
     }
 }
