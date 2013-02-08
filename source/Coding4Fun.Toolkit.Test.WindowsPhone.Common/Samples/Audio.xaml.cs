@@ -4,11 +4,11 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Threading;
 using System.Windows;
-using System.Windows.Input;
+
+using Microsoft.Phone.Controls;
 
 using Coding4Fun.Toolkit.Audio;
 using Coding4Fun.Toolkit.Audio.Helpers;
-using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 {
@@ -32,12 +32,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		}
 
 		#region testing start / stop
-		private void StartRecordingManipulationStarted(object sender, ManipulationStartedEventArgs e)
+		private void StartRecordingChecked(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.Start();
 		}
 
-		private void StopRecordingManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+		private void StartRecordingUnchecked(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.Stop();
 		}
@@ -49,15 +49,15 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		}
 		#endregion
 
-		private void RecordForThreeSecondsAndTerminateClick(object sender, RoutedEventArgs e)
+		private void RecordAndAutoTerminateClick(object sender, RoutedEventArgs e)
 		{
-			_micRecorder.Start(TimeSpan.FromSeconds(3));
+			_micRecorder.Start(TimeSpan.FromSeconds(10));
 
 			ThreadPool.QueueUserWorkItem(
 				state =>
 					{
 						Thread.Sleep(TimeSpan.FromSeconds(2));
-						Dispatcher.BeginInvoke(() => _micRecorder.Stop());
+						Dispatcher.BeginInvoke(_micRecorder.Stop);
 					});
 		}
 		

@@ -29,16 +29,14 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<StackPanel>
 				<MediaElement Name="playBack" />
-				<Button 
-					ManipulationStarted="StartRecordingManipulationStarted"
-					ManipulationCompleted="StopRecordingManipulationCompleted" >
-					Press (and hold) to rec
-				</Button>
+				<ToggleButton Checked="StartRecordingChecked" Unchecked="StartRecordingUnchecked">
+					Toggle to rec
+				</ToggleButton>
 				<Button Click="RecordForThreeSecondsClick">
 					Click to record 3 sec
 				</Button>
-				<Button Click="RecordForThreeSecondsAndTerminateClick">
-					Click to record 3 sec  term after 1
+				<Button Click="RecordAndAutoTerminateClick">
+					Click to record 10 sec term after 2
 				</Button>
 				<Button Click="NavTestClick">
 					Test Nav break test

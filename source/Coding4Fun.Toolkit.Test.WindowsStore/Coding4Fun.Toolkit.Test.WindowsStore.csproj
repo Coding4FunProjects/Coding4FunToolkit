@@ -137,6 +137,9 @@
     <Compile Include="Samples\ButtonControls.xaml.cs">
       <DependentUpon>ButtonControls.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Audio.xaml.cs">
+      <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -337,12 +340,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Samples\Audio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio.csproj">
+      <Project>{f78f9eb4-0744-46d1-84fc-1fdb7b20714d}</Project>
+      <Name>Coding4Fun.Toolkit.Audio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsStore\Coding4Fun.Toolkit.Controls.csproj">
       <Project>{f0a56304-e80f-4270-85aa-abc02c8d413f}</Project>
       <Name>Coding4Fun.Toolkit.Controls</Name>
