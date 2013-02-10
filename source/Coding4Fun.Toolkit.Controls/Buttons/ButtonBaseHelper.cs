@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-#if WINDOWS_STORE
+﻿#if WINDOWS_STORE
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
