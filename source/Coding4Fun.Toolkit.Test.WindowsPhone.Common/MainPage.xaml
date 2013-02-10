@@ -12,14 +12,19 @@
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
 			<TextBlock x:Name="ApplicationTitle" 
 					   Text="{StaticResource AppName}"
 					   Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock x:Name="PageTitle" Text="tests/samples" Margin="9,-12,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
-
+		
 		<Image 
+			Grid.RowSpan="2"
 			Opacity=".5"  
 			Stretch="Uniform"
             Height="225"
@@ -27,11 +32,11 @@
 			HorizontalAlignment="Right"
 			Source="/Coding4Fun.Toolkit.Test.WindowsPhone;component/media/head.png"
 			Margin="0, 0, -50, -50" />
-		
-		<ScrollViewer Margin="0">
+
+		<ScrollViewer Margin="0" Grid.Row="1">
 			<slToolkit:WrapPanel 
 				c4f:TiltEffect.IsTiltEnabled="True"
-				Margin="24,120,0,0">
+				Margin="24, 0,0,0">
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Label="Audio"
@@ -140,5 +145,6 @@
 				</c4f:Tile>
 		    </slToolkit:WrapPanel>
 		</ScrollViewer>
+		
 	</Grid>
 </phone:PhoneApplicationPage>

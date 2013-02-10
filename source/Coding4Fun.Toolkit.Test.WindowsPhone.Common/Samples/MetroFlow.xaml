@@ -75,13 +75,13 @@
 							Grid.Row="2"
 							Grid.Column="0"
 							ImageSource="..\media\icons\appbar.minus.rest.png"
-							Content="Remove"
+							Label="Remove"
 							Click="Remove_Click"/>
 						<c4f:RoundButton
 							Grid.Row="2"
 							Grid.Column="1"
 							ImageSource="..\media\icons\appbar.add.rest.png"
-							Content="Add"
+							Label="Add"
 							Click="Add_Click" />
 					</Grid>
 					
