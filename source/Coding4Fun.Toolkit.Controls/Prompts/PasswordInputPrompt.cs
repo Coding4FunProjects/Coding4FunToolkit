@@ -1,5 +1,8 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,6 +11,7 @@ namespace Coding4Fun.Toolkit.Controls
     public class PasswordInputPrompt : InputPrompt
     {
         readonly StringBuilder _inputText = new StringBuilder();
+	    private DateTime _lastUpdated = DateTime.Now;
 
         public PasswordInputPrompt()
         {
@@ -75,10 +79,36 @@ namespace Coding4Fun.Toolkit.Controls
                 }
 
                 InputBox.SelectionStart = selectionStart;
+
+	            ExecuteDelayedOverwrite();
+				_lastUpdated = DateTime.Now;
             }
         }
-        
-        public char PasswordChar
+
+	    private void ExecuteDelayedOverwrite()
+	    {
+			ThreadPool.QueueUserWorkItem(
+				state =>
+					{
+						var delay = TimeSpan.FromMilliseconds(500);
+						Thread.Sleep(delay);
+
+						if (DateTime.Now - _lastUpdated < TimeSpan.FromMilliseconds(500))
+							return;
+
+						Dispatcher.BeginInvoke(
+							() =>
+								{
+									var selectionStart = InputBox.SelectionStart;
+
+									InputBox.Text = Regex.Replace(InputBox.Text, ".", PasswordChar.ToString(CultureInfo.InvariantCulture));
+									
+									InputBox.SelectionStart = selectionStart;
+								});
+					});
+	    }
+
+	    public char PasswordChar
         {
             get { return (char)GetValue(PasswordCharProperty); }
             set { SetValue(PasswordCharProperty, value); }
