@@ -12,8 +12,6 @@
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
         <tags>coding4fun silverlight winrt win8 phone wp7 wp8  metro xaml audio microphone</tags>
         <frameworkAssemblies>
-		<frameworkAssembly assemblyName="Microsoft.Xna.Framework" targetFramework="wp71" />
-		<frameworkAssembly assemblyName="Microsoft.Xna.Framework" targetFramework="windowsphone8" />
 	</frameworkAssemblies>
   </metadata>
 
