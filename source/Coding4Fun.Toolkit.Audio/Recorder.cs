@@ -1,14 +1,5 @@
 ﻿using System;
 
-#if WINDOWS_STORE
-using System.Threading.Tasks;
-using Windows.System.Threading;
-
-#elif WINDOWS_PHONE
-using System.Threading;
-
-#endif
-
 namespace Coding4Fun.Toolkit.Audio
 {
 	public abstract class Recorder<T>
@@ -26,7 +17,7 @@ namespace Coding4Fun.Toolkit.Audio
 			ValidateState();
 		}
 
-		protected T Buffer { get; set; }
+		public T Buffer { get; set; }
 
 		public virtual int SampleRate { get { return 0; } }
 
@@ -45,27 +36,10 @@ namespace Coding4Fun.Toolkit.Audio
 			Start();
 			_shouldCallStopInTimeout = true;
 
-#if WINDOWS_STORE
-			ThreadPool.RunAsync(
-					async state =>
-					{
-						await Task.Delay(timeout);
-
-						if (_shouldCallStopInTimeout)
-							Stop();
-					});
-			
-#elif WINDOWS_PHONE
-			ThreadPool.QueueUserWorkItem(
-				state =>
-				{
-					Thread.Sleep(timeout);
-
-					if (_shouldCallStopInTimeout)
-						Stop();
-				});
-#endif
+			ExecuteStopWithTimeDelay(timeout, _shouldCallStopInTimeout);
 		}
+
+		internal virtual void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout) { }
 
 		public void Start(int millisecondsTimeout)
 		{

@@ -24,12 +24,13 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 		public Audio()
 		{
 			InitializeComponent();
-
-			_micRecorder.BufferReady += StartStopBufferReady;
 		}
 
-		private async void StartStopBufferReady(object sender, BufferEventArgs<InMemoryRandomAccessStream> e)
+		private async Task Play(IRandomAccessStream buffer)
 		{
+			if (buffer == null) 
+				throw new ArgumentNullException("buffer");
+
 			var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
 
 			if (!string.IsNullOrEmpty(_fileName))
@@ -49,7 +50,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 						using (var fileStream = await storageFile.OpenAsync(FileAccessMode.ReadWrite))
 						{
 							await RandomAccessStream.CopyAndCloseAsync(
-								e.Buffer.GetInputStreamAt(0),
+								buffer.GetInputStreamAt(0),
 								fileStream.GetOutputStreamAt(0));
 						}
 
@@ -67,17 +68,38 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			_micRecorder.Start();
 		}
 
-		private void StartRecordingUnchecked(object sender, RoutedEventArgs e)
+		private async void StartRecordingUnchecked(object sender, RoutedEventArgs e)
+		{
+			_micRecorder.Stop();
+
+			await Play(_micRecorder.Buffer);
+		}
+
+		private void StartRecordingWithEventChecked(object sender, RoutedEventArgs e)
+		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+			_micRecorder.Start();
+		}
+
+		private void StartRecordingWithEventUnchecked(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.Stop();
 		}
 
+		private async void StartStopBufferReady(object sender, BufferEventArgs<InMemoryRandomAccessStream> e)
+		{
+			await Play(e.Buffer);
+
+			_micRecorder.BufferReady -= StartStopBufferReady;
+		}
 		#endregion
 
 		#region testing events and record for timespan
 
 		private void RecordForThreeSecondsClick(object sender, RoutedEventArgs e)
 		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+
 			_micRecorder.Start(TimeSpan.FromSeconds(3));
 		}
 
@@ -85,6 +107,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 
 		private void RecordAndAutoTerminateClick(object sender, RoutedEventArgs e)
 		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+
 			_micRecorder.Start(TimeSpan.FromSeconds(10));
 
 			ThreadPool.RunAsync(

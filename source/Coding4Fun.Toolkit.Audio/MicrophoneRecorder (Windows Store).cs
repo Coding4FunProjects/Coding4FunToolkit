@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
+using Windows.System.Threading;
 
 namespace Coding4Fun.Toolkit.Audio
 {
@@ -54,6 +55,20 @@ namespace Coding4Fun.Toolkit.Audio
 			await _mediaCap.StopRecordAsync();
 
 			base.Stop();
+		}
+
+		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout)
+		{
+			ThreadPool.RunAsync(
+					async state =>
+					{
+						await Task.Delay(timeout);
+
+						if (shouldCallStopInTimeout)
+							Stop();
+					});
+
+			base.ExecuteStopWithTimeDelay(timeout, shouldCallStopInTimeout);
 		}
 
 		private void Failed(MediaCapture currentCaptureObject, MediaCaptureFailedEventArgs currentFailure)

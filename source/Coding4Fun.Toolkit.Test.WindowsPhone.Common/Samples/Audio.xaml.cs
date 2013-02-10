@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Threading;
@@ -16,22 +15,54 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 	{
 		readonly MicrophoneRecorder _micRecorder = new MicrophoneRecorder();
 		int _fileIndex;
-		string _currentFileName;
+		private string _fileName;
 
 		public Audio()
 		{
 			InitializeComponent();
-
-			_micRecorder.BufferReady += StartStopBufferReady;
 		}
 
-		void StartStopBufferReady(object sender, BufferEventArgs<MemoryStream> e)
+		private void Play(MemoryStream buffer)
 		{
-			WriteFile(e.Buffer.GetWavAsByteArray(_micRecorder.SampleRate));
-			PlayFile();
+			if (buffer == null)
+				throw new ArgumentNullException("buffer");
+
+			using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
+			{
+				if (!string.IsNullOrEmpty(_fileName) && storageFolder.FileExists(_fileName))
+					storageFolder.DeleteFile(_fileName);
+			}
+
+			Dispatcher.BeginInvoke(
+				() =>
+					{
+						using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
+						{
+							_fileIndex++;
+							_fileName = _fileIndex + ".wav";
+
+							var bytes = buffer.GetWavAsByteArray(_micRecorder.SampleRate);
+
+							using (var stream = storageFolder.CreateFile(_fileName))
+							{
+								stream.Write(bytes, 0, bytes.Length);
+							}
+
+							if (!storageFolder.FileExists(_fileName))
+								return;
+
+							using (var stream = new IsolatedStorageFileStream(_fileName, FileMode.Open, storageFolder))
+							{
+								playBack.SetSource(stream);
+
+								playBack.Play();
+							}
+						}
+					});
 		}
 
 		#region testing start / stop
+
 		private void StartRecordingChecked(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.Start();
@@ -40,27 +71,54 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 		private void StartRecordingUnchecked(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.Stop();
+
+			Play(_micRecorder.Buffer);
+		}
+
+		private void StartRecordingWithEventChecked(object sender, RoutedEventArgs e)
+		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+			_micRecorder.Start();
+		}
+
+		private void StartRecordingWithEventUnchecked(object sender, RoutedEventArgs e)
+		{
+			_micRecorder.Stop();
+		}
+
+		private void StartStopBufferReady(object sender, BufferEventArgs<MemoryStream> e)
+		{
+			Play(e.Buffer);
+
+			_micRecorder.BufferReady -= StartStopBufferReady;
 		}
 		#endregion
+
 		#region testing events and record for timespan
+
 		private void RecordForThreeSecondsClick(object sender, RoutedEventArgs e)
 		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+
 			_micRecorder.Start(TimeSpan.FromSeconds(3));
 		}
+
 		#endregion
 
 		private void RecordAndAutoTerminateClick(object sender, RoutedEventArgs e)
 		{
+			_micRecorder.BufferReady += StartStopBufferReady;
+
 			_micRecorder.Start(TimeSpan.FromSeconds(10));
 
 			ThreadPool.QueueUserWorkItem(
 				state =>
-					{
-						Thread.Sleep(TimeSpan.FromSeconds(2));
-						Dispatcher.BeginInvoke(_micRecorder.Stop);
-					});
+				{
+					Thread.Sleep(TimeSpan.FromSeconds(2));
+					Dispatcher.BeginInvoke(_micRecorder.Stop);
+				});
 		}
-		
+
 		#region nav testing
 
 		// testing if nav breaks mic recording
@@ -81,59 +139,5 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 			NavigationService.Navigate(new Uri(page, UriKind.Relative));
 		}
 		#endregion
-
-		#region helper methods for reading/writing/deleting files into file storage for playback
-
-		private void PlayFile()
-		{
-			DeleteOldFile();
-
-			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
-			{
-				if (!storageFile.FileExists(_currentFileName))
-					return;
-
-				using (var stream = new IsolatedStorageFileStream(_currentFileName, FileMode.Open, storageFile))
-				{
-					playBack.SetSource(stream);
-
-					playBack.Play();
-				}
-			}
-		}
-
-		private void WriteFile(byte[] bytes)
-		{
-			_fileIndex++;
-			_currentFileName = _fileIndex + ".wav";
-
-			Debug.WriteLine("Attempting to WriteFile");
-			if (bytes == null)
-				return;
-			
-			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
-			{
-				using (var stream = storageFile.CreateFile(_currentFileName))
-				{
-					stream.Write(bytes, 0, bytes.Length);
-				}
-			}
-
-			Debug.WriteLine("WriteFile: " + _currentFileName);
-			Debug.WriteLine("Length: " + bytes.Length);
-		}
-
-		private void DeleteOldFile()
-		{
-			using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
-			{
-				var targetFileName = (_fileIndex - 1) + ".wav";
-
-				if (storageFile.FileExists(targetFileName))
-					storageFile.DeleteFile(targetFileName);
-			}
-		}
-		#endregion
-
 	}
 }

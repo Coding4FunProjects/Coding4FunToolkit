@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading;
 using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Audio
@@ -27,25 +29,34 @@ namespace Coding4Fun.Toolkit.Audio
 		{
 			InitMicrophone();
 
-			_source.Dispatcher.BeginInvoke(() =>
-				                               {
-					                               _audio.ResetAudioData();
-					                               _source.Start();
+			_source.Dispatcher.BeginInvoke(
+				() =>
+					{
+						_audio.ResetAudioData();
+						_source.Start();
 
-					                               base.Start();
-				                               });
+						base.Start();
+					});
 		}
 
 		public override void Stop()
 		{
-			_source.Dispatcher.BeginInvoke(
-				() =>
-					{
-						_source.Stop();
+			Buffer = _audio.AudioData;
+			base.Stop();
+		}
 
-						Buffer = _audio.AudioData;
-						base.Stop();
-					});
+		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout)
+		{
+			ThreadPool.QueueUserWorkItem(
+				state =>
+				{
+					Thread.Sleep(timeout);
+
+					if (shouldCallStopInTimeout)
+						_source.Dispatcher.BeginInvoke(Stop);
+				});
+			
+			base.ExecuteStopWithTimeDelay(timeout, shouldCallStopInTimeout);
 		}
 
 		private void InitMicrophone()

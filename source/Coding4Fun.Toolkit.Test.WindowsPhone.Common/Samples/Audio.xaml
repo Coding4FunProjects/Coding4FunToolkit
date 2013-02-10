@@ -32,6 +32,9 @@
 				<ToggleButton Checked="StartRecordingChecked" Unchecked="StartRecordingUnchecked">
 					Toggle to rec
 				</ToggleButton>
+				<ToggleButton Checked="StartRecordingWithEventChecked" Unchecked="StartRecordingWithEventUnchecked">
+					Toggle to rec w/ eventing
+				</ToggleButton>
 				<Button Click="RecordForThreeSecondsClick">
 					Click to record 3 sec
 				</Button>
