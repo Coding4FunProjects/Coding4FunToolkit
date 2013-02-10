@@ -32,7 +32,6 @@ namespace Coding4Fun.Toolkit.Controls
 			var enabledHolder = GetTemplateChild(ButtonBaseConstants.EnabledHolderName) as Grid;
 			var disabledHolder = GetTemplateChild(ButtonBaseConstants.DisabledHolderName) as Grid;
 
-			
 			if (contentBody != null && disabledHolder != null && enabledHolder != null)
 			{
 				if (!IsEnabled)

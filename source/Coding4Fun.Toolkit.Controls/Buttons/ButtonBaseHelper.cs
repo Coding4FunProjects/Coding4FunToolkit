@@ -95,7 +95,7 @@ namespace Coding4Fun.Toolkit.Controls
 #if WINDOWS_STORE
 			var binding = new Windows.UI.Xaml.Data.Binding();
 #elif WINDOWS_PHONE
-			var binding = new System.Windows.Data.Binding();;
+			var binding = new System.Windows.Data.Binding();
 #endif
 
 			binding.Source = source;
@@ -114,6 +114,22 @@ namespace Coding4Fun.Toolkit.Controls
 					xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
 					Stretch=""Uniform"" 
 					Data=""F1M227.2217,408.499L226.4427,407.651C226.2357,407.427,226.2467,407.075,226.4737,406.865L228.7357,404.764C228.8387,404.668,228.9737,404.615,229.1147,404.615C229.2707,404.615,229.4147,404.679,229.5207,404.792L235.7317,411.479L246.4147,397.734C246.5207,397.601,246.6827,397.522,246.8547,397.522C246.9797,397.522,247.0987,397.563,247.1967,397.639L249.6357,399.533C249.7507,399.624,249.8257,399.756,249.8447,399.906C249.8627,400.052,249.8237,400.198,249.7357,400.313L236.0087,417.963z""
+					/>") as Path;
+
+			if (check != null)
+			{
+				ApplyBinding(control, check, "ButtonHeight", FrameworkElement.HeightProperty, new NumberMultiplierConverter(), .25);
+			}
+
+			return check;
+		}
+
+		public static Path CreateXamlCancel(FrameworkElement control)
+		{
+			var check = XamlReader.Load(@"<Path 
+					xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
+					Stretch=""Uniform"" 
+					Data=""M15.047,0 L17.709,2.663 L11.5166,8.85499 L17.71,15.048 L15.049,17.709 L8.8553,11.5161 L2.662,17.709 L0,15.049 L6.19351,8.85467 L0.002036,2.66401 L2.66304,0.002015 L8.85463,6.19319 z""
 					/>") as Path;
 
 			if (check != null)

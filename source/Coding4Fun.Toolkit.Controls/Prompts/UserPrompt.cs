@@ -12,23 +12,23 @@ namespace Coding4Fun.Toolkit.Controls
         protected UserPrompt()
         {
             var okButton = new RoundButton();
-            _cancelButton = new RoundButton
-            {
-                ImageSource =
-                    new BitmapImage(
-                    new Uri(
-                        "/Coding4Fun.Toolkit.Controls;component/Media/appbar.cancel.rest.png",
-                        UriKind.RelativeOrAbsolute))
-            };
+	        _cancelButton = new RoundButton();
 
             okButton.Click += OkClick;
             _cancelButton.Click += CancelledClick;
-
+			
             ActionPopUpButtons.Add(okButton);
             ActionPopUpButtons.Add(_cancelButton);
 
             SetCancelButtonVisibility(IsCancelVisible);
         }
+
+		public override void OnApplyTemplate()
+		{
+			_cancelButton.Content = ButtonBaseHelper.CreateXamlCancel(_cancelButton);
+
+			base.OnApplyTemplate();
+		}
 
         public bool IsCancelVisible
         {
