@@ -175,7 +175,7 @@ if($doNugetPush)
 	foreach($file in $nupkgFiles)
 	{
 		echo $file;
-		#nuget 'push' $file
+		nuget 'push' $file
 	}
 	
 	echo "done nuget push"
