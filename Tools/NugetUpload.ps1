@@ -164,14 +164,16 @@ foreach($file in $nuspecFiles)
 }
 
 echo "done nuget packaging"
-echo "start nuget push"
 
-$nupkgFiles = [System.IO.Directory]::GetFiles(
-	[System.IO.Path]::Combine($currentPath, "nuget"), 
-	"*.nupkg", [System.IO.SearchOption]::AllDirectories);
 
 if($doNugetPush)
 {
+	echo "start nuget push"
+
+	$nupkgFiles = [System.IO.Directory]::GetFiles(
+		[System.IO.Path]::Combine($currentPath, "nuget"), 
+		"*.nupkg", [System.IO.SearchOption]::AllDirectories);
+
 	foreach($file in $nupkgFiles)
 	{
 		echo $file;
