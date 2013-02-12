@@ -1,4 +1,6 @@
-﻿$versionNumber = "2.0.0";
+﻿$doNugetPush = false;
+
+$versionNumber = "2.0.1";
 $solutionName = "Coding4Fun.Toolkit.sln";
 
 $zipFileName = "Coding4Fun.Toolkit ({0}).zip";
@@ -167,11 +169,14 @@ echo "start nuget push"
 $nupkgFiles = [System.IO.Directory]::GetFiles(
 	[System.IO.Path]::Combine($currentPath, "nuget"), 
 	"*.nupkg", [System.IO.SearchOption]::AllDirectories);
-	
-foreach($file in $nupkgFiles)
-{
-	echo $file;
-	nuget 'push' $file
-}
 
-echo "done nuget push"
+if($doNugetPush)
+{
+	foreach($file in $nupkgFiles)
+	{
+		echo $file;
+		#nuget 'push' $file
+	}
+	
+	echo "done nuget push"
+}

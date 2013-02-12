@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Coding4Fun.Toolkit.Audio</id>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
         <title>Coding4Fun Toolkit - Audio</title>
         <authors>Coding4Fun, Clint Rutkas</authors>
         <description>Part of the Coding4Fun Toolkit with only the Audio library.  It provides an easy to use wrapper to get audio data from the microphone.</description>
@@ -23,12 +23,12 @@
 			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
 			target="lib\windowsphone8" />
 		
-		<!--<file 
+		<file 
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.dll"
 			target="lib\windows8" />
 		<file 
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.pri"
-			target="lib\windows8" />-->
+			target="lib\windows8" />
 
   </files>
 </package>
