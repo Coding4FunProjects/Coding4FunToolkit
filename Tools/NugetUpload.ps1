@@ -1,4 +1,4 @@
-﻿$doNugetPush = false;
+﻿$doNugetPush = $false;
 
 $versionNumber = "2.0.1";
 $solutionName = "Coding4Fun.Toolkit.sln";
