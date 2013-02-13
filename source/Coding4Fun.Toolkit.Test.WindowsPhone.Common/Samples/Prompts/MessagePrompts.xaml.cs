@@ -84,10 +84,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 				Overlay = _cornFlowerBlueSolidColorBrush,
 			};
 
-			var btnHide = new RoundButton { Content = "Hide" };
+			var btnHide = new RoundButton { Label = "Hide" };
 			btnHide.Click += (o, args) => messagePrompt.Hide();
 
-			var btnComplete = new RoundButton { Content = "Complete" };
+			var btnComplete = new RoundButton { Label = "Complete" };
 			btnComplete.Click += (o, args) => messagePrompt.OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok, Result = "You clicked the Complete Button" });
 
 			messagePrompt.ActionPopUpButtons.Clear();
