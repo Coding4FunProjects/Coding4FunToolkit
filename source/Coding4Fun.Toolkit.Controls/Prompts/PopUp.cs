@@ -1,16 +1,12 @@
 ﻿
 using System;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using Clarity.Phone.Extensions;
 
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 
 namespace Coding4Fun.Toolkit.Controls
 {
