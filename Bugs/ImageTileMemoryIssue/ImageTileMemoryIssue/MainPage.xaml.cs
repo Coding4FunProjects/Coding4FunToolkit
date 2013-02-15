@@ -9,7 +9,7 @@ namespace ImageTileMemoryIssue
 {
 	public partial class MainPage : PhoneApplicationPage
 	{
-		private string[] flickrImages = new[]
+		private readonly string[] _flickrImages = new[]
 			{
 				"http://farm8.staticflickr.com/7210/6948063601_9c06c977b7_k_d.jpg",
 				"http://farm3.staticflickr.com/2762/4445148236_16ef33835e_b_d.jpg",
@@ -32,7 +32,6 @@ namespace ImageTileMemoryIssue
 			InitializeComponent();
 
 			Loaded += MainPage_Loaded;
-			
 		}
 
 		void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -48,9 +47,9 @@ namespace ImageTileMemoryIssue
 
 			var items = new List<Uri>();
 
-			for (int i = 0; i < flickrImages.Count(); i++)
+			for (int i = 0; i < _flickrImages.Count(); i++)
 			{
-				items.Add(new Uri(flickrImages[i], UriKind.RelativeOrAbsolute));
+				items.Add(new Uri(_flickrImages[i], UriKind.RelativeOrAbsolute));
 			}
 
 			imgTile.ItemsSource = items;
