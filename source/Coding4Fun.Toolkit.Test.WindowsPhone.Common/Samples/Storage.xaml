@@ -14,44 +14,44 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="storage" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="storage" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Margin="12, 0, 12, -6">string data</TextBlock>
-            <TextBox Name="stringData" Text="" />
-            <TextBlock Margin="12, 0, 12, -6">int data</TextBlock>
-            <TextBox Name="intData">
-                <TextBox.InputScope>
-                    <InputScope>
-                        <InputScopeName NameValue="TelephoneNumber" />
-                    </InputScope>
-                </TextBox.InputScope>
-            </TextBox>
-            <TextBlock Margin="12, 0, 12, -6">date data</TextBlock>
-            <slToolkit:DatePicker Name="dateTimeData" Value="" />
-            <TextBlock Margin="12, 0, 12, -6">timespan data</TextBlock>
-            <c4f:TimeSpanPicker Name="timeSpanData" Value="" />
-            
+		<!--ContentPanel - place additional content here-->
+		<StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<TextBlock Margin="12, 0, 12, -6">string data</TextBlock>
+			<TextBox Name="stringData" Text="" />
+			<TextBlock Margin="12, 0, 12, -6">int data</TextBlock>
+			<TextBox Name="intData">
+				<TextBox.InputScope>
+					<InputScope>
+						<InputScopeName NameValue="TelephoneNumber" />
+					</InputScope>
+				</TextBox.InputScope>
+			</TextBox>
+			<TextBlock Margin="12, 0, 12, -6">date data</TextBlock>
+			<slToolkit:DatePicker Name="dateTimeData" Value="" />
+			<TextBlock Margin="12, 0, 12, -6">timespan data</TextBlock>
+			<c4f:TimeSpanPicker Name="timeSpanData" Value="" />
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <c4f:RoundButton Click="LoadClick">Load</c4f:RoundButton>
-                <c4f:RoundButton Click="SaveClick">Save</c4f:RoundButton>
-                <c4f:RoundButton Click="ClearClick">Clear</c4f:RoundButton>
-                <c4f:RoundButton Click="DeleteClick">Delete File</c4f:RoundButton>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<c4f:RoundButton Click="LoadClick" Label="Load"/>
+				<c4f:RoundButton Click="SaveClick" Label="Save"/>
+				<c4f:RoundButton Click="ClearClick" Label="Clear"/>
+				<c4f:RoundButton Click="DeleteClick" Label="Delete File"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
 
 </phone:PhoneApplicationPage>
