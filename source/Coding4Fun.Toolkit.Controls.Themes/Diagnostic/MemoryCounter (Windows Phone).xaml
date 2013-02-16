@@ -10,8 +10,8 @@
 				<ControlTemplate TargetType="local:MemoryCounter">
 					<Grid VerticalAlignment="Top" HorizontalAlignment="Right">
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="75"/>
-							<ColumnDefinition Width="75"/>
+							<ColumnDefinition Width="100"/>
+							<ColumnDefinition Width="100"/>
 						</Grid.ColumnDefinitions>
 						<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource DefaultSemiTransparentBrush}" />
 

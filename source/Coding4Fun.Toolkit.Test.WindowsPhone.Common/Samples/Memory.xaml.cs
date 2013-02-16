@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
@@ -20,24 +13,50 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
             InitializeComponent();
         }
 
-        List<Byte[]> _memory = new List<byte[]>();
+	    readonly Stack<Byte[]> _memoryTwoMb = new Stack<byte[]>();
+	    readonly Stack<Byte[]> _memoryOneHundredMb = new Stack<byte[]>();
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Add2MbClick(object sender, RoutedEventArgs e)
         {
-            _memory.Add(new Byte[1024 * 1024 * 2]);
+	        PushStack(_memoryTwoMb, 2);
         }
 
-        private void Remove_Click(object sender, RoutedEventArgs e)
+	    private void Remove2MbClick(object sender, RoutedEventArgs e)
+	    {
+			PopStack(_memoryTwoMb);
+	    }
+
+		private void Add100MbClick(object sender, RoutedEventArgs e)
+		{
+			PushStack(_memoryOneHundredMb, 100);
+		}
+
+		private void Remove100MbClick(object sender, RoutedEventArgs e)
+		{
+			PopStack(_memoryOneHundredMb);
+		}
+
+	    private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (_memory.Count > 0)
-                _memory.RemoveAt(_memory.Count - 1);
-            
-            GC.Collect();
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+		private static byte[] CreateMemorySegment(int totalMb)
+		{
+			return new Byte[1024 * 1024 * totalMb];
+		}
 
-        }
+		private static void PopStack(Stack<Byte[]> data)
+		{
+			if (data.Count > 0)
+				data.Pop();
+
+			GC.Collect();
+		}
+
+		private static void PushStack(Stack<Byte[]> data, int totalMb)
+		{
+			data.Push(CreateMemorySegment(totalMb));
+		}
     }
 }
