@@ -49,7 +49,7 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlatformFileAccess %28Phone%29.cs" />
+    <Compile Include="PlatformFileAccess %28Windows Phone%29.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialize.cs" />
   </ItemGroup>

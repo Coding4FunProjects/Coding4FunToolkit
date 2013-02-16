@@ -140,6 +140,9 @@
     <Compile Include="Samples\Audio.xaml.cs">
       <DependentUpon>Audio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Storage.xaml.cs">
+      <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -290,6 +293,7 @@
     <Content Include="Media\images\trex_360width.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Test\TestSerializeClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -344,6 +348,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Samples\Storage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -357,6 +365,10 @@
     <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsStore\Coding4Fun.Toolkit.Controls.csproj">
       <Project>{f0a56304-e80f-4270-85aa-abc02c8d413f}</Project>
       <Name>Coding4Fun.Toolkit.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage.csproj">
+      <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
+      <Name>Coding4Fun.Toolkit.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

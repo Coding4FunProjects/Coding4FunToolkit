@@ -70,6 +70,15 @@
 						Co
 				</TextBlock>
 			</coding4Fun:Tile>
+
+			<coding4Fun:Tile 
+				Label="Storage" 
+				Style="{StaticResource TileStyle}"
+				Tapped="StorageTapped" >
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						St
+				</TextBlock>
+			</coding4Fun:Tile>
 		</GridView>
 	</Grid>
 </common:LayoutAwarePage>
