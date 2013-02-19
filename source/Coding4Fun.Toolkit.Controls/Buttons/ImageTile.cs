@@ -268,6 +268,7 @@ namespace Coding4Fun.Toolkit.Controls
                                 VerticalAlignment = VerticalAlignment.Center,
                                 Stretch = Stretch.UniformToFill,
                                 Name = Guid.NewGuid().ToString(),
+								UseLayoutRounding = false,
 								//Opacity = .5
                             };
 
