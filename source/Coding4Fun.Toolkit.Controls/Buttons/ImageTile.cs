@@ -28,7 +28,7 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public class ImageTile : ButtonBase, IDisposable
 	{
-		readonly DispatcherTimer _changeImageTimer = new DispatcherTimer();
+		DispatcherTimer _changeImageTimer = new DispatcherTimer();
 		readonly Random _rand = new Random();
 
 		readonly Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
@@ -50,9 +50,55 @@ namespace Coding4Fun.Toolkit.Controls
         public ImageTile()
 		{
             DefaultStyleKey = typeof(ImageTile);
+
 			Loaded += ImageTileLoaded;
+			Unloaded += ImageTileUnloaded;
 		}
 
+		#region control unloaded
+		void ImageTileUnloaded(object sender, RoutedEventArgs e)
+		{
+			Dispose();
+		}
+
+		void FrameNavigated(object sender, NavigationEventArgs e)
+		{
+			Dispose();
+		}
+
+		public void Dispose()
+		{
+			if (_imageContainer != null)
+			{
+				var items = _imageContainer.GetLogicalChildrenByType<Image>(false).ToArray();
+
+				var count = items.Count();
+
+				for (var i = 0; i < count; i++)
+				{
+					ForceImageCleanup(items[i]);
+				}
+
+				_imageContainer.Children.Clear();
+			}
+
+			foreach (var item in _animationTracking)
+			{
+				item.Storyboard.Stop();
+			}
+
+			_imageCurrentLocation.Clear();
+			_imagesBeingShown.Clear();
+			_availableSpotsOnGrid.Clear();
+			_animationTracking.Clear();
+
+			if (_changeImageTimer != null)
+				_changeImageTimer.Stop();
+
+			_changeImageTimer = null;
+		}
+		#endregion
+		
 		void ImageTileLoaded(object sender, RoutedEventArgs e)
 		{
 			_isLoaded = true;
@@ -129,6 +175,8 @@ namespace Coding4Fun.Toolkit.Controls
 		void ChangeImageTimerTick(object sender, EventArgs e)
 #endif
 		{
+			Debug.WriteLine(DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
+
 			if(_isLoaded)
 		        CycleImage();
         }
@@ -220,8 +268,6 @@ namespace Coding4Fun.Toolkit.Controls
             {
                 _availableSpotsOnGrid.Remove(index);
             }
-
-			Debug.WriteLine(_availableSpotsOnGrid.Count);
         }
 
         private bool IsValidLargeTilePosition(int index)
@@ -261,9 +307,7 @@ namespace Coding4Fun.Toolkit.Controls
 					_availableSpotsOnGrid.Remove(_largeImageIndex);
 				}
 			}
-
-			Debug.WriteLine(_imageTileLayoutState);
-			Debug.WriteLine(_availableSpotsOnGrid.Count);
+			
 
 			if (currentTimerState)
 				_changeImageTimer.Start();
@@ -420,25 +464,30 @@ namespace Coding4Fun.Toolkit.Controls
     		{
     			var img = items[i];
     			
-    			if (img == null)
-    				continue;
-
-    			var bitmapImage = img.Source as BitmapImage;
-
-    			if (bitmapImage != null)
-    			{
-    				var imgSource = bitmapImage.UriSource;
-					_imagesBeingShown.Remove(imgSource);
-
-					bitmapImage.UriSource = null;	
-    			}
-
-				img.Source = null;
+    			ForceImageCleanup(img);
     			_imageContainer.Children.Remove(img);
     		}
     	}
 
-    	private Uri GetRandomImageUri(int index)
+		private void ForceImageCleanup(Image img)
+		{
+			if (img == null)
+				return;
+
+			var bitmapImage = img.Source as BitmapImage;
+
+			if (bitmapImage != null)
+			{
+				var imgSource = bitmapImage.UriSource;
+				_imagesBeingShown.Remove(imgSource);
+
+				bitmapImage.UriSource = null;
+			}
+
+			img.Source = null;
+		}
+
+		private Uri GetRandomImageUri(int index)
         {
         	Uri imgUri;
 
@@ -774,15 +823,5 @@ namespace Coding4Fun.Toolkit.Controls
 			_availableSpotsOnGrid.Remove(index);
 		}
 		#endregion
-
-		public void Dispose()
-		{
-			_changeImageTimer.Stop();
-		}
-
-		void FrameNavigated(object sender, NavigationEventArgs e)
-		{
-			Dispose();
-		}
 	}
 }

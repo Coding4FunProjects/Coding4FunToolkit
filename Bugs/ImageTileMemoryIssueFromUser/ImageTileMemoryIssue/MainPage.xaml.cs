@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Coding4Fun.Toolkit.Controls;
+
 using Microsoft.Phone.Controls;
 
 namespace ImageTileMemoryIssue
@@ -45,8 +45,8 @@ namespace ImageTileMemoryIssue
 		}
 		private void CreateNewAvatars()
 		{
-			
 			_items.Clear();
+
 			for (int j = 0; j < 1; j++)
 			{
 				var item = new Item();
@@ -67,7 +67,8 @@ namespace ImageTileMemoryIssue
 		void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
 			TimerTick(null, null);
-			_timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 10) };
+
+			_timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 5) };
 			_timer.Tick += TimerTick;
 			_timer.Start();
 		}
