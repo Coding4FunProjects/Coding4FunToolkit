@@ -3,8 +3,6 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
-using Windows.Storage.Streams;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Coding4Fun.Toolkit.Storage
 {
@@ -51,14 +49,23 @@ namespace Coding4Fun.Toolkit.Storage
 		{
 //			Task.Run(async () =>
 //				{
-					using (var stream = await PlatformFileAccess.GetSaveFileStream(filePath))
+			using (var outputStream = await PlatformFileAccess.GetSaveFileStream(filePath))
+			{
+				using (var stream = outputStream.AsStreamForWrite())
+				{
+					using (var writer = (useBinary ? XmlDictionaryWriter.CreateBinaryWriter(stream) : XmlWriter.Create(stream)))
 					{
 						var serializer = new DataContractSerializer(typeof (T),
-						                                            new DataContractSerializerSettings() {PreserveObjectReferences = true});
-						serializer.WriteObject(stream.AsStreamForWrite(), objectToSave);
+						                                            new DataContractSerializerSettings()
+							                                            {
+								                                            PreserveObjectReferences = true
+							                                            });
+						serializer.WriteObject(writer, objectToSave);
 
 						await stream.FlushAsync();
 					}
+				}
+			}
 //				}).Wait();
 		}
     }

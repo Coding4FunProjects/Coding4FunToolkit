@@ -29,13 +29,13 @@ namespace Coding4Fun.Toolkit.Controls
 	public class ImageTile : ButtonBase, IDisposable
 	{
 		DispatcherTimer _changeImageTimer = new DispatcherTimer();
-		readonly Random _rand = new Random();
+		static readonly Random RandomIndexer = new Random();
 
-		readonly Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
+		Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
 
-		readonly List<Uri> _imagesBeingShown = new List<Uri>();
-		readonly List<int> _availableSpotsOnGrid = new List<int>();
-		readonly List<ImageTileState> _animationTracking = new List<ImageTileState>();
+		List<Uri> _imagesBeingShown = new List<Uri>();
+		List<int> _availableSpotsOnGrid = new List<int>();
+		List<ImageTileState> _animationTracking = new List<ImageTileState>();
 
 		private int _largeImageIndex = -1;
 		private bool _createAnimation = true;
@@ -68,6 +68,13 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public void Dispose()
 		{
+			_isLoaded = false;
+
+			if (_changeImageTimer != null)
+				_changeImageTimer.Stop();
+
+			_changeImageTimer = null;
+
 			if (_imageContainer != null)
 			{
 				var items = _imageContainer.GetLogicalChildrenByType<Image>(false).ToArray();
@@ -92,10 +99,10 @@ namespace Coding4Fun.Toolkit.Controls
 			_availableSpotsOnGrid.Clear();
 			_animationTracking.Clear();
 
-			if (_changeImageTimer != null)
-				_changeImageTimer.Stop();
-
-			_changeImageTimer = null;
+			_imageCurrentLocation = null;
+			_imagesBeingShown = null;
+			_availableSpotsOnGrid = null;
+			_animationTracking = null;		
 		}
 		#endregion
 		
@@ -242,7 +249,7 @@ namespace Coding4Fun.Toolkit.Controls
 
                 var largeTileSpotCandidates = _availableSpotsOnGrid.Where(IsValidLargeTilePosition).ToList();
                 var selectionSet = isLargeImage ? largeTileSpotCandidates : _availableSpotsOnGrid;
-                var location = _rand.Next(0, selectionSet.Count);
+                var location = RandomIndexer.Next(0, selectionSet.Count);
 
                 index = selectionSet[location];
                 GetRowAndColumnForIndex(index, out row, out col);
@@ -478,6 +485,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 			if (bitmapImage != null)
 			{
+				CleanupImageEvents(bitmapImage);
+
 				var imgSource = bitmapImage.UriSource;
 				_imagesBeingShown.Remove(imgSource);
 
@@ -497,7 +506,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			do
 			{
-				imgUri = ItemsSource[_rand.Next(imageSourceCount)];
+				imgUri = ItemsSource[RandomIndexer.Next(imageSourceCount)];
 				maxLoopCounter++;
 			}
 			while (AllowRandomImageFetchToContinue(

@@ -47,7 +47,7 @@ namespace ImageTileMemoryIssue
 		{
 			_items.Clear();
 
-			for (int j = 0; j < 1; j++)
+			for (int j = 0; j < 20; j++)
 			{
 				var item = new Item();
 				var items = new List<Uri>();
