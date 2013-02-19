@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 using Coding4Fun.Toolkit.Controls.Common;
@@ -182,8 +181,6 @@ namespace Coding4Fun.Toolkit.Controls
 		void ChangeImageTimerTick(object sender, EventArgs e)
 #endif
 		{
-			Debug.WriteLine(DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
-
 			if(_isLoaded)
 		        CycleImage();
         }
