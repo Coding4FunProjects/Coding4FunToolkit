@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class ToastPrompt : PopUp<string, PopUpResult>
+    public class ToastPrompt : PopUp<string, PopUpResult>, IDisposable
     {
         protected Image ToastImage;
         private const string ToastImageName = "ToastImage";
@@ -42,6 +42,7 @@ namespace Coding4Fun.Toolkit.Controls
 		void ToastPromptManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
 		{
 			_translate.X += e.DeltaManipulation.Translation.X;
+
 			if (_translate.X < 0)
 				_translate.X = 0;
 		}
@@ -115,9 +116,16 @@ namespace Coding4Fun.Toolkit.Controls
         public override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
         {
             PauseTimer();
-        
+	        Dispose();
+
             base.OnCompleted(result);
         }
+
+		public void Dispose()
+		{
+			if (_timer != null)
+				_timer.Dispose();
+		}
 
         public int MillisecondsUntilHidden
         {
