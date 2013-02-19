@@ -47,7 +47,7 @@ namespace ImageTileMemoryIssue
 		{
 			_items.Clear();
 
-			for (int j = 0; j < 20; j++)
+			for (int j = 0; j < 50; j++)
 			{
 				var item = new Item();
 				var items = new List<Uri>();
@@ -68,7 +68,7 @@ namespace ImageTileMemoryIssue
 		{
 			TimerTick(null, null);
 
-			_timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 5) };
+			_timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 1) };
 			_timer.Tick += TimerTick;
 			_timer.Start();
 		}

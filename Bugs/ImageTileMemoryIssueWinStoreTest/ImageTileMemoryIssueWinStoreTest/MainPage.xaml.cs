@@ -53,7 +53,7 @@ namespace ImageTileMemoryIssueWinStoreTest
 				_items = new ObservableCollection<Item>();
 
 			_items.Clear();
-			for (int j = 0; j < 10; j++)
+			for (int j = 0; j < 50; j++)
 			{
 				var item = new Item();
 				var items = new List<Uri>();

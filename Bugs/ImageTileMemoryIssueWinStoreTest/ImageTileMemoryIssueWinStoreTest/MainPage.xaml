@@ -13,7 +13,7 @@
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel>
-						<Coding4Fun:ImageTile ImageCycleInterval="250"  ItemsSource="{Binding Avatars}"/>
+						<Coding4Fun:ImageTile ImageCycleInterval="50"  ItemsSource="{Binding Avatars}"/>
 					</StackPanel>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
