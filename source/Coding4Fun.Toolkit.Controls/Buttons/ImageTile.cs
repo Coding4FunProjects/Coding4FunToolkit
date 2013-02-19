@@ -39,6 +39,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private int _largeImageIndex = -1;
 		private bool _createAnimation = true;
+		private bool _isLoaded;
 
 		ImageTileLayoutStates _imageTileLayoutState = ImageTileLayoutStates.Unknown;
 
@@ -49,6 +50,29 @@ namespace Coding4Fun.Toolkit.Controls
         public ImageTile()
 		{
             DefaultStyleKey = typeof(ImageTile);
+			Loaded += ImageTileLoaded;
+		}
+
+		void ImageTileLoaded(object sender, RoutedEventArgs e)
+		{
+			_isLoaded = true;
+
+			if (DevelopmentHelpers.IsDesignMode)
+				return;
+
+#if WINDOWS_STORE
+			var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+			var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+			if (rootFrame == null)
+				return;
+
+			rootFrame.Navigated -= FrameNavigated;
+			rootFrame.Navigated += FrameNavigated;
+
+			FinishLoadAndTemplateApply();
 		}
 
 #if WINDOWS_STORE
@@ -56,10 +80,20 @@ namespace Coding4Fun.Toolkit.Controls
 #elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
 #endif
-        {
-            base.OnApplyTemplate();
+		{
+			base.OnApplyTemplate();
 
-            _imageContainer = (Grid)GetTemplateChild("ImageContainer");
+			_imageContainer = (Grid) GetTemplateChild("ImageContainer");
+
+			
+
+			FinishLoadAndTemplateApply();
+		}
+
+		private void FinishLoadAndTemplateApply()
+		{
+			if (!_isLoaded)
+				return;
 
 			GridSizeChanged();
 			ResetGridStateManagement();
@@ -75,24 +109,16 @@ namespace Coding4Fun.Toolkit.Controls
 						CycleImage(i, j);
 					}
 				}
-
-#if WINDOWS_STORE
-				var rootFrame = Window.Current.Content as Frame;
-#elif WINDOWS_PHONE
-				var rootFrame = Application.Current.RootVisual as Frame;
-#endif
-
-				if (rootFrame != null)
-					rootFrame.Navigated += FrameNavigated;
 			}
 
-	        _createAnimation = true;
+			_createAnimation = true;
+
+			_changeImageTimer.Tick -= ChangeImageTimerTick;
+			_changeImageTimer.Tick += ChangeImageTimerTick;
 
 			ImageCycleIntervalChanged();
 			IsFrozenPropertyChanged();
-
-			_changeImageTimer.Tick += ChangeImageTimerTick;
-        }
+		}
 
 		private int CalculateIndex(int row, int col)
 		{
@@ -108,19 +134,21 @@ namespace Coding4Fun.Toolkit.Controls
 	        CycleImage();
         }
 
-	    public void CycleImage(int row = -1, int col = -1)
-	    {
-		    if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
-			    return;
+		public void CycleImage(int row = -1, int col = -1)
+		{
+			if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
+				return;
 
-		    int index;
+			int index;
 			bool isLargeImage;
 
-		    CalculateNextValidItem(out index, ref row, ref col, out isLargeImage);
+			CalculateNextValidItem(out index, ref row, ref col, out isLargeImage);
 
-			var img = CreateImage(row, col, index, isLargeImage);
+			var img = CreateImageControl(row, col, isLargeImage);
 
 			_imageContainer.Children.Add(img);
+
+			SetImageSource(img, index, (int)ActualWidth);
 
 			if (_createAnimation && AnimationType != ImageTileAnimationTypes.None)
 			{
@@ -135,21 +163,24 @@ namespace Coding4Fun.Toolkit.Controls
 						break;
 					case ImageTileAnimationTypes.HorizontalExpand:
 						img.Projection = new PlaneProjection();
-						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360, AnimationDuration);
+						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360,
+						                                     AnimationDuration);
 						break;
 					case ImageTileAnimationTypes.VerticalExpand:
 						img.Projection = new PlaneProjection();
-						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360, AnimationDuration);
+						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360,
+						                                     AnimationDuration);
 						break;
 				}
 
 				sb.Completed += AnimationCompleted;
 				sb.Begin();
 			}
-	    }
+
+		}
 
 
-        private void CalculateNextValidItem(out int index, ref int row, ref int col, out bool isLargeImage)
+		private void CalculateNextValidItem(out int index, ref int row, ref int col, out bool isLargeImage)
         {
             isLargeImage = false;
 
@@ -259,9 +290,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 		}
 
-    	private Image CreateImage(int row, int col, int index, bool isLargeImage)
+    	private Image CreateImageControl(int row, int col, bool isLargeImage)
     	{
-            var imgUri = GetRandomImageUri(index);
 			var img = new Image
                             {
                                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -269,7 +299,6 @@ namespace Coding4Fun.Toolkit.Controls
                                 Stretch = Stretch.UniformToFill,
                                 Name = Guid.NewGuid().ToString(),
 								UseLayoutRounding = false,
-								//Opacity = .5
                             };
 
             img.SetValue(Grid.ColumnProperty, col);
@@ -277,16 +306,59 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (isLargeImage)
             {
-                //System.Diagnostics.Debug.WriteLine("Large Tile");
                 img.SetValue(Grid.ColumnSpanProperty, LargeTileColumns);
                 img.SetValue(Grid.RowSpanProperty, LargeTileRows);
             }
 
-            img.Source = GetImage(imgUri);
             return img;
     	}
 
-    	private void TrackAnimationForImageRemoval(int row, int col, Storyboard sb, bool forceLargeImageCleanup)
+		private void SetImageSource(Image img, int index, int imgWidth)
+		{
+			var imgUri = GetRandomImageUri(index);
+			img.Source = GetImage(imgUri, imgWidth);
+		}
+
+		private BitmapImage GetImage(Uri file, int imgWidth)
+		{
+			var img = new BitmapImage(file)
+			{
+#if (!WP7)
+				DecodePixelWidth = imgWidth
+#endif
+			};
+
+			img.ImageOpened += ImageOpened;
+			img.ImageFailed += ImageLoadFail;
+
+			return img;
+		}
+
+		private void ImageOpened(object sender, RoutedEventArgs e)
+		{
+			CleanupImageEvents(sender);
+		}
+
+		private void ImageLoadFail(object sender, ExceptionRoutedEventArgs e)
+		{
+			CleanupImageEvents(sender);
+
+			if (ImageFailed != null)
+				ImageFailed.Invoke(sender, e);
+		}
+
+		private void CleanupImageEvents(object sender)
+		{
+			var img = sender as BitmapImage;
+
+			if (img == null)
+				return;
+
+			img.ImageOpened -= ImageOpened;
+			img.ImageFailed -= ImageLoadFail;
+		}
+
+		private void TrackAnimationForImageRemoval(int row, int col, Storyboard sb, bool forceLargeImageCleanup)
     	{
     		var tileState = new ImageTileState 
 			{
@@ -307,7 +379,12 @@ namespace Coding4Fun.Toolkit.Controls
         {
             var itemStoryboard = sender as Storyboard;
 
-            var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
+			if (itemStoryboard == null) 
+				return;
+
+			itemStoryboard.Completed -= AnimationCompleted;
+
+			var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
 			if (result.ForceLargeImageCleanup)
 			{
@@ -323,9 +400,9 @@ namespace Coding4Fun.Toolkit.Controls
 				}
 			}
 
-	        RemoveOldImagesFromGrid(result.Row, result.Column);
+			RemoveOldImagesFromGrid(result.Row, result.Column);
 
-	        _animationTracking.Remove(result);
+			_animationTracking.Remove(result);
         }
 
     	private void RemoveOldImagesFromGrid(int row, int col, bool forceRemoval = false)
@@ -351,8 +428,11 @@ namespace Coding4Fun.Toolkit.Controls
     			{
     				var imgSource = bitmapImage.UriSource;
 					_imagesBeingShown.Remove(imgSource);
+
+					bitmapImage.UriSource = null;	
     			}
 
+				img.Source = null;
     			_imageContainer.Children.Remove(img);
     		}
     	}
@@ -423,20 +503,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 			// finally, if there is that image on the board ...
 			return containsImageAtSlot;
-		}
-
-		private BitmapImage GetImage(Uri file)
-        {
-	        var img = new BitmapImage(file);
-			img.ImageFailed += ImageLoadFail;
-
-            return img;
-        }
-
-		void ImageLoadFail(object sender, ExceptionRoutedEventArgs e)
-		{
-			if (ImageFailed != null)
-				ImageFailed.Invoke(sender, e);
 		}
 
 		#region dependency properties
