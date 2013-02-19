@@ -48,7 +48,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="Listbox">
+            <ListBox x:Name="data">
                 <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

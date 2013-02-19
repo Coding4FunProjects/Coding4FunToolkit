@@ -85,8 +85,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 			_imageContainer = (Grid) GetTemplateChild("ImageContainer");
 
-			
-
 			FinishLoadAndTemplateApply();
 		}
 
@@ -94,6 +92,9 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			if (!_isLoaded)
 				return;
+			
+			_changeImageTimer.Tick -= ChangeImageTimerTick;
+			_changeImageTimer.Tick += ChangeImageTimerTick;
 
 			GridSizeChanged();
 			ResetGridStateManagement();
@@ -113,9 +114,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 			_createAnimation = true;
 
-			_changeImageTimer.Tick -= ChangeImageTimerTick;
-			_changeImageTimer.Tick += ChangeImageTimerTick;
-
 			ImageCycleIntervalChanged();
 			IsFrozenPropertyChanged();
 		}
@@ -131,7 +129,8 @@ namespace Coding4Fun.Toolkit.Controls
 		void ChangeImageTimerTick(object sender, EventArgs e)
 #endif
 		{
-	        CycleImage();
+			if(_isLoaded)
+		        CycleImage();
         }
 
 		public void CycleImage(int row = -1, int col = -1)
@@ -383,7 +382,7 @@ namespace Coding4Fun.Toolkit.Controls
 				return;
 
 			itemStoryboard.Completed -= AnimationCompleted;
-
+			
 			var result = _animationTracking.FirstOrDefault(x => x.Storyboard == itemStoryboard);
 
 			if (result.ForceLargeImageCleanup)
@@ -403,22 +402,24 @@ namespace Coding4Fun.Toolkit.Controls
 			RemoveOldImagesFromGrid(result.Row, result.Column);
 
 			_animationTracking.Remove(result);
+
+			result.Storyboard = null;
         }
 
     	private void RemoveOldImagesFromGrid(int row, int col, bool forceRemoval = false)
     	{
     		var items =
-    			_imageContainer.Children.Where(
+    			_imageContainer.GetLogicalChildrenByType<Image>(false).Where(
     				x => (int) x.GetValue(Grid.RowProperty) == row
-						&& (int) x.GetValue(Grid.ColumnProperty) == col).
-    				ToArray();
-
+    				     && (int) x.GetValue(Grid.ColumnProperty) == col).ToArray();
+    		
 			var offset = forceRemoval ? 0 : 1;
+    		var count = items.Count();
 
-			for (int i = 0; i < items.Length - offset; i++)
+			for (var i = 0; i < count - offset; i++)
     		{
-    			var img = items[i] as Image;
-
+    			var img = items[i];
+    			
     			if (img == null)
     				continue;
 
@@ -559,7 +560,7 @@ namespace Coding4Fun.Toolkit.Controls
         }
 		public static readonly DependencyProperty AnimationTypesProperty =
 			DependencyProperty.Register("AnimationType", typeof(ImageTileAnimationTypes),
-			typeof(ImageTile), new PropertyMetadata(null));
+			typeof(ImageTile), new PropertyMetadata(ImageTileAnimationTypes.Fade));
 
         public bool IsFrozen
         {

@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
-using System.Windows.Threading;
-using Coding4Fun.Toolkit.Controls;
-using Microsoft.Phone.Controls;
 
-namespace ImageTileMemoryIssue
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
+namespace ImageTileMemoryIssueWinStoreTest
 {
-	public partial class MainPage : PhoneApplicationPage
-	{
-		private readonly string[] _flickrImages = new[]
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage : Page
+    {
+        
+        private readonly string[] _flickrImages = new[]
 			{
 				"http://farm8.staticflickr.com/7210/6948063601_9c06c977b7_k_d.jpg",
 				"http://farm3.staticflickr.com/2762/4445148236_16ef33835e_b_d.jpg",
@@ -34,20 +39,21 @@ namespace ImageTileMemoryIssue
 		{
 			InitializeComponent();
 
-			Loaded += MainPage_Loaded;
-			data.ItemsSource = _items;
+			Loaded += MainPageLoaded;
 		}
 
-		private ObservableCollection<Item> _items = new ObservableCollection<Item>(); 
-		void TimerTick(object sender, EventArgs e)
+		private ObservableCollection<Item> _items; 
+		void TimerTick(object sender, object e)
 		{
 			CreateNewAvatars();
 		}
 		private void CreateNewAvatars()
 		{
-			
+			if(_items == null)
+				_items = new ObservableCollection<Item>();
+
 			_items.Clear();
-			for (int j = 0; j < 1; j++)
+			for (int j = 0; j < 10; j++)
 			{
 				var item = new Item();
 				var items = new List<Uri>();
@@ -61,46 +67,16 @@ namespace ImageTileMemoryIssue
 				_items.Add(item);
 			}
 
-			
+			data.ItemsSource = _items;
 		}
 
-		void MainPage_Loaded(object sender, RoutedEventArgs e)
+		void MainPageLoaded(object sender, RoutedEventArgs e)
 		{
 			TimerTick(null, null);
+
 			_timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 10) };
 			_timer.Tick += TimerTick;
 			_timer.Start();
 		}
-
-	//	private ImageTile _imgTile;
-	//	private void CreateAndItemSource()
-	//	{
-	//		_imgTile = new ImageTile();
-	//		_imgTile.Click += ImgTileClick;
-	//		ContentPanel.Children.Add(_imgTile);
-
-	//		var items = new List<Uri>();
-
-	//		for (int i = 0; i < _flickrImages.Count(); i++)
-	//		{
-	//			items.Add(new Uri(_flickrImages[i], UriKind.RelativeOrAbsolute));
-	//		}
-
-	//		_imgTile.ItemsSource = items;
-	//}
-
-	//	private void ImgTileClick(object sender, RoutedEventArgs e)
-	//	{
-	//		var imgTile = sender as ImageTile;
-
-	//		if (imgTile != null)
-	//		{
-	//			ContentPanel.Children.Remove(imgTile);
-
-	//			imgTile.Dispose();
-	//		}
-
-	//		CreateAndItemSource();
-	//	}
-	}
+    }
 }
