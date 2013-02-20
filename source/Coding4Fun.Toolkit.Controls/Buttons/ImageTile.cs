@@ -70,9 +70,12 @@ namespace Coding4Fun.Toolkit.Controls
 			_isLoaded = false;
 
 			if (_changeImageTimer != null)
+			{
 				_changeImageTimer.Stop();
+				_changeImageTimer.Tick -= ChangeImageTimerTick;
 
-			_changeImageTimer = null;
+				_changeImageTimer = null;
+			}
 
 			if (_imageContainer != null)
 			{
@@ -101,7 +104,7 @@ namespace Coding4Fun.Toolkit.Controls
 			_imageCurrentLocation = null;
 			_imagesBeingShown = null;
 			_availableSpotsOnGrid = null;
-			_animationTracking = null;		
+			_animationTracking = null;
 		}
 		#endregion
 		
