@@ -100,11 +100,6 @@ namespace Coding4Fun.Toolkit.Controls
 			_imagesBeingShown.Clear();
 			_availableSpotsOnGrid.Clear();
 			_animationTracking.Clear();
-
-			_imageCurrentLocation = null;
-			_imagesBeingShown = null;
-			_availableSpotsOnGrid = null;
-			_animationTracking = null;
 		}
 		#endregion
 		
