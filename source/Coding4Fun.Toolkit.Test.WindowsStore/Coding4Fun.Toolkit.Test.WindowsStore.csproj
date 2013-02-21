@@ -151,10 +151,13 @@
     <None Include="Coding4Fun.Toolkit.Test.WindowsStore_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\Icons\logo_150x150.png" />
+    <Content Include="Assets\Icons\logo_30x30.png" />
+    <Content Include="Assets\Icons\logo_50x50.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="Media\c4f_26x26.png" />
     <Content Include="Media\Coding4FunProject.png" />

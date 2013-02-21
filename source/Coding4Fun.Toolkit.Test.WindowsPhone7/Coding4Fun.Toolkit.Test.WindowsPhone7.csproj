@@ -256,8 +256,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplicationIcon.png" />
-    <Content Include="Background.png" />
+    <Content Include="Assets\Icons\logo_173x173.png" />
+    <Content Include="Assets\Icons\logo_300x300.png" />
+    <Content Include="Assets\Icons\logo_62x62.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -320,7 +321,6 @@
     <Resource Include="Media\icons\dark\head.png" />
     <Resource Include="Media\icons\light\coding4funLogo.png" />
     <Resource Include="Media\icons\light\head.png" />
-    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\MainPage.xaml">

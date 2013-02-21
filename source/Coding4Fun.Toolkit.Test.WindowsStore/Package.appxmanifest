@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Coding4Fun.Toolkit.Test.WindowsStore.App">
-      <VisualElements DisplayName="Coding4Fun.Toolkit.Test.WindowsStore" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Coding4Fun.Toolkit.Test.WindowsStore" ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="Assets\SplashScreen.png" />
+      <VisualElements DisplayName="Coding4Fun Toolkit" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Coding4Fun Toolkit is filled with useful items to help make your development life easier." ForegroundText="dark" BackgroundColor="#FFFFFF">
+        <DefaultTile ShortName="Coding4Fun Toolkit" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FFFFFF" />
       </VisualElements>
     </Application>
   </Applications>

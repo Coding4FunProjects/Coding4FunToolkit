@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{52bcf2b5-1451-4c71-8923-3551fbb6d5cd}" Title="Coding4Fun Toolkit" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Coding4Fun" Description="Sample description" Publisher="Coding4Fun">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{52bcf2b5-1451-4c71-8923-3551fbb6d5cd}" Title="Coding4Fun Toolkit" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Coding4Fun" Description="Coding4Fun Toolkit is filled with useful items to help make your development life easier." Publisher="Coding4Fun">
+    <IconPath IsRelative="true" IsResource="false">Assets\Icons\logo_62x62.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
@@ -24,9 +24,10 @@
     <Tokens>
       <PrimaryToken TokenID="Coding4Fun.Toolkit.Test.WindowsPhoneToken" TaskName="_default">
         <TemplateType5>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Icons\logo_173x173.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>Coding4Fun Toolkit</Title>
+          <Title>
+          </Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

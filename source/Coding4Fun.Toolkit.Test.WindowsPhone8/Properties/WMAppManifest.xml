@@ -5,8 +5,8 @@
     <Language code="fr" />
     <Language code="de" />
   </Languages>
-  <App xmlns="" ProductID="{e567454a-0914-4c62-a41b-d997146b9286}" Title="Coding4Fun Toolkit" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Coding4Fun" Description="Sample description" Publisher="Coding4Fun" PublisherID="{430f7dfe-0c73-4c5f-b5c1-f7027a101a49}">
-    <IconPath IsRelative="true" IsResource="false">Assets\Background.png</IconPath>
+  <App xmlns="" ProductID="{e567454a-0914-4c62-a41b-d997146b9286}" Title="Coding4Fun Toolkit" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Coding4Fun" Description="Coding4Fun Toolkit is filled with useful items to help make your development life easier." Publisher="Coding4Fun" PublisherID="{430f7dfe-0c73-4c5f-b5c1-f7027a101a49}">
+    <IconPath IsRelative="true" IsResource="false">Assets\Icons\logo_100x100.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -21,10 +21,11 @@
     <Tokens>
       <PrimaryToken TokenID="Coding4Fun.Toolkit.Test.WindowsPhoneToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Icons\logo_159x159.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Coding4Fun Toolkit</Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Icons\logo_336x336.png</BackgroundImageURI>
+          <Title>
+          </Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
