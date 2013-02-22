@@ -61,7 +61,7 @@ namespace Coding4Fun.Toolkit.Controls
 			if(DevelopmentHelpers.IsDesignMode)
 				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody); 
 			else
-				Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody));
+				Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody)).AsTask();
 				
 #elif WINDOWS_PHONE
 			//Dispatcher.BeginInvoke(() =>
