@@ -36,10 +36,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			if (!string.IsNullOrEmpty(_fileName))
 			{
 				var oldFile = await storageFolder.GetFileAsync(_fileName);
-				oldFile.DeleteAsync();
+				await oldFile.DeleteAsync();
 			}
 
-			Dispatcher.RunAsync(
+			await Dispatcher.RunAsync(
 				CoreDispatcherPriority.Normal,
 				async () =>
 					{
@@ -52,6 +52,9 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 							await RandomAccessStream.CopyAndCloseAsync(
 								buffer.GetInputStreamAt(0),
 								fileStream.GetOutputStreamAt(0));
+
+							await buffer.FlushAsync();
+							buffer.Dispose();
 						}
 
 						var stream = await storageFile.OpenAsync(FileAccessMode.Read);
@@ -88,9 +91,9 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 
 		private async void StartStopBufferReady(object sender, BufferEventArgs<InMemoryRandomAccessStream> e)
 		{
-			await Play(e.Buffer);
-
 			_micRecorder.BufferReady -= StartStopBufferReady;
+
+			await Play(e.Buffer);
 		}
 		#endregion
 
@@ -105,17 +108,17 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 
 		#endregion
 
-		private void RecordAndAutoTerminateClick(object sender, RoutedEventArgs e)
+		private async void RecordAndAutoTerminateClick(object sender, RoutedEventArgs e)
 		{
 			_micRecorder.BufferReady += StartStopBufferReady;
 
 			_micRecorder.Start(TimeSpan.FromSeconds(10));
 
-			ThreadPool.RunAsync(
-				state =>
+			await ThreadPool.RunAsync(
+				async state =>
 					{
-						Task.Delay(TimeSpan.FromSeconds(2)).Wait();
-						Dispatcher.RunAsync(CoreDispatcherPriority.Normal, _micRecorder.Stop);
+						await Task.Delay(TimeSpan.FromSeconds(2));
+						_micRecorder.Stop();
 					});
 		}
 

@@ -41,22 +41,25 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public override void Stop()
 		{
+			ShouldCallStopInTimeout = false;
+
 			Buffer = _audio.AudioData;
+	
 			base.Stop();
 		}
 
-		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout)
+		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout)
 		{
 			ThreadPool.QueueUserWorkItem(
 				state =>
 				{
 					Thread.Sleep(timeout);
 
-					if (shouldCallStopInTimeout)
+					if (ShouldCallStopInTimeout)
 						_source.Dispatcher.BeginInvoke(Stop);
 				});
 			
-			base.ExecuteStopWithTimeDelay(timeout, shouldCallStopInTimeout);
+			base.ExecuteStopWithTimeDelay(timeout);
 		}
 
 		private void InitMicrophone()

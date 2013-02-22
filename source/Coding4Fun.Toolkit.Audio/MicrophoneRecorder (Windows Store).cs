@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
@@ -10,9 +11,12 @@ namespace Coding4Fun.Toolkit.Audio
 	public class MicrophoneRecorder : Recorder<InMemoryRandomAccessStream>
 	{
 		private MediaCapture _mediaCap;
+		private Guid _currentId;
 
 		private async Task<bool> InitMicrophone()
 		{
+			_currentId = Guid.NewGuid();
+
 			if (Buffer != null)
 				Buffer.Dispose();
 
@@ -52,23 +56,32 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public async override void Stop()
 		{
-			await _mediaCap.StopRecordAsync();
+			ShouldCallStopInTimeout = false;
 
+			await _mediaCap.StopRecordAsync();
+			
 			base.Stop();
 		}
 
-		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout)
+		internal async override void ExecuteStopWithTimeDelay(TimeSpan timeout)
 		{
-			ThreadPool.RunAsync(
-					async state =>
+			await ThreadPool.RunAsync(
+				async state =>
 					{
+						var lastKnownState = _currentId;
+
 						await Task.Delay(timeout);
 
-						if (shouldCallStopInTimeout)
+						if (_currentId != lastKnownState)
+							return;
+
+						if (ShouldCallStopInTimeout)
+						{
 							Stop();
+						}
 					});
 
-			base.ExecuteStopWithTimeDelay(timeout, shouldCallStopInTimeout);
+			base.ExecuteStopWithTimeDelay(timeout);
 		}
 
 		private void Failed(MediaCapture currentCaptureObject, MediaCaptureFailedEventArgs currentFailure)

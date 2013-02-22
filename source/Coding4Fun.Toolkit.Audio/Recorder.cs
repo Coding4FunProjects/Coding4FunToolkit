@@ -9,7 +9,7 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public event EventHandler<BufferEventArgs<T>> BufferReady;
 
-		private bool _shouldCallStopInTimeout;
+		protected bool ShouldCallStopInTimeout;
 		private static bool _currentlyProcessing;
 
 		protected Recorder()
@@ -34,12 +34,12 @@ namespace Coding4Fun.Toolkit.Audio
 		public void Start(TimeSpan timeout)
 		{
 			Start();
-			_shouldCallStopInTimeout = true;
+			ShouldCallStopInTimeout = true;
 
-			ExecuteStopWithTimeDelay(timeout, _shouldCallStopInTimeout);
+			ExecuteStopWithTimeDelay(timeout);
 		}
 
-		internal virtual void ExecuteStopWithTimeDelay(TimeSpan timeout, bool shouldCallStopInTimeout) { }
+		internal virtual void ExecuteStopWithTimeDelay(TimeSpan timeout) { }
 
 		public void Start(int millisecondsTimeout)
 		{
@@ -48,7 +48,7 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public virtual void Stop()
 		{
-			_shouldCallStopInTimeout = false;
+			ShouldCallStopInTimeout = false;
 			_currentlyProcessing = false;
 
 			if (BufferReady != null)
