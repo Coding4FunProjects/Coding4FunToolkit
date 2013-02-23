@@ -128,6 +128,12 @@
     <Compile Include="Samples\Buttons\Tiles.xaml.cs">
       <DependentUpon>Tiles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleControls.xaml.cs">
+      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxControls.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxControls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
     </Compile>
@@ -332,6 +338,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\Buttons\Tiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxControls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,6 +1,14 @@
 ﻿using System;
 using System.Globalization;
+
+#if WINDOWS_STORE
+using Windows.UI;
+using Windows.UI.Xaml.Media;
+
+#elif WINDOWS_PHONE
 using System.Windows.Media;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls.Converters
 {

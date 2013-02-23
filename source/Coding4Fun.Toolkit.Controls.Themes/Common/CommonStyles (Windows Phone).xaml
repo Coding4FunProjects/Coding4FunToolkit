@@ -42,8 +42,9 @@
 
 	<SolidColorBrush x:Key="DefaultTextBoxBrush" Color="{Binding Source={StaticResource PhoneTextBoxBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
-	<SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource PhoneTextBoxReadOnlyBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBorderBrush}, Converter={StaticResource BrushToBrush}}" />
+
+	<SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
 </ResourceDictionary>

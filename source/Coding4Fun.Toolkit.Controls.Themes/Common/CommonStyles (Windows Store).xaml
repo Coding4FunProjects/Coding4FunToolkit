@@ -1,12 +1,15 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c4fConverters="using:Coding4Fun.Toolkit.Controls.Converters">
+
+	<c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
 	
 	<Style x:Key="AppBarText" TargetType="ContentControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0" />
     </Style>
-
+	
 	<!-- brushes -->
 	<SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
 	<SolidColorBrush x:Key="DefaultChromeBrush" Color="#1F1F1F" />
@@ -35,4 +38,14 @@
 
 	<Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
 	<Thickness x:Key="DefaultBorderThickness">3</Thickness>
+
+	<SolidColorBrush x:Key="DefaultTextBoxBrush" Color="{Binding Source={StaticResource TextBoxBackgroundThemeBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxForegroundBrush" Color="{Binding Source={StaticResource TextBoxForegroundThemeBrush}, Converter={StaticResource BrushToBrush}}" />
+
+	<SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource DefaultSubtleBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource DefaultChromeBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource DefaultAccentBrush}, Converter={StaticResource BrushToBrush}}" />
+
+	<!-- not supported in WinStore currently -->
+	<!--<SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />-->
 </ResourceDictionary>
