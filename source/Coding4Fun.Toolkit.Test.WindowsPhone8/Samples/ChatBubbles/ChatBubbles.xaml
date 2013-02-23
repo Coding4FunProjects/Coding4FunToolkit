@@ -5,7 +5,8 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Test.WindowsPhone.Samples.ChatBubbles" mc:Ignorable="d"
+    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Test.WindowsPhone.Samples.ChatBubbles"
+    xmlns:Controls="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls" mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -24,7 +25,18 @@
             <phone:PivotItem Header="color">
                 <local:ChatBubbleTestColor />
             </phone:PivotItem>
-        </phone:Pivot>
+			<phone:PivotItem Header="stress">
+				<Grid>
+					
+					<Controls:ChatBubble Content="testing" Opacity=".3" />
+					<Controls:ChatBubble Content="testing" Opacity=".3" IsEnabled="False" />
+					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" />
+					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" IsEnabled="False" />
+					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" />
+					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" IsEnabled="False" />
+				</Grid>
+			</phone:PivotItem>
+		</phone:Pivot>
     </Grid>
     
 </phone:PhoneApplicationPage>

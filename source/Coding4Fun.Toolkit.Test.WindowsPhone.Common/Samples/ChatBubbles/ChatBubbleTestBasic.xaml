@@ -13,8 +13,8 @@
 
     <StackPanel>
         <c4f:ChatBubble Content="testing normal" />
-
-        <c4f:ChatBubble Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"/>
+		<c4f:ChatBubble Content="testing normal w/ pad" Padding="10" />
+		<c4f:ChatBubble Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"/>
 
         <c4f:ChatBubble Margin="48, 0, 0, 0">
             <TextBlock TextWrapping="Wrap">
@@ -22,9 +22,13 @@
             </TextBlock>
         </c4f:ChatBubble>
 
-        <c4f:ChatBubble 
-			Padding="10"
+		<c4f:ChatBubble 
 			Content="testing disabled" 
+			IsEnabled="False" />
+		
+		<c4f:ChatBubble 
+			Padding="10"
+			Content="testing disabled w/ pad" 
 			IsEnabled="False" />
     </StackPanel>
 </UserControl>

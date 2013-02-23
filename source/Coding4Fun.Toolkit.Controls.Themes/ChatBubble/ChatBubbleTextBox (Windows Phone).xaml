@@ -7,10 +7,10 @@
 		<ContentControl 
 			x:Name="ContentElement" 
 			BorderThickness="0" 
-			HorizontalContentAlignment="Stretch" 
-			Margin="{StaticResource PhoneTextBoxInnerMargin}"
+			Margin="{TemplateBinding Margin}"
+			HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
 			Padding="{TemplateBinding Padding}" 
-			VerticalContentAlignment="Stretch"/>
+			VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
 	</ControlTemplate>
 
 	<Style TargetType="local:ChatBubbleTextBox">
@@ -179,7 +179,7 @@
 							Grid.Row="1"
 							Padding="{TemplateBinding Padding}"
 							BorderThickness="{TemplateBinding BorderThickness}" 
-							BorderBrush="{TemplateBinding Background}"
+							BorderBrush="{TemplateBinding BorderBrush}"
 							Background="{TemplateBinding Background}">
 							<Grid>
 								<ContentControl
@@ -205,28 +205,30 @@
 						<Border 
 							x:Name="DisabledOrReadonlyBorder" 
 							Grid.Row="1"
+							Padding="{TemplateBinding Padding}"	
 							BorderThickness="{TemplateBinding BorderThickness}" 
 							BorderBrush="{StaticResource DefaultDisabledBrush}" 
-							Padding="{TemplateBinding Padding}"	
 							Visibility="Collapsed">
 							<TextBox 
 								x:Name="DisabledOrReadonlyContent"
 								Background="Transparent"
 								Foreground="{StaticResource DefaultDisabledBrush}"
 								IsReadOnly="True"
+								HorizontalContentAlignment="Stretch"
+								VerticalContentAlignment="Stretch"
 								SelectionForeground="{TemplateBinding SelectionForeground}" 
 								SelectionBackground="{TemplateBinding SelectionBackground}"
 								TextAlignment="{TemplateBinding TextAlignment}" 
 								TextWrapping="{TemplateBinding TextWrapping}" 
 								Text="{TemplateBinding Text}" 
-								Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}"/>
+								Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}" />
 						</Border>
 
 						<Path 
 							Name="LowerRightPath"
 							Data="M0,0 L1,1 L1,0 "
 							Grid.Row="2"
-							Fill="{TemplateBinding Background}"
+							Fill="{TemplateBinding BorderBrush}"
 							Stretch="Fill"
 							Margin="12,0"
 							Height="12"
@@ -237,7 +239,7 @@
 							Name="LowerLeftPath"
 							Data="M0,0 L0,1 L1,0"
 							Grid.Row="2"
-							Fill="{TemplateBinding Background}"
+							Fill="{TemplateBinding BorderBrush}"
 							Stretch="Fill"
 							Margin="12,0"
 							Height="12"
@@ -248,7 +250,7 @@
 							Name="UpperLeftPath"
 							Data="M0,0 L1,1 L0,1 "
 							Grid.Row="0"
-							Fill="{TemplateBinding Background}"
+							Fill="{TemplateBinding BorderBrush}"
 							Stretch="Fill"
 							Margin="12,0"
 							Height="12"
@@ -259,7 +261,7 @@
 							Name="UpperRightPath"
 							Data="M0,1 L1,1 L1,0 "
 							Grid.Row="0"
-							Fill="{TemplateBinding Background}"
+							Fill="{TemplateBinding BorderBrush}"
 							Stretch="Fill"
 							Margin="12,0"
 							Height="12"
