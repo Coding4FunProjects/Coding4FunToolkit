@@ -25,8 +25,10 @@
 	<!-- Font Stuff -->
 	<sys:Double x:Key="DefaultFontSizeExtraSmall">12</sys:Double>
 	<sys:Double x:Key="DefaultFontSizeNormal">20</sys:Double>
+	<sys:Double x:Key="DefaultFontSizeMedium">22.667</sys:Double>
+	<sys:Double x:Key="DefaultFontSizeMediumLarge">25.333</sys:Double>
 	<sys:Double x:Key="DefaultFontSizeLarge">32</sys:Double>
-	
+
 	<FontFamily x:Key="FontFamilySegoeNormal">Segoe WP</FontFamily>
 	<FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
 	<FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
@@ -34,5 +36,14 @@
 	<!-- Default Sizing -->
 	<sys:Double x:Key="DefaultAppButtonSize">70</sys:Double>
 	<sys:Double x:Key="DefaultTileSize">173</sys:Double>
-	
+
+	<Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
+	<Thickness x:Key="DefaultBorderThickness">3</Thickness>
+
+	<SolidColorBrush x:Key="DefaultTextBoxBrush" Color="{Binding Source={StaticResource PhoneTextBoxBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource PhoneTextBoxReadOnlyBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
+	<SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBorderBrush}, Converter={StaticResource BrushToBrush}}" />
 </ResourceDictionary>

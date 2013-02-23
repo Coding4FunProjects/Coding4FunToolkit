@@ -155,6 +155,15 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
       <Link>Buttons\ToggleButtonBase.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubble.cs">
+      <Link>ChatBubble\ChatBubble.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleDirection.cs">
+      <Link>ChatBubble\ChatBubbleDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleTextBox.cs">
+      <Link>ChatBubble\ChatBubbleTextBox.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
       <Link>Colors\ColorBaseControl.cs</Link>
     </Compile>

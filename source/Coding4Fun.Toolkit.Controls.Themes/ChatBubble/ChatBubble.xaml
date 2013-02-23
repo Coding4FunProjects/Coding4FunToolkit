@@ -6,9 +6,9 @@
 	<Style TargetType="local:ChatBubble">
 		<Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
 		<Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}"/>
-		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource DefaultAccentBrush}"/>
-		<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+		<Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}"/>
 		<Setter Property="Padding" Value="6, 2"/>
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Template">
@@ -105,7 +105,7 @@
 							Background="{TemplateBinding Background}">
 							<ContentControl 
 								HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-								Margin="{StaticResource PhoneTextBoxInnerMargin}"
+								Margin="{StaticResource DefaultTextBoxInnerMargin}"
 								Content="{TemplateBinding Content}" 
 								FontSize="{TemplateBinding FontSize}" 
 								FontFamily="{TemplateBinding FontFamily}" />

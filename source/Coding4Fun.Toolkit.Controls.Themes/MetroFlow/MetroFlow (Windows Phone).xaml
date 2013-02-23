@@ -6,7 +6,7 @@
 	<GridLength x:Key="GridMinimized">48</GridLength>
 	
 	<Style x:Key="MetroFlowItemTextBlockStyle" TargetType="TextBlock">
-		<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
+		<Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
 		<Setter Property="Margin" Value="12, 3, 0, 3" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="VerticalAlignment" Value="Bottom" />

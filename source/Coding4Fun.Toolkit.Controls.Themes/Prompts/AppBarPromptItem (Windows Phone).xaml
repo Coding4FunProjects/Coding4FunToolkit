@@ -9,7 +9,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
 		<Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
-        <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
+		<Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
 		<Setter Property="Background"
                 Value="Transparent" />
 		<Setter Property="Padding"

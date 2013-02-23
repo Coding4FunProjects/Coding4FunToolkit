@@ -12,13 +12,23 @@
   <SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource PhoneSemitransparentBrush}, Converter={StaticResource BrushToBrush}}" />
   <sys:Double x:Key="DefaultFontSizeExtraSmall">12</sys:Double>
   <sys:Double x:Key="DefaultFontSizeNormal">20</sys:Double>
+  <sys:Double x:Key="DefaultFontSizeMedium">22.667</sys:Double>
+  <sys:Double x:Key="DefaultFontSizeMediumLarge">25.333</sys:Double>
   <sys:Double x:Key="DefaultFontSizeLarge">32</sys:Double>
   <FontFamily x:Key="FontFamilySegoeNormal">Segoe WP</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe WP Semibold</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiLight">Segoe WP SemiLight</FontFamily>
   <sys:Double x:Key="DefaultAppButtonSize">70</sys:Double>
   <sys:Double x:Key="DefaultTileSize">173</sys:Double>
-  <ControlTemplate x:Key="PhoneDisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
+  <Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
+  <Thickness x:Key="DefaultBorderThickness">3</Thickness>
+  <SolidColorBrush x:Key="DefaultTextBoxBrush" Color="{Binding Source={StaticResource PhoneTextBoxBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultTextBoxForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource PhoneTextBoxReadOnlyBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBackgroundBrush}, Converter={StaticResource BrushToBrush}}" />
+  <SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource PhoneTextBoxEditBorderBrush}, Converter={StaticResource BrushToBrush}}" />
+  <ControlTemplate x:Key="DisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
     <ContentControl x:Name="ContentElement" BorderThickness="0" Margin="{TemplateBinding Margin}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
   </ControlTemplate>
   <GridLength x:Key="GridMinimized">48</GridLength>
@@ -344,9 +354,9 @@
   <Style TargetType="local:ChatBubble">
     <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
     <Setter Property="BorderBrush" Value="{StaticResource DefaultAccentBrush}" />
-    <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
+    <Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
     <Setter Property="Padding" Value="6, 2" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="Template">
@@ -433,7 +443,7 @@
               <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border x:Name="ContentBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-              <ContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{StaticResource PhoneTextBoxInnerMargin}" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" />
+              <ContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{StaticResource DefaultTextBoxInnerMargin}" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" />
             </Border>
             <Path Name="LowerRightPath" Data="M0,0 L1,1 L1,0 " Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
             <Path Name="LowerLeftPath" Data="M0,0 L0,1 L1,0" Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
@@ -446,13 +456,13 @@
   </Style>
   <Style TargetType="local:ChatBubbleTextBox">
     <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
-    <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}" />
-    <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
+    <Setter Property="Background" Value="{StaticResource DefaultTextBoxBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultTextBoxForegroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultTextBoxBrush}" />
     <Setter Property="SelectionBackground" Value="{StaticResource DefaultAccentBrush}" />
-    <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}" />
-    <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
+    <Setter Property="SelectionForeground" Value="{StaticResource DefaultTextBoxSelectionForegroundBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
     <Setter Property="Padding" Value="6, 2" />
     <Setter Property="Template">
       <Setter.Value>
@@ -509,13 +519,13 @@
                       </DiscreteObjectKeyFrame>
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="DisabledOrReadonlyBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="DisabledOrReadonlyBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="DisabledOrReadonlyContent">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxReadOnlyBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxReadOnlyBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -524,22 +534,22 @@
                 <VisualState x:Name="Focused">
                   <Storyboard>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="EnabledBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBackgroundBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBackgroundBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="EnabledBorder">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -599,12 +609,12 @@
             </Grid.RowDefinitions>
             <Border x:Name="EnabledBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
               <Grid>
-                <ContentControl x:Name="HintContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource PhoneTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{StaticResource PhoneTextBoxReadOnlyBrush}" Content="{TemplateBinding Hint}" />
-                <ContentControl x:Name="ContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource PhoneTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+                <ContentControl x:Name="HintContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource DefaultTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{StaticResource DefaultTextBoxReadOnlyBrush}" Content="{TemplateBinding Hint}" />
+                <ContentControl x:Name="ContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource DefaultTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
               </Grid>
             </Border>
             <Border x:Name="DisabledOrReadonlyBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource DefaultDisabledBrush}" Visibility="Collapsed">
-              <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource DefaultDisabledBrush}" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionForeground="{TemplateBinding SelectionForeground}" SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource PhoneDisabledChatBubbleTextBoxTemplate}" />
+              <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource DefaultDisabledBrush}" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionForeground="{TemplateBinding SelectionForeground}" SelectionBackground="{TemplateBinding SelectionBackground}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource DisabledChatBubbleTextBoxTemplate}" />
             </Border>
             <Path Name="LowerRightPath" Data="M0,0 L1,1 L1,0 " Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
             <Path Name="LowerLeftPath" Data="M0,0 L0,1 L1,0" Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
@@ -780,7 +790,7 @@
     </Setter>
   </Style>
   <Style x:Key="MetroFlowItemTextBlockStyle" TargetType="TextBlock">
-    <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
     <Setter Property="Margin" Value="12, 3, 0, 3" />
     <Setter Property="HorizontalAlignment" Value="Left" />
     <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -981,7 +991,7 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Top" />
     <Setter Property="BorderBrush" Value="{StaticResource DefaultForegroundBrush}" />
-    <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}" />
+    <Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="Template">

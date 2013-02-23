@@ -1,5 +1,12 @@
-﻿using System.Windows;
+﻿#if WINDOWS_STORE
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+
+#elif WINDOWS_PHONE
+using System.Windows;
 using System.Windows.Controls;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -47,7 +54,11 @@ namespace Coding4Fun.Toolkit.Controls
 		#endregion
 
 		#region overrides
+#if WINDOWS_STORE
+		protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
+#endif
 		{
 			base.OnApplyTemplate();
 

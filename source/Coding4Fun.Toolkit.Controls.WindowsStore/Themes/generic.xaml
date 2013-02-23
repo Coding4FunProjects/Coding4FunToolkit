@@ -15,12 +15,19 @@
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
+  <x:Double x:Key="DefaultFontSizeMedium">22.667</x:Double>
+  <x:Double x:Key="DefaultFontSizeMediumLarge">25.333</x:Double>
   <x:Double x:Key="DefaultFontSizeLarge">32</x:Double>
   <FontFamily x:Key="FontFamilySegoeNormal">Segoe UI</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiBold">Segoe UI Semibold</FontFamily>
   <FontFamily x:Key="FontFamilySegoeSemiLight">Segoe UI SemiLight</FontFamily>
   <x:Double x:Key="DefaultAppButtonSize">72</x:Double>
   <x:Double x:Key="DefaultTileSize">173</x:Double>
+  <Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
+  <Thickness x:Key="DefaultBorderThickness">3</Thickness>
+  <ControlTemplate x:Key="DisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
+    <ContentControl x:Name="ContentElement" BorderThickness="0" Margin="{TemplateBinding Margin}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+  </ControlTemplate>
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="Margin" Value="0" />
@@ -335,6 +342,278 @@
           <Grid>
             <Rectangle Fill="{TemplateBinding Background}" RadiusX="14" RadiusY="14" />
             <ContentControl Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:ChatBubble">
+    <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
+    <Setter Property="Padding" Value="6, 2" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:ChatBubble">
+          <Grid Background="Transparent">
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="MouseOver" />
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="ChatBubbleDirectionStates">
+                <VisualState x:Name="UpperRight">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="UpperLeft">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="LowerRight">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="LowerLeft">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border x:Name="ContentBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+              <ContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{StaticResource DefaultTextBoxInnerMargin}" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" />
+            </Border>
+            <Path Name="LowerRightPath" Data="M0,0 L1,1 L1,0 " Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
+            <Path Name="LowerLeftPath" Data="M0,0 L0,1 L1,0" Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
+            <Path Name="UpperLeftPath" Data="M0,0 L1,1 L0,1 " Grid.Row="0" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
+            <Path Name="UpperRightPath" Data="M0,1 L1,1 L1,0 " Grid.Row="0" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:ChatBubbleTextBox">
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
+    <Setter Property="Background" Value="{StaticResource DefaultTextBoxBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource DefaultTextBoxForegroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource DefaultTextBoxBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}" />
+    <Setter Property="Padding" Value="6, 2" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:ChatBubbleTextBox">
+          <Grid Background="Transparent" Margin="{TemplateBinding Margin}">
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="MouseOver" />
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ReadOnly">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EnabledBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="DisabledOrReadonlyBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="DisabledOrReadonlyContent">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxReadOnlyBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="FocusStates">
+                <VisualState x:Name="Focused">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="EnabledBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBackgroundBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="EnabledBorder">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LowerLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="UpperLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultTextBoxEditBorderBrush}" />
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unfocused" />
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="ChatBubbleDirectionStates">
+                <VisualState x:Name="UpperRight">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="UpperLeft">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UpperLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="LowerRight">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerRightPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="LowerLeft">
+                  <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LowerLeftPath">
+                      <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                          <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                      </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border x:Name="EnabledBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+              <Grid>
+                <ContentControl x:Name="HintContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource DefaultTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="{StaticResource DefaultTextBoxReadOnlyBrush}" Content="{TemplateBinding Hint}" />
+                <ContentControl x:Name="ContentElement" BorderThickness="0" Background="Transparent" Margin="{StaticResource DefaultTextBoxInnerMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+              </Grid>
+            </Border>
+            <Border x:Name="DisabledOrReadonlyBorder" Grid.Row="1" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource DefaultDisabledBrush}" Visibility="Collapsed">
+              <TextBox x:Name="DisabledOrReadonlyContent" Background="Transparent" Foreground="{StaticResource DefaultDisabledBrush}" IsReadOnly="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" Template="{StaticResource DisabledChatBubbleTextBoxTemplate}" />
+            </Border>
+            <Path Name="LowerRightPath" Data="M0,0 L1,1 L1,0 " Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
+            <Path Name="LowerLeftPath" Data="M0,0 L0,1 L1,0" Grid.Row="2" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
+            <Path Name="UpperLeftPath" Data="M0,0 L1,1 L0,1 " Grid.Row="0" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Left" />
+            <Path Name="UpperRightPath" Data="M0,1 L1,1 L1,0 " Grid.Row="0" Fill="{TemplateBinding BorderBrush}" Stretch="Fill" Margin="12,0" Height="12" Width="18" Visibility="Collapsed" HorizontalAlignment="Right" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>

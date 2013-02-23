@@ -59,8 +59,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Colors", "Colors", "{32C332
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatBubble", "ChatBubble", "{8358140C-E6AD-453E-86C0-348A89A6B786}"
 	ProjectSection(SolutionItems) = preProject
-		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble.xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubble.xaml
 		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Store).xaml = Coding4Fun.Toolkit.Controls.Themes\ChatBubble\ChatBubbleTextBox (Windows Store).xaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagnostic", "Diagnostic", "{A7856CB0-5DBA-4EED-AA81-2C2AC6CE44D5}"
