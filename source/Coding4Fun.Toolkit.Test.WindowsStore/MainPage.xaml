@@ -6,8 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:coding4Fun="using:Coding4Fun.Toolkit.Controls"
     xmlns:common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common"
-	coding4Fun:TiltEffect.IsTiltEnabled="True"
+	
 	mc:Ignorable="d">
+	<!--coding4Fun:TiltEffect.IsTiltEnabled="True"-->
 	<common:LayoutAwarePage.Resources>
 		<Style x:Key="RemoveMouseOverlayStyle" TargetType="GridViewItem">
 			<Setter Property="Background" Value="Transparent"/>
@@ -59,6 +60,15 @@
 				Tapped="ButtonControlsTapped">
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Bu
+				</TextBlock>
+			</coding4Fun:Tile>
+
+			<coding4Fun:Tile 
+				Label="ChatBubbles"
+				Style="{StaticResource TileStyle}" 
+				Tapped="ChatBubbleTapped">
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ch
 				</TextBlock>
 			</coding4Fun:Tile>
 			

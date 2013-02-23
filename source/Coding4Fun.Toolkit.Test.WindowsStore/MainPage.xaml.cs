@@ -33,5 +33,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
 		{
 			Frame.Navigate(typeof(Samples.Storage));
 		}
+
+		private void ChatBubbleTapped(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(ChatBubbleControls));
+		}
     }
 }

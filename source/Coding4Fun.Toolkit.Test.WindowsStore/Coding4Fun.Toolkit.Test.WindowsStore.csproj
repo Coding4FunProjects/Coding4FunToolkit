@@ -128,11 +128,11 @@
     <Compile Include="Samples\Buttons\Tiles.xaml.cs">
       <DependentUpon>Tiles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\ChatBubbles\ChatBubbleControls.xaml.cs">
-      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTests.xaml.cs">
+      <DependentUpon>ChatBubbleTests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxControls.xaml.cs">
-      <DependentUpon>ChatBubbleTextBoxControls.xaml</DependentUpon>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxTests.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxTests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
@@ -145,6 +145,9 @@
     </Compile>
     <Compile Include="Samples\Audio.xaml.cs">
       <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbleControls.xaml.cs">
+      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
@@ -341,11 +344,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Samples\ChatBubbles\ChatBubbleControls.xaml">
+    <Page Include="Samples\ChatBubbles\ChatBubbleTests.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxControls.xaml">
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxTests.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -362,6 +365,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\Audio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ChatBubbleControls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
