@@ -1,4 +1,6 @@
-﻿namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.ChatBubbles
+﻿using Windows.UI.Xaml;
+
+namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.ChatBubbles
 {
 	/// <summary>
 	/// A basic page that provides characteristics common to most applications.
@@ -8,6 +10,11 @@
 		public ChatBubbleTextBoxTests()
 		{
 			InitializeComponent();
+		}
+
+		private void AddTextClicked(object sender, RoutedEventArgs e)
+		{
+			DynamicTextHintTest.Text += "c4f ";
 		}
 	}
 }

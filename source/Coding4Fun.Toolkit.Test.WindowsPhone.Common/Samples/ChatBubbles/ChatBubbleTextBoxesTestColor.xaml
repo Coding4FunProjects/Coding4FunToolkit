@@ -11,10 +11,11 @@
     d:DesignHeight="480" d:DesignWidth="480">
 
     <StackPanel>
-        <c4f:ChatBubbleTextBox Background="{StaticResource PhoneAccentBrush}" Text="accent background" />
-        <c4f:ChatBubbleTextBox Foreground="{StaticResource PhoneAccentBrush}" Text="accent foreground" />
+		<c4f:ChatBubbleTextBox Background="Aqua" Text="Aqua Background" />
+		<c4f:ChatBubbleTextBox Foreground="Aqua" Text="Aqua Foreground" />
+		<c4f:ChatBubbleTextBox BorderBrush="Aqua" Text="Aqua BorderBrush" />
 
-        <c4f:ChatBubbleTextBox SelectionBackground="Firebrick" Text="firebrick selected background" />
-        <c4f:ChatBubbleTextBox SelectionForeground="Firebrick" Text="firebrick selected foreground" />
+		<c4f:ChatBubbleTextBox SelectionBackground="Aqua" Text="Aqua selected background" />
+		<c4f:ChatBubbleTextBox SelectionForeground="Aqua" Text="Aqua selected foreground" />
     </StackPanel>
 </UserControl>

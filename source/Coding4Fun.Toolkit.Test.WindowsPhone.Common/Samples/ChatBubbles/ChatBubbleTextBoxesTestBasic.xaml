@@ -33,7 +33,6 @@
 						TextWrapping="Wrap" />
 
         <c4f:ChatBubbleTextBox 
-						
 						Text="testing disabled" 
 						IsEnabled="False" />
         <TextBlock>System TextBoxes</TextBlock>

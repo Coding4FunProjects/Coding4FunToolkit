@@ -18,7 +18,9 @@
             Margin="116, 0,116,46">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
+				<ColumnDefinition Width="10" />
 				<ColumnDefinition />
+				<ColumnDefinition Width="10" />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<StackPanel>
@@ -41,7 +43,7 @@
 					Content="testing disabled w/ pad" 
 					IsEnabled="False" />
 			</StackPanel>
-			<Grid Grid.Column="1">
+			<Grid Grid.Column="2">
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition Height="12" />
@@ -76,7 +78,7 @@
 							ChatBubbleDirection="LowerLeft" />
 			</Grid>
 
-			<StackPanel Grid.Column="2">
+			<StackPanel Grid.Column="4">
 				<c4f:ChatBubble Background="Aqua" Content="Aqua Background" />
 				<c4f:ChatBubble Foreground="Aqua" Content="Aqua Foreground" />
 				<c4f:ChatBubble BorderBrush="Aqua" Content="Aqua BorderBrush" />

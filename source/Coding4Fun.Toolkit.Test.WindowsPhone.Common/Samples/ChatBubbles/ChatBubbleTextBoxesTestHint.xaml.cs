@@ -9,7 +9,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.ChatBubbles
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void AddTextClicked(object sender, System.Windows.RoutedEventArgs e)
 		{
 			DynamicTextHintTest.Text += "c4f ";
 		}
