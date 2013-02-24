@@ -9,8 +9,8 @@
 	<Page.Resources>
 		<SolidColorBrush x:Key="DefaultAccentBrush" Color="#0050EF" />
 		<Style x:Key="TextBoxStyle1" TargetType="TextBox">
-			<Setter Property="MinWidth" Value="{StaticResource TextControlThemeMinWidth}"/>
-			<Setter Property="MinHeight" Value="{StaticResource TextControlThemeMinHeight}"/>
+			<!--<Setter Property="MinWidth" Value="{StaticResource TextControlThemeMinWidth}"/>
+			<Setter Property="MinHeight" Value="{StaticResource TextControlThemeMinHeight}"/>-->
 			<Setter Property="Foreground" Value="{StaticResource TextBoxForegroundThemeBrush}"/>
 			<Setter Property="Background" Value="{StaticResource TextBoxBackgroundThemeBrush}"/>
 			<Setter Property="BorderBrush" Value="{StaticResource TextBoxBorderThemeBrush}"/>
@@ -83,7 +83,7 @@
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="Auto" />
 							</Grid.RowDefinitions>
-							<Grid Grid.Row="1" Name="foo">
+							<Grid Grid.Row="1">
 								<Grid.Resources>
 									<Style x:Name="DeleteButtonStyle" TargetType="Button">
 										<Setter Property="Template">
