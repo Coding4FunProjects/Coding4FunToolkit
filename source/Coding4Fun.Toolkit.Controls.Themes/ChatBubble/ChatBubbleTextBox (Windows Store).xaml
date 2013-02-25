@@ -20,7 +20,7 @@
 		<Setter Property="Foreground" Value="{StaticResource DefaultTextBoxForegroundBrush}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource DefaultTextBoxBrush}"/>
 		<Setter Property="BorderThickness" Value="{StaticResource DefaultBorderThickness}"/>
-		<Setter Property="Padding" Value="6, 2"/>
+		<Setter Property="Padding" Value="7, 4, 0, 4"/>
 		
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>

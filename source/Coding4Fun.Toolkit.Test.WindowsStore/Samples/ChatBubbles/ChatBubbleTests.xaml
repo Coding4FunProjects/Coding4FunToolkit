@@ -15,8 +15,10 @@
 
 		<Grid
             Grid.Row="1"
-            Margin="116, 0,116,46">
+            Margin="116, 0, 10, 46">
 			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="10" />
 				<ColumnDefinition />
 				<ColumnDefinition Width="10" />
 				<ColumnDefinition />
@@ -24,64 +26,105 @@
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<StackPanel>
-				<c4f:ChatBubble Content="testing normal" />
-				<c4f:ChatBubble Content="testing normal w/ pad" Padding="10" />
-				<c4f:ChatBubble Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"/>
+				<TextBlock Style="{StaticResource HeaderTextBlockStyle}">direction test</TextBlock>
+				<StackPanel>
+					<c4f:ChatBubble Content="testing normal" />
+					<c4f:ChatBubble Content="testing normal w/ pad" Padding="10" />
+					<c4f:ChatBubble Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"/>
 
-				<c4f:ChatBubble Margin="48, 0, 0, 0">
-					<TextBlock TextWrapping="Wrap">
-							testing proper wrapping: coding4fun coding4fun coding4fun coding4fun
-					</TextBlock>
-				</c4f:ChatBubble>
+					<c4f:ChatBubble Margin="48, 0, 0, 0">
+						<TextBlock TextWrapping="Wrap">
+								testing proper wrapping: coding4fun coding4fun coding4fun coding4fun
+						</TextBlock>
+					</c4f:ChatBubble>
 
-				<c4f:ChatBubble 
-					Content="testing disabled" 
-					IsEnabled="False" />
+					<c4f:ChatBubble 
+						Content="testing disabled" 
+						IsEnabled="False" />
 
-				<c4f:ChatBubble 
-					Padding="10"
-					Content="testing disabled w/ pad" 
-					IsEnabled="False" />
+					<c4f:ChatBubble 
+						Padding="10"
+						Content="testing disabled w/ pad" 
+						IsEnabled="False" />
+				</StackPanel>
 			</StackPanel>
-			<Grid Grid.Column="2">
-				<Grid.RowDefinitions>
-					<RowDefinition />
-					<RowDefinition Height="12" />
-					<RowDefinition />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition Width="12" />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<c4f:ChatBubble 
-							Grid.Row="0"
-							Grid.Column="0"
-							Content="UpperRight"
-							ChatBubbleDirection="UpperRight" />
-				<c4f:ChatBubble 
-							Grid.Row="0"
-							Grid.Column="2"
-							Content="UpperLeft"
-							ChatBubbleDirection="UpperLeft" />
+			<StackPanel Grid.Column="2">
+				<TextBlock Style="{StaticResource HeaderTextBlockStyle}">direction test</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition Height="12" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="12" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<c4f:ChatBubble 
+								Grid.Row="0"
+								Grid.Column="0"
+								Content="UpperRight"
+								ChatBubbleDirection="UpperRight" />
+					<c4f:ChatBubble 
+								Grid.Row="0"
+								Grid.Column="2"
+								Content="UpperLeft"
+								ChatBubbleDirection="UpperLeft" />
 
-				<c4f:ChatBubble 
-							Grid.Row="2"
-							Grid.Column="0"
-							Content="LowerRight"
-							ChatBubbleDirection="LowerRight" />
+					<c4f:ChatBubble 
+								Grid.Row="2"
+								Grid.Column="0"
+								Content="LowerRight"
+								ChatBubbleDirection="LowerRight" />
 
-				<c4f:ChatBubble 
-							Grid.Row="2"
-							Grid.Column="2"
-							Content="LowerLeft"
-							ChatBubbleDirection="LowerLeft" />
-			</Grid>
-
+					<c4f:ChatBubble 
+								Grid.Row="2"
+								Grid.Column="2"
+								Content="LowerLeft"
+								ChatBubbleDirection="LowerLeft" />
+				</Grid>
+			</StackPanel>
 			<StackPanel Grid.Column="4">
-				<c4f:ChatBubble Background="Aqua" Content="Aqua Background" />
-				<c4f:ChatBubble Foreground="Aqua" Content="Aqua Foreground" />
-				<c4f:ChatBubble BorderBrush="Aqua" Content="Aqua BorderBrush" />
+				<TextBlock Style="{StaticResource HeaderTextBlockStyle}">brush test</TextBlock>
+				<StackPanel>
+					<c4f:ChatBubble Background="Aqua" Content="Aqua Background" />
+					<c4f:ChatBubble Foreground="Aqua" Content="Aqua Foreground" />
+					<c4f:ChatBubble BorderBrush="Aqua" Content="Aqua BorderBrush" />
+				</StackPanel>
+			</StackPanel>
+			<StackPanel Grid.Column="6">
+				<TextBlock Style="{StaticResource HeaderTextBlockStyle}">Stress Test</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid Grid.Row="0">
+						<c4f:ChatBubble Content="testing" Opacity=".5" />
+						<c4f:ChatBubble Content="testing" Opacity=".5" IsEnabled="False" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsEnabled="False" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" IsEnabled="False" />
+					</Grid>
+					<Grid Grid.Row="1">
+						<c4f:ChatBubble Content="testing" Opacity=".3" />
+						<c4f:ChatBubble Content="testing" Opacity=".3" IsEnabled="False" />
+					</Grid>
+					<Grid Grid.Row="2">
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsEnabled="False" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" IsEnabled="False" />
+					</Grid>
+					<Grid Grid.Row="3">
+						<c4f:ChatBubble Content="testing" Opacity=".5" />
+						<c4f:ChatBubbleTextBox Text="testing" Opacity=".5" />
+					</Grid>
+				</Grid>
 			</StackPanel>
 		</Grid>
     </Grid>

@@ -31,4 +31,8 @@
 		<Setter Property="FontFamily" Value="Segoe Light" />
 		<Setter Property="FontSize" Value="72" />
 	</Style>
+	<Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+		<Setter Property="FontFamily" Value="Segoe Light" />
+		<Setter Property="FontSize" Value="20" />
+	</Style>
 </ResourceDictionary>

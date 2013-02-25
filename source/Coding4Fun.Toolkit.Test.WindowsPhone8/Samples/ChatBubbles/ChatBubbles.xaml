@@ -22,7 +22,7 @@
                 <local:ChatBubbleTestDirection />
             </phone:PivotItem>
             
-            <phone:PivotItem Header="color">
+            <phone:PivotItem Header="brush">
                 <local:ChatBubbleTestColor />
             </phone:PivotItem>
 			<phone:PivotItem Header="stress">
