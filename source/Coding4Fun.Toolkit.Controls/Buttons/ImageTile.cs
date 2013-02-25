@@ -30,11 +30,11 @@ namespace Coding4Fun.Toolkit.Controls
 		DispatcherTimer _changeImageTimer = new DispatcherTimer();
 		static readonly Random RandomIndexer = new Random();
 
-		Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
+		readonly Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
 
-		List<Uri> _imagesBeingShown = new List<Uri>();
-		List<int> _availableSpotsOnGrid = new List<int>();
-		List<ImageTileState> _animationTracking = new List<ImageTileState>();
+		readonly List<Uri> _imagesBeingShown = new List<Uri>();
+		readonly List<int> _availableSpotsOnGrid = new List<int>();
+		readonly List<ImageTileState> _animationTracking = new List<ImageTileState>();
 
 		private int _largeImageIndex = -1;
 		private bool _createAnimation = true;
@@ -79,15 +79,6 @@ namespace Coding4Fun.Toolkit.Controls
 
 			if (_imageContainer != null)
 			{
-				var items = _imageContainer.GetLogicalChildrenByType<Image>(false).ToArray();
-
-				var count = items.Count();
-
-				for (var i = 0; i < count; i++)
-				{
-					ForceImageCleanup(items[i]);
-				}
-
 				_imageContainer.Children.Clear();
 			}
 
@@ -466,30 +457,9 @@ namespace Coding4Fun.Toolkit.Controls
     		{
     			var img = items[i];
     			
-    			ForceImageCleanup(img);
     			_imageContainer.Children.Remove(img);
     		}
     	}
-
-		private void ForceImageCleanup(Image img)
-		{
-			if (img == null)
-				return;
-
-			var bitmapImage = img.Source as BitmapImage;
-
-			if (bitmapImage != null)
-			{
-				CleanupImageEvents(bitmapImage);
-
-				var imgSource = bitmapImage.UriSource;
-				_imagesBeingShown.Remove(imgSource);
-
-				bitmapImage.UriSource = null;
-			}
-
-			img.Source = null;
-		}
 
 		private Uri GetRandomImageUri(int index)
         {
