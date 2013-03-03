@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App1", "App1\App1.csproj", "{C8702392-9996-424E-A2D6-913643EBC137}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|ARM.Build.0 = Debug|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|ARM.Deploy.0 = Debug|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x64.ActiveCfg = Debug|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x64.Build.0 = Debug|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x64.Deploy.0 = Debug|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x86.ActiveCfg = Debug|x86
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x86.Build.0 = Debug|x86
+		{C8702392-9996-424E-A2D6-913643EBC137}.Debug|x86.Deploy.0 = Debug|x86
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|ARM.ActiveCfg = Release|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|ARM.Build.0 = Release|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|ARM.Deploy.0 = Release|ARM
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x64.ActiveCfg = Release|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x64.Build.0 = Release|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x64.Deploy.0 = Release|x64
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x86.ActiveCfg = Release|x86
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x86.Build.0 = Release|x86
+		{C8702392-9996-424E-A2D6-913643EBC137}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

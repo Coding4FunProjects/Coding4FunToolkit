@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+	<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+	
+		<StackPanel >
+			<Slider />
+			<local:SuperSlider />
+			<local:SuperSlider LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider StepFrequency="10" />
+			<local:SuperSlider StepFrequency="25" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25"  />
+		
+			<Slider Width="100"/>
+			<local:SuperSlider  Width="100"/>
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal" Grid.Column="1" >
+			<Slider Orientation="Vertical" />
+			<local:SuperSlider Orientation="Vertical" />
+			<local:SuperSlider Orientation="Vertical" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="10" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="0.1" LargeChange="25" SmallChange="25"  />
+
+			<Slider Orientation="Vertical" Height="100"/>
+			<local:SuperSlider Orientation="Vertical"  Height="100"/>
+		</StackPanel>
+	</Grid>
+</Page>
