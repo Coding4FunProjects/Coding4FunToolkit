@@ -22,23 +22,6 @@ namespace testSliderWinPhone8
 			//BuildLocalizedApplicationBar();
 		}
 
-		private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-		{
-			var slide = sender as Slider;
-
-			if (slide == null)
-				return;
-
-			if (slide.Value % slide.LargeChange < slide.LargeChange / 2.0)
-			{
-				slide.Value = Math.Floor((slide.Value / slide.LargeChange)) * slide.LargeChange;
-			}
-			else
-			{
-				slide.Value = Math.Ceiling((slide.Value / slide.LargeChange)) * slide.LargeChange;
-			}	
-		}
-
 		// Sample code for building a localized ApplicationBar
 		//private void BuildLocalizedApplicationBar()
 		//{

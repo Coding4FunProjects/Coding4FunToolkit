@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary 
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:app1="using:App1">
+	xmlns:local="using:App1">
 
 	
-	<Style TargetType="app1:SuperSlider">
+	<Style TargetType="local:SuperSlider">
 		<Setter Property="Background" Value="{StaticResource SliderTrackBackgroundThemeBrush}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource SliderBorderThemeBrush}"/>
 		<Setter Property="BorderThickness" Value="{StaticResource SliderBorderThemeThickness}"/>
@@ -11,7 +11,7 @@
 		<Setter Property="ManipulationMode" Value="None"/>
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="app1:SuperSlider">
+				<ControlTemplate TargetType="local:SuperSlider">
 					<Grid Margin="{TemplateBinding Padding}">
 						<Grid.Resources>
 							<Style x:Key="SliderThumbStyle" TargetType="Thumb">
