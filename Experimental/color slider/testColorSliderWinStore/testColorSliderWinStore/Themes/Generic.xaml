@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	
+	xmlns:controls="using:Coding4Fun.Toolkit.Controls">
+
+	<Style x:Key="ColorSliderSuperSlider" TargetType="Slider">
+		<Setter Property="Background" Value="{StaticResource SliderTrackBackgroundThemeBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource SliderBorderThemeBrush}"/>
+		<Setter Property="BorderThickness" Value="{StaticResource SliderBorderThemeThickness}"/>
+		<Setter Property="Foreground" Value="{StaticResource SliderTrackDecreaseBackgroundThemeBrush}"/>
+		<Setter Property="ManipulationMode" Value="None"/>
+		<Setter Property="Minimum" Value="0" />
+		<Setter Property="Maximum" Value="360" />
+		<Setter Property="SmallChange" Value=".1" />
+		<Setter Property="IsThumbToolTipEnabled" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Slider">
+					<Grid Name="TestTest" Margin="{TemplateBinding Padding}">
+						<Grid.Resources>
+							<Style x:Key="SliderThumbStyle" TargetType="Thumb">
+								<Setter Property="BorderThickness" Value="1"/>
+								<Setter Property="BorderBrush" Value="{StaticResource SliderThumbBorderThemeBrush}"/>
+								<Setter Property="Background" Value="{StaticResource SliderThumbBackgroundThemeBrush}"/>
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="Thumb">
+											<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Grid.Resources>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalDecreaseRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreasePressedBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalTrackRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackPressedBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalDecreaseRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreasePressedBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalTrackRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackPressedBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>-->
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPressedBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPressedBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPressedBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPressedBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="HorizontalBorder">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderDisabledBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="VerticalBorder">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderDisabledBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalDecreaseRect">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreaseDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalTrackRect">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalDecreaseRect">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreaseDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalTrackRect">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbDisabledBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="TopTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkOutsideDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalInlineTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkInlineDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BottomTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkOutsideDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="LeftTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkOutsideDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalInlineTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkInlineDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="RightTickBar">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTickMarkOutsideDisabledForegroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalDecreaseRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreasePointerOverBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalTrackRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackPointerOverBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalDecreaseRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackDecreasePointerOverBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalTrackRect">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderTrackPointerOverBackgroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>-->
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPointerOverBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="HorizontalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPointerOverBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPointerOverBackgroundThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="VerticalThumb">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SliderThumbPointerOverBorderThemeBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhiteHorizontal"/>
+										<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlackHorizontal"/>
+										<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhiteVertical"/>
+										<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlackVertical"/>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused"/>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid x:Name="HorizontalTemplate" Background="Transparent">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<!--<RowDefinition Height="17"/>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="32"/>-->
+							</Grid.RowDefinitions>
+							<Rectangle x:Name="HorizontalTrackRect" Grid.ColumnSpan="3" Grid.Row="1">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+										<GradientStop Offset="0" Color="#FF0000" />
+										<GradientStop Offset=".166" Color="#FFFF00" />
+										<GradientStop Offset=".333" Color="#00FF00" />
+										<GradientStop Offset=".5" Color="#00FFFF" />
+										<GradientStop Offset=".666" Color="#0000FF" />
+										<GradientStop Offset=".833" Color="#FF00FF" />
+										<GradientStop Offset="1" Color="#FF0000" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle x:Name="HorizontalDecreaseRect" Fill="Transparent" Grid.Row="1" />
+							<!-- fill from item to  -->
+							<TickBar x:Name="TopTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}" Margin="0,0,0,2" Visibility="Collapsed" VerticalAlignment="Bottom"/>
+							<TickBar x:Name="HorizontalInlineTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickMarkInlineBackgroundThemeBrush}" Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Visibility="Collapsed"/>
+							<TickBar x:Name="BottomTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}" Margin="0,2,0,0" Grid.Row="2" Visibility="Collapsed" VerticalAlignment="Top"/>
+							<Rectangle x:Name="HorizontalBorder" Grid.ColumnSpan="3" Grid.Row="1" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
+							<Thumb x:Name="HorizontalThumb" Background="{StaticResource SliderThumbBackgroundThemeBrush}" Grid.Column="1" DataContext="{TemplateBinding Value}" Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Style="{StaticResource SliderThumbStyle}" Width="{StaticResource SliderTrackThemeHeight}"/>
+							<Rectangle x:Name="FocusVisualWhiteHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Rectangle x:Name="FocusVisualBlackHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+						</Grid>
+						<Grid x:Name="VerticalTemplate" Background="Transparent" Visibility="Collapsed">
+							<Grid.ColumnDefinitions>
+								<!--<ColumnDefinition Width="17"/>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="17"/>-->
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Rectangle x:Name="VerticalTrackRect" Grid.Column="1" Grid.RowSpan="3">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+										<GradientStop Offset="0" Color="#FF0000" />
+										<GradientStop Offset=".166" Color="#FFFF00" />
+										<GradientStop Offset=".333" Color="#00FF00" />
+										<GradientStop Offset=".5" Color="#00FFFF" />
+										<GradientStop Offset=".666" Color="#0000FF" />
+										<GradientStop Offset=".833" Color="#FF00FF" />
+										<GradientStop Offset="1" Color="#FF0000" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle x:Name="VerticalDecreaseRect" Grid.Column="1" Fill="Transparent" Grid.Row="2"/>
+							<Rectangle x:Name="VerticalBorder" Grid.Column="1" Grid.RowSpan="3" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
+							<Thumb 
+								x:Name="VerticalThumb" 
+								Background="{StaticResource SliderThumbBackgroundThemeBrush}" 
+								Grid.Column="1" Grid.Row="1" 
+								DataContext="{TemplateBinding Value}" Style="{StaticResource SliderThumbStyle}" 
+								
+								Height="{StaticResource SliderTrackThemeHeight}"
+								Width="{StaticResource SliderTrackThemeHeight}"/>
+
+							<!--<Thumb x:Name="VerticalThumb" Background="{StaticResource SliderThumbBackgroundThemeBrush}" Grid.Column="1" DataContext="{TemplateBinding Value}" Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Style="{StaticResource SliderThumbStyle}" Width="{StaticResource SliderTrackThemeHeight}"/>-->
+							<Rectangle x:Name="FocusVisualWhiteVertical" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Rectangle x:Name="FocusVisualBlackVertical" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+						</Grid>
+						<!--<StackPanel>
+							<TextBlock Text="_" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=TestTest, Path=ActualHeight}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=TestTest, Path=ActualWidth}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="_" Foreground="White" FontWeight="Bold" />
+						</StackPanel>-->
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="controls:ColorSlider">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:ColorSlider">
+					<Grid Name="Body">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectedColor">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Rectangle Name="SelectedColor" Fill="{TemplateBinding SolidColorBrush}" />
+						<Slider x:Name="Slider" 
+								Orientation="{TemplateBinding Orientation}" 
+								Minimum="0" Maximum="360"
+								Style="{StaticResource ColorSliderSuperSlider}" />
+						<StackPanel>
+							<TextBlock Text="_" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=Body, Path=ActualHeight}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=Body, Path=ActualWidth}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=Slider, Path=ActualHeight}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="{Binding ElementName=Slider, Path=ActualWidth}" Foreground="White" FontWeight="Bold" />
+							<TextBlock Text="_" Foreground="White" FontWeight="Bold" />
+						</StackPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
