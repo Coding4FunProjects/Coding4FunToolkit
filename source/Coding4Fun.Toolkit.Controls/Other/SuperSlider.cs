@@ -168,15 +168,15 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register("Maximum", typeof(double), typeof(SuperSlider), new PropertyMetadata(10d));
 
-        public double Step
+        public double StepFrequency
         {
             get { return (double)GetValue(StepProperty); }
             set { SetValue(StepProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Step.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for StepFrequency.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StepProperty =
-            DependencyProperty.Register("Step", typeof(double), typeof(SuperSlider), new PropertyMetadata(0d));
+            DependencyProperty.Register("StepFrequency", typeof(double), typeof(SuperSlider), new PropertyMetadata(0d));
 
         public Orientation Orientation
         {
@@ -247,12 +247,12 @@ namespace Coding4Fun.Toolkit.Controls
 
             _isLayoutInit = true;
 
-            if (Step > 0)
+            if (StepFrequency > 0)
             {
-                var stepDiff = (newValue % Step);
+                var stepDiff = (newValue % StepFrequency);
                 var floor = Math.Floor(newValue - stepDiff);
 
-                newValue = stepDiff < (Step / 2d) ? floor : floor + Step;
+                newValue = stepDiff < (StepFrequency / 2d) ? floor : floor + StepFrequency;
             }
 
             newValue = ControlHelper.CheckBound(newValue, Minimum, Maximum);

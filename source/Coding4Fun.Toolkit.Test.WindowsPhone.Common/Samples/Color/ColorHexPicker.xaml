@@ -41,7 +41,7 @@
 						Name="colorBrightSteps"
 						Title="color brightness steps"
 						BarHeight="12"
-						Step="1"
+						StepFrequency="1"
 						Value="4"
 						Minimum="0"
 						Maximum="6" />
@@ -50,7 +50,7 @@
 						Name="colorDarkSteps"
 						Title="color darkness steps"
 						BarHeight="12"
-						Step="1"
+						StepFrequency="1"
 						Value="2"
 						Minimum="0"
 						Maximum="6" />
@@ -59,7 +59,7 @@
 						Name="greySteps"
 						Title="grey steps"
 						BarHeight="12"
-						Step="1"
+						StepFrequency="1"
 						Value="20"
 						Minimum="0"
 						Maximum="25" />

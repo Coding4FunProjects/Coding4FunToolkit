@@ -57,7 +57,7 @@
 					    Title="Rows" 
 					    Name="rows"
 					    Value="3" 
-					    Step="1" 
+					    StepFrequency="1" 
 					    Minimum="0"
 					    Maximum="10"
                         Grid.Row="0" Grid.Column="0"/>
@@ -65,7 +65,7 @@
 					    Title="Columns" 
 					    Name="cols"
 					    Value="3" 
-					    Step="1" 
+					    StepFrequency="1" 
 					    Minimum="0"
 					    Maximum="10"
                         Grid.Row="0" Grid.Column="1"/>
@@ -73,7 +73,7 @@
 					    Title="Large Tile Rows" 
 					    Name="largerows"
 					    Value="2" 
-					    Step="1" 
+					    StepFrequency="1" 
 					    Minimum="0"
 					    Maximum="{Binding Value, ElementName=rows}" 
                         Grid.Row="1" Grid.Column="0"/>
@@ -81,7 +81,7 @@
 					    Title="Large Tile Columns" 
 					    Name="largecols"
 					    Value="2" 
-					    Step="1" 
+					    StepFrequency="1" 
 					    Minimum="0"
 					    Maximum="{Binding Value, ElementName=cols}" 
                         Grid.Row="1" Grid.Column="1"/>
@@ -89,7 +89,7 @@
 					    Title="Test Dataset size" 
 					    Name="data"
 					    Value="15" 
-					    Step="1" 
+					    StepFrequency="1" 
 					    Minimum="0"
 					    Maximum="40" 
 						ValueChanged="DataValueChanged" 

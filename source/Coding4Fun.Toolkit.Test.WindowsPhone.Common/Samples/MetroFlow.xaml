@@ -68,7 +68,7 @@
 							Grid.ColumnSpan="2"
 							Name="colIndex"
 							Value="1"
-							Step="1"
+							StepFrequency="1"
 							Title="selected index" />
 
 						<c4f:RoundButton

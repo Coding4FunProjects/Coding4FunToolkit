@@ -43,7 +43,7 @@
 						Name="ResultWithStepSlider"
 						Title="Base Slider With Step"
 						Value="2"
-						Step="1"
+						StepFrequency="1"
 						Margin="0,24,0,0"
 						ValueChanged="ResultWithStepSlider_ValueChanged"/>
 					<Grid>
@@ -72,7 +72,7 @@
 					<c4f:SuperSlider 
 						Title="Slider with steps"
 						Value="10"
-						Step="1"
+						StepFrequency="1"
 						Minimum="5"
 						Maximum="15" />
 					<c4f:SuperSlider 
@@ -124,7 +124,7 @@
 			<ms:PivotItem Header="vertical">
 				<StackPanel Orientation="Horizontal">
 					<c4f:SuperSlider 
-						Step="1"
+						StepFrequency="1"
 						Margin="12, 0"
 						Padding="0"
 						Value="10"
@@ -166,7 +166,7 @@
 					<c4f:SuperSlider 
 						Padding="0"
 						IsEnabled="False"
-						Step="1"
+						StepFrequency="1"
 						Margin="12, 0"
 						Value="10"
 						Minimum="5"
