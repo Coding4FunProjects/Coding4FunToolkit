@@ -62,7 +62,7 @@
 							Fill="{TemplateBinding Background}" />
 						<Rectangle 
 							x:Name="ProgressRectangle"
-							Fill="{TemplateBinding Fill}" />
+							Fill="{TemplateBinding Foreground}" />
 						<Rectangle 
 							x:Name="IsEnabledRectangle"
                             Visibility="Collapsed"/>
@@ -102,7 +102,7 @@
 						<local:SuperSlider 
                             x:Name="Slider"
                             Orientation="{TemplateBinding Orientation}"
-                            Fill="Transparent"
+                            Foreground="Transparent"
                             Minimum="0"
                             Maximum="360" 
                             Thumb="{TemplateBinding Thumb}"

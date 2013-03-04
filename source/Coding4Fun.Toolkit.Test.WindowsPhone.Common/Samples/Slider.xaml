@@ -80,7 +80,7 @@
 						BackgroundSize="12"
 						ProgressSize="24"
 						Background="CornflowerBlue">
-						<c4f:SuperSlider.Fill>
+						<c4f:SuperSlider.Foreground>
 							<LinearGradientBrush EndPoint="1,0">
 								<GradientStop Offset="0.00" Color="#ffff0000"/>
 								<GradientStop Offset="0.166666" Color="#ffffff00"/>
@@ -90,7 +90,7 @@
 								<GradientStop Offset="0.833333" Color="#ffff00ff"/>
 								<GradientStop Offset="1.00" Color="#ffff0000"/>
 							</LinearGradientBrush>
-						</c4f:SuperSlider.Fill>
+						</c4f:SuperSlider.Foreground>
 						<c4f:SuperSlider.Thumb>
 							<Grid Width="24">
 								<Rectangle 
@@ -134,7 +134,7 @@
 					<c4f:SuperSlider 
 						Margin="12, 0"
 						Padding="0"
-						Fill="Orange"
+						Foreground="Orange"
 						Background="CornflowerBlue"
 						Orientation="Vertical">
 						<c4f:SuperSlider.Thumb>
@@ -149,7 +149,7 @@
 						Padding="0"
 						BackgroundSize="12"
 						ProgressSize="24"
-						Fill="Orange"
+						Foreground="Orange"
 						Background="CornflowerBlue"
 						Orientation="Vertical">
 						<c4f:SuperSlider.Thumb>

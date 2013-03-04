@@ -188,15 +188,6 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(SuperSlider), new PropertyMetadata(Orientation.Horizontal, OnLayoutChanged));
 
-        public Brush Fill
-        {
-            get { return (Brush)GetValue(FillProperty); }
-            set { SetValue(FillProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Fill.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FillProperty =
-			DependencyProperty.Register("Fill", typeof(Brush), typeof(SuperSlider), new PropertyMetadata(new SolidColorBrush()));
         #endregion
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)
