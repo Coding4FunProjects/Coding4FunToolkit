@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
 
 using Coding4Fun.Toolkit.Controls.Common;
@@ -9,7 +8,7 @@ using Coding4Fun.Toolkit.Controls.Common;
 namespace Coding4Fun.Toolkit.Controls
 {
 	[TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
-	[TemplateVisualState(Name = "Normal", GroupName = "GroupCommon")]
+	[TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
 //#if WP7
 	public
 //#else
@@ -70,6 +69,7 @@ namespace Coding4Fun.Toolkit.Controls
                 _monitor.Movement += _monitor_Movement;
                 _monitor.MonitorControl(body);
             }
+
 
             // stuff isn't set enough but if this isn't done, there will an initial flash
             AdjustLayout();
