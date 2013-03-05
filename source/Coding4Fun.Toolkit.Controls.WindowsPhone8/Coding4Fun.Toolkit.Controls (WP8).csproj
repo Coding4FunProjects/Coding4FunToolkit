@@ -92,6 +92,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\PreventScrollBinding.cs">
+      <Link>Binding\PreventScrollBinding.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\TextBinding.cs">
       <Link>Binding\TextBinding.cs</Link>
     </Compile>

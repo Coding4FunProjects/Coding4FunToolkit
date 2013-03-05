@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -53,6 +54,9 @@
   <ItemGroup>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\PreventScrollBinding.cs">
+      <Link>Binding\PreventScrollBinding.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\TextBinding.cs">
       <Link>Binding\TextBinding.cs</Link>

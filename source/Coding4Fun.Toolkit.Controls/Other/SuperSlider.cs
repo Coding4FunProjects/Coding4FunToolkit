@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
-
+using Coding4Fun.Toolkit.Controls.Binding;
 using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
@@ -32,6 +32,8 @@ namespace Coding4Fun.Toolkit.Controls
         public SuperSlider()
 		{
             DefaultStyleKey = typeof(SuperSlider);
+
+			PreventScrollBinding.SetIsEnabled(this, true);
 
 			IsEnabledChanged += SuperSlider_IsEnabledChanged;
             Loaded += SuperSlider_Loaded;
