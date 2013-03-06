@@ -85,10 +85,9 @@ namespace Coding4Fun.Toolkit.Controls
         {
             base.OnApplyTemplate();
             
-            _translate = new TranslateTransform();
-            RenderTransform = _translate;
+            SetRenderTransform();
 
-            ToastImage = GetTemplateChild(ToastImageName) as Image;
+	        ToastImage = GetTemplateChild(ToastImageName) as Image;
 
             if (ToastImage != null && ImageSource != null)
             {
@@ -99,14 +98,20 @@ namespace Coding4Fun.Toolkit.Controls
             SetTextOrientation(TextWrapping);
         }
 
-        public override void Show()
+	    private void SetRenderTransform()
+	    {
+		    _translate = new TranslateTransform();
+		    RenderTransform = _translate;
+	    }
+
+	    public override void Show()
         {
             if (!IsTimerEnabled)
                 return;
 
             base.Show();
 
-			_translate = new TranslateTransform();
+		    SetRenderTransform();
 			PreventScrollBinding.SetIsEnabled(this, true);
         }
 
