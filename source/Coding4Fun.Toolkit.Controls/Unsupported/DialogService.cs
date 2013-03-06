@@ -11,6 +11,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Controls.Binding;
 
 namespace Clarity.Phone.Extensions
 {
@@ -250,6 +251,7 @@ namespace Clarity.Phone.Extensions
 			if (IsOverlayApplied)
 			{
 				_overlay = CreateGrid();
+				PreventScrollBinding.SetIsEnabled(_overlay, true);
 			}
 
 			ApplyOverlayBackground();
