@@ -520,11 +520,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PromptStressTest.xaml">
-      <Link>Samples\Prompts\PromptStressTest.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\ToastPrompts.xaml">
       <Link>Samples\Prompts\ToastPrompts.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
@@ -557,6 +552,10 @@
     <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Prompts\PromptStressTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

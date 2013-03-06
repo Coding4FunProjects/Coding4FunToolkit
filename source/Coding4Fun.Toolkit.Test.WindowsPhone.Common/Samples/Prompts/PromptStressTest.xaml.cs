@@ -115,7 +115,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 		{
 			if (_reuseToast == null)
 			{
-				_reuseToast = new ToastPrompt { Message = "reused toast prompt" };
+				_reuseToast = new ToastPrompt { Message = "Reused" };
 			}
 
 			Debug.WriteLine(_reuseToast.IsOpen);
@@ -124,7 +124,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		private void NewToastClick(object sender, RoutedEventArgs e)
 		{
-			var toast = new ToastPrompt { Message = "reused toast prompt" };
+			var toast = new ToastPrompt { Message = "New" };
 
 			toast.Show();
 		}

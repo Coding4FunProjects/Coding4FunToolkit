@@ -1,0 +1,64 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts.PromptStressTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+	<ms:Pivot Title="stress test" x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<ms:PivotItem Header="toast">
+			<StackPanel>
+				<TextBlock>Full Stress</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Mass toasts" Click="MassToastCreationClick" />
+				</StackPanel>
+				<TextBlock>Async calls</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="nav then 2 sec toast call" Click="AsyncToastWithNavClick" />
+				</StackPanel>
+				<TextBlock>New vs reuse</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="new" Click="NewToastClick" />
+					<Button Content="reuse" Click="ReuseToastClick" />
+				</StackPanel>
+			</StackPanel>
+		</ms:PivotItem>
+		<ms:PivotItem Header="nav">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Back" Click="back_Click" />
+					<Button Content="New pg" Click="newPage_Click" />
+					<Button Content="New Pg Btn" Click="NavToNewPageViaBodyButtonClick" />
+				</StackPanel>
+			</StackPanel>
+		</ms:PivotItem>
+		<ms:PivotItem Header="prompt inline">
+			<Grid>
+				<Controls:PasswordInputPrompt />
+			</Grid>
+		</ms:PivotItem>
+	</ms:Pivot>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+			<shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="Button 1"/>
+            
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
