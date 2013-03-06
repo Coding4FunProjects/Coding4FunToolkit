@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Coding4Fun.Toolkit.Controls.Binding;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -10,14 +11,16 @@ namespace Coding4Fun.Toolkit.Controls
     {
         protected Image ToastImage;
         private const string ToastImageName = "ToastImage";
-        readonly Timer _timer;
+        private Timer _timer;
 
         private TranslateTransform _translate;
 		
         public ToastPrompt()
         {
             DefaultStyleKey = typeof(ToastPrompt);
-			
+
+			PreventScrollBinding.SetIsEnabled(this, true);
+
 			IsAppBarVisible = true;
             IsBackKeyOverride = true;
 			IsCalculateFrameVerticalOffset = true;
@@ -30,7 +33,6 @@ namespace Coding4Fun.Toolkit.Controls
             ManipulationDelta += ToastPromptManipulationDelta;
             ManipulationCompleted += ToastPromptManipulationCompleted;
             
-            _timer = new Timer(TimerTick);
 			Opened += ToastPromptOpened;
         }
 
@@ -66,8 +68,10 @@ namespace Coding4Fun.Toolkit.Controls
 		
 		private void StartTimer()
         {
-            if (_timer != null)
-                _timer.Change(TimeSpan.FromMilliseconds(MillisecondsUntilHidden), TimeSpan.FromMilliseconds(-1));
+            if (_timer == null)
+				_timer = new Timer(TimerTick);
+
+            _timer.Change(TimeSpan.FromMilliseconds(MillisecondsUntilHidden), TimeSpan.FromMilliseconds(-1));
         }
 
         private void PauseTimer()
@@ -124,7 +128,10 @@ namespace Coding4Fun.Toolkit.Controls
 		public void Dispose()
 		{
 			if (_timer != null)
+			{
 				_timer.Dispose();
+				_timer = null;
+			}
 		}
 
         public int MillisecondsUntilHidden

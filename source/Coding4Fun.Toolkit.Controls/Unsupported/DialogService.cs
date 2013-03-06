@@ -497,6 +497,8 @@ namespace Clarity.Phone.Extensions
 
 					PopupContainer.Children.Remove(_childPanel);
 				}
+
+				_childPanel.Children.Clear();
 			}
 			catch
 			{

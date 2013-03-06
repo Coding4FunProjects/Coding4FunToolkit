@@ -107,15 +107,22 @@ namespace Coding4Fun.Toolkit.Controls
 
 	    public virtual void Show()
 	    {
-		    PopUpService = new DialogService
-			    {
-				    AnimationType = AnimationType,
-				    Child = this,
-				    IsBackKeyOverride = IsBackKeyOverride,
-				    IsOverlayApplied = IsOverlayApplied,
-				    MainBodyDelay = MainBodyDelay,
-			    };
+			if (IsOpen)
+				return;
 
+		    if (PopUpService == null)
+		    {
+			    PopUpService = new DialogService
+				                   {
+					                   AnimationType = AnimationType,
+					                   Child = this,
+					                   IsBackKeyOverride = IsBackKeyOverride,
+					                   IsOverlayApplied = IsOverlayApplied,
+					                   MainBodyDelay = MainBodyDelay,
+				                   };
+		    }
+
+			
 		    // this will happen if the user comes in OnNavigate or 
 		    // something where the DOM hasn't been created yet.
 		    if (PopUpService.Page == null)
