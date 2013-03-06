@@ -2,7 +2,9 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+
 using Coding4Fun.Toolkit.Controls.Binding;
 
 namespace Coding4Fun.Toolkit.Controls
@@ -19,8 +21,6 @@ namespace Coding4Fun.Toolkit.Controls
         {
             DefaultStyleKey = typeof(ToastPrompt);
 
-			PreventScrollBinding.SetIsEnabled(this, true);
-
 			IsAppBarVisible = true;
             IsBackKeyOverride = true;
 			IsCalculateFrameVerticalOffset = true;
@@ -36,12 +36,12 @@ namespace Coding4Fun.Toolkit.Controls
 			Opened += ToastPromptOpened;
         }
 
-		void ToastPromptManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
+		void ToastPromptManipulationStarted(object sender, ManipulationStartedEventArgs e)
 		{
 			PauseTimer();
 		}
 
-		void ToastPromptManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
+		void ToastPromptManipulationDelta(object sender, ManipulationDeltaEventArgs e)
 		{
 			_translate.X += e.DeltaManipulation.Translation.X;
 
@@ -49,7 +49,7 @@ namespace Coding4Fun.Toolkit.Controls
 				_translate.X = 0;
 		}
 
-        void ToastPromptManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
+        void ToastPromptManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
 			if (e.TotalManipulation.Translation.X > 200 || e.FinalVelocities.LinearVelocity.X > 1000)
 			{
@@ -105,6 +105,9 @@ namespace Coding4Fun.Toolkit.Controls
                 return;
 
             base.Show();
+
+			_translate = new TranslateTransform();
+			PreventScrollBinding.SetIsEnabled(this, true);
         }
 
 		void ToastPromptOpened(object sender, EventArgs e)
@@ -119,6 +122,8 @@ namespace Coding4Fun.Toolkit.Controls
 
         public override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
         {
+			PreventScrollBinding.SetIsEnabled(this, false);
+
             PauseTimer();
 	        Dispose();
 

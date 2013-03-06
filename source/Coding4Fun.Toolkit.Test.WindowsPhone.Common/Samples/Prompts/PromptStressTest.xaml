@@ -14,45 +14,45 @@
     mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="stress test" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			
-			<TextBlock>Nav</TextBlock>
-			<StackPanel Orientation="Horizontal">
-				<Button Content="Back" Click="back_Click" />
-				<Button Content="New pg" Click="newPage_Click" />
-				<Button Content="New Pg Btn" Click="NavToNewPageViaBodyButtonClick" />
+	<phone:Pivot Title="stress test" x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<phone:PivotItem Header="toast">
+			<StackPanel>
+				<TextBlock>Full Stress</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Mass toasts" Click="MassToastCreationClick" />
+				</StackPanel>
+				<TextBlock>Async calls</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="nav then 2 sec toast call" Click="AsyncToastWithNavClick" />
+				</StackPanel>
+				<TextBlock>New vs reuse</TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="new" Click="NewToastClick" />
+					<Button Content="reuse" Click="ReuseToastClick" />
+				</StackPanel>
 			</StackPanel>
-            <TextBlock>Full Stress</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Mass toasts" Click="MassToastCreationClick" />
-            </StackPanel>
-            <TextBlock>Async calls</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="nav then 2 sec toast call" Click="AsyncToastWithNavClick" />
-            </StackPanel>
-			<Controls:PasswordInputPrompt />
-		</StackPanel>
-    </Grid>
+		</phone:PivotItem>
+		<phone:PivotItem Header="nav">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Back" Click="back_Click" />
+					<Button Content="New pg" Click="newPage_Click" />
+					<Button Content="New Pg Btn" Click="NavToNewPageViaBodyButtonClick" />
+				</StackPanel>
+			</StackPanel>
+		</phone:PivotItem>
+		<phone:PivotItem Header="prompt inline">
+			<Grid>
+				<Controls:PasswordInputPrompt />
+			</Grid>
+		</phone:PivotItem>
+	</phone:Pivot>
  
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+			<shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="Button 1"/>
+            
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
                 <shell:ApplicationBarMenuItem Text="MenuItem 2"/>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -23,10 +25,6 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 		// Using a DependencyProperty as the backing store for LastTouchPoint.  This enables animation, styling, binding, etc...
 		private static readonly DependencyProperty LastTouchPointProperty =
 			DependencyProperty.RegisterAttached("LastTouchPoint", typeof(TouchPoint), typeof(PreventScrollBinding), new PropertyMetadata(null));
-#if WP8
-		private static readonly DependencyProperty OriginalUseOptimizedManipulationRoutingProperty =
-			DependencyProperty.RegisterAttached("OriginalUseOptimizedManipulationRouting", typeof(bool), typeof(PreventScrollBinding), new PropertyMetadata(false));
-#endif
 
 		public static bool GetIsEnabled(DependencyObject obj)
 		{
@@ -51,10 +49,6 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 				return;
 
 #if WP8
-			blockingElement.SetValue(
-				OriginalUseOptimizedManipulationRoutingProperty,
-			    blockingElement.UseOptimizedManipulationRouting);
-
 			blockingElement.UseOptimizedManipulationRouting = false;
 #endif
 
@@ -69,9 +63,7 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 
 			if (blockingElement == null)
 				return;
-#if WP8
-			blockingElement.UseOptimizedManipulationRouting = (bool) blockingElement.GetValue(OriginalUseOptimizedManipulationRoutingProperty);
-#endif
+
 			blockingElement.Unloaded -= BlockingElementUnloaded;
 			blockingElement.MouseLeftButtonDown -= SuspendScroll;
 			blockingElement.ManipulationStarted -= SuspendScroll;
@@ -108,15 +100,17 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 
 		private static void TouchFrameReported(object sender, TouchFrameEventArgs e)
 		{
+
 			// (When the parent Panorama/Pivot is suspended)
 			// Wait for the first touch to end (touchaction up). When it is, restore standard
 			// panning behavior, otherwise let the control behave normally (no code for this)
 			var lastTouchPoint = _internalPanningControl.GetValue(LastTouchPointProperty) as TouchPoint;
-			var isScrollSuspended = (bool)_internalPanningControl.GetValue(IsScrollSuspendedProperty);
-			var touchPoint = e.GetPrimaryTouchPoint(_internalPanningControl);
+			var isScrollSuspended = (bool) _internalPanningControl.GetValue(IsScrollSuspendedProperty);
 
-			if (lastTouchPoint == null || lastTouchPoint != touchPoint)
-				lastTouchPoint = touchPoint;
+			var touchPoint = e.GetTouchPoints(_internalPanningControl);
+
+			if (lastTouchPoint == null || lastTouchPoint != touchPoint.Last())
+				lastTouchPoint = touchPoint.Last();
 
 			if (isScrollSuspended)
 			{

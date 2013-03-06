@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -108,5 +109,24 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
                 }
             });
         }
+
+		private ToastPrompt _reuseToast;
+		private void ReuseToastClick(object sender, RoutedEventArgs e)
+		{
+			if (_reuseToast == null)
+			{
+				_reuseToast = new ToastPrompt { Message = "reused toast prompt" };
+			}
+
+			Debug.WriteLine(_reuseToast.IsOpen);
+			_reuseToast.Show();
+		}
+
+		private void NewToastClick(object sender, RoutedEventArgs e)
+		{
+			var toast = new ToastPrompt { Message = "reused toast prompt" };
+
+			toast.Show();
+		}
 	}
 }
