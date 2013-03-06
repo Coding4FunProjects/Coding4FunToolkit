@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -109,7 +108,7 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 			var lastTouchPoint = _internalPanningControl.GetValue(LastTouchPointProperty) as TouchPoint;
 			var isScrollSuspended = (bool) _internalPanningControl.GetValue(IsScrollSuspendedProperty);
 
-			var touchPoint = e.GetTouchPoints(_internalPanningControl);
+			var touchPoint = e.GetTouchPoints(Application.Current.RootVisual);
 
 			if (lastTouchPoint == null || lastTouchPoint != touchPoint.Last())
 				lastTouchPoint = touchPoint.Last();
