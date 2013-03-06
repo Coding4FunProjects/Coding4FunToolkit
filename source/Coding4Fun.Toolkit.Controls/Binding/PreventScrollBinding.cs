@@ -100,6 +100,8 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 
 		private static void TouchFrameReported(object sender, TouchFrameEventArgs e)
 		{
+			if (_internalPanningControl == null)
+				return;
 
 			// (When the parent Panorama/Pivot is suspended)
 			// Wait for the first touch to end (touchaction up). When it is, restore standard
