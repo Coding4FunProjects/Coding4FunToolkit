@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace testSliderWinPhone8
 {
-	public class SuperSlider : Slider
+	public class SuperSlider : Slider, ISuperSlider
 	{
 		public SuperSlider()
 		{
