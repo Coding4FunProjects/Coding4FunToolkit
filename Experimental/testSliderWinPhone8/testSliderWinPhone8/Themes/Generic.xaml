@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary 
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:testSliderWinPhone8">
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:testSliderWinPhone8"
+	xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls">
 	<Style TargetType="local:SuperSlider">
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="BorderBrush" Value="Transparent"/>
@@ -41,7 +42,7 @@
 							</Rectangle>
 							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left">
 								<ContentControl.RenderTransform>
-									<TranslateTransform/>
+									<TranslateTransform x:Name="HorizontalThumbTransform"/>
 								</ContentControl.RenderTransform>
 								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Margin="0,16,0,44" Width="12" />
 							</ContentControl>
@@ -49,6 +50,70 @@
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
 							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="12"/>
 							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="12">
+								<Rectangle.Clip>
+									<RectangleGeometry Rect="0, 0, 12, 6"/>
+								</Rectangle.Clip>
+							</Rectangle>
+							<ContentControl Name="VerticalCenterElement" VerticalAlignment="Top">
+								<ContentControl.RenderTransform>
+									<TranslateTransform x:Name="VerticalThumbTransform" />
+								</ContentControl.RenderTransform>
+								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="12" Margin="12,0,12,0" Width="24" />
+							</ContentControl>
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+    <Style TargetType="controls:SuperSliderUpdate">
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Maximum" Value="10"/>
+		<Setter Property="Minimum" Value="0"/>
+		<Setter Property="Value" Value="0"/>
+		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:SuperSliderUpdate">
+					<Grid Background="Transparent"  Name="Body">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+								<VisualState x:Name="MouseOver"/>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<DoubleAnimation Duration="0" To="0.1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="HorizontalTrack"/>
+										<DoubleAnimation Duration="0" To="0.1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalTrack"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalFill">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalFill">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid x:Name="HorizontalTemplate" Margin="{StaticResource PhoneHorizontalMargin}">
+							<Rectangle x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding BackgroundSize}" IsHitTestVisible="False" Margin="0,22,0,50"/>
+							<Rectangle x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding ProgressSize}" IsHitTestVisible="False" Margin="0,22,0,50">
+								<Rectangle.Clip>
+									<RectangleGeometry Rect="0, 0, 6, 12"/>
+								</Rectangle.Clip>
+							</Rectangle>
+							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left">
+								<ContentControl.RenderTransform>
+									<TranslateTransform/>
+								</ContentControl.RenderTransform>
+								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Margin="0,16,0,44" Width="12" />
+							</ContentControl>
+						</Grid>
+						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
+							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding BackgroundSize}"/>
+							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding ProgressSize}">
 								<Rectangle.Clip>
 									<RectangleGeometry Rect="0, 0, 12, 6"/>
 								</Rectangle.Clip>
@@ -65,5 +130,48 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style TargetType="controls:SuperSliderWp7">
+		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}" />
+		<Setter Property="Padding" Value="0, 3, 0, 36" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:SuperSliderWp7">
+					<Grid Name="Body">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ProgressRectangle">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundRectangle">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneChromeBrush}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid Grid.Row="1">
+							<Border Margin="{TemplateBinding Padding}">
+								<Grid Name="BarBody">
+									<Rectangle Grid.Row="1" Name="BackgroundRectangle" Fill="{TemplateBinding Background}" />
+									<Rectangle Grid.Row="1" Name="ProgressRectangle" Fill="{TemplateBinding Foreground}" />
+									<ContentPresenter Grid.Row="1" Content="{TemplateBinding Thumb}" />
+								</Grid>
+							</Border>
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
 </ResourceDictionary>
 	

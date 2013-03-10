@@ -34,6 +34,12 @@ namespace testSliderWinPhone8
 			}
 		}
 
+		public double ProgressSize { get; set; }
+		public double BackgroundSize { get; set; }
+		public double BarWidth { get; set; }
+		public double BarHeight { get; set; }
+		public string Title { get; set; }
+
 		public double StepFrequency
 		{
 			get { return (double)GetValue(StepFrequencyProperty); }
@@ -43,6 +49,18 @@ namespace testSliderWinPhone8
 		// Using a DependencyProperty as the backing store for StepFrequency.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty StepFrequencyProperty =
 			DependencyProperty.Register("StepFrequency", typeof(double), typeof(SuperSlider), new PropertyMetadata(1d));
+
+
+
+		public object Thumb
+		{
+			get { return (object)GetValue(ThumbProperty); }
+			set { SetValue(ThumbProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ThumbProperty =
+			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(null));
 
 
 	}

@@ -6,7 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:testSliderWinPhone8"
+    xmlns:local="clr-namespace:testSliderWinPhone8" xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -36,6 +36,14 @@
 			<StackPanel Grid.Row="0">
 				<Slider Maximum="100" />
 				<local:SuperSlider  Maximum="100" StepFrequency="25" />
+				<controls:SuperSliderUpdate Maximum="100" StepFrequency="25" />
+				<controls:SuperSliderWp7 Maximum="100" StepFrequency="25" />
+				<controls:SuperSliderWp7 Maximum="100" StepFrequency="25" >
+					<controls:SuperSliderWp7.Thumb>
+						<Rectangle Width="12" Height="12" Fill="White" />
+					</controls:SuperSliderWp7.Thumb>
+				</controls:SuperSliderWp7>
+
 			</StackPanel>
 			<StackPanel Grid.Row="1" Orientation="Horizontal">
 				<Slider Orientation="Vertical" Maximum="100" />

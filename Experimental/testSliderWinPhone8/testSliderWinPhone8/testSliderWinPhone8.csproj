@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlHelper.cs" />
+    <Compile Include="SuperSliderUpdate.cs" />
     <Compile Include="ISuperSlider.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
