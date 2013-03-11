@@ -23,10 +23,14 @@ namespace Coding4Fun.Toolkit.Controls
         public event RoutedPropertyChangedEventHandler<double> ValueChanged;
 
         private MovementMonitor _monitor;
+		private FrameworkElement _horizontalTrack;
+		private FrameworkElement _verticalTrack;
+
         private const string BodyName = "Body";
 		private const string HorizontalTemplateName = "HorizontalTemplate";
 		private const string VerticalTemplateName = "VerticalTemplate";
-
+		private const string HorizontalTrackName = "HorizontalTrack";
+		private const string VerticalTrackName = "VerticalTrack";
 
 		public SuperSliderUpdate()
 		{
@@ -48,7 +52,6 @@ namespace Coding4Fun.Toolkit.Controls
 			IsEnabledVisualStateUpdate();
         }
 
-
 		public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -62,8 +65,8 @@ namespace Coding4Fun.Toolkit.Controls
                 _monitor.MonitorControl(body);
             }
 
-            // stuff isn't set enough but if this isn't done, there will an initial flash
-            //AdjustLayout();
+			_horizontalTrack = GetTemplateChild(HorizontalTrackName) as FrameworkElement;
+			_verticalTrack = GetTemplateChild(VerticalTrackName) as FrameworkElement;
 
 			AdjustAndUpdateLayout();
         }
@@ -192,7 +195,7 @@ namespace Coding4Fun.Toolkit.Controls
 			var sender = o as SuperSliderUpdate;
 
             if (sender != null && e.NewValue != e.OldValue)
-                sender.SyncValueAndPosition((double)e.NewValue, (double)e.OldValue);
+				sender.UpdateValueAndUserInterface((double)e.NewValue, (double)e.OldValue);
         }
 
         private static void OnLayoutChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
@@ -219,7 +222,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void UpdateSampleBasedOnManipulation(double x, double y)
         {
-            var controlMax = GetControlMax();
+			var controlMax = GetControlMax();
 
             var offsetValue = (IsVertical()) ? controlMax - y : x;
             var controlDist = ControlHelper.CheckBound(offsetValue, controlMax);
@@ -229,15 +232,15 @@ namespace Coding4Fun.Toolkit.Controls
             if(controlMax != 0)
                 calculateValue += (Maximum - Minimum) * (controlDist / controlMax);
 
-            SyncValueAndPosition(calculateValue, Value);
+            UpdateValue(calculateValue, Value);
         }
 
         private double GetControlMax()
         {
-            return (IsVertical()) ? ActualHeight : ActualWidth;
+			return (IsVertical()) ? _verticalTrack.ActualHeight : _horizontalTrack.ActualWidth;
         }
 
-        private void SyncValueAndPosition(double newValue, double oldValue)
+        private void UpdateValue(double newValue, double oldValue)
         {
             if (!_isLayoutInit)
                 return;
@@ -259,24 +262,22 @@ namespace Coding4Fun.Toolkit.Controls
 
             Value = newValue;
 
-			UpdateUserInterface();
-
 			if (ValueChanged != null)
 				ValueChanged(this, new RoutedPropertyChangedEventArgs<double>(oldValue, Value));
 		}
 
+		private void UpdateValueAndUserInterface(double newValue, double oldValue)
+		{
+			UpdateValue(newValue, oldValue);
+			UpdateUserInterface();
+		}
+
 		private void UpdateUserInterface()
 		{
-			var controlMax = GetControlMax();
-			var offset = ((Value - Minimum)/(Maximum - Minimum))*controlMax;
-
 			var isVert = IsVertical();
-
-			//SetSizeBasedOnOrientation(ProgressRectangle, isVert, offset);
 
 			var thumbItem = GetTemplateChild(isVert ? "VerticalCenterElement" : "HorizontalCenterElement") as FrameworkElement;
 			
-
 			if (thumbItem != null)
 			{
 				var translateTran = thumbItem.RenderTransform as TranslateTransform;
@@ -285,18 +286,30 @@ namespace Coding4Fun.Toolkit.Controls
 					return;
 
 				var thumbItemSize = (isVert ? thumbItem.ActualHeight : thumbItem.ActualWidth);
-				var marginOffset = ControlHelper.CheckBound(offset - (thumbItemSize/2d), 0, controlMax - thumbItemSize);
 
+				var controlMax = GetControlMax() - thumbItemSize;
+				var offset = ((Value - Minimum) / (Maximum - Minimum)) * controlMax;
+				
 				if (isVert)
 				{
 					translateTran.X = 0;
-					translateTran.Y = marginOffset;
+					translateTran.Y = -offset;
+
+					var fillTarget = GetTemplateChild("VerticalFill") as FrameworkElement;
+
+					if (fillTarget != null)
+						fillTarget.Height = offset;
 				}
 				else
 				{
-					translateTran.X = marginOffset;
+					translateTran.X = offset;
 					translateTran.Y = 0;
-				}
+
+					var fillTarget = GetTemplateChild("HorizontalFill") as FrameworkElement;
+
+					if (fillTarget != null)
+						fillTarget.Width = offset;
+				}				
 			}
 		}
 

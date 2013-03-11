@@ -48,6 +48,7 @@
 			<StackPanel Grid.Row="1" Orientation="Horizontal">
 				<Slider Orientation="Vertical" Maximum="100" />
 				<local:SuperSlider Orientation="Vertical" Maximum="100" StepFrequency="25" />
+				<controls:SuperSliderUpdate Orientation="Vertical" Maximum="100" StepFrequency="25" />
 			</StackPanel>
 		</Grid>
 </Grid>
