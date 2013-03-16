@@ -226,10 +226,6 @@
       <Link>Samples\Prompts\PasswordInputPrompts.xaml.cs</Link>
       <DependentUpon>PasswordInputPrompts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\PromptStressTest.xaml.cs">
-      <Link>Samples\Prompts\PromptStressTest.xaml.cs</Link>
-      <DependentUpon>PromptStressTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Samples\Prompts\ToastPrompts.xaml.cs">
       <Link>Samples\Prompts\ToastPrompts.xaml.cs</Link>
       <DependentUpon>ToastPrompts.xaml</DependentUpon>
@@ -267,6 +263,9 @@
     </Compile>
     <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml.cs">
       <DependentUpon>ChatBubbleTextBoxes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Prompts\PromptStressTest.xaml.cs">
+      <DependentUpon>PromptStressTest.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
