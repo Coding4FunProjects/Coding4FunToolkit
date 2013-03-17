@@ -96,6 +96,12 @@
     </Content>
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\source\Coding4Fun.Toolkit.Controls.WindowsPhone7\Coding4Fun.Toolkit.Controls %28WP7%29.csproj">
+      <Project>{6E223290-66D8-4058-99CF-501769D6A641}</Project>
+      <Name>Coding4Fun.Toolkit.Controls %28WP7%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

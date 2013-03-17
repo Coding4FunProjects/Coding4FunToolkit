@@ -11,6 +11,8 @@
 */
 using System;
 using System.Windows;
+using System.Windows.Controls;
+using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Notification;
 using System.Text;
@@ -131,8 +133,18 @@ namespace sdkToastNotificationCS
                 }
             }
 
-            // Display a dialog of all the fields in the toast.
-            Dispatcher.BeginInvoke(() => MessageBox.Show(message.ToString()));
+
+	        Dispatcher.BeginInvoke(() =>
+		        {
+			        ToastPrompt prompt = new ToastPrompt();
+			        prompt.Message = message.ToString();
+			        prompt.Title = "Foo";
+
+			        prompt.Show();
+		        });
+
+	        // Display a dialog of all the fields in the toast.
+	        //Dispatcher.BeginInvoke(() => MessageBox.Show(message.ToString()));
 
         }
 
