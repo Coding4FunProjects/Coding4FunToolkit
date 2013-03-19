@@ -84,13 +84,13 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
         private void AsyncToastWithNavClick(object sender, RoutedEventArgs e)
         {
+			NavigationService.GoBack();
+
 			Dispatcher.BeginInvoke(() =>
 			{
 				var toast = new ToastPrompt { Message = "Hi from the past" };
 				toast.Show();
 			});
-
-            NavigationService.GoBack();
         }
 
         private void MassToastCreationClick(object sender, RoutedEventArgs e)
