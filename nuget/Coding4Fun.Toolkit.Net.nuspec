@@ -31,6 +31,7 @@
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.pri"
 			target="lib\windows8" />
 
+		<file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
 	</files>
 </package>
 <!--

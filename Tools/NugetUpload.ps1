@@ -118,6 +118,9 @@ for ($index = 0; $index -lt $platforms.Count; $index++)
 	$files = $releaseDir.GetFiles("*.dll");
 	$files += $releaseDir.GetFiles("*.pri");
 	
+	#read me help file
+	$files += $contentDirectory.GetFiles("*.txt", [System.IO.SearchOption]::AllDirectories);
+	
 	foreach($file In $files)
 	{
 		AppendToZip $zipPkg $file "";
@@ -145,6 +148,8 @@ for ($index = 0; $index -lt $platforms.Count; $index++)
 			AppendToZip $zipPkg $xamlFiles[0] "themes/";
 		}
 	}
+	
+	
 
 	#Close the package when we're done.
 	$zipPkg.Close();

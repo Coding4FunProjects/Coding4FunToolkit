@@ -30,7 +30,9 @@
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Audio.pri"
 			target="lib\windows8" />
 
-  </files>
+		<file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
+	
+	</files>
 </package>
 <!--
 	http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package

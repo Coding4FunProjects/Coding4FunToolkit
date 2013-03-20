@@ -36,6 +36,7 @@
 		<file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\wp71\Toolkit.Content\ApplicationBar.Cancel.png" />
 		<file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\wp71\Toolkit.Content\ApplicationBar.Check.png" />
 
+		<file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
 	</files>
 </package>
 <!--
