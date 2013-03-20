@@ -79,6 +79,7 @@
 						Title="Slider with thumb, custom sizing and &quot;flair&quot;"
 						BackgroundSize="12"
 						ProgressSize="24"
+						Value="5"
 						Background="CornflowerBlue">
 						<c4f:SuperSlider.Foreground>
 							<LinearGradientBrush EndPoint="1,0">
