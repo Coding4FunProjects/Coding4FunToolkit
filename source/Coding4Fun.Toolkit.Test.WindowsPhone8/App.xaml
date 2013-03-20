@@ -10,8 +10,6 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <local:LocalizedStrings xmlns:local="clr-namespace:Coding4Fun.Toolkit.Test.WindowsPhone" x:Key="LocalizedStrings"/>
-
         <System:String x:Key="AppName">CODING4FUN TOOLKIT FOR WINDOWS PHONE 8</System:String>
         <System:Double x:Key="TileSizeWidth">125</System:Double>
         <System:Double x:Key="TileSizeHeight">125</System:Double>
