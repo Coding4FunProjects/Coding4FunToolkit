@@ -72,7 +72,6 @@ namespace Coding4Fun.Toolkit.Controls
                 _monitor.MonitorControl(body);
             }
 
-
             // stuff isn't set enough but if this isn't done, there will an initial flash
             AdjustLayout();
         }

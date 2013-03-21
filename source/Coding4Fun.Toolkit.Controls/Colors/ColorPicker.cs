@@ -2,6 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+
+using Coding4Fun.Toolkit.Controls.Binding;
 using Coding4Fun.Toolkit.Controls.Common;
 
 // This is a heavily modified version based on their ColorPicker sample by 
@@ -33,6 +35,8 @@ namespace Coding4Fun.Toolkit.Controls
         public ColorPicker()
         {
             DefaultStyleKey = typeof (ColorPicker);
+
+			PreventScrollBinding.SetIsEnabled(this, true);
 
             SizeChanged += ColorPicker_SizeChanged;
 			IsEnabledChanged += ColorSlider_IsEnabledChanged;
