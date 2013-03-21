@@ -11,8 +11,7 @@
         <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
         <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
         <tags>coding4fun silverlight winrt win8 phone wp7 wp8  metro xaml audio microphone</tags>
-        <frameworkAssemblies>
-	</frameworkAssemblies>
+        <frameworkAssemblies></frameworkAssemblies>
   </metadata>
 
   <files>
