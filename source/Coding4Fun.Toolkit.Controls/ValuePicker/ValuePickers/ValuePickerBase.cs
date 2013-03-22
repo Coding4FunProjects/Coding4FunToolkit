@@ -40,7 +40,7 @@ namespace Coding4Fun.Toolkit.Controls
 			DependencyProperty.Register("DialogTitle", typeof(string), typeof(ValuePickerBase<T>), new PropertyMetadata(""));
 		
         /// <summary>
-        /// Gets or sets the DateTime value.
+        /// Gets or sets the Picker value.
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = "Matching the use of Value as a Picker naming convention.")]
         public T? Value
