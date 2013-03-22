@@ -79,5 +79,18 @@ namespace Coding4Fun.Toolkit.Controls
                 Visibility.Visible :
                 Visibility.Collapsed;
         }
+
+		/// <summary>
+		/// Sets the selectors and title flow direction.
+		/// </summary>
+		/// <param name="flowDirection">Flow direction to set.</param>
+		public override void SetFlowDirection(FlowDirection flowDirection)
+		{
+			HeaderTitle.FlowDirection = flowDirection;
+
+			PrimarySelector.FlowDirection = flowDirection;
+			SecondarySelector.FlowDirection = flowDirection;
+			TertiarySelector.FlowDirection = flowDirection;
+		}
     }
 }

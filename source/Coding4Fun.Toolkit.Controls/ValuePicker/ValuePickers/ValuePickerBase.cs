@@ -315,6 +315,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         	navPage.Value = Value.GetValueOrDefault();
         	navPage.DialogTitle = DialogTitle;
+			navPage.SetFlowDirection(FlowDirection);
         }
 
         private void OnFrameNavigationStoppedOrFailed(object sender, EventArgs e)

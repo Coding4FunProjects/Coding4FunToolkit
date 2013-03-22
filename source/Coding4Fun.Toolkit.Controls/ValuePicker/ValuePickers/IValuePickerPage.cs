@@ -1,4 +1,6 @@
-﻿namespace Coding4Fun.Toolkit.Controls.Primitives
+﻿using System.Windows;
+
+namespace Coding4Fun.Toolkit.Controls.Primitives
 {
     public interface IValuePickerPage<T> where T : struct
     {
@@ -13,5 +15,7 @@
         T? Value { get; set; }
 
 		string DialogTitle { get; set; }
+
+	    void SetFlowDirection(FlowDirection flowDirection);
     }
 }

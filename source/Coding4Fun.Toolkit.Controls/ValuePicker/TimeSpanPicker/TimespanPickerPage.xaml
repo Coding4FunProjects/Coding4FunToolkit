@@ -69,6 +69,7 @@
         <!-- Title -->
         <TextBlock
             Grid.Row="1"
+			x:Name="HeaderTitle"
             Text="{Binding DialogTitle}"
             FontFamily="{StaticResource PhoneFontFamilySemiBold}"
             FontSize="{StaticResource PhoneFontSizeMedium}"
@@ -103,7 +104,6 @@
                                 Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=HourName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
-                                Foreground="{StaticResource PhoneSubtleBrush}"
                                 Margin="0,-2"/>
 
                         </StackPanel>
@@ -130,7 +130,6 @@
                                 Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=MinuteName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
-                                Foreground="{StaticResource PhoneSubtleBrush}"
                                 Margin="0,-2"/>
 
                         </StackPanel>
@@ -159,7 +158,6 @@
                                 Text="{Binding Source={StaticResource TimeSpanPickerResources}, Path=SecondName}"
                                 FontSize="20"
                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
-                                Foreground="{StaticResource PhoneSubtleBrush}"
                                 Margin="0,-2"/>
 
                         </StackPanel>

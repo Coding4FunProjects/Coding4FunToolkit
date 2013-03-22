@@ -4,54 +4,64 @@
     xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
 
     <Style TargetType="Primitives:LoopingSelectorItem">
-		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultSubtleBrush}"/>
         <Setter Property="Padding" Value="6"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border x:Name="root" Opacity="0" CacheMode="BitmapCache" Background="Transparent" Padding="{TemplateBinding Padding}">
+					<Border x:Name="root" CacheMode="BitmapCache" Background="Transparent" Padding="{TemplateBinding Padding}">
 
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
 
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0:0:0.2"/>
-                                </VisualStateGroup.Transitions>
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" To="0" Duration="0:00:00.33"/>
+									</Storyboard>
+								</VisualState>
 
-                                <VisualState x:Name="Normal"/>
+								<VisualState x:Name="Expanded">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" To="1" Duration="0:00:00.33"/>
+									</Storyboard>
+								</VisualState>
 
-                                <VisualState x:Name="Expanded">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="root" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                                        <DoubleAnimation Storyboard.TargetName="background" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
-                                        <DoubleAnimation Storyboard.TargetName="contentPresenter" Storyboard.TargetProperty="Opacity" To=".6" Duration="0"/>
-                                    </Storyboard>
-                                </VisualState>
+								<VisualState x:Name="Selected">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="background" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+										<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="BorderBrush" Duration="0">
+											<ObjectAnimationUsingKeyFrames.KeyFrames>
+												<DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+											</ObjectAnimationUsingKeyFrames.KeyFrames>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="contentControl" Storyboard.TargetProperty="Foreground" Duration="0">
+											<ObjectAnimationUsingKeyFrames.KeyFrames>
+												<DiscreteObjectKeyFrame KeyTime="0" Value="White" />
+											</ObjectAnimationUsingKeyFrames.KeyFrames>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
 
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="root" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                                        <DoubleAnimation Storyboard.TargetName="background" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                                    </Storyboard>
-                                </VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
 
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+						<Border.RenderTransform>
+							<TranslateTransform x:Name="Transform"/>
+						</Border.RenderTransform>
 
-                        <Border.RenderTransform>
-                            <TranslateTransform x:Name="Transform"/>
-                        </Border.RenderTransform>
+						<Grid>
+							<Rectangle x:Name="background" Margin="0" Opacity="0" Fill="{StaticResource DefaultAccentBrush}" CacheMode="BitmapCache"/>
 
-                        <Grid Margin="{TemplateBinding Margin}">
-                            <Rectangle x:Name="background" Margin="2" Opacity="0" Fill="{StaticResource PhoneInactiveBrush}" CacheMode="BitmapCache"/>
+							<Border x:Name="border" Opacity="0" BorderThickness="3" BorderBrush="{StaticResource DefaultSubtleBrush}">
+								<ContentControl x:Name="contentControl" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch">
+									<ContentPresenter x:Name="contentPresenter" CacheMode="BitmapCache"/>
+								</ContentControl>
+							</Border>
+						</Grid>
 
-                            <Border BorderThickness="2" BorderBrush="{StaticResource PhoneInactiveBrush}">
-                                <ContentPresenter x:Name="contentPresenter" CacheMode="BitmapCache" />
-                            </Border>
-                        </Grid>
-
-                    </Border>
-                </ControlTemplate>
+					</Border>
+				</ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>

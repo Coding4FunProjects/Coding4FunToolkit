@@ -3,15 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ValuePicker/LoopingSelectorItem.xaml" />
         <ResourceDictionary Source="/Coding4Fun.Toolkit.Controls;component/Themes/ValuePicker/LoopingSelector.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>-->
     
     <Style TargetType="local:TimeSpanPicker">
-        <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+		<Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="PickerPageUri" Value="/Coding4Fun.Toolkit.Controls;component/ValuePicker/TimeSpanPicker/TimeSpanPickerPage.xaml"/>
         <Setter Property="Template">

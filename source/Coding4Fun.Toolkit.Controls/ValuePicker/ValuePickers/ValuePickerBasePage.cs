@@ -354,5 +354,11 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         /// Hooks Datasources
         /// </summary>
         public abstract void InitDataSource();
+
+		/// <summary>
+		/// Sets the selectors and title flow direction.
+		/// </summary>
+		/// <param name="flowDirection">Flow direction to set.</param>
+		public abstract void SetFlowDirection(FlowDirection flowDirection);
     }
 }

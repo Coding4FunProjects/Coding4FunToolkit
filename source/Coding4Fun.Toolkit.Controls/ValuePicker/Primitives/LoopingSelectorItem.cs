@@ -87,7 +87,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         /// <returns>The current state.</returns>
         internal State GetState() { return _state; }
 
-		void LoopingSelectorItem_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+		void LoopingSelectorItem_Tap(object sender, GestureEventArgs e)
 		{
             e.Handled = true;
         }
@@ -140,10 +140,12 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             {
                 Previous.Next = Next;
             }
+
             if (Next != null)
             {
                 Next.Previous = Previous;
             }
+
             Next = Previous = null;
         }
 
