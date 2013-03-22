@@ -426,6 +426,141 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\Roll.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\Roll.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateIn180Clockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateIn180Clockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateIn180CounterClockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateIn180CounterClockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateIn90Clockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateIn90Clockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateIn90CounterClockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateIn90CounterClockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateOut180Clockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateOut180Clockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateOut180CounterClockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateOut180CounterClockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateOut90Clockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateOut90Clockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\RotateOut90CounterClockwise.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\RotateOut90CounterClockwise.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideDownFadeIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideDownFadeIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideDownFadeOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideDownFadeOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideLeftFadeIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideLeftFadeIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideLeftFadeOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideLeftFadeOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideRightFadeIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideRightFadeIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideRightFadeOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideRightFadeOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideUpFadeIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideUpFadeIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SlideUpFadeOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SlideUpFadeOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelBackwardIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelBackwardIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelBackwardOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelBackwardOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelForwardIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelForwardIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelForwardOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelForwardOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelFullScreenIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelFullScreenIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\SwivelFullScreenOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\SwivelFullScreenOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\TurnstileBackwardIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\TurnstileBackwardIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\TurnstileBackwardOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\TurnstileBackwardOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\TurnstileForwardIn.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\TurnstileForwardIn.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="..\Coding4Fun.Toolkit.Controls\ValuePicker\Transitions\Transitions\Storyboards\TurnstileForwardOut.xaml">
+      <Link>ValuePicker\Transitions\Transitions\Storyboards\TurnstileForwardOut.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
