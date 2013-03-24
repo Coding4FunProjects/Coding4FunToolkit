@@ -93,7 +93,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorSliders.xaml.cs">
+      <DependentUpon>ColorSliders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlHelper.cs" />
+    <Compile Include="NavigationHelper.cs" />
     <Compile Include="SuperSliderUpdate.cs" />
     <Compile Include="ISuperSlider.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -110,17 +114,28 @@
     </Compile>
     <Compile Include="SuperSlider.cs" />
     <Compile Include="SuperSliderWp7.cs" />
+    <Compile Include="VerticalSliders.xaml.cs">
+      <DependentUpon>VerticalSliders.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ColorSliders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VerticalSliders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

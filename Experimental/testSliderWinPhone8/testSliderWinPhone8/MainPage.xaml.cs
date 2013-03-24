@@ -22,6 +22,21 @@ namespace testSliderWinPhone8
 			//BuildLocalizedApplicationBar();
 		}
 
+		private void ColorClick(object sender, RoutedEventArgs e)
+		{
+			NavigationHelper.NavigateTo("ColorSliders.xaml");
+		}
+
+		private void VerticalClick(object sender, RoutedEventArgs e)
+		{
+			NavigationHelper.NavigateTo("VerticalSliders.xaml");
+		}
+
+		private void HorizontalClick(object sender, RoutedEventArgs e)
+		{
+			NavigationHelper.NavigateTo("MainPage.xaml");
+		}
+
 		// Sample code for building a localized ApplicationBar
 		//private void BuildLocalizedApplicationBar()
 		//{
