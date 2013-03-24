@@ -31,27 +31,27 @@
 			<StackPanel Grid.Row="0">
 				<TextBlock>base</TextBlock>
 				<Slider Maximum="100" Value="55" Background="BurlyWood" />
-				<TextBlock>base w/ step frequency</TextBlock>
+				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
 				<local:SuperSlider Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<local:SuperSlider
-					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood">
+					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood"  TrackSize="24" FillSize="6">
 					<local:SuperSlider.Thumb>
-						<Rectangle Width="12" Height="16" Fill="Azure" />
+						<Rectangle Width="12" Height="12" Fill="Green" />
 					</local:SuperSlider.Thumb>
 				</local:SuperSlider>
-				<TextBlock>SuperSlider Update</TextBlock>
+				<TextBlock>Wp7 SuperSlider Update</TextBlock>
 				<controls:SuperSliderUpdate Title="Normal" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<controls:SuperSliderUpdate
-					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood">
+					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" TrackSize="24" FillSize="6">
 					<controls:SuperSliderUpdate.Thumb>
-						<Rectangle Width="12" Height="16" Fill="Azure" />
+						<Rectangle Width="12" Height="12" Fill="Green" />
 					</controls:SuperSliderUpdate.Thumb>
 				</controls:SuperSliderUpdate>
 				<TextBlock>SuperSliderWp7 version</TextBlock>
 				<controls:SuperSliderWp7 Title="Normal" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<controls:SuperSliderWp7 Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" >
 					<controls:SuperSliderWp7.Thumb>
-						<Rectangle Width="12" Height="12" Fill="White" />
+						<Rectangle Width="12" Height="12" Fill="Green" />
 					</controls:SuperSliderWp7.Thumb>
 				</controls:SuperSliderWp7>
 

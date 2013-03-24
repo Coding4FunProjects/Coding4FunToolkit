@@ -34,22 +34,27 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid x:Name="HorizontalTemplate" Margin="{StaticResource PhoneHorizontalMargin}">
-							<Rectangle x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="12" IsHitTestVisible="False" Margin="0,22,0,50"/>
-							<Rectangle x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="12" IsHitTestVisible="False" Margin="0,22,0,50">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="22" />
+								<RowDefinition />
+								<RowDefinition Height="50" />
+							</Grid.RowDefinitions>
+							<Rectangle Grid.Row="1" x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
+							<Rectangle Grid.Row="1" x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" >
 								<Rectangle.Clip>
-									<RectangleGeometry Rect="0, 0, 6, 12"/>
+									<RectangleGeometry Rect="0, 0, 50, 50"/>
 								</Rectangle.Clip>
 							</Rectangle>
-							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left">
+							<ContentControl Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
 								<ContentControl.RenderTransform>
 									<TranslateTransform x:Name="HorizontalThumbTransform"/>
 								</ContentControl.RenderTransform>
-								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Margin="0,16,0,44" Width="12" />
+								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Width="12" />
 							</ContentControl>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
-							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="12"/>
-							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="12">
+							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding TrackSize}"/>
+							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding FillSize}">
 								<Rectangle.Clip>
 									<RectangleGeometry Rect="0, 0, 12, 6"/>
 								</Rectangle.Clip>
@@ -98,9 +103,14 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid x:Name="HorizontalTemplate" Margin="{StaticResource PhoneHorizontalMargin}">
-							<Rectangle x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding BackgroundSize}" IsHitTestVisible="False" Margin="0,22,0,50"/>
-							<Rectangle x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding ProgressSize}" IsHitTestVisible="False" Margin="0,22,0,50"  HorizontalAlignment="Left" />
-							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left" Margin="0,16,0,44">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="22" />
+								<RowDefinition />
+								<RowDefinition Height="50" />
+							</Grid.RowDefinitions>
+							<Rectangle Grid.Row="1" x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
+							<Rectangle Grid.Row="1" x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" HorizontalAlignment="Left" />
+							<ContentControl Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
 								<ContentControl.RenderTransform>
 									<TranslateTransform/>
 								</ContentControl.RenderTransform>
@@ -108,8 +118,8 @@
 							</ContentControl>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
-							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding BackgroundSize}"/>
-							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding ProgressSize}" VerticalAlignment="Bottom" />
+							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding TrackSize}"/>
+							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding FillSize}" VerticalAlignment="Bottom" />
 							<ContentControl Name="VerticalCenterElement" VerticalAlignment="Bottom">
 								<ContentControl.RenderTransform>
 									<TranslateTransform/>

@@ -49,11 +49,27 @@ namespace testSliderWinPhone8
 			}
 		}
 
-		public double ProgressSize { get; set; }
-		public double BackgroundSize { get; set; }
-		public double BarWidth { get; set; }
-		public double BarHeight { get; set; }
 		public string Title { get; set; }
+
+		public double TrackSize
+		{
+			get { return (double)GetValue(TrackSizeProperty); }
+			set { SetValue(TrackSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for TrackSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty TrackSizeProperty =
+			DependencyProperty.Register("TrackSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d));
+
+		public double FillSize
+		{
+			get { return (double)GetValue(FillSizeProperty); }
+			set { SetValue(FillSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for FillSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty FillSizeProperty =
+			DependencyProperty.Register("FillSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d));
 
 		public double StepFrequency
 		{

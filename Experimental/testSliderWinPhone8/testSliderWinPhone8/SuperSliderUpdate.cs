@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 using Coding4Fun.Toolkit.Controls.Common;
 using testSliderWinPhone8;
@@ -78,26 +76,6 @@ namespace Coding4Fun.Toolkit.Controls
 
         #region dependency properties
 
-		public double BarHeight
-		{
-			get { return (double)GetValue(BarHeightProperty); }
-			set { SetValue(BarHeightProperty, value); }
-		}
-
-		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty BarHeightProperty =
-			DependencyProperty.Register("BarHeight", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(24d, OnLayoutChanged));
-
-		public double BarWidth
-		{
-			get { return (double)GetValue(BarWidthProperty); }
-			set { SetValue(BarWidthProperty, value); }
-		}
-
-		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty BarWidthProperty =
-			DependencyProperty.Register("BarWidth", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(24d, OnLayoutChanged));
-		
 		public string Title
 		{
 			get { return (string)GetValue(TitleProperty); }
@@ -119,25 +97,25 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty ThumbProperty =
 			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSliderUpdate), new PropertyMetadata(OnThumbChanged));
 
-        public double BackgroundSize
+		public double TrackSize
         {
-            get { return (double)GetValue(BackgroundSizeProperty); }
-            set { SetValue(BackgroundSizeProperty, value); }
+			get { return (double)GetValue(TrackSizeProperty); }
+			set { SetValue(TrackSizeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for BackgroundSize.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BackgroundSizeProperty =
-			DependencyProperty.Register("BackgroundSize", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(double.NaN, OnLayoutChanged));
+		public static readonly DependencyProperty TrackSizeProperty =
+			DependencyProperty.Register("TrackSize", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(12d, OnLayoutChanged));
 
-        public double ProgressSize
+        public double FillSize
         {
-            get { return (double)GetValue(ProgressSizeProperty); }
-            set { SetValue(ProgressSizeProperty, value); }
+			get { return (double)GetValue(FillSizeProperty); }
+			set { SetValue(FillSizeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ProgressSize.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ProgressSizeProperty =
-			DependencyProperty.Register("ProgressSize", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(double.NaN, OnLayoutChanged));
+		public static readonly DependencyProperty FillSizeProperty =
+			DependencyProperty.Register("FillSize", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(12d, OnLayoutChanged));
 
         public double Value
         {

@@ -78,6 +78,9 @@ namespace Coding4Fun.Toolkit.Controls
 
         #region dependency properties
 
+		public double FillSize { get; set; }
+		public double TrackSize { get; set; }
+
 		public double BarHeight
 		{
 			get { return (double)GetValue(BarHeightProperty); }
@@ -97,7 +100,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for BarHeight.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty BarWidthProperty =
 			DependencyProperty.Register("BarWidth", typeof(double), typeof(SuperSliderWp7), new PropertyMetadata(24d, OnLayoutChanged));
-		
+
 		public string Title
 		{
 			get { return (string)GetValue(TitleProperty); }
@@ -145,7 +148,7 @@ namespace Coding4Fun.Toolkit.Controls
             set { SetValue(ValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
+		// Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(double), typeof(SuperSliderWp7), new PropertyMetadata(0d, OnValueChanged));
 

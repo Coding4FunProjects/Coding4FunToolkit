@@ -12,11 +12,9 @@ namespace testSliderWinPhone8
 		double Maximum { get; set; }
 		double Value { get; set; }
 
-		double ProgressSize { get; set; }
-		double BackgroundSize { get; set; }
-		double BarWidth { get; set; }
-		double BarHeight { get; set; }
-
+		double TrackSize { get; set; }
+		double FillSize { get; set; }
+		
 		string Title { get; set; }
 	}
 }
