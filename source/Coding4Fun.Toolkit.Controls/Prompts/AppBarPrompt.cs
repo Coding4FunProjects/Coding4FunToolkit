@@ -28,20 +28,6 @@ namespace Coding4Fun.Toolkit.Controls
         }
 
 	    /// <summary>
-	    /// Checks the app bar foreground color.
-	    /// </summary>
-	    /// <returns></returns>
-	    private void VerifyAppBarForegroundColor()
-        {
-			var color = PopUpService.Page.ApplicationBar.BackgroundColor;
-
-			if (color != NullColor) // Default system theme no color is given
-			{
-				Foreground = new SolidColorBrush(color);
-			}
-        }
-
-	    /// <summary>
 	    /// Checks the app bar background color.
 	    /// </summary>
 	    /// <returns></returns>
@@ -63,8 +49,7 @@ namespace Coding4Fun.Toolkit.Controls
             base.OnApplyTemplate();
 
 			VerifyAppBarBackgroundColor();
-			VerifyAppBarForegroundColor();
-
+			
             // Get the stackpanel from the template so we can populate its contents with the 
             // provided actions.
 			Body = GetTemplateChild(BodyName) as StackPanel;
@@ -78,7 +63,6 @@ namespace Coding4Fun.Toolkit.Controls
 						{
 							Content = action.Content,
 							Command = action.Command,
-							Foreground = Foreground
 						};
 
 					Body.Children.Add(menuItem);
