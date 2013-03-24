@@ -26,12 +26,14 @@
                                 VerticalAlignment="Bottom"
                                 Orientation="Horizontal">
 								<Image 
-                                    Stretch="None"
                                     Margin="0,0,16,0"
 								    Visibility="Collapsed"
 								    Name="ToastImage"
                                     VerticalAlignment="Bottom"
-								    Source="{TemplateBinding ImageSource}" />
+									Width="{TemplateBinding ImageWidth}"
+									Height="{TemplateBinding ImageHeight}"
+								    Source="{TemplateBinding ImageSource}"
+									Stretch="{TemplateBinding Stretch}" />
 								<TextBlock 
                                     Text="{TemplateBinding Title}"
 								    FontWeight="Bold"

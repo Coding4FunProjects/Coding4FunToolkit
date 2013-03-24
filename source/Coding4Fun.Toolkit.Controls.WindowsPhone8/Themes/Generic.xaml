@@ -1101,7 +1101,7 @@
           <Grid VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}">
             <StackPanel VerticalAlignment="Bottom" Margin="24, 32, 16, 5" Orientation="{TemplateBinding TextOrientation}">
               <StackPanel Margin="0,0,16,0" VerticalAlignment="Bottom" Orientation="Horizontal">
-                <Image Stretch="None" Margin="0,0,16,0" Visibility="Collapsed" Name="ToastImage" VerticalAlignment="Bottom" Source="{TemplateBinding ImageSource}" />
+                <Image Margin="0,0,16,0" Visibility="Collapsed" Name="ToastImage" VerticalAlignment="Bottom" Width="{TemplateBinding ImageWidth}" Height="{TemplateBinding ImageHeight}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" />
                 <TextBlock Text="{TemplateBinding Title}" FontWeight="Bold" VerticalAlignment="Center" Margin="0" Padding="0" />
               </StackPanel>
               <TextBlock Text="{TemplateBinding Message}" Margin="0" Padding="0" TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Center" />

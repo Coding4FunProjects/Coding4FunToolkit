@@ -6,10 +6,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Coding4Fun.Toolkit.Controls.Binding;
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class ToastPrompt : PopUp<string, PopUpResult>, IDisposable
+    public class ToastPrompt : PopUp<string, PopUpResult>, IDisposable, IImageSourceFull
     {
         protected Image ToastImage;
         private const string ToastImageName = "ToastImage";
@@ -194,7 +195,38 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ToastPrompt),
             new PropertyMetadata(OnImageSource));
-        
+
+		public Stretch Stretch
+		{
+			get { return (Stretch)GetValue(StretchProperty); }
+			set { SetValue(StretchProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Stretch.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty StretchProperty =
+			DependencyProperty.Register("Stretch", typeof(Stretch), typeof(ToastPrompt), 
+			new PropertyMetadata(Stretch.None));
+
+		public double ImageWidth
+		{
+			get { return (double)GetValue(ImageWidthProperty); }
+			set { SetValue(ImageWidthProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ImageWidth.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ImageWidthProperty =
+			DependencyProperty.Register("ImageWidth", typeof(double), typeof(ToastPrompt), new PropertyMetadata(double.NaN));
+
+		public double ImageHeight
+		{
+			get { return (double)GetValue(ImageHeightProperty); }
+			set { SetValue(ImageHeightProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ImageWidth.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ImageHeightProperty =
+			DependencyProperty.Register("ImageHeight", typeof(double), typeof(ToastPrompt), new PropertyMetadata(double.NaN));
+
         public Orientation TextOrientation
         {
             get { return (Orientation)GetValue(TextOrientationProperty); }

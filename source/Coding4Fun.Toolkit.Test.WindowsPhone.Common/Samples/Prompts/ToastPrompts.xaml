@@ -42,6 +42,14 @@
 					<Button Content="Adv" Click="ToastWrapAdvancedClick" />
 				</StackPanel>
 
+				<TextBlock Text="image tests" />
+				<StackPanel Orientation="Horizontal">
+					<Button Content="big" Click="LargeImageClick" />
+					<Button Content="stetch" Click="LargeImageStretchClick" />
+					<Button Content="h/w" Click="LargeImageWidthHeightClick" />
+					<Button Content="h/w + stretch" Click="LargeImageStretchWidthHeightClick" />
+				</StackPanel>
+				
 				<TextBlock Text="test: system tray" />
 				<StackPanel Orientation="Horizontal">
 					<Button Content="vis" Click="ToastSysTrayVisClick" />

@@ -148,6 +148,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
       <Link>Common\DevelopmentHelpers.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
+      <Link>Common\IImageSource.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
       <Link>Common\MovementMonitor.cs</Link>
     </Compile>

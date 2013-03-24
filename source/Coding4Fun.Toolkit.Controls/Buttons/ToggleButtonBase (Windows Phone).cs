@@ -2,9 +2,11 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
+using Coding4Fun.Toolkit.Controls.Common;
+
 namespace Coding4Fun.Toolkit.Controls
 {
-	public abstract partial class ToggleButtonBase : IImageSourceButton
+	public abstract partial class ToggleButtonBase : IImageSource
 	{
 		private bool IsContentEmpty(object content)
 		{

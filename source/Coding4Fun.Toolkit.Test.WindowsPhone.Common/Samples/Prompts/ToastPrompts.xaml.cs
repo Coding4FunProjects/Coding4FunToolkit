@@ -96,7 +96,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 				Title = "With Image",
 				TextOrientation = System.Windows.Controls.Orientation.Vertical,
 				Message = LongText,
-				ImageSource = new BitmapImage(new Uri("../../ApplicationIcon.png", UriKind.RelativeOrAbsolute))
+				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
 			};
 		}
 		#endregion
@@ -166,6 +166,57 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 		{
 			SystemTray.IsVisible = isVisible;
 			SystemTray.Opacity = opacity;
+		}
+
+		private void LargeImageClick(object sender, RoutedEventArgs e)
+		{
+			new ToastPrompt
+				{
+					Title = "With Image",
+					TextOrientation = System.Windows.Controls.Orientation.Vertical,
+					Message = LongText,
+					ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
+				}.Show();
+		}
+
+		private void LargeImageWidthHeightClick(object sender, RoutedEventArgs e)
+		{
+			new ToastPrompt
+			{
+				Title = "Width + Height",
+				TextOrientation = System.Windows.Controls.Orientation.Vertical,
+				Message = LongText,
+				ImageHeight = 50,
+				ImageWidth = 100,
+				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
+			}.Show();
+		}
+
+		private void LargeImageStretchClick(object sender, RoutedEventArgs e)
+		{
+			new ToastPrompt
+			{
+				Title = "Stretch",
+				TextOrientation = System.Windows.Controls.Orientation.Vertical,
+				Message = LongText,
+				ImageHeight = 100,
+				Stretch = Stretch.Fill,
+				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
+			}.Show();
+		}
+
+		private void LargeImageStretchWidthHeightClick(object sender, RoutedEventArgs e)
+		{
+			new ToastPrompt
+			{
+				Title = "Stretch + Width + Height",
+				TextOrientation = System.Windows.Controls.Orientation.Vertical,
+				Message = LongText,
+				ImageHeight = 50,
+				ImageWidth = 100,
+				Stretch = Stretch.Uniform,
+				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
+			}.Show();
 		}
 	}
 }
