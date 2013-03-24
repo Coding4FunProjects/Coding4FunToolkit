@@ -68,7 +68,12 @@ namespace Coding4Fun.Toolkit.Controls
 			_horizontalTrack = GetTemplateChild(HorizontalTrackName) as FrameworkElement;
 			_verticalTrack = GetTemplateChild(VerticalTrackName) as FrameworkElement;
 
-			AdjustAndUpdateLayout();
+			Dispatcher.BeginInvoke(() =>
+				{
+					UpdateThumb();
+					AdjustAndUpdateLayout();
+					UpdateValueAndUserInterface(Value, Value);
+				});
         }
 
         #region dependency properties
@@ -112,7 +117,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbProperty =
-			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSliderUpdate), new PropertyMetadata(OnLayoutChanged));
+			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSliderUpdate), new PropertyMetadata(OnThumbChanged));
 
         public double BackgroundSize
         {
@@ -182,7 +187,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OrientationProperty =
-			DependencyProperty.Register("Orientation", typeof(Orientation), typeof(SuperSliderUpdate), new PropertyMetadata(Orientation.Horizontal, OnLayoutChanged));
+			DependencyProperty.Register("Orientation", typeof(Orientation), typeof(SuperSliderUpdate), new PropertyMetadata(Orientation.Horizontal, OnOrientationChanged));
         #endregion
 
         void _monitor_Movement(object sender, MovementMonitorEventArgs e)
@@ -198,6 +203,22 @@ namespace Coding4Fun.Toolkit.Controls
 				sender.UpdateValueAndUserInterface((double)e.NewValue, (double)e.OldValue);
         }
 
+		private static void OnOrientationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			OnThumbChanged(o, e);
+			OnLayoutChanged(o, e);
+		}
+
+		private static void OnThumbChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			var sender = o as SuperSliderUpdate;
+
+			if (sender != null && e.NewValue != e.OldValue)
+				sender.UpdateThumb();
+
+			OnLayoutChanged(o, e);
+		}
+
         private static void OnLayoutChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
 			var sender = o as SuperSliderUpdate;
@@ -205,6 +226,16 @@ namespace Coding4Fun.Toolkit.Controls
             if (sender != null && e.NewValue != e.OldValue)
                 sender.AdjustAndUpdateLayout();
         }
+
+		private void UpdateThumb()
+		{
+			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentControl;
+
+			if (Thumb != null && thumbItem != null) 
+				thumbItem.Content = Thumb;
+
+			UpdateUserInterface();
+		}
 
 		private void AdjustAndUpdateLayout()
 		{
@@ -257,8 +288,8 @@ namespace Coding4Fun.Toolkit.Controls
 
             newValue = ControlHelper.CheckBound(newValue, Minimum, Maximum);
 
-            if (oldValue == newValue)
-                return;
+			//if (oldValue == newValue)
+			//	return;
 
             Value = newValue;
 

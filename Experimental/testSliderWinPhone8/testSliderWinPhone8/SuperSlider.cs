@@ -13,8 +13,18 @@ namespace testSliderWinPhone8
 		public SuperSlider()
 		{
 			DefaultStyleKey = typeof(SuperSlider);
+		}
+
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
 
 			ValueChanged += SuperSlider_ValueChanged;
+			Dispatcher.BeginInvoke(() =>
+			{
+				UpdateThumb();
+				UpdateValue(Value);
+			});
 		}
 
 		void SuperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -24,13 +34,18 @@ namespace testSliderWinPhone8
 			if (slide == null)
 				return;
 
-			if (slide.Value % slide.StepFrequency < slide.StepFrequency / 2.0)
+			slide.UpdateValue(e.NewValue);
+		}
+
+		public void UpdateValue(double newValue)
+		{
+			if (newValue % StepFrequency < StepFrequency / 2.0)
 			{
-				slide.Value = Math.Floor((slide.Value / slide.StepFrequency)) * slide.StepFrequency;
+				Value = Math.Floor((newValue / StepFrequency)) * StepFrequency;
 			}
 			else
 			{
-				slide.Value = Math.Ceiling((slide.Value / slide.StepFrequency)) * slide.StepFrequency;
+				Value = Math.Ceiling((newValue / StepFrequency)) * StepFrequency;
 			}
 		}
 
@@ -50,8 +65,6 @@ namespace testSliderWinPhone8
 		public static readonly DependencyProperty StepFrequencyProperty =
 			DependencyProperty.Register("StepFrequency", typeof(double), typeof(SuperSlider), new PropertyMetadata(1d));
 
-
-
 		public object Thumb
 		{
 			get { return (object)GetValue(ThumbProperty); }
@@ -60,8 +73,27 @@ namespace testSliderWinPhone8
 
 		// Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ThumbProperty =
-			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(null));
+			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(OnThumbChanged));
 
+		private static void OnThumbChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			var sender = o as SuperSlider;
 
+			if (sender != null && e.NewValue != e.OldValue)
+				sender.UpdateThumb();
+		}
+
+		private void UpdateThumb()
+		{
+			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentControl;
+
+			if (Thumb != null && thumbItem != null)
+				thumbItem.Content = Thumb;
+		}
+
+		private bool IsVertical()
+		{
+			return (Orientation == Orientation.Vertical);
+		}
 	}
 }

@@ -100,11 +100,11 @@
 						<Grid x:Name="HorizontalTemplate" Margin="{StaticResource PhoneHorizontalMargin}">
 							<Rectangle x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding BackgroundSize}" IsHitTestVisible="False" Margin="0,22,0,50"/>
 							<Rectangle x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding ProgressSize}" IsHitTestVisible="False" Margin="0,22,0,50"  HorizontalAlignment="Left" />
-							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left">
+							<ContentControl Name="HorizontalCenterElement" HorizontalAlignment="Left" Margin="0,16,0,44">
 								<ContentControl.RenderTransform>
 									<TranslateTransform/>
 								</ContentControl.RenderTransform>
-								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Margin="0,16,0,44" Width="12" />
+								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Width="12" />
 							</ContentControl>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
