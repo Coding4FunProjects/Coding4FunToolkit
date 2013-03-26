@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Media;
@@ -9,6 +10,8 @@ namespace Coding4Fun.Toolkit.Audio
     {
 		private MemoryStreamAudioSink _audio;
 		private CaptureSource _source;
+		private DateTime _startTime;
+		private readonly TimeSpan _minRunTime = TimeSpan.FromMilliseconds(750);
 
 		public MicrophoneRecorder()
 		{
@@ -34,6 +37,7 @@ namespace Coding4Fun.Toolkit.Audio
 					{
 						_audio.ResetAudioData();
 						_source.Start();
+						_startTime = DateTime.Now;
 
 						base.Start();
 					});
@@ -43,6 +47,19 @@ namespace Coding4Fun.Toolkit.Audio
 		{
 			ShouldCallStopInTimeout = false;
 
+			while (_audio.AudioFormat == null)
+			{
+				Thread.Sleep(1);
+
+				if ((DateTime.Now - _startTime) > _minRunTime)
+				{
+					Debug.WriteLine("BREAKING:" + (DateTime.Now - _startTime).TotalMilliseconds);
+					break;
+				}
+			}
+
+			_source.Stop();
+
 			Buffer = _audio.AudioData;
 	
 			base.Stop();
@@ -50,6 +67,9 @@ namespace Coding4Fun.Toolkit.Audio
 
 		internal override void ExecuteStopWithTimeDelay(TimeSpan timeout)
 		{
+			if (timeout < _minRunTime)
+				timeout = _minRunTime;
+
 			ThreadPool.QueueUserWorkItem(
 				state =>
 				{
