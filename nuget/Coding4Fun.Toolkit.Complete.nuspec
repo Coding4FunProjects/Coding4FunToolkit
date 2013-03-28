@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Coding4Fun.Toolkit.Complete</id>
-		<version>2.0.3</version>
+		<version>2.0.4</version>
 		<title>Coding4Fun Toolkit - Complete</title>
 		<authors>Coding4Fun, Clint Rutkas</authors>
 		<description>The Coding4Fun Toolkit has multiple controls and useful items such as a GzipWebClient and Audio Recorder for XAML based applications.  This is the complete version which includes the network, storage wrappers, controls, and audio helper libraries.</description>
