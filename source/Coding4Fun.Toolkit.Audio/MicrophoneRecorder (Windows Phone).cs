@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Media;
@@ -53,7 +52,6 @@ namespace Coding4Fun.Toolkit.Audio
 
 				if ((DateTime.Now - _startTime) > _minRunTime)
 				{
-					Debug.WriteLine("BREAKING:" + (DateTime.Now - _startTime).TotalMilliseconds);
 					break;
 				}
 			}
