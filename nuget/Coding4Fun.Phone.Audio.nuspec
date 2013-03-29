@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Coding4Fun.Phone.Audio</id>
-			<version>2.0.4</version>
+			<version>2.0.5</version>
 			<title>Coding4Fun Toolkit - Audio (Use Coding4Fun.Toolkit.Audio package instead)</title>
 			<authors>Coding4Fun, Clint Rutkas</authors>
 			<description>Part of the Coding4Fun Toolkit with only the Audio library.  It provides an easy to use wrapper to get audio data from the microphone.</description>

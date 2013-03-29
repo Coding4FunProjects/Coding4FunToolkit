@@ -1,6 +1,6 @@
 ﻿$doNugetPush = $false;
 
-$versionNumber = "2.0.4";
+$versionNumber = "2.0.5";
 $solutionName = "Coding4Fun.Toolkit.sln";
 
 $zipFileName = "Coding4Fun.Toolkit ({0}).zip";
