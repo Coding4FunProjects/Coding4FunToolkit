@@ -20,7 +20,7 @@ namespace Microsoft.Phone.Controls
 	/// <QualityBand>Preview</QualityBand>
 	[TemplatePart(Name = FirstTemplatePartName, Type = typeof(ContentPresenter))]
 	[TemplatePart(Name = SecondTemplatePartName, Type = typeof(ContentPresenter))]
-	public class TransitionFrame : PhoneApplicationFrame
+	internal class TransitionFrame : PhoneApplicationFrame
 	{
 		#region Constants and Statics
 		/// <summary>
