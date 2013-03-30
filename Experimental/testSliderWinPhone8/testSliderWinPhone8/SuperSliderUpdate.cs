@@ -52,7 +52,10 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
+			base.OnApplyTemplate();
+
+			_horizontalTrack = GetTemplateChild(HorizontalTrackName) as FrameworkElement;
+			_verticalTrack = GetTemplateChild(VerticalTrackName) as FrameworkElement;
 
             var body = GetTemplateChild(BodyName) as Grid;
 
@@ -63,13 +66,11 @@ namespace Coding4Fun.Toolkit.Controls
                 _monitor.MonitorControl(body);
             }
 
-			_horizontalTrack = GetTemplateChild(HorizontalTrackName) as FrameworkElement;
-			_verticalTrack = GetTemplateChild(VerticalTrackName) as FrameworkElement;
-
+			AdjustAndUpdateLayout();
+			UpdateThumb();
+			
 			Dispatcher.BeginInvoke(() =>
 				{
-					UpdateThumb();
-					AdjustAndUpdateLayout();
 					UpdateValueAndUserInterface(Value, Value);
 				});
         }
@@ -222,7 +223,7 @@ namespace Coding4Fun.Toolkit.Controls
 			var hor = GetTemplateChild(HorizontalTemplateName) as FrameworkElement;
 			var vert = GetTemplateChild(VerticalTemplateName) as FrameworkElement;
 
-			if (hor != null) 
+			if (hor != null)
 				hor.Visibility = isVert ? Visibility.Collapsed : Visibility.Visible;
 
 			if (vert != null) 
@@ -283,6 +284,9 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void UpdateUserInterface()
 		{
+			if (!_isLayoutInit)
+				return;
+
 			var isVert = IsVertical();
 
 			var thumbItem = GetTemplateChild(isVert ? "VerticalCenterElement" : "HorizontalCenterElement") as FrameworkElement;

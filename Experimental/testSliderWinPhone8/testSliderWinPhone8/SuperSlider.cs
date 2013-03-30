@@ -20,11 +20,12 @@ namespace testSliderWinPhone8
 			base.OnApplyTemplate();
 
 			ValueChanged += SuperSlider_ValueChanged;
-			Dispatcher.BeginInvoke(() =>
+			//Dispatcher.BeginInvoke(() =>
 			{
 				UpdateThumb();
 				UpdateValue(Value);
-			});
+			}
+			//);
 		}
 
 		void SuperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
