@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:local="clr-namespace:testSliderWinPhone8"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -16,10 +17,47 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
+		<StackPanel Orientation="Horizontal">
+			<TextBlock>base</TextBlock>
+			<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
+			<TextBlock>Wp7 SuperSlider Update</TextBlock>
+			<TextBlock>SuperSliderWp7 version</TextBlock>
 
+		</StackPanel>
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+			<StackPanel Orientation="Horizontal">
+				<Slider Orientation="Vertical" Maximum="100" Value="50" Background="BurlyWood" />
+				
+				<local:SuperSlider
+					Orientation="Vertical" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
+				<local:SuperSlider
+					Orientation="Vertical" 
+					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood"  TrackSize="24" FillSize="6">
+					<local:SuperSlider.Thumb>
+						<Rectangle Width="12" Height="12" Fill="Green" />
+					</local:SuperSlider.Thumb>
+				</local:SuperSlider>
+				
+				<controls:SuperSliderUpdate 
+					Orientation="Vertical" Title="Normal" 
+					Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
+				<controls:SuperSliderUpdate
+					Orientation="Vertical" 
+					Title="Custom Thumb" Value="55" Maximum="100"
+					StepFrequency="25" Background="BurlyWood" 
+					TrackSize="24" FillSize="6">
+					<controls:SuperSliderUpdate.Thumb>
+						<Rectangle Width="12" Height="12" Fill="Green" />
+					</controls:SuperSliderUpdate.Thumb>
+				</controls:SuperSliderUpdate>
+				<controls:SuperSliderWp7 Orientation="Vertical"  Title="Normal" Value="50" Maximum="100" StepFrequency="25" Background="BurlyWood" />
+				<controls:SuperSliderWp7 Orientation="Vertical"  Title="Custom Thumb" Value="50" Maximum="100" StepFrequency="25" Background="BurlyWood" >
+					<controls:SuperSliderWp7.Thumb>
+						<Rectangle Width="12" Height="12" Fill="Green" />
+					</controls:SuperSliderWp7.Thumb>
+				</controls:SuperSliderWp7>
+			</StackPanel>
 
 		</Grid>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">

@@ -20,7 +20,7 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<StackPanel Grid.Row="0">
+			<StackPanel>
 				<TextBlock>base</TextBlock>
 				<Slider Maximum="100" Value="50" Background="BurlyWood" />
 				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
