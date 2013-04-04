@@ -38,7 +38,7 @@ namespace Coding4Fun.Toolkit.Controls
 			if (imageSource == null)
 				return;
 
-			var imgBrush = new ImageBrush { Opacity = 0, ImageSource = imageSource, Stretch = stretch };
+			var imgBrush = new ImageBrush { Opacity = 1, ImageSource = imageSource, Stretch = stretch };
 			var imgRect = new Rectangle
 			{
 				OpacityMask = imgBrush
@@ -48,9 +48,9 @@ namespace Coding4Fun.Toolkit.Controls
 
 			ApplyForegroundToFillBinding(content, imgRect);
 
-			var sb = new Storyboard();
-			ControlHelper.CreateDoubleAnimations(sb, imgBrush, "Opacity", 0.2, 1, 75);
-			hostBody.Dispatcher.BeginInvoke(sb.Begin);
+			//var sb = new Storyboard();
+			//ControlHelper.CreateDoubleAnimations(sb, imgBrush, "Opacity", 0.2, 1, 75);
+			//hostBody.Dispatcher.BeginInvoke(sb.Begin);
 		}
 	}
 }
