@@ -34,18 +34,37 @@
                                 VerticalAlignment="Center">
 						<Button>X</Button>
 						<Button>Y</Button>
-                        <coding4fun:RoundButton Margin="4,0,0,0"
-                                                ImageSource="/Icons/dark/appbar.control.play.png" />
-                        <coding4fun:RoundButton Margin="4,0,0,0"
-                                                ImageSource="/Icons/dark/appbar.page.pdf.png" />
+                        <coding4fun:RoundButton 
+							Margin="4,0,0,0"
+                            ImageSource="/Icons/dark/appbar.control.play.png" />
+                        <coding4fun:RoundButton 
+							Margin="4,0,0,0"
+                            ImageSource="/Icons/dark/appbar.page.pdf.png" />
                     </StackPanel>
                 </Grid>
             </DataTemplate>
         </Grid.Resources>
 
         <controls:Pivot x:Name="pivot" />
+		<StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+			<coding4fun:RoundButton 
+                ImageSource="/Icons/dark/appbar.page.pdf.png" />
+			<coding4fun:RoundButton 
+                ImageSource="/Icons/dark/appbar.page.pdf.png" />
+			<coding4fun:RoundButton 
+                ImageSource="/Icons/dark/appbar.page.pdf.png" />
+			<coding4fun:RoundButton 
+                ImageSource="/Icons/dark/appbar.page.pdf.png" />
 
-        <TextBlock x:Name="messageTextBlock" 
+			<coding4fun:RoundButton 
+                ImageSource="/Icons/dark/appbar.page.pdf.png" />
+
+			<coding4fun:RoundButton>
+                <Image Source="/Icons/dark/appbar.page.pdf.png" />
+			</coding4fun:RoundButton>
+
+		</StackPanel>
+		<TextBlock x:Name="messageTextBlock" 
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
