@@ -38,7 +38,7 @@ namespace Coding4Fun.Toolkit.Controls
 			if (imageSource == null)
 				return;
 
-			var imgBrush = new ImageBrush { Opacity = 1, ImageSource = imageSource, Stretch = stretch };
+			var imgBrush = new ImageBrush { ImageSource = imageSource, Stretch = stretch };
 			var imgRect = new Rectangle
 			{
 				OpacityMask = imgBrush
