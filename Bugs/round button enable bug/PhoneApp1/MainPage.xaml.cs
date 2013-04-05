@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 
@@ -16,7 +17,7 @@ namespace PhoneApp1
         {
             var lectureTemplate = (DataTemplate)LayoutRoot.Resources["lectureTemplate"];
             int i = 1;
-            var lectureSections = new[] { "A", "B", "C" };
+			var lectureSections = new[] { "A", "B", "C", "E", "F", "G", "H", "I", "J" };
             foreach (var lectureSection in lectureSections)
             {
                 var grid = new Grid();
@@ -34,7 +35,7 @@ namespace PhoneApp1
                     Content = new ItemsControl
                     {
                         ItemTemplate = lectureTemplate,
-                        ItemsSource = new[] { "D", "E", "F", "X", "Y", "Z" },
+                        ItemsSource = new[] { "A", "B", "C", "E", "F", "G", "H", "I", "J", "X", "Y", "Z" },
                     },
                 };
                 Grid.SetRow(scrollViewer, 1);
@@ -46,5 +47,10 @@ namespace PhoneApp1
                 });
             }
         }
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/Page1.xaml", UriKind.RelativeOrAbsolute));
+		}
     }
 }

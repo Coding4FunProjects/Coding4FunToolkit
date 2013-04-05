@@ -46,7 +46,7 @@
         </Grid.Resources>
 
         <controls:Pivot x:Name="pivot" />
-		<StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+		<!--<StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
 			<coding4fun:RoundButton 
                 ImageSource="/Icons/dark/appbar.page.pdf.png" />
 			<coding4fun:RoundButton 
@@ -63,11 +63,12 @@
                 <Image Source="/Icons/dark/appbar.page.pdf.png" />
 			</coding4fun:RoundButton>
 
-		</StackPanel>
+		</StackPanel>-->
 		<TextBlock x:Name="messageTextBlock" 
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
+		<Button VerticalAlignment="Bottom" Click="Button_Click">nav</Button>
     </Grid>
 
 </phone:PhoneApplicationPage>
