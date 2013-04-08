@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -19,8 +20,10 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			
-			
+			<controls:ColorSlider Width="50">
+				
+			</controls:ColorSlider>
+			<!--<controls:ColorSliderThumb Width="24" Height="24" />-->
 		</Grid>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">
 			<Button Click="HorizontalClick">Horizontal</Button>

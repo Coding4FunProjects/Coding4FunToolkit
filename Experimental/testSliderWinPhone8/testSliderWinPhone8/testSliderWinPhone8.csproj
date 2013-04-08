@@ -93,9 +93,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorBaseControl.cs" />
+    <Compile Include="ColorExtentions.cs" />
+    <Compile Include="ColorSlider.cs" />
     <Compile Include="ColorSliders.xaml.cs">
       <DependentUpon>ColorSliders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorSliderThumb.cs" />
+    <Compile Include="ColorSpace.cs" />
     <Compile Include="ControlHelper.cs" />
     <Compile Include="NavigationHelper.cs" />
     <Compile Include="SuperSliderUpdate.cs" />
