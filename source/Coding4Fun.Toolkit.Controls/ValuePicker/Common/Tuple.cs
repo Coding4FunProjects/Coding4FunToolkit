@@ -3,7 +3,7 @@
 // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 // All other rights reserved.
 
-namespace System
+namespace Coding4Fun.Toolkit.Controls.Primitives
 {
     /// <summary>
     /// Represents a 2-tuple, or pair.
