@@ -28,7 +28,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 
 		private async void LoadClick(object sender, RoutedEventArgs e)
 		{
-			var data = await Serialize.Open<TestSerializeClass>(MyDataFileName);
+			var data = await Serializer.Open<TestSerializeClass>(MyDataFileName);
 
 			stringData.Text = (!string.IsNullOrEmpty(data.StringData)) ? data.StringData : string.Empty;
 			intData.Text = data.IntData.ToString(CultureInfo.InvariantCulture);
@@ -58,7 +58,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			data.DateTimeData = DateTime.Now;
 			data.TimeSpanData = DateTime.Now.Subtract(DateTime.Today);
 
-			Serialize.Save(MyDataFileName, data);
+			Serializer.Save(MyDataFileName, data);
 
 			
 			//var prompt = new MessagePrompt { Title = "Saved", Message = "data saved" };

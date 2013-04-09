@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace Coding4Fun.Toolkit.Storage
 {
-	public static class Serialize
+	public static class Serializer
 	{
 		public static async Task<T> Open<T>(string filePath) where T : class, new()
 		{

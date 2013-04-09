@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 using System.Xml;
 
-namespace Coding4Fun.Toolkit.Storage
+namespace Coding4Fun.Phone.Storage
 {
-    public static class Serialize
+    public static class Serializer
     {
         public static T Open<T>(string filePath) where T : class, new()
         {

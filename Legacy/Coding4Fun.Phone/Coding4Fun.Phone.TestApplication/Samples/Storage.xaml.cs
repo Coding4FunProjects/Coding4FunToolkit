@@ -28,7 +28,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
 
         private void LoadClick(object sender, RoutedEventArgs e)
         {
-            var data = Serialize.Open<TestSerializeClass>(MyDataFileName);
+            var data = Serializer.Open<TestSerializeClass>(MyDataFileName);
 
             stringData.Text = (!string.IsNullOrEmpty(data.StringData)) ? data.StringData : string.Empty;
             intData.Text = data.IntData.ToString(CultureInfo.InvariantCulture);
@@ -52,7 +52,7 @@ namespace Coding4Fun.Phone.TestApplication.Samples
             if (timeSpanData.Value != null) 
                 data.TimeSpanData = timeSpanData.Value.Value;
 
-            Serialize.Save(MyDataFileName, data);
+            Serializer.Save(MyDataFileName, data);
 
             var prompt = new MessagePrompt {Title = "Saved", Message = "data saved"};
             prompt.Show();
