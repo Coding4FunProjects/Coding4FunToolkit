@@ -69,7 +69,7 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Rectangle Name="SelectedColor" Fill="{TemplateBinding SolidColorBrush}" Width="10" Height="10" />
-						<controls:SuperSliderUpdate
+						<local:SuperSlider
 							Margin="0"
 							x:Name="Slider" 
 							Orientation="{TemplateBinding Orientation}" 
@@ -124,12 +124,12 @@
 									<RectangleGeometry Rect="0, 0, 50, 50"/>
 								</Rectangle.Clip>
 							</Rectangle>
-							<ContentControl Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
-								<ContentControl.RenderTransform>
+							<ContentPresenter Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
+								<ContentPresenter.RenderTransform>
 									<TranslateTransform x:Name="HorizontalThumbTransform"/>
-								</ContentControl.RenderTransform>
+								</ContentPresenter.RenderTransform>
 								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Width="12" />
-							</ContentControl>
+							</ContentPresenter>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
 							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding TrackSize}"/>
@@ -138,12 +138,12 @@
 									<RectangleGeometry Rect="0, 0, 12, 6"/>
 								</Rectangle.Clip>
 							</Rectangle>
-							<ContentControl Name="VerticalCenterElement" VerticalAlignment="Top">
-								<ContentControl.RenderTransform>
+							<ContentPresenter Name="VerticalCenterElement" VerticalAlignment="Top">
+								<ContentPresenter.RenderTransform>
 									<TranslateTransform x:Name="VerticalThumbTransform" />
-								</ContentControl.RenderTransform>
+								</ContentPresenter.RenderTransform>
 								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="12" Margin="12,0,12,0" Width="24" />
-							</ContentControl>
+							</ContentPresenter>
 						</Grid>
 					</Grid>
 				</ControlTemplate>
@@ -189,22 +189,22 @@
 							</Grid.RowDefinitions>
 							<Rectangle Grid.Row="1" x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
 							<Rectangle Grid.Row="1" x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" HorizontalAlignment="Left" />
-							<ContentControl Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
-								<ContentControl.RenderTransform>
+							<ContentPresenter Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
+								<ContentPresenter.RenderTransform>
 									<TranslateTransform/>
-								</ContentControl.RenderTransform>
+								</ContentPresenter.RenderTransform>
 								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="24" Width="12" />
-							</ContentControl>
+							</ContentPresenter>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
 							<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding TrackSize}"/>
 							<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Margin="18,0,18,0" Width="{TemplateBinding FillSize}" VerticalAlignment="Bottom" />
-							<ContentControl Name="VerticalCenterElement" VerticalAlignment="Bottom">
-								<ContentControl.RenderTransform>
+							<ContentPresenter Name="VerticalCenterElement" VerticalAlignment="Bottom">
+								<ContentPresenter.RenderTransform>
 									<TranslateTransform/>
-								</ContentControl.RenderTransform>
+								</ContentPresenter.RenderTransform>
 								<Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="12" Margin="12,0,12,0" Width="24" />
-							</ContentControl>
+							</ContentPresenter>
 						</Grid>
 					</Grid>
 				</ControlTemplate>

@@ -72,7 +72,8 @@ namespace Coding4Fun.Toolkit.Controls
 			Dispatcher.BeginInvoke(() =>
 				{
 					UpdateValueAndUserInterface(Value, Value);
-				});
+				}
+			);
         }
 
         #region dependency properties
@@ -208,7 +209,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		private void UpdateThumb()
 		{
-			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentControl;
+			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentPresenter;
 
 			if (Thumb != null && thumbItem != null) 
 				thumbItem.Content = Thumb;

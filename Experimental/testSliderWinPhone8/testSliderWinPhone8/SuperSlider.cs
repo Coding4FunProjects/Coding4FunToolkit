@@ -102,7 +102,7 @@ namespace testSliderWinPhone8
 
 		private void UpdateThumb()
 		{
-			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentControl;
+			var thumbItem = GetTemplateChild(IsVertical() ? "VerticalCenterElement" : "HorizontalCenterElement") as ContentPresenter;
 
 			if (Thumb != null && thumbItem != null)
 				thumbItem.Content = Thumb;

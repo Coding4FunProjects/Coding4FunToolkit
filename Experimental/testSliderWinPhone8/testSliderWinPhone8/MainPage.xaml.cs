@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using testSliderWinPhone8.Resources;
@@ -20,6 +22,8 @@ namespace testSliderWinPhone8
 
 			// Sample code to localize the ApplicationBar
 			//BuildLocalizedApplicationBar();
+
+			forceSet.Thumb = new Rectangle {Fill = new SolidColorBrush(Colors.Green), Width = 24, Height = 24};
 		}
 
 		private void ColorClick(object sender, RoutedEventArgs e)

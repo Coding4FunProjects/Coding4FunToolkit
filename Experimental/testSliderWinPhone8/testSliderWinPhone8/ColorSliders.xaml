@@ -19,11 +19,12 @@
 
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<controls:ColorSlider Width="50">
-				
-			</controls:ColorSlider>
-			<!--<controls:ColorSliderThumb Width="24" Height="24" />-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<controls:ColorSlider 
+				Height="100" 
+				Orientation="Horizontal" />
+			<controls:ColorSlider 
+				Width="100" />
 		</Grid>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">
 			<Button Click="HorizontalClick">Horizontal</Button>

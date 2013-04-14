@@ -19,10 +19,11 @@ namespace Coding4Fun.Toolkit.Controls
         protected Grid Body;
         private const string BodyName = "Body";
 
-        protected Rectangle SelectedColor;
+		private Rectangle _selectedColor;
         private const string SelectedColorName = "SelectedColor";
 
-        protected SuperSliderUpdate Slider;
+		private SuperSlider _slider;
+//		private SuperSliderUpdate _slider;
         private const string SliderName = "Slider";
         #endregion
 
@@ -38,17 +39,18 @@ namespace Coding4Fun.Toolkit.Controls
             base.OnApplyTemplate();
 
             Body = GetTemplateChild(BodyName) as Grid;
-            Slider = GetTemplateChild(SliderName) as SuperSliderUpdate;
 
-            SelectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
-            
-            
+			_slider = GetTemplateChild(SliderName) as SuperSlider; 
+			//_slider = GetTemplateChild(SliderName) as SuperSliderUpdate;
 
-            if (Slider != null)
+            _selectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
+
+			
+
+            if (_slider != null)
             {
-				var appliedTemplate = Slider.ApplyTemplate();
-
-                Slider.ValueChanged += Slider_ValueChanged;
+	            _slider.ApplyTemplate();
+				_slider.ValueChanged += Slider_ValueChanged;
 
                 if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
                     Color = System.Windows.Media.Color.FromArgb(255, 6, 255, 0);
@@ -57,7 +59,7 @@ namespace Coding4Fun.Toolkit.Controls
             }
 
 			if (Thumb == null)
-                Thumb = new ColorSliderThumb();
+				Thumb = new ColorSliderThumb();
 
 			SizeChanged += UserControl_SizeChanged;
 
@@ -141,8 +143,8 @@ namespace Coding4Fun.Toolkit.Controls
         private void AdjustLayoutBasedOnOrientation()
         {
             if (Body == null ||
-                Slider == null ||
-                SelectedColor == null)
+                _slider == null ||
+                _selectedColor == null)
                 return;
 
             var isVert = Orientation == Orientation.Vertical;
@@ -163,24 +165,24 @@ namespace Coding4Fun.Toolkit.Controls
                 Body.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-//            var thumb = ((FrameworkElement)Slider.Thumb);
+//            var thumb = ((FrameworkElement)_slider.Thumb);
 			var thumb = Thumb as FrameworkElement;
 
 			if (thumb != null)
             {
-                //thumb.Height = isVert ? HueSelectorSize : double.NaN;
-                //thumb.Width = isVert ? double.NaN : HueSelectorSize;
+				thumb.Height = isVert ? HueSelectorSize : double.NaN;
+				thumb.Width = isVert ? double.NaN : HueSelectorSize;
             }
 
-            SelectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
-            SelectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
+            _selectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
+            _selectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
 
-            var sliderWidth = Slider.ActualWidth;
-            var sliderHeight = Slider.ActualHeight;
+            var sliderWidth = _slider.ActualWidth;
+            var sliderHeight = _slider.ActualHeight;
 
             var squareSize = isVert ? sliderWidth : sliderHeight;
 
-            SelectedColor.Height = SelectedColor.Width = squareSize;
+            _selectedColor.Height = _selectedColor.Width = squareSize;
 
             if (isVert)
             {
@@ -193,7 +195,7 @@ namespace Coding4Fun.Toolkit.Controls
                 Body.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Auto);
             }
 
-            SelectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
+            _selectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         protected internal override void UpdateLayoutBasedOnColor()
@@ -203,14 +205,14 @@ namespace Coding4Fun.Toolkit.Controls
 
             base.UpdateLayoutBasedOnColor();
 
-            if(Slider != null)
-                Slider.Value = Color.GetHue();
+            if(_slider != null)
+                _slider.Value = Color.GetHue();
         }
 
         private void IsEnabledVisualStateUpdate()
         {
             VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
-			Slider.Background = IsEnabled ? ColorSpace.GetColorGradientBrush(Orientation) : ColorSpace.GetBlackAndWhiteGradientBrush(Orientation);
+			_slider.Background = IsEnabled ? ColorSpace.GetColorGradientBrush(Orientation) : ColorSpace.GetBlackAndWhiteGradientBrush(Orientation);
         }
     }
 }
