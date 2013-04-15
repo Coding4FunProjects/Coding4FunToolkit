@@ -36,6 +36,12 @@ namespace Coding4Fun.Toolkit.Controls
 
 			IsEnabledChanged += SuperSlider_IsEnabledChanged;
             Loaded += SuperSlider_Loaded;
+			SizeChanged += SuperSliderUpdate_SizeChanged;
+		}
+
+		void SuperSliderUpdate_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			UpdateValueAndUserInterface(Value, Value);
 		}
 
 		void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -69,11 +75,11 @@ namespace Coding4Fun.Toolkit.Controls
 			AdjustAndUpdateLayout();
 			UpdateThumb();
 			
-			Dispatcher.BeginInvoke(() =>
+//			Dispatcher.BeginInvoke(() =>
 				{
 					UpdateValueAndUserInterface(Value, Value);
 				}
-			);
+	//		);
         }
 
         #region dependency properties

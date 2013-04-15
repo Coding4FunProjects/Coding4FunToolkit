@@ -5,14 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace testSliderWinPhone8
 {
 	public class SuperSlider : Slider, ISuperSlider
 	{
+		private const string HorizontalRectClipName = "HorizontalRectClip";
+		private const string VerticalRectClipName = "VerticalRectClip";
+
 		public SuperSlider()
 		{
 			DefaultStyleKey = typeof(SuperSlider);
+
+			SizeChanged += SuperSlider_SizeChanged;
+		}
+
+		void SuperSlider_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			var horRectClip = GetTemplateChild(HorizontalRectClipName) as RectangleGeometry;
+
+			if (horRectClip != null) 
+				horRectClip.Rect = new Rect(0, 0, horRectClip.Rect.Width, ActualHeight);
+
+			var vertRectClip = GetTemplateChild(VerticalRectClipName) as RectangleGeometry;
+
+			if (vertRectClip != null)
+				vertRectClip.Rect = new Rect(0, vertRectClip.Rect.Y, ActualWidth, vertRectClip.Rect.Height);//);
 		}
 
 		public override void OnApplyTemplate()

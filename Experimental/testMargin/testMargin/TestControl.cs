@@ -17,11 +17,6 @@ namespace testMargin
 		public override void OnApplyTemplate()
 		{
 			base.OnApplyTemplate();
-
-			var top = (RowDefinition)GetTemplateChild("topRow");
-			var bottom = (RowDefinition)GetTemplateChild("bottomRow");
-
-			
 		}
 	}
 }
