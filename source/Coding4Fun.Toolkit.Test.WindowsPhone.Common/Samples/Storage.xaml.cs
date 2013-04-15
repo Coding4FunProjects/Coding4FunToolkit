@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.IO.IsolatedStorage;
 using System.Windows;
 
 using Coding4Fun.Toolkit.Controls;
@@ -61,12 +60,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
-            // verify stuff won't blow up if file isn't there
-            using (var storageFile = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                if (storageFile.FileExists(MyDataFileName))
-                    storageFile.DeleteFile(MyDataFileName);
-            }
+	        PlatformFileAccess.DeleteFile(MyDataFileName);
+
+			var prompt = new MessagePrompt { Title = "Deleted", Message = "data deleted" };
+			prompt.Show();
         }
     }
 }

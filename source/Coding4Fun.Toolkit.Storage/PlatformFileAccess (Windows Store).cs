@@ -10,6 +10,13 @@ namespace Coding4Fun.Toolkit.Storage
 {
 	public class PlatformFileAccess
 	{
+		public static async Task DeleteFile(string fileName)
+		{
+			var file = await GetFileAccess(fileName);
+			
+			await file.DeleteAsync();
+		}
+
 		public async static Task<IInputStream> GetOpenFileSequentialStream(string fileName)
 		{
 			var file = await GetFileAccess(fileName);

@@ -35,12 +35,12 @@ namespace Coding4Fun.Toolkit.Storage
 			return loadedObject ?? new T();
 		}
 
-		public static void Save<T>(string filePath, T objectToSave)
+		public static async Task Save<T>(string filePath, T objectToSave)
 		{
-			Save(filePath, objectToSave, false);
+			await Save(filePath, objectToSave, false);
 		}
 
-		public static async void Save<T>(string filePath, T objectToSave, bool useBinary)
+		public static async Task Save<T>(string filePath, T objectToSave, bool useBinary)
 		{
 			using (var outputStream = await PlatformFileAccess.GetSaveFileStream(filePath))
 			{

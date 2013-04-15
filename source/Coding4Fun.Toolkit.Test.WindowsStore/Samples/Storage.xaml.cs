@@ -9,6 +9,7 @@ using Windows.Storage.Search;
 using Windows.Storage.Streams;
 using Windows.System.Threading;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 
 
@@ -39,7 +40,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			//timeSpanData.Value = data.TimeSpanData;
 		}
 
-		private void SaveClick(object sender, RoutedEventArgs e)
+		private async void SaveClick(object sender, RoutedEventArgs e)
 		{
 			var data = new TestSerializeClass();
 
@@ -58,10 +59,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			data.DateTimeData = DateTime.Now;
 			data.TimeSpanData = DateTime.Now.Subtract(DateTime.Today);
 
-			Serializer.Save(MyDataFileName, data);
+			await Serializer.Save(MyDataFileName, data);
 
-			
-			//var prompt = new MessagePrompt { Title = "Saved", Message = "data saved" };
+			var msg = new MessageDialog("Saved");
+			await msg.ShowAsync();
+			//var prompt = new MessagePrompt { Title = "", Message = "data saved" };
 			//prompt.Show();
 		}
 
@@ -78,14 +80,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 
 		private async void DeleteClick(object sender, RoutedEventArgs e)
 		{
-			var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+			await PlatformFileAccess.DeleteFile(MyDataFileName);
 
-			var files = await storageFolder.GetFilesAsync(CommonFileQuery.OrderByName);
-			var file = files.FirstOrDefault(x => x.Name == MyDataFileName) ??
-					   await storageFolder.CreateFileAsync(MyDataFileName, CreationCollisionOption.ReplaceExisting);
-
-
-			await file.DeleteAsync();
+			var msg = new MessageDialog("deleted");
+			await msg.ShowAsync();
 		}
 	}
 }
