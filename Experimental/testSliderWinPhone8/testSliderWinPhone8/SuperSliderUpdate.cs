@@ -94,6 +94,26 @@ namespace Coding4Fun.Toolkit.Controls
 		public static readonly DependencyProperty TitleProperty =
 			DependencyProperty.Register("Title", typeof(string), typeof(SuperSliderUpdate), new PropertyMetadata(""));
 
+		public Thickness VerticalPadding
+		{
+			get { return (Thickness)GetValue(VerticalPaddingProperty); }
+			set { SetValue(VerticalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for VerticalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty VerticalPaddingProperty =
+			DependencyProperty.Register("VerticalPadding", typeof(Thickness), typeof(SuperSliderUpdate), new PropertyMetadata(new Thickness()));
+
+		public Thickness HorizontalPadding
+		{
+			get { return (Thickness)GetValue(HorizontalPaddingProperty); }
+			set { SetValue(HorizontalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for HorizontalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty HorizontalPaddingProperty =
+			DependencyProperty.Register("HorizontalPadding", typeof(Thickness), typeof(SuperSliderUpdate), new PropertyMetadata(new Thickness()));
+
 
         public object Thumb
         {

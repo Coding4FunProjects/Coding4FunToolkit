@@ -46,7 +46,10 @@
 					Orientation="Vertical" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<local:SuperSlider
 					Orientation="Vertical" 
-					Title="Custom Thumb" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood"  TrackSize="24" FillSize="6">
+					VerticalPadding="0"
+					Title="Custom Thumb" Value="55" 
+					Maximum="100" StepFrequency="25" 
+					Background="BurlyWood"  TrackSize="24" FillSize="6">
 					<local:SuperSlider.Thumb>
 						<Rectangle Width="12" Height="12" Fill="Green" />
 					</local:SuperSlider.Thumb>

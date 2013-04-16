@@ -90,6 +90,9 @@
 		<Setter Property="Value" Value="0"/>
 		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+		<Setter Property="HorizontalPadding" Value="0, 22, 0, 50" />
+		<Setter Property="VerticalPadding" Value="18, 0" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:SuperSlider">
@@ -113,7 +116,7 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid x:Name="HorizontalTemplate" Margin="{StaticResource PhoneHorizontalMargin}">
-							<Grid Margin="0, 22, 0, 50">
+							<Grid Margin="{TemplateBinding HorizontalPadding}">
 								<Rectangle Grid.Row="1" x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
 								<Rectangle Grid.Row="1" x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" >
 									<Rectangle.Clip>
@@ -130,7 +133,7 @@
 							</Grid>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Margin="{StaticResource PhoneVerticalMargin}">
-							<Grid Margin="18, 0">
+							<Grid Margin="{TemplateBinding VerticalPadding}">
 								<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Width="{TemplateBinding TrackSize}"/>
 								<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Width="{TemplateBinding FillSize}">
 									<Rectangle.Clip>

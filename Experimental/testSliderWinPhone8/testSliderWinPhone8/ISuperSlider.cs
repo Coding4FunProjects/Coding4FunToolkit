@@ -1,8 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace testSliderWinPhone8
 {
-	interface ISuperSlider
+	internal interface ISuperSlider
 	{
 		Orientation Orientation { get; set; }
 		object Thumb { get; set; }
@@ -14,7 +15,10 @@ namespace testSliderWinPhone8
 
 		double TrackSize { get; set; }
 		double FillSize { get; set; }
-		
+
 		string Title { get; set; }
+
+		Thickness HorizontalPadding { get; set; }
+		Thickness VerticalPadding { get; set; }
 	}
 }

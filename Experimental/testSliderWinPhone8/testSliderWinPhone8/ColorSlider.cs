@@ -32,7 +32,13 @@ namespace Coding4Fun.Toolkit.Controls
             DefaultStyleKey = typeof(ColorSlider);
 
             IsEnabledChanged += SuperSlider_IsEnabledChanged;
+			SizeChanged += ColorSlider_SizeChanged;
         }
+
+		void ColorSlider_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			
+		}
 
         public override void OnApplyTemplate()
         {
@@ -44,8 +50,6 @@ namespace Coding4Fun.Toolkit.Controls
 			//_slider = GetTemplateChild(SliderName) as SuperSliderUpdate;
 
             _selectedColor = GetTemplateChild(SelectedColorName) as Rectangle;
-
-			
 
             if (_slider != null)
             {

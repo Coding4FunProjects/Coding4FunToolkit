@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace testSliderWinPhone8
@@ -31,7 +32,7 @@ namespace testSliderWinPhone8
 			var vertRectClip = GetTemplateChild(VerticalRectClipName) as RectangleGeometry;
 
 			if (vertRectClip != null)
-				vertRectClip.Rect = new Rect(0, vertRectClip.Rect.Y, ActualWidth, vertRectClip.Rect.Height);//);
+				vertRectClip.Rect = new Rect(0, vertRectClip.Rect.Y, ActualWidth, vertRectClip.Rect.Height);
 		}
 
 		public override void OnApplyTemplate()
@@ -70,6 +71,26 @@ namespace testSliderWinPhone8
 		}
 
 		public string Title { get; set; }
+
+		public Thickness VerticalPadding
+		{
+			get { return (Thickness)GetValue(VerticalPaddingProperty); }
+			set { SetValue(VerticalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for VerticalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty VerticalPaddingProperty =
+			DependencyProperty.Register("VerticalPadding", typeof(Thickness), typeof(SuperSlider), new PropertyMetadata(new Thickness()));
+
+		public Thickness HorizontalPadding
+		{
+			get { return (Thickness)GetValue(HorizontalPaddingProperty); }
+			set { SetValue(HorizontalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for HorizontalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty HorizontalPaddingProperty =
+			DependencyProperty.Register("HorizontalPadding", typeof(Thickness), typeof(SuperSlider), new PropertyMetadata(new Thickness()));
 
 		public double TrackSize
 		{
