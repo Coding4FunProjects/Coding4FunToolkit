@@ -24,7 +24,11 @@
 				<TextBlock>base</TextBlock>
 				<Slider Maximum="100" Value="50" Background="BurlyWood" />
 				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
-				<local:SuperSlider Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
+				<local:SuperSlider 
+					Value="55" 
+					Maximum="100" 
+					StepFrequency="25" 
+					Background="BurlyWood" />
 				<local:SuperSlider
 					Name="forceSet"
 					HorizontalPadding="0"

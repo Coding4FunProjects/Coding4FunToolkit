@@ -10,7 +10,7 @@ using testSliderWinPhone8;
 // Website: http://www.pagebrooks.com
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class ColorSlider : ColorBaseControl
+    public class ColorSlider2 : ColorBaseControl
     {
         const double HueSelectorSize = 24;
         bool _fromSliderChange;
@@ -20,27 +20,21 @@ namespace Coding4Fun.Toolkit.Controls
         private const string BodyName = "Body";
 
 		private Rectangle _selectedColor;
-        private const string SelectedColorName = "SelectedColor";
+		private const string SelectedColorName = "HorizontalSelectedColor";
 
 		private SuperSlider _slider;
 //		private SuperSliderUpdate _slider;
-        private const string SliderName = "Slider";
+        private const string SliderName = "HorizontalSlider";
         #endregion
 
-        public ColorSlider()
+        public ColorSlider2()
         {
-            DefaultStyleKey = typeof(ColorSlider);
+            DefaultStyleKey = typeof(ColorSlider2);
 
             IsEnabledChanged += SuperSlider_IsEnabledChanged;
-			SizeChanged += ColorSlider_SizeChanged;
-        }
+	    }
 
-		void ColorSlider_SizeChanged(object sender, SizeChangedEventArgs e)
-		{
-			
-		}
-
-        public override void OnApplyTemplate()
+	    public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
@@ -84,6 +78,18 @@ namespace Coding4Fun.Toolkit.Controls
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+			if (double.IsNaN(DefaultSize))
+			{
+				var isVert = Orientation == Orientation.Vertical;
+
+				DefaultSize = isVert ? ActualWidth : ActualHeight;
+			}
+
+			if (double.IsNaN(SelectedColorSize))
+			{
+				SelectedColorSize = DefaultSize;
+			}
+
             AdjustLayoutBasedOnOrientation();
         }
 
@@ -103,9 +109,33 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbProperty =
-            DependencyProperty.Register("Thumb", typeof(object), typeof(ColorSlider), new PropertyMetadata(null));
+			DependencyProperty.Register("Thumb", typeof(object), typeof(ColorSlider2), new PropertyMetadata(null));
 
-        
+
+
+		public double DefaultSize
+		{
+			get { return (double)GetValue(DefaultSizeProperty); }
+			set { SetValue(DefaultSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for DefaultSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DefaultSizeProperty =
+			DependencyProperty.Register("DefaultSize", typeof(double), typeof(ColorSlider2), new PropertyMetadata(double.NaN));
+
+
+
+		public double SelectedColorSize
+		{
+			get { return (double)GetValue(SelectedColorSizeProperty); }
+			set { SetValue(SelectedColorSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for SelectedColorSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty SelectedColorSizeProperty =
+			DependencyProperty.Register("SelectedColorSize", typeof(double), typeof(ColorSlider2), new PropertyMetadata(double.NaN));
+
+
 
         public bool IsColorVisible
         {
@@ -115,7 +145,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for IsColorVisible.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsColorVisibleProperty =
-            DependencyProperty.Register("IsColorVisible", typeof(bool), typeof(ColorSlider), new PropertyMetadata(true, OnIsColorVisibleChanged));
+			DependencyProperty.Register("IsColorVisible", typeof(bool), typeof(ColorSlider2), new PropertyMetadata(true, OnIsColorVisibleChanged));
 
         public Orientation Orientation
         {
@@ -125,12 +155,12 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ColorSlider), new PropertyMetadata(Orientation.Vertical, OnOrientationPropertyChanged));
+			DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ColorSlider2), new PropertyMetadata(Orientation.Vertical, OnOrientationPropertyChanged));
         #endregion
 
         private static void OnIsColorVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var slider = d as ColorSlider;
+			var slider = d as ColorSlider2;
 
             if (slider != null)
                 slider.AdjustLayoutBasedOnOrientation();
@@ -138,7 +168,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         private static void OnOrientationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var slider = d as ColorSlider;
+			var slider = d as ColorSlider2;
             
             if (slider != null)
                 slider.AdjustLayoutBasedOnOrientation();
@@ -146,60 +176,63 @@ namespace Coding4Fun.Toolkit.Controls
 
         private void AdjustLayoutBasedOnOrientation()
         {
-            if (Body == null ||
-                _slider == null ||
-                _selectedColor == null)
-                return;
+			
 
-            var isVert = Orientation == Orientation.Vertical;
+//			if (Body == null ||
+//				_slider == null ||
+//				_selectedColor == null)
+//				return;
 
-			IsEnabledVisualStateUpdate();
+			var isVert = Orientation == Orientation.Vertical;
+
+//			IsEnabledVisualStateUpdate();
             
-            Body.RowDefinitions.Clear();
-            Body.ColumnDefinitions.Clear();
+//			Body.RowDefinitions.Clear();
+//			Body.ColumnDefinitions.Clear();
 
-            if (isVert)
-            {
-                Body.RowDefinitions.Add(new RowDefinition());
-                Body.RowDefinitions.Add(new RowDefinition());
-            }
-            else
-            {
-                Body.ColumnDefinitions.Add(new ColumnDefinition());
-                Body.ColumnDefinitions.Add(new ColumnDefinition());
-            }
+//			if (isVert)
+//			{
+//				Body.RowDefinitions.Add(new RowDefinition());
+//				Body.RowDefinitions.Add(new RowDefinition());
+//			}
+//			else
+//			{
+//				Body.ColumnDefinitions.Add(new ColumnDefinition());
+//				Body.ColumnDefinitions.Add(new ColumnDefinition());
+//			}
 
-//            var thumb = ((FrameworkElement)_slider.Thumb);
+////            var thumb = ((FrameworkElement)_slider.Thumb);
 			var thumb = Thumb as FrameworkElement;
 
 			if (thumb != null)
-            {
+			{
 				thumb.Height = isVert ? HueSelectorSize : double.NaN;
 				thumb.Width = isVert ? double.NaN : HueSelectorSize;
-            }
+			}
 
-            _selectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
-            _selectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
+//			_selectedColor.SetValue(Grid.RowProperty, isVert ? 1 : 0);
+//			_selectedColor.SetValue(Grid.ColumnProperty, isVert ? 0 : 1);
 
-            var sliderWidth = _slider.ActualWidth;
-            var sliderHeight = _slider.ActualHeight;
+//			var sliderWidth = _slider.ActualWidth;
+//			var sliderHeight = _slider.ActualHeight;
 
-            var squareSize = isVert ? sliderWidth : sliderHeight;
+//			var squareSize = isVert ? sliderWidth : sliderHeight;
 
-            //_selectedColor.Height = _selectedColor.Width = squareSize;
+//			//_selectedColor.Height = _selectedColor.Width = squareSize;
 
-            if (isVert)
-            {
-                Body.RowDefinitions[0].Height = new GridLength(1, GridUnitType.Star);
-	            Body.RowDefinitions[1].Height = new GridLength(squareSize); // new GridLength(1, GridUnitType.Auto);
-            }
-            else
-            {
-                Body.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
-				Body.ColumnDefinitions[1].Width = new GridLength(squareSize); // new GridLength(1, GridUnitType.Auto);
-            }
+//			if (isVert)
+//			{
+//				Body.RowDefinitions[0].Height = new GridLength(1, GridUnitType.Star);
+//				Body.RowDefinitions[1].Height = new GridLength(squareSize); // new GridLength(1, GridUnitType.Auto);
+//			}
+//			else
+//			{
+//				Body.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
+//				Body.ColumnDefinitions[1].Width = new GridLength(squareSize); // new GridLength(1, GridUnitType.Auto);
+//			}
 
-            _selectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
+			if(_selectedColor != null)
+				_selectedColor.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         protected internal override void UpdateLayoutBasedOnColor()

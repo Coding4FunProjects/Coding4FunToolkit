@@ -102,6 +102,8 @@
     <Compile Include="ColorSliderThumb.cs" />
     <Compile Include="ColorSpace.cs" />
     <Compile Include="ControlHelper.cs" />
+    <Compile Include="ColorSlider2.cs" />
+    <Compile Include="DoubleToGridLengthConverter.cs" />
     <Compile Include="NavigationHelper.cs" />
     <Compile Include="SuperSliderUpdate.cs" />
     <Compile Include="ISuperSlider.cs" />
@@ -119,6 +121,9 @@
     </Compile>
     <Compile Include="SuperSlider.cs" />
     <Compile Include="SuperSliderWp7.cs" />
+    <Compile Include="ThicknessProperties.cs" />
+    <Compile Include="ThicknessToGridLengthConverter.cs" />
+    <Compile Include="ValueConverter.cs" />
     <Compile Include="VerticalSliders.xaml.cs">
       <DependentUpon>VerticalSliders.xaml</DependentUpon>
     </Compile>

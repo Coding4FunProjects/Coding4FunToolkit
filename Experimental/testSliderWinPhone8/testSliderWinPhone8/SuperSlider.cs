@@ -100,7 +100,7 @@ namespace testSliderWinPhone8
 
 		// Using a DependencyProperty as the backing store for TrackSize.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty TrackSizeProperty =
-			DependencyProperty.Register("TrackSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d));
+			DependencyProperty.Register("TrackSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(double.NaN));
 
 		public double FillSize
 		{
@@ -110,7 +110,7 @@ namespace testSliderWinPhone8
 
 		// Using a DependencyProperty as the backing store for FillSize.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty FillSizeProperty =
-			DependencyProperty.Register("FillSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d));
+			DependencyProperty.Register("FillSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(double.NaN));
 
 		public double StepFrequency
 		{
