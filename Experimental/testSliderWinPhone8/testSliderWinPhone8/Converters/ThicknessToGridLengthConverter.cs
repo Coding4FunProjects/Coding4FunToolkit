@@ -11,26 +11,22 @@ namespace testSliderWinPhone8
 			if (value == null || parameter == null)
 				return new GridLength();
 
-			var targetProperty = Enum.Parse(typeof(ThicknessProperties), parameter.ToString());
 			var thicknessValue = (Thickness)value;
 
-			if (targetProperty == null)
-				return new GridLength();
-
 			var returnValue = 0d;
-			switch ((ThicknessProperties)targetProperty)
+			switch (parameter.ToString().ToLowerInvariant())
 			{
 				default:
-				case ThicknessProperties.Top:
+				case "top":
 					returnValue = thicknessValue.Top;
 					break;
-				case ThicknessProperties.Bottom:
+				case "bottom":
 					returnValue = thicknessValue.Bottom;
 					break;
-				case ThicknessProperties.Right:
+				case "right":
 					returnValue = thicknessValue.Right;
 					break;
-				case ThicknessProperties.Left:
+				case "left":
 					returnValue = thicknessValue.Left;
 					break;
 			}
