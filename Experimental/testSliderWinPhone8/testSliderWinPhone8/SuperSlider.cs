@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace testSliderWinPhone8
 {
@@ -18,15 +19,13 @@ namespace testSliderWinPhone8
 		public SuperSlider()
 		{
 			DefaultStyleKey = typeof(SuperSlider);
-
-			SizeChanged += SuperSlider_SizeChanged;
 		}
 
 		void SuperSlider_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
 			var horRectClip = GetTemplateChild(HorizontalRectClipName) as RectangleGeometry;
 
-			if (horRectClip != null) 
+			if (horRectClip != null)
 				horRectClip.Rect = new Rect(0, 0, horRectClip.Rect.Width, ActualHeight);
 
 			var vertRectClip = GetTemplateChild(VerticalRectClipName) as RectangleGeometry;
@@ -39,7 +38,9 @@ namespace testSliderWinPhone8
 		{
 			base.OnApplyTemplate();
 
+			SizeChanged += SuperSlider_SizeChanged;
 			ValueChanged += SuperSlider_ValueChanged;
+	
 			//Dispatcher.BeginInvoke(() =>
 			{
 				UpdateThumb();

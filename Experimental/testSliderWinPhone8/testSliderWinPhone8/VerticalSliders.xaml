@@ -33,7 +33,7 @@
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
-				<ColumnDefinition />
+				<ColumnDefinition Width="2*" />
 				<ColumnDefinition />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
@@ -43,7 +43,9 @@
 			</StackPanel>
 			<StackPanel Grid.Column="1" Orientation="Horizontal">
 				<local:SuperSlider
-					Orientation="Vertical" Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
+					Padding="0"
+					Orientation="Vertical" Value="55" 
+					Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<local:SuperSlider
 					Orientation="Vertical" 
 					VerticalPadding="0"

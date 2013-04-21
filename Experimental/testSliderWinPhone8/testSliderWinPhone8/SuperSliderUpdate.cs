@@ -33,10 +33,6 @@ namespace Coding4Fun.Toolkit.Controls
 		public SuperSliderUpdate()
 		{
 			DefaultStyleKey = typeof(SuperSliderUpdate);
-
-			IsEnabledChanged += SuperSlider_IsEnabledChanged;
-            Loaded += SuperSlider_Loaded;
-			SizeChanged += SuperSliderUpdate_SizeChanged;
 		}
 
 		void SuperSliderUpdate_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -49,16 +45,13 @@ namespace Coding4Fun.Toolkit.Controls
 		    IsEnabledVisualStateUpdate();
 		}
 
-	    void SuperSlider_Loaded(object sender, RoutedEventArgs e)
-        {
-            _isLayoutInit = true;
-
-			IsEnabledVisualStateUpdate();
-        }
 
 		public override void OnApplyTemplate()
         {
 			base.OnApplyTemplate();
+
+			IsEnabledChanged += SuperSlider_IsEnabledChanged;
+			SizeChanged += SuperSliderUpdate_SizeChanged;
 
 			_horizontalTrack = GetTemplateChild(HorizontalTrackName) as FrameworkElement;
 			_verticalTrack = GetTemplateChild(VerticalTrackName) as FrameworkElement;
@@ -74,12 +67,11 @@ namespace Coding4Fun.Toolkit.Controls
 
 			AdjustAndUpdateLayout();
 			UpdateThumb();
+			IsEnabledVisualStateUpdate();
+
+			_isLayoutInit = true;
 			
-//			Dispatcher.BeginInvoke(() =>
-				{
-					UpdateValueAndUserInterface(Value, Value);
-				}
-	//		);
+			UpdateValueAndUserInterface(Value, Value);
         }
 
         #region dependency properties
@@ -282,7 +274,7 @@ namespace Coding4Fun.Toolkit.Controls
             if (!_isLayoutInit)
                 return;
 
-            _isLayoutInit = true;
+            //_isLayoutInit = true;
 
             if (StepFrequency > 0)
             {

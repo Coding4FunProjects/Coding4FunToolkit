@@ -35,9 +35,7 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			DefaultStyleKey = typeof(SuperSliderWp7);
 
-			IsEnabledChanged += SuperSlider_IsEnabledChanged;
-            Loaded += SuperSlider_Loaded;
-			SizeChanged += SuperSlider_SizeChanged;
+			
 		}
 
 		void SuperSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -60,6 +58,10 @@ namespace Coding4Fun.Toolkit.Controls
 		public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
+			IsEnabledChanged += SuperSlider_IsEnabledChanged;
+			Loaded += SuperSlider_Loaded;
+			SizeChanged += SuperSlider_SizeChanged;
 
             BackgroundRectangle = GetTemplateChild(BackgroundRectangleName) as Rectangle;
             ProgressRectangle = GetTemplateChild(ProgressRectangleName) as Rectangle;

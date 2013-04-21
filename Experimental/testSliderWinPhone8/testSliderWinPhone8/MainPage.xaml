@@ -23,16 +23,28 @@
 			<StackPanel>
 				<TextBlock>base</TextBlock>
 				<Slider Maximum="100" Value="50" Background="BurlyWood" />
+				<Slider IsEnabled="False" Margin="0, -50" Maximum="100" Value="50" Background="BurlyWood" />
 				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
+
 				<local:SuperSlider 
-					Value="55" 
+					Value="50" 
 					Maximum="100" 
-					StepFrequency="25" 
+					Background="BurlyWood" />
+				<local:SuperSlider 
+					Value="50" 
+					HorizontalPadding="36, 0"
+					Maximum="100" 
+					Background="BurlyWood" />
+				<local:SuperSlider 
+					Value="50" 
+					HorizontalPadding="36, 0"
+					Maximum="100" 
+					IsEnabled="False"
 					Background="BurlyWood" />
 				<local:SuperSlider
 					Name="forceSet"
 					HorizontalPadding="0"
-					Title="Custom Thumb" Value="55" 
+					Title="Custom Thumb" Value="50" 
 					Maximum="100" StepFrequency="25"
 					Background="BurlyWood" TrackSize="24" FillSize="6">
 					<local:SuperSlider.Thumb>

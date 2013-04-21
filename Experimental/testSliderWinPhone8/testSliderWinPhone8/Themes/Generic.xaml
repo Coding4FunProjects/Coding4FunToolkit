@@ -146,8 +146,8 @@
 		<Setter Property="Value" Value="0"/>
 		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
 		<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
-		<Setter Property="HorizontalPadding" Value="0, 22, 0, 50" />
-		<Setter Property="VerticalPadding" Value="18, 0" />
+		<Setter Property="HorizontalPadding" Value="12, 22, 12, 50" />
+		<Setter Property="VerticalPadding" Value="18, 12" />
 		<Setter Property="TrackSize" Value="12" />
 		<Setter Property="FillSize" Value="12" />
 		<Setter Property="MinHeight" Value="24" />
@@ -174,16 +174,16 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Grid x:Name="HorizontalTemplate" Margin="{TemplateBinding Padding}">
-							<Grid Margin="{TemplateBinding HorizontalPadding}">
-								<Rectangle Grid.Row="1" x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
-								<Rectangle Grid.Row="1" x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" >
+						<Grid x:Name="HorizontalTemplate" Margin="{TemplateBinding HorizontalPadding}">
+							<Grid>
+								<Rectangle x:Name="HorizontalTrack" Fill="{TemplateBinding Background}" Height="{TemplateBinding TrackSize}" IsHitTestVisible="False" />
+								<Rectangle x:Name="HorizontalFill" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding FillSize}" IsHitTestVisible="False" >
 									<Rectangle.Clip>
-										<RectangleGeometry  x:Name="HorizontalRectClip" /> 
+										<RectangleGeometry x:Name="HorizontalRectClip" /> 
 										<!-- Rect="0, 0, 0, 50"  x, y, width, height -->
 									</Rectangle.Clip>
 								</Rectangle>
-								<ContentPresenter Grid.Row="1" Name="HorizontalCenterElement" HorizontalAlignment="Left">
+								<ContentPresenter Name="HorizontalCenterElement" HorizontalAlignment="Left">
 									<ContentPresenter.RenderTransform>
 										<TranslateTransform x:Name="HorizontalThumbTransform"/>
 									</ContentPresenter.RenderTransform>
@@ -191,8 +191,8 @@
 								</ContentPresenter>
 							</Grid>
 						</Grid>
-						<Grid x:Name="VerticalTemplate" Margin="{TemplateBinding Padding}">
-							<Grid Margin="{TemplateBinding VerticalPadding}">
+						<Grid x:Name="VerticalTemplate" Margin="{TemplateBinding VerticalPadding}">
+							<Grid>
 								<Rectangle x:Name="VerticalTrack" Fill="{TemplateBinding Background}" IsHitTestVisible="False" Width="{TemplateBinding TrackSize}"/>
 								<Rectangle x:Name="VerticalFill" Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" Width="{TemplateBinding FillSize}">
 									<Rectangle.Clip>
