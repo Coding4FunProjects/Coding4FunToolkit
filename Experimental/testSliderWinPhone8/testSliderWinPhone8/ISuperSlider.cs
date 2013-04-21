@@ -20,5 +20,7 @@ namespace testSliderWinPhone8
 
 		Thickness HorizontalPadding { get; set; }
 		Thickness VerticalPadding { get; set; }
+
+		double DisableTrackOpacity { get; set; }
 	}
 }

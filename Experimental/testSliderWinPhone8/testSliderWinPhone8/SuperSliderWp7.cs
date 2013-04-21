@@ -84,6 +84,7 @@ namespace Coding4Fun.Toolkit.Controls
 		public double TrackSize { get; set; }
 		public Thickness HorizontalPadding { get; set; }
 		public Thickness VerticalPadding { get; set; }
+		public double DisableTrackOpacity { get; set; }
 
 		public double BarHeight
 		{
