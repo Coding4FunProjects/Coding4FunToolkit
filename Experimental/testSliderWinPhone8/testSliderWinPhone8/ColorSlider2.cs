@@ -192,7 +192,25 @@ namespace Coding4Fun.Toolkit.Controls
                 slider.AdjustLayoutBasedOnOrientation();
         }
 
-        private void AdjustLayoutBasedOnOrientation()
+		private void LayoutWiring(bool isVisible, SuperSlider slider, FrameworkElement colorElement, string templateName)
+	    {
+		    if (slider == null)
+				return;
+
+		    slider.ValueChanged -= Slider_ValueChanged;
+			var template = GetTemplateChild(templateName) as FrameworkElement;
+
+			if (template != null)
+				template.Visibility = (isVisible) ? Visibility.Visible : Visibility.Collapsed;
+
+		    if (isVisible)
+			    slider.ValueChanged += Slider_ValueChanged;
+
+			if(colorElement != null)
+				colorElement.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
+	    }
+
+	    private void AdjustLayoutBasedOnOrientation()
         {
 			var isVert = IsVertical();
             
@@ -204,38 +222,8 @@ namespace Coding4Fun.Toolkit.Controls
 				thumb.Width = isVert ? double.NaN : HueSelectorSize;
 			}
 
-	        if (_horizontalSlider != null)
-	        {
-		        _horizontalSlider.ValueChanged -= Slider_ValueChanged;
-
-				if(!isVert)
-					_horizontalSlider.ValueChanged += Slider_ValueChanged;
-	        }
-
-			if (_verticalSlider != null)
-			{
-				_verticalSlider.ValueChanged -= Slider_ValueChanged;
-
-				if (isVert)
-					_verticalSlider.ValueChanged += Slider_ValueChanged;
-			}
-
-	        var horizontalTemplate = GetTemplateChild(HorizontalTemplateName) as FrameworkElement;
-			var verticalTemplate = GetTemplateChild(VerticalTemplateName) as FrameworkElement;
-
-			if (horizontalTemplate != null)
-				horizontalTemplate.Visibility = (!isVert) ? Visibility.Visible : Visibility.Collapsed;
-
-			if (verticalTemplate != null)
-				verticalTemplate.Visibility = (isVert) ? Visibility.Visible : Visibility.Collapsed;
-
-			var colorVisibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
-
-	        if (_horizontalSelectedColor != null)
-		        _horizontalSelectedColor.Visibility = colorVisibility;
-
-	        if (_verticalSelectedColor != null)
-		        _verticalSelectedColor.Visibility = colorVisibility;
+			LayoutWiring(!isVert, _horizontalSlider, _horizontalSelectedColor, HorizontalTemplateName);
+			LayoutWiring(isVert, _verticalSlider, _verticalSelectedColor, VerticalTemplateName);
         }
 
         protected internal override void UpdateLayoutBasedOnColor()
