@@ -76,6 +76,17 @@ namespace Coding4Fun.Toolkit.Controls
 
         #region dependency properties
 
+		public double DisableTrackOpacity
+		{
+			get { return (double)GetValue(DisableTrackOpacityProperty); }
+			set { SetValue(DisableTrackOpacityProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for DisableTrackOpacity.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DisableTrackOpacityProperty =
+			DependencyProperty.Register("DisableTrackOpacity", typeof(double), typeof(SuperSliderUpdate), new PropertyMetadata(0.1));
+
+
 		public string Title
 		{
 			get { return (string)GetValue(TitleProperty); }

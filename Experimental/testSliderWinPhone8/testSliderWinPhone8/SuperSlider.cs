@@ -73,6 +73,18 @@ namespace testSliderWinPhone8
 
 		public string Title { get; set; }
 
+		public double DisableTrackOpacity
+		{
+			get { return (double)GetValue(DisableTrackOpacityProperty); }
+			set { SetValue(DisableTrackOpacityProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for DisableTrackOpacity.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DisableTrackOpacityProperty =
+			DependencyProperty.Register("DisableTrackOpacity", typeof(double), typeof(SuperSlider), new PropertyMetadata(0.1));
+
+
+
 		public Thickness VerticalPadding
 		{
 			get { return (Thickness)GetValue(VerticalPaddingProperty); }

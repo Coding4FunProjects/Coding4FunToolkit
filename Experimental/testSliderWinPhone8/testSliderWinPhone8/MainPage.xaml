@@ -23,7 +23,12 @@
 			<StackPanel>
 				<TextBlock>base</TextBlock>
 				<Slider Maximum="100" Value="50" Background="BurlyWood" />
-				<Slider IsEnabled="False" Margin="0, -50" Maximum="100" Value="50" Background="BurlyWood" />
+				<Slider 
+					IsEnabled="False" 
+					Margin="0, -50" 
+					Maximum="100" 
+					Value="50" 
+					Background="BurlyWood" />
 				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
 
 				<local:SuperSlider 
@@ -59,6 +64,16 @@
 						<Rectangle Width="12" Height="12" Fill="Green" />
 					</controls:SuperSliderUpdate.Thumb>
 				</controls:SuperSliderUpdate>
+				<controls:SuperSliderUpdate 
+					Value="55" Maximum="100" StepFrequency="25" 
+					IsEnabled="False"
+					HorizontalPadding="0"/>
+				<controls:SuperSliderUpdate 
+					Value="55" Maximum="100" StepFrequency="25" 
+					IsEnabled="False"
+					Background="BurlyWood"
+					HorizontalPadding="0"/>
+				
 				<TextBlock>SuperSliderWp7 version</TextBlock>
 				<controls:SuperSliderWp7 Title="Normal" Value="50" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<controls:SuperSliderWp7 Title="Custom Thumb" Value="50" Maximum="100" StepFrequency="25" Background="BurlyWood" >

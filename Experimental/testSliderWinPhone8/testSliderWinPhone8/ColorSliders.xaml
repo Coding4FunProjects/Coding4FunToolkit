@@ -27,11 +27,34 @@
 			<controls:ColorSlider 
 				Width="100" />-->
 			<StackPanel>
-				<controls:ColorSlider2 
-					Orientation="Horizontal" />
-				<controls:ColorSlider2 
-					IsColorVisible="False"
-					Orientation="Horizontal" />
+				<StackPanel>
+					<controls:ColorSlider2 
+						Orientation="Horizontal" />
+					<controls:ColorSlider2 
+						IsColorVisible="False"
+						Orientation="Horizontal" />
+					<controls:ColorSlider2 
+						IsEnabled="False"
+						Orientation="Horizontal" />
+					<controls:ColorSlider2 
+						IsEnabled="False"
+						IsColorVisible="False"
+						Orientation="Horizontal" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Height="300">
+					<controls:ColorSlider2 
+						Orientation="Vertical" />
+					<controls:ColorSlider2 
+						IsColorVisible="False"
+						Orientation="Vertical" />
+					<controls:ColorSlider2 
+						IsEnabled="False"
+						Orientation="Vertical" />
+					<controls:ColorSlider2 
+						IsEnabled="False"
+						IsColorVisible="False"
+						Orientation="Vertical" />
+				</StackPanel>
 			</StackPanel>
 		</Grid>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">
