@@ -5,6 +5,7 @@
     xmlns:local="using:App1"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Coding4Fun.Toolkit.Controls"
     mc:Ignorable="d">
 
 	<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -23,6 +24,8 @@
 		
 			<Slider Width="100"/>
 			<local:SuperSlider  Width="100"/>
+			
+			<controls:ColorSlider2 Height="100" Orientation="Horizontal" />
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal" Grid.Column="1" >
@@ -35,6 +38,8 @@
 
 			<Slider Orientation="Vertical" Height="100"/>
 			<local:SuperSlider Orientation="Vertical"  Height="100"/>
+
+			<controls:ColorSlider2 Orientation="Vertical" />
 		</StackPanel>
 	</Grid>
 </Page>
