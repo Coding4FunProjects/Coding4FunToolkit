@@ -5,9 +5,6 @@ using System.Windows.Shapes;
 using Coding4Fun.Toolkit.Controls.Common;
 using testSliderWinPhone8;
 
-// This is a heavily modified version based on ColorSlider in their ColorPicker sample by 
-// Author: Page Brooks
-// Website: http://www.pagebrooks.com
 namespace Coding4Fun.Toolkit.Controls
 {
     public class ColorSlider2 : ColorBaseControl
@@ -25,8 +22,8 @@ namespace Coding4Fun.Toolkit.Controls
 		private const string HorizontalSelectedColorName = "HorizontalSelectedColor";
 		private const string VerticalSelectedColorName = "VerticalSelectedColor";
 
-		private SuperSlider _horizontalSlider;
-		private SuperSlider _verticalSlider;
+		private SuperSliderUpdate _horizontalSlider;
+		private SuperSliderUpdate _verticalSlider;
 
 //		private SuperSliderUpdate _horizontalSlider;
         private const string HorizontalSliderName = "HorizontalSlider";
@@ -51,8 +48,8 @@ namespace Coding4Fun.Toolkit.Controls
 
             Body = GetTemplateChild(BodyName) as Grid;
 
-			_horizontalSlider = GetTemplateChild(HorizontalSliderName) as SuperSlider;
-		    _verticalSlider = GetTemplateChild(VerticalSliderName) as SuperSlider;
+			_horizontalSlider = GetTemplateChild(HorizontalSliderName) as SuperSliderUpdate;
+			_verticalSlider = GetTemplateChild(VerticalSliderName) as SuperSliderUpdate;
 
             _horizontalSelectedColor = GetTemplateChild(HorizontalSelectedColorName) as Rectangle;
 			_verticalSelectedColor = GetTemplateChild(VerticalSelectedColorName) as Rectangle;
@@ -192,7 +189,7 @@ namespace Coding4Fun.Toolkit.Controls
                 slider.AdjustLayoutBasedOnOrientation();
         }
 
-		private void LayoutWiring(bool isVisible, SuperSlider slider, FrameworkElement colorElement, string templateName)
+		private void LayoutWiring(bool isVisible, SuperSliderUpdate slider, FrameworkElement colorElement, string templateName)
 	    {
 		    if (slider == null)
 				return;

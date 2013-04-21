@@ -69,7 +69,8 @@
 					IsEnabled="False"
 					HorizontalPadding="0"/>
 				<controls:SuperSliderUpdate 
-					Value="55" Maximum="100" StepFrequency="25" 
+					Value="55" Maximum="100"
+					StepFrequency="25" 
 					IsEnabled="False"
 					Background="BurlyWood"
 					HorizontalPadding="0"/>

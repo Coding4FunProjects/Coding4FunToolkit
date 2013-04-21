@@ -33,7 +33,7 @@
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
-				<ColumnDefinition Width="2*" />
+				<ColumnDefinition  />
 				<ColumnDefinition />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
@@ -63,6 +63,7 @@
 					Value="55" Maximum="100" StepFrequency="25" Background="BurlyWood" />
 				<controls:SuperSliderUpdate
 					Orientation="Vertical" 
+					VerticalPadding="0"
 					Title="Custom Thumb" Value="55" Maximum="100"
 					StepFrequency="25" Background="BurlyWood" 
 					TrackSize="24" FillSize="6">
