@@ -95,7 +95,6 @@
     </Compile>
     <Compile Include="ColorBaseControl.cs" />
     <Compile Include="Helpers\ColorExtentions.cs" />
-    <Compile Include="ColorSlider.cs" />
     <Compile Include="ColorSliders.xaml.cs">
       <DependentUpon>ColorSliders.xaml</DependentUpon>
     </Compile>
