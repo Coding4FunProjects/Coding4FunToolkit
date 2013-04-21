@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Shapes;
@@ -24,23 +25,34 @@ namespace App1
 			DefaultStyleKey = typeof(SuperSlider);
 
 			ValueChanged += SuperSlider_ValueChanged;
+			SizeChanged += SuperSlider_SizeChanged;
+		}
+
+		void SuperSlider_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			UpdateLayoutBasedOnValue(Value);
 		}
 
 		void SuperSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+		{
+			UpdateLayoutBasedOnValue(e.NewValue);
+		}
+
+		private void UpdateLayoutBasedOnValue(double newValue)
 		{
 			if (Orientation == Orientation.Horizontal)
 			{
 				if (_horizontalThumb == null || _horizontalDecreaseRect == null)
 					return;
 
-				_horizontalDecreaseRect.Width = CalculateRectangleSize(ActualWidth, _horizontalThumb.Width, e.NewValue);
+				_horizontalDecreaseRect.Width = CalculateRectangleSize(ActualWidth, _horizontalThumb.Width, newValue);
 			}
 			else
 			{
 				if (_verticalThumb == null || _verticalDecreaseRect == null)
 					return;
 
-				_verticalDecreaseRect.Height = CalculateRectangleSize(ActualHeight, _verticalThumb.Width, e.NewValue);
+				_verticalDecreaseRect.Height = CalculateRectangleSize(ActualHeight, _verticalThumb.Width, newValue);
 			}
 		}
 
