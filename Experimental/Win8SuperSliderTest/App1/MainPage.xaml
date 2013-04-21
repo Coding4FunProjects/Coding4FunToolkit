@@ -15,9 +15,9 @@
 		</Grid.ColumnDefinitions>
 	
 		<StackPanel >
-			<Slider />
-			<local:SuperSlider />
-			<local:SuperSlider LargeChange="25" SmallChange="25"  />
+			<Slider Value="50" />
+			<local:SuperSlider Value="50" />
+			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider StepFrequency="10" />
 			<local:SuperSlider StepFrequency="25" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25"  />
