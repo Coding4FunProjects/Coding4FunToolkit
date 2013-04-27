@@ -48,9 +48,12 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Core" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferEventArgs.cs" />
+    <Compile Include="Helpers\CapabilityHelper %28Windows Phone%29.cs" />
     <Compile Include="Helpers\Wav.cs" />
     <Compile Include="MemoryStreamAudioSink.cs" />
     <Compile Include="Recorder.cs" />

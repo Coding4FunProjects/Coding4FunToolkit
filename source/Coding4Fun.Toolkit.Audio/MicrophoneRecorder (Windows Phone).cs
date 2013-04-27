@@ -3,6 +3,8 @@ using System.IO;
 using System.Threading;
 using System.Windows.Media;
 
+using Coding4Fun.Toolkit.Audio.Helpers;
+
 namespace Coding4Fun.Toolkit.Audio
 {
 	public class MicrophoneRecorder : Recorder<MemoryStream>
@@ -14,6 +16,11 @@ namespace Coding4Fun.Toolkit.Audio
 
 		public MicrophoneRecorder()
 		{
+			if (!CapabilityHelper.IsMicrophoneCapability)
+			{
+				throw new UnauthorizedAccessException("Add the Microphone capability in the application manifest");
+			}
+
 			InitMicrophone();
 		}
 
@@ -39,7 +46,8 @@ namespace Coding4Fun.Toolkit.Audio
 						_startTime = DateTime.Now;
 
 						base.Start();
-					});
+					}
+				);
 		}
 
 		public override void Stop()
