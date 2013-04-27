@@ -58,30 +58,42 @@ namespace Coding4Fun.Toolkit.Controls
             }
             else if (diff > 0)
             {
-                // get new chars
-                // append onto SB
-                // set value
-                // update InputBox with *
-                var selectionStart = InputBox.SelectionStart;
-				var selectionIndex = selectionStart - 1;
+				// get new chars
+				// append onto SB
+				// set value
+				// update InputBox with *
+				var selectionStart = InputBox.SelectionStart;
+				var selectionIndex = selectionStart - diff;
 				var newChars = InputBox.Text.Substring(selectionIndex, diff);
 				_inputText.Insert(selectionIndex, newChars);
 
-                Value = _inputText.ToString();
+				Value = _inputText.ToString();
 
-                if (InputBox.Text.Length >= 2)
-                {
-                    var replacementString = new StringBuilder();
-					replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length - 1);
-					replacementString.Insert(selectionIndex, newChars);
+				// Paste operation
+	            if (diff > 1)
+	            {
+		            var replacementString = new StringBuilder();
+		        
+					replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length);
+		            InputBox.Text = replacementString.ToString();
+		        }
+	            else
+	            {
+		            if (InputBox.Text.Length >= 2)
+		            {
+			            var replacementString = new StringBuilder();
+			            replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length - diff);
+			            replacementString.Insert(selectionIndex, newChars);
 
-                    InputBox.Text = replacementString.ToString();
-                }
+			            InputBox.Text = replacementString.ToString();
+		            }
 
-                InputBox.SelectionStart = selectionStart;
+		            ExecuteDelayedOverwrite();
+		            _lastUpdated = DateTime.Now;
+	            }
 
-	            ExecuteDelayedOverwrite();
-				_lastUpdated = DateTime.Now;
+				InputBox.SelectionStart = selectionStart;
+
             }
         }
 
