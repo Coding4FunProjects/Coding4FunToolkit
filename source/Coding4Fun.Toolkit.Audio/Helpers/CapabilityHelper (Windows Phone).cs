@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 namespace Coding4Fun.Toolkit.Audio.Helpers
 {
+	// based off of http://www.nickharris.net/2011/01/check-if-a-capability-is-enabled-in-wmappmanifest-on-windows-phone-7/
 	internal static class CapabilityHelper
 	{
 		const string AppManifestName = "WMAppManifest.xml";
@@ -24,7 +25,6 @@ namespace Coding4Fun.Toolkit.Audio.Helpers
 		private const string IdCapPushNotification = "ID_CAP_PUSH_NOTIFICATION";
 		private const string IdCapWebbrowsercomponent = "ID_CAP_WEBBROWSERCOMPONENT";
 
-		
 		static CapabilityHelper()
 		{
 			var settings = new XmlReaderSettings { XmlResolver = new XmlXapResolver() };
