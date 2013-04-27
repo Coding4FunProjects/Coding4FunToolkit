@@ -158,6 +158,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitorEventArgs.cs">
       <Link>Common\MovementMonitorEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
+      <Link>Common\Numbers.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\PhoneHelper.cs">
       <Link>Common\PhoneHelper.cs</Link>
     </Compile>
