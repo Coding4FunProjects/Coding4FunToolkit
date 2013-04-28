@@ -58,6 +58,9 @@
 								Minimum="0" Maximum="360" 
 								VerticalPadding="0"
 								HorizontalPadding="0"
+								FillSize="{TemplateBinding DefaultSize}"
+								TrackSize="{TemplateBinding DefaultSize}"
+								DisableTrackOpacity="1"
 								/>
 							<!--VerticalPadding="0"
 								HorizontalPadding="0"
@@ -85,7 +88,11 @@
 								Orientation="{TemplateBinding Orientation}" 
 								Foreground="Transparent" 
 								Minimum="0" Maximum="360" 
-								
+								VerticalPadding="0"
+								HorizontalPadding="0"
+								FillSize="{TemplateBinding DefaultSize}"
+								TrackSize="{TemplateBinding DefaultSize}"
+								DisableTrackOpacity="1"
 								/> <!--VerticalPadding="0"
 								HorizontalPadding="0"
 								FillSize="{TemplateBinding DefaultSize}"
@@ -270,13 +277,19 @@
 								<!--<RowDefinition Height="17"/>
 								<RowDefinition Height="Auto"/>
 								<RowDefinition Height="32"/>-->
-								<RowDefinition Height="0"/>
+								<!--<RowDefinition Height="0"/>
 								<RowDefinition Height="Auto"/>
-								<RowDefinition Height="0"/>
+								<RowDefinition Height="0"/>-->
 							</Grid.RowDefinitions>
-							<Rectangle x:Name="HorizontalTrackRect" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Grid.Row="1"/>
+							
+							
+							<Rectangle 
+								x:Name="HorizontalTrackRect" Grid.ColumnSpan="3" 
+								Height="{TemplateBinding TrackSize}"
+								Fill="{TemplateBinding Background}" Grid.Row="1"/>
 							<Rectangle 
 								Name="Coding4FunHorizontalDecreaseRect" 
+								Height="{TemplateBinding FillSize}" 
 								Fill="{TemplateBinding Foreground}" Grid.Row="1" />
 
 							<TickBar x:Name="TopTickBar" Grid.ColumnSpan="3" 

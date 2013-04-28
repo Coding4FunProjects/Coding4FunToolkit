@@ -25,7 +25,8 @@
 			<Slider Width="100"/>
 			<local:SuperSlider  Width="100"/>
 			
-			<controls:ColorSlider2 Height="100" Orientation="Horizontal" />
+			<controls:ColorSlider2 Orientation="Horizontal" />
+			<controls:ColorSlider2 Orientation="Horizontal" IsColorVisible="False" />
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal" Grid.Column="1" >

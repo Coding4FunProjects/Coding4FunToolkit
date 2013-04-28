@@ -11,7 +11,7 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public class ColorSlider2 : ColorBaseControl
 	{
-		const double HueSelectorSize = 24;
+		const double HueSelectorSize = 10;
 		bool _fromSliderChange;
 
 		#region controls on template
@@ -171,10 +171,8 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			var slider = IsVertical() ? _verticalSlider : _horizontalSlider;
 
-			// TODO: Rewire in when Thumb is added in
-
-			//if (Thumb != null && slider != null)
-			//	slider.Thumb = Thumb;
+			if (Thumb != null && slider != null)
+				slider.Thumb = Thumb;
 		}
 
 		private static void OnIsColorVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -210,6 +208,7 @@ namespace Coding4Fun.Toolkit.Controls
 			if (colorElement != null)
 				colorElement.Visibility = (IsColorVisible) ? Visibility.Visible : Visibility.Collapsed;
 		}
+
 
 		private void AdjustLayoutBasedOnOrientation()
 		{
