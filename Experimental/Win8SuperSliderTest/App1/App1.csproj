@@ -113,6 +113,7 @@
     <Compile Include="Helpers\ColorExtentions.cs" />
     <Compile Include="Helpers\ColorSpace.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="ISuperSlider.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

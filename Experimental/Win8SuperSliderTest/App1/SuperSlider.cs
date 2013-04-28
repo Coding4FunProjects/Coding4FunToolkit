@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace App1
 {
-	public class SuperSlider : Slider
+	public class SuperSlider : Slider, ISuperSlider
 	{
 		private const string VerticalThumbName = "VerticalThumb";
 		private const string VerticalDecreaseRectName = "Coding4FunVerticalDecreaseRect";
@@ -76,5 +76,89 @@ namespace App1
 			_horizontalThumb = GetTemplateChild(HorizontalThumbName) as Thumb;
 			_horizontalDecreaseRect = GetTemplateChild(HorizontalDecreaseRectName) as Shape;
 		}
+
+		public double DisableTrackOpacity
+		{
+			get { return (double)GetValue(DisableTrackOpacityProperty); }
+			set { SetValue(DisableTrackOpacityProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for DisableTrackOpacity.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty DisableTrackOpacityProperty =
+			DependencyProperty.Register("DisableTrackOpacity", typeof(double), typeof(SuperSlider), new PropertyMetadata(0.1));
+
+
+		public string Title
+		{
+			get { return (string)GetValue(TitleProperty); }
+			set { SetValue(TitleProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty TitleProperty =
+			DependencyProperty.Register("Title", typeof(string), typeof(SuperSlider), new PropertyMetadata(""));
+
+		public Thickness VerticalPadding
+		{
+			get { return (Thickness)GetValue(VerticalPaddingProperty); }
+			set { SetValue(VerticalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for VerticalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty VerticalPaddingProperty =
+			DependencyProperty.Register("VerticalPadding", typeof(Thickness), typeof(SuperSlider), new PropertyMetadata(new Thickness()));
+
+		public Thickness HorizontalPadding
+		{
+			get { return (Thickness)GetValue(HorizontalPaddingProperty); }
+			set { SetValue(HorizontalPaddingProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for HorizontalPadding.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty HorizontalPaddingProperty =
+			DependencyProperty.Register("HorizontalPadding", typeof(Thickness), typeof(SuperSlider), new PropertyMetadata(new Thickness()));
+
+
+		public object Thumb
+		{
+			get { return (object)GetValue(ThumbProperty); }
+			set { SetValue(ThumbProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ThumbProperty =
+			DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(null, OnThumbChanged));
+
+
+		public double TrackSize
+		{
+			get { return (double)GetValue(TrackSizeProperty); }
+			set { SetValue(TrackSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for BackgroundSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty TrackSizeProperty =
+			DependencyProperty.Register("TrackSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d, OnLayoutChanged));
+
+		public double FillSize
+		{
+			get { return (double)GetValue(FillSizeProperty); }
+			set { SetValue(FillSizeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ProgressSize.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty FillSizeProperty =
+			DependencyProperty.Register("FillSize", typeof(double), typeof(SuperSlider), new PropertyMetadata(12d, OnLayoutChanged));
+
+		private static void OnLayoutChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			//throw new NotImplementedException();
+		}
+
+		private static void OnThumbChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			// throw new NotImplementedException();
+		}
+
 	}
 }

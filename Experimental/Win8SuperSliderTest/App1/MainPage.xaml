@@ -20,7 +20,7 @@
 			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider Value="55" StepFrequency="25" />
 			<local:SuperSlider StepFrequency="25" LargeChange="25" SmallChange="25"  />
-			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25" HorizontalPadding="0"  />
 		
 			<Slider Width="100"/>
 			<local:SuperSlider  Width="100"/>

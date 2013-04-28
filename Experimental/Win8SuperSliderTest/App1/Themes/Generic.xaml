@@ -56,7 +56,8 @@
 								Orientation="{TemplateBinding Orientation}" 
 								Foreground="Transparent" 
 								Minimum="0" Maximum="360" 
-								
+								VerticalPadding="0"
+								HorizontalPadding="0"
 								/>
 							<!--VerticalPadding="0"
 								HorizontalPadding="0"
@@ -110,10 +111,17 @@
 		<Setter Property="BorderThickness" Value="{StaticResource SliderBorderThemeThickness}"/>
 		<Setter Property="Foreground" Value="{StaticResource SliderTrackDecreaseBackgroundThemeBrush}"/>
 		<Setter Property="ManipulationMode" Value="None"/>
+
+		<Setter Property="HorizontalPadding" Value="0, 17, 0, 32" />
+		<Setter Property="VerticalPadding" Value="18, 12" />
+		<Setter Property="TrackSize" Value="12" />
+		<Setter Property="FillSize" Value="12" />
+		<!--<Setter Property="MinHeight" Value="24" />
+		<Setter Property="MinWidth" Value="24" />-->
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:SuperSlider">
-					<Grid Margin="{TemplateBinding Padding}">
+					<Grid Background="Transparent" Margin="{TemplateBinding Padding}">
 						<Grid.Resources>
 							<Style x:Key="SliderThumbStyle" TargetType="Thumb">
 								<Setter Property="BorderThickness" Value="1"/>
@@ -252,29 +260,42 @@
 								<VisualState x:Name="Unfocused"/>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Grid x:Name="HorizontalTemplate" Background="Transparent">
+						<Grid x:Name="HorizontalTemplate" Margin="{TemplateBinding HorizontalPadding}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="*"/>
 							</Grid.ColumnDefinitions>
 							<Grid.RowDefinitions>
-								<RowDefinition Height="17"/>
+								<!--<RowDefinition Height="17"/>
 								<RowDefinition Height="Auto"/>
-								<RowDefinition Height="32"/>
+								<RowDefinition Height="32"/>-->
+								<RowDefinition Height="0"/>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="0"/>
 							</Grid.RowDefinitions>
 							<Rectangle x:Name="HorizontalTrackRect" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Grid.Row="1"/>
 							<Rectangle 
 								Name="Coding4FunHorizontalDecreaseRect" 
 								Fill="{TemplateBinding Foreground}" Grid.Row="1" />
 
-							<TickBar x:Name="TopTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}" Margin="0,0,0,2" Visibility="Collapsed" VerticalAlignment="Bottom"/>
-							<TickBar x:Name="HorizontalInlineTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickMarkInlineBackgroundThemeBrush}" Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Visibility="Collapsed"/>
-							<TickBar x:Name="BottomTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}" Margin="0,2,0,0" Grid.Row="2" Visibility="Collapsed" VerticalAlignment="Top"/>
+							<TickBar x:Name="TopTickBar" Grid.ColumnSpan="3" 
+									 Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}"
+									 Margin="0,0,0,2" 
+									 Visibility="Collapsed" VerticalAlignment="Bottom"/>
+							<TickBar x:Name="HorizontalInlineTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickMarkInlineBackgroundThemeBrush}" 
+									 Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Visibility="Collapsed"/>
+							<TickBar x:Name="BottomTickBar" Grid.ColumnSpan="3" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" Height="{StaticResource SliderOutsideTickBarThemeHeight}"
+									 Margin="0,2,0,0" 
+									 Grid.Row="2" Visibility="Collapsed" VerticalAlignment="Top"/>
 							<Rectangle x:Name="HorizontalBorder" Grid.ColumnSpan="3" Grid.Row="1" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
-							<Thumb x:Name="HorizontalThumb" Background="{StaticResource SliderThumbBackgroundThemeBrush}" Grid.Column="1" DataContext="{TemplateBinding Value}" Height="{StaticResource SliderTrackThemeHeight}" Grid.Row="1" Style="{StaticResource SliderThumbStyle}" Width="{StaticResource SliderTrackThemeHeight}"/>
-							<Rectangle x:Name="FocusVisualWhiteHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
-							<Rectangle x:Name="FocusVisualBlackHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" Opacity="0" Grid.RowSpan="3" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Thumb x:Name="HorizontalThumb" Background="{StaticResource SliderThumbBackgroundThemeBrush}" 
+								   Grid.Column="1" DataContext="{TemplateBinding Value}" Height="{StaticResource SliderTrackThemeHeight}" 
+								   Grid.Row="1" Style="{StaticResource SliderThumbStyle}" Width="{StaticResource SliderTrackThemeHeight}"/>
+							<Rectangle x:Name="FocusVisualWhiteHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" 
+									   Opacity="0" Grid.RowSpan="3" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Rectangle x:Name="FocusVisualBlackHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" 
+									   Opacity="0" Grid.RowSpan="3" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
 						</Grid>
 						<Grid x:Name="VerticalTemplate" Background="Transparent" Visibility="Collapsed">
 							<Grid.ColumnDefinitions>
