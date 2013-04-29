@@ -35,7 +35,32 @@ namespace App1
 
 		void SuperSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
 		{
-			UpdateLayoutBasedOnValue(e.NewValue);
+			UpdateValue(e.NewValue);
+		}
+
+		private void UpdateValue(Double value)
+		{
+			var returnValue = value;
+			var modAmount = returnValue%StepFrequency;
+
+			if (modAmount != 0 && value != Maximum)
+			{
+				returnValue = Math.Floor(returnValue / StepFrequency) * StepFrequency;
+
+				var lastPossibleStep = Math.Floor(Maximum / StepFrequency) * StepFrequency;
+
+				if (value > lastPossibleStep)
+				{
+					if (Maximum%StepFrequency/2.0 < modAmount)
+						returnValue = Maximum;
+				}
+
+				Value = returnValue;
+
+				return;
+			}
+
+			UpdateLayoutBasedOnValue(value);
 		}
 
 		private void UpdateLayoutBasedOnValue(double newValue)
@@ -45,14 +70,14 @@ namespace App1
 				if (_horizontalThumb == null || _horizontalDecreaseRect == null)
 					return;
 
-				_horizontalDecreaseRect.Width = CalculateRectangleSize(ActualWidth, _horizontalThumb.Width, newValue);
+				_horizontalDecreaseRect.Width = CalculateRectangleSize(ActualWidth, _horizontalThumb.ActualWidth, newValue);
 			}
 			else
 			{
 				if (_verticalThumb == null || _verticalDecreaseRect == null)
 					return;
 
-				_verticalDecreaseRect.Height = CalculateRectangleSize(ActualHeight, _verticalThumb.Width, newValue);
+				_verticalDecreaseRect.Height = CalculateRectangleSize(ActualHeight, _verticalThumb.ActualHeight, newValue);
 			}
 		}
 

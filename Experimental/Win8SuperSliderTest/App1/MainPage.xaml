@@ -17,8 +17,12 @@
 		<StackPanel >
 			<Slider Value="50" />
 			<local:SuperSlider Value="50" />
-			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25"  />
-			<local:SuperSlider Value="55" StepFrequency="25" />
+			<local:SuperSlider StepFrequency="25" Value="55" />
+			<local:SuperSlider StepFrequency="25" Value="55" Maximum="110" HorizontalPadding="0" />
+			<local:SuperSlider StepFrequency="25" Value="104" Maximum="110" HorizontalPadding="0" />
+			<local:SuperSlider StepFrequency="25" Value="106" Maximum="110" HorizontalPadding="0" />
+
+			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25" TrackSize="20" FillSize="50"  />
 			<local:SuperSlider StepFrequency="25" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25" HorizontalPadding="0"  />
 		
