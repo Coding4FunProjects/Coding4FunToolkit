@@ -35,12 +35,13 @@
 			<local:SuperSlider Orientation="Vertical" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="10" />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" LargeChange="25" SmallChange="25"  />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="0.1" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="0.1" LargeChange="25" SmallChange="25" VerticalPadding="0"  />
 
 			<Slider Orientation="Vertical" Height="100"/>
 			<local:SuperSlider Orientation="Vertical"  Height="100"/>
 
 			<controls:ColorSlider2 Orientation="Vertical" />
+			<controls:ColorSlider2 Orientation="Vertical" IsColorVisible="False" />
 		</StackPanel>
 	</Grid>
 </Page>

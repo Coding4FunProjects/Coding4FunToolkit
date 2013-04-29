@@ -120,7 +120,7 @@
 		<Setter Property="ManipulationMode" Value="None"/>
 
 		<Setter Property="HorizontalPadding" Value="0, 17, 0, 32" />
-		<Setter Property="VerticalPadding" Value="18, 12" />
+		<Setter Property="VerticalPadding" Value="18, 0" />
 		<Setter Property="TrackSize" Value="12" />
 		<Setter Property="FillSize" Value="12" />
 		<!--<Setter Property="MinHeight" Value="24" />
@@ -310,19 +310,27 @@
 							<Rectangle x:Name="FocusVisualBlackHorizontal" Grid.ColumnSpan="3" IsHitTestVisible="False" 
 									   Opacity="0" Grid.RowSpan="3" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
 						</Grid>
-						<Grid x:Name="VerticalTemplate" Background="Transparent" Visibility="Collapsed">
-							<Grid.ColumnDefinitions>
+						<Grid x:Name="VerticalTemplate" Background="Transparent" Visibility="Collapsed"  Margin="{TemplateBinding VerticalPadding}">
+							<!--<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="17"/>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="17"/>
-							</Grid.ColumnDefinitions>
+							</Grid.ColumnDefinitions>-->
 							<Grid.RowDefinitions>
 								<RowDefinition Height="*"/>
 								<RowDefinition Height="Auto"/>
 								<RowDefinition Height="Auto"/>
 							</Grid.RowDefinitions>
-							<Rectangle x:Name="VerticalTrackRect" Grid.Column="1" Fill="{TemplateBinding Background}" Grid.RowSpan="3"/>
-							<Rectangle x:Name="Coding4FunVerticalDecreaseRect" Grid.Column="1" Fill="{TemplateBinding Foreground}" Grid.Row="2"/>
+							<Rectangle 
+								x:Name="VerticalTrackRect" Grid.Column="1" 
+								Fill="{TemplateBinding Background}" 
+								Width="{TemplateBinding TrackSize}"
+								Grid.RowSpan="3"/>
+							<Rectangle
+								x:Name="Coding4FunVerticalDecreaseRect" Grid.Column="1" 
+								Fill="{TemplateBinding Foreground}" 
+								Width="{TemplateBinding FillSize}" 
+								Grid.Row="2"/>
 							<TickBar x:Name="LeftTickBar" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" HorizontalAlignment="Right" Margin="0,0,2,0" Grid.RowSpan="3" Visibility="Collapsed" Width="{StaticResource SliderOutsideTickBarThemeHeight}"/>
 							<TickBar x:Name="VerticalInlineTickBar" Grid.Column="1" Fill="{StaticResource SliderTickMarkInlineBackgroundThemeBrush}" Grid.RowSpan="3" Visibility="Collapsed" Width="{StaticResource SliderTrackThemeHeight}"/>
 							<TickBar x:Name="RightTickBar" Grid.Column="2" Fill="{StaticResource SliderTickmarkOutsideBackgroundThemeBrush}" HorizontalAlignment="Left" Margin="2,0,0,0" Grid.RowSpan="3" Visibility="Collapsed" Width="{StaticResource SliderOutsideTickBarThemeHeight}"/>
