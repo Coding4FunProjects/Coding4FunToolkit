@@ -34,14 +34,18 @@
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal" Grid.Column="1" >
-			<Slider Orientation="Vertical" />
-			<local:SuperSlider Orientation="Vertical" />
-			<local:SuperSlider Orientation="Vertical" LargeChange="25" SmallChange="25"  />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="10" />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="25" LargeChange="25" SmallChange="25"  />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="0.1" LargeChange="25" SmallChange="25" VerticalPadding="0"  />
+			<Slider Orientation="Vertical" Value="50" />
+			<local:SuperSlider Orientation="Vertical" Value="50" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" Maximum="110" HorizontalPadding="0" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="104" Maximum="110" HorizontalPadding="0" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="106" Maximum="110" HorizontalPadding="0" />
 
-			<Slider Orientation="Vertical" Height="100"/>
+			<local:SuperSlider Orientation="Vertical" Value="55" LargeChange="25" SmallChange="25" TrackSize="20" FillSize="50"  />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" LargeChange="25" SmallChange="25"  />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="0.1" LargeChange="25" SmallChange="25" HorizontalPadding="0"  />
+
+			<Slider Orientation="Vertical"  Height="100"/>
 			<local:SuperSlider Orientation="Vertical"  Height="100"/>
 
 			<controls:ColorSlider2 Orientation="Vertical" />
