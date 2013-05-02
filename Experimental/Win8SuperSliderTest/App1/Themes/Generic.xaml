@@ -61,6 +61,7 @@
 								FillSize="{TemplateBinding DefaultSize}"
 								TrackSize="{TemplateBinding DefaultSize}"
 								DisableTrackOpacity="1"
+								IsThumbToolTipEnabled="False"
 								/>
 							<!--VerticalPadding="0"
 								HorizontalPadding="0"
@@ -93,6 +94,7 @@
 								FillSize="{TemplateBinding DefaultSize}"
 								TrackSize="{TemplateBinding DefaultSize}"
 								DisableTrackOpacity="1"
+								IsThumbToolTipEnabled="False"
 								/> <!--VerticalPadding="0"
 								HorizontalPadding="0"
 								FillSize="{TemplateBinding DefaultSize}"
