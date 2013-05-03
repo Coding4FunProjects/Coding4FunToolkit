@@ -28,6 +28,7 @@
 					Margin="0, -50" 
 					Maximum="100" 
 					Value="50" 
+					Foreground="Green"
 					Background="BurlyWood" />
 				<TextBlock>Wp8 SuperSlider w/ step frequency</TextBlock>
 
@@ -39,6 +40,7 @@
 					Value="50" 
 					HorizontalPadding="36, 0"
 					Maximum="100" 
+					Foreground="Green"
 					Background="BurlyWood" />
 				<local:SuperSlider 
 					Value="50" 
