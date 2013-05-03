@@ -28,18 +28,23 @@
 		
 			<Slider Width="100"/>
 			<local:SuperSlider  Width="100"/>
+
+			<Slider Value="50" IsEnabled="False" />
+			<local:SuperSlider Value="50" IsEnabled="False" HorizontalPadding="0" />
 			
 			<controls:ColorSlider2 Orientation="Horizontal" />
 			<controls:ColorSlider2 Orientation="Horizontal" IsColorVisible="False" />
+			<controls:ColorSlider2 Orientation="Horizontal"  IsEnabled="False" />
+			<controls:ColorSlider2 Orientation="Horizontal" IsColorVisible="False"  IsEnabled="False" />
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal" Grid.Column="1" >
 			<Slider Orientation="Vertical" Value="50" />
 			<local:SuperSlider Orientation="Vertical" Value="50" />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" Maximum="110" HorizontalPadding="0" />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="104" Maximum="110" HorizontalPadding="0" />
-			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="106" Maximum="110" HorizontalPadding="0" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" Maximum="110" VerticalPadding="0" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="104" Maximum="110" VerticalPadding="0" />
+			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="106" Maximum="110" VerticalPadding="0" />
 
 			<local:SuperSlider Orientation="Vertical" Value="55" LargeChange="25" SmallChange="25" TrackSize="20" FillSize="50"  />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" LargeChange="25" SmallChange="25"  />
@@ -48,8 +53,14 @@
 			<Slider Orientation="Vertical"  Height="100"/>
 			<local:SuperSlider Orientation="Vertical"  Height="100"/>
 
+			<Slider Orientation="Vertical" Value="50" IsEnabled="False" />
+			<local:SuperSlider Orientation="Vertical" Value="50" IsEnabled="False"  />
+			
 			<controls:ColorSlider2 Orientation="Vertical" />
 			<controls:ColorSlider2 Orientation="Vertical" IsColorVisible="False" />
+
+			<controls:ColorSlider2 Orientation="Vertical" IsEnabled="False" />
+			<controls:ColorSlider2 Orientation="Vertical" IsColorVisible="False" IsEnabled="False" />
 		</StackPanel>
 	</Grid>
 </Page>
