@@ -10,13 +10,17 @@
 
 	<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="1.5*" />
 		</Grid.ColumnDefinitions>
 	
 		<StackPanel >
 			<Slider Value="50" />
 			<local:SuperSlider Value="50" />
+
+			<Slider Value="50" Foreground="Green" Background="BurlyWood" />
+			<local:SuperSlider Value="50" Foreground="Green" Background="BurlyWood" />
+
 			<local:SuperSlider StepFrequency="25" Value="55" />
 			<local:SuperSlider StepFrequency="25" Value="55" Maximum="110" HorizontalPadding="0" />
 			<local:SuperSlider StepFrequency="25" Value="104" Maximum="110" HorizontalPadding="0" />
@@ -41,6 +45,10 @@
 		<StackPanel Orientation="Horizontal" Grid.Column="1" >
 			<Slider Orientation="Vertical" Value="50" />
 			<local:SuperSlider Orientation="Vertical" Value="50" />
+
+			<Slider Orientation="Vertical" Value="50" Foreground="Green" Background="BurlyWood" />
+			<local:SuperSlider Orientation="Vertical" Value="50" Foreground="Green" Background="BurlyWood" />
+
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="55" Maximum="110" VerticalPadding="0" />
 			<local:SuperSlider Orientation="Vertical" StepFrequency="25" Value="104" Maximum="110" VerticalPadding="0" />
