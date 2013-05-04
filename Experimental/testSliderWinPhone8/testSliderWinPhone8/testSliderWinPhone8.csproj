@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ColorBaseControl.cs" />
+    <Compile Include="Converters\SolidColorBrushToColorConverter.cs" />
     <Compile Include="Helpers\ColorExtentions.cs" />
     <Compile Include="ColorSliders.xaml.cs">
       <DependentUpon>ColorSliders.xaml</DependentUpon>
