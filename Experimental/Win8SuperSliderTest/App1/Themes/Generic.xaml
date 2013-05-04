@@ -248,11 +248,7 @@
 								IsThumbToolTipEnabled="False"
 								Style="{StaticResource ColorSliderSuperSliderStyle}"
 								/>
-							<!--VerticalPadding="0"
-								HorizontalPadding="0"
-								FillSize="{TemplateBinding DefaultSize}"
-								TrackSize="{TemplateBinding DefaultSize}"
-								DisableTrackOpacity="1"-->
+							
 							<Rectangle
 								Grid.Column="1"
 								Name="HorizontalSelectedColor" 
@@ -281,11 +277,7 @@
 								DisableTrackOpacity="1"
 								IsThumbToolTipEnabled="False"
 								Style="{StaticResource ColorSliderSuperSliderStyle}"
-								/> <!--VerticalPadding="0"
-								HorizontalPadding="0"
-								FillSize="{TemplateBinding DefaultSize}"
-								TrackSize="{TemplateBinding DefaultSize}"
-								DisableTrackOpacity="1"-->
+								/> 
 							<Rectangle
 								Grid.Row="1"
 								Name="VerticalSelectedColor" 
