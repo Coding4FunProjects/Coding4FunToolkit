@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="EllipseImage.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EllipseImage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+		<StackPanel>
+		<Ellipse Width="200" Height="200" Stroke="#FF4EACFF" StrokeThickness="5">
+			<Ellipse.Fill>
+				<ImageBrush ImageSource="Assets/me.jpg" Stretch="UniformToFill" >
+					<ImageBrush.Transform>
+						<CompositeTransform TranslateX="18" TranslateY="2"  ScaleX=".98" ScaleY=".98" />
+					</ImageBrush.Transform>
+				</ImageBrush>
+			</Ellipse.Fill>
+		</Ellipse>
+		<Grid  Width="200" Height="200">
+			<Ellipse>
+				<Ellipse.Fill>
+					<ImageBrush ImageSource="Assets/me.jpg" Stretch="UniformToFill" >
+							<ImageBrush.Transform>
+								<CompositeTransform TranslateX="18" TranslateY="5"  ScaleX=".95" ScaleY=".95" />
+							</ImageBrush.Transform>
+						</ImageBrush>
+				</Ellipse.Fill>
+			</Ellipse>
+			<Ellipse Stroke="#FF4EACFF" StrokeThickness="5"  />
+		</Grid>
+			<Ellipse Width="200" Height="200" Stroke="#FF4EACFF" StrokeThickness="5">
+				<Ellipse.Fill>
+					
+					<ImageBrush ImageSource="Assets/me.jpg" Stretch="None" AlignmentX="Right" AlignmentY="Top" >
+						<ImageBrush.Transform>
+							<CompositeTransform ScaleX="0.5" ScaleY="0.5" TranslateX="225"/>
+						</ImageBrush.Transform>
+
+
+					</ImageBrush>
+				</Ellipse.Fill>
+			</Ellipse>
+			<Grid  Width="200" Height="200">
+				<Ellipse>
+					<Ellipse.Fill>
+						<ImageBrush ImageSource="Assets/me.jpg" Stretch="None" AlignmentX="Right" AlignmentY="Top" >
+							<ImageBrush.Transform>
+								<CompositeTransform ScaleX="0.5" ScaleY="0.5" TranslateX="225"/>
+							</ImageBrush.Transform>
+						</ImageBrush>
+					</Ellipse.Fill>
+				</Ellipse>
+				<Ellipse Stroke="#FF4EACFF" StrokeThickness="5"  />
+			</Grid>
+		</StackPanel>
+	</Grid>
+</Page>
