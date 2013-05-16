@@ -14,6 +14,7 @@
                                    Stretch="{TemplateBinding PlaceholderStretch}"/>
                         </Border>
                         <Image x:Name="MainImage" 
+							   Source="{TemplateBinding Source}"
                                Stretch="{TemplateBinding Stretch}"/>
                     </Grid>
                 </ControlTemplate>
