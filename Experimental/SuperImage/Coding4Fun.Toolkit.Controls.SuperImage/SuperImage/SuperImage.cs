@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,9 +62,9 @@ namespace Coding4Fun.Toolkit.Controls
         #region Sources Property
         public static readonly DependencyProperty SourcesProperty = DependencyProperty.Register(
             "Sources",
-            typeof(List<SuperImageSource>), 
-            typeof (SuperImage), 
-            new PropertyMetadata(default(List<SuperImageSource>), OnSourcesChanged));
+			typeof(ObservableCollection<SuperImageSource>), 
+            typeof (SuperImage),
+			new PropertyMetadata(new ObservableCollection<SuperImageSource>(), OnSourcesChanged));
 
         /// <summary>
         /// Gets or sets the sources.
@@ -71,9 +72,9 @@ namespace Coding4Fun.Toolkit.Controls
         /// <value>
         /// The sources.
         /// </value>
-        public List<SuperImageSource> Sources
+		public ObservableCollection<SuperImageSource> Sources
         {
-            get { return (List<SuperImageSource>)GetValue(SourcesProperty); }
+			get { return (ObservableCollection<SuperImageSource>)GetValue(SourcesProperty); }
             set { SetValue(SourcesProperty, value); }
         }
         #endregion
@@ -163,37 +164,37 @@ namespace Coding4Fun.Toolkit.Controls
         private static void OnSourcesChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
             // If the initial source and new values are null, do nothing
-            if (source == null || e.NewValue == null) return;
+            if (source == null || e.NewValue == null) 
+				return;
 
             var si = source as SuperImage;
 
             // If the source isn't a SuperImage or the SuperImage's image in the template is null, do nothing
-            if (si == null || si._image == null) return;
+            if (si == null || si._image == null) 
+				return;
 
-            var sources = (List<SuperImageSource>) e.NewValue;
-
-            si.OnSourcesPropertyChanged(sources);
+            si.OnSourcesPropertyChanged();
         }
 
-        private void OnSourcesPropertyChanged(List<SuperImageSource> sources)
+        private void OnSourcesPropertyChanged()
         {
             // As we are loading the images, we need to display the placeholder image if one is set
             _frontImageLoaded = false;
             UpdateBackImageVisibility();
 
             // If there are no SuperImageSources, do nothing
-            if (!sources.Any()) return;
+            if (!Sources.Any()) return;
 
             // Get the current application's scale
             var scale = SuperImageExtensions.GetCurrentScale();
 
             // Get the first SuperImageSource whose min/max scales best match the current application's scale
-            var selectedImageSource = sources.FirstOrDefault(x => scale >= x.MinScale && scale <= x.MaxScale);
+			var selectedImageSource = Sources.FirstOrDefault(x => scale >= x.MinScale && scale <= x.MaxScale);
 
             // If no best match exists for the current application scale, then we need to check for a default SuperImageSource
             if (selectedImageSource == default(SuperImageSource))
             {
-                selectedImageSource = sources.FirstOrDefault(x => x.IsDefault);
+				selectedImageSource = Sources.FirstOrDefault(x => x.IsDefault);
 
                 // If there isn't a default SuperImageSource, then do nothing
                 if (selectedImageSource == default(SuperImageSource)) return;
@@ -264,6 +265,7 @@ namespace Coding4Fun.Toolkit.Controls
             }
 
             UpdateBackImageVisibility();
+	        OnSourcesPropertyChanged();
         }
     }
 }

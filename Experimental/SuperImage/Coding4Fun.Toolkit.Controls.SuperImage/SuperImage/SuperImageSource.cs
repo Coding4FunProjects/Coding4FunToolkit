@@ -9,7 +9,7 @@ namespace Coding4Fun.Toolkit.Controls
     /// The SuperImageSource is what's used to provide the SuperImage with a list of sources 
     /// from which to choose the most suitable image based on the application's current scale
     /// </summary>
-    public class SuperImageSource : FrameworkElement
+    public class SuperImageSource : DependencyObject
     {
         #region Dependency Properties
         #region MinScale Property

@@ -22,4 +22,19 @@
         </Setter>
     </Style>
 
+	<Style TargetType="local:TestControl">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:TestControl">
+					<Grid>
+						
+						<Image x:Name="MainImage" 
+							   Source="{TemplateBinding Source}"
+                               Stretch="{TemplateBinding Stretch}"/>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
 </ResourceDictionary>
