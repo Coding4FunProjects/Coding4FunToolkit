@@ -40,6 +40,11 @@ namespace Coding4Fun.Toolkit.Controls
                     checkedImageSource = new BitmapImage();
                     using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
                     {
+						//MemoryStream ms = new MemoryStream();
+						//file.CopyTo(ms);
+
+						//checkedImageSource.SetSource(ms);
+
                         checkedImageSource.SetSource(file);
                     }
                 }

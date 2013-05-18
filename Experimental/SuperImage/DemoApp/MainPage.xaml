@@ -48,20 +48,23 @@
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <controls:SuperImage>
+            <!--<controls:SuperImage>
                 <controls:SuperImage.Sources>
 					<controls:SuperImageSource  IsDefault="True" Source="assets/images/1.jpg"/>
                 </controls:SuperImage.Sources>
             </controls:SuperImage>
-			
-			<controls:TestControl Source="assets/images/0.jpg">
-				<controls:TestControl.MyProperty>
-					<Image />
-					<Image />
-					<Image />
-				</controls:TestControl.MyProperty>
-			</controls:TestControl>
-        </StackPanel>
+			<controls:SuperImage>
+				<controls:SuperImage.Sources>
+					<controls:SuperImageSource  IsDefault="True" Source="assets/images/2.jpg"/>
+				</controls:SuperImage.Sources>
+			</controls:SuperImage>-->
+			<controls:SuperImage>
+				<controls:SuperImage.Sources>
+					<controls:SuperImageSource  IsDefault="True" Source="isostore://robot.jpg"/>
+				</controls:SuperImage.Sources>
+			</controls:SuperImage>
+
+		</StackPanel>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
