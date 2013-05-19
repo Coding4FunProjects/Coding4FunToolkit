@@ -35,19 +35,23 @@ namespace Coding4Fun.Toolkit.Controls
             {
                 imgSource = imgSource.Replace("isostore:", "");
 
-                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                checkedImageSource = new BitmapImage();
+
+                if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
                 {
-                    checkedImageSource = new BitmapImage();
-                    if (isoStore.FileExists(imgSource))
+                    using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                        if (isoStore.FileExists(imgSource))
                         {
-                            //MemoryStream ms = new MemoryStream();
-                            //file.CopyTo(ms);
+                            using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                            {
+                                //MemoryStream ms = new MemoryStream();
+                                //file.CopyTo(ms);
 
-                            //checkedImageSource.SetSource(ms);
+                                //checkedImageSource.SetSource(ms);
 
-                            checkedImageSource.SetSource(file);
+                                checkedImageSource.SetSource(file);
+                            }
                         }
                     }
                 }
