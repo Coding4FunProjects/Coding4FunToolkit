@@ -38,14 +38,17 @@ namespace Coding4Fun.Toolkit.Controls
                 using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     checkedImageSource = new BitmapImage();
-                    using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                    if (isoStore.FileExists(imgSource))
                     {
-						//MemoryStream ms = new MemoryStream();
-						//file.CopyTo(ms);
+                        using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                        {
+                            //MemoryStream ms = new MemoryStream();
+                            //file.CopyTo(ms);
 
-						//checkedImageSource.SetSource(ms);
+                            //checkedImageSource.SetSource(ms);
 
-                        checkedImageSource.SetSource(file);
+                            checkedImageSource.SetSource(file);
+                        }
                     }
                 }
             }

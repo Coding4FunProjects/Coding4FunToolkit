@@ -60,7 +60,7 @@
 			</controls:SuperImage>-->
 			<controls:SuperImage>
 				<controls:SuperImage.Sources>
-					<controls:SuperImageSource  IsDefault="True" Source="isostore://robot.jpg"/>
+					<controls:SuperImageSource  IsDefault="True" Source="isostore:/robot.jpg"/>
 				</controls:SuperImage.Sources>
 			</controls:SuperImage>
 

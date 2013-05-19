@@ -22,27 +22,14 @@ namespace DemoApp
 	    {
 		    InitializeComponent();
 
-		    var targetFile = "robot.jpg";
 		    // Sample code to localize the ApplicationBar
 		    //BuildLocalizedApplicationBar();
 
-			using (var stream = PlatformFileAccess.GetSaveFileStream(targetFile)) // saving into iso
-		    {
-				using (var trexOrginial = File.Open("assets/images/" + targetFile, FileMode.Open))
-			    {
-				    var trexBytes = new byte[trexOrginial.Length];
-
-				    trexOrginial.Write(trexBytes, 0, (int) trexOrginial.Length);
-
-				    stream.Write(trexBytes, 0, trexBytes.Count());
-			    }
-		    }
-
-			using (var stream = PlatformFileAccess.GetOpenFileStream(targetFile)) // saving into iso
-			{
-				//var bitmap = PictureDecoder.DecodeJpeg(stream);
-				//img.SetSource(stream);
-			}
+            //using (var stream = PlatformFileAccess.GetOpenFileStream(targetFile)) // saving into iso
+            //{
+            //    //var bitmap = PictureDecoder.DecodeJpeg(stream);
+            //    //img.SetSource(stream);
+            //}
 	    }
 
 	    // Sample code for building a localized ApplicationBar
