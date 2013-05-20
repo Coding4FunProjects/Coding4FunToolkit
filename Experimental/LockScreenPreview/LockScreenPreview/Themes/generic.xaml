@@ -15,7 +15,7 @@
 
     <Style TargetType="local:LockScreenPreview">
         <Setter Property="NotificationIconSource"
-                Value="/Images/appbar.alien.png" />
+                Value="/LockScreenPreview;component/Images/c4fHead.png" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:LockScreenPreview">
