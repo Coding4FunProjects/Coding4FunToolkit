@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Coding4Fun.Toolkit.Storage;
+using Microsoft.Phone;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using DemoApp.Resources;
@@ -14,15 +19,40 @@ namespace DemoApp
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
-        public MainPage()
-        {
-            InitializeComponent();
+	    public MainPage()
+	    {
+		    InitializeComponent();
 
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
-        }
+		    // Sample code to localize the ApplicationBar
+		    //BuildLocalizedApplicationBar();
+			var targetFile = "robot.jpg";
 
-        // Sample code for building a localized ApplicationBar
+			var currentLocation = "assets/images/" + targetFile;
+
+			using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
+			{
+				if (storage.FileExists(targetFile)) return;
+
+				var sri = Application.GetResourceStream(new Uri(currentLocation, UriKind.Relative));
+
+				if (sri != null)
+				{
+					using (var stream = storage.CreateFile(targetFile))
+					{
+						const int chunkSize = 4096;
+						var bytes = new byte[chunkSize];
+						int byteCount;
+
+						while ((byteCount = sri.Stream.Read(bytes, 0, chunkSize)) > 0)
+						{
+							stream.Write(bytes, 0, byteCount);
+						}
+					}
+				}
+			}
+	    }
+
+	    // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
         //    // Set the page's ApplicationBar to a new instance of ApplicationBar.

@@ -56,7 +56,7 @@ namespace Coding4Fun.Toolkit.Controls
         #region Source Property
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
             "Source",
-            typeof (ImageSource),
+			typeof(ImageSource),
             typeof (SuperImageSource),
 			new PropertyMetadata(default(ImageSource)));
 
@@ -66,7 +66,7 @@ namespace Coding4Fun.Toolkit.Controls
         /// <value>
         /// The source.
         /// </value>
-		public ImageSource Source
+        public ImageSource Source
         {
 			get { return (ImageSource)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }

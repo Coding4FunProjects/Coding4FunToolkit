@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using Coding4Fun.Toolkit.Storage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using DemoApp.Resources;
@@ -54,7 +57,6 @@ namespace DemoApp
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)

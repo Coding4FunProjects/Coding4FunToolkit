@@ -5,9 +5,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-// ReSharper disable CheckNamespace
 namespace Coding4Fun.Toolkit.Controls
-// ReSharper restore CheckNamespace
 {
     public static class SuperImageExtensions
     {
@@ -21,33 +19,37 @@ namespace Coding4Fun.Toolkit.Controls
         /// </returns>
 		public static BitmapImage GetImageFromUri(this ImageSource imageSource)
         {
-            BitmapImage checkedImageSource;
-
-            // If the imageSource is null, then there's nothing further to see here
+	        // If the imageSource is null, then there's nothing further to see here
             if (imageSource == null)
-            {
                 return null;
-            }
+            
+			var checkedImageSource = imageSource as BitmapImage;
 
-            var imgSource = imageSource.ToString().ToLower();
+			if (checkedImageSource == null)
+				return null;
+
+			var imgSource = checkedImageSource.UriSource.ToString().ToLower();
 
             // If the imgSource is an isostore uri, then we need to pull it out of storage
             if (imgSource.StartsWith("isostore:/"))
             {
                 imgSource = imgSource.Replace("isostore:", "");
 
-                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                checkedImageSource = new BitmapImage();
+
+                if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
                 {
-                    checkedImageSource = new BitmapImage();
-                    using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                    using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        checkedImageSource.SetSource(file);
+                        if (isoStore.FileExists(imgSource))
+                        {
+                            using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
+                            {
+                                 checkedImageSource.SetSource(file);
+                            }
+                        }
                     }
                 }
-            }
-            else // Load the image as normal (ie, not out of isolatedstorage
-            {
-                checkedImageSource = new BitmapImage(new Uri(imgSource, UriKind.RelativeOrAbsolute));
             }
 
             return checkedImageSource;
