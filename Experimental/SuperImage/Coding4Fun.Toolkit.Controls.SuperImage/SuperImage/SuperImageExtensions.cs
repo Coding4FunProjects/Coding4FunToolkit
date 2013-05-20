@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 // ReSharper disable CheckNamespace
@@ -18,7 +19,7 @@ namespace Coding4Fun.Toolkit.Controls
         /// <returns>
         /// The image as a BitmapImage so it can be set against the Image item
         /// </returns>
-        public static BitmapImage GetImageFromUri(this Uri imageSource)
+		public static BitmapImage GetImageFromUri(this ImageSource imageSource)
         {
             BitmapImage checkedImageSource;
 
@@ -35,24 +36,12 @@ namespace Coding4Fun.Toolkit.Controls
             {
                 imgSource = imgSource.Replace("isostore:", "");
 
-                checkedImageSource = new BitmapImage();
-
-                if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
+                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                    checkedImageSource = new BitmapImage();
+                    using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
                     {
-                        if (isoStore.FileExists(imgSource))
-                        {
-                            using (var file = isoStore.OpenFile(imgSource, FileMode.Open))
-                            {
-                                //MemoryStream ms = new MemoryStream();
-                                //file.CopyTo(ms);
-
-                                //checkedImageSource.SetSource(ms);
-
-                                checkedImageSource.SetSource(file);
-                            }
-                        }
+                        checkedImageSource.SetSource(file);
                     }
                 }
             }

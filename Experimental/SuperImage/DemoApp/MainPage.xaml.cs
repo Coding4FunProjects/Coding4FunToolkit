@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Coding4Fun.Toolkit.Storage;
-using Microsoft.Phone;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using DemoApp.Resources;
@@ -18,21 +14,15 @@ namespace DemoApp
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
-	    public MainPage()
-	    {
-		    InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
 
-		    // Sample code to localize the ApplicationBar
-		    //BuildLocalizedApplicationBar();
+            // Sample code to localize the ApplicationBar
+            //BuildLocalizedApplicationBar();
+        }
 
-            //using (var stream = PlatformFileAccess.GetOpenFileStream(targetFile)) // saving into iso
-            //{
-            //    //var bitmap = PictureDecoder.DecodeJpeg(stream);
-            //    //img.SetSource(stream);
-            //}
-	    }
-
-	    // Sample code for building a localized ApplicationBar
+        // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
         //    // Set the page's ApplicationBar to a new instance of ApplicationBar.

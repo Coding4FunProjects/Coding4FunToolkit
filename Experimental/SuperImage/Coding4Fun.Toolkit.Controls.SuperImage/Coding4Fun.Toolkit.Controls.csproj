@@ -87,7 +87,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuperImage\SuperImageExtensions.cs" />
     <Compile Include="SuperImage\SuperImageSource.cs" />
-    <Compile Include="TestControl.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

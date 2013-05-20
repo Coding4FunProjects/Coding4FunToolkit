@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.IO.IsolatedStorage;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
-using Coding4Fun.Toolkit.Storage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using DemoApp.Resources;
@@ -56,32 +53,6 @@ namespace DemoApp
                 // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
-            }
-
-            var targetFile = "robot.jpg";
-
-            var currentLocation = "assets/images/" + targetFile;
-
-            using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                if (storage.FileExists(targetFile)) return;
-
-                var sri = GetResourceStream(new Uri(currentLocation, UriKind.Relative));
-
-                if (sri != null)
-                {
-                    using (var stream = storage.CreateFile(targetFile))
-                    {
-                        const int chunkSize = 4096;
-                        var bytes = new byte[chunkSize];
-                        int byteCount;
-
-                        while ((byteCount = sri.Stream.Read(bytes, 0, chunkSize)) > 0)
-                        {
-                            stream.Write(bytes, 0, byteCount);
-                        }
-                    }
-                }
             }
 
         }

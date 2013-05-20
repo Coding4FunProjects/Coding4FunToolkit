@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 
 // ReSharper disable CheckNamespace
 namespace Coding4Fun.Toolkit.Controls
@@ -55,9 +56,9 @@ namespace Coding4Fun.Toolkit.Controls
         #region Source Property
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
             "Source",
-            typeof (Uri),
+            typeof (ImageSource),
             typeof (SuperImageSource),
-            new PropertyMetadata(default(Uri)));
+			new PropertyMetadata(default(ImageSource)));
 
         /// <summary>
         /// Gets or sets the source.
@@ -65,9 +66,9 @@ namespace Coding4Fun.Toolkit.Controls
         /// <value>
         /// The source.
         /// </value>
-        public Uri Source
+		public ImageSource Source
         {
-            get { return (Uri)GetValue(SourceProperty); }
+			get { return (ImageSource)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
         #endregion
