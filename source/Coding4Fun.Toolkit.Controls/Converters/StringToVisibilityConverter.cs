@@ -15,12 +15,19 @@ namespace Coding4Fun.Toolkit.Controls.Converters
 {
 	public class StringToVisibilityConverter : ValueConverter
     {
+	    public bool Inverted { get; set; }
+
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
+            if (Inverted)
+            {
+                return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
+            }
+
             return string.IsNullOrEmpty(value as string) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-		public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture, string language)
+	    public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
             throw new NotImplementedException();
         }
