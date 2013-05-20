@@ -14,6 +14,8 @@
     </Style>
 
     <Style TargetType="local:LockScreenPreview">
+        <Setter Property="NotificationIconSource"
+                Value="/Images/appbar.alien.png" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:LockScreenPreview">
@@ -24,7 +26,7 @@
                                        Width="480"
                                        Height="800"
                                        Opacity="0.8"
-                                       Stretch="UniformToFill"/>
+                                       Stretch="UniformToFill" />
                             </Border>
                             <Grid VerticalAlignment="Bottom"
                                   Margin="7,0,0,16">
@@ -64,11 +66,17 @@
                                 </StackPanel>
                             </Grid>
                             <!--Image for lock screen notification-->
-                            <Image Source="{TemplateBinding NotificationIconSource}"
-                                   Height="32"
-                                   Width="32"
-                                   VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Margin="151,0,0,32">
+                                <Image Source="{TemplateBinding NotificationIconSource}"
+                                       Height="32"
+                                       Width="32" />
+                                <TextBlock Text="2"
+                                           Style="{StaticResource PhoneTextTitle2Style}"
+                                           Margin="0" />
+                            </StackPanel>
                         </Grid>
                     </Viewbox>
                 </ControlTemplate>
