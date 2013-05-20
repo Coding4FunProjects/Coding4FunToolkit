@@ -71,8 +71,8 @@
                                         HorizontalAlignment="Center"
                                         Margin="151,0,0,32">
                                 <Image Source="{TemplateBinding NotificationIconSource}"
-                                       Height="32"
-                                       Width="32" />
+                                       Height="28"
+                                       Width="28" />
                                 <TextBlock Text="2"
                                            Style="{StaticResource PhoneTextTitle2Style}"
                                            Margin="0" />
