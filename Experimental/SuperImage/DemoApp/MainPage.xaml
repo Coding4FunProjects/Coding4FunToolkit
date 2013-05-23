@@ -66,7 +66,7 @@
 			<controls:SuperImage Name="MultipleImage">
 				<controls:SuperImage.Sources>
 					<controls:SuperImageSource Source="assets/images/1.jpg"/>
-					<controls:SuperImageSource  IsDefault="True" Source="assets/images/2.jpg"/>
+					<controls:SuperImageSource IsDefault="True" Source="assets/images/2.jpg"/>
 				</controls:SuperImage.Sources>
 			</controls:SuperImage>
 		</StackPanel>
