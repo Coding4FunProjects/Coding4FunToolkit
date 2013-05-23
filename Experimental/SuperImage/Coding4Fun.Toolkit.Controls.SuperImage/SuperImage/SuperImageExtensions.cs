@@ -33,7 +33,7 @@ namespace Coding4Fun.Toolkit.Controls
             // If the imgSource is an isostore uri, then we need to pull it out of storage
             if (imgSource.StartsWith("isostore:/"))
             {
-                imgSource = imgSource.Replace("isostore:", "");
+                imgSource = imgSource.Replace("isostore:/", "").TrimEnd('.');
 
                 checkedImageSource = new BitmapImage();
 

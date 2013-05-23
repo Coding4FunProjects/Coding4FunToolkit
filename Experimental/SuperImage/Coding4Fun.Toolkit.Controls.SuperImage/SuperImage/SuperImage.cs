@@ -64,7 +64,7 @@ namespace Coding4Fun.Toolkit.Controls
             "Sources",
 			typeof(ObservableCollection<SuperImageSource>), 
             typeof (SuperImage),
-			new PropertyMetadata(new ObservableCollection<SuperImageSource>(), OnSourcesChanged));
+			new PropertyMetadata(null, OnSourcesChanged));
 
         /// <summary>
         /// Gets or sets the sources.
@@ -164,7 +164,7 @@ namespace Coding4Fun.Toolkit.Controls
         private static void OnSourcesChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
             // If the initial source and new values are null, do nothing
-            if (source == null || e.NewValue == null) 
+            if (source == null || e.NewValue == null || e.NewValue == e.OldValue) 
 				return;
 
             var si = source as SuperImage;
@@ -183,7 +183,8 @@ namespace Coding4Fun.Toolkit.Controls
             UpdateBackImageVisibility();
 
             // If there are no SuperImageSources, do nothing
-            if (!Sources.Any()) return;
+            if (!Sources.Any()) 
+				return;
 
             // Get the current application's scale
             var scale = SuperImageExtensions.GetCurrentScale();
@@ -194,10 +195,14 @@ namespace Coding4Fun.Toolkit.Controls
             // If no best match exists for the current application scale, then we need to check for a default SuperImageSource
             if (selectedImageSource == default(SuperImageSource))
             {
-	            selectedImageSource = Sources.Count == 1 ? Sources[0] : Sources.FirstOrDefault(x => x.IsDefault);
+	            selectedImageSource = Sources.FirstOrDefault(x => x.IsDefault);
 
 	            // If there isn't a default SuperImageSource, then do nothing
                 if (selectedImageSource == default(SuperImageSource))
+					selectedImageSource = Sources.FirstOrDefault();
+
+				// If there isn't a default SuperImageSource, then do nothing
+				if (selectedImageSource == default(SuperImageSource))
 					return;
             }
 
@@ -239,6 +244,8 @@ namespace Coding4Fun.Toolkit.Controls
         public SuperImage()
         {
             DefaultStyleKey = typeof(SuperImage);
+	        
+			Sources = new ObservableCollection<SuperImageSource>();
         }
         
         public override void OnApplyTemplate()
