@@ -23,11 +23,51 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<StackPanel Grid.Column="0">
-					<c4f:SuperImage Source="assets/images/1.jpg" />
-					<c4f:SuperImage Source="isostore:/robot.jpg" />
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage 
+						Source="assets/images/1.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Stretch="Uniform"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Source="assets/images/1.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Height="50"
+						Source="assets/images/invalid.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
 				</StackPanel>
 				<StackPanel Grid.Column="1">
-					
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage 
+						Source="isostore:/robot.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/robot.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/invalid.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
 				</StackPanel>
 			</Grid>
 		</ms:PivotItem>
@@ -37,80 +77,73 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="1">
-
+				<StackPanel Grid.Column="0">
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/2.jpg"/>
+							<c4f:SuperImageSource IsDefault="True" Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource MinScale="160" Source="assets/images/7.jpg"/>
+							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="assets/images/6.jpg"/>
+							<c4f:SuperImageSource MaxScale="150" Source="assets/images/5.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						Source="assets/images/1.jpg">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/trex_360width.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/invalid.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
 				</StackPanel>
 				<StackPanel Grid.Column="1">
-
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage Height="50">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
 				</StackPanel>
 			</Grid>
 		</ms:PivotItem>
-		<ms:PivotItem Header="Placeholder">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="1">
-
-				</StackPanel>
-				<StackPanel Grid.Column="1">
-
-				</StackPanel>
-			</Grid>
-		</ms:PivotItem>
-				<!--<controls:SuperImage Name="FirstImage">
-					<controls:SuperImage.Sources>
-						<controls:SuperImageSource IsDefault="True" Source="assets/images/1.jpg"/>
-					</controls:SuperImage.Sources>
-				</controls:SuperImage>
-				<controls:SuperImage Name="SecondImage">
-					<controls:SuperImage.Sources>
-						<controls:SuperImageSource Source="assets/images/2.jpg"/>
-					</controls:SuperImage.Sources>
-				</controls:SuperImage>
-				<controls:SuperImage Name="IsoStoreTest" Height="200" Width="200" Stretch="Uniform">
-					<controls:SuperImage.Sources>
-						<controls:SuperImageSource IsDefault="True" Source="isostore:/robot.jpg"/>
-					</controls:SuperImage.Sources>
-				</controls:SuperImage>
-				<controls:SuperImage Name="MultipleImage">
-					<controls:SuperImage.Sources>
-						<controls:SuperImageSource Source="assets/images/3.jpg"/>
-						<controls:SuperImageSource IsDefault="True" Source="assets/images/5.jpg"/>
-					</controls:SuperImage.Sources>
-				</controls:SuperImage>
-			<controls:SuperImage />
-			<controls:SuperImage 
-				Height="75"
-				PlaceholderImageStretch="Uniform"
-				PlaceholderImageSource="assets/head.png">
-			</controls:SuperImage>
-			<controls:SuperImage 
-				Height="75"
-				Stretch="Uniform"
-				Source="assets/images/22.jpg"
-				PlaceholderImageStretch="Uniform"
-				PlaceholderImageSource="assets/head.png" />-->
-			<!--<controls:SuperImage 
-				Source="assets/images/1.jpg"
-				PlaceholderImageSource="assets/head.png">
-				<controls:SuperImage.Sources>
-					<controls:SuperImageSource Source="assets/images/3.jpg"/>
-					<controls:SuperImageSource IsDefault="True" Source="assets/images/4.jpg"/>
-				</controls:SuperImage.Sources>
-			</controls:SuperImage>-->
-			
-			
-			<!-- basic tests -->
-			
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </ms:Pivot>
 
 </ms:PhoneApplicationPage>

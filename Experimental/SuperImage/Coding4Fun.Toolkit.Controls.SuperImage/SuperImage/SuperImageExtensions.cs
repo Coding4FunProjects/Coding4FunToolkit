@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.IO.IsolatedStorage;
-using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -53,11 +51,6 @@ namespace Coding4Fun.Toolkit.Controls
             }
 
             return checkedImageSource;
-        }
-
-        public static int GetCurrentScale()
-        {
-            return Application.Current.Host.Content.ScaleFactor;
         }
     }
 }

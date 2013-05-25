@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Coding4Fun.Toolkit.Controls.Common;
 
 // ReSharper disable CheckNamespace
 namespace Coding4Fun.Toolkit.Controls
@@ -223,24 +224,38 @@ namespace Coding4Fun.Toolkit.Controls
 				return;
 
             // Get the current application's scale
-            var scale = SuperImageExtensions.GetCurrentScale();
+			var scale = ApplicationSpace.ScaleFactor();
 
             // Get the first SuperImageSource whose min/max scales best match the current application's scale
-			var selectedImageSource = Sources.FirstOrDefault(x => scale >= x.MinScale && scale <= x.MaxScale);
+	        var items = Sources.Where(x =>
+	                                                (scale >= x.MinScale && 0 == x.MaxScale) ||
+	                                                (0 == x.MinScale && scale <= x.MaxScale) ||
+	                                                (scale >= x.MinScale && scale <= x.MaxScale)
+		        ).ToArray();
 
-            // If no best match exists for the current application scale, then we need to check for a default SuperImageSource
-            if (selectedImageSource == default(SuperImageSource))
-            {
-	            selectedImageSource = Sources.FirstOrDefault(x => x.IsDefault);
+	        SuperImageSource selectedImageSource; 
 
-	            // If there isn't a default SuperImageSource, then do nothing
-                if (selectedImageSource == default(SuperImageSource))
-					selectedImageSource = Sources.FirstOrDefault();
+	        if (items.Any())
+	        {
+				selectedImageSource = items.FirstOrDefault(x => x.IsDefault);
 
 				// If there isn't a default SuperImageSource, then do nothing
 				if (selectedImageSource == default(SuperImageSource))
-					return;
-            }
+					selectedImageSource = items.FirstOrDefault();
+	        }
+			else
+	        // If no best match exists for the current application scale, then we need to check for a default SuperImageSource
+	        {
+		        selectedImageSource = Sources.FirstOrDefault(x => x.IsDefault);
+
+		        // If there isn't a default SuperImageSource, then do nothing
+		        if (selectedImageSource == default(SuperImageSource))
+			        selectedImageSource = Sources.FirstOrDefault();
+
+		        // If there isn't a default SuperImageSource, then do nothing
+		        if (selectedImageSource == default(SuperImageSource))
+			        return;
+	        }
 
 	        // Create the bitmap image, this will check whether the SuperImageSource's uri is looking in isolatedstorage
             // if not, it will create the bitmap image from the uri provided
