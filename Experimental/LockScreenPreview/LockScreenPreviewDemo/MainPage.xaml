@@ -38,9 +38,14 @@
         <Grid x:Name="ContentPanel"
               Grid.Row="1"
               Margin="12,0,12,0">
-            <controls:LockScreenPreview Height="400"
-                                        Width="240"
-                                        LockScreenImageSource="/JurassicPark3D.jpg"/>
+            <controls:LockScreenPreview
+				Height="400"
+                Width="240"
+				TextLine1="hello"
+				TextLine2="hello"
+				TextLine3="hello"
+				NotificationIconSource="head.png"
+                LockScreenImageSource="trex_360width.jpg"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

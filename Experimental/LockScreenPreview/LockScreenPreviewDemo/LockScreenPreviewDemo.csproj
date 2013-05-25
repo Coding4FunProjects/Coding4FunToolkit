@@ -140,7 +140,9 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="JurassicPark3D.jpg" />
+    <Content Include="head.png" />
+    <Content Include="trex_360width.jpg" />
+    <Content Include="white.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
