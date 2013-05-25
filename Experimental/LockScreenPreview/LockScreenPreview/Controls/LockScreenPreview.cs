@@ -72,6 +72,18 @@ namespace Coding4Fun.Toolkit.Controls
             set { SetValue(NotificationIconSourceProperty, value); }
         }
 
+        public static readonly DependencyProperty ShowNotificationCountProperty = DependencyProperty.Register(
+            "ShowNotificationCount",
+            typeof (bool),
+            typeof (LockScreenPreview),
+            new PropertyMetadata(true));
+
+        public bool ShowNotificationCount
+        {
+            get { return (bool) GetValue(ShowNotificationCountProperty); }
+            set { SetValue(ShowNotificationCountProperty, value); }
+        }
+
         public static readonly DependencyProperty Support720Property = DependencyProperty.Register(
             "Support720", 
             typeof (bool), 
