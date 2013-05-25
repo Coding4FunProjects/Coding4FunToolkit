@@ -295,7 +295,7 @@ namespace Coding4Fun.Toolkit.Controls
                     _availableSpotsOnGrid.Add(i);
                 }
 
-				if (_imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
+				if (spotCount > 1 && _imageTileLayoutState == ImageTileLayoutStates.AllButBigImage)
 				{
 					_availableSpotsOnGrid.Remove(_largeImageIndex);
 				}
