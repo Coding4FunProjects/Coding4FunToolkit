@@ -2,86 +2,89 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls">
 
-    <local:StringVisibilityConverter x:Key="StringVisbilityConverter" />
+	<local:StringVisibilityConverter x:Key="StringVisbilityConverter" />
 
-    <Style TargetType="TextBlock"
+	<Style TargetType="TextBlock"
            BasedOn="{StaticResource PhoneTextTitle3Style}"
            x:Key="PhoneTextLockScreenStyle">
-        <Setter Property="FontFamily"
+		<Setter Property="FontFamily"
                 Value="Segoe WP" />
-        <Setter Property="FontSize"
+		<Setter Property="FontSize"
                 Value="26.667" />
-    </Style>
+	</Style>
 
-    <Style TargetType="local:LockScreenPreview">
-        <Setter Property="NotificationIconSource"
-                Value="/LockScreenPreview;component/Images/c4fHead.png" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:LockScreenPreview">
-                    <Viewbox Stretch="Uniform">
-                        <Grid x:Name="ContainingGrid">
-                            <Border Background="Black">
-                                <Image Source="{TemplateBinding LockScreenImageSource}"
+	<Style TargetType="local:LockScreenPreview">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:LockScreenPreview">
+					<Viewbox Stretch="Uniform">
+						<Grid x:Name="ContainingGrid">
+							<Border Background="Black">
+								<Image Source="{TemplateBinding LockScreenImageSource}"
                                        Width="480"
                                        Height="800"
                                        Opacity="0.8"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                            <Grid VerticalAlignment="Bottom"
+                                       Stretch="UniformToFill"/>
+							</Border>
+							<Grid VerticalAlignment="Bottom"
                                   Margin="7,0,0,16">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <StackPanel Orientation="Vertical"
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+									<RowDefinition Height="*" />
+									<RowDefinition Height="80" />
+								</Grid.RowDefinitions>
+								<StackPanel Orientation="Vertical"
                                             Grid.Row="0">
-                                    <TextBlock Text="06:34"
+									<TextBlock Text="06:34"
                                                Style="{StaticResource PhoneTextTitle1Style}"
                                                Margin="12,0,12,-22" />
-                                    <TextBlock Text="Monday"
+									<TextBlock Text="Monday"
                                                Style="{StaticResource PhoneTextTitle1Style}"
                                                Margin="12,0,12,-22" />
-                                    <TextBlock Text="20 May"
+									<TextBlock Text="20 May"
                                                Style="{StaticResource PhoneTextTitle1Style}"
                                                Margin="12,0,12,4" />
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical"
+								</StackPanel>
+								<StackPanel Orientation="Vertical"
                                             Grid.Row="1"
-                                            Margin="4,0,0,80">
-                                    <TextBlock Text="{TemplateBinding TextLine1}"
+                                            Margin="4,0,0,0">
+									<TextBlock Text="{TemplateBinding TextLine1}"
                                                Style="{StaticResource PhoneTextLockScreenStyle}"
                                                x:Name="Text1"
                                                Visibility="{Binding Text, ElementName=Text1, Converter={StaticResource StringVisbilityConverter}}"
                                                Margin="12,0,12,-6" />
-                                    <TextBlock Text="{TemplateBinding TextLine2}"
+									<TextBlock Text="{TemplateBinding TextLine2}"
                                                x:Name="Text2"
                                                Visibility="{Binding Text, ElementName=Text2, Converter={StaticResource StringVisbilityConverter}}"
                                                Style="{StaticResource PhoneTextLockScreenStyle}"
                                                Margin="12,0,12,-6" />
-                                    <TextBlock Text="{TemplateBinding TextLine3}"
+									<TextBlock Text="{TemplateBinding TextLine3}"
                                                x:Name="Text3"
                                                Visibility="{Binding Text, ElementName=Text3, Converter={StaticResource StringVisbilityConverter}}"
                                                Style="{StaticResource PhoneTextLockScreenStyle}" />
-                                </StackPanel>
-                            </Grid>
-                            <!--Image for lock screen notification-->
-                            <StackPanel Orientation="Horizontal"
-                                        VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Margin="151,0,0,32">
-                                <Image Source="{TemplateBinding NotificationIconSource}"
-                                       Height="28"
-                                       Width="28" />
-                                <TextBlock Text="2"
-                                           Style="{StaticResource PhoneTextTitle2Style}"
-                                           Margin="0" />
-                            </StackPanel>
-                        </Grid>
-                    </Viewbox>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+								</StackPanel>
+								<StackPanel 
+									Grid.Row="2" 
+									Margin="24, 0, 0, 0" 
+									VerticalAlignment="Center"
+									HorizontalAlignment="Left">
+									<StackPanel Orientation="Horizontal">
+										<!--Image for lock screen notification-->
+										<Image 
+											Source="{TemplateBinding NotificationIconSource}"
+											Height="32"
+											Width="32"
+											/>
+										<TextBlock FontSize="40" Margin="12, 0, 0, 0">5</TextBlock>
+									</StackPanel>
+								</StackPanel>
+							</Grid>
+
+						</Grid>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 
 </ResourceDictionary>
