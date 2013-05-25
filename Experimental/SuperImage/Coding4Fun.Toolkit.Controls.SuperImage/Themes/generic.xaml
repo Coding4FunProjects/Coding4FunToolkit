@@ -7,13 +7,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:SuperImage">
                     <Grid>
-                        <Border x:Name="PlaceBorder"
+						<Border x:Name="PlaceholderBorder"
+								Opacity="{TemplateBinding PlaceholderOpacity}"
                                 Background="{TemplateBinding PlaceholderBackground}">
-                            <Image x:Name="PlaceImage"
-                                   Source="{TemplateBinding PlaceholderSource}"
-                                   Stretch="{TemplateBinding PlaceholderStretch}"/>
+                            <Image x:Name="PlaceholderImage"
+                                   Source="{TemplateBinding PlaceholderImageSource}"
+                                   Stretch="{TemplateBinding PlaceholderImageStretch}"/>
                         </Border>
-                        <Image x:Name="MainImage" 
+						<Image x:Name="PrimaryImage" 
 							   Source="{TemplateBinding Source}"
                                Stretch="{TemplateBinding Stretch}"/>
                     </Grid>

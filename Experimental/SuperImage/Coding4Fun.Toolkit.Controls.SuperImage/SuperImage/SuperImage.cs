@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,28 +13,28 @@ namespace Coding4Fun.Toolkit.Controls
     /// image to be displayed while the main image is loading, and the option of providing multiple images
     /// and letting the SuperImage choose the most appropriate image based on the application's current scale
     /// </summary>
-    [TemplatePart(Name = MainImage, Type = typeof(Image))]
-    [TemplatePart(Name = PlaceBorder, Type = typeof(Border))]
+    [TemplatePart(Name = PrimaryImage, Type = typeof(Image))]
+	[TemplatePart(Name = PlaceholderBorder, Type = typeof(Border))]
     public class SuperImage : Control
     {
         #region Constants
-        public const string MainImage = "MainImage";
+        public const string PrimaryImage = "PrimaryImage";
 
-        public const string PlaceBorder = "PlaceBorder";
+		public const string PlaceholderBorder = "PlaceholderBorder";
         #endregion
 
         #region Private Properties
         /// <summary>
-        /// The _image
+        /// The _primaryImage
         /// </summary>
-        private Image _image;
+        private Image _primaryImage;
 
         /// <summary>
         /// The _place border
         /// </summary>
-        private Border _placeBorder;
+        private Border _placeholderBorder;
 
-        private bool _frontImageLoaded;
+        private bool _isPrimaryImageLoaded;
         #endregion
         
         #region Dependency Properties
@@ -79,9 +78,9 @@ namespace Coding4Fun.Toolkit.Controls
         }
         #endregion
 
-        #region PlaceholderSource Property
+        #region PlaceholderImageSource Property
         public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register(
-            "PlaceholderSource", 
+            "PlaceholderImageSource", 
             typeof (ImageSource), 
             typeof (SuperImage), 
             new PropertyMetadata(default(ImageSource)));
@@ -92,19 +91,31 @@ namespace Coding4Fun.Toolkit.Controls
         /// <value>
         /// The placeholder source.
         /// </value>
-        public ImageSource PlaceholderSource
+        public ImageSource PlaceholderImageSource
         {
             get { return (ImageSource) GetValue(PlaceholderSourceProperty); }
             set { SetValue(PlaceholderSourceProperty, value); }
         }
         #endregion
 
-        #region Source Property
-        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+		#region PlaceholderOpacity Property
+		public double PlaceholderOpacity
+		{
+			get { return (double)GetValue(PlaceholderOpacityProperty); }
+			set { SetValue(PlaceholderOpacityProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for PlaceholderOpacity.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty PlaceholderOpacityProperty =
+			DependencyProperty.Register("PlaceholderOpacity", typeof(double), typeof(SuperImage), new PropertyMetadata(1.0));
+		#endregion
+
+		#region Source Property
+		public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
             "Source", 
             typeof (ImageSource), 
-            typeof (SuperImage), 
-            new PropertyMetadata(default(ImageSource)));
+            typeof (SuperImage),
+			new PropertyMetadata(default(ImageSource), OnSourceChanged));
 
         /// <summary>
         /// Gets or sets the source.
@@ -139,9 +150,9 @@ namespace Coding4Fun.Toolkit.Controls
         }
         #endregion
 
-        #region PlaceholderStretch Property
+        #region PlaceholderImageStretch Property
         public static readonly DependencyProperty PlaceholderStretchProperty =  DependencyProperty.Register(
-            "PlaceholderStretch", 
+            "PlaceholderImageStretch", 
             typeof (Stretch), 
             typeof (SuperImage), 
             new PropertyMetadata(default(Stretch)));
@@ -152,7 +163,7 @@ namespace Coding4Fun.Toolkit.Controls
         /// <value>
         /// The placeholder stretch.
         /// </value>
-        public Stretch PlaceholderStretch
+        public Stretch PlaceholderImageStretch
         {
             get { return (Stretch) GetValue(PlaceholderStretchProperty); }
             set { SetValue(PlaceholderStretchProperty, value); }
@@ -161,16 +172,42 @@ namespace Coding4Fun.Toolkit.Controls
         #endregion
 
         #region Private Methods
-        private static void OnSourcesChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
-        {
-            // If the initial source and new values are null, do nothing
-            if (source == null || e.NewValue == null || e.NewValue == e.OldValue) 
+		private static void OnSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+		{
+			// If the initial source and new values are null, do nothing
+			if (obj == null || e.NewValue == null || e.NewValue == e.OldValue)
 				return;
 
-            var si = source as SuperImage;
+			var si = obj as SuperImage;
+
+			// If the source isn't a SuperImage or the SuperImage's image in the template is null, do nothing
+			if (si == null || si._primaryImage == null)
+				return;
+
+			si.OnSourcePropertyChanged();
+		}
+
+		private void OnSourcePropertyChanged()
+	    {
+			_isPrimaryImageLoaded = false;
+			UpdatePlaceholderImageVisibility();
+
+			var img = Source.GetImageFromUri();
+
+			// Set the SuperImage's image's source
+			_primaryImage.Source = img;
+	    }
+
+	    private static void OnSourcesChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            // If the initial source and new values are null, do nothing
+			if (obj == null || e.NewValue == null || e.NewValue == e.OldValue) 
+				return;
+
+			var si = obj as SuperImage;
 
             // If the source isn't a SuperImage or the SuperImage's image in the template is null, do nothing
-            if (si == null || si._image == null) 
+            if (si == null || si._primaryImage == null) 
 				return;
 
             si.OnSourcesPropertyChanged();
@@ -178,9 +215,8 @@ namespace Coding4Fun.Toolkit.Controls
 
         private void OnSourcesPropertyChanged()
         {
-            // As we are loading the images, we need to display the placeholder image if one is set
-            _frontImageLoaded = false;
-            UpdateBackImageVisibility();
+			if (Source != null)
+				return;
 
             // If there are no SuperImageSources, do nothing
             if (!Sources.Any()) 
@@ -211,32 +247,28 @@ namespace Coding4Fun.Toolkit.Controls
             var img = selectedImageSource.Source.GetImageFromUri();
 
             // Set the SuperImage's image's source
-            _image.Source = img;
-
-            // Hide the placeholder image if it's set
-            _frontImageLoaded = true;
-            UpdateBackImageVisibility();
+            _primaryImage.Source = img;
         }
 
-        private void OnImageOpened(object sender, RoutedEventArgs routedEventArgs)
+        private void OnPrimaryImageOpened(object sender, RoutedEventArgs routedEventArgs)
         {
-            _frontImageLoaded = true;
-            UpdateBackImageVisibility();
+            _isPrimaryImageLoaded = true;
+            UpdatePlaceholderImageVisibility();
         }
 
-        private void OnImageFailed(object sender, RoutedEventArgs routedEventArgs)
+        private void OnPrimaryImageFailed(object sender, RoutedEventArgs routedEventArgs)
         {
-            _frontImageLoaded = false;
-            UpdateBackImageVisibility();
+            _isPrimaryImageLoaded = false;
+            UpdatePlaceholderImageVisibility();
         }
 
-        private void UpdateBackImageVisibility()
+        private void UpdatePlaceholderImageVisibility()
         {
             // We hide the border not the Image as the border could be being used and as the 
             // PlaceholderImage is within the border, we get a twofer.
-            if (_placeBorder != null)
+            if (_placeholderBorder != null)
             {
-                _placeBorder.Visibility = _frontImageLoaded ? Visibility.Collapsed : Visibility.Visible;
+                _placeholderBorder.Visibility = _isPrimaryImageLoaded ? Visibility.Collapsed : Visibility.Visible;
             }
         }
         #endregion
@@ -252,28 +284,30 @@ namespace Coding4Fun.Toolkit.Controls
         {
             base.OnApplyTemplate();
 
-            if (_image != null)
+            if (_primaryImage != null)
             {
-                _image.ImageOpened -= OnImageOpened;
-                _image.ImageFailed -= OnImageFailed;
+                _primaryImage.ImageOpened -= OnPrimaryImageOpened;
+                _primaryImage.ImageFailed -= OnPrimaryImageFailed;
             }
 
             // Get template parts
-            _image = GetTemplateChild(MainImage) as Image;
-            _placeBorder = GetTemplateChild(PlaceBorder) as Border;
+            _primaryImage = GetTemplateChild(PrimaryImage) as Image;
+            _placeholderBorder = GetTemplateChild(PlaceholderBorder) as Border;
             
             // Reset whether the front image has loaded
-            _frontImageLoaded = false;
+            _isPrimaryImageLoaded = false;
 
             // Hook up to new elements
-            if (_image != null)
+            if (_primaryImage != null)
             {
-                _image.ImageOpened += OnImageOpened;
-                _image.ImageFailed += OnImageFailed;
+                _primaryImage.ImageOpened += OnPrimaryImageOpened;
+                _primaryImage.ImageFailed += OnPrimaryImageFailed;
             }
 
-            UpdateBackImageVisibility();
-	        OnSourcesPropertyChanged();
+	        if (Source != null)
+		        OnSourcePropertyChanged();
+			else
+		        OnSourcesPropertyChanged();
         }
     }
 }
