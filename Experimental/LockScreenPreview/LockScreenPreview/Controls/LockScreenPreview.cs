@@ -6,7 +6,7 @@ using System.Windows.Media.Imaging;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class LockScreenPreview : Control
+    public class LockScreenPreview : ContentControl
     {
         private const string ContainingGrid = "ContainingGrid";
 

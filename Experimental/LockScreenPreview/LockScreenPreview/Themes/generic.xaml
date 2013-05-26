@@ -21,11 +21,15 @@
                     <Viewbox Stretch="Uniform">
                         <Grid x:Name="ContainingGrid">
                             <Border Background="Black">
-                                <Image Source="{TemplateBinding LockScreenImageSource}"
-                                       Width="480"
-                                       Height="800"
-                                       Opacity="0.8"
-                                       Stretch="UniformToFill" />
+                                <Grid>
+                                    <ContentPresenter Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    <Image Source="{TemplateBinding LockScreenImageSource}"
+                                           Width="480"
+                                           Height="800"
+                                           Opacity="0.8"
+                                           Stretch="UniformToFill" />
+                                </Grid>
                             </Border>
                             <Grid VerticalAlignment="Bottom"
                                   Margin="7,0,0,16">
