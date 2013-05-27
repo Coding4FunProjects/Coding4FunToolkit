@@ -1,16 +1,23 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace Coding4Fun.Toolkit.Controls
 {
+    [TemplatePart(Name = TimeText, Type=typeof(TextBlock))]
+    [TemplatePart(Name = DayText, Type = typeof(TextBlock))]
+    [TemplatePart(Name = DateText, Type = typeof(TextBlock))]
     public class LockScreenPreview : ContentControl
     {
-        private const string ContainingGrid = "ContainingGrid";
+        public const string TimeText = "TimeText";
+        public const string DayText = "DayText";
+        public const string DateText = "DateText";
 
-        private Grid _containingGrid;
+        private TextBlock _timeText;
+        private TextBlock _dayText;
+        private TextBlock _dateText;
 
         public static readonly DependencyProperty LockScreenImageSourceProperty = DependencyProperty.Register(
             "LockScreenImageSource",
@@ -117,32 +124,29 @@ namespace Coding4Fun.Toolkit.Controls
 
         public override void OnApplyTemplate()
         {
-            _containingGrid = GetTemplateChild(ContainingGrid) as Grid;
-
             base.OnApplyTemplate();
-        }
 
-        /// <summary>
-        /// To the writeable bitmap.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">The main containing grid could not be found in the template</exception>
-        public WriteableBitmap ToWriteableBitmap()
-        {
-            if (_containingGrid == null)
+            _timeText = GetTemplateChild(TimeText) as TextBlock;
+            _dayText = GetTemplateChild(DayText) as TextBlock;
+            _dateText = GetTemplateChild(DateText) as TextBlock;
+
+            var now = DateTime.Now;
+            var culture = CultureInfo.CurrentUICulture;
+
+            if (_dateText != null)
             {
-                throw new ArgumentNullException(ContainingGrid, "The main containing grid could not be found in the template");
+                _dateText.Text = now.ToString(culture.DateTimeFormat.MonthDayPattern);
             }
 
-            var height = (int) Math.Floor(ActualHeight);
-            var width = (int) Math.Floor(ActualWidth);
+            if (_dayText != null)
+            {
+                _dayText.Text = now.DayOfWeek.ToString();
+            }
 
-            var bitmap = new WriteableBitmap(width, height);
-
-            bitmap.Render(_containingGrid, null);
-            bitmap.Invalidate();
-
-            return bitmap;
+            if (_timeText != null)
+            {
+                _timeText.Text = now.ToString(culture.DateTimeFormat.ShortTimePattern);
+            }
         }
     }
 }

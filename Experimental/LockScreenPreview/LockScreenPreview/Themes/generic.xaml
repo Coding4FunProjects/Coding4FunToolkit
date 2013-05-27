@@ -40,15 +40,15 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Vertical"
                                             Grid.Row="0">
-                                    <TextBlock Text="06:34"
-                                               Style="{StaticResource PhoneTextTitle1Style}"
-                                               Margin="12,0,12,-22" />
-                                    <TextBlock Text="Monday"
-                                               Style="{StaticResource PhoneTextTitle1Style}"
-                                               Margin="12,0,12,-22" />
-                                    <TextBlock Text="20 May"
-                                               Style="{StaticResource PhoneTextTitle1Style}"
-                                               Margin="12,0,12,4" />
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,-22" 
+                                               x:Name="TimeText"/>
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,-22"
+                                               x:Name="DayText"/>
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,4"
+                                               x:Name="DateText"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical"
                                             Grid.Row="1"
