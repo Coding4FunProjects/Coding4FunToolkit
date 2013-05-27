@@ -16,18 +16,19 @@ namespace DemoApp
 		    // Sample code to localize the ApplicationBar
 		    //BuildLocalizedApplicationBar();
 			var targetFile = "robot.jpg";
+			var targetFileIso = "robotIso.jpg";
 
 			var currentLocation = "assets/images/" + targetFile;
 
 			using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
 			{
-				if (storage.FileExists(targetFile)) return;
+				if (storage.FileExists(targetFileIso)) return;
 
 				var sri = Application.GetResourceStream(new Uri(currentLocation, UriKind.Relative));
 
 				if (sri != null)
 				{
-					using (var stream = storage.CreateFile(targetFile))
+					using (var stream = storage.CreateFile(targetFileIso))
 					{
 						const int chunkSize = 4096;
 						var bytes = new byte[chunkSize];
