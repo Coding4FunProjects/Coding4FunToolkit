@@ -1,13 +1,10 @@
-﻿using System;
-
-#if WINDOWS_STORE
-using System.Threading.Tasks;
-
+﻿#if WINDOWS_STORE
 using Windows.Storage;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 #elif WINDOWS_PHONE
+using System;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows.Media;
@@ -29,11 +26,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns>
         /// The image as a BitmapImage so it can be set against the Image item
         /// </returns>
-#if WINDOWS_STORE
-		public static async Task<BitmapImage> ToBitmapImage(this ImageSource imageSource)
-#elif WINDOWS_PHONE
-			public static BitmapImage ToBitmapImage(this ImageSource imageSource)
-#endif
+		public static BitmapImage ToBitmapImage(this ImageSource imageSource)
 		{
 	        // If the imageSource is null, then there's nothing further to see here
             if (imageSource == null)
@@ -58,9 +51,9 @@ namespace Coding4Fun.Toolkit.Controls.Common
 #if WINDOWS_STORE
 					var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
 
-					var file = await storageFolder.GetFileAsync(imgSource);
+					var file = storageFolder.GetFileAsync(imgSource).GetResults();
 
-	                await checkedImageSource.SetSourceAsync(await file.OpenAsync(FileAccessMode.Read));
+	                checkedImageSource.SetSourceAsync(file.OpenAsync(FileAccessMode.Read).GetResults());
 #elif WINDOWS_PHONE
                     using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {

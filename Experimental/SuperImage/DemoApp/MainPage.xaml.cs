@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using Coding4Fun.Toolkit.Storage;
-using Microsoft.Phone;
+
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using DemoApp.Resources;
 
 namespace DemoApp
 {

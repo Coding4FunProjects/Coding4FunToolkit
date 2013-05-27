@@ -5,9 +5,71 @@
     xmlns:local="using:DemoApp__WinStore_"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<StackPanel>
+			<TextBlock>Basic</TextBlock>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0">
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage 
+						Source="assets/images/1.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Stretch="Uniform"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Source="assets/images/1.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Height="50"
+						Source="assets/images/invalid.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+				</StackPanel>
+				<StackPanel Grid.Column="1">
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage 
+						Source="isostore:/robot.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/robot.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/invalid.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+	</Grid>
 </Page>

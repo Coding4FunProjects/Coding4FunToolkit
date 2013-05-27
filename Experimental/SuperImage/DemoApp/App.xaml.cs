@@ -6,9 +6,10 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
-using Coding4Fun.Toolkit.Storage;
+
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+
 using DemoApp.Resources;
 
 namespace DemoApp
