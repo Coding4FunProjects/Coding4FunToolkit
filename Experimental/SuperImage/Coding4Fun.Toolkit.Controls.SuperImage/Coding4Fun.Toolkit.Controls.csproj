@@ -86,7 +86,7 @@
     <Compile Include="ApplicationHelper.cs" />
     <Compile Include="SuperImage\SuperImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuperImage\SuperImageExtensions.cs" />
+    <Compile Include="SuperImage\ImageSourceExtensions.cs" />
     <Compile Include="SuperImage\SuperImageSource.cs" />
   </ItemGroup>
   <ItemGroup />

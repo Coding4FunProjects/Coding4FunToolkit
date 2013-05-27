@@ -5,8 +5,10 @@ using System.Windows.Media.Imaging;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public static class SuperImageExtensions
+    public static class ImageSourceExtensions
     {
+		private const string IsoStoreScheme = "isostore:/";
+
         /// <summary>
         /// Gets the image from the URI. If the image starts with isostore:/ that it will get the image
         /// out of isolatedstorage, otherwise it will just use the URI as is.
@@ -15,7 +17,7 @@ namespace Coding4Fun.Toolkit.Controls
         /// <returns>
         /// The image as a BitmapImage so it can be set against the Image item
         /// </returns>
-		public static BitmapImage GetImageFromUri(this ImageSource imageSource)
+		public static BitmapImage ToBitmapImage(this ImageSource imageSource)
         {
 	        // If the imageSource is null, then there's nothing further to see here
             if (imageSource == null)
@@ -29,9 +31,9 @@ namespace Coding4Fun.Toolkit.Controls
 			var imgSource = checkedImageSource.UriSource.ToString().ToLower();
 
             // If the imgSource is an isostore uri, then we need to pull it out of storage
-            if (imgSource.StartsWith("isostore:/"))
+			if (imgSource.StartsWith(IsoStoreScheme))
             {
-                imgSource = imgSource.Replace("isostore:/", "").TrimEnd('.');
+				imgSource = imgSource.Replace(IsoStoreScheme, string.Empty).TrimEnd('.');
 
                 checkedImageSource = new BitmapImage();
 

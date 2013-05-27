@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+
 using Coding4Fun.Toolkit.Controls.Common;
 
 // ReSharper disable CheckNamespace
@@ -193,10 +194,8 @@ namespace Coding4Fun.Toolkit.Controls
 			_isPrimaryImageLoaded = false;
 			UpdatePlaceholderImageVisibility();
 
-			var img = Source.GetImageFromUri();
-
 			// Set the SuperImage's image's source
-			_primaryImage.Source = img;
+			_primaryImage.Source = Source.ToBitmapImage();
 	    }
 
 	    private static void OnSourcesChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
@@ -227,10 +226,11 @@ namespace Coding4Fun.Toolkit.Controls
 			var scale = ApplicationSpace.ScaleFactor();
 
             // Get the first SuperImageSource whose min/max scales best match the current application's scale
-	        var items = Sources.Where(x =>
-	                                                (scale >= x.MinScale && 0 == x.MaxScale) ||
-	                                                (0 == x.MinScale && scale <= x.MaxScale) ||
-	                                                (scale >= x.MinScale && scale <= x.MaxScale)
+	        var items = Sources.Where(
+				x =>
+	                (scale >= x.MinScale && 0 == x.MaxScale) ||
+	                (0 == x.MinScale && scale <= x.MaxScale) ||
+	                (scale >= x.MinScale && scale <= x.MaxScale)
 		        ).ToArray();
 
 	        SuperImageSource selectedImageSource; 
@@ -259,21 +259,24 @@ namespace Coding4Fun.Toolkit.Controls
 
 	        // Create the bitmap image, this will check whether the SuperImageSource's uri is looking in isolatedstorage
             // if not, it will create the bitmap image from the uri provided
-            var img = selectedImageSource.Source.GetImageFromUri();
-
-            // Set the SuperImage's image's source
-            _primaryImage.Source = img;
+	        if (selectedImageSource != null)
+	        {
+		        // Set the SuperImage's image's source
+		        _primaryImage.Source = selectedImageSource.Source.ToBitmapImage();
+	        }
         }
 
         private void OnPrimaryImageOpened(object sender, RoutedEventArgs routedEventArgs)
         {
             _isPrimaryImageLoaded = true;
+
             UpdatePlaceholderImageVisibility();
         }
 
         private void OnPrimaryImageFailed(object sender, RoutedEventArgs routedEventArgs)
         {
             _isPrimaryImageLoaded = false;
+
             UpdatePlaceholderImageVisibility();
         }
 
