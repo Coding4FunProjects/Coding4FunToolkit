@@ -27,7 +27,7 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	public class ImageTile : ButtonBase, IDisposable
 	{
-		DispatcherTimer _changeImageTimer = new DispatcherTimer();
+		DispatcherTimer _changeImageTimer;
 		static readonly Random RandomIndexer = new Random();
 
 		readonly Dictionary<int, Uri> _imageCurrentLocation = new Dictionary<int, Uri>();
@@ -62,7 +62,12 @@ namespace Coding4Fun.Toolkit.Controls
 
 		void FrameNavigated(object sender, NavigationEventArgs e)
 		{
-			Dispose();
+#if WINDOWS_PHONE
+			if (e.IsNavigationInitiator)
+#endif
+			{
+				Dispose();
+			}
 		}
 
 		public void Dispose()
@@ -87,10 +92,10 @@ namespace Coding4Fun.Toolkit.Controls
 				item.Storyboard.Stop();
 			}
 
-			_imageCurrentLocation.Clear();
-			_imagesBeingShown.Clear();
-			_availableSpotsOnGrid.Clear();
-			_animationTracking.Clear();
+			//_imageCurrentLocation.Clear();
+			//_imagesBeingShown.Clear();
+			//_availableSpotsOnGrid.Clear();
+			//_animationTracking.Clear();
 		}
 		#endregion
 		
@@ -133,7 +138,10 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			if (!_isLoaded)
 				return;
-			
+
+			if (_changeImageTimer == null)
+				_changeImageTimer = new DispatcherTimer();
+
 			_changeImageTimer.Tick -= ChangeImageTimerTick;
 			_changeImageTimer.Tick += ChangeImageTimerTick;
 
