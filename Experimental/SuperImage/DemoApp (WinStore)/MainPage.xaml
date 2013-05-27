@@ -12,10 +12,8 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition />
-			<ColumnDefinition />
-			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
-		<StackPanel>
+		<StackPanel Grid.Column="0">
 			<TextBlock>Basic</TextBlock>
 			<Grid>
 				<Grid.ColumnDefinitions>
@@ -68,6 +66,80 @@
 						Source="isostore:/invalid.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+		<StackPanel Grid.Column="1">
+			<TextBlock>Sources Tests</TextBlock>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0">
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/2.jpg"/>
+							<c4f:SuperImageSource IsDefault="True" Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource MinScale="160" Source="assets/images/7.jpg"/>
+							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="assets/images/6.jpg"/>
+							<c4f:SuperImageSource MaxScale="150" Source="assets/images/5.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						Source="assets/images/1.jpg">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/trex_360width.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/invalid.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+				</StackPanel>
+				<StackPanel Grid.Column="1">
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage Height="50">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
 				</StackPanel>
 			</Grid>
 		</StackPanel>

@@ -124,6 +124,7 @@
     <None Include="DemoApp (WinStore)_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\head.png" />
     <Content Include="Assets\Images\0.jpg" />
     <Content Include="Assets\Images\1.jpg" />
     <Content Include="Assets\Images\10.jpg" />
