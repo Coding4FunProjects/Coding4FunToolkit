@@ -1,7 +1,19 @@
-﻿using System.IO;
+﻿using System;
+
+#if WINDOWS_STORE
+using System.Threading.Tasks;
+
+using Windows.Storage;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+
+#elif WINDOWS_PHONE
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
+#endif
 
 namespace Coding4Fun.Toolkit.Controls.Common
 {
@@ -17,8 +29,12 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns>
         /// The image as a BitmapImage so it can be set against the Image item
         /// </returns>
-		public static BitmapImage ToBitmapImage(this ImageSource imageSource)
-        {
+#if WINDOWS_STORE
+		public static async Task<BitmapImage> ToBitmapImage(this ImageSource imageSource)
+#elif WINDOWS_PHONE
+			public static BitmapImage ToBitmapImage(this ImageSource imageSource)
+#endif
+		{
 	        // If the imageSource is null, then there's nothing further to see here
             if (imageSource == null)
                 return null;
@@ -37,8 +53,15 @@ namespace Coding4Fun.Toolkit.Controls.Common
 
                 checkedImageSource = new BitmapImage();
 
-                if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
+				if (!DevelopmentHelpers.IsDesignMode)
                 {
+#if WINDOWS_STORE
+					var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+
+					var file = await storageFolder.GetFileAsync(imgSource);
+
+	                await checkedImageSource.SetSourceAsync(await file.OpenAsync(FileAccessMode.Read));
+#elif WINDOWS_PHONE
                     using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
                         if (isoStore.FileExists(imgSource))
@@ -49,6 +72,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
                             }
                         }
                     }
+#endif
                 }
             }
 

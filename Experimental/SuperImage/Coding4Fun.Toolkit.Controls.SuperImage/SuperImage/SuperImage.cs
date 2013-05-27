@@ -1,8 +1,17 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+
+#if WINDOWS_STORE
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+
+#endif
 
 using Coding4Fun.Toolkit.Controls.Common;
 
@@ -295,8 +304,12 @@ namespace Coding4Fun.Toolkit.Controls
 	        
 			Sources = new ObservableCollection<SuperImageSource>();
         }
-        
-        public override void OnApplyTemplate()
+
+#if WINDOWS_STORE
+		protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
