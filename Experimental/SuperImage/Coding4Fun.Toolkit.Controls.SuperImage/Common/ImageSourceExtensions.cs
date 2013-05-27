@@ -3,7 +3,7 @@ using System.IO.IsolatedStorage;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Coding4Fun.Toolkit.Controls
+namespace Coding4Fun.Toolkit.Controls.Common
 {
     public static class ImageSourceExtensions
     {

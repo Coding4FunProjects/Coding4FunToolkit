@@ -1,9 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-// ReSharper disable CheckNamespace
 namespace Coding4Fun.Toolkit.Controls
-// ReSharper restore CheckNamespace
 {
     /// <summary>
     /// The SuperImageSource is what's used to provide the SuperImage with a list of sources 

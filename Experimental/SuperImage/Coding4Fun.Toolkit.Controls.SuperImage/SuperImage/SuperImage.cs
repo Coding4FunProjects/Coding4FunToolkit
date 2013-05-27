@@ -6,9 +6,7 @@ using System.Windows.Media;
 
 using Coding4Fun.Toolkit.Controls.Common;
 
-// ReSharper disable CheckNamespace
 namespace Coding4Fun.Toolkit.Controls
-// ReSharper restore CheckNamespace
 {
     /// <summary>
     /// The SuperImage allows you to have a number of different things active. These include a placeholder

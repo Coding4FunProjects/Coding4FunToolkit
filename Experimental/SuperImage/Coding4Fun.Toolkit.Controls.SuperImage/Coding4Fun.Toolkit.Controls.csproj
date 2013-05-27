@@ -83,10 +83,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="Common\ApplicationHelper.cs" />
     <Compile Include="SuperImage\SuperImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuperImage\ImageSourceExtensions.cs" />
+    <Compile Include="Common\ImageSourceExtensions.cs" />
     <Compile Include="SuperImage\SuperImageSource.cs" />
   </ItemGroup>
   <ItemGroup />
