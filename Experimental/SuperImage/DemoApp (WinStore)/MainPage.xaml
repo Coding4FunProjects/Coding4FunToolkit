@@ -117,7 +117,7 @@
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 				</StackPanel>
-				<StackPanel Grid.Column="1">
+				<StackPanel Grid.Column="1" x:Name="spCodeBehind">
 					<TextBlock>Isolated Storage</TextBlock>
 					<c4f:SuperImage Height="50">
 						<c4f:SuperImage.Sources>
@@ -140,6 +140,7 @@
 							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
+                    
 				</StackPanel>
 			</Grid>
 		</StackPanel>
