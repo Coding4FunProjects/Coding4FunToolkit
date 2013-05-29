@@ -122,6 +122,12 @@
     <None Include="LockScreenPreviewDemo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\LockScreenPreview %28WinStore%29\Images\WP_20130529_002.jpg">
+      <Link>Assets\WP_20130529_002.jpg</Link>
+    </Content>
+    <Content Include="..\LockScreenPreview %28WP%29\Images\c4fHead.png">
+      <Link>Assets\c4fHead.png</Link>
+    </Content>
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />

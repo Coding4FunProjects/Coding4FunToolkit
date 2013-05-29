@@ -142,19 +142,13 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (_dateText != null)
             {
-#if WINDOWS_STORE
-                _dateText.Text= now.ToString(culture.DateTimeFormat.MonthDayPattern);
-#elif WINDOWS_PHONE
                 _dateText.Text = now.ToString(culture.DateTimeFormat.MonthDayPattern);
-#endif
             }
 
-#if WINDOWS_PHONE
             if (_dayText != null)
             {
                 _dayText.Text = now.DayOfWeek.ToString();
             }
-#endif
 
             if (_timeText != null)
             {
