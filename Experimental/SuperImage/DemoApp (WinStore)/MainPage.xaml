@@ -32,6 +32,8 @@
 						Stretch="Uniform"
 						Source="assets/images/Seattle.jpg" />
 					<c4f:SuperImage 
+						Source="ms-appx:/Assets/Images/13.jpg" />
+					<c4f:SuperImage 
 						Height="50"
 						PlaceholderImageSource="assets/head.png" />
 					<c4f:SuperImage 
@@ -49,21 +51,21 @@
 						PlaceholderImageStretch="Uniform" />
 				</StackPanel>
 				<StackPanel Grid.Column="1">
-					<TextBlock>Isolated Storage</TextBlock>
+					<TextBlock>App Data Storage</TextBlock>
 					<c4f:SuperImage 
-						Source="isostore:/robot.jpg" 
+						Source="ms-appdata:///local/robotInAppData.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
 					<c4f:SuperImage 
 						PlaceholderImageSource="assets/head.png" 
 						PlaceholderImageStretch="Uniform"
-						Source="isostore:/robot.jpg" 
+						Source="ms-appdata:///local/robotInAppData.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
 					<c4f:SuperImage 
 						PlaceholderImageSource="assets/head.png" 
 						PlaceholderImageStretch="Uniform"
-						Source="isostore:/invalid.jpg" 
+						Source="ms-appdata:///local/invalid.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
 				</StackPanel>
@@ -118,10 +120,10 @@
 					</c4f:SuperImage>
 				</StackPanel>
 				<StackPanel Grid.Column="1" x:Name="spCodeBehind">
-					<TextBlock>Isolated Storage</TextBlock>
+					<TextBlock>App Data Storage</TextBlock>
 					<c4f:SuperImage Height="50">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+							<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage 
@@ -129,7 +131,7 @@
 						PlaceholderImageSource="assets/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/robot.jpg" />
+							<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage 
@@ -137,7 +139,7 @@
 						PlaceholderImageSource="assets/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+							<c4f:SuperImageSource Source="ms-appdata:///local/invalid.jpg" />
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
                     

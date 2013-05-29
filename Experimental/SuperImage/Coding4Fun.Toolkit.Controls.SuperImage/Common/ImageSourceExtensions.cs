@@ -40,6 +40,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			if (checkedImageSource == null)
 				return null;
 
+#if WINDOWS_PHONE                    
 			var imgSource = checkedImageSource.UriSource.ToString().ToLower();
 
             // If the imgSource is an isostore uri, then we need to pull it out of storage
@@ -53,26 +54,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
                 {
 
 // TODO: get this to leverage storage classes
-#if WINDOWS_STORE
-					var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-
-
-	                try
-					{
-						var file = storageFolder.GetFileAsync(imgSource).GetResults();
-						checkedImageSource.SetSourceAsync(file.OpenAsync(FileAccessMode.Read).GetResults());
-	                }
-	                catch (Exception ex0)
-	                {
-		                
-	                }
-					//var files = storageFolder.GetFilesAsync(CommonFileQuery.OrderByName).GetResults();
-					//var file = files.FirstOrDefault(x => x.Name == imgSource);
-					//
-
-	                
-#elif WINDOWS_PHONE
-                    using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+	                using (var isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
                         if (isoStore.FileExists(imgSource))
                         {
@@ -82,11 +64,11 @@ namespace Coding4Fun.Toolkit.Controls.Common
                             }
                         }
                     }
-#endif
                 }
             }
+#endif
 
-            return checkedImageSource;
+			return checkedImageSource;
         }
     }
 }
