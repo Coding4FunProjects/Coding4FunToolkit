@@ -56,6 +56,11 @@
 						Source="ms-appdata:///local/robotInAppData.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
+					<!-- proof this really is in app data -->
+					<c4f:SuperImage 
+						Source="robotInAppData.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
 					<c4f:SuperImage 
 						PlaceholderImageSource="assets/head.png" 
 						PlaceholderImageStretch="Uniform"
