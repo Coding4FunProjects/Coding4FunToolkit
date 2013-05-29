@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Coding4Fun.Toolkit.Controls">
+
+
+    <Style TargetType="controls:LockScreenPreview">
+        <Setter Property="LockScreenImageSource"
+                Value="/Images/WP_20130529_002.jpg" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:LockScreenPreview">
+                    <Viewbox>
+                        <Grid>
+                            <Image Source="{TemplateBinding LockScreenImageSource}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Stretch="Fill" />
+                            <Grid>
+                                <TextBlock x:Name="TimeText"
+                                           Text="18:49"
+                                           FontSize="120"
+                                           FontFamily="Segoe UI Semilight"
+                                           VerticalAlignment="Bottom"
+                                           HorizontalAlignment="Left"
+                                           Margin="77,0,0,176" />
+                            </Grid>
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
