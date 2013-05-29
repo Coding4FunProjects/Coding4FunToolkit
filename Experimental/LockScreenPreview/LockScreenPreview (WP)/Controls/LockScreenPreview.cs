@@ -1,8 +1,16 @@
 ﻿using System;
 using System.Globalization;
+
+#if WINDOWS_STORE
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -91,6 +99,7 @@ namespace Coding4Fun.Toolkit.Controls
             set { SetValue(ShowNotificationCountProperty, value); }
         }
 
+#if WINDOWS_PHONE
         public static readonly DependencyProperty Support720Property = DependencyProperty.Register(
             "Support720", 
             typeof (bool), 
@@ -109,20 +118,18 @@ namespace Coding4Fun.Toolkit.Controls
             get { return (bool) GetValue(Support720Property); }
             set { SetValue(Support720Property, value); }
         }
+#endif
 
         public LockScreenPreview()
         {
-            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            {
-                //TextLine1 = "Calendar event";
-                //TextLine2 = "With a location";
-                //TextLine3 = "07:00 - 08:00";
-            }
-
             DefaultStyleKey = typeof(LockScreenPreview);
         }
 
+#if WINDOWS_STORE
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
         public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -135,13 +142,19 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (_dateText != null)
             {
+#if WINDOWS_STORE
+                _dateText.Text= now.ToString(culture.DateTimeFormat.MonthDayPattern);
+#elif WINDOWS_PHONE
                 _dateText.Text = now.ToString(culture.DateTimeFormat.MonthDayPattern);
+#endif
             }
 
+#if WINDOWS_PHONE
             if (_dayText != null)
             {
                 _dayText.Text = now.DayOfWeek.ToString();
             }
+#endif
 
             if (_timeText != null)
             {
