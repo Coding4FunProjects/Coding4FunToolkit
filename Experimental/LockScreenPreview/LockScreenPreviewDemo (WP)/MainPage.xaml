@@ -41,9 +41,9 @@
             <controls:LockScreenPreview
 				Height="400"
                 Width="240"
-				TextLine1="hello"
-				TextLine2="hello"
-				TextLine3="hello"
+				TextLine1="Text Line 1"
+				TextLine2="Text Line 2"
+				TextLine3="Text Line 3"
 				NotificationIconSource="head.png"
                 LockScreenImageSource="trex_360width.jpg"/>
         </Grid>

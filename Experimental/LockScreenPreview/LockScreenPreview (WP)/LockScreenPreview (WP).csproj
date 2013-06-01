@@ -83,8 +83,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controls\StringVisibilityConverter.cs" />
+    <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\StringToVisibilityConverter.cs" />
     <Compile Include="Controls\LockScreenPreview.cs" />
+    <Compile Include="Controls\ValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

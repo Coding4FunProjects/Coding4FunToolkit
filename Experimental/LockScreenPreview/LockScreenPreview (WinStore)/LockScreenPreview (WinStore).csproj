@@ -100,11 +100,17 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\LockScreenPreview %28WP%29\Controls\BooleanToVisibilityConverter.cs">
+      <Link>Controls\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
     <Compile Include="..\LockScreenPreview %28WP%29\Controls\LockScreenPreview.cs">
       <Link>Controls\LockScreenPreview.cs</Link>
     </Compile>
-    <Compile Include="..\LockScreenPreview %28WP%29\Controls\StringVisibilityConverter.cs">
-      <Link>Controls\StringVisibilityConverter.cs</Link>
+    <Compile Include="..\LockScreenPreview %28WP%29\Controls\StringToVisibilityConverter.cs">
+      <Link>Controls\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\LockScreenPreview %28WP%29\Controls\ValueConverter.cs">
+      <Link>Controls\ValueConverter.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

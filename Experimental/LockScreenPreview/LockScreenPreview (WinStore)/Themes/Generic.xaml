@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:Coding4Fun.Toolkit.Controls">
+                    xmlns:controls="using:Coding4Fun.Toolkit.Controls"
+                    xmlns:converters="using:Coding4Fun.Toolkit.Controls.Converters">
 
-    <controls:StringVisibilityConverter x:Key="StringVisbilityConverter" />
-    <controls:VisibilityConverter x:Key="VisibilityConverter" />
+	<converters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
+	<converters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
 
-    <Style TargetType="controls:LockScreenPreview">
+	<Style TargetType="controls:LockScreenPreview">
         <Setter Property="LockScreenImageSource"
                 Value="/Images/WP_20130529_002.jpg" />
         <Setter Property="NotificationIconSource"
@@ -50,17 +51,17 @@
                                         <TextBlock Text="{TemplateBinding TextLine1}"
                                                    FontSize="17.7"
                                                    x:Name="Text1"
-                                                   Visibility="{Binding Text, ElementName=Text1, Converter={StaticResource StringVisbilityConverter}}"
+                                                   Visibility="{Binding Text, ElementName=Text1, Converter={StaticResource StringVisibilityConverter}}"
                                                    FontFamily="Segoe UI Semilight" />
                                         <TextBlock Text="{TemplateBinding TextLine2}"
                                                    FontSize="17.7"
                                                    x:Name="Text2"
-                                                   Visibility="{Binding Text, ElementName=Text2, Converter={StaticResource StringVisbilityConverter}}"
+                                                   Visibility="{Binding Text, ElementName=Text2, Converter={StaticResource StringVisibilityConverter}}"
                                                    FontFamily="Segoe UI Semilight" />
                                         <TextBlock Text="{TemplateBinding TextLine3}"
                                                    FontSize="17.7"
                                                    x:Name="Text3"
-                                                   Visibility="{Binding Text, ElementName=Text3, Converter={StaticResource StringVisbilityConverter}}"
+                                                   Visibility="{Binding Text, ElementName=Text3, Converter={StaticResource StringVisibilityConverter}}"
                                                    FontFamily="Segoe UI Semilight" />
                                     </StackPanel>
                                 </StackPanel>
@@ -102,7 +103,7 @@
                                     <StackPanel Orientation="Horizontal"
                                                 Margin="188,0,0,0"
                                                 DataContext="{TemplateBinding ShowNotificationCount}"
-                                                Visibility="{Binding Converter={StaticResource VisbilityConverter}}">
+                                                Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
                                         <Image Source="{TemplateBinding NotificationIconSource}"
                                                Height="30"
                                                Width="30" />

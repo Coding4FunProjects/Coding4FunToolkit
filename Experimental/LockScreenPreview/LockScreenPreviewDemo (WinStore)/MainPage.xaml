@@ -13,8 +13,8 @@
                                     Width="613"
                                     LockScreenImageSource="/Assets/WP_20130529_002.jpg"
                                     NotificationIconSource="/Assets/c4fHead.png"
-                                    TextLine1="Help"
-                                    TextLine2="I'm trapped "
-                                    TextLine3="in a lock screen!"/>
+                                    TextLine1="Text line 1"
+                                    TextLine2="Text line 2"
+                                    TextLine3="Text line 3"/>
     </Grid>
 </Page>
