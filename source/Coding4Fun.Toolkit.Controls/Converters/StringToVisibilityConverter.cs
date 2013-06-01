@@ -19,12 +19,12 @@ namespace Coding4Fun.Toolkit.Controls.Converters
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture, string language)
         {
-            if (Inverted)
-            {
-                return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
-            }
+			if (Inverted)
+			{
+				return string.IsNullOrEmpty(value as string) ? Visibility.Visible : Visibility.Collapsed;
+			}
 
-            return string.IsNullOrEmpty(value as string) ? Visibility.Visible : Visibility.Collapsed;
+			return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
         }
 
 	    public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture, string language)
