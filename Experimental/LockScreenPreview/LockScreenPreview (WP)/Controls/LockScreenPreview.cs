@@ -132,7 +132,10 @@ namespace Coding4Fun.Toolkit.Controls
 
 			var now = DateTime.Now;
 			var culture = CultureInfo.CurrentUICulture;
-            
+	        culture.DateTimeFormat.AMDesignator = string.Empty;
+	        culture.DateTimeFormat.PMDesignator = string.Empty;
+
+
 			var dateText = GetTemplateChild(DateText) as TextBlock;
 
 			if (dateText != null)
