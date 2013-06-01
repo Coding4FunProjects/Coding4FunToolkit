@@ -7,10 +7,10 @@
 	<converters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
 
 	<Style TargetType="controls:LockScreenPreview">
-        <Setter Property="LockScreenImageSource"
-                Value="/Images/WP_20130529_002.jpg" />
-        <Setter Property="NotificationIconSource"
-                Value="/Images/c4fHead.png" />
+        <!--<Setter Property="LockScreenImageSource"
+                Value="/Images/WP_20130529_002.jpg" />-->
+        <!--<Setter Property="NotificationIconSource"
+                Value="/Images/c4fHead.png" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:LockScreenPreview">

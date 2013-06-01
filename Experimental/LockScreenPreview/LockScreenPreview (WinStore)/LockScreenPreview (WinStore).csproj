@@ -115,12 +115,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\LockScreenPreview %28WP%29\Images\c4fHead.png">
-      <Link>Images\c4fHead.png</Link>
-    </Content>
-    <Content Include="Images\WP_20130529_002.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

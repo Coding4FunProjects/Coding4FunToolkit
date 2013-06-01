@@ -17,23 +17,21 @@ namespace Coding4Fun.Toolkit.Controls
     [TemplatePart(Name = TimeText, Type=typeof(TextBlock))]
     [TemplatePart(Name = DayText, Type = typeof(TextBlock))]
     [TemplatePart(Name = DateText, Type = typeof(TextBlock))]
+	[TemplatePart(Name = LockScreenImage, Type = typeof(Image))]
     public class LockScreenPreview : ContentControl
     {
         public const string TimeText = "TimeText";
         public const string DayText = "DayText";
         public const string DateText = "DateText";
-
-        private TextBlock _timeText;
-        private TextBlock _dayText;
-        private TextBlock _dateText;
+		public const string LockScreenImage = "LockScreenImage";
 
         public static readonly DependencyProperty LockScreenImageSourceProperty = DependencyProperty.Register(
             "LockScreenImageSource",
             typeof (ImageSource),
             typeof (LockScreenPreview),
-            new PropertyMetadata(default(ImageSource)));
+			new PropertyMetadata(default(ImageSource), OnLockScreenImageSourceChanged));
 
-        public ImageSource LockScreenImageSource
+	    public ImageSource LockScreenImageSource
         {
             get { return (ImageSource) GetValue(LockScreenImageSourceProperty); }
             set { SetValue(LockScreenImageSourceProperty, value); }
@@ -133,27 +131,48 @@ namespace Coding4Fun.Toolkit.Controls
         {
             base.OnApplyTemplate();
 
-            _timeText = GetTemplateChild(TimeText) as TextBlock;
-            _dayText = GetTemplateChild(DayText) as TextBlock;
-            _dateText = GetTemplateChild(DateText) as TextBlock;
+			var now = DateTime.Now;
+			var culture = CultureInfo.CurrentUICulture;
+            
+			var dateText = GetTemplateChild(DateText) as TextBlock;
 
-            var now = DateTime.Now;
-            var culture = CultureInfo.CurrentUICulture;
-
-            if (_dateText != null)
+			if (dateText != null)
             {
-                _dateText.Text = now.ToString(culture.DateTimeFormat.MonthDayPattern);
+				dateText.Text = now.ToString(culture.DateTimeFormat.MonthDayPattern);
             }
 
-            if (_dayText != null)
+			var dayText = GetTemplateChild(DayText) as TextBlock;
+
+			if (dayText != null)
             {
-                _dayText.Text = now.DayOfWeek.ToString();
+				dayText.Text = now.DayOfWeek.ToString();
             }
 
-            if (_timeText != null)
+			var timeText = GetTemplateChild(TimeText) as TextBlock;
+
+			if (timeText != null)
             {
-                _timeText.Text = now.ToString(culture.DateTimeFormat.ShortTimePattern);
+				timeText.Text = now.ToString(culture.DateTimeFormat.ShortTimePattern);
             }
         }
+
+		private static void OnLockScreenImageSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+		{
+			//if (obj == null || e.NewValue == null || e.NewValue == e.OldValue)
+			//	return;
+
+			//var lockScreen = obj as LockScreenPreview;
+
+			//if (lockScreen != null)
+			//	lockScreen.OnLockScreenImageSourceChanged();
+		}
+
+		private void OnLockScreenImageSourceChanged()
+	    {
+			//var img = GetTemplateChild(LockScreenImage) as Image;
+
+			//if (img != null)
+			//	img.Source = LockScreenImageSource;
+	    }
     }
 }

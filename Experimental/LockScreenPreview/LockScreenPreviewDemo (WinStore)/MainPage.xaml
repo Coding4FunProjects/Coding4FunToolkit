@@ -9,12 +9,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <controls:LockScreenPreview Height="350"
-                                    Width="613"
-                                    LockScreenImageSource="/Assets/WP_20130529_002.jpg"
-                                    NotificationIconSource="/Assets/c4fHead.png"
-                                    TextLine1="Text line 1"
-                                    TextLine2="Text line 2"
-                                    TextLine3="Text line 3"/>
+        <controls:LockScreenPreview 
+			Height="350"
+            Width="613"
+            LockScreenImageSource="/Assets/WP_20130529_002.jpg"
+            NotificationIconSource="/Assets/c4fHead.png"
+            TextLine1="Text line 1"
+            TextLine2="Text line 2"
+            TextLine3="Text line 3"/>
+		<!--<Image Source="/Assets/WP_20130529_002.jpg" />-->
     </Grid>
 </Page>
