@@ -132,10 +132,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			var now = DateTime.Now;
 			var culture = CultureInfo.CurrentUICulture;
-	        culture.DateTimeFormat.AMDesignator = string.Empty;
-	        culture.DateTimeFormat.PMDesignator = string.Empty;
-
-
+			
 			var dateText = GetTemplateChild(DateText) as TextBlock;
 
 			if (dateText != null)
@@ -155,6 +152,12 @@ namespace Coding4Fun.Toolkit.Controls
 			if (timeText != null)
             {
 				timeText.Text = now.ToString(culture.DateTimeFormat.ShortTimePattern);
+
+	            if (!string.IsNullOrEmpty(culture.DateTimeFormat.AMDesignator))
+		            timeText.Text = timeText.Text.Replace(culture.DateTimeFormat.AMDesignator, string.Empty);
+
+				if (!string.IsNullOrEmpty(culture.DateTimeFormat.PMDesignator))
+					timeText.Text = timeText.Text.Replace(culture.DateTimeFormat.PMDesignator, string.Empty);
             }
         }
     }
