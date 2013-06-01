@@ -17,7 +17,6 @@ namespace Coding4Fun.Toolkit.Controls
     [TemplatePart(Name = TimeText, Type=typeof(TextBlock))]
     [TemplatePart(Name = DayText, Type = typeof(TextBlock))]
     [TemplatePart(Name = DateText, Type = typeof(TextBlock))]
-	[TemplatePart(Name = LockScreenImage, Type = typeof(Image))]
     public class LockScreenPreview : ContentControl
     {
         public const string TimeText = "TimeText";
@@ -29,7 +28,7 @@ namespace Coding4Fun.Toolkit.Controls
             "LockScreenImageSource",
             typeof (ImageSource),
             typeof (LockScreenPreview),
-			new PropertyMetadata(default(ImageSource), OnLockScreenImageSourceChanged));
+			new PropertyMetadata(default(ImageSource)));
 
 	    public ImageSource LockScreenImageSource
         {
@@ -155,24 +154,5 @@ namespace Coding4Fun.Toolkit.Controls
 				timeText.Text = now.ToString(culture.DateTimeFormat.ShortTimePattern);
             }
         }
-
-		private static void OnLockScreenImageSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-		{
-			//if (obj == null || e.NewValue == null || e.NewValue == e.OldValue)
-			//	return;
-
-			//var lockScreen = obj as LockScreenPreview;
-
-			//if (lockScreen != null)
-			//	lockScreen.OnLockScreenImageSourceChanged();
-		}
-
-		private void OnLockScreenImageSourceChanged()
-	    {
-			//var img = GetTemplateChild(LockScreenImage) as Image;
-
-			//if (img != null)
-			//	img.Source = LockScreenImageSource;
-	    }
     }
 }

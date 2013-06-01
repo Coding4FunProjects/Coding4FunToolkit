@@ -40,13 +40,12 @@
               Margin="12,0,12,0">
             <controls:LockScreenPreview
 				Height="400"
-                Width="240"
 				TextLine1="Text Line 1"
 				TextLine2="Text Line 2"
 				TextLine3="Text Line 3"
 				NotificationIconSource="head.png"
                 LockScreenImageSource="trex_360width.jpg"/>
-        </Grid>
+	    </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to

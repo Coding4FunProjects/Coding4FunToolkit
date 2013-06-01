@@ -13,6 +13,8 @@
                 Value="Segoe WP" />
         <Setter Property="FontSize"
                 Value="26.667" />
+		<Setter Property="Margin"
+                Value="12, 0, 0, -6" />
     </Style>
 
     <Style TargetType="local:LockScreenPreview">
@@ -20,16 +22,19 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:LockScreenPreview">
                     <Viewbox Stretch="Uniform">
-                        <Grid x:Name="ContainingGrid">
-                            <Border Background="Black">
-                                <Grid>
-                                    <ContentPresenter Content="{TemplateBinding Content}"
-                                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
-                                    <Image Source="{TemplateBinding LockScreenImageSource}"
-                                           Width="480"
-                                           Height="800"
-                                           Opacity="0.8"
-                                           Stretch="UniformToFill" />
+                        <Grid 
+							x:Name="ContainingGrid"
+							Width="480"
+							Height="800">
+                            <Border>
+                                <Grid Background="White">
+									<ContentPresenter 
+										Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    <Image 
+										Source="{TemplateBinding LockScreenImageSource}"
+                                        Stretch="UniformToFill" />
+									<Rectangle Fill="Black" Opacity=".2" />
                                 </Grid>
                             </Border>
                             <Grid VerticalAlignment="Bottom"
@@ -53,35 +58,40 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical"
                                             Grid.Row="1"
-                                            Margin="4,0,0,0">
-                                    <TextBlock Text="{TemplateBinding TextLine1}"
-                                               Style="{StaticResource PhoneTextLockScreenStyle}"
-                                               x:Name="Text1"
-                                               Visibility="{Binding Text, ElementName=Text1, Converter={StaticResource StringVisibilityConverter}}"
-                                               Margin="12,0,12,-6" />
-                                    <TextBlock Text="{TemplateBinding TextLine2}"
-                                               x:Name="Text2"
-                                               Visibility="{Binding Text, ElementName=Text2, Converter={StaticResource StringVisibilityConverter}}"
-                                               Style="{StaticResource PhoneTextLockScreenStyle}"
-                                               Margin="12,0,12,-6" />
-                                    <TextBlock Text="{TemplateBinding TextLine3}"
-                                               x:Name="Text3"
-                                               Visibility="{Binding Text, ElementName=Text3, Converter={StaticResource StringVisibilityConverter}}"
-                                               Style="{StaticResource PhoneTextLockScreenStyle}" />
+                                            Margin="4,0,0,6">
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine1}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                         />
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine2}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}"
+                                        />
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine3}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}" />
                                 </StackPanel>
-                                <StackPanel Grid.Row="2"
-                                            Margin="24, 0, 0, 0"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left"
-                                            DataContext="{TemplateBinding ShowNotificationCount}"
-                                            Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
-                                    <StackPanel Orientation="Horizontal">
+                                <StackPanel 
+									Grid.Row="2"
+                                    Margin="24, 0, 0, 0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    DataContext="{TemplateBinding ShowNotificationCount}"
+                                    Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
+									<StackPanel Orientation="Horizontal">
                                         <!--Image for lock screen notification-->
-                                        <Image Source="{TemplateBinding NotificationIconSource}"
-                                               Height="32"
-                                               Width="32" />
-                                        <TextBlock FontSize="40"
-                                                   Margin="12, 0, 0, 0">5</TextBlock>
+                                        <Image 
+											Source="{TemplateBinding NotificationIconSource}"
+                                            Height="32"
+                                            Width="32" />
+                                        <TextBlock 
+											FontSize="{StaticResource PhoneFontSizeLarge}"
+											FontFamily="{StaticResource PhoneFontFamilyLight}"
+											FontWeight="SemiBold"
+                                            Margin="6, 0, 0, 0">1</TextBlock>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>

@@ -6,11 +6,7 @@
 	<converters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
 	<converters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
 
-	<Style TargetType="controls:LockScreenPreview">
-        <!--<Setter Property="LockScreenImageSource"
-                Value="/Images/WP_20130529_002.jpg" />-->
-        <!--<Setter Property="NotificationIconSource"
-                Value="/Images/c4fHead.png" />-->
+	<Style TargetType="controls:LockScreenPreview">        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:LockScreenPreview">
@@ -25,7 +21,7 @@
                                            VerticalAlignment="Top"
                                            Width="1344"
                                            Height="768"
-                                           Stretch="Fill"
+                                           Stretch="UniformToFill"
                                            Opacity="0.8" />
                                 </Grid>
 
