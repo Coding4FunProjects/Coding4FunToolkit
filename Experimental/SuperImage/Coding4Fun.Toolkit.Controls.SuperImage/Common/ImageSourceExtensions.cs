@@ -20,6 +20,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
     public static class ImageSourceExtensions
     {
 		private const string IsoStoreScheme = "isostore:/";
+        private const string MsAppXScheme = "ms-appx:///";
 
         /// <summary>
         /// Gets the image from the URI. If the image starts with isostore:/ that it will get the image
@@ -44,9 +45,10 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			var imgSource = checkedImageSource.UriSource.ToString().ToLower();
 
             // If the imgSource is an isostore uri, then we need to pull it out of storage
-			if (imgSource.StartsWith(IsoStoreScheme))
+			if (imgSource.StartsWith(IsoStoreScheme) || imgSource.StartsWith(MsAppXScheme))
             {
 				imgSource = imgSource.Replace(IsoStoreScheme, string.Empty).TrimEnd('.');
+                imgSource = imgSource.Replace(MsAppXScheme, string.Empty).TrimEnd('.');
 
                 checkedImageSource = new BitmapImage();
 
