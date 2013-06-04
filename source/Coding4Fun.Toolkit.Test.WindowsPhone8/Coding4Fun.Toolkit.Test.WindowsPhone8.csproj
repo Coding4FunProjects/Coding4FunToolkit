@@ -264,8 +264,14 @@
     <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxes.xaml.cs">
       <DependentUpon>ChatBubbleTextBoxes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\LockScreenPreview.xaml.cs">
+      <DependentUpon>LockScreenPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Prompts\PromptStressTest.xaml.cs">
       <DependentUpon>PromptStressTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\SuperImage.xaml.cs">
+      <DependentUpon>SuperImage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +288,127 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\0.jpg">
+      <Link>Assets\Images\0.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\1.jpg">
+      <Link>Assets\Images\1.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\10.jpg">
+      <Link>Assets\Images\10.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\11.jpg">
+      <Link>Assets\Images\11.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\12.jpg">
+      <Link>Assets\Images\12.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\13.jpg">
+      <Link>Assets\Images\13.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\14.jpg">
+      <Link>Assets\Images\14.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\15.jpg">
+      <Link>Assets\Images\15.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\16.jpg">
+      <Link>Assets\Images\16.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\17.jpg">
+      <Link>Assets\Images\17.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\18.jpg">
+      <Link>Assets\Images\18.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\19.jpg">
+      <Link>Assets\Images\19.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\2.jpg">
+      <Link>Assets\Images\2.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\20.jpg">
+      <Link>Assets\Images\20.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\21.jpg">
+      <Link>Assets\Images\21.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\22.jpg">
+      <Link>Assets\Images\22.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\23.jpg">
+      <Link>Assets\Images\23.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\24.jpg">
+      <Link>Assets\Images\24.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\25.jpg">
+      <Link>Assets\Images\25.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\26.jpg">
+      <Link>Assets\Images\26.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\27.jpg">
+      <Link>Assets\Images\27.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\28.jpg">
+      <Link>Assets\Images\28.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\29.jpg">
+      <Link>Assets\Images\29.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\3.jpg">
+      <Link>Assets\Images\3.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\30.jpg">
+      <Link>Assets\Images\30.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\31.jpg">
+      <Link>Assets\Images\31.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\32.jpg">
+      <Link>Assets\Images\32.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\33.jpg">
+      <Link>Assets\Images\33.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\34.jpg">
+      <Link>Assets\Images\34.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\4.jpg">
+      <Link>Assets\Images\4.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\5.jpg">
+      <Link>Assets\Images\5.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\6.jpg">
+      <Link>Assets\Images\6.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\7.jpg">
+      <Link>Assets\Images\7.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\8.jpg">
+      <Link>Assets\Images\8.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\9.jpg">
+      <Link>Assets\Images\9.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\lamp.jpg">
+      <Link>Assets\Images\lamp.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\PlaceholderPhoto.png">
+      <Link>Assets\Images\PlaceholderPhoto.png</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\robot.jpg">
+      <Link>Assets\Images\robot.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\Seattle.jpg">
+      <Link>Assets\Images\Seattle.jpg</Link>
+    </Content>
+    <Content Include="..\Coding4Fun.Toolkit.Test.WindowsPhone7\Assets\Images\trex_360width.jpg">
+      <Link>Assets\Images\trex_360width.jpg</Link>
+    </Content>
+    <Content Include="Assets\head.png" />
     <Content Include="Assets\Icons\logo_100x100.png" />
     <Content Include="Assets\Icons\logo_159x159.png" />
     <Content Include="Assets\Icons\logo_336x336.png" />
@@ -552,7 +679,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\LockScreenPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Samples\Prompts\PromptStressTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\SuperImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

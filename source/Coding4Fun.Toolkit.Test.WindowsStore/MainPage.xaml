@@ -89,6 +89,13 @@
 						St
 				</TextBlock>
 			</coding4Fun:Tile>
-		</GridView>
+            <coding4Fun:Tile Label="SuperImage"
+                             Style="{StaticResource TileStyle}"
+                             Tapped="SuperImageTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Si
+                </TextBlock>
+            </coding4Fun:Tile>
+        </GridView>
 	</Grid>
 </common:LayoutAwarePage>

@@ -127,6 +127,13 @@
 						St
                     </TextBlock>
                 </c4f:Tile>
+                <c4f:Tile Style="{StaticResource TileStyle}"
+                          Label="Super Image"
+                          Click="SuperImage_Click">
+                    <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Si
+                    </TextBlock>
+                </c4f:Tile>
                 <c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Label="Super Slider"

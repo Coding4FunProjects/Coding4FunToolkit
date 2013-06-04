@@ -175,6 +175,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
       <Link>Colors\ColorHexagonPicker.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
+      <Link>Common\ApplicationHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtentions.cs">
       <Link>Common\ColorExtentions.cs</Link>
     </Compile>
@@ -189,6 +192,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
       <Link>Common\IImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
+      <Link>Common\ImageSourceExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
@@ -228,6 +234,15 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
       <Link>Effects\TiltEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
+      <Link>Other\LockScreenPreview.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
+      <Link>Other\SuperImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImageSource.cs">
+      <Link>Other\SuperImageSource.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>

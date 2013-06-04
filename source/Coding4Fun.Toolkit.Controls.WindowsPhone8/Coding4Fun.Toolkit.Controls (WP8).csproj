@@ -175,6 +175,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorSliderThumb.cs">
       <Link>Colors\ColorSliderThumb.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
+      <Link>Common\ApplicationHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtentions.cs">
       <Link>Common\ColorExtentions.cs</Link>
     </Compile>
@@ -189,6 +192,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
       <Link>Common\IImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
+      <Link>Common\ImageSourceExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
       <Link>Common\MovementMonitor.cs</Link>
@@ -253,8 +259,17 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\MetroFlow\SelectionTapEventArgs.cs">
       <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
+      <Link>Other\LockScreenPreview.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
       <Link>Other\ProgressOverlay.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
+      <Link>Other\SuperImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImageSource.cs">
+      <Link>Other\SuperImageSource.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperSlider.cs">
       <Link>Other\SuperSlider.cs</Link>

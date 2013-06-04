@@ -88,5 +88,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));
         }
+
+        private void SuperImage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo("/Samples/SuperImage.xaml");
+        }
     }
 }

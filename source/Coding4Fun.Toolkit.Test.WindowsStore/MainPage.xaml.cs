@@ -38,5 +38,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
 		{
 			Frame.Navigate(typeof(ChatBubbleControls));
 		}
+
+        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (Samples.SuperImage));
+        }
     }
 }

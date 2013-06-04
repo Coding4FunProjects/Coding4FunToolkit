@@ -149,6 +149,12 @@
     <Compile Include="Samples\ChatBubbleControls.xaml.cs">
       <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\LockScreenPreview.xaml.cs">
+      <DependentUpon>LockScreenPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\SuperImage.xaml.cs">
+      <DependentUpon>SuperImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
@@ -157,12 +163,54 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\Images\Thumbs.db" />
     <None Include="Coding4Fun.Toolkit.Test.WindowsStore_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\head.png" />
     <Content Include="Assets\Icons\logo_150x150.png" />
     <Content Include="Assets\Icons\logo_30x30.png" />
     <Content Include="Assets\Icons\logo_50x50.png" />
+    <Content Include="Assets\Images\0.jpg" />
+    <Content Include="Assets\Images\1.jpg" />
+    <Content Include="Assets\Images\10.jpg" />
+    <Content Include="Assets\Images\11.jpg" />
+    <Content Include="Assets\Images\12.jpg" />
+    <Content Include="Assets\Images\13.jpg" />
+    <Content Include="Assets\Images\14.jpg" />
+    <Content Include="Assets\Images\15.jpg" />
+    <Content Include="Assets\Images\16.jpg" />
+    <Content Include="Assets\Images\17.jpg" />
+    <Content Include="Assets\Images\18.jpg" />
+    <Content Include="Assets\Images\19.jpg" />
+    <Content Include="Assets\Images\2.jpg" />
+    <Content Include="Assets\Images\20.jpg" />
+    <Content Include="Assets\Images\21.jpg" />
+    <Content Include="Assets\Images\22.jpg" />
+    <Content Include="Assets\Images\23.jpg" />
+    <Content Include="Assets\Images\24.jpg" />
+    <Content Include="Assets\Images\25.jpg" />
+    <Content Include="Assets\Images\26.jpg" />
+    <Content Include="Assets\Images\27.jpg" />
+    <Content Include="Assets\Images\28.jpg" />
+    <Content Include="Assets\Images\29.jpg" />
+    <Content Include="Assets\Images\3.jpg" />
+    <Content Include="Assets\Images\30.jpg" />
+    <Content Include="Assets\Images\31.jpg" />
+    <Content Include="Assets\Images\32.jpg" />
+    <Content Include="Assets\Images\33.jpg" />
+    <Content Include="Assets\Images\34.jpg" />
+    <Content Include="Assets\Images\4.jpg" />
+    <Content Include="Assets\Images\5.jpg" />
+    <Content Include="Assets\Images\6.jpg" />
+    <Content Include="Assets\Images\7.jpg" />
+    <Content Include="Assets\Images\8.jpg" />
+    <Content Include="Assets\Images\9.jpg" />
+    <Content Include="Assets\Images\lamp.jpg" />
+    <Content Include="Assets\Images\PlaceholderPhoto.png" />
+    <Content Include="Assets\Images\robot.jpg" />
+    <Content Include="Assets\Images\Seattle.jpg" />
+    <Content Include="Assets\Images\trex_360width.jpg" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.png" />
@@ -369,6 +417,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\ChatBubbleControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\LockScreenPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\SuperImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

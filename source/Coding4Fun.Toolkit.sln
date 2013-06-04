@@ -76,7 +76,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MetroFlow", "MetroFlow", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{91B366BD-B0BB-495C-96A5-FF5AC1668FAA}"
 	ProjectSection(SolutionItems) = preProject
+		Coding4Fun.Toolkit.Controls.Themes\Other\LockScreenPreview (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\LockScreenPreview (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Other\LockScreenPreview (Windows Store).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\LockScreenPreview (Windows Store).xaml
 		Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\ProgressOverlay (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Other\SuperImage (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\SuperImage (Windows Phone).xaml
+		Coding4Fun.Toolkit.Controls.Themes\Other\SuperImage (Windows Store).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\SuperImage (Windows Store).xaml
 		Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider (Windows Phone).xaml = Coding4Fun.Toolkit.Controls.Themes\Other\SuperSlider (Windows Phone).xaml
 	EndProjectSection
 EndProject
