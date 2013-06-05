@@ -1,0 +1,150 @@
+﻿<ms:PhoneApplicationPage
+    x:Class="Coding4Fun.Toolkit.Test.WindowsPhone.Samples.SuperImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <controls:Pivot x:Name="LayoutRoot" Background="Transparent">
+		<controls:PivotItem Header="Basic">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0">
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage 
+						Source="Assets/images/1.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="75"
+						Stretch="Uniform"
+						Source="assets/images/Seattle.jpg" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" />
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Source="assets/images/1.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+					<c4f:SuperImage 
+						Height="50"
+						Source="assets/images/invalid.jpg"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform" />
+				</StackPanel>
+				<StackPanel Grid.Column="1">
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage 
+						Source="isostore:/robotIso.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/robotIso.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+					<c4f:SuperImage 
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform"
+						Source="isostore:/invalid.jpg" 
+						Stretch="Uniform" 
+						Height="50" />
+				</StackPanel>
+			</Grid>
+		</controls:PivotItem>
+		<controls:PivotItem Header="Sources">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0">
+					<TextBlock>Normal</TextBlock>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/2.jpg"/>
+							<c4f:SuperImageSource IsDefault="True" Source="assets/images/1.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage>
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource MinScale="160" Source="assets/images/7.jpg"/>
+							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="assets/images/6.jpg"/>
+							<c4f:SuperImageSource MaxScale="150" Source="assets/images/5.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						Source="assets/images/1.jpg">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/trex_360width.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="assets/images/invalid.jpg"/>
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+				</StackPanel>
+				<StackPanel Grid.Column="1">
+					<TextBlock>Isolated Storage</TextBlock>
+					<c4f:SuperImage Height="50">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+					<c4f:SuperImage 
+						Height="50"
+						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageStretch="Uniform">
+						<c4f:SuperImage.Sources>
+							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+						</c4f:SuperImage.Sources>
+					</c4f:SuperImage>
+				</StackPanel>
+			</Grid>
+		</controls:PivotItem>
+    </controls:Pivot>
+
+</ms:PhoneApplicationPage>
