@@ -25,29 +25,29 @@
 				<StackPanel Grid.Column="0">
 					<TextBlock>Normal</TextBlock>
 					<c4f:SuperImage 
-						Source="Assets/images/1.jpg" />
+						Source="/Media/images/1.jpg" />
 					<c4f:SuperImage 
 						Height="75"
-						Source="assets/images/Seattle.jpg" />
+						Source="/Media/images/Seattle.jpg" />
 					<c4f:SuperImage 
 						Height="75"
 						Stretch="Uniform"
-						Source="assets/images/Seattle.jpg" />
+						Source="/Media/images/Seattle.jpg" />
 					<c4f:SuperImage 
 						Height="50"
-						PlaceholderImageSource="assets/head.png" />
+						PlaceholderImageSource="/Media/head.png" />
 					<c4f:SuperImage 
 						Height="50"
-						PlaceholderImageSource="Assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform" />
 					<c4f:SuperImage 
-						Source="assets/images/1.jpg"
-						PlaceholderImageSource="assets/head.png" 
+						Source="/Media/images/1.jpg"
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform" />
 					<c4f:SuperImage 
 						Height="50"
-						Source="assets/images/invalid.jpg"
-						PlaceholderImageSource="assets/head.png" 
+						Source="/Media/images/invalid.jpg"
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform" />
 				</StackPanel>
 				<StackPanel Grid.Column="1">
@@ -57,13 +57,13 @@
 						Stretch="Uniform" 
 						Height="50" />
 					<c4f:SuperImage 
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform"
 						Source="isostore:/robotIso.jpg" 
 						Stretch="Uniform" 
 						Height="50" />
 					<c4f:SuperImage 
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform"
 						Source="isostore:/invalid.jpg" 
 						Stretch="Uniform" 
@@ -81,40 +81,40 @@
 					<TextBlock>Normal</TextBlock>
 					<c4f:SuperImage>
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+							<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="assets/images/1.jpg"/>
+							<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage>
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="assets/images/2.jpg"/>
-							<c4f:SuperImageSource IsDefault="True" Source="assets/images/1.jpg"/>
+							<c4f:SuperImageSource Source="/Media/images/2.jpg"/>
+							<c4f:SuperImageSource IsDefault="True" Source="/Media/images/1.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage>
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource MinScale="160" Source="assets/images/7.jpg"/>
-							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="assets/images/6.jpg"/>
-							<c4f:SuperImageSource MaxScale="150" Source="assets/images/5.jpg"/>
+							<c4f:SuperImageSource MinScale="160" Source="/Media/images/7.jpg"/>
+							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="/Media/images/6.jpg"/>
+							<c4f:SuperImageSource MaxScale="150" Source="/Media/images/5.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage
-						Source="assets/images/1.jpg">
+						Source="/Media/images/1.jpg">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="assets/images/trex_360width.jpg"/>
+							<c4f:SuperImageSource Source="/Media/images/trex_360width.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 					<c4f:SuperImage
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="assets/images/invalid.jpg"/>
+							<c4f:SuperImageSource Source="/Media/images/invalid.jpg"/>
 						</c4f:SuperImage.Sources>
 					</c4f:SuperImage>
 				</StackPanel>
@@ -127,7 +127,7 @@
 					</c4f:SuperImage>
 					<c4f:SuperImage 
 						Height="50"
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
 							<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
@@ -135,7 +135,7 @@
 					</c4f:SuperImage>
 					<c4f:SuperImage 
 						Height="50"
-						PlaceholderImageSource="assets/head.png" 
+						PlaceholderImageSource="/Media/head.png" 
 						PlaceholderImageStretch="Uniform">
 						<c4f:SuperImage.Sources>
 							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />

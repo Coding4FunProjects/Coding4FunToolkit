@@ -22,7 +22,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 			var targetFile = "robot.jpg";
 			var targetFileInAppData = "robotInAppData.jpg";
 
-			string contentFolderName = Path.Combine(Package.Current.InstalledLocation.Path, "Assets", "Images");
+			string contentFolderName = Path.Combine(Package.Current.InstalledLocation.Path, "Media", "Images");
 
 			StorageFolder contentFolder = StorageFolder.GetFolderFromPathAsync(contentFolderName).AsTask().Result;
 			StorageFile contentFile = contentFolder.GetFileAsync(targetFile).AsTask().Result;

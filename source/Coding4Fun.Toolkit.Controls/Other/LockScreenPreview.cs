@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+
 #endif
 
 namespace Coding4Fun.Toolkit.Controls

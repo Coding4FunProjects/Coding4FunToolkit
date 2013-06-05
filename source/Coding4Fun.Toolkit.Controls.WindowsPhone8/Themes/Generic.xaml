@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:converters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
   <!--WindowsPhone8-->
   <c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
@@ -32,8 +32,8 @@
     <ContentControl x:Name="ContentElement" BorderThickness="0" Margin="{TemplateBinding Margin}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
   </ControlTemplate>
   <GridLength x:Key="GridMinimized">48</GridLength>
-  <converters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
-  <converters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
+  <c4fConverters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
+  <c4fConverters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="Margin" Value="0" />

@@ -10,8 +10,8 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <controls:LockScreenPreview 
 			Height="500"
-            LockScreenImageSource="/Assets/WP_20130529_002.jpg"
-            NotificationIconSource="/Assets/c4fHead.png"
+            LockScreenImageSource="/Media/BackgroundTest.jpg"
+            NotificationIconSource="/Media/Head.png"
             TextLine1="Text line 1"
             TextLine2="Text line 2"
             TextLine3="Text line 3"/>

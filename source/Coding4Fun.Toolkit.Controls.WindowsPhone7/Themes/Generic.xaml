@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters;assembly=Coding4Fun.Toolkit.Controls" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:converters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters" xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls" xmlns:Binding="clr-namespace:Coding4Fun.Toolkit.Controls.Binding" xmlns:Primitives="clr-namespace:Coding4Fun.Toolkit.Controls.Primitives">
   <!--WindowsPhone7-->
   <c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
   <SolidColorBrush x:Key="DefaultAccentBrush" Color="{Binding Source={StaticResource PhoneAccentBrush}, Converter={StaticResource BrushToBrush}}" />
@@ -32,8 +32,6 @@
     <ContentControl x:Name="ContentElement" BorderThickness="0" Margin="{TemplateBinding Margin}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
   </ControlTemplate>
   <GridLength x:Key="GridMinimized">48</GridLength>
-  <converters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
-  <converters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
   <Style x:Key="AppBarText" TargetType="ContentControl">
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="Margin" Value="0" />
@@ -840,54 +838,6 @@
           <Grid Name="LayoutRoot">
             <local:MetroFlowItem Title="MetroFlow Control" />
           </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-  <Style TargetType="TextBlock" BasedOn="{StaticResource PhoneTextTitle3Style}" x:Key="PhoneTextLockScreenStyle">
-    <Setter Property="FontFamily" Value="Segoe WP" />
-    <Setter Property="FontSize" Value="26.667" />
-    <Setter Property="Margin" Value="12, 0, 0, -6" />
-  </Style>
-  <Style TargetType="local:LockScreenPreview">
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:LockScreenPreview">
-          <Viewbox Stretch="Uniform">
-            <Grid x:Name="ContainingGrid" Width="480" Height="800">
-              <Border>
-                <Grid Background="White">
-                  <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
-                  <Image Source="{TemplateBinding LockScreenImageSource}" Stretch="UniformToFill" />
-                  <Rectangle Fill="Black" Opacity=".2" />
-                </Grid>
-              </Border>
-              <Grid VerticalAlignment="Bottom" Margin="7,0,0,16">
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="*" />
-                  <RowDefinition Height="*" />
-                  <RowDefinition Height="80" />
-                </Grid.RowDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Row="0">
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,-22" x:Name="TimeText" />
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,-22" x:Name="DayText" />
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,4" x:Name="DateText" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="4,0,0,6">
-                  <TextBlock Text="{TemplateBinding TextLine1}" Style="{StaticResource PhoneTextLockScreenStyle}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" />
-                  <TextBlock Text="{TemplateBinding TextLine2}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
-                  <TextBlock Text="{TemplateBinding TextLine3}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
-                </StackPanel>
-                <StackPanel Grid.Row="2" Margin="24, 0, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Left" DataContext="{TemplateBinding ShowNotificationCount}" Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
-                  <StackPanel Orientation="Horizontal">
-                    <!--Image for lock screen notification-->
-                    <Image Source="{TemplateBinding NotificationIconSource}" Height="32" Width="32" />
-                    <TextBlock FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}" FontWeight="SemiBold" Margin="6, 0, 0, 0">1</TextBlock>
-                  </StackPanel>
-                </StackPanel>
-              </Grid>
-            </Grid>
-          </Viewbox>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

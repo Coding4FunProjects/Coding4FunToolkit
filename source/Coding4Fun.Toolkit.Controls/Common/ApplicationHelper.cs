@@ -1,6 +1,4 @@
-﻿
-
-#if WINDOWS_STORE
+﻿#if WINDOWS_STORE
 using Windows.Graphics.Display;
 
 #elif WINDOWS_PHONE

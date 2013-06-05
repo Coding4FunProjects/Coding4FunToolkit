@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Coding4Fun.Toolkit.Controls"
+                    xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters">
+
+	<c4fConverters:StringToVisibilityConverter x:Key="StringVisibilityConverter" />
+	<c4fConverters:BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
+
+    <Style TargetType="TextBlock"
+           BasedOn="{StaticResource PhoneTextTitle3Style}"
+           x:Key="PhoneTextLockScreenStyle">
+        <Setter Property="FontFamily"
+                Value="Segoe WP" />
+        <Setter Property="FontSize"
+                Value="26.667" />
+		<Setter Property="Margin"
+                Value="12, 0, 0, -6" />
+    </Style>
+
+    <Style TargetType="local:LockScreenPreview">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:LockScreenPreview">
+                    <Viewbox Stretch="Uniform">
+                        <Grid 
+							x:Name="ContainingGrid"
+							Width="480"
+							Height="800">
+                            <Border>
+                                <Grid Background="White">
+									<ContentPresenter 
+										Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    <Image 
+										Source="{TemplateBinding LockScreenImageSource}"
+                                        Stretch="UniformToFill" />
+									<Rectangle Fill="Black" Opacity=".2" />
+                                </Grid>
+                            </Border>
+                            <Grid VerticalAlignment="Bottom"
+                                  Margin="7,0,0,16">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="80" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Vertical"
+                                            Grid.Row="0">
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,-22" 
+                                               x:Name="TimeText"/>
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,-22"
+                                               x:Name="DayText"/>
+                                    <TextBlock Style="{StaticResource PhoneTextTitle1Style}"
+                                               Margin="12,0,12,4"
+                                               x:Name="DateText"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical"
+                                            Grid.Row="1"
+                                            Margin="4,0,0,6">
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine1}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                         />
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine2}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}"
+                                        />
+                                    <TextBlock 
+										Text="{TemplateBinding TextLine3}"
+                                        Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}"
+                                        Style="{StaticResource PhoneTextLockScreenStyle}" />
+                                </StackPanel>
+                                <StackPanel 
+									Grid.Row="2"
+                                    Margin="24, 0, 0, 0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    DataContext="{TemplateBinding ShowNotificationCount}"
+                                    Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
+									<StackPanel Orientation="Horizontal">
+                                        <!--Image for lock screen notification-->
+                                        <Image 
+											Source="{TemplateBinding NotificationIconSource}"
+                                            Height="32"
+                                            Width="32" />
+                                        <TextBlock 
+											FontSize="{StaticResource PhoneFontSizeLarge}"
+											FontFamily="{StaticResource PhoneFontFamilyLight}"
+											FontWeight="SemiBold"
+                                            Margin="6, 0, 0, 0">1</TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
