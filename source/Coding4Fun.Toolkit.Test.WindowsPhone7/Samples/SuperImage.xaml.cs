@@ -17,7 +17,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 			var targetFile = "robot.jpg";
 			var targetFileIso = "robotIso.jpg";
 
-			var currentLocation = "/Media/images/" + targetFile;
+			var currentLocation = "./Media/images/" + targetFile;
 
 			using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
 			{
