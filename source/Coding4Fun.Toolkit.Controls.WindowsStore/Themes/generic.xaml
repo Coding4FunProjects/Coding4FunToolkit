@@ -670,7 +670,7 @@
             <Grid>
               <Grid Width="1344" Height="768">
                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
-                <Image Source="{TemplateBinding LockScreenImageSource}" Stretch="UniformToFill" />
+                <local:SuperImage Source="{TemplateBinding LockScreenImageSource}" Stretch="UniformToFill" />
                 <Rectangle Fill="Black" Opacity=".2" />
               </Grid>
               <Grid Margin="75, 0, 0, 0">

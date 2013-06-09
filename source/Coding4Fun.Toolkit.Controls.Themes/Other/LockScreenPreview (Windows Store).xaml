@@ -19,7 +19,7 @@
 								<ContentPresenter 
 									Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}" />
-								<Image 
+								<local:SuperImage 
 									Source="{TemplateBinding LockScreenImageSource}"
                                     Stretch="UniformToFill" />
 								<Rectangle 
