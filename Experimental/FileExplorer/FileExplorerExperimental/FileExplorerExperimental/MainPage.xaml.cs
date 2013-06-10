@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using FileExplorerExperimental.Resources;
+using System.Runtime.Serialization;
+using System.IO.IsolatedStorage;
 
 namespace FileExplorerExperimental
 {
@@ -22,6 +24,8 @@ namespace FileExplorerExperimental
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ExplorerControl.Show();
+
+            string de = "den";
         }
     }
 }

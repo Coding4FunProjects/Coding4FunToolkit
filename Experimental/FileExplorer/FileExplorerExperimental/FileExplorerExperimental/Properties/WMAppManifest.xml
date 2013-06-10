@@ -34,6 +34,23 @@
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>
+
+    <!--Be aware that a file association is required for the external storage content to be retrieved.-->
+    <Extensions>
+      <FileTypeAssociation TaskID="_default" Name="Local Associations" NavUriFragment="fileToken=%s">
+        <Logos>
+          <Logo Size="small" IsRelative="true">Assets/Tiles/FlipCycleTileSmall.png</Logo>
+          <Logo Size="medium" IsRelative="true">Assets/Tiles/FlipCycleTileMedium.png</Logo>
+          <Logo Size="large" IsRelative="true">Assets/Tiles/FlipCycleTileLarge.png</Logo>
+        </Logos>
+        <SupportedFileTypes>
+          <FileType ContentType="application/pdf">.pdf</FileType>
+          <FileType ContentType="video/mpeg">.mpg</FileType>
+          <FileType ContentType="application/x-rar-compressed">.rar</FileType>
+        </SupportedFileTypes>
+      </FileTypeAssociation>
+    </Extensions>
+
     <ScreenResolutions>
       <ScreenResolution Name="ID_RESOLUTION_WVGA" />
       <ScreenResolution Name="ID_RESOLUTION_WXGA" />
