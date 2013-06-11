@@ -14,6 +14,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
             InitializeComponent();
         }
 
+		private void LockScreenTapped(object sender, TappedRoutedEventArgs e)
+		{
+			Frame.Navigate(typeof(LockScreenPreview));
+		}
+
 		private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(ColorControls));

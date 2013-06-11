@@ -4,16 +4,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Coding4Fun.Toolkit.Controls"
+    xmlns:controls="using:Coding4Fun.Toolkit.Controls" 
+	xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <controls:LockScreenPreview 
-			Height="500"
-            LockScreenImageSource="/Media/BackgroundTest.jpg"
-            NotificationIconSource="/Media/Head.png"
-            TextLine1="Text line 1"
-            TextLine2="Text line 2"
-            TextLine3="Text line 3"/>
-    </Grid>
+	<Grid Style="{StaticResource LayoutRootStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="140"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Common:BaseHeader Title="Lock Screen Preview" />
+		
+		<Grid Grid.Row="1">
+			<controls:LockScreenPreview 
+				Height="500"
+				LockScreenImageSource="/Media/BackgroundTest.jpg"
+				NotificationIconSource="/Media/Head.png"
+				TextLine1="Text line 1"
+				TextLine2="Text line 2"
+				TextLine3="Text line 3"/>
+		</Grid>
+	</Grid>
 </Page>

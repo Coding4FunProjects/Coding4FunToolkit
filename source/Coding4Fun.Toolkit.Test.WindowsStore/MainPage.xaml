@@ -82,6 +82,15 @@
 			</coding4Fun:Tile>
 
 			<coding4Fun:Tile 
+				Style="{StaticResource TileStyle}"
+                Label="LockScreen Preview"
+                Tapped="LockScreenTapped">
+				<TextBlock Style="{StaticResource TileTextBlockStyle}">
+					Ls
+				</TextBlock>
+			</coding4Fun:Tile>
+			
+			<coding4Fun:Tile 
 				Label="Storage" 
 				Style="{StaticResource TileStyle}"
 				Tapped="StorageTapped" >
