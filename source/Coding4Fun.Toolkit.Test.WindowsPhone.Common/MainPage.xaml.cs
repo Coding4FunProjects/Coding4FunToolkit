@@ -12,7 +12,15 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone
             InitializeComponent();
 
             DataContext = this;
+
+			// WP 7 check
+	        LockScreenTile.Visibility = (Environment.OSVersion.Platform != PlatformID.WinCE) ? Visibility.Visible :  Visibility.Collapsed;
         }
+
+		private void LockScreen_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateTo("/Samples/LockScreenPreview.xaml");
+		}
 
 		private void Chat_Click(object sender, RoutedEventArgs e)
 		{

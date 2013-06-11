@@ -87,7 +87,16 @@
 						Gz
 					</TextBlock>
 				</c4f:Tile>
-                <c4f:Tile
+				<c4f:Tile 
+					Name="LockScreenTile"
+					Style="{StaticResource TileStyle}"
+                    Label="LockScreen Preview"
+                    Click="LockScreen_Click">
+					<TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ls
+					</TextBlock>
+				</c4f:Tile>
+				<c4f:Tile
 					Style="{StaticResource TileStyle}"
 					Label="Memory"
 					Click="Memory_Click">
@@ -127,9 +136,10 @@
 						St
                     </TextBlock>
                 </c4f:Tile>
-                <c4f:Tile Style="{StaticResource TileStyle}"
-                          Label="Super Image"
-                          Click="SuperImage_Click">
+                <c4f:Tile 
+					Style="{StaticResource TileStyle}"
+                    Label="Super Image"
+                    Click="SuperImage_Click">
                     <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Si
                     </TextBlock>
