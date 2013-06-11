@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ms="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
@@ -11,139 +10,158 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="Portrait" Orientation="Portrait">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <ms:Pivot x:Name="LayoutRoot" Background="Transparent">
+	<ms:Pivot x:Name="LayoutRoot"  Title="{StaticResource AppName}">
 		<ms:PivotItem Header="Basic">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="0">
-					<TextBlock>Normal</TextBlock>
-					<c4f:SuperImage 
-						Source="../Media/images/1.jpg" />
-					<c4f:SuperImage 
-						Height="75"
-						Source="../Media/images/Seattle.jpg" />
-					<c4f:SuperImage 
-						Height="75"
-						Stretch="Uniform"
-						Source="../Media/images/Seattle.jpg" />
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="../Media/head.png" />
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-					<c4f:SuperImage 
-						Source="../Media/images/1.jpg"
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-					<c4f:SuperImage 
-						Height="50"
-						Source="../Media/images/invalid.jpg"
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-				</StackPanel>
-				<StackPanel Grid.Column="1">
-					<TextBlock>Isolated Storage</TextBlock>
-					<c4f:SuperImage 
-						Source="isostore:/robotIso.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-					<c4f:SuperImage 
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform"
-						Source="isostore:/robotIso.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-					<c4f:SuperImage 
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform"
-						Source="isostore:/invalid.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-				</StackPanel>
-			</Grid>
+			<ScrollViewer>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel>
+						<TextBlock>Normal</TextBlock>
+						<c4f:SuperImage 
+							Source="../Media/images/1.jpg" />
+						<TextBlock>Img Too Big</TextBlock>
+						<c4f:SuperImage 
+							Height="75"
+							Source="../Media/images/Seattle.jpg" />
+						<TextBlock>Img w/ stretch</TextBlock>
+						<c4f:SuperImage 
+							Height="75"
+							Stretch="Uniform"
+							Source="../Media/images/Seattle.jpg" />
+						<TextBlock>Placeholder too big</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" />
+						<TextBlock>Placeholder w/ stretch</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							Source="../Media/images/1.jpg"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							Source="../Media/images/invalid.jpg"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock>Isolated Storage</TextBlock>
+						<c4f:SuperImage 
+							Source="isostore:/robotIso.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform"
+							Source="isostore:/robotIso.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform"
+							Source="isostore:/invalid.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+					</StackPanel>
+				</Grid>
+			</ScrollViewer>
 		</ms:PivotItem>
 		<ms:PivotItem Header="Sources">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="0">
-					<TextBlock>Normal</TextBlock>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="../Media/images/2.jpg"/>
-							<c4f:SuperImageSource IsDefault="True" Source="../Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource MinScale="160" Source="../Media/images/7.jpg"/>
-							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="../Media/images/6.jpg"/>
-							<c4f:SuperImageSource MaxScale="150" Source="../Media/images/5.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						Source="../Media/images/1.jpg">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="../Media/images/trex_360width.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="../Media/images/invalid.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-				</StackPanel>
-				<StackPanel Grid.Column="1">
-					<TextBlock>Isolated Storage</TextBlock>
-					<c4f:SuperImage Height="50">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="../Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-				</StackPanel>
-			</Grid>
+			<ScrollViewer>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel Grid.Column="0">
+						<TextBlock>Normal</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>IsDefault Test</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="../Media/images/2.jpg"/>
+								<c4f:SuperImageSource IsDefault="True" Source="../Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Testing Min/Max Scales</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource MinScale="160" Source="../Media/images/7.jpg"/>
+								<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="../Media/images/6.jpg"/>
+								<c4f:SuperImageSource MaxScale="150" Source="../Media/images/5.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Source override</TextBlock>
+						<c4f:SuperImage
+							Source="../Media/images/1.jpg">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="../Media/images/trex_360width.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="../Media/images/invalid.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock>Isolated Storage</TextBlock>
+						<c4f:SuperImage Height="50">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+					</StackPanel>
+				</Grid>
+			</ScrollViewer>
 		</ms:PivotItem>
-    </ms:Pivot>
+	</ms:Pivot>
 
 </ms:PhoneApplicationPage>
