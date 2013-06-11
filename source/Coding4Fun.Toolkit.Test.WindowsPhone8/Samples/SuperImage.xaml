@@ -25,29 +25,35 @@
 						<TextBlock>Normal</TextBlock>
 						<c4f:SuperImage 
 							Source="../Media/images/1.jpg" />
+						
 						<TextBlock>Img Too Big</TextBlock>
 						<c4f:SuperImage 
 							Height="75"
 							Source="../Media/images/Seattle.jpg" />
+						
 						<TextBlock>Img w/ stretch</TextBlock>
 						<c4f:SuperImage 
 							Height="75"
 							Stretch="Uniform"
 							Source="../Media/images/Seattle.jpg" />
+						
 						<TextBlock>Placeholder too big</TextBlock>
 						<c4f:SuperImage 
 							Height="50"
 							PlaceholderImageSource="../Media/head.png" />
+						
 						<TextBlock>Placeholder w/ stretch</TextBlock>
 						<c4f:SuperImage 
 							Height="50"
 							PlaceholderImageSource="../Media/head.png" 
 							PlaceholderImageStretch="Uniform" />
+						
 						<TextBlock>Place w/ valid image</TextBlock>
 						<c4f:SuperImage 
 							Source="../Media/images/1.jpg"
 							PlaceholderImageSource="../Media/head.png" 
 							PlaceholderImageStretch="Uniform" />
+						
 						<TextBlock>Place w/ invalid image</TextBlock>
 						<c4f:SuperImage 
 							Height="50"
@@ -61,6 +67,7 @@
 							Source="isostore:/robotIso.jpg" 
 							Stretch="Uniform" 
 							Height="50" />
+						
 						<TextBlock>Place w/ valid image</TextBlock>
 						<c4f:SuperImage 
 							PlaceholderImageSource="../Media/head.png" 
@@ -68,6 +75,7 @@
 							Source="isostore:/robotIso.jpg" 
 							Stretch="Uniform" 
 							Height="50" />
+						
 						<TextBlock>Place w/ invalid image</TextBlock>
 						<c4f:SuperImage 
 							PlaceholderImageSource="../Media/head.png" 
@@ -93,6 +101,7 @@
 								<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Place w/ valid image</TextBlock>
 						<c4f:SuperImage
 							PlaceholderImageSource="../Media/head.png" 
@@ -101,6 +110,7 @@
 								<c4f:SuperImageSource Source="../Media/images/1.jpg"/>
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>IsDefault Test</TextBlock>
 						<c4f:SuperImage>
 							<c4f:SuperImage.Sources>
@@ -108,6 +118,7 @@
 								<c4f:SuperImageSource IsDefault="True" Source="../Media/images/1.jpg"/>
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Testing Min/Max Scales</TextBlock>
 						<c4f:SuperImage>
 							<c4f:SuperImage.Sources>
@@ -116,6 +127,7 @@
 								<c4f:SuperImageSource MaxScale="150" Source="../Media/images/5.jpg"/>
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Source override</TextBlock>
 						<c4f:SuperImage
 							Source="../Media/images/1.jpg">
@@ -123,6 +135,7 @@
 								<c4f:SuperImageSource Source="../Media/images/trex_360width.jpg"/>
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Place w/ invalid image</TextBlock>
 						<c4f:SuperImage
 							Height="50"
@@ -140,6 +153,7 @@
 								<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Place w/ valid image</TextBlock>
 						<c4f:SuperImage 
 							Height="50"
@@ -149,6 +163,7 @@
 								<c4f:SuperImageSource Source="isostore:/robotIso.jpg" />
 							</c4f:SuperImage.Sources>
 						</c4f:SuperImage>
+						
 						<TextBlock>Place w/ invalid image</TextBlock>
 						<c4f:SuperImage 
 							Height="50"

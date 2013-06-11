@@ -5,150 +5,193 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+	xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
-		</Grid.ColumnDefinitions>
-		<StackPanel Grid.Column="0">
-			<TextBlock>Basic</TextBlock>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="0">
-					<TextBlock>Normal</TextBlock>
-					<c4f:SuperImage 
-						Source="/Media/images/1.jpg" />
-					<c4f:SuperImage 
-						Height="75"
-						Source="/Media/Images/Seattle.jpg" />
-					<c4f:SuperImage 
-						Height="75"
-						Stretch="Uniform"
-						Source="/Media/images/Seattle.jpg" />
-					<c4f:SuperImage 
-						Source="ms-appx:/Media/Images/13.jpg" />
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="/Media/head.png" />
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-					<c4f:SuperImage 
-						Source="/Media/images/1.jpg"
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-					<c4f:SuperImage 
-						Height="50"
-						Source="/Media/images/invalid.jpg"
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform" />
-				</StackPanel>
-				<StackPanel Grid.Column="1">
-					<TextBlock>App Data Storage</TextBlock>
-					<c4f:SuperImage 
-						Source="ms-appdata:///local/robotInAppData.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-					<!-- proof this really is in app data -->
-					<c4f:SuperImage 
-						Source="robotInAppData.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-					<c4f:SuperImage 
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform"
-						Source="ms-appdata:///local/robotInAppData.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-					<c4f:SuperImage 
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform"
-						Source="ms-appdata:///local/invalid.jpg" 
-						Stretch="Uniform" 
-						Height="50" />
-				</StackPanel>
-			</Grid>
-		</StackPanel>
-		<StackPanel Grid.Column="1">
-			<TextBlock>Sources Tests</TextBlock>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="0">
-					<TextBlock>Normal</TextBlock>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="/Media/images/2.jpg"/>
-							<c4f:SuperImageSource IsDefault="True" Source="/Media/images/1.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage>
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource MinScale="160" Source="/Media/images/7.jpg"/>
-							<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="/Media/images/6.jpg"/>
-							<c4f:SuperImageSource MaxScale="150" Source="/Media/images/5.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						Source="/Media/images/1.jpg">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="/Media/images/trex_360width.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="/Media/images/invalid.jpg"/>
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-				</StackPanel>
-				<StackPanel Grid.Column="1" x:Name="spCodeBehind">
-					<TextBlock>App Data Storage</TextBlock>
-					<c4f:SuperImage Height="50">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-					<c4f:SuperImage 
-						Height="50"
-						PlaceholderImageSource="/Media/head.png" 
-						PlaceholderImageStretch="Uniform">
-						<c4f:SuperImage.Sources>
-							<c4f:SuperImageSource Source="ms-appdata:///local/invalid.jpg" />
-						</c4f:SuperImage.Sources>
-					</c4f:SuperImage>
-                    
-				</StackPanel>
-			</Grid>
-		</StackPanel>
+	<Grid Style="{StaticResource LayoutRootStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="140"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<Common:BaseHeader Title="Super Image" />
+		
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			
+			<StackPanel Grid.Column="0">
+				<TextBlock>Basic</TextBlock>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel Grid.Column="0">
+						<TextBlock>Normal</TextBlock>
+						<c4f:SuperImage 
+							Source="/Media/images/1.jpg" />
+						
+						<TextBlock>Img Too Big</TextBlock>
+						<c4f:SuperImage 
+							Height="75"
+							Source="/Media/Images/Seattle.jpg" />
+
+						<TextBlock>Img w/ stretch</TextBlock>
+						<c4f:SuperImage 
+							Height="75"
+							Stretch="Uniform"
+							Source="/Media/images/Seattle.jpg" />
+
+						<TextBlock>Img From AppX</TextBlock>
+						<c4f:SuperImage 
+							Source="ms-appx:/Media/Images/13.jpg" />
+
+						<TextBlock>Placeholder too big</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="/Media/head.png" />
+
+						<TextBlock>Placeholder w/ stretch</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							Source="/Media/images/1.jpg"
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							Source="/Media/images/invalid.jpg"
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform" />
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock>App Data Storage</TextBlock>
+						<c4f:SuperImage 
+							Source="ms-appdata:///local/robotInAppData.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+						
+						<TextBlock>App Data Storage file but local</TextBlock>
+						<c4f:SuperImage 
+							Source="/Media/robotInAppData.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+						
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform"
+							Source="ms-appdata:///local/robotInAppData.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+						
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform"
+							Source="ms-appdata:///local/invalid.jpg" 
+							Stretch="Uniform" 
+							Height="50" />
+					</StackPanel>
+				</Grid>
+			</StackPanel>
+			<StackPanel Grid.Column="1">
+				<TextBlock>Sources Tests</TextBlock>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel Grid.Column="0">
+						<TextBlock>Normal</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="/Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>IsDefault Test</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="/Media/images/2.jpg"/>
+								<c4f:SuperImageSource IsDefault="True" Source="/Media/images/1.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Testing Min/Max Scales</TextBlock>
+						<c4f:SuperImage>
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource MinScale="160" Source="/Media/images/7.jpg"/>
+								<c4f:SuperImageSource MinScale="150" MaxScale="160" Source="/Media/images/6.jpg"/>
+								<c4f:SuperImageSource MaxScale="150" Source="/Media/images/5.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Source override</TextBlock>
+						<c4f:SuperImage
+							Source="/Media/images/1.jpg">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="/Media/images/trex_360width.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="/Media/images/invalid.jpg"/>
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock>App Data Storage</TextBlock>
+						<c4f:SuperImage Height="50">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Place w/ valid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="ms-appdata:///local/robotInAppData.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+						
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="/Media/head.png" 
+							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="ms-appdata:///local/invalid.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+					</StackPanel>
+				</Grid>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </Page>
