@@ -3,14 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" x:Name="FileExplorerControl"
+    mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    xmlns:converters="clr-namespace:FileExplorerExperimental.Converters">
+    xmlns:converters="clr-namespace:FileExplorerExperimental.Control.Interop.Converters">
 
     <UserControl.Resources>
         <converters:ExplorerTypeToIconConverter x:Key="ExplorerTypeToIconConverter"></converters:ExplorerTypeToIconConverter>
+        <converters:SelectionModeToVisibility x:Key="SelectionModeToVisibility"></converters:SelectionModeToVisibility>
     </UserControl.Resources>
 
     <Popup x:Name="RootPopup">
@@ -18,22 +19,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="90"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid Margin="8">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="330"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
                 <TextBox IsReadOnly="True" Text="{Binding ElementName=FileExplorerControl, Path=CurrentPath}"></TextBox>
-                <Button Grid.Column="1" x:Name="btnBack" Click="TreeUp">
-                    <Image Source="/Assets/Icons/up.png"></Image>
-                </Button>
             </Grid>
 
             <ListBox Margin="8" Grid.Row="1" SelectionChanged="SelectionChanged" x:Name="lstCore" 
-                 ItemsSource="{Binding ElementName=FileExplorerControl, Path=CurrentItems}">
+                 ItemsSource="{Binding CurrentItems}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -43,6 +37,16 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            
+            <StackPanel VerticalAlignment="Top" Grid.Row="2" Orientation="Horizontal">
+                <Button x:Name="btnBack" Click="TreeUp" Height="90">
+                    <Image Source="/Assets/Icons/up.png"></Image>
+                </Button>
+
+                <Button x:Name="btnOpen" Height="90"  Visibility="{Binding SelectionMode, Converter={StaticResource SelectionModeToVisibility}}">
+                    <Image Source="/Assets/Icons/appbar.folder.open.png"></Image>
+                </Button>
+            </StackPanel>
         </Grid>
     </Popup>
 </UserControl>

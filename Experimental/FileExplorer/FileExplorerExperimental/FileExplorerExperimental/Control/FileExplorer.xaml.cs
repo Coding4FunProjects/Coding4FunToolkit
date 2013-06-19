@@ -8,6 +8,7 @@ using Microsoft.Phone.Storage;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using FileExplorerExperimental.Control.Interop;
 
 namespace FileExplorerExperimental.Control
 {
@@ -18,7 +19,6 @@ namespace FileExplorerExperimental.Control
 
         ExternalStorageDevice _currentStorageDevice;
 
-        public ObservableCollection<FileExplorerItem> CurrentItems { get; set; }
         Stack<ExternalStorageFolder> _folderTree { get; set; }
 
         bool _mustRestoreApplicationBar = false;
@@ -27,14 +27,39 @@ namespace FileExplorerExperimental.Control
         public event OnDismissEventHandler OnDismiss;
         public delegate void OnDismissEventHandler(ExternalStorageFile file);
 
+        #region Control Properties
+
+        private ObservableCollection<FileExplorerItem> _currentItems;
+        /// <summary>
+        /// The container that carries the items currently visible to the user.
+        /// </summary>
+        public ObservableCollection<FileExplorerItem> CurrentItems 
+        {
+            get
+            {
+                return _currentItems;
+            }
+            private set
+            {
+                if (_currentItems != value)
+                {
+                    _currentItems = value;
+                    NotifyPropertyChanged("CurrentItems");
+                }
+            }
+        }
+
         private string _currentPath;
+        /// <summary>
+        /// The currently active path.
+        /// </summary>
         public string CurrentPath
         {
             get
             {
                 return _currentPath;
             }
-            set
+            private set
             {
                 if (_currentPath != value)
                 {
@@ -43,6 +68,28 @@ namespace FileExplorerExperimental.Control
                 }
             }
         }
+
+        private FileExplorerExperimental.Control.Interop.SelectionMode _selectionMode;
+        /// <summary>
+        /// Determines whether the control will return a folder, file, or multiple files.
+        /// </summary>
+        public FileExplorerExperimental.Control.Interop.SelectionMode SelectionMode
+        {
+            get
+            {
+                return _selectionMode;
+            }
+            set
+            {
+                if (_selectionMode != value)
+                {
+                    _selectionMode = value;
+                    NotifyPropertyChanged("SelectionMode");
+                }
+            }
+        }
+
+        #endregion
 
         public FileExplorer()
         {
@@ -53,6 +100,8 @@ namespace FileExplorerExperimental.Control
 
         async void Initialize()
         {
+            this.DataContext = this;
+
             _folderTree = new Stack<ExternalStorageFolder>();
             CurrentItems = new ObservableCollection<FileExplorerItem>();
 
@@ -70,7 +119,7 @@ namespace FileExplorerExperimental.Control
             }
             catch
             {
-                Debug.WriteLine("test");
+                Debug.WriteLine("For some reason the control creation process failed. We're trying to figure out why.");
             }
         }
 
@@ -122,18 +171,6 @@ namespace FileExplorerExperimental.Control
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string info)
-        {
-            if (PropertyChanged != null)
-            {
-                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(
-                    () =>
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs(info));
-                    });
-            }
-        }
 
         public void Show()
         {
@@ -187,17 +224,22 @@ namespace FileExplorerExperimental.Control
             if (OnDismiss != null)
                 OnDismiss(file);
         }
-    }
 
-    public class FileExplorerItem
-    {
-        public string Name { get; set; }
-        public string Path { get; set; }
-        public bool IsFolder { get; set; }
-
-        public override string ToString()
+        /// <summary>
+        /// Handles property change notifications.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string info)
         {
-            return Name;
+            if (PropertyChanged != null)
+            {
+                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(
+                    () =>
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs(info));
+                    });
+            }
         }
+
     }
 }

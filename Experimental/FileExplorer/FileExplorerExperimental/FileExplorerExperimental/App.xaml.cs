@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using FileExplorerExperimental.Resources;
+using System.Windows.Media;
 
 namespace FileExplorerExperimental
 {
@@ -169,6 +170,7 @@ namespace FileExplorerExperimental
             try
             {
                 RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);
+                RootFrame.Background = new SolidColorBrush(Colors.Blue);
                 FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
                 RootFrame.FlowDirection = flow;
             }

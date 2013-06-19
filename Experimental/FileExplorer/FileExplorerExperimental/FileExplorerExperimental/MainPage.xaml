@@ -10,13 +10,12 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Portrait" shell:SystemTray.Opacity="0"
     shell:SystemTray.IsVisible="True" xmlns:controls="clr-namespace:FileExplorerExperimental.Control">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:FileExplorer x:Name="ExplorerControl"></controls:FileExplorer>
+    <Grid x:Name="LayoutRoot">
+        <controls:FileExplorer SelectionMode="SingleFile" x:Name="ExplorerControl" />
         <Button Click="Button_Click" VerticalAlignment="Bottom" Content="ShowControl" Height="100"></Button>
     </Grid>
-
 </phone:PhoneApplicationPage>
