@@ -15,7 +15,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <controls:FileExplorer SelectionMode="SingleFile" x:Name="ExplorerControl" />
+        <controls:FileExplorer StorageTarget="IsolatedStorage" SelectionMode="SingleFile" x:Name="ExplorerControl" />
         <Button Click="Button_Click" VerticalAlignment="Bottom" Content="ShowControl" Height="100"></Button>
     </Grid>
 </phone:PhoneApplicationPage>

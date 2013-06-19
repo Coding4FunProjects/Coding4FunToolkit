@@ -7,6 +7,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+             xmlns:stock="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:converters="clr-namespace:FileExplorerExperimental.Control.Interop.Converters">
 
     <UserControl.Resources>
@@ -26,18 +27,18 @@
                 <TextBox IsReadOnly="True" Text="{Binding ElementName=FileExplorerControl, Path=CurrentPath}"></TextBox>
             </Grid>
 
-            <ListBox Margin="8" Grid.Row="1" SelectionChanged="SelectionChanged" x:Name="lstCore" 
+            <stock:LongListSelector Margin="8" Grid.Row="1" SelectionChanged="SelectionChanged" x:Name="lstCore" 
                  ItemsSource="{Binding CurrentItems}">
-                <ListBox.ItemTemplate>
+                <stock:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Height="64" Width="64" VerticalAlignment="Center" Source="{Binding IsFolder, Converter={StaticResource ExplorerTypeToIconConverter}}"></Image>
                             <TextBlock VerticalAlignment="Center" Style="{StaticResource PhoneTextLargeStyle}" Foreground="White" Text="{Binding}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            
+                </stock:LongListSelector.ItemTemplate>
+            </stock:LongListSelector>
+
             <StackPanel VerticalAlignment="Top" Grid.Row="2" Orientation="Horizontal">
                 <Button x:Name="btnBack" Click="TreeUp" Height="90">
                     <Image Source="/Assets/Icons/up.png"></Image>

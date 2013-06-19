@@ -9,6 +9,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using FileExplorerExperimental.Control.Interop;
+using Windows.Storage;
+using System;
 
 namespace FileExplorerExperimental.Control
 {
@@ -19,7 +21,8 @@ namespace FileExplorerExperimental.Control
 
         ExternalStorageDevice _currentStorageDevice;
 
-        Stack<ExternalStorageFolder> _folderTree { get; set; }
+        Stack<ExternalStorageFolder> _externalFolderTree { get; set; }
+        Stack<StorageFolder> _internalFolderTree { get; set; }
 
         bool _mustRestoreApplicationBar = false;
         bool _mustRestoreSystemTray = false;
@@ -33,7 +36,7 @@ namespace FileExplorerExperimental.Control
         /// <summary>
         /// The container that carries the items currently visible to the user.
         /// </summary>
-        public ObservableCollection<FileExplorerItem> CurrentItems 
+        public ObservableCollection<FileExplorerItem> CurrentItems
         {
             get
             {
@@ -89,91 +92,38 @@ namespace FileExplorerExperimental.Control
             }
         }
 
+        private StorageTarget _storageTarget;
+        public StorageTarget StorageTarget
+        {
+            get
+            {
+                return _storageTarget;
+            }
+            set
+            {
+                if (_storageTarget != value)
+                {
+                    _storageTarget = value;
+                    NotifyPropertyChanged("StorageTarget");
+                }
+            }
+        }
+
         #endregion
 
         public FileExplorer()
         {
             InitializeComponent();
-
-            Initialize();
         }
 
-        async void Initialize()
+        void Initialize()
         {
             this.DataContext = this;
-
-            _folderTree = new Stack<ExternalStorageFolder>();
             CurrentItems = new ObservableCollection<FileExplorerItem>();
 
             LayoutRoot.Width = Application.Current.Host.Content.ActualWidth;
             LayoutRoot.Height = Application.Current.Host.Content.ActualHeight;
 
-            try
-            {
-                var storageAssets = await ExternalStorage.GetExternalStorageDevicesAsync();
-                _currentStorageDevice = storageAssets.FirstOrDefault();
-
-
-                if (_currentStorageDevice != null)
-                    GetTreeForFolder(_currentStorageDevice.RootFolder);
-            }
-            catch
-            {
-                Debug.WriteLine("For some reason the control creation process failed. We're trying to figure out why.");
-            }
-        }
-
-        async void GetTreeForFolder(ExternalStorageFolder folder)
-        {
-            CurrentItems.Clear();
-
-            var folderList = await folder.GetFoldersAsync();
-
-            foreach (ExternalStorageFolder _folder in folderList)
-            {
-                CurrentItems.Add(new FileExplorerItem() { IsFolder = true, Name = _folder.Name, Path = _folder.Path });
-            }
-
-            foreach (ExternalStorageFile _file in await folder.GetFilesAsync())
-            {
-                CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
-            }
-
-            if (!_folderTree.Contains(folder))
-                _folderTree.Push(folder);
-
-            CurrentPath = _folderTree.First().Path;
-        }
-
-        async void SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lstCore.SelectedItem != null)
-            {
-                FileExplorerItem item = (FileExplorerItem)lstCore.SelectedItem;
-                if (item.IsFolder)
-                {
-                    GetTreeForFolder(await _folderTree.First().GetFolderAsync(item.Name));
-                }
-                else
-                {
-                    ExternalStorageFile file = await _currentStorageDevice.GetFileAsync(item.Path);
-                    Dismiss(file);
-                }
-            }
-        }
-
-        void TreeUp(object sender, RoutedEventArgs e)
-        {
-            if (_folderTree.Count > 1)
-            {
-                _folderTree.Pop();
-                GetTreeForFolder(_folderTree.First());
-            }
-        }
-
-
-        public void Show()
-        {
             _currentFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             _currentPage = _currentFrame.Content as PhoneApplicationPage;
 
@@ -198,6 +148,150 @@ namespace FileExplorerExperimental.Control
             }
 
             RootPopup.IsOpen = true;
+
+            InitializeStorageContainers();
+        }
+
+        async void InitializeStorageContainers()
+        {
+            if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+            {
+                _externalFolderTree = new Stack<ExternalStorageFolder>();
+
+                try
+                {
+
+                    var storageAssets = await ExternalStorage.GetExternalStorageDevicesAsync();
+                    _currentStorageDevice = storageAssets.FirstOrDefault();
+
+
+                    if (_currentStorageDevice != null)
+                        GetTreeForExternalFolder(_currentStorageDevice.RootFolder);
+                }
+                catch
+                {
+                    Debug.WriteLine("EXT_STORAGE_ERROR: There was a problem accessing external storage.");
+                }
+            }
+            else
+            {
+                _internalFolderTree = new Stack<StorageFolder>();
+
+                try
+                {
+                    GetTreeForInternalFolder(ApplicationData.Current.LocalFolder);
+                }
+                catch
+                {
+                    Debug.WriteLine("INT_STORAGE_ERROR: There was a problem accessing internal storage.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Will retrieve the full folder and file tree for a folder from the internal storage.
+        /// </summary>
+        /// <param name="folder">The instance of the folder for which the tree will be retrieved.</param>
+        async void GetTreeForInternalFolder(StorageFolder folder)
+        {
+            CurrentItems.Clear();
+
+            var folderList = await folder.GetFoldersAsync();
+
+            foreach (StorageFolder _folder in folderList)
+            {
+                CurrentItems.Add(new FileExplorerItem() { IsFolder = true, Name = _folder.Name, Path = _folder.Path });
+            }
+
+            var fileList = await folder.GetFilesAsync();
+            if (fileList != null)
+            {
+                foreach (StorageFile _file in fileList)
+                {
+                    CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                }
+            }
+
+            if (!_internalFolderTree.Contains(folder))
+                _internalFolderTree.Push(folder);
+
+            CurrentPath = _internalFolderTree.First().Path;
+        }
+
+        async void GetTreeForExternalFolder(ExternalStorageFolder folder)
+        {
+            CurrentItems.Clear();
+
+            var folderList = await folder.GetFoldersAsync();
+
+            foreach (ExternalStorageFolder _folder in folderList)
+            {
+                CurrentItems.Add(new FileExplorerItem() { IsFolder = true, Name = _folder.Name, Path = _folder.Path });
+            }
+
+            foreach (ExternalStorageFile _file in await folder.GetFilesAsync())
+            {
+                CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+            }
+
+            if (!_externalFolderTree.Contains(folder))
+                _externalFolderTree.Push(folder);
+
+            CurrentPath = _externalFolderTree.First().Path;
+        }
+
+        async void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstCore.SelectedItem != null)
+            {
+                FileExplorerItem item = (FileExplorerItem)lstCore.SelectedItem;
+                if (item.IsFolder)
+                {
+                    if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+                    {
+                        GetTreeForExternalFolder(await _externalFolderTree.First().GetFolderAsync(item.Name));
+                    }
+                    else
+                    {
+                        GetTreeForInternalFolder(await _internalFolderTree.First().GetFolderAsync(item.Name));
+                    }
+                }
+                else
+                {
+                    if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+                    {
+                        ExternalStorageFile file = await _currentStorageDevice.GetFileAsync(item.Path);
+
+                        Dismiss(file);
+                    }
+                }
+            }
+        }
+
+        void TreeUp(object sender, RoutedEventArgs e)
+        {
+            if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+            {
+                if (_externalFolderTree.Count > 1)
+                {
+                    _externalFolderTree.Pop();
+                    GetTreeForExternalFolder(_externalFolderTree.First());
+                }
+            }
+            else
+            {
+                if (_internalFolderTree.Count > 1)
+                {
+                    _internalFolderTree.Pop();
+                    GetTreeForInternalFolder(_internalFolderTree.First());
+                }
+            }
+        }
+
+
+        public void Show()
+        {
+            Initialize();
         }
 
         void OnBackKeyPress(object sender, CancelEventArgs e)
