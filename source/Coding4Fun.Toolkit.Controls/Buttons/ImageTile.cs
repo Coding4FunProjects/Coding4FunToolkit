@@ -368,7 +368,10 @@ namespace Coding4Fun.Toolkit.Controls
 			var img = new BitmapImage(file)
 			{
 #if (!WP7)
-				DecodePixelWidth = imgWidth
+				DecodePixelWidth = imgWidth,
+#endif
+#if WINDOWS_PHONE
+				CreateOptions = BitmapCreateOptions.BackgroundCreation | BitmapCreateOptions.DelayCreation
 #endif
 			};
 
