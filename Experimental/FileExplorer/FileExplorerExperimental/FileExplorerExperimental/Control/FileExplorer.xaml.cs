@@ -28,7 +28,7 @@ namespace FileExplorerExperimental.Control
         bool _mustRestoreSystemTray = false;
 
         public event OnDismissEventHandler OnDismiss;
-        public delegate void OnDismissEventHandler(ExternalStorageFile file);
+        public delegate void OnDismissEventHandler(StorageTarget target, object file);
 
         #region Control Properties
 
@@ -264,30 +264,16 @@ namespace FileExplorerExperimental.Control
 
                         Dismiss(file);
                     }
+                    else
+                    {
+                        StorageFolder folder = _internalFolderTree.Pop();
+                        StorageFile file = await folder.GetFileAsync(item.Name);
+
+                        Dismiss(file);
+                    }
                 }
             }
         }
-
-        void TreeUp(object sender, RoutedEventArgs e)
-        {
-            if (StorageTarget == Interop.StorageTarget.ExternalStorage)
-            {
-                if (_externalFolderTree.Count > 1)
-                {
-                    _externalFolderTree.Pop();
-                    GetTreeForExternalFolder(_externalFolderTree.First());
-                }
-            }
-            else
-            {
-                if (_internalFolderTree.Count > 1)
-                {
-                    _internalFolderTree.Pop();
-                    GetTreeForInternalFolder(_internalFolderTree.First());
-                }
-            }
-        }
-
 
         public void Show()
         {
@@ -297,10 +283,34 @@ namespace FileExplorerExperimental.Control
         void OnBackKeyPress(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
-            Dismiss(null);
+
+            if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+            {
+                if (_externalFolderTree.Count > 1)
+                {
+                    _externalFolderTree.Pop();
+                    GetTreeForExternalFolder(_externalFolderTree.First());
+                }
+                else
+                {
+                    Dismiss(null);
+                }
+            }
+            else
+            {
+                if (_internalFolderTree.Count > 1)
+                {
+                    _internalFolderTree.Pop();
+                    GetTreeForInternalFolder(_internalFolderTree.First());
+                }
+                else
+                {
+                    Dismiss(null);
+                }
+            }
         }
 
-        private void Dismiss(ExternalStorageFile file)
+        private void Dismiss(object file)
         {
             if (_currentPage != null)
             {
@@ -316,7 +326,7 @@ namespace FileExplorerExperimental.Control
                 SystemTray.IsVisible = true;
 
             if (OnDismiss != null)
-                OnDismiss(file);
+                OnDismiss(StorageTarget, file);
         }
 
         /// <summary>

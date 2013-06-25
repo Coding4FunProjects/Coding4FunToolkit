@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
 using Microsoft.Phone.Controls;
+using System.Diagnostics;
+using Microsoft.Phone.Storage;
+using Windows.Storage;
 
 namespace FileExplorerExperimental
 {
@@ -10,17 +13,37 @@ namespace FileExplorerExperimental
         public MainPage()
         {
             InitializeComponent();
+
+            ExplorerControl.OnDismiss += ExplorerControl_OnDismiss;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ExplorerControl.OnDismiss += ExplorerControl_OnDismiss;
             ExplorerControl.Show();
         }
 
-        void ExplorerControl_OnDismiss(Microsoft.Phone.Storage.ExternalStorageFile file)
+        void ExplorerControl_OnDismiss(Control.Interop.StorageTarget target, object file)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine(target);
+
+            if (file != null)
+            {
+                switch (target)
+                {
+                    case Control.Interop.StorageTarget.ExternalStorage:
+                        {
+                            ExternalStorageFile _stFile = (ExternalStorageFile)file;
+                            Debug.WriteLine(_stFile.Path);
+                            break;
+                        }
+                    case Control.Interop.StorageTarget.IsolatedStorage:
+                        {
+                            StorageFile _stFile = (StorageFile)file;
+                            Debug.WriteLine(_stFile.Path);
+                            break;
+                        }
+                }
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-             xmlns:stock="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:stock="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:converters="clr-namespace:FileExplorerExperimental.Control.Interop.Converters">
 
     <UserControl.Resources>
@@ -16,12 +16,16 @@
     </UserControl.Resources>
 
     <Popup x:Name="RootPopup">
-        <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+        <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="90"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="90"></RowDefinition>
             </Grid.RowDefinitions>
+            
+            <Grid.Background>
+                <SolidColorBrush Color="{StaticResource PhoneAccentColor}"></SolidColorBrush>
+            </Grid.Background>
 
             <Grid Margin="8">
                 <TextBox IsReadOnly="True" Text="{Binding ElementName=FileExplorerControl, Path=CurrentPath}"></TextBox>
@@ -40,10 +44,6 @@
             </stock:LongListSelector>
 
             <StackPanel VerticalAlignment="Top" Grid.Row="2" Orientation="Horizontal">
-                <Button x:Name="btnBack" Click="TreeUp" Height="90">
-                    <Image Source="/Assets/Icons/up.png"></Image>
-                </Button>
-
                 <Button x:Name="btnOpen" Height="90"  Visibility="{Binding SelectionMode, Converter={StaticResource SelectionModeToVisibility}}">
                     <Image Source="/Assets/Icons/appbar.folder.open.png"></Image>
                 </Button>
