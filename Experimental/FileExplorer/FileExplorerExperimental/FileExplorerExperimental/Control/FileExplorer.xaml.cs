@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using FileExplorerExperimental.Control.Interop;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Storage;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using FileExplorerExperimental.Control.Interop;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using Windows.Storage;
-using System;
 
 namespace FileExplorerExperimental.Control
 {
