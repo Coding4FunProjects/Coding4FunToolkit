@@ -30,16 +30,20 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns>
         /// The image as a BitmapImage so it can be set against the Image item
         /// </returns>
-		public static BitmapImage ToBitmapImage(this ImageSource imageSource)
+		public static ImageSource ToBitmapImage(this ImageSource imageSource)
 		{
 	        // If the imageSource is null, then there's nothing further to see here
             if (imageSource == null)
+            {
                 return null;
+            }
             
 			var checkedImageSource = imageSource as BitmapImage;
 
 			if (checkedImageSource == null)
-				return null;
+			{
+			    return imageSource;
+			}
 
 #if WINDOWS_PHONE                    
 			var imgSource = checkedImageSource.UriSource.ToString().ToLower();
