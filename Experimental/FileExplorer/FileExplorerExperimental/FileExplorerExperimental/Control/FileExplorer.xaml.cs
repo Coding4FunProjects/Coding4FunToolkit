@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,46 @@ namespace FileExplorerExperimental.Control
         public delegate void OnDismissEventHandler(StorageTarget target, object file);
 
         #region Control Properties
+
+        private List<string> _extensions;
+        /// <summary>
+        /// Used to specify the extensions that are shown in the explorer view. Only used if ExtensionRestrictions is set to Custom.
+        /// </summary>
+        public List<string> Extensions
+        {
+            get
+            {
+                return _extensions;
+            }
+            set
+            {
+                if (_extensions != value)
+                {
+                    _extensions = value;
+                    NotifyPropertyChanged("Extensions");
+                }
+            }
+        }
+
+        private ExtensionRestrictions _extensionRestrictions;
+        /// <summary>
+        /// Determines which files are shown in the explorer view. If StorageTarget is set to ExternalStorage, InheritManifest boundaries automatically applied regardless of any custom settings.
+        /// </summary>
+        public ExtensionRestrictions ExtensionRestrictions
+        {
+            get
+            {
+                return _extensionRestrictions;
+            }
+            set
+            {
+                if (_extensionRestrictions != value)
+                {
+                    _extensionRestrictions = value;
+                    NotifyPropertyChanged("ExtensionRestrictions");
+                }
+            }
+        }
 
         private ObservableCollection<FileExplorerItem> _currentItems;
         /// <summary>
@@ -114,6 +155,7 @@ namespace FileExplorerExperimental.Control
         public FileExplorer()
         {
             InitializeComponent();
+            Extensions = new List<string>();
         }
 
         void Initialize()
@@ -148,6 +190,11 @@ namespace FileExplorerExperimental.Control
             }
 
             RootPopup.IsOpen = true;
+
+            if (ExtensionRestrictions == Interop.ExtensionRestrictions.InheritManifest)
+            {
+                Extensions = ManifestReader.GetRegisteredExtensions();
+            }
 
             InitializeStorageContainers();
         }
@@ -208,7 +255,18 @@ namespace FileExplorerExperimental.Control
             {
                 foreach (StorageFile _file in fileList)
                 {
-                    CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                    if (((ExtensionRestrictions & (Interop.ExtensionRestrictions.Custom | Interop.ExtensionRestrictions.InheritManifest)) != 0) && (Extensions.Count != 0))
+                    {
+                        string extension = Path.GetExtension(_file.Name);
+                        if (Extensions.FindIndex(x => x.Equals(extension, StringComparison.OrdinalIgnoreCase)) != -1)
+                        {
+                            CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                        }
+                    }
+                    else
+                    {
+                        CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                    }
                 }
             }
 
@@ -231,7 +289,18 @@ namespace FileExplorerExperimental.Control
 
             foreach (ExternalStorageFile _file in await folder.GetFilesAsync())
             {
-                CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                if (((ExtensionRestrictions & (Interop.ExtensionRestrictions.Custom | Interop.ExtensionRestrictions.InheritManifest)) != 0) && (Extensions.Count != 0))
+                {
+                    string extension = Path.GetExtension(_file.Name);
+                    if (Extensions.FindIndex(x => x.Equals(extension, StringComparison.OrdinalIgnoreCase)) != -1)
+                    {
+                        CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                    }
+                }
+                else
+                {
+                    CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                }
             }
 
             if (!_externalFolderTree.Contains(folder))
