@@ -28,7 +28,7 @@
             </Grid.Background>
 
             <Grid Margin="8">
-                <TextBox IsReadOnly="True" Text="{Binding ElementName=FileExplorerControl, Path=CurrentPath}"></TextBox>
+                <TextBox IsReadOnly="True" Text="{Binding Path=CurrentPath}"></TextBox>
             </Grid>
 
             <stock:LongListSelector Margin="8" Grid.Row="1" SelectionChanged="SelectionChanged" x:Name="lstCore" 
