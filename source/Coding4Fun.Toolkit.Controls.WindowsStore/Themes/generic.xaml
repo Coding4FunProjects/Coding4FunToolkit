@@ -681,17 +681,17 @@
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <StackPanel Margin="0, 0, 0, -5" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
-                  <TextBlock x:Name="TimeText" Text="18:49" FontSize="145" FontWeight="Light" Margin="0, 0, 0, -15" />
+                  <TextBlock x:Name="TimeText" Text="18:49" Foreground="White" FontSize="145" FontWeight="Light" Margin="0, 0, 0, -15" />
                   <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,22">
-                    <TextBlock Text="{TemplateBinding TextLine1}" FontSize="17.7" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
-                    <TextBlock Text="{TemplateBinding TextLine2}" FontSize="17.7" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
-                    <TextBlock Text="{TemplateBinding TextLine3}" FontSize="17.7" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
+                    <TextBlock Text="{TemplateBinding TextLine1}" FontSize="17.7" Foreground="White" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
+                    <TextBlock Text="{TemplateBinding TextLine2}" FontSize="17.7" Foreground="White" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
+                    <TextBlock Text="{TemplateBinding TextLine3}" FontSize="17.7" Foreground="White" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" FontFamily="Segoe UI Semilight" />
                   </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="5, 0, 0, 20" Grid.Row="2">
-                  <TextBlock x:Name="DayText" Text="Wednesday" FontSize="53.333" FontWeight="Light" />
-                  <TextBlock Text="," FontSize="53.333" FontWeight="Light" />
-                  <TextBlock x:Name="DateText" FontSize="53.333" FontWeight="Light" Margin="6,2,0,-4" />
+                  <TextBlock x:Name="DayText" Text="Wednesday" FontSize="53.333" Foreground="White" FontWeight="Light" />
+                  <TextBlock Text="," FontSize="53.333" Foreground="White" FontWeight="Light" />
+                  <TextBlock x:Name="DateText" FontSize="53.333" FontWeight="Light" Foreground="White" Margin="6,2,0,-4" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="20, 0, 0, 60">
                   <Path Height="20" Stretch="Uniform" Fill="White" Data="F1 M 25.3333,23.7501L 28.4999,23.7501L 28.5,33.25L 25.3333,33.2501L 25.3333,23.7501 Z M 30.0833,25.3335L 33.2499,25.3335L 33.25,39.5834L 30.0833,39.5834L 28.5,41.1667L 28.5,50.6667L 25.3333,50.6667L 25.3333,41.1667L 23.75,39.5834L 20.5833,39.5835L 20.5832,25.3335L 23.7499,25.3335L 23.7499,34.8334L 24.5416,34.8334L 29.2916,34.8334L 30.0833,34.8334L 30.0833,25.3335 Z M 30.0833,47.5L 30.0833,44.3334L 50.6667,44.3334L 50.6667,30.0833L 34.8333,30.0834L 34.8333,26.9167L 55.4166,26.9167L 55.4166,47.5L 41.1666,47.5L 41.1667,50.6667L 45.125,50.6667L 45.9166,53.8333L 33.25,53.8333L 34.0417,50.6667L 38,50.6667L 38,47.5L 30.0833,47.5 Z " />
