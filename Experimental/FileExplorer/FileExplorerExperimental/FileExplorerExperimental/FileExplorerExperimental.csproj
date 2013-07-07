@@ -96,7 +96,7 @@
     <Compile Include="Control\FileExplorer.xaml.cs">
       <DependentUpon>FileExplorer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\Interop\Converters\SelectionModeToVisibility.cs" />
+    <Compile Include="Control\Interop\Converters\SelectionModeToVisibilityConverter.cs" />
     <Compile Include="Control\Interop\ExtensionRestrictions.cs" />
     <Compile Include="Control\Interop\FileExplorerItem.cs" />
     <Compile Include="Control\Interop\ManifestReader.cs" />

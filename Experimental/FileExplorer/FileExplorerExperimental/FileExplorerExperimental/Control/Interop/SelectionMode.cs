@@ -4,6 +4,7 @@
     {
         Folder,
         MultipleFiles,
-        SingleFile
+        MultipleFolders,
+        File
     }
 }

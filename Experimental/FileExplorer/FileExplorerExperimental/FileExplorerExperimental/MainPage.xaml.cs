@@ -6,6 +6,7 @@ using Microsoft.Phone.Storage;
 using Windows.Storage;
 using FileExplorerExperimental.Control.Interop;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace FileExplorerExperimental
 {
@@ -31,16 +32,30 @@ namespace FileExplorerExperimental
 
         void ExplorerControl_OnDismiss(Control.Interop.StorageTarget target, object file)
         {
-            Debug.WriteLine(target);
-
             if (file != null)
             {
                 switch (target)
                 {
                     case Control.Interop.StorageTarget.ExternalStorage:
                         {
-                            ExternalStorageFile _stFile = (ExternalStorageFile)file;
-                            Debug.WriteLine(_stFile.Path);
+                            if (ExplorerControl.SelectionMode == SelectionMode.File)
+                            {
+                                ExternalStorageFile _stFile = (ExternalStorageFile)file;
+                                Debug.WriteLine(_stFile.Path); 
+                            }
+                            else if (ExplorerControl.SelectionMode == SelectionMode.Folder)
+                            {
+                                ExternalStorageFolder folder = (ExternalStorageFolder)file;
+                                Debug.WriteLine(folder.Path);
+                            }
+                            else
+                            {
+                                List<FileExplorerItem> items = (List<FileExplorerItem>)file;
+                                foreach (var item in items)
+                                {
+                                    Debug.WriteLine(item.Path);
+                                }
+                            }
                             break;
                         }
                     case Control.Interop.StorageTarget.IsolatedStorage:

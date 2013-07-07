@@ -13,7 +13,7 @@ namespace FileExplorerExperimental.Control.Interop.Converters
             // We only need to make sure that the open button is visible
             // for situations where the user needs to select a folder, or 
             // multiple files.
-            if (mode == SelectionMode.SingleFile)
+            if (mode == SelectionMode.File)
             {
                 return Visibility.Collapsed;
             }

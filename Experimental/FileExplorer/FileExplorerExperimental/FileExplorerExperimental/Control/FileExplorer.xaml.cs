@@ -25,6 +25,8 @@ namespace FileExplorerExperimental.Control
         Stack<ExternalStorageFolder> _externalFolderTree { get; set; }
         Stack<StorageFolder> _internalFolderTree { get; set; }
 
+        List<FileExplorerItem> _selectedItems { get; set; }
+
         bool _mustRestoreApplicationBar = false;
         bool _mustRestoreSystemTray = false;
 
@@ -155,7 +157,9 @@ namespace FileExplorerExperimental.Control
         public FileExplorer()
         {
             InitializeComponent();
+
             Extensions = new List<string>();
+            _selectedItems = new List<FileExplorerItem>();
         }
 
         void Initialize()
@@ -207,13 +211,13 @@ namespace FileExplorerExperimental.Control
 
                 try
                 {
-
                     var storageAssets = await ExternalStorage.GetExternalStorageDevicesAsync();
                     _currentStorageDevice = storageAssets.FirstOrDefault();
 
-
                     if (_currentStorageDevice != null)
+                    {
                         GetTreeForExternalFolder(_currentStorageDevice.RootFolder);
+                    }
                 }
                 catch
                 {
@@ -241,13 +245,29 @@ namespace FileExplorerExperimental.Control
         /// <param name="folder">The instance of the folder for which the tree will be retrieved.</param>
         async void GetTreeForInternalFolder(StorageFolder folder)
         {
+
+            if (!_internalFolderTree.Contains(folder))
+                _internalFolderTree.Push(folder);
+
+            ProcessSelectedItems();
+
             CurrentItems.Clear();
 
             var folderList = await folder.GetFoldersAsync();
 
             foreach (StorageFolder _folder in folderList)
             {
-                CurrentItems.Add(new FileExplorerItem() { IsFolder = true, Name = _folder.Name, Path = _folder.Path });
+                FileExplorerItem item = (from c in _selectedItems where c.Path == _folder.Path select c).FirstOrDefault();
+
+                FileExplorerItem _addItem = new FileExplorerItem()
+                {
+                    IsFolder = true,
+                    Name = _folder.Name,
+                    Path = _folder.Path,
+                    Selected = item != null ? true : false
+                };
+
+                CurrentItems.Add(_addItem);
             }
 
             var fileList = await folder.GetFilesAsync();
@@ -255,93 +275,120 @@ namespace FileExplorerExperimental.Control
             {
                 foreach (StorageFile _file in fileList)
                 {
+                    FileExplorerItem item = GetItemFromPath(_file.Path);
+
                     if (((ExtensionRestrictions & (Interop.ExtensionRestrictions.Custom | Interop.ExtensionRestrictions.InheritManifest)) != 0) && (Extensions.Count != 0))
                     {
                         string extension = Path.GetExtension(_file.Name);
                         if (Extensions.FindIndex(x => x.Equals(extension, StringComparison.OrdinalIgnoreCase)) != -1)
                         {
-                            CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                            CurrentItems.Add(new FileExplorerItem()
+                            {
+                                IsFolder = false,
+                                Name = _file.Name,
+                                Path = _file.Path,
+                                Selected = item != null ? true : false
+                            });
                         }
                     }
                     else
                     {
-                        CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                        CurrentItems.Add(new FileExplorerItem()
+                        {
+                            IsFolder = false,
+                            Name = _file.Name,
+                            Path = _file.Path,
+                            Selected = item != null ? true : false
+                        });
                     }
                 }
             }
 
-            if (!_internalFolderTree.Contains(folder))
-                _internalFolderTree.Push(folder);
-
             CurrentPath = _internalFolderTree.First().Path;
+        }
+
+        private FileExplorerItem GetItemFromPath(string path)
+        {
+            return (from c in _selectedItems where c.Path == path select c).FirstOrDefault();
+        }
+
+        private void ProcessSelectedItems()
+        {
+            foreach(FileExplorerItem item in CurrentItems)
+            {
+                var targetItem = GetItemFromPath(item.Path);
+                if (item.Selected && targetItem == null)
+                {
+                    _selectedItems.Add(item);
+                }
+                else if (!item.Selected && targetItem != null)
+                {
+                    _selectedItems.Remove(GetItemFromPath(item.Path));
+                }
+            }
         }
 
         async void GetTreeForExternalFolder(ExternalStorageFolder folder)
         {
+            if (!_externalFolderTree.Contains(folder))
+                _externalFolderTree.Push(folder);
+
+            ProcessSelectedItems();
+
             CurrentItems.Clear();
 
             var folderList = await folder.GetFoldersAsync();
 
             foreach (ExternalStorageFolder _folder in folderList)
             {
-                CurrentItems.Add(new FileExplorerItem() { IsFolder = true, Name = _folder.Name, Path = _folder.Path });
+                FileExplorerItem item = (from c in _selectedItems where c.Path == _folder.Path select c).FirstOrDefault();
+
+                FileExplorerItem _addItem = new FileExplorerItem()
+                {
+                    IsFolder = true,
+                    Name = _folder.Name,
+                    Path = _folder.Path,
+                    Selected = item != null ? true : false
+                };
+
+                CurrentItems.Add(_addItem);
             }
 
-            foreach (ExternalStorageFile _file in await folder.GetFilesAsync())
+            var fileList = await folder.GetFilesAsync();
+            if (fileList != null)
             {
-                if (((ExtensionRestrictions & (Interop.ExtensionRestrictions.Custom | Interop.ExtensionRestrictions.InheritManifest)) != 0) && (Extensions.Count != 0))
+                foreach (ExternalStorageFile _file in fileList)
                 {
-                    string extension = Path.GetExtension(_file.Name);
-                    if (Extensions.FindIndex(x => x.Equals(extension, StringComparison.OrdinalIgnoreCase)) != -1)
+                    FileExplorerItem item = GetItemFromPath(_file.Path);
+
+                    if (((ExtensionRestrictions & (Interop.ExtensionRestrictions.Custom | Interop.ExtensionRestrictions.InheritManifest)) != 0) && (Extensions.Count != 0))
                     {
-                        CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
+                        string extension = Path.GetExtension(_file.Name);
+                        if (Extensions.FindIndex(x => x.Equals(extension, StringComparison.OrdinalIgnoreCase)) != -1)
+                        {
+                            CurrentItems.Add(new FileExplorerItem()
+                            {
+                                IsFolder = false,
+                                Name = _file.Name,
+                                Path = _file.Path,
+                                Selected = item != null ? true : false
+                            });
+                        }
+                    }
+                    else
+                    {
+                        CurrentItems.Add(new FileExplorerItem()
+                        {
+                            IsFolder = false,
+                            Name = _file.Name,
+                            Path = _file.Path,
+                            Selected = item != null ? true : false
+                        });
                     }
                 }
-                else
-                {
-                    CurrentItems.Add(new FileExplorerItem() { IsFolder = false, Name = _file.Name, Path = _file.Path });
-                }
             }
-
-            if (!_externalFolderTree.Contains(folder))
-                _externalFolderTree.Push(folder);
 
             CurrentPath = _externalFolderTree.First().Path;
-        }
-
-        async void SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lstCore.SelectedItem != null)
-            {
-                FileExplorerItem item = (FileExplorerItem)lstCore.SelectedItem;
-                if (item.IsFolder)
-                {
-                    if (StorageTarget == Interop.StorageTarget.ExternalStorage)
-                    {
-                        GetTreeForExternalFolder(await _externalFolderTree.First().GetFolderAsync(item.Name));
-                    }
-                    else
-                    {
-                        GetTreeForInternalFolder(await _internalFolderTree.First().GetFolderAsync(item.Name));
-                    }
-                }
-                else
-                {
-                    if (StorageTarget == Interop.StorageTarget.ExternalStorage)
-                    {
-                        ExternalStorageFile file = await _currentStorageDevice.GetFileAsync(item.Path);
-
-                        Dismiss(file);
-                    }
-                    else
-                    {
-                        StorageFolder folder = _internalFolderTree.Pop();
-                        StorageFile file = await folder.GetFileAsync(item.Name);
-
-                        Dismiss(file);
-                    }
-                }
-            }
         }
 
         public void Show()
@@ -414,5 +461,57 @@ namespace FileExplorerExperimental.Control
             }
         }
 
+        async private void FileExplorerItemSelect(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            FileExplorerItem item = ((FrameworkElement)sender).Tag as FileExplorerItem;
+
+            if (item.IsFolder)
+            {
+                if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+                {
+                    GetTreeForExternalFolder(await _externalFolderTree.First().GetFolderAsync(item.Name));
+                }
+                else
+                {
+                    GetTreeForInternalFolder(await _internalFolderTree.First().GetFolderAsync(item.Name));
+                }
+            }
+            else
+            {
+                if (SelectionMode == Interop.SelectionMode.File)
+                {
+                    if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+                    {
+                        ExternalStorageFile file = await _currentStorageDevice.GetFileAsync(item.Path);
+
+                        Dismiss(file);
+                    }
+                    else
+                    {
+                        StorageFolder folder = _internalFolderTree.Pop();
+                        StorageFile file = await folder.GetFileAsync(item.Name);
+
+                        Dismiss(file);
+                    }
+                }
+            }
+        }
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessSelectedItems();
+
+            if (SelectionMode == Interop.SelectionMode.Folder)
+            {
+                if (StorageTarget == Interop.StorageTarget.ExternalStorage)
+                    Dismiss(_externalFolderTree.Pop());
+                else
+                    Dismiss(_internalFolderTree.Pop());
+            }
+            else
+            {
+                Dismiss(_selectedItems);
+            }
+        }
     }
 }
