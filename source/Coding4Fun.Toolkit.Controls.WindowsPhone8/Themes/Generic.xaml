@@ -469,7 +469,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:ChatBubbleTextBox">
-          <Grid Background="Transparent" Margin="{TemplateBinding Margin}">
+          <Grid Background="Transparent">
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Normal" />
@@ -869,20 +869,20 @@
                   <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Grid.Row="0">
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,-22" x:Name="TimeText" />
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,-22" x:Name="DayText" />
-                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Margin="12,0,12,4" x:Name="DateText" />
+                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Foreground="White" Margin="12,0,12,-22" x:Name="TimeText" />
+                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Foreground="White" Margin="12,0,12,-22" x:Name="DayText" />
+                  <TextBlock Style="{StaticResource PhoneTextTitle1Style}" Foreground="White" Margin="12,0,12,4" x:Name="DateText" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Margin="4,0,0,6">
-                  <TextBlock Text="{TemplateBinding TextLine1}" Style="{StaticResource PhoneTextLockScreenStyle}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" />
-                  <TextBlock Text="{TemplateBinding TextLine2}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
-                  <TextBlock Text="{TemplateBinding TextLine3}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
+                  <TextBlock Text="{TemplateBinding TextLine1}" Foreground="White" Style="{StaticResource PhoneTextLockScreenStyle}" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" />
+                  <TextBlock Text="{TemplateBinding TextLine2}" Foreground="White" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
+                  <TextBlock Text="{TemplateBinding TextLine3}" Foreground="White" Visibility="{Binding Text, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource StringVisibilityConverter}}" Style="{StaticResource PhoneTextLockScreenStyle}" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Margin="24, 0, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Left" DataContext="{TemplateBinding ShowNotificationCount}" Visibility="{Binding Converter={StaticResource BoolVisibilityConverter}}">
                   <StackPanel Orientation="Horizontal">
                     <!--Image for lock screen notification-->
                     <Image Source="{TemplateBinding NotificationIconSource}" Height="32" Width="32" />
-                    <TextBlock FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}" FontWeight="SemiBold" Margin="6, 0, 0, 0">1</TextBlock>
+                    <TextBlock FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}" Foreground="White" FontWeight="SemiBold" Margin="6, 0, 0, 0">1</TextBlock>
                   </StackPanel>
                 </StackPanel>
               </Grid>

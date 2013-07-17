@@ -8,6 +8,8 @@ using System.Windows.Controls;
 
 #endif
 
+using Coding4Fun.Toolkit.Controls.Common;
+
 namespace Coding4Fun.Toolkit.Controls
 {
 	public class ChatBubble : ContentControl
@@ -34,6 +36,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 			UpdateChatBubbleDirection();
 			UpdateIsEnabledVisualState();
+
+            UpdateIsEquallySpaced();
 		}
 
 		public ChatBubbleDirection ChatBubbleDirection
@@ -65,5 +69,50 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
 		}
+
+        public bool IsEquallySpaced
+        {
+            get { return (bool)GetValue(IsEquallySpacedProperty); }
+            set { SetValue(IsEquallySpacedProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEquallySpacedProperty =
+          DependencyProperty.Register("IsEquallySpaced", typeof(bool),
+          typeof(ChatBubble),
+          new PropertyMetadata(true, OnIsEquallySpacedChanged));
+
+        private static bool _triggered = false;
+
+        private static void OnIsEquallySpacedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = d as ChatBubble;
+
+            if (sender != null)
+            {
+                _triggered = true;
+                sender.UpdateIsEquallySpaced();
+            }
+        }
+
+        private void UpdateIsEquallySpaced()
+        {
+            int delta = IsEquallySpaced ? ControlHelper.MagicSpacingNumber : (_triggered ? -1 * ControlHelper.MagicSpacingNumber : 0);
+
+            var margin = Margin;
+
+            switch (ChatBubbleDirection)
+            {
+                case ChatBubbleDirection.LowerLeft:
+                case ChatBubbleDirection.LowerRight:
+                    margin.Top += delta;
+                    break;
+                case ChatBubbleDirection.UpperLeft:
+                case ChatBubbleDirection.UpperRight:
+                    margin.Bottom += delta;
+                    break;
+            }
+
+            Margin = margin;
+        }
 	}
 }

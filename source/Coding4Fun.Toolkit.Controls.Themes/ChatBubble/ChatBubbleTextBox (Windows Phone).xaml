@@ -27,7 +27,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="local:ChatBubbleTextBox">
-					<Grid Background="Transparent" Margin="{TemplateBinding Margin}">
+					<Grid Background="Transparent">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal"/>

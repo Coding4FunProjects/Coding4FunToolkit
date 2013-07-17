@@ -9,21 +9,23 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    >
 
     <StackPanel>
+        
+            <c4f:ChatBubbleTextBox 
+                ChatBubbleDirection="UpperRight"
+			    Text="testing normal" />
+        
         <c4f:ChatBubbleTextBox 
-						Text="testing normal"
-						Margin="48, 0, 0, 0" />
-        <c4f:ChatBubbleTextBox 
-						IsReadOnly="True"
-						Text="testing readonly"
-						Margin="48, 0, 0, 0" />
+			IsReadOnly="True"
+			Text="testing readonly"
+            ChatBubbleDirection="LowerLeft" />
 
         <c4f:ChatBubbleTextBox 
-						Text="testing wrapping: coding4fun coding4fun coding4fun"
-						TextWrapping="Wrap"
-						/>
+			Text="testing wrapping: coding4fun coding4fun coding4fun"
+			TextWrapping="Wrap"
+			/>
 
         <c4f:ChatBubbleTextBox 
 						Margin="48, 0, 0, 0"

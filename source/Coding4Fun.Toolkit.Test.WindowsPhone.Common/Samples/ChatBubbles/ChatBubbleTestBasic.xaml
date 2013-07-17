@@ -8,17 +8,25 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    Foreground="{StaticResource PhoneForegroundBrush}">
 
     <StackPanel>
-        <c4f:ChatBubble Content="testing normal" />
-		<c4f:ChatBubble Content="testing normal w/ pad" Padding="10" />
-		<c4f:ChatBubble Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"/>
+        <c4f:ChatBubble 
+            Content="testing normal" 
+            ChatBubbleDirection="UpperRight" />
+        <c4f:ChatBubble 
+            Content="testing normal w/ pad" 
+            Padding="10" 
+            ChatBubbleDirection="LowerLeft" />
+		<c4f:ChatBubble 
+            Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"
+            ChatBubbleDirection="UpperLeft"/>
 
-        <c4f:ChatBubble Margin="48, 0, 0, 0">
+        <c4f:ChatBubble 
+            ChatBubbleDirection="LowerLeft"
+            Margin="48, 0, 0, 0">
             <TextBlock TextWrapping="Wrap">
-							testing proper wrapping: coding4fun coding4fun coding4fun coding4fun
+				testing proper wrapping: coding4fun coding4fun coding4fun coding4fun
             </TextBlock>
         </c4f:ChatBubble>
 

@@ -14,6 +14,12 @@ namespace Coding4Fun.Toolkit.Controls.Common
 {
     public class ControlHelper
     {
+#if WINDOWS_STORE
+        static internal int MagicSpacingNumber = 10;
+#elif WINDOWS_PHONE
+		static internal int MagicSpacingNumber = 12;
+#endif
+
         public static double CheckBound(double value, double max)
         {
             return CheckBound(value, 0, max);
