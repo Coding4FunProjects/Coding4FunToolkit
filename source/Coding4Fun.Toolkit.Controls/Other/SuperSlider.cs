@@ -217,7 +217,7 @@ namespace Coding4Fun.Toolkit.Controls
             var controlMax = GetControlMax();
 
             var offsetValue = (IsVertical()) ? controlMax - y : x;
-            var controlDist = ControlHelper.CheckBound(offsetValue, controlMax);
+			var controlDist = Numbers.CheckBound(offsetValue, controlMax);
 
             var calculateValue = Minimum;
 
@@ -247,7 +247,7 @@ namespace Coding4Fun.Toolkit.Controls
                 newValue = stepDiff < (StepFrequency / 2d) ? floor : floor + StepFrequency;
             }
 
-            newValue = ControlHelper.CheckBound(newValue, Minimum, Maximum);
+			newValue = Numbers.CheckBound(newValue, Minimum, Maximum);
 
             if (oldValue == newValue)
                 return;
@@ -274,7 +274,7 @@ namespace Coding4Fun.Toolkit.Controls
             if (thumbItem != null)
             {
                 var thumbItemSize = (isVert ? thumbItem.ActualHeight : thumbItem.ActualWidth);
-                var marginOffset = ControlHelper.CheckBound(offset - (thumbItemSize / 2d), 0, controlMax - thumbItemSize);
+				var marginOffset = Numbers.CheckBound(offset - (thumbItemSize / 2d), 0, controlMax - thumbItemSize);
 
                 thumbItem.Margin = isVert ? new Thickness(0, 0, 0, marginOffset) : new Thickness(marginOffset, 0, 0, 0);
             }

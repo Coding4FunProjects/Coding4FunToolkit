@@ -137,14 +137,14 @@ namespace Coding4Fun.Toolkit.Controls
             var height = SelectedHueColor.ActualHeight;
             var width = SelectedHueColor.ActualWidth;
 
-            _position.X = ControlHelper.CheckBound(_position.X, width);
-            _position.Y = ControlHelper.CheckBound(_position.Y, height);
+            _position.X = Numbers.CheckBound(_position.X, width);
+			_position.Y = Numbers.CheckBound(_position.Y, height);
 
             var sampleLeft = _position.X - sampleSelectorSize;
             var sampleTop = _position.Y - sampleSelectorSize;
 
-            sampleLeft = ControlHelper.CheckBound(sampleLeft, width);
-            sampleTop = ControlHelper.CheckBound(sampleTop, height);
+			sampleLeft = Numbers.CheckBound(sampleLeft, width);
+			sampleTop = Numbers.CheckBound(sampleTop, height);
 
             SampleSelector.Margin = new Thickness(sampleLeft, sampleTop, 0, 0);
         }
