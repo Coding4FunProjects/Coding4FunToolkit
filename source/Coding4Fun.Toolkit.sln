@@ -104,12 +104,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prompts", "Prompts", "{38DF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{AF853D38-6DF6-43B9-AC4F-02F9286AE675}"
 	ProjectSection(SolutionItems) = preProject
-		..\nuget\Coding4Fun.Phone.Audio.nuspec = ..\nuget\Coding4Fun.Phone.Audio.nuspec
-		..\nuget\Coding4Fun.Phone.Complete.nuspec = ..\nuget\Coding4Fun.Phone.Complete.nuspec
-		..\nuget\Coding4Fun.Phone.Controls.nuspec = ..\nuget\Coding4Fun.Phone.Controls.nuspec
-		..\nuget\Coding4Fun.Phone.Controls.Toolkit.nuspec = ..\nuget\Coding4Fun.Phone.Controls.Toolkit.nuspec
-		..\nuget\Coding4Fun.Phone.Net.nuspec = ..\nuget\Coding4Fun.Phone.Net.nuspec
-		..\nuget\Coding4Fun.Phone.Storage.nuspec = ..\nuget\Coding4Fun.Phone.Storage.nuspec
 		..\nuget\Coding4Fun.Toolkit.Audio.nuspec = ..\nuget\Coding4Fun.Toolkit.Audio.nuspec
 		..\nuget\Coding4Fun.Toolkit.Complete.nuspec = ..\nuget\Coding4Fun.Toolkit.Complete.nuspec
 		..\nuget\Coding4Fun.Toolkit.Controls.nuspec = ..\nuget\Coding4Fun.Toolkit.Controls.nuspec
