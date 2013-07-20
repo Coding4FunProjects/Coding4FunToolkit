@@ -2,8 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
+
 using Coding4Fun.Toolkit.Controls.Binding;
-using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -221,7 +221,7 @@ namespace Coding4Fun.Toolkit.Controls
 
             var calculateValue = Minimum;
 
-            if(controlMax != 0)
+			if (!controlMax.AlmostEquals(0.0))
                 calculateValue += (Maximum - Minimum) * (controlDist / controlMax);
 
             SyncValueAndPosition(calculateValue, Value);
@@ -249,7 +249,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			newValue = Numbers.CheckBound(newValue, Minimum, Maximum);
 
-            if (oldValue == newValue)
+			if (oldValue.AlmostEquals(newValue))
                 return;
 
             Value = newValue;
