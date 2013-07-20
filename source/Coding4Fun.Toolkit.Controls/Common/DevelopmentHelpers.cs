@@ -4,11 +4,9 @@
 using System.Reflection;
 
 using Windows.ApplicationModel;
-using Windows.UI.Xaml;
 
 #elif WINDOWS_PHONE
 using System.ComponentModel;
-using System.Windows;
 
 #endif
 
@@ -32,13 +30,18 @@ namespace Coding4Fun.Toolkit.Controls
 			}
 		}
 
-		public static bool IsTypeOf(this UIElement element, Type type)
+		public static bool IsTypeOf(this object target, Type type)
 		{
 #if WINDOWS_STORE
-			return element.GetType().GetTypeInfo().IsSubclassOf(type);
+			return target.GetType().GetTypeInfo().IsSubclassOf(type);
 #elif WINDOWS_PHONE
-			return type.IsInstanceOfType(element);
+			return type.IsInstanceOfType(target);
 #endif
+		}
+
+		public static bool IsTypeOf(this object target, object referenceObject)
+		{
+			return target.IsTypeOf(referenceObject.GetType());
 		}
 	}
 }
