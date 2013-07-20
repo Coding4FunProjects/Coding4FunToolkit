@@ -20,19 +20,16 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		static internal int MagicSpacingNumber = 12;
 #endif
 
+		[Obsolete("Moved to Coding4Fun.Toolkit.Controls.Common.Numbers")]
         public static double CheckBound(double value, double max)
         {
-            return CheckBound(value, 0, max);
+			return Numbers.CheckBound(value, max);
         }
 
+		[Obsolete("Moved to Coding4Fun.Toolkit.Controls.Common.Numbers")]
         public static double CheckBound(double value, double min, double max)
         {
-            if (value <= min)
-                value = min;
-            else if (value >= max)
-                value = max;
-
-            return value;
+			return Numbers.CheckBound(value, min, max);
         }
 
 		public static void CreateDoubleAnimations(Storyboard sb, DependencyObject target, string propertyPath, double fromValue = 0, double toValue = 0, int speed = 500)

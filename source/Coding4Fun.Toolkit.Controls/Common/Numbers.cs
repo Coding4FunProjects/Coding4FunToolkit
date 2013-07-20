@@ -48,5 +48,50 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			return numbers.Min();
 		}
+
+		public static double CheckBound(double value, double max)
+		{
+			return CheckBound(value, 0, max);
+		}
+
+		public static double CheckBound(double value, double min, double max)
+		{
+			if (value <= min)
+				value = min;
+			else if (value >= max)
+				value = max;
+
+			return value;
+		}
+
+		public static double CheckBound(float value, float max)
+		{
+			return CheckBound(value, 0, max);
+		}
+
+		public static double CheckBound(float value, float min, float max)
+		{
+			if (value <= min)
+				value = min;
+			else if (value >= max)
+				value = max;
+
+			return value;
+		}
+
+		public static double CheckBound(int value, int max)
+		{
+			return CheckBound(value, 0, max);
+		}
+
+		public static double CheckBound(int value, int min, int max)
+		{
+			if (value <= min)
+				value = min;
+			else if (value >= max)
+				value = max;
+
+			return value;
+		}
 	}
 }
