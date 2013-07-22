@@ -25,7 +25,7 @@
 			</Setter>
 		</Style>
 	</common:LayoutAwarePage.Resources>
-	<Grid Style="{StaticResource LayoutRootStyle}">
+	<Grid Style="{StaticResource LayoutRootStyle}" Name="LayoutRoot" Background="Gray">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140"/>
 			<RowDefinition Height="*"/>

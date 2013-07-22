@@ -170,6 +170,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\PhoneHelper.cs">
       <Link>Common\PhoneHelper.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\SafeDispatcher.cs">
+      <Link>Common\SafeDispatcher.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
       <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
     </Compile>

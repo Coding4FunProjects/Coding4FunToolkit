@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows;
+using System.Windows.Media;
+using Coding4Fun.Toolkit.Controls.Common;
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsPhone
@@ -15,7 +19,30 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone
 
 			// WP 7 check
 	        LockScreenTile.Visibility = (Environment.OSVersion.Platform != PlatformID.WinCE) ? Visibility.Visible :  Visibility.Collapsed;
+
+			Loaded += MainPage_Loaded;
         }
+
+		void MainPage_Loaded(object sender, RoutedEventArgs e)
+		{
+			ThreadPool.QueueUserWorkItem(state =>
+				{
+					try
+					{
+						LayoutRoot.Background = new SolidColorBrush(Colors.Red);
+
+					}
+					catch (UnauthorizedAccessException ex0)
+					{
+						Debug.WriteLine("caught: "  + ex0);
+					}
+
+					SafeDispatcher.Run(() =>
+						{
+							LayoutRoot.Background = new SolidColorBrush(Colors.Transparent);
+						});
+				});
+		}
 
 		private void LockScreen_Click(object sender, RoutedEventArgs e)
 		{

@@ -1,6 +1,13 @@
-﻿using Windows.UI.Xaml.Input;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Coding4Fun.Toolkit.Controls.Common;
+using Windows.System.Threading;
+using Windows.UI;
+using Windows.UI.Xaml.Input;
 
 using Coding4Fun.Toolkit.Test.WindowsStore.Samples;
+using Windows.UI.Xaml.Media;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore
 {
@@ -12,7 +19,30 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
         public MainPage()
         {
             InitializeComponent();
-        }
+
+			Loaded += MainPage_Loaded;
+		}
+
+		void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+		{
+			ThreadPool.RunAsync(state =>
+			{
+				try
+				{
+					LayoutRoot.Background = new SolidColorBrush(Colors.Red);
+
+				}
+				catch (Exception ex0)
+				{
+					Debug.WriteLine("caught: " + ex0);
+				}
+
+				SafeDispatcher.Run(() =>
+				{
+					LayoutRoot.Background = new SolidColorBrush(Colors.Transparent);
+				});
+			});
+		}
 
 		private void LockScreenTapped(object sender, TappedRoutedEventArgs e)
 		{

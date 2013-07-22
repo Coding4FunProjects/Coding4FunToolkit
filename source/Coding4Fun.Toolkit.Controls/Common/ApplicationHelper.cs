@@ -17,9 +17,9 @@ namespace Coding4Fun.Toolkit.Controls.Common
 
 		public static int ScaleFactor()
 		{
-			return 
+			return
 #if WINDOWS_STORE
-				// http://code.msdn.microsoft.com/windowsapps/Scaling-sample-cf072f4f/sourcecode?fileId=43958&pathId=589460989
+	// http://code.msdn.microsoft.com/windowsapps/Scaling-sample-cf072f4f/sourcecode?fileId=43958&pathId=589460989
 				(int) ((DisplayProperties.LogicalDpi * Percent) / DefaultLogicalppi);
 #elif WINDOWS_PHONE
 #if WP8

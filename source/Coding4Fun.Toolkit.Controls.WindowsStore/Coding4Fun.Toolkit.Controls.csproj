@@ -199,6 +199,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\SafeDispatcher.cs">
+      <Link>Common\SafeDispatcher.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
       <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
     </Compile>
