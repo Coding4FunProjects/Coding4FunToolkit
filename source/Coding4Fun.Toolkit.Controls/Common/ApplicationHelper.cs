@@ -1,7 +1,9 @@
 ﻿#if WINDOWS_STORE
+using Windows.ApplicationModel;
 using Windows.Graphics.Display;
 
 #elif WINDOWS_PHONE
+using System.ComponentModel;
 using System.Windows;
 
 #endif
@@ -28,6 +30,18 @@ namespace Coding4Fun.Toolkit.Controls.Common
             100;
 #endif
 #endif
+		}
+
+		public static bool IsDesignMode
+		{
+			get
+			{
+#if WINDOWS_STORE
+				return DesignMode.DesignModeEnabled;
+#elif WINDOWS_PHONE
+				return DesignerProperties.IsInDesignTool;
+#endif
+			}
 		}
 	}
 }

@@ -3,12 +3,9 @@
 #if WINDOWS_STORE
 using System.Reflection;
 
-using Windows.ApplicationModel;
-
-#elif WINDOWS_PHONE
-using System.ComponentModel;
-
 #endif
+
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -17,16 +14,12 @@ namespace Coding4Fun.Toolkit.Controls
 	/// </summary>
 	public static class DevelopmentHelpers
 	{
+		[Obsolete("Moved to Coding4Fun.Toolkit.Controls.Common.ApplicationSpace")]
 		public static bool IsDesignMode
 		{
 			get
 			{
-				return
-#if WINDOWS_STORE
-					DesignMode.DesignModeEnabled;
-#elif WINDOWS_PHONE
-					DesignerProperties.IsInDesignTool;
-#endif
+				return ApplicationSpace.IsDesignMode;
 			}
 		}
 

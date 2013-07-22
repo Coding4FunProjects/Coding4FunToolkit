@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -39,7 +40,7 @@ namespace Coding4Fun.Toolkit.Controls
                 
                 HookUpEventForIsSubmitOnEnterKey();
 
-				if (!DevelopmentHelpers.IsDesignMode)
+				if (!ApplicationSpace.IsDesignMode)
 	                ThreadPool.QueueUserWorkItem(DelayInputSelect);
             }
         }

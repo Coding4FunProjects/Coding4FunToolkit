@@ -56,7 +56,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 
                 checkedImageSource = new BitmapImage();
 
-				if (!DevelopmentHelpers.IsDesignMode)
+				if (!ApplicationSpace.IsDesignMode)
                 {
 
 // TODO: get this to leverage storage classes

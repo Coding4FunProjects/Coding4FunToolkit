@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -9,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -63,7 +64,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			if (_layoutGrid != null)
 			{
-				if (!DevelopmentHelpers.IsDesignMode || Items.Count > 0)
+				if (!ApplicationSpace.IsDesignMode || Items.Count > 0)
 					ControlLoaded();
 			}
 		}

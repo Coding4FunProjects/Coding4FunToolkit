@@ -103,7 +103,7 @@ namespace Coding4Fun.Toolkit.Controls
 		{
 			_isLoaded = true;
 
-			if (DevelopmentHelpers.IsDesignMode)
+			if (ApplicationSpace.IsDesignMode)
 				return;
 
 #if WINDOWS_STORE
@@ -150,7 +150,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			_createAnimation = false;
 
-			if (!DevelopmentHelpers.IsDesignMode)
+			if (!ApplicationSpace.IsDesignMode)
 			{
 				for (var i = 0; i < Rows; i++)
 				{

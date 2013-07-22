@@ -5,6 +5,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
+using Coding4Fun.Toolkit.Controls.Common;
+
 #elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
@@ -58,7 +60,7 @@ namespace Coding4Fun.Toolkit.Controls
 			UpdateLayout();
 
 #if WINDOWS_STORE
-			if(DevelopmentHelpers.IsDesignMode)
+			if (ApplicationSpace.IsDesignMode)
 				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody); 
 			else
 				Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody)).AsTask();

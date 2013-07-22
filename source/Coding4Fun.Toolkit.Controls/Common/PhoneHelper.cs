@@ -18,7 +18,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns></returns>
         public static string GetAppAttribute(string attributeName)
         {
-			if (DevelopmentHelpers.IsDesignMode)
+			if (ApplicationSpace.IsDesignMode)
 				return "";
 
             try
