@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Coding4Fun.Toolkit.Controls.Common;
+
 namespace Coding4Fun.Toolkit.Controls.Primitives
 {
     /// <summary>
@@ -27,6 +29,15 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             set;
         }
 
+        /// <summary>
+        /// Min value as a TimeSpan
+        /// </summary>
+        public TimeSpan Min
+        {
+            get;
+            set;
+        }
+
 		/// <summary>
 		/// Value step as a TimeSpan
 		/// </summary>
@@ -36,8 +47,6 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
 			set;
 		}
 
-
-
         /// <summary>
         /// TimeSpan Value
         /// </summary>
@@ -45,7 +54,10 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         {
             set
             {
-                base.Value = value > Max ? Max - IncrementStep : value;
+                if (value.HasValue)
+                {
+                    base.Value = value.Value.CheckBound(Min, Max);
+                }                
             }
         }
     }

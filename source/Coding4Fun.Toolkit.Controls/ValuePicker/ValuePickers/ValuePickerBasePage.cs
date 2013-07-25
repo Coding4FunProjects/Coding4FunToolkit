@@ -152,14 +152,16 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         {
             // Commit the value and close
             Debug.Assert((_primarySelectorPart.DataSource.SelectedItem == _secondarySelectorPart.DataSource.SelectedItem) && (_secondarySelectorPart.DataSource.SelectedItem == _tertiarySelectorPart.DataSource.SelectedItem));
-            _value = ((ValueWrapper<T>)_primarySelectorPart.DataSource.SelectedItem).Value;
+            
+            Value = ((ValueWrapper<T>)_primarySelectorPart.DataSource.SelectedItem).Value;
+
             ClosePickerPage();
         }
 
         private void OnCancelButtonClick(object sender, EventArgs e)
         {
             // Close without committing a value
-            _value = null;
+            Value = null;
             ClosePickerPage();
         }
 
@@ -253,9 +255,11 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             set
             {
             	_value = value;
+
             	SetDataSources();
             }
         }
+        private T? _value;
 
     	private void SetDataSources()
     	{
@@ -271,11 +275,6 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
     		_secondarySelectorPart.DataSource.SelectedItem = wrapper;
     		_tertiarySelectorPart.DataSource.SelectedItem = wrapper;
     	}
-
-    	/// <summary>
-        /// private value
-        /// </summary>
-        private T? _value;
 
 		public string DialogTitle
 		{

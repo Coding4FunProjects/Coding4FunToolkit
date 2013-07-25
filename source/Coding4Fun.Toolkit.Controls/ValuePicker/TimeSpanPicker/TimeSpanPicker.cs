@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
-
+using System.Windows.Controls;
 using Coding4Fun.Toolkit.Controls.Primitives;
 using Coding4Fun.Toolkit.Controls.Common;
 
@@ -17,10 +17,8 @@ namespace Coding4Fun.Toolkit.Controls
             DefaultStyleKey = typeof(TimeSpanPicker);
 
             Value = TimeSpan.FromMinutes(30);
-            Max = TimeSpan.FromHours(24);
-            Step = TimeSpan.FromSeconds(1);
-			DialogTitle = ValuePickerResources.TimeSpanPickerTitle;
 
+			DialogTitle = ValuePickerResources.TimeSpanPickerTitle;
         }
 
         protected internal override void UpdateValueString()
@@ -28,12 +26,6 @@ namespace Coding4Fun.Toolkit.Controls
             if (Value.HasValue)
             {
                 var ts = Value.Value;
-
-                if (Max > TimeSpan.Zero && ts > Max)
-                {
-                    Value = Max;
-                    return;
-                }
 
                 if (!string.IsNullOrEmpty(ValueStringFormat))
                 {
@@ -58,15 +50,57 @@ namespace Coding4Fun.Toolkit.Controls
         /// Identifies the Max Property
         /// </summary>
         public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(
-            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.MaxValue, OnMaxChanged));
+            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromHours(24), OnLimitsChanged));
 
-        private static void OnMaxChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        /// <summary>
+        /// Gets or sets the Max Value
+        /// </summary>
+        public TimeSpan Min
+        {
+            get { return (TimeSpan)GetValue(MinProperty); }
+            set { SetValue(MinProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifies the Max Property
+        /// </summary>
+        public static readonly DependencyProperty MinProperty = DependencyProperty.Register(
+            "Min", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.Zero, OnLimitsChanged));
+
+        private static void OnLimitsChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var picker = sender as TimeSpanPicker;
 
             if (picker != null)
             {
-                picker.UpdateValueString();
+                picker.ValidateBounds();
+            }
+        }
+
+        private void ValidateBounds()
+        {
+            if (Min < TimeSpan.Zero)
+            {
+                Min = TimeSpan.Zero;
+            }
+
+            if (Max > TimeSpan.MaxValue)
+            {
+                Max = TimeSpan.MaxValue;
+            }
+
+            if (Max < Min)
+            {
+                Max = Min;
+            }
+
+            if (Value.HasValue)
+            {
+                Value = Value.Value.CheckBound(Min, Max);
+            }
+            else
+            {
+                Value = Min;
             }
         }
 
@@ -83,7 +117,7 @@ namespace Coding4Fun.Toolkit.Controls
         /// Identifies the Max Property
         /// </summary>
         public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
-            "Step", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), null);
+            "Step", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromSeconds(1)));
 
         /// <summary>
         /// Initializes Value, Max, Step when vanigating to the new page
@@ -95,6 +129,7 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (tsPage != null)
             {
+                tsPage.Min = Min;
                 tsPage.Max = Max;
                 tsPage.IncrementStep = Step;
             }

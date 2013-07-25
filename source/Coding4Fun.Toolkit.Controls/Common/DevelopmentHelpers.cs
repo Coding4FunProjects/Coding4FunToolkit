@@ -38,3 +38,28 @@ namespace Coding4Fun.Toolkit.Controls
 		}
 	}
 }
+
+namespace Coding4Fun.Toolkit.Controls.Common
+{
+    public static class TimeSpanHelper
+    {
+        public static TimeSpan CheckBound(this TimeSpan value, TimeSpan max)
+        {
+            return CheckBound(value, default(TimeSpan), max);
+        }
+
+        public static TimeSpan CheckBound(this TimeSpan value, TimeSpan min, TimeSpan max)
+        {
+            if (value < min)
+            {
+                value = min;
+            }
+            else if (value > max)
+            {
+                value = max;
+            }
+
+            return value;
+        }
+    }
+}

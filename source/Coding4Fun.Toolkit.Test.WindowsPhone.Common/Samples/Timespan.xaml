@@ -34,9 +34,10 @@
 						Max="{Binding TimeSpan2Hour}" 
 						Step="{Binding TimeSpan10Min}"/>
 
-					<TextBlock>Max 30min, Step 5 min</TextBlock>
+					<TextBlock>Min 10min, Max 30min, Step 5 min, set to 5</TextBlock>
 					<c4f:TimeSpanPicker
 						Value="{Binding TimeSpan5Min}"
+                        Min="{Binding TimeSpan10Min}" 
 						Max="{Binding TimeSpan30Min}" 
 						Step="{Binding TimeSpan5Min}" 
 						ValueChanged="TimeSpanPicker_ValueChanged" />
