@@ -27,6 +27,11 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         private LoopingSelector _tertiarySelectorPart;
         private Storyboard _closedStoryboard;
 
+        protected ValuePickerBasePage()
+        {
+            DataContext = this; // needed for binding DialogTitle
+        }
+
     	/// <summary>
         /// Initializes the ValuePickerPageBase class; must be called from the subclass's constructor.
         /// </summary>
