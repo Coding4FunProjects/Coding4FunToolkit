@@ -40,8 +40,13 @@
 						Max="{Binding TimeSpan30Min}" 
 						Step="{Binding TimeSpan5Min}" 
 						ValueChanged="TimeSpanPicker_ValueChanged" />
-
-					<Button Click="LaunchPickerClick">Launch Via OpenPicker()</Button>
+                    <TextBlock>Invalid Time set 2h, max of 30min</TextBlock>
+                    <c4f:TimeSpanPicker
+						Value="{Binding TimeSpan2Hour}"
+						Max="{Binding TimeSpan30Min}" 
+						Step="{Binding TimeSpan5Min}" />
+                    
+                    <Button Click="LaunchPickerClick">Launch Via OpenPicker()</Button>
 				</StackPanel>
 			</ms:PivotItem>
 			<ms:PivotItem Header="set lang">

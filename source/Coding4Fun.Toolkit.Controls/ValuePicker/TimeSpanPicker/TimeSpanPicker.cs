@@ -58,8 +58,17 @@ namespace Coding4Fun.Toolkit.Controls
         /// Identifies the Max Property
         /// </summary>
         public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(
-            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), null);
+            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.MaxValue, OnMaxChanged));
 
+        private static void OnMaxChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var picker = sender as TimeSpanPicker;
+
+            if (picker != null)
+            {
+                picker.UpdateValueString();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Value Step
