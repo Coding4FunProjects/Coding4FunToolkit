@@ -27,6 +27,9 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone
 		{
 			ThreadPool.QueueUserWorkItem(state =>
 				{
+					var brushColor1 = SafeDispatcher.Run(() => (LayoutRoot.Background as SolidColorBrush).Color);
+					Debug.WriteLine("Brush: " + brushColor1);
+
 					try
 					{
 						LayoutRoot.Background = new SolidColorBrush(Colors.Red);
@@ -37,10 +40,16 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone
 						Debug.WriteLine("caught: "  + ex0);
 					}
 
+					var brushColor2 = SafeDispatcher.Run(() => (LayoutRoot.Background as SolidColorBrush).Color);
+					Debug.WriteLine("Brush: " + brushColor2);
+					
 					SafeDispatcher.Run(() =>
 						{
 							LayoutRoot.Background = new SolidColorBrush(Colors.Transparent);
 						});
+
+					var brushColor3 = SafeDispatcher.Run(() => (LayoutRoot.Background as SolidColorBrush).Color);
+					Debug.WriteLine("Brush: " + brushColor3);
 				});
 		}
 

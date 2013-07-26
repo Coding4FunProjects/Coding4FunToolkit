@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 #if WINDOWS_STORE
 using Windows.ApplicationModel.Core;
@@ -57,23 +58,32 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			if (dispatcher == null)
 				return returnData;
 
+			
+
 #if WINDOWS_STORE
 			if (!dispatcher.HasThreadAccess)
 #elif WINDOWS_PHONE
 			if (!dispatcher.CheckAccess())
 #endif
 			{
+				var holdMutex = new AutoResetEvent(true);
 
 #if WINDOWS_STORE
 				dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
 					returnData = func()
 					);
 #elif WINDOWS_PHONE
-				dispatcher.BeginInvoke(() => 
-					returnData = func()
+				dispatcher.BeginInvoke(() =>
+				{
+					returnData = func();
+
+					holdMutex.Set();
+
+				}
 					);
 #endif
-
+				holdMutex.Reset();
+				holdMutex.WaitOne();
 			}
 			else
 			{
