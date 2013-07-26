@@ -33,16 +33,16 @@ namespace Coding4Fun.Toolkit.Controls
         /// </summary>
         public override void InitDataSource()
         {
-            var stepSeconds = IncrementStep.Seconds;
-            var maxSeconds = Max >= TimeSpan.FromMinutes(1) ? 60 : Math.Min(Max.Seconds + stepSeconds, 60);
+			var stepSeconds = StepFrequency.Seconds;
+			var maxSeconds = Maximum >= TimeSpan.FromMinutes(1) ? 60 : Math.Min(Maximum.Seconds + stepSeconds, 60);
             TertiarySelector.DataSource = new SecondTimeSpanDataSource(maxSeconds, stepSeconds);
 
-            var stepMinutes = IncrementStep > TimeSpan.FromMinutes(1) ? IncrementStep.Minutes : 1;
-            var maxMinutes = Max >= TimeSpan.FromHours(1) ? 60 : Math.Min(Max.Minutes + stepMinutes, 60);
+			var stepMinutes = StepFrequency > TimeSpan.FromMinutes(1) ? StepFrequency.Minutes : 1;
+			var maxMinutes = Maximum >= TimeSpan.FromHours(1) ? 60 : Math.Min(Maximum.Minutes + stepMinutes, 60);
             SecondarySelector.DataSource = new MinuteTimeSpanDataSource(maxMinutes, stepMinutes);
 
-            var stepHours = IncrementStep > TimeSpan.FromHours(1) ? IncrementStep.Hours : 1;
-            var maxHours = Max >= TimeSpan.FromHours(24) ? 24 : Max.Hours + stepHours;
+			var stepHours = StepFrequency > TimeSpan.FromHours(1) ? StepFrequency.Hours : 1;
+			var maxHours = Maximum >= TimeSpan.FromHours(24) ? 24 : Maximum.Hours + stepHours;
             PrimarySelector.DataSource = new HourTimeSpanDataSource(maxHours, stepHours);
 
             InitializeValuePickerPage(PrimarySelector, SecondarySelector, TertiarySelector);

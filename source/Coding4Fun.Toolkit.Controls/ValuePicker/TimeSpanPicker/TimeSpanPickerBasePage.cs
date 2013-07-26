@@ -21,9 +21,9 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         }
 
         /// <summary>
-        /// Max value as a TimeSpan
+		/// Maximum value as a TimeSpan
         /// </summary>
-        public TimeSpan Max
+		public TimeSpan Maximum
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         /// <summary>
         /// Min value as a TimeSpan
         /// </summary>
-        public TimeSpan Min
+		public TimeSpan Minimum
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
 		/// <summary>
 		/// Value step as a TimeSpan
 		/// </summary>
-		public TimeSpan IncrementStep
+		public TimeSpan StepFrequency
 		{
 			get;
 			set;
@@ -56,7 +56,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             {
                 if (value.HasValue)
                 {
-                    base.Value = value.Value.CheckBound(Min, Max);
+					base.Value = value.Value.CheckBound(Minimum, Maximum);
                 }                
             }
         }

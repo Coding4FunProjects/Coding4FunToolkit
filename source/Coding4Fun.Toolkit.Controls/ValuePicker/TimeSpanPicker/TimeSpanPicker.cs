@@ -129,9 +129,9 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (tsPage != null)
             {
-                tsPage.Min = Min;
-                tsPage.Max = Max;
-                tsPage.IncrementStep = Step;
+				tsPage.Minimum = Min;
+				tsPage.Maximum = Max;
+				tsPage.StepFrequency = Step;
             }
 
             base.NavigateToNewPage(page);

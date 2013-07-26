@@ -7,16 +7,16 @@
         /// <summary>
         /// The minimum of Value
         /// </summary>
-        T Min { get; set; }
+		T Minimum { get; set; }
 
         /// <summary>
         /// The maximum of Value
         /// </summary>
-        T Max { get; set; }
+		T Maximum { get; set; }
 
         /// <summary>
         /// The step for going from value to next value or previous value
         /// </summary>
-        T IncrementStep { get; set; }
+		T StepFrequency { get; set; }
     }
 }
