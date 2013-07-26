@@ -58,12 +58,12 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             _tertiarySelectorPart = tertiarySelector;
 
             // Hook up to interesting events
-            _primarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
-            _secondarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
-            _tertiarySelectorPart.DataSource.SelectionChanged += HandleDataSourceSelectionChanged;
-            _primarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
-            _secondarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
-            _tertiarySelectorPart.IsExpandedChanged += HandleSelectorIsExpandedChanged;
+            _primarySelectorPart.DataSource.SelectionChanged += OnDataSourceSelectionChanged;
+            _secondarySelectorPart.DataSource.SelectionChanged += OnDataSourceSelectionChanged;
+            _tertiarySelectorPart.DataSource.SelectionChanged += OnDataSourceSelectionChanged;
+            _primarySelectorPart.IsExpandedChanged += OnSelectorIsExpandedChanged;
+            _secondarySelectorPart.IsExpandedChanged += OnSelectorIsExpandedChanged;
+            _tertiarySelectorPart.IsExpandedChanged += OnSelectorIsExpandedChanged;
 
             // Hide all selectors
             _primarySelectorPart.Visibility = Visibility.Collapsed;
@@ -127,7 +127,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             VisualStateManager.GoToState(this, OpenVisibilityStateName, true);
         }
 
-        private void HandleDataSourceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnDataSourceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Push the selected item to all selectors
             var dataSource = (DataSource<T>)sender;
@@ -137,7 +137,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
             _tertiarySelectorPart.DataSource.SelectedItem = dataSource.SelectedItem;
         }
 
-        private void HandleSelectorIsExpandedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void OnSelectorIsExpandedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue)
             {
