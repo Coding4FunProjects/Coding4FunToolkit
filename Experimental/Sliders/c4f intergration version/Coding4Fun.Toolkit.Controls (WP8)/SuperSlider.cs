@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
 {
+	// WP 8 Version
 	public class SuperSlider : Slider, ISuperSlider
 	{
 		public SuperSlider()

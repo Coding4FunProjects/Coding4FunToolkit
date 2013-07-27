@@ -7,6 +7,7 @@ using System.Windows.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
 {
+	// WP7 Version
 	public class SuperSlider : Control, ISuperSlider
 	{
 		public SuperSlider()

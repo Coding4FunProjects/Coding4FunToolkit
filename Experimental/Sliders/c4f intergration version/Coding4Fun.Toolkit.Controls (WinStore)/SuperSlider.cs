@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
 {
+	// Windows Store Version
 	public class SuperSlider : Slider, ISuperSlider
 	{
 		public SuperSlider()
