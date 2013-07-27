@@ -26,13 +26,19 @@
 			<local:SuperSlider StepFrequency="25" Value="104" Maximum="110" HorizontalPadding="0" />
 			<local:SuperSlider StepFrequency="25" Value="106" Maximum="110" HorizontalPadding="0" />
 
-			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25" TrackSize="20" FillSize="50"  />
+			<local:SuperSlider Value="55" LargeChange="25" SmallChange="25" TrackSize="25" FillSize="50"  />
 			<local:SuperSlider StepFrequency="25" LargeChange="25" SmallChange="25"  />
 			<local:SuperSlider StepFrequency="0.1" LargeChange="25" SmallChange="25" HorizontalPadding="0"  />
-			
+
+			<local:SuperSlider Value="50">
+				<local:SuperSlider.Thumb>
+					<Rectangle Fill="Green" />
+				</local:SuperSlider.Thumb>
+			</local:SuperSlider>
+
 			<StackPanel Orientation="Horizontal">
 				<Slider Width="100" Margin="50, 0"/>
-				<local:SuperSlider  Width="100"/>
+				<local:SuperSlider Width="100"/>
 			</StackPanel>
 			
 			<Slider Value="50" IsEnabled="False" />
