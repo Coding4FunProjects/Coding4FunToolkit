@@ -92,6 +92,15 @@ namespace Coding4Fun.Toolkit.Controls
 				item.Storyboard.Stop();
 			}
 
+#if WINDOWS_STORE
+			var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+			var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+			if (rootFrame != null)
+				rootFrame.Navigated -= FrameNavigated;
+
 			//_imageCurrentLocation.Clear();
 			//_imagesBeingShown.Clear();
 			//_availableSpotsOnGrid.Clear();
