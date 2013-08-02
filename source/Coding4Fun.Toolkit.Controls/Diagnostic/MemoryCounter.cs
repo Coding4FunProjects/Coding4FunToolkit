@@ -2,16 +2,19 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using System.Windows.Threading;
+
+using Coding4Fun.Toolkit.Controls.Common;
 
 using Microsoft.Phone.Info;
 
 namespace Coding4Fun.Toolkit.Controls
 {
-    public class MemoryCounter : Control
+    public class MemoryCounter : Control, IDisposable
     {
         private const float ByteToMega = 1024 * 1024;
-        private readonly DispatcherTimer _timer;
+        private DispatcherTimer _timer;
 
         private bool _threwException;
 
@@ -22,9 +25,8 @@ namespace Coding4Fun.Toolkit.Controls
 				DefaultStyleKey = typeof(MemoryCounter);
 				DataContext = this;
 
-				_timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(UpdateInterval) };
-				_timer.Tick += TimerTick;
-				_timer.Start();
+				Loaded += ControlLoaded;
+				Unloaded += ControlUnloaded;				
 			}
 			else
 			{
@@ -32,7 +34,7 @@ namespace Coding4Fun.Toolkit.Controls
 			}
         }
 
-        public int UpdateInterval
+		public int UpdateInterval
         {
             get { return (int)GetValue(UpdateIntervalProperty); }
             set { SetValue(UpdateIntervalProperty, value); }
@@ -81,6 +83,8 @@ namespace Coding4Fun.Toolkit.Controls
 	        {
 		        CurrentMemory = ((DeviceStatus.ApplicationCurrentMemoryUsage) / ByteToMega).ToString("#.00");
 		        PeakMemory = ((DeviceStatus.ApplicationPeakMemoryUsage) / ByteToMega).ToString("#.00");
+
+		        Debug.WriteLine("CALLING MEM: " + DateTime.Now);
 	        }
 	        catch (Exception)
 	        {
@@ -96,5 +100,66 @@ namespace Coding4Fun.Toolkit.Controls
 
 		    Visibility = Visibility.Collapsed;
 	    }
+
+
+		void ControlLoaded(object sender, RoutedEventArgs e)
+		{
+			if (ApplicationSpace.IsDesignMode)
+				return;
+
+			_timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(UpdateInterval) };
+			_timer.Tick += TimerTick;
+			_timer.Start();
+
+#if WINDOWS_STORE
+			var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+			var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+			if (rootFrame == null)
+				return;
+
+			rootFrame.Navigated -= FrameNavigated;
+			rootFrame.Navigated += FrameNavigated;
+		}
+
+		#region control unloaded
+		void ControlUnloaded(object sender, RoutedEventArgs e)
+		{
+			Dispose();
+		}
+
+		void FrameNavigated(object sender, NavigationEventArgs e)
+		{
+#if WINDOWS_PHONE
+			if (e.IsNavigationInitiator)
+#endif
+			{
+				Dispose();
+			}
+		}
+
+		public void Dispose()
+		{
+#if WINDOWS_STORE
+			var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+			var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+			if (rootFrame != null)
+				rootFrame.Navigated -= FrameNavigated;
+
+			if (_timer != null)
+			{
+				_timer.Stop();
+				_timer.Tick -= TimerTick;
+
+				_timer = null;
+			}
+		}
+		#endregion
+
     }
 }
