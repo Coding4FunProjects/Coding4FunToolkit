@@ -1,12 +1,14 @@
 ﻿#if WINDOWS_STORE
 using Windows.UI;
+
 #elif WINDOWS_PHONE
 using System.Windows.Media;
+
 #endif
 
 namespace Coding4Fun.Toolkit.Controls.Common
 {
-    public static class ColorExtentions
+    public static class ColorExtensions
     {
 	    public static float GetHue(this Color color)
         {
