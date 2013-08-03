@@ -87,15 +87,24 @@ if($LastExitCode -ne 0)
 }
 echo "done building"
 
-function AppendToZip($zipPkg, $targetZipFile, $appendPath)
+function AppendToZip($zipPkg, $targetFile, $appendPath)
 {
-	$uriLocation = "/" + $appendPath + $targetZipFile.Name;
+	if($targetFile.Directory.Name -eq "..svnbridge")
+	{
+		return;
+	}
+	
+	echo $targetFile.FullName;
+		
+	$uriLocation = "/" + $appendPath + $targetFile.Name;
 	
 	$partName = new-object System.Uri($uriLocation, [System.UriKind]::Relative);
+	
+
 	$part = $zipPkg.CreatePart($partName, "application/octet-stream", [System.IO.Packaging.CompressionOption]"Maximum");
 	
 	$stream = $part.GetStream();	
-	$bytes = [System.IO.File]::ReadAllBytes($targetZipFile.FullName);
+	$bytes = [System.IO.File]::ReadAllBytes($targetFile.FullName);
 	$stream.Write($bytes, 0, $bytes.Length);
 	$stream.Dispose();
 }
@@ -111,6 +120,8 @@ for ($index = 0; $index -lt $platforms.Count; $index++)
 	$releaseDir = $releaseDirs[$index];
 	$zipFullPath = $zipFullPaths[$index];
 	$platform = $platforms[$index];
+	
+	echo $zipFullPath;
 	
 	$zipPkg = [System.IO.Packaging.ZipPackage]::Open($zipFullPath, [System.IO.FileMode]"Create", [System.IO.FileAccess]"ReadWrite");
 
