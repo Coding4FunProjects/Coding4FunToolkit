@@ -1,32 +1,17 @@
-using System;
 using System.Linq;
 
 namespace Coding4Fun.Toolkit.Controls
 {
 	public static class Numbers
 	{
-		/// <summary>
-		/// Tests equality with a certain amount of precision.  Default to smallest possible double
-		/// </summary>
-		/// <param name="a">first value</param>
-		/// <param name="b">second value</param> 
-		/// <param name="precision">optional, smallest possible double value</param>
-		/// <returns></returns>
-		public static bool AlmostEquals(this double a, double b, double precision = Double.Epsilon)
+		public static float Max(params int[] numbers)
 		{
-			return Math.Abs(a - b) <= precision;
+			return numbers.Max();
 		}
 
-		/// <summary>
-		/// Tests equality with a certain amount of precision.  Default to smallest possible float
-		/// </summary>
-		/// <param name="a">first value</param>
-		/// <param name="b">second value</param>
-		/// <param name="precision">optional, defaults to smallest possible float</param>
-		/// <returns></returns>
-		public static bool AlmostEquals(this float a, float b, float precision = float.Epsilon)
+		public static float Min(params int[] numbers)
 		{
-			return Math.Abs(a - b) <= precision;
+			return numbers.Min();
 		}
 
 		public static float Max(params float[] numbers)
@@ -47,51 +32,6 @@ namespace Coding4Fun.Toolkit.Controls
 		public static double Min(params double[] numbers)
 		{
 			return numbers.Min();
-		}
-
-		public static double CheckBound(double value, double max)
-		{
-			return CheckBound(value, 0, max);
-		}
-
-		public static double CheckBound(double value, double min, double max)
-		{
-			if (value <= min)
-				value = min;
-			else if (value >= max)
-				value = max;
-
-			return value;
-		}
-
-		public static double CheckBound(float value, float max)
-		{
-			return CheckBound(value, 0, max);
-		}
-
-		public static double CheckBound(float value, float min, float max)
-		{
-			if (value <= min)
-				value = min;
-			else if (value >= max)
-				value = max;
-
-			return value;
-		}
-
-		public static double CheckBound(int value, int max)
-		{
-			return CheckBound(value, 0, max);
-		}
-
-		public static double CheckBound(int value, int min, int max)
-		{
-			if (value <= min)
-				value = min;
-			else if (value >= max)
-				value = max;
-
-			return value;
 		}
 	}
 }

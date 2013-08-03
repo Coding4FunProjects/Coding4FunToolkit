@@ -190,6 +190,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
       <Link>Common\DevelopmentHelpers.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DoubleExtensions.cs">
+      <Link>Common\DoubleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\FloatExtensions.cs">
+      <Link>Common\FloatExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
       <Link>Common\IImageSource.cs</Link>
     </Compile>
@@ -204,6 +210,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
       <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TimeSpanExtensions.cs">
+      <Link>Common\TimeSpanExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
       <Link>Common\VisualTreeExtensions.cs</Link>

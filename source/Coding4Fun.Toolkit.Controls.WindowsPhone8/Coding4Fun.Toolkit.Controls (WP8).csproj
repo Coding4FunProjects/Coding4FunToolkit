@@ -190,11 +190,20 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
       <Link>Common\DevelopmentHelpers.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DoubleExtensions.cs">
+      <Link>Common\DoubleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\FloatExtensions.cs">
+      <Link>Common\FloatExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
       <Link>Common\IImageSource.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
       <Link>Common\ImageSourceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IntExtensions.cs">
+      <Link>Common\IntExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
       <Link>Common\MovementMonitor.cs</Link>
@@ -213,6 +222,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
       <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TimeSpanExtensions.cs">
+      <Link>Common\TimeSpanExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
       <Link>Common\VisualTreeExtensions.cs</Link>
@@ -642,6 +654,7 @@
       <Link>Properties\Resources.pt.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

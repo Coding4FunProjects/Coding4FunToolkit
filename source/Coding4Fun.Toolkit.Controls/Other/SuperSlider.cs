@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 
 using Coding4Fun.Toolkit.Controls.Binding;
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -217,7 +218,7 @@ namespace Coding4Fun.Toolkit.Controls
             var controlMax = GetControlMax();
 
             var offsetValue = (IsVertical()) ? controlMax - y : x;
-			var controlDist = Numbers.CheckBound(offsetValue, controlMax);
+			var controlDist = offsetValue.CheckBound(controlMax);
 
             var calculateValue = Minimum;
 
@@ -247,7 +248,7 @@ namespace Coding4Fun.Toolkit.Controls
                 newValue = stepDiff < (StepFrequency / 2d) ? floor : floor + StepFrequency;
             }
 
-			newValue = Numbers.CheckBound(newValue, Minimum, Maximum);
+			newValue = newValue.CheckBound(Minimum, Maximum);
 
 			if (oldValue.AlmostEquals(newValue))
                 return;
@@ -274,7 +275,7 @@ namespace Coding4Fun.Toolkit.Controls
             if (thumbItem != null)
             {
                 var thumbItemSize = (isVert ? thumbItem.ActualHeight : thumbItem.ActualWidth);
-				var marginOffset = Numbers.CheckBound(offset - (thumbItemSize / 2d), 0, controlMax - thumbItemSize);
+				var marginOffset = (offset - (thumbItemSize / 2d)).CheckBound(controlMax - thumbItemSize);
 
                 thumbItem.Margin = isVert ? new Thickness(0, 0, 0, marginOffset) : new Thickness(marginOffset, 0, 0, 0);
             }
