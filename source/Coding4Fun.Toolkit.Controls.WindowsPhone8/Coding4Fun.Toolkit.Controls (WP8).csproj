@@ -178,8 +178,8 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
       <Link>Common\ApplicationHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtentions.cs">
-      <Link>Common\ColorExtentions.cs</Link>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtensions.cs">
+      <Link>Common\ColorExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
       <Link>Common\ColorSpace.cs</Link>
