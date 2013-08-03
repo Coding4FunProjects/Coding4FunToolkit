@@ -1,9 +1,13 @@
-﻿#if WINDOWS_STORE
+﻿
+#if WINDOWS_STORE
 using Windows.ApplicationModel;
+using Windows.ApplicationModel.Core;
 using Windows.Graphics.Display;
+using Windows.UI.Core;
 
 #elif WINDOWS_PHONE
 using System.ComponentModel;
+using System.Windows.Threading;
 using System.Windows;
 
 #endif
@@ -41,6 +45,26 @@ namespace Coding4Fun.Toolkit.Controls.Common
 #elif WINDOWS_PHONE
 				return DesignerProperties.IsInDesignTool;
 #endif
+			}
+		}
+
+		public static
+#if WINDOWS_STORE
+			CoreDispatcher
+#elif WINDOWS_PHONE
+			Dispatcher
+#endif
+		CurrentDispatcher
+		{
+			get
+			{
+#if WINDOWS_STORE
+				var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
+#elif WINDOWS_PHONE
+				var dispatcher = Deployment.Current.Dispatcher;
+#endif
+
+				return dispatcher;
 			}
 		}
 	}

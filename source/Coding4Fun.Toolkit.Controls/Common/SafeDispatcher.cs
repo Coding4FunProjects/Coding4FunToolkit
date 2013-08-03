@@ -1,26 +1,13 @@
 ﻿using System;
 using System.Threading;
 
-#if WINDOWS_STORE
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-
-#elif WINDOWS_PHONE
-using System.Windows;
-
-#endif
-
 namespace Coding4Fun.Toolkit.Controls.Common
 {
 	public class SafeDispatcher
 	{
 		public static void Run(Action func)
 		{
-#if WINDOWS_STORE
-			var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
-#elif WINDOWS_PHONE
-			var dispatcher = Deployment.Current.Dispatcher;
-#endif
+			var dispatcher = ApplicationSpace.CurrentDispatcher;
 
 			if (dispatcher == null)
 				return;
@@ -33,7 +20,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			{
 
 #if WINDOWS_STORE
-				dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => func());
+				dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => func());
 #elif WINDOWS_PHONE
 				dispatcher.BeginInvoke(func);
 #endif
@@ -49,16 +36,10 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		{
 			var returnData = default(T);
 
-#if WINDOWS_STORE
-			var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
-#elif WINDOWS_PHONE
-			var dispatcher = Deployment.Current.Dispatcher;
-#endif
+			var dispatcher = ApplicationSpace.CurrentDispatcher;
 
 			if (dispatcher == null)
 				return returnData;
-
-			
 
 #if WINDOWS_STORE
 			if (!dispatcher.HasThreadAccess)
@@ -69,7 +50,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 				var holdMutex = new AutoResetEvent(true);
 
 #if WINDOWS_STORE
-				dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+				dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
 					returnData = func()
 					);
 #elif WINDOWS_PHONE
