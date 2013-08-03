@@ -131,7 +131,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for CheckedBrush.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty CheckedBrushProperty =
 			DependencyProperty.Register("CheckedBrush", typeof (Brush), typeof (ToggleButtonBase),
-				new PropertyMetadata(new SolidColorBrush()));
+				new PropertyMetadata(default(SolidColorBrush)));
 
 		public Orientation Orientation
 		{

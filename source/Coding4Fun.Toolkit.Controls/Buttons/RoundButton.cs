@@ -74,7 +74,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for PressedBrush.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty PressedBrushProperty =
-			DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(new SolidColorBrush()));
+			DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(RoundButton), new PropertyMetadata(default(SolidColorBrush)));
 
         public Orientation Orientation
         {

@@ -217,6 +217,6 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
-            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(new SolidColorBrush()));
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopUp<T, TPopUpResult>), new PropertyMetadata(default(SolidColorBrush)));
 	}
 }

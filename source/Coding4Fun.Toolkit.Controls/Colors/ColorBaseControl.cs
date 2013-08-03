@@ -39,7 +39,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for SolidColorBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SolidColorBrushProperty =
-            DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorBaseControl), new PropertyMetadata(new SolidColorBrush()));
+            DependencyProperty.Register("SolidColorBrush", typeof(SolidColorBrush), typeof(ColorBaseControl), new PropertyMetadata(default(SolidColorBrush)));
         #endregion
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
