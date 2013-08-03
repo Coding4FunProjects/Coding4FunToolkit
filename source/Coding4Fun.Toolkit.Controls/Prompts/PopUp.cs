@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Clarity.Phone.Extensions;
-
+using Coding4Fun.Toolkit.Controls.Common;
 using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
@@ -32,11 +32,12 @@ namespace Coding4Fun.Toolkit.Controls
     			if (_isCalculateFrameVerticalOffset)
     			{
     				var bind = new System.Windows.Data.Binding("Y");
-    				var frame = (Application.Current.RootVisual as Frame);
 
-    				if (frame != null)
+					var rootFrame = ApplicationSpace.RootFrame;
+
+    				if (rootFrame != null)
     				{
-    					var transGroup = frame.RenderTransform as TransformGroup;
+    					var transGroup = rootFrame.RenderTransform as TransformGroup;
 
     					if (transGroup != null)
     					{

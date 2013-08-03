@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using Coding4Fun.Toolkit.Controls.Common;
 using Microsoft.Phone.Controls;
 
 // Code is based off of original code from:
@@ -108,7 +108,7 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 			var lastTouchPoint = _internalPanningControl.GetValue(LastTouchPointProperty) as TouchPoint;
 			var isScrollSuspended = (bool) _internalPanningControl.GetValue(IsScrollSuspendedProperty);
 
-			var touchPoint = e.GetTouchPoints(Application.Current.RootVisual);
+			var touchPoint = e.GetTouchPoints(ApplicationSpace.RootFrame);
 
 			if (lastTouchPoint == null || lastTouchPoint != touchPoint.Last())
 				lastTouchPoint = touchPoint.Last();

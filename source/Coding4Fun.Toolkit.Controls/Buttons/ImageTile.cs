@@ -92,11 +92,7 @@ namespace Coding4Fun.Toolkit.Controls
 				item.Storyboard.Stop();
 			}
 
-#if WINDOWS_STORE
-			var rootFrame = Window.Current.Content as Frame;
-#elif WINDOWS_PHONE
-			var rootFrame = Application.Current.RootVisual as Frame;
-#endif
+			var rootFrame = ApplicationSpace.RootFrame;
 
 			if (rootFrame != null)
 				rootFrame.Navigated -= FrameNavigated;
@@ -114,12 +110,8 @@ namespace Coding4Fun.Toolkit.Controls
 
 			if (ApplicationSpace.IsDesignMode)
 				return;
-
-#if WINDOWS_STORE
-			var rootFrame = Window.Current.Content as Frame;
-#elif WINDOWS_PHONE
-			var rootFrame = Application.Current.RootVisual as Frame;
-#endif
+			
+			var rootFrame = ApplicationSpace.RootFrame;
 
 			if (rootFrame == null)
 				return;

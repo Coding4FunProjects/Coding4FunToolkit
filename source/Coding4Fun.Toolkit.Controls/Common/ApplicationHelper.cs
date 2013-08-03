@@ -1,14 +1,16 @@
-﻿
-#if WINDOWS_STORE
+﻿#if WINDOWS_STORE
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Graphics.Display;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 #elif WINDOWS_PHONE
 using System.ComponentModel;
-using System.Windows.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 #endif
 
@@ -34,6 +36,21 @@ namespace Coding4Fun.Toolkit.Controls.Common
             100;
 #endif
 #endif
+		}
+
+		public static Frame RootFrame
+		{
+			get
+			{
+#if WINDOWS_STORE
+				var rootFrame = Window.Current.Content as Frame;
+#elif WINDOWS_PHONE
+				var rootFrame = Application.Current.RootVisual as Frame;
+#endif
+
+				return rootFrame;
+			}
+
 		}
 
 		public static bool IsDesignMode

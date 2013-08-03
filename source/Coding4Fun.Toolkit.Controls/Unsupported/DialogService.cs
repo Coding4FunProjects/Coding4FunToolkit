@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-
+using Coding4Fun.Toolkit.Controls.Common;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -152,7 +152,7 @@ namespace Clarity.Phone.Extensions
         </Storyboard>";
 
         private Panel _popupContainer;
-        private Frame _rootVisual;
+        private Frame _rootFrame;
         private PhoneApplicationPage _page;
         private Grid _childPanel;
 		private Grid _overlay;
@@ -185,12 +185,12 @@ namespace Clarity.Phone.Extensions
 
         internal PhoneApplicationPage Page
         {
-            get { return _page ?? (_page = RootVisual.GetFirstLogicalChildByType<PhoneApplicationPage>(false)); }
+            get { return _page ?? (_page = RootFrame.GetFirstLogicalChildByType<PhoneApplicationPage>(false)); }
         }
 
-        internal Frame RootVisual
+        internal Frame RootFrame
         {
-            get { return _rootVisual ?? (_rootVisual = Application.Current.RootVisual as Frame); }
+			get { return _rootFrame ?? (_rootFrame = ApplicationSpace.RootFrame); }
         }
 
         internal Panel PopupContainer
@@ -199,7 +199,7 @@ namespace Clarity.Phone.Extensions
             {
                 if (_popupContainer == null)
                 {
-                    //var popups = RootVisual.GetLogicalChildrenByType<Popup>(false).Where(x => x.IsOpen);
+                    //var popups = RootFrame.GetLogicalChildrenByType<Popup>(false).Where(x => x.IsOpen);
 
                     //if (popups.Any())
                     //{
@@ -216,7 +216,7 @@ namespace Clarity.Phone.Extensions
                     //}
                     //else
                     {
-                        var presenters = RootVisual.GetLogicalChildrenByType<ContentPresenter>(false);
+                        var presenters = RootFrame.GetLogicalChildrenByType<ContentPresenter>(false);
 
                         for (var i = 0; i < presenters.Count(); i++)
                         {
@@ -245,7 +245,7 @@ namespace Clarity.Phone.Extensions
 		bool _deferredShowToLoaded;
 		private void InitializePopup()
 		{
-			// Add overlay which is the size of RootVisual
+			// Add overlay which is the size of RootFrame
 			_childPanel = CreateGrid();
 
 			if (IsOverlayApplied)
@@ -268,7 +268,7 @@ namespace Clarity.Phone.Extensions
 			else
 			{
 				_deferredShowToLoaded = true;
-				RootVisual.Loaded += RootVisualDeferredShowLoaded;
+				RootFrame.Loaded += RootFrameDeferredShowLoaded;
 			}
 		}
 
@@ -312,9 +312,9 @@ namespace Clarity.Phone.Extensions
 			panel.Margin = new Thickness(0, VerticalOffset + sysTrayVerticalOffset + ControlVerticalOffset, 0, 0);
     	}
 		
-		void RootVisualDeferredShowLoaded(object sender, RoutedEventArgs e)
+		void RootFrameDeferredShowLoaded(object sender, RoutedEventArgs e)
 		{
-			RootVisual.Loaded -= RootVisualDeferredShowLoaded;
+			RootFrame.Loaded -= RootFrameDeferredShowLoaded;
 			_deferredShowToLoaded = false;
 
 			Show();

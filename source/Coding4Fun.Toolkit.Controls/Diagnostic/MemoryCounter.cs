@@ -111,11 +111,7 @@ namespace Coding4Fun.Toolkit.Controls
 			_timer.Tick += TimerTick;
 			_timer.Start();
 
-#if WINDOWS_STORE
-			var rootFrame = Window.Current.Content as Frame;
-#elif WINDOWS_PHONE
-			var rootFrame = Application.Current.RootVisual as Frame;
-#endif
+			var rootFrame = ApplicationSpace.RootFrame;
 
 			if (rootFrame == null)
 				return;
@@ -142,11 +138,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public void Dispose()
 		{
-#if WINDOWS_STORE
-			var rootFrame = Window.Current.Content as Frame;
-#elif WINDOWS_PHONE
-			var rootFrame = Application.Current.RootVisual as Frame;
-#endif
+			var rootFrame = ApplicationSpace.RootFrame;
 
 			if (rootFrame != null)
 				rootFrame.Navigated -= FrameNavigated;

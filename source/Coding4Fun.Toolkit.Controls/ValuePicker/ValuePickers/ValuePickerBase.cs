@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-
+using Coding4Fun.Toolkit.Controls.Common;
 using Coding4Fun.Toolkit.Controls.Primitives;
 
 using Microsoft.Phone.Controls;
@@ -217,7 +217,7 @@ namespace Coding4Fun.Toolkit.Controls
             if (null == _frame)
             {
                 // Hook up to necessary events and navigate
-                _frame = Application.Current.RootVisual as PhoneApplicationFrame;
+				_frame = ApplicationSpace.RootFrame as PhoneApplicationFrame;
 
                 if (null != _frame)
                 {
