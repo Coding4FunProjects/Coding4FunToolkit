@@ -158,6 +158,7 @@
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Test\ThicknessToGridLengthConverterControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

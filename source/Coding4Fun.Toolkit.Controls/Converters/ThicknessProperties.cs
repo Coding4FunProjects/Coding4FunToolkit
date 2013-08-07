@@ -1,4 +1,4 @@
-﻿namespace testMargin
+﻿namespace Coding4Fun.Toolkit.Controls.Converters
 {
 	internal enum ThicknessProperties
 	{

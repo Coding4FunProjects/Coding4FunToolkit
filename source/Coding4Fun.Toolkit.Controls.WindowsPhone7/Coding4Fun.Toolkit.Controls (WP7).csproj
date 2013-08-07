@@ -212,6 +212,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedInverseImageConverter.cs">
       <Link>Converters\ThemedInverseImageConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessProperties.cs">
+      <Link>Converters\ThicknessProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessToGridLengthConverter.cs">
+      <Link>Converters\ThicknessToGridLengthConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ValueConverter.cs">
       <Link>Converters\ValueConverter.cs</Link>
     </Compile>

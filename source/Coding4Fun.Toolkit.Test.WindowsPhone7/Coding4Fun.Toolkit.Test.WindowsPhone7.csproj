@@ -227,6 +227,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Test\TestSerializeClass.cs">
       <Link>Test\TestSerializeClass.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Test.WindowsPhone.Common\Test\ThicknessToGridLengthConverterControl.cs">
+      <Link>Test\ThicknessToGridLengthConverterControl.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
