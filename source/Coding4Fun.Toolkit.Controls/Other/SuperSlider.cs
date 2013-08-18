@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 
 using Coding4Fun.Toolkit.Controls.Binding;
-using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {

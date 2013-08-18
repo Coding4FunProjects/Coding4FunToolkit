@@ -660,7 +660,12 @@
       <Link>Properties\Resources.pt.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28WP8%29.csproj">
+      <Project>{30967A51-30AC-48B9-B4AA-06290ECB2F23}</Project>
+      <Name>Coding4Fun.Toolkit %28WP8%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

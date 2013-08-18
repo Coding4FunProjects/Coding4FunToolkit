@@ -202,6 +202,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
       <Link>Common\ImageSourceExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IntExtensions.cs">
+      <Link>Common\IntExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
     </Compile>
@@ -272,7 +275,12 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit.csproj">
+      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Name>Coding4Fun.Toolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>

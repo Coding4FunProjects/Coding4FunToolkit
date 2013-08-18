@@ -1,7 +1,5 @@
 ﻿using System;
 
-using Coding4Fun.Toolkit.Controls.Common;
-
 namespace Coding4Fun.Toolkit.Controls.Primitives
 {
     /// <summary>

@@ -20,14 +20,14 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		static internal int MagicSpacingNumber = 12;
 #endif
 
-		[Obsolete("Made into extension")]
+		[Obsolete("Made into extension, Moved to Coding4Fun.Toolkit.dll now, Namespace is System, ")]
         public static double CheckBound(double value, double max)
         {
 			return value.CheckBound(max);
         }
 
-		[Obsolete("Made into extension")]
-        public static double CheckBound(double value, double min, double max)
+		[Obsolete("Made into extension, Moved to Coding4Fun.Toolkit.dll now, Namespace is System, ")]
+		public static double CheckBound(double value, double min, double max)
         {
 			return value.CheckBound(min, max);
         }

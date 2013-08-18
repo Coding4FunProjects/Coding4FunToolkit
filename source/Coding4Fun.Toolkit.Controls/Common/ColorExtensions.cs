@@ -21,8 +21,8 @@ namespace Coding4Fun.Toolkit.Controls.Common
 
             float hue;
 
-            var min = Numbers.Min(r, g, b);
-			var max = Numbers.Max(r, g, b);
+            var min = Toolkit.Numbers.Min(r, g, b);
+			var max = Toolkit.Numbers.Max(r, g, b);
 
             var delta = max - min;
 
@@ -59,8 +59,8 @@ namespace Coding4Fun.Toolkit.Controls.Common
             var g = color.G / 255f;
             var b = color.B / 255f;
 
-			var min = Numbers.Min(r, g, b);
-			var max = Numbers.Max(r, g, b); 
+			var min = Toolkit.Numbers.Min(r, g, b);
+			var max = Toolkit.Numbers.Max(r, g, b); 
             
             if (max.AlmostEquals(min))
                 return 0;
@@ -79,7 +79,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
             var g = color.G / 255f;
             var b = color.B / 255f;
 
-            return Numbers.Max(r, g, b);
+			return Toolkit.Numbers.Max(r, g, b);
         }
     }
 

@@ -622,7 +622,12 @@
       <Link>Properties\Resources.pt.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28WP7%29.csproj">
+      <Project>{9FFA9EC6-0D61-48F4-8E4E-5FB3D35FEBE2}</Project>
+      <Name>Coding4Fun.Toolkit %28WP7%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />

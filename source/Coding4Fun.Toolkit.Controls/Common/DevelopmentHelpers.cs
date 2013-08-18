@@ -23,18 +23,16 @@ namespace Coding4Fun.Toolkit.Controls
 			}
 		}
 
+		[Obsolete("Moved to Coding4Fun.Toolkit.dll now, Namespace is System")]
 		public static bool IsTypeOf(this object target, Type type)
 		{
-#if WINDOWS_STORE
-			return target.GetType().GetTypeInfo().IsSubclassOf(type);
-#elif WINDOWS_PHONE
-			return type.IsInstanceOfType(target);
-#endif
+			return System.TypeExtensions.IsTypeOf(target, type);
 		}
 
+		[Obsolete("Moved to Coding4Fun.Toolkit.dll now, Namespace is System")]
 		public static bool IsTypeOf(this object target, object referenceObject)
 		{
-			return target.IsTypeOf(referenceObject.GetType());
+			return System.TypeExtensions.IsTypeOf(target, referenceObject);
 		}
 	}
 }

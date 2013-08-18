@@ -1,18 +1,24 @@
-﻿using System;
-
-namespace Coding4Fun.Toolkit.Controls.Common
+﻿namespace System
 {
-	[Obsolete("Moved to Coding4Fun.Toolkit.dll now, Namespace is System")]
 	public static class FloatExtensions
     {
 		public static double CheckBound(this float value, float maximum)
 		{
-			return System.FloatExtensions.CheckBound(value, maximum);
+			return CheckBound(value, 0, maximum);
 		}
 
 		public static double CheckBound(this float value, float minimum, float maximum)
 		{
-			return System.FloatExtensions.CheckBound(value, minimum, maximum);
+			if (value <= minimum)
+			{
+				value = minimum;
+			}
+			else if (value >= maximum)
+			{
+				value = maximum;
+			}
+
+			return value;
 		}
 
 	    /// <summary>
@@ -24,7 +30,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 	    /// <returns></returns>
 		public static bool AlmostEquals(this float a, float b, double precision = float.Epsilon)
 	    {
-			return System.FloatExtensions.AlmostEquals(a, b, precision);
+		    return Math.Abs(a - b) <= precision;
 	    }
     }
 }

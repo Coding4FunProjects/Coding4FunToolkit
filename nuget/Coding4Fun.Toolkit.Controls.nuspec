@@ -14,12 +14,23 @@
 	</metadata>
 	<files>
 		<file
+			src="Release\Windows Phone 7\Coding4Fun.Toolkit.dll"
+			target="lib\wp71" />
+		<file
 			src="Release\Windows Phone 7\Coding4Fun.Toolkit.Controls.dll"
 			target="lib\wp71" />
+
+		<file
+			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.dll"
+			target="lib\windowsphone8" />
 		<file
 			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
 			target="lib\windowsphone8" />
 
+
+		<file
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.dll"
+			target="lib\windows8" />
 		<file
 			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.dll"
 			target="lib\windows8" />

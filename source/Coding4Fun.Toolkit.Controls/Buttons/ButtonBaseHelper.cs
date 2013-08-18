@@ -42,7 +42,7 @@ namespace Coding4Fun.Toolkit.Controls
 			if (element == null) 
 				return;
 
-			if (element.IsTypeOf(typeof(Shape)))
+			if (System.TypeExtensions.IsTypeOf(element, typeof(Shape)))
 			{
 				var shape = element as Shape;
 

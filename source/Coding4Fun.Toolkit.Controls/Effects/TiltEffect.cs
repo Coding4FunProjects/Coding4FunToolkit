@@ -269,9 +269,9 @@ namespace Coding4Fun.Toolkit.Controls
 	    {
 			bool isTiltable = false;
 			bool isForcedSuppress = element.ReadLocalValue(SuppressTiltProperty) is bool && (bool) element.ReadLocalValue(SuppressTiltProperty);
-			
-			
-			if (!isForcedSuppress && TiltableItems.Any(element.IsTypeOf))
+
+
+			if (!isForcedSuppress && TiltableItems.Any(t => TypeExtensions.IsTypeOf(element, t)))
 		    {
 			    isTiltable = true;
 

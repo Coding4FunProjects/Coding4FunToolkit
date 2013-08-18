@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
+
 using Coding4Fun.Toolkit.Controls.Primitives;
-using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -29,7 +28,7 @@ namespace Coding4Fun.Toolkit.Controls
 
                 if (!string.IsNullOrEmpty(ValueStringFormat))
                 {
-                    ValueString = TimeSpanFormat.Format(ts, ValueStringFormat);
+                    ValueString = Common.TimeSpanFormat.Format(ts, ValueStringFormat);
                     return;
                 }
             }
@@ -96,7 +95,7 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (Value.HasValue)
             {
-                Value = Value.Value.CheckBound(Min, Max);
+                Value = TimeSpanExtensions.CheckBound(Value.Value, Min, Max);
             }
             else
             {
