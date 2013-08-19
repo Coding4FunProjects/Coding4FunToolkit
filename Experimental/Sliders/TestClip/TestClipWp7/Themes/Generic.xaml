@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:local="clr-namespace:TestClip"
+	xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls">
+	<!--xmlns:c4fConverters="clr-namespace:Coding4Fun.Toolkit.Controls.Converters">
+
+	<c4fConverters:SolidColorBrushToColorConverter x:Key="BrushToBrush" />
+
+	<SolidColorBrush x:Key="DefaultDisabledBrush" Color="{Binding Source={StaticResource PhoneDisabledBrush}, Converter={StaticResource BrushToBrush}}" />-->
+	<Style x:Key="SliderThumbStyle" TargetType="Thumb">
+		<!--<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="{StaticResource SliderThumbBorderThemeBrush}"/>
+		<Setter Property="Background" Value="{StaticResource SliderThumbBackgroundThemeBrush}"/>-->
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Thumb">
+
+					<Ellipse Height="50" Width="50" Fill="Blue" Opacity=".5" />
+					
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="local:TestSlider">
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
+		<Setter Property="MinHeight" Value="24" />
+		<Setter Property="MinWidth" Value="24" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:TestSlider">
+					<Grid Background="Transparent">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal"/>
+								<VisualState x:Name="MouseOver"/>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<!--<DoubleAnimation Duration="0" To="{Binding DisableTrackOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="HorizontalTrack"/>
+										<DoubleAnimation Duration="0" To="{Binding DisableTrackOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalTrack"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalFill">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalFill">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
+										</ObjectAnimationUsingKeyFrames>-->
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid x:Name="HorizontalTemplate" >
+							<Rectangle 
+								Name="HorizontalTrack"
+								Height="12" 
+								Fill="Red" />
+							<Rectangle 
+								Name="HorizontalFill"
+								Height="24" 
+								Fill="Green">
+								<Rectangle.Clip>
+									<RectangleGeometry x:Name="HorizontalRectangleGeometry" />
+								</Rectangle.Clip>
+							</Rectangle>
+							<Thumb 
+								DataContext="{TemplateBinding Value}"
+								Style="{StaticResource SliderThumbStyle}"
+								Name="HorizontalThumb"
+								HorizontalAlignment="Left">
+								<Thumb.RenderTransform>
+									<TranslateTransform x:Name="HorizontalThumbTranslateTransform" />
+								</Thumb.RenderTransform>
+								
+							</Thumb>
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+  
+
+</ResourceDictionary>
+	
