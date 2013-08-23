@@ -17,60 +17,91 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
 
+		private ToastPrompt _prompt;
 		public ToastPrompts()
 		{
 			InitializeComponent();
+		}
+
+		private void InitializePrompt()
+		{
+			var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+			if (_prompt != null)
+			{
+				_prompt.Completed -= PromptCompleted;
+			}
+
+			if (!reuseObject || _prompt == null)
+			{
+				_prompt = new ToastPrompt();
+			}
+
+			// this is me manually resetting stuff due to the reusability test
+			// you don't need to do this.
+			// fontsize, foreground, background won't manually be reset
+
+			_prompt.TextWrapping = TextWrapping.NoWrap;
+			_prompt.ImageSource = null;
+			_prompt.ImageHeight = double.NaN;
+			_prompt.ImageWidth = double.NaN;
+			_prompt.Stretch = Stretch.None;
+			_prompt.IsAppBarVisible = false;
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Horizontal;
+			
+			_prompt.Message = string.Empty;
+			_prompt.Title = string.Empty;
+
+			_prompt.Completed += PromptCompleted;
 		}
 
 		#region toast
 		#region basic toast
 		private void ToastBasicClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetBasicToast();
+			InitializeBasicToast();
 
-			toast.Show();
+			_prompt.Show();
 		}
 
 		private void ToastWrapBasicClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetBasicToast();
-			toast.TextWrapping = TextWrapping.Wrap;
+			InitializeBasicToast(wrap: TextWrapping.Wrap);
 
-			toast.Show();
+			_prompt.Show();
 		}
 
-		private static ToastPrompt GetBasicToast(string title = "Basic")
+		private void InitializeBasicToast(string title = "Basic", TextWrapping wrap = default(TextWrapping))
 		{
-			return new ToastPrompt
-			{
-				Title = title,
-				Message = LongText,
-			};
+			InitializePrompt();
+
+			_prompt.Title = title;
+			_prompt.Message = LongText;
+			_prompt.TextWrapping = wrap;
 		}
 		#endregion
 		#region toast img and no title
 		private void ToastWithImgAndNoTitleClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetToastWithImgAndNoTitle();
+			InitializeToastWithImgAndNoTitle();
 
-			toast.Show();
+			_prompt.Show();
 		}
 
 		private void ToastWrapWithImgAndNoTitleClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetToastWithImgAndNoTitle();
-			toast.TextWrapping = TextWrapping.Wrap;
+			InitializeToastWithImgAndNoTitle(TextWrapping.Wrap);
 
-			toast.Show();
+			_prompt.Show();
 		}
 
-		private static ToastPrompt GetToastWithImgAndNoTitle()
+		private void InitializeToastWithImgAndNoTitle(TextWrapping wrap = default(TextWrapping))
 		{
-			return new ToastPrompt
-			{
-				Message = LongText,
-				ImageSource = new BitmapImage(new Uri("../../media/c4f_26x26.png", UriKind.RelativeOrAbsolute))
-			};
+			InitializePrompt();
+
+			_prompt.Message = LongText;
+			_prompt.ImageSource = new BitmapImage(new Uri("../../media/c4f_26x26.png", UriKind.RelativeOrAbsolute));
+			_prompt.TextWrapping = wrap;
 		}
 		#endregion
 		#region toast img and title
@@ -103,61 +134,119 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 		#region toast with custom everything and event
 		private void ToastAdvancedClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetAdvancedToast();
+			InitializeAdvancedToast();
 
-			toast.Show();
+			_prompt.Show();
 		}
 
 		private void ToastWrapAdvancedClick(object sender, RoutedEventArgs e)
 		{
-			var toast = GetAdvancedToast();
-			toast.TextWrapping = TextWrapping.Wrap;
+			InitializeAdvancedToast(TextWrapping.Wrap);
 
-			toast.Show();
+			_prompt.Show();
 		}
 
-		private ToastPrompt GetAdvancedToast()
+		private void InitializeAdvancedToast(TextWrapping wrap = default(TextWrapping))
 		{
-			var toast = new ToastPrompt
-			{
-				IsAppBarVisible = false,
-				Background = _aliceBlueSolidColorBrush,
-				Foreground = _cornFlowerBlueSolidColorBrush,
-				Title = "Advanced",
-				Message = "Custom Fontsize, img, and orientation",
-				FontSize = 50,
-				TextOrientation = System.Windows.Controls.Orientation.Vertical,
-				ImageSource =
-					new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute))
-			};
+			InitializePrompt();
 
-			toast.Completed += PopUpPromptStringCompleted;
+			_prompt.IsAppBarVisible = false;
+			_prompt.Title = "Advanced";
+			_prompt.Message = "Custom Fontsize, img, and orientation";
+			_prompt.ImageSource = new BitmapImage(new Uri("..\\ApplicationIcon.png", UriKind.RelativeOrAbsolute));
+			_prompt.FontSize = 50;
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Vertical;
+			_prompt.Background = _aliceBlueSolidColorBrush;
+			_prompt.Foreground = _cornFlowerBlueSolidColorBrush;
 
-			return toast;
+			_prompt.TextWrapping = wrap;
 		}
 		#endregion
 		#region stress test
 		private void ToastSysTrayVisClick(object sender, RoutedEventArgs e)
 		{
 			AdjustSystemTray();
-			GetBasicToast("Test Vis").Show();
+			InitializeBasicToast("Test Vis");
+
+			_prompt.Show();
 		}
 
 		private void ToastSysTrayNotVisClick(object sender, RoutedEventArgs e)
 		{
 			AdjustSystemTray(false);
-			GetBasicToast("Test not Vis").Show();
+			InitializeBasicToast("Test not Vis");
+
+			_prompt.Show();
 		}
 
 		private void ToastSysTrayVisWithOpacityClick(object sender, RoutedEventArgs e)
 		{
 			AdjustSystemTray(true, .8);
-			GetBasicToast("Test with Opacity").Show();
+			InitializeBasicToast("Test with Opacity");
+
+			_prompt.Show();
+		}
+		#endregion
+
+		#region large image
+		private void LargeImageClick(object sender, RoutedEventArgs e)
+		{
+			InitializePrompt();
+
+			_prompt.Title = "With Image";
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Vertical;
+			_prompt.Message = LongText;
+			_prompt.ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute));
+			
+			_prompt.Show();
+		}
+
+		private void LargeImageWidthHeightClick(object sender, RoutedEventArgs e)
+		{
+			InitializePrompt();
+
+			_prompt.Title = "Width + Height";
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Vertical;
+			_prompt.Message = LongText;
+			_prompt.ImageHeight = 50;
+			_prompt.ImageWidth = 100;
+			_prompt.ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute));
+			
+			_prompt.Show();
+		}
+
+		private void LargeImageStretchClick(object sender, RoutedEventArgs e)
+		{
+			InitializePrompt();
+
+			_prompt.Title = "Stretch";
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Vertical;
+			_prompt.Message = LongText;
+			_prompt.ImageHeight = 100;
+			_prompt.Stretch = Stretch.Fill;
+			_prompt.ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute));
+			
+			_prompt.Show();
+		}
+
+		private void LargeImageStretchWidthHeightClick(object sender, RoutedEventArgs e)
+		{
+			InitializePrompt();
+
+			_prompt.Title = "Stretch + Width + Height";
+			_prompt.TextOrientation = System.Windows.Controls.Orientation.Vertical;
+			_prompt.Message = LongText;
+			_prompt.ImageHeight = 50;
+			_prompt.ImageWidth = 100;
+			_prompt.Stretch = Stretch.Uniform;
+			_prompt.ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute));
+			
+			_prompt.Show();
 		}
 		#endregion
 		#endregion
 
-		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
+		void PromptCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
 			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}
@@ -166,57 +255,6 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 		{
 			SystemTray.IsVisible = isVisible;
 			SystemTray.Opacity = opacity;
-		}
-
-		private void LargeImageClick(object sender, RoutedEventArgs e)
-		{
-			new ToastPrompt
-				{
-					Title = "With Image",
-					TextOrientation = System.Windows.Controls.Orientation.Vertical,
-					Message = LongText,
-					ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
-				}.Show();
-		}
-
-		private void LargeImageWidthHeightClick(object sender, RoutedEventArgs e)
-		{
-			new ToastPrompt
-			{
-				Title = "Width + Height",
-				TextOrientation = System.Windows.Controls.Orientation.Vertical,
-				Message = LongText,
-				ImageHeight = 50,
-				ImageWidth = 100,
-				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
-			}.Show();
-		}
-
-		private void LargeImageStretchClick(object sender, RoutedEventArgs e)
-		{
-			new ToastPrompt
-			{
-				Title = "Stretch",
-				TextOrientation = System.Windows.Controls.Orientation.Vertical,
-				Message = LongText,
-				ImageHeight = 100,
-				Stretch = Stretch.Fill,
-				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
-			}.Show();
-		}
-
-		private void LargeImageStretchWidthHeightClick(object sender, RoutedEventArgs e)
-		{
-			new ToastPrompt
-			{
-				Title = "Stretch + Width + Height",
-				TextOrientation = System.Windows.Controls.Orientation.Vertical,
-				Message = LongText,
-				ImageHeight = 50,
-				ImageWidth = 100,
-				Stretch = Stretch.Uniform,
-				ImageSource = new BitmapImage(new Uri("../../logo_300x300.png", UriKind.RelativeOrAbsolute))
-			}.Show();
 		}
 	}
 }

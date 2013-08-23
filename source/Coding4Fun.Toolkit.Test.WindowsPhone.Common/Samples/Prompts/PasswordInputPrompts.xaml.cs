@@ -16,74 +16,79 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
 
+		private PasswordInputPrompt _prompt;
+
 		public PasswordInputPrompts()
 		{
 			InitializeComponent();
 		}
 
-		#region password prompt
+		private void InitializePrompt()
+		{
+			var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+			if (_prompt != null)
+			{
+				_prompt.Completed -= PromptCompleted;
+			}
+
+			if (!reuseObject || _prompt == null)
+			{
+				_prompt = new PasswordInputPrompt();
+			}
+
+			_prompt.Completed += PromptCompleted;
+		}
+
 		private void PasswordClick(object sender, RoutedEventArgs e)
 		{
-			var passwordInput = new PasswordInputPrompt
-			{
-				Title = "Basic Input",
-				Message = "I'm a basic input prompt" + LongText,
-			};
+			InitializePrompt();
 
-			passwordInput.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Basic Input";
+			_prompt.Message = "I'm a basic input prompt" + LongText;
 
-			passwordInput.Show();
+			_prompt.Show();
 		}
 
 		private void PasswordNoEnterClick(object sender, RoutedEventArgs e)
 		{
-			var passwordInput = new PasswordInputPrompt
-			{
-				Title = "Enter won't submit",
-				Message = "Enter key won't submit now",
-				IsSubmitOnEnterKey = false
-			};
+			InitializePrompt();
 
-			passwordInput.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Enter won't submit";
+			_prompt.Message = "Enter key won't submit now";
+			_prompt.IsSubmitOnEnterKey = false;
 
-			passwordInput.Show();
+			_prompt.Show();
 		}
 
 		private void PasswordAdvancedClick(object sender, RoutedEventArgs e)
 		{
-			var passwordInput = new PasswordInputPrompt
-			{
-				Title = "TelephoneNum",
-				Message = "I'm a message about Telephone numbers!",
-				Background = _naturalBlueSolidColorBrush,
-				Foreground = _aliceBlueSolidColorBrush,
-				Overlay = _cornFlowerBlueSolidColorBrush,
-				IsCancelVisible = true,
-				InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } },
-				Value = "doom"
-			};
+			InitializePrompt();
 
-			passwordInput.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "TelephoneNum";
+			_prompt.Message = "I'm a message about Telephone numbers!";
+			_prompt.Background = _naturalBlueSolidColorBrush;
+			_prompt.Foreground = _aliceBlueSolidColorBrush;
+			_prompt.Overlay = _cornFlowerBlueSolidColorBrush;
+			_prompt.IsCancelVisible = true;
+			_prompt.InputScope = new InputScope {Names = {new InputScopeName {NameValue = InputScopeNameValue.TelephoneNumber}}};
+			_prompt.Value = "Value Return";
 
-			passwordInput.Show();
+			_prompt.Show();
 		}
 
 		private void InputLongMsgClick(object sender, RoutedEventArgs e)
 		{
-			var passwordInput = new PasswordInputPrompt
-			{
-				Title = "Basic Input",
-				Message = LongText,
-				MessageTextWrapping = TextWrapping.Wrap,
-			};
+			InitializePrompt();
 
-			passwordInput.Completed += PopUpPromptStringCompleted;
-
-			passwordInput.Show();
+			_prompt.Title = "Basic Input";
+			_prompt.Message = LongText;
+			_prompt.MessageTextWrapping = TextWrapping.Wrap;
+			
+			_prompt.Show();
 		}
-		#endregion
 
-		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
+		void PromptCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
 			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}

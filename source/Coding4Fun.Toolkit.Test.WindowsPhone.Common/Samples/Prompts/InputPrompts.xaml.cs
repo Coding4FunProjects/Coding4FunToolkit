@@ -16,74 +16,78 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
 
+		private InputPrompt _prompt;
+
 		public InputPrompts()
 		{
 			InitializeComponent();
 		}
 
-		#region input prompt
+		private void InitializePrompt()
+		{
+			var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+			if (_prompt != null)
+			{
+				_prompt.Completed -= PromptCompleted;
+			}
+
+			if (!reuseObject || _prompt == null)
+			{
+				_prompt = new InputPrompt();
+			}
+
+			_prompt.Completed += PromptCompleted;
+		}
+
 		private void InputClick(object sender, RoutedEventArgs e)
 		{
-			var input = new InputPrompt
-			{
-				Title = "Basic Input",
-				Message = "I'm a basic input prompt" + LongText,
-			};
+			InitializePrompt();
 
-			input.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Basic Input";
+			_prompt.Message = "I'm a basic input prompt" + LongText;
 
-			input.Show();
+			_prompt.Show();
 		}
 
 		private void InputNoEnterClick(object sender, RoutedEventArgs e)
 		{
-			var input = new InputPrompt
-			{
-				Title = "Enter won't submit",
-				Message = "Enter key won't submit now",
-				IsSubmitOnEnterKey = false
-			};
+			InitializePrompt();
 
-			input.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Enter won't submit";
+			_prompt.Message = "Enter key won't submit now";
+			_prompt.IsSubmitOnEnterKey = false;
 
-			input.Show();
+			_prompt.Show();
 		}
 
 		private void InputAdvancedClick(object sender, RoutedEventArgs e)
 		{
-			var input = new InputPrompt
-			{
-				Title = "TelephoneNum",
-				Message = "I'm a message about Telephone numbers!",
-				Background = _naturalBlueSolidColorBrush,
-				Foreground = _aliceBlueSolidColorBrush,
-				Overlay = _cornFlowerBlueSolidColorBrush,
-				IsCancelVisible = true
-			};
+			InitializePrompt();
 
-			input.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "TelephoneNum";
+			_prompt.Message = "I'm a message about Telephone numbers!";
+			_prompt.Background = _naturalBlueSolidColorBrush;
+			_prompt.Foreground = _aliceBlueSolidColorBrush;
+			_prompt.Overlay = _cornFlowerBlueSolidColorBrush;
+			_prompt.IsCancelVisible = true;
+			_prompt.InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } };
 
-			input.InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } };
-			input.Show();
+			_prompt.Show();
 		}
 
 		private void InputLongMsgClick(object sender, RoutedEventArgs e)
 		{
-			var input = new InputPrompt
-			{
-				Title = "Basic Input",
-				Message = LongText,
-				MessageTextWrapping = TextWrapping.Wrap
-			};
+			InitializePrompt();
 
-			input.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Basic Input";
+			_prompt.Message = LongText;
+			_prompt.MessageTextWrapping = TextWrapping.Wrap;
 
-			input.Show();
+			_prompt.Show();
 		}
-		
-		#endregion
 
-		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
+		void PromptCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
 			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}

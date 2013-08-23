@@ -17,86 +17,90 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
 
+		private MessagePrompt _prompt;
 
 		public MessagePrompts()
 		{
 			InitializeComponent();
 		}
 
-		#region message prompt
+		private void InitializePrompt()
+		{
+			var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+			if (_prompt != null)
+			{
+				_prompt.Completed -= PromptCompleted;
+			}
+
+			if (!reuseObject || _prompt == null)
+			{
+				_prompt = new MessagePrompt();
+			}
+
+			_prompt.Completed += PromptCompleted;
+		}
+
 		private void MessageClick(object sender, RoutedEventArgs e)
 		{
-			var messagePrompt = new MessagePrompt
-			{
-				Title = "Basic Message",
-				Message = LongText,
-			};
+			InitializePrompt();
 
-			messagePrompt.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Basic Message";
+			_prompt.Message = LongText;
 
-			messagePrompt.Show();
+			_prompt.Show();
 		}
 
 		private void MessageAdvancedClick(object sender, RoutedEventArgs e)
 		{
-			var messagePrompt = new MessagePrompt
-			{
-				Title = "Advanced Message",
-				Message = "When complete, i'll navigate back",
-				Overlay = _cornFlowerBlueSolidColorBrush,
-				IsCancelVisible = true
-			};
+			InitializePrompt();
 
-			messagePrompt.Completed += PopUpPromptStringCompleted;
+			_prompt.Title = "Advanced Message";
+			_prompt.Message = "When complete, i'll navigate back";
+			_prompt.Overlay = _cornFlowerBlueSolidColorBrush;
+			_prompt.IsCancelVisible = true;
 
-			messagePrompt.Show();
+			_prompt.Show();
 		}
 
 		private void MessageCustomClick(object sender, RoutedEventArgs e)
 		{
-			var messagePrompt = new MessagePrompt
-			{
-				Title = "Custom Body Message",
-				Background = _naturalBlueSolidColorBrush,
-				Foreground = _aliceBlueSolidColorBrush,
-				Overlay = _cornFlowerBlueSolidColorBrush,
-				IsCancelVisible = true,
+			InitializePrompt();
 
-			};
+			_prompt.Title = "Custom Body Message";
+			_prompt.Background = _naturalBlueSolidColorBrush;
+			_prompt.Foreground = _aliceBlueSolidColorBrush;
+			_prompt.Overlay = _cornFlowerBlueSolidColorBrush;
+			_prompt.IsCancelVisible = true;
 
 			var btn = new Button { Content = "Msg Box" };
 			btn.Click += (s, args) => Results.Text = "Hi!";
 
-			messagePrompt.Body = btn;
+			_prompt.Body = btn;
 
-			messagePrompt.Completed += PopUpPromptStringCompleted;
-
-			messagePrompt.Show();
+			_prompt.Show();
 		}
 
 		private void MessageSuperClick(object sender, RoutedEventArgs e)
 		{
-			var messagePrompt = new MessagePrompt
-			{
-				Title = "Advanced Message",
-				Background = _naturalBlueSolidColorBrush,
-				Foreground = _aliceBlueSolidColorBrush,
-				Overlay = _cornFlowerBlueSolidColorBrush,
-			};
+			InitializePrompt();
+
+			_prompt.Title = "Advanced Message";
+			_prompt.Background = _naturalBlueSolidColorBrush;
+			_prompt.Foreground = _aliceBlueSolidColorBrush;
+			_prompt.Overlay = _cornFlowerBlueSolidColorBrush;
 
 			var btnHide = new RoundButton { Label = "Hide" };
-			btnHide.Click += (o, args) => messagePrompt.Hide();
+			btnHide.Click += (o, args) => _prompt.Hide();
 
 			var btnComplete = new RoundButton { Label = "Complete" };
-			btnComplete.Click += (o, args) => messagePrompt.OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok, Result = "You clicked the Complete Button" });
+			btnComplete.Click += (o, args) => _prompt.OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok, Result = "You clicked the Complete Button" });
 
-			messagePrompt.ActionPopUpButtons.Clear();
-			messagePrompt.ActionPopUpButtons.Add(btnHide);
-			messagePrompt.ActionPopUpButtons.Add(btnComplete);
+			_prompt.ActionPopUpButtons.Clear();
+			_prompt.ActionPopUpButtons.Add(btnHide);
+			_prompt.ActionPopUpButtons.Add(btnComplete);
 
-			messagePrompt.Completed += PopUpPromptStringCompleted;
-
-			messagePrompt.Show();
+			_prompt.Show();
 		}
 
 		#region stress test
@@ -124,9 +128,8 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 			msgPrompt.Show();
 		}
 		#endregion
-		#endregion
 
-		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
+		void PromptCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
 			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}
