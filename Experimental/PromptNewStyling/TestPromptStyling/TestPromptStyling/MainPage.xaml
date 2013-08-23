@@ -10,8 +10,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="Portrait" Orientation="Portrait">
 	<phone:PhoneApplicationPage.Resources>
 		<Style x:Key="ChromelessButtonStyle" TargetType="Button">
 			<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
@@ -98,14 +97,14 @@
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="24, 0">
 			<Image Source="trex_360width.jpg" />
 		</Grid>
 
 		<Grid Grid.RowSpan="1000">
 			<Rectangle Fill="{StaticResource PhoneAccentBrush}" Opacity=".4" />
 			<Border Background="{StaticResource PhoneChromeBrush}" VerticalAlignment="Center">
-				<Grid Margin="24">
+				<Grid Margin="24" Background="Gray">
 					<Grid.RowDefinitions>
 						<RowDefinition />
 						<RowDefinition />
@@ -114,16 +113,21 @@
 
 					<StackPanel Grid.Row="0">
 						<TextBlock 
-							Text="title" Margin="0,-7,0,0" 
-							FontFamily="{StaticResource PhoneFontFamilySemiBold}"
-							FontSize="{StaticResource PhoneFontSizeLarge}"/>
+							HorizontalAlignment="Left"
+							Text="page name" 
+							Margin="-3, -16, 0, 0" 
+							FontSize="42"/>
 					</StackPanel>
-					<ContentControl HorizontalAlignment="Left" Grid.Row="1" Margin="0, 12">
+
+					<ContentControl HorizontalAlignment="Left" Grid.Row="1">
 						<StackPanel>
+							<TextBlock>Foobar</TextBlock>
+							<TextBlock>Foobar</TextBlock>
 							<TextBlock>Foobar</TextBlock>
 						</StackPanel>
 					</ContentControl>
-					<Grid Grid.Row="2">
+					
+					<Grid Grid.Row="2" Margin="0, 12, 0, 0">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition />
 							<ColumnDefinition />
@@ -149,6 +153,7 @@
 				</Grid>
 			</Border>
 		</Grid>
+		<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />
 	</Grid>
 
 </phone:PhoneApplicationPage>
