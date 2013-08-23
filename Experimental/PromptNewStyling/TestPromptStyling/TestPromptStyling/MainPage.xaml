@@ -10,13 +10,12 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait">
+    SupportedOrientations="Portrait" Orientation="Landscape">
 	<phone:PhoneApplicationPage.Resources>
 		<Style x:Key="ChromelessButtonStyle" TargetType="Button">
 			<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
-			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneAccentBrush}"/>
 			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-			<Setter Property="BorderThickness" Value="0"/>
 			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
 			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
 			<Setter Property="Padding" Value="10,5,10,6"/>
@@ -127,7 +126,8 @@
 						</StackPanel>
 					</ContentControl>
 					
-					<Grid Grid.Row="2" Margin="0, 12, 0, 0">
+					<Border Grid.Row="2" Background="Firebrick">
+						<Grid Margin="0, 12, 0, 0">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition />
 							<ColumnDefinition />
@@ -149,7 +149,8 @@
 							Style="{StaticResource ChromelessButtonStyle}">
 							maybe
 						</Button>
-					</Grid>
+						</Grid>
+					</Border>
 				</Grid>
 			</Border>
 		</Grid>
