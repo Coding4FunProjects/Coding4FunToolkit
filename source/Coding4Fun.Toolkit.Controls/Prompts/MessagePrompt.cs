@@ -8,26 +8,37 @@ namespace Coding4Fun.Toolkit.Controls
         public MessagePrompt()
         {
             DefaultStyleKey = typeof(MessagePrompt);
+
             MessageChanged = SetBodyMessage;
         }
 
-        public object Body
-        {
-            get { return GetValue(BodyProperty); }
-            set { SetValue(BodyProperty, value); }
-        }
+		#region Control Events
+		#endregion
 
-        // Using a DependencyProperty as the backing store for Body.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BodyProperty =
-            DependencyProperty.Register("Body", typeof(object), typeof(MessagePrompt), new PropertyMetadata(null));
+		#region helper methods
+		protected internal void SetBodyMessage()
+		{
+			Body = new TextBlock
+			{
+				Text = Message,
+				TextWrapping = TextWrapping.Wrap
+			};
+		}
+		#endregion
 
-        protected internal void SetBodyMessage()
-        {
-            Body = new TextBlock
-                       {
-                           Text = Message,
-                           TextWrapping = TextWrapping.Wrap
-                       };
-        }
-    }
+		#region Dependency Property Callbacks
+		#endregion
+
+		#region Dependency Properties / Properties
+		public object Body
+		{
+			get { return GetValue(BodyProperty); }
+			set { SetValue(BodyProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Body.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty BodyProperty =
+			DependencyProperty.Register("Body", typeof(object), typeof(MessagePrompt), new PropertyMetadata(null));
+		#endregion
+	}
 }

@@ -17,6 +17,7 @@ namespace Coding4Fun.Toolkit.Controls
 		public AppBarPrompt()
 		{
 			DefaultStyleKey = typeof (AppBarPrompt);
+
 			MainBodyDelay = TimeSpan.FromMilliseconds(100);
 		}
 
@@ -25,20 +26,6 @@ namespace Coding4Fun.Toolkit.Controls
             AnimationType = DialogService.AnimationTypes.Swivel;
 
 			_theActions = actions;
-        }
-
-	    /// <summary>
-	    /// Checks the app bar background color.
-	    /// </summary>
-	    /// <returns></returns>
-	    private void VerifyAppBarBackgroundColor()
-        {
-			var color = PopUpService.Page.ApplicationBar.BackgroundColor;
-
-			if (color != NullColor) // Default system theme no color is given
-			{
-				Background = new SolidColorBrush(color);
-			}
         }
 
         /// <summary>
@@ -68,6 +55,31 @@ namespace Coding4Fun.Toolkit.Controls
 					Body.Children.Add(menuItem);
 				}
 			}
-        }
-    }
+		}
+
+		#region Control Events
+		#endregion
+
+		#region helper methods
+		/// <summary>
+		/// Checks the app bar background color.
+		/// </summary>
+		/// <returns></returns>
+		private void VerifyAppBarBackgroundColor()
+		{
+			var color = PopUpService.Page.ApplicationBar.BackgroundColor;
+
+			if (color != NullColor) // Default system theme no color is given
+			{
+				Background = new SolidColorBrush(color);
+			}
+		}
+		#endregion
+
+		#region Dependency Property Callbacks
+		#endregion
+
+		#region Dependency Properties / Properties
+		#endregion
+	}
 }

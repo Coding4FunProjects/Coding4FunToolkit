@@ -19,24 +19,10 @@ namespace Coding4Fun.Toolkit.Controls
             SetButtons();
         }
 
-        public List<Button> ActionPopUpButtons
-        {
-            get { return (List<Button>)GetValue(ActionPopUpButtonsProperty); }
-            set { SetValue(ActionPopUpButtonsProperty, value); }
-        }
+		#region Control Events
+		#endregion
 
-        // Using a DependencyProperty as the backing store for ActionPopUpButtons.  This enables animation, styling, binding, etc...
-        public readonly DependencyProperty ActionPopUpButtonsProperty =
-            DependencyProperty.Register("ActionPopUpButtons", typeof(List<Button>), typeof(ActionPopUp<T, TPopUpResult>), new PropertyMetadata(new List<Button>(), OnActionPopUpButtonsChanged));
-
-        private static void OnActionPopUpButtonsChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            var sender = ((ActionPopUp<T, TPopUpResult>)o);
-
-            if (sender != null && e.NewValue != e.OldValue)
-                sender.SetButtons();
-        }
-
+		#region helper methods
 		private void SetButtons()
 		{
 			if (ActionButtonArea == null)
@@ -50,11 +36,35 @@ namespace Coding4Fun.Toolkit.Controls
 			{
 				ActionButtonArea.Children.Add(button);
 
-				hasContent |= button.Content != null;
+				hasContent |= (button.Content != null);
 			}
 
 			if (hasContent)
 				ActionButtonArea.Margin = new Thickness();
 		}
-    }
+		#endregion
+
+		#region Dependency Property Callbacks
+		private static void OnActionPopUpButtonsChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			var sender = ((ActionPopUp<T, TPopUpResult>)o);
+
+			if (sender != null && e.NewValue != e.OldValue)
+				sender.SetButtons();
+		}
+		#endregion
+
+		#region Dependency Properties / Properties
+		public List<Button> ActionPopUpButtons
+		{
+			get { return (List<Button>)GetValue(ActionPopUpButtonsProperty); }
+			set { SetValue(ActionPopUpButtonsProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for ActionPopUpButtons.  This enables animation, styling, binding, etc...
+		public readonly DependencyProperty ActionPopUpButtonsProperty =
+			DependencyProperty.Register("ActionPopUpButtons", typeof(List<Button>), typeof(ActionPopUp<T, TPopUpResult>), new PropertyMetadata(new List<Button>(), OnActionPopUpButtonsChanged));
+
+		#endregion
+	}
 }

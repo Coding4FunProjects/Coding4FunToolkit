@@ -45,8 +45,7 @@ namespace Coding4Fun.Toolkit.Controls
 
         internal AppBarPrompt Parent { get; set; }
 
-        public AppBarPromptAction(object content, Action execute)
-            : this(content, execute, () => true)
+        public AppBarPromptAction(object content, Action execute) : this(content, execute, () => true)
         {
         }
 
