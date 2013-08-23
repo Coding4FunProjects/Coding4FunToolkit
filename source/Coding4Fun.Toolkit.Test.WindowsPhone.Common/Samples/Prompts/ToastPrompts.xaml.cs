@@ -159,7 +159,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
-			resultBlock.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
+			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}
 
 		private static void AdjustSystemTray(bool isVisible = true, double opacity = 1)

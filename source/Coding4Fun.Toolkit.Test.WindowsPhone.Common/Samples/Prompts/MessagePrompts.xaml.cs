@@ -65,7 +65,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 			};
 
 			var btn = new Button { Content = "Msg Box" };
-			btn.Click += (s, args) => resultBlock.Text = "Hi!";
+			btn.Click += (s, args) => Results.Text = "Hi!";
 
 			messagePrompt.Body = btn;
 
@@ -128,7 +128,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		void PopUpPromptStringCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
 		{
-			resultBlock.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
+			Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
 		}
 
 		private void DingClick(object sender, RoutedEventArgs e)

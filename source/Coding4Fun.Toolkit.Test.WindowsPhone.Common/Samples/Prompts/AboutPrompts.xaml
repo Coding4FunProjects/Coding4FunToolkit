@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -33,17 +34,23 @@
 				<Button Content="Advanced" Click="AboutPromptC4FClick" />
 			</StackPanel>
 
-			<TextBlock
-				Name="resultBlock"
-				Text="result: ##"
-				VerticalAlignment="Bottom" />
-			<Button 
-				HorizontalAlignment="Right"
-				VerticalAlignment="Bottom" 
-				Content="Click Event"
-				Click="DingClick" 
-				Background="Red" 
-				BorderBrush="#FFD11E1E" />
+			<StackPanel VerticalAlignment="Bottom">
+				<Grid>
+					<TextBlock
+						Name="Results"
+						Text="result: ##" />
+					<Button 
+						HorizontalAlignment="Right"
+						Content="Click Event"
+						Click="DingClick" 
+						Background="Red" 
+						BorderBrush="#FFD11E1E" />
+				</Grid>
+				<toolkit:ToggleSwitch
+					Name="ReuseObject">
+					Reuse Object
+				</toolkit:ToggleSwitch>
+			</StackPanel>
 		</Grid>
     </Grid>
 	

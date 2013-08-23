@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+
 using Coding4Fun.Toolkit.Controls;
 
 using Microsoft.Phone.Controls;
@@ -30,7 +31,9 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 			new AppBarPrompt(new AppBarPromptAction("option 1", () => { })
 							 , new AppBarPromptAction("option 2", () => { })
 							 , new AppBarPromptAction("option 3", () => { })) 
-							 { Foreground = new SolidColorBrush(Colors.Orange) }.Show();
+							 {
+								 Background = new SolidColorBrush(Colors.Blue),
+								 Foreground = new SolidColorBrush(Colors.Orange) }.Show();
         }
 
         private void fourOptions_Click(object sender, EventArgs e)
