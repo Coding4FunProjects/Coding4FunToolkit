@@ -116,6 +116,7 @@ namespace Coding4Fun.Toolkit.Controls
 			    PopUpService = new DialogService
 				                   {
 					                   AnimationType = AnimationType,
+									   BackgroundBrush = Overlay,
 					                   Child = this,
 					                   IsBackKeyOverride = IsBackKeyOverride,
 					                   IsOverlayApplied = IsOverlayApplied,

@@ -239,6 +239,7 @@ namespace Clarity.Phone.Extensions
         public DialogService()
         {
             AnimationType = AnimationTypes.Slide;
+
             BackButtonPressed = false;
         }
 
@@ -337,6 +338,8 @@ namespace Clarity.Phone.Extensions
 		{
 			lock (Lockobj)
 			{
+				Page.BackKeyPress -= OnBackKeyPress;
+
 				IsOpen = true;
 
 				InitializePopup();
