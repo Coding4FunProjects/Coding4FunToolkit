@@ -52,8 +52,9 @@ namespace TestClip
 
 			Maximum = 110;
 			Value = 55;
-			StepFrequency = 25;
+			//StepFrequency = 25;
 
+			
 			Loaded += TestSlider_Loaded;
 			ValueChanged += TestSlider_ValueChanged;
 		}

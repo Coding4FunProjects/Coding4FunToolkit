@@ -37,16 +37,23 @@
 					<Grid Background="Transparent">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal"/>
-								<VisualState x:Name="MouseOver"/>
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver" />
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalTrack">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Blue"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
 								<VisualState x:Name="Disabled">
 									<Storyboard>
 										<!--<DoubleAnimation Duration="0" To="{Binding DisableTrackOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="HorizontalTrack"/>
-										<DoubleAnimation Duration="0" To="{Binding DisableTrackOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalTrack"/>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalFill">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
+										<DoubleAnimation Duration="0" To="{Binding DisableTrackOpacity, RelativeSource={RelativeSource TemplatedParent}}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalTrack"/>-->
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="HorizontalTrack">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Brown"/>
 										</ObjectAnimationUsingKeyFrames>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalFill">
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="VerticalFill">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DefaultDisabledBrush}"/>
 										</ObjectAnimationUsingKeyFrames>-->
 									</Storyboard>
