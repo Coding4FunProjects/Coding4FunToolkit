@@ -52,13 +52,6 @@
                            TextWrapping="Wrap"
                            Margin="12,12,12,0" />
             </StackPanel>
-
-			<!--<StackPanel VerticalAlignment="Bottom">
-				<toolkit:ToggleSwitch
-					Name="ReuseObject">
-					Reuse Object
-				</toolkit:ToggleSwitch>
-			</StackPanel>-->
 		</Grid>
     </Grid>
 

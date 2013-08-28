@@ -25,14 +25,14 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 
 		private void InitializePrompt()
 		{
-			var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+			//var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
 
 			if (_prompt != null)
 			{
 				_prompt.Completed -= PromptCompleted;
 			}
 
-			if (!reuseObject || _prompt == null)
+			//if (!reuseObject || _prompt == null)
 			{
 				_prompt = new ToastPrompt();
 			}
@@ -41,16 +41,16 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples.Prompts
 			// you don't need to do this.
 			// fontsize, foreground, background won't manually be reset
 
-			_prompt.TextWrapping = TextWrapping.NoWrap;
-			_prompt.ImageSource = null;
-			_prompt.ImageHeight = double.NaN;
-			_prompt.ImageWidth = double.NaN;
-			_prompt.Stretch = Stretch.None;
-			_prompt.IsAppBarVisible = false;
-			_prompt.TextOrientation = System.Windows.Controls.Orientation.Horizontal;
+			//_prompt.TextWrapping = TextWrapping.NoWrap;
+			//_prompt.ImageSource = null;
+			//_prompt.ImageHeight = double.NaN;
+			//_prompt.ImageWidth = double.NaN;
+			//_prompt.Stretch = Stretch.None;
+			//_prompt.IsAppBarVisible = false;
+			//_prompt.TextOrientation = System.Windows.Controls.Orientation.Horizontal;
 			
-			_prompt.Message = string.Empty;
-			_prompt.Title = string.Empty;
+			//_prompt.Message = string.Empty;
+			//_prompt.Title = string.Empty;
 
 			_prompt.Completed += PromptCompleted;
 		}

@@ -67,10 +67,6 @@
 				<TextBlock
 					Name="Results"
 					Text="result: ##" />
-				<toolkit:ToggleSwitch
-					Name="ReuseObject">
-					Reuse Object
-			</toolkit:ToggleSwitch>
 			</StackPanel>
 		</Grid>
     </Grid>

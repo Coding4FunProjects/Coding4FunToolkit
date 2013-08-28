@@ -27,6 +27,8 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (PopUpService != null)
             {
+				// template hasn't been applied yet
+				// overlay is null until now
 	            PopUpService.BackgroundBrush = Overlay;
 
 				PopUpService.ApplyOverlayBackground();
@@ -39,12 +41,14 @@ namespace Coding4Fun.Toolkit.Controls
 			if (IsOpen)
 				return;
 
+		    if (_alreadyFired)
+			    throw new InvalidOperationException("Invalid control state, do not reuse object after calling Show()");
+
 		    if (PopUpService == null)
 		    {
 			    PopUpService = new DialogService
 				                   {
 					                   AnimationType = AnimationType,
-									   BackgroundBrush = Overlay,
 					                   Child = this,
 					                   IsBackKeyOverride = IsBackKeyOverride,
 					                   IsOverlayApplied = IsOverlayApplied,
@@ -52,7 +56,6 @@ namespace Coding4Fun.Toolkit.Controls
 				                   };
 		    }
 
-			
 		    // this will happen if the user comes in OnNavigate or 
 		    // something where the DOM hasn't been created yet.
 		    if (PopUpService.Page == null)
