@@ -28,7 +28,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         }
 
         /// <summary>
-        /// Min value as a TimeSpan
+        /// Minimum value as a TimeSpan
         /// </summary>
 		public TimeSpan Minimum
         {
@@ -37,7 +37,7 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
         }
 
 		/// <summary>
-		/// Value step as a TimeSpan
+		/// StepFrequency as a TimeSpan
 		/// </summary>
 		public TimeSpan StepFrequency
 		{

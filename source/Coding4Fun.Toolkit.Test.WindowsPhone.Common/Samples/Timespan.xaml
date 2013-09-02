@@ -31,21 +31,21 @@
 					<TextBlock>Max 2 hours, Steps 10 min, custom title</TextBlock>
 					<c4f:TimeSpanPicker
 						DialogTitle="coding4fun timespan picker"
-						Max="{Binding TimeSpan2Hour}" 
-						Step="{Binding TimeSpan10Min}"/>
+						Maximum="{Binding TimeSpan2Hour}" 
+						StepFrequency="{Binding TimeSpan10Min}"/>
 
 					<TextBlock>Min 10min, Max 30min, Step 5 min, set to 5</TextBlock>
 					<c4f:TimeSpanPicker
 						Value="{Binding TimeSpan5Min}"
-                        Min="{Binding TimeSpan10Min}" 
-						Max="{Binding TimeSpan30Min}" 
-						Step="{Binding TimeSpan5Min}" 
+                        Minimum="{Binding TimeSpan10Min}" 
+						Maximum="{Binding TimeSpan30Min}" 
+						StepFrequency="{Binding TimeSpan5Min}" 
 						ValueChanged="TimeSpanPicker_ValueChanged" />
                     <TextBlock>Invalid Time set 2h, max of 30min</TextBlock>
                     <c4f:TimeSpanPicker
 						Value="{Binding TimeSpan2Hour}"
-						Max="{Binding TimeSpan30Min}" 
-						Step="{Binding TimeSpan5Min}" />
+						Maximum="{Binding TimeSpan30Min}" 
+						StepFrequency="{Binding TimeSpan5Min}" />
                     
                     <Button Click="LaunchPickerClick">Launch Via OpenPicker()</Button>
 				</StackPanel>

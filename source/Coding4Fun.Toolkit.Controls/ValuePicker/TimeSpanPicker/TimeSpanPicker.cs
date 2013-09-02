@@ -37,34 +37,34 @@ namespace Coding4Fun.Toolkit.Controls
         }
 
         /// <summary>
-        /// Gets or sets the Max Value
+        /// Gets or sets the Maximum Value
         /// </summary>
-        public TimeSpan Max
+        public TimeSpan Maximum
         {
             get { return (TimeSpan)GetValue(MaxProperty); }
             set { SetValue(MaxProperty, value); }
         }
 
         /// <summary>
-        /// Identifies the Max Property
+        /// Identifies the Maximum Property
         /// </summary>
         public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(
-            "Max", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromHours(24), OnLimitsChanged));
+            "Maximum", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromHours(24), OnLimitsChanged));
 
         /// <summary>
-        /// Gets or sets the Max Value
+        /// Gets or sets the Maximum Value
         /// </summary>
-        public TimeSpan Min
+        public TimeSpan Minimum
         {
             get { return (TimeSpan)GetValue(MinProperty); }
             set { SetValue(MinProperty, value); }
         }
 
         /// <summary>
-        /// Identifies the Max Property
+        /// Identifies the Maximum Property
         /// </summary>
         public static readonly DependencyProperty MinProperty = DependencyProperty.Register(
-            "Min", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.Zero, OnLimitsChanged));
+            "Minimum", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.Zero, OnLimitsChanged));
 
         private static void OnLimitsChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
@@ -78,48 +78,48 @@ namespace Coding4Fun.Toolkit.Controls
 
         private void ValidateBounds()
         {
-            if (Min < TimeSpan.Zero)
+            if (Minimum < TimeSpan.Zero)
             {
-                Min = TimeSpan.Zero;
+                Minimum = TimeSpan.Zero;
             }
 
-            if (Max > TimeSpan.MaxValue)
+            if (Maximum > TimeSpan.MaxValue)
             {
-                Max = TimeSpan.MaxValue;
+                Maximum = TimeSpan.MaxValue;
             }
 
-            if (Max < Min)
+            if (Maximum < Minimum)
             {
-                Max = Min;
+                Maximum = Minimum;
             }
 
             if (Value.HasValue)
             {
-                Value = TimeSpanExtensions.CheckBound(Value.Value, Min, Max);
+                Value = TimeSpanExtensions.CheckBound(Value.Value, Minimum, Maximum);
             }
             else
             {
-                Value = Min;
+                Value = Minimum;
             }
         }
 
         /// <summary>
-        /// Gets or sets the Value Step
+        /// Gets or sets the Value StepFrequency
         /// </summary>
-        public TimeSpan Step
+        public TimeSpan StepFrequency
         {
             get { return (TimeSpan)GetValue(StepProperty); }
             set { SetValue(StepProperty, value); }
         }
 
         /// <summary>
-        /// Identifies the Max Property
+        /// Identifies the Maximum Property
         /// </summary>
         public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
-            "Step", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromSeconds(1)));
+            "StepFrequency", typeof(TimeSpan), typeof(ValuePickerBase<TimeSpan>), new PropertyMetadata(TimeSpan.FromSeconds(1)));
 
         /// <summary>
-        /// Initializes Value, Max, Step when vanigating to the new page
+        /// Initializes Value, Maximum, StepFrequency when navigating to the new page
         /// </summary>
         /// <param name="page"></param>
         protected override void NavigateToNewPage(object page)
@@ -128,9 +128,9 @@ namespace Coding4Fun.Toolkit.Controls
 
             if (tsPage != null)
             {
-				tsPage.Minimum = Min;
-				tsPage.Maximum = Max;
-				tsPage.StepFrequency = Step;
+				tsPage.Minimum = Minimum;
+				tsPage.Maximum = Maximum;
+				tsPage.StepFrequency = StepFrequency;
             }
 
             base.NavigateToNewPage(page);
