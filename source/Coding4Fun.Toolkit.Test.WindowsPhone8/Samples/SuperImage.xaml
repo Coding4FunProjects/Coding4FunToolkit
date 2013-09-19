@@ -14,7 +14,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
 	<ms:Pivot x:Name="LayoutRoot"  Title="{StaticResource AppName}">
-		<ms:PivotItem Header="Basic">
+		<ms:PivotItem Header="basic">
 			<ScrollViewer>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -86,7 +86,7 @@
 				</Grid>
 			</ScrollViewer>
 		</ms:PivotItem>
-		<ms:PivotItem Header="Sources">
+		<ms:PivotItem Header="sources">
 			<ScrollViewer>
 				<Grid>
 					<Grid.ColumnDefinitions>
