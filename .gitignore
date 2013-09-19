@@ -1,0 +1,11 @@
+obj
+
+/bin/Debug/
+/bin/Release/
+/nuget/*.nupkg
+
+/source/*/Bin/
+/source/*/Obj/
+/source/*/AppPackages/
+*.user
+*.suo
