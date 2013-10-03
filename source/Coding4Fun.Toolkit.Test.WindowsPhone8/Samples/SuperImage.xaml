@@ -14,7 +14,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
 	<ms:Pivot x:Name="LayoutRoot"  Title="{StaticResource AppName}">
-		<ms:PivotItem Header="Basic">
+		<ms:PivotItem Header="basic">
 			<ScrollViewer>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -76,10 +76,9 @@
 							Stretch="Uniform" 
 							Height="50" />
 						
-						<TextBlock>Place w/ invalid image</TextBlock>
+						<TextBlock>Placeholder w/ binding</TextBlock>
 						<c4f:SuperImage 
 							PlaceholderImageSource="../Media/head.png" 
-							PlaceholderImageStretch="Uniform"
 							Source="isostore:/invalid.jpg" 
 							Stretch="Uniform" 
 							Height="50" />
@@ -87,7 +86,7 @@
 				</Grid>
 			</ScrollViewer>
 		</ms:PivotItem>
-		<ms:PivotItem Header="Sources">
+		<ms:PivotItem Header="sources">
 			<ScrollViewer>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -169,6 +168,16 @@
 							Height="50"
 							PlaceholderImageSource="../Media/head.png" 
 							PlaceholderImageStretch="Uniform">
+							<c4f:SuperImage.Sources>
+								<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
+							</c4f:SuperImage.Sources>
+						</c4f:SuperImage>
+
+						<TextBlock>Place w/ invalid image</TextBlock>
+						<c4f:SuperImage 
+							Height="50"
+							PlaceholderImageSource="../Media/head.png" 
+							Stretch="Uniform">
 							<c4f:SuperImage.Sources>
 								<c4f:SuperImageSource Source="isostore:/invalid.jpg" />
 							</c4f:SuperImage.Sources>

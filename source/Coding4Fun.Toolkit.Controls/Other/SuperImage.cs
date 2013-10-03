@@ -88,7 +88,7 @@ namespace Coding4Fun.Toolkit.Controls
         #endregion
 
         #region PlaceholderImageSource Property
-        public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register(
+		public static readonly DependencyProperty PlaceholderImageSourceProperty = DependencyProperty.Register(
             "PlaceholderImageSource", 
             typeof (ImageSource), 
             typeof (SuperImage), 
@@ -102,8 +102,8 @@ namespace Coding4Fun.Toolkit.Controls
         /// </value>
         public ImageSource PlaceholderImageSource
         {
-            get { return (ImageSource) GetValue(PlaceholderSourceProperty); }
-            set { SetValue(PlaceholderSourceProperty, value); }
+			get { return (ImageSource)GetValue(PlaceholderImageSourceProperty); }
+			set { SetValue(PlaceholderImageSourceProperty, value); }
         }
         #endregion
 
@@ -160,7 +160,7 @@ namespace Coding4Fun.Toolkit.Controls
         #endregion
 
         #region PlaceholderImageStretch Property
-        public static readonly DependencyProperty PlaceholderStretchProperty =  DependencyProperty.Register(
+		public static readonly DependencyProperty PlaceholderImageStretchProperty = DependencyProperty.Register(
             "PlaceholderImageStretch", 
             typeof (Stretch), 
             typeof (SuperImage), 
@@ -174,8 +174,8 @@ namespace Coding4Fun.Toolkit.Controls
         /// </value>
         public Stretch PlaceholderImageStretch
         {
-            get { return (Stretch) GetValue(PlaceholderStretchProperty); }
-            set { SetValue(PlaceholderStretchProperty, value); }
+			get { return (Stretch)GetValue(PlaceholderImageStretchProperty); }
+			set { SetValue(PlaceholderImageStretchProperty, value); }
         }
         #endregion
         #endregion
