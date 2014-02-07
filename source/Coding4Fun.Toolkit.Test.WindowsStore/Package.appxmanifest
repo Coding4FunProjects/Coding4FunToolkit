@@ -1,24 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="687c035b-2505-40d3-aace-75191cbe69d8" Publisher="CN=crutkas" Version="1.0.0.0" />
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="687c035b-2505-40d3-aace-75191cbe69d8" Publisher="CN=crutkas" Version="1.1.0.0" />
   <Properties>
     <DisplayName>Coding4Fun.Toolkit.Test.WindowsStore</DisplayName>
     <PublisherDisplayName>crutkas</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
-    <OSMinVersion>6.2.1</OSMinVersion>
-    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Coding4Fun.Toolkit.Test.WindowsStore.App">
-      <VisualElements DisplayName="Coding4Fun Toolkit" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Coding4Fun Toolkit is filled with useful items to help make your development life easier." ForegroundText="dark" BackgroundColor="#FFFFFF">
-        <DefaultTile ShortName="Coding4Fun Toolkit" />
-        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FFFFFF" />
-      </VisualElements>
+      <m2:VisualElements DisplayName="Coding4Fun Toolkit" Description="Coding4Fun Toolkit is filled with useful items to help make your development life easier." BackgroundColor="#FFFFFF" ForegroundText="dark" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+        <m2:DefaultTile ShortName="Coding4Fun Toolkit">
+        </m2:DefaultTile>
+        <m2:SplashScreen BackgroundColor="#FFFFFF" Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
     </Application>
   </Applications>
   <Capabilities>

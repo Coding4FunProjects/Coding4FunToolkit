@@ -14,7 +14,7 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples.ChatBubbles
 
 		private void AddTextClicked(object sender, RoutedEventArgs e)
 		{
-			_dynamicTextHintTest.Text += "c4f ";
+			//_dynamicTextHintTest.Text += "c4f ";
 		}
 	}
 }
