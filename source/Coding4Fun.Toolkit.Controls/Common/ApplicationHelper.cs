@@ -23,12 +23,16 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		const int Percent = 100; 
 #endif
 
+        /// <summary>
+        /// Gets the application scale factor 
+        /// </summary>
+        /// <returns>the scale factor (100 = 100%)</returns>
 		public static int ScaleFactor()
 		{
 #if WIN81
             var displayInformation = DisplayInformation.GetForCurrentView();
 
-            return (int)((displayInformation.LogicalDpi * Percent) / DefaultLogicalppi);
+            return (int)displayInformation.ResolutionScale;
 #elif WINDOWS_STORE
 	// http://code.msdn.microsoft.com/windowsapps/Scaling-sample-cf072f4f/sourcecode?fileId=43958&pathId=589460989
 				return (int) ((DisplayProperties.LogicalDpi * Percent) / DefaultLogicalppi);
