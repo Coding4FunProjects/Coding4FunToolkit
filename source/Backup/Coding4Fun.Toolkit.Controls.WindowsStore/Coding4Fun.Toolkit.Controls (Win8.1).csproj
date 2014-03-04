@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0A56304-E80F-4270-85AA-ABC02C8D413F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Controls</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Controls</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\coding4fun.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\Windows Store\AnyCPU</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\Windows Store\AnyCPU</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\Windows Store\ARM\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\ARM\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>..\..\bin\Release\Windows Store\ARM\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\ARM\Release\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\Windows Store\x64\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\x64\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\bin\Release\Windows Store\x64\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\x64\Release\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\Windows Store\x86\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\x86\Debug\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\bin\Release\Windows Store\x86\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Controls\x86\Release\Windows Store\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
+      <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBase.cs">
+      <Link>Buttons\ButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBaseHelper.cs">
+      <Link>Buttons\ButtonBaseHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\IButtonBase.cs">
+      <Link>Buttons\IButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTile.cs">
+      <Link>Buttons\ImageTile.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileAnimationTypes.cs">
+      <Link>Buttons\ImageTileAnimationTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileLayoutStates.cs">
+      <Link>Buttons\ImageTileLayoutStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ImageTileState.cs">
+      <Link>Buttons\ImageTileState.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
+      <Link>Buttons\OpacityToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton %28Windows Store%29.cs">
+      <Link>Buttons\RoundButton %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton.cs">
+      <Link>Buttons\RoundButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundToggleButton.cs">
+      <Link>Buttons\RoundToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\Tile.cs">
+      <Link>Buttons\Tile.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\TileNotification.cs">
+      <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase %28Windows Store%29.cs">
+      <Link>Buttons\ToggleButtonBase %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ToggleButtonBase.cs">
+      <Link>Buttons\ToggleButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubble.cs">
+      <Link>ChatBubble\ChatBubble.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleDirection.cs">
+      <Link>ChatBubble\ChatBubbleDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\ChatBubble\ChatBubbleTextBox.cs">
+      <Link>ChatBubble\ChatBubbleTextBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorBaseControl.cs">
+      <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker %28Windows Store%29.cs">
+      <Link>Colors\ColorHexagonPicker %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
+      <Link>Colors\ColorHexagonPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
+      <Link>Common\ApplicationHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtensions.cs">
+      <Link>Common\ColorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
+      <Link>Common\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ControlHelper.cs">
+      <Link>Common\ControlHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
+      <Link>Common\DevelopmentHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DoubleExtensions.cs">
+      <Link>Common\DoubleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\FloatExtensions.cs">
+      <Link>Common\FloatExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
+      <Link>Common\IImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
+      <Link>Common\ImageSourceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IntExtensions.cs">
+      <Link>Common\IntExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
+      <Link>Common\Numbers.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\SafeDispatcher.cs">
+      <Link>Common\SafeDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
+      <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TimeSpanExtensions.cs">
+      <Link>Common\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
+      <Link>Common\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\NumberMultiplierConverter.cs">
+      <Link>Converters\NumberMultiplierConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\SolidColorBrushToColorConverter.cs">
+      <Link>Converters\SolidColorBrushToColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\StringToVisibilityConverter.cs">
+      <Link>Converters\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverter.cs">
+      <Link>Converters\ThemedImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverterHelper.cs">
+      <Link>Converters\ThemedImageConverterHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedInverseImageConverter.cs">
+      <Link>Converters\ThemedInverseImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessProperties.cs">
+      <Link>Converters\ThicknessProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessToGridLengthConverter.cs">
+      <Link>Converters\ThicknessToGridLengthConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ValueConverter.cs">
+      <Link>Converters\ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\VisibilityToBooleanConverter.cs">
+      <Link>Converters\VisibilityToBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
+      <Link>Effects\TiltEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
+      <Link>Other\LockScreenPreview.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
+      <Link>Other\SuperImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImageSource.cs">
+      <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit.csproj">
+      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Name>Coding4Fun.Toolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)..\..\Tools\Coding4Fun.Toolkit.Tool.XamlMerger.exe" -winstore</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
