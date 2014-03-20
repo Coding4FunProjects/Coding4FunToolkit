@@ -18,20 +18,20 @@
 
 	<files>
 		<file
-			src="Release\Windows Phone 7\Coding4Fun.Toolkit.Net.dll"
+			src="..\bin\Release\Windows Phone 7\Coding4Fun.Toolkit.Net.dll"
 			target="lib\wp71" />
 		<file
-			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Net.dll"
+			src="..\bin\Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Net.dll"
 			target="lib\windowsphone8" />
 
 		<file
-			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.dll"
+			src="..\bin\Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.dll"
 			target="lib\windows8" />
 		<file
-			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.pri"
+			src="..\bin\Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Net.pri"
 			target="lib\windows8" />
 
-		<file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
+		<file src="..\bin\content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
 	</files>
 </package>
 <!--
