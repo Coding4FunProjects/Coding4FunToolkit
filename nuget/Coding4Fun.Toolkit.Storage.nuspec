@@ -19,20 +19,20 @@
 
 	<files>
 		<file
-			src="..\bin\Release\Windows Phone 7\Coding4Fun.Toolkit.Storage.dll"
+			src="Release\Windows Phone 7\Coding4Fun.Toolkit.Storage.dll"
 			target="lib\wp71" />
 		<file
-			src="..\bin\Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Storage.dll"
+			src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Storage.dll"
 			target="lib\windowsphone8" />
 		
 		<file
-			src="..\bin\Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Storage.dll"
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Storage.dll"
 			target="lib\windows8" />
 		<file
-			src="..\bin\Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Storage.pri"
+			src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Storage.pri"
 			target="lib\windows8" />
 
-		<file src="..\bin\content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
+		<file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
 	</files>
 </package>
 <!--
