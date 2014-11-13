@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using System.Reflection;
 
 #endif
@@ -8,9 +8,9 @@ namespace System
 	public static class TypeExtensions
 	{
 		public static bool IsTypeOf(this object target, Type type)
-		{
-#if WINDOWS_STORE
-			return target.GetType().GetTypeInfo().IsSubclassOf(type);
+        {
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            return target.GetType().GetTypeInfo().IsSubclassOf(type);
 #elif WINDOWS_PHONE
 			return type.IsInstanceOfType(target);
 #endif
