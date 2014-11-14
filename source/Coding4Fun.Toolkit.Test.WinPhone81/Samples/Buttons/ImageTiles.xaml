@@ -1,9 +1,9 @@
 ﻿<Page
-    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.ButtonControls"
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons.ImageTiles"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:Coding4Fun="using:Coding4Fun.Toolkit.Controls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples"
+    xmlns:coding4Fun="using:Coding4Fun.Toolkit.Controls"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -25,27 +25,17 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="Button Controls" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Image Tiles" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <GridView Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Coding4Fun:Tile 
-					Label="Image Tiles" 
-					Tapped="ImageTileControls" 
-					Style="{StaticResource TileStyle}">
-                <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Im
-                </TextBlock>
-            </Coding4Fun:Tile>
-            <Coding4Fun:Tile 
-					Label="Tiles" 
-					Tapped="TileControls" 
-					Style="{StaticResource TileStyle}">
-                <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Ti
-                </TextBlock>
-            </Coding4Fun:Tile>
-        </GridView>
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <coding4Fun:ImageTile HorizontalAlignment="Left"
+					x:Name="fadeTile"
+					AnimationType="Fade"
+					AnimationDuration="250"
+					ImageCycleInterval="500"
+					Label="Image Tile" />
+        </Grid>
     </Grid>
 </Page>

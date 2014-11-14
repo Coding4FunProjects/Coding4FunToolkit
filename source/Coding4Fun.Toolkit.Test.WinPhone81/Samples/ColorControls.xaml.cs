@@ -18,17 +18,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ColorControls : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public ColorControls()
         {
             this.InitializeComponent();
 
@@ -37,29 +37,9 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
+        private void ColorHex(object sender, TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Audio));
-        }
-
-        private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(Samples.ButtonControls));
-		}
-
-        private void StorageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Storage));
-        }
-
-        private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ColorControls));
-        }
-
-        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.SuperImage));
+            Frame.Navigate(typeof(Samples.Color.ColorHexPicker));
         }
 
         /// <summary>

@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Color.ColorHexPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:coding4Fun="using:Coding4Fun.Toolkit.Controls"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Color"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Color Hexagon Picker" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <Slider Background="White"  BorderThickness="1" 
+						Name="_colorBrightSteps"
+                        HorizontalAlignment="Stretch" Margin="10, 0"
+                        SmallChange="1"
+						Value="4"
+						Minimum="0"
+						Maximum="6" />
+                <TextBlock Text="color brightness steps" Margin="10, -20, 10, 0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <Slider 
+						Name="_colorDarkSteps"
+                        HorizontalAlignment="Stretch" Margin="10, 0"
+						SmallChange="1"
+						Value="2"
+                        Minimum="0"
+						Maximum="6"  Background="White"/>
+                <TextBlock Text="color darkness steps" Margin="10, -20, 10, 0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <Slider
+                Background="White"
+						Name="_greySteps"
+                        HorizontalAlignment="Stretch" Margin="10, 0"
+						SmallChange="1"
+						Value="20"
+						Minimum="0"
+						Maximum="25" />
+                <TextBlock Text="grey steps"  Margin="10, -20, 10, 0"/>
+            </StackPanel>
+            <Button 
+				Grid.Column="1"
+				Grid.Row="1"
+				Content="Set to Red" 
+                HorizontalAlignment="Stretch"
+				Click="Button_Click" 
+				Margin="10" />
+            <coding4Fun:ColorHexagonPicker 
+				x:Name="_myColorControl" 
+				Grid.Row="2" Grid.ColumnSpan="2"
+				Color="Blue"
+				SelectedStrokeColor="White"
+				ColorBrightnessSteps="{Binding ElementName=_colorBrightSteps, Path=Value}"
+				ColorDarknessSteps="{Binding ElementName=_colorDarkSteps, Path=Value}"
+				GreyScaleSteps="{Binding ElementName=_greySteps, Path=Value}"
+				ColorChanged="ColorControl_ColorChanged" />
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <StackPanel Margin="12">
+                    <TextBlock>Via Binding:</TextBlock>
+                    <Rectangle 
+                            Height="25"
+                            Fill="{Binding ElementName=_myColorControl, Path=SolidColorBrush}" />
+                </StackPanel>
+                <StackPanel Margin="12">
+                    <TextBlock>Via Event:</TextBlock>
+                    <Rectangle 
+                            Name="_colorFromEvent"
+                            Height="25" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -4,7 +4,7 @@ using System.Linq;
 
 using Coding4Fun.Toolkit.Controls.Common;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -122,7 +122,7 @@ namespace Coding4Fun.Toolkit.Controls
 			FinishLoadAndTemplateApply();
 		}
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 		protected override void OnApplyTemplate()
 #elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
@@ -173,7 +173,7 @@ namespace Coding4Fun.Toolkit.Controls
 			return row * (Columns) + col;
 		}
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 		void ChangeImageTimerTick(object sender, object e)
 #elif WINDOWS_PHONE
 		void ChangeImageTimerTick(object sender, EventArgs e)
@@ -419,8 +419,8 @@ namespace Coding4Fun.Toolkit.Controls
     		_animationTracking.Add(tileState);
     	}
 
-#if WINDOWS_STORE
-		void AnimationCompleted(object sender, object e)
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void AnimationCompleted(object sender, object e)
 #elif WINDOWS_PHONE
 		void AnimationCompleted(object sender, EventArgs e)
 #endif

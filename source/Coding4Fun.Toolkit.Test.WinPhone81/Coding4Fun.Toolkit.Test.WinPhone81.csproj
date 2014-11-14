@@ -97,7 +97,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Buttons\ImageTiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Buttons\Tiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ColorControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Color\ColorHexPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,8 +140,17 @@
     <Compile Include="Samples\ButtonControls.xaml.cs">
       <DependentUpon>ButtonControls.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Buttons\ImageTiles.xaml.cs">
+      <DependentUpon>ImageTiles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Buttons\Tiles.xaml.cs">
       <DependentUpon>Tiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ColorControls.xaml.cs">
+      <DependentUpon>ColorControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Color\ColorHexPicker.xaml.cs">
+      <DependentUpon>ColorHexPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>

@@ -4,7 +4,7 @@ using System.Linq;
 
 using Coding4Fun.Toolkit.Controls.Common;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

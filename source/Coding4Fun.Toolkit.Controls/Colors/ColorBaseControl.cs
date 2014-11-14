@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,8 +26,8 @@ namespace Coding4Fun.Toolkit.Controls
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.Register("Color", typeof(Color), typeof(ColorBaseControl), new PropertyMetadata(
-#if WINDOWS_STORE	
-				null, 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                null, 
 #endif				
 				OnColorChanged));
 

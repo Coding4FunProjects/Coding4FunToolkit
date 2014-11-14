@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,17 +19,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Color
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ColorHexPicker : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public ColorHexPicker()
         {
             this.InitializeComponent();
 
@@ -37,29 +38,16 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
+        private void ColorControl_ColorChanged(object sender, Windows.UI.Color color)
         {
-            Frame.Navigate(typeof(Samples.Audio));
+            _colorFromEvent.Fill = new SolidColorBrush(color);
         }
 
-        private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(Samples.ButtonControls));
-		}
-
-        private void StorageTapped(object sender, TappedRoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Storage));
-        }
-
-        private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ColorControls));
-        }
-
-        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.SuperImage));
+            //ColorControl.Color = System.Windows.Media.Color.FromArgb(255, 255, 0, 0);
+            //this.co
+            _myColorControl.Color = Colors.Red;
         }
 
         /// <summary>

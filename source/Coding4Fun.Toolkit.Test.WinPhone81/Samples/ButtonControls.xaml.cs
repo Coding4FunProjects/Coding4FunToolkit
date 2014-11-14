@@ -38,6 +38,11 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
+        private void ImageTileControls(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ImageTiles));
+        }
+
         private void TileControls(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(Tiles));

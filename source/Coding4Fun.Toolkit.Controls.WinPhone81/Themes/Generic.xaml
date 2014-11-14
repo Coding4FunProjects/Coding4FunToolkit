@@ -27,6 +27,46 @@
     <Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
     <Thickness x:Key="DefaultBorderThickness">3</Thickness>
 
+    <Style TargetType="local:ColorHexagonPicker">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorHexagonPicker">
+                    <StackPanel>
+                        <ContentPresenter Content="{TemplateBinding ColorBody}" />
+                        <ContentPresenter Content="{TemplateBinding GreyScaleBody}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:ImageTile">
+        <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeNormal}" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="MinWidth" Value="36" />
+        <Setter Property="MinHeight" Value="36" />
+        <Setter Property="Width" Value="{StaticResource DefaultTileSize}" />
+        <Setter Property="Height" Value="{StaticResource DefaultTileSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ImageTile">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+                        <Grid x:Name="ImageContainer" />
+                        <ContentControl Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" />
+                        <ContentControl Content="{TemplateBinding Label}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="10, 0, 0, 10" Margin="0, 0, 0, -5" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="local:SuperImage">
         <Setter Property="Template">
             <Setter.Value>

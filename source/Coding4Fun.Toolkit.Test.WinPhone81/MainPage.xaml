@@ -46,6 +46,14 @@
                 </TextBlock>
             </coding4Fun:Tile>
             <coding4Fun:Tile 
+				Label="Color" 
+				Style="{StaticResource TileStyle}"
+				Tapped="ColorControlsTapped" >
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Co
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
 				Label="Storage" 
 				Style="{StaticResource TileStyle}"
 				Tapped="StorageTapped" >

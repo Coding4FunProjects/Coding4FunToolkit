@@ -18,48 +18,37 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ImageTiles : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public ImageTiles()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            SetItemSource(15);
         }
 
-        private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
+        private void SetItemSource(int amount)
         {
-            Frame.Navigate(typeof(Samples.Audio));
-        }
+            var items = new List<Uri>();
 
-        private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(Samples.ButtonControls));
-		}
+            for (int i = 0; i <= amount; i++)
+            {
+                items.Add(new Uri(String.Format("ms-appx:/Media/images/{0}.jpg", i)));
+            }
 
-        private void StorageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Storage));
-        }
-
-        private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ColorControls));
-        }
-
-        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.SuperImage));
+            fadeTile.ItemsSource = items;
         }
 
         /// <summary>
