@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -66,8 +66,8 @@ namespace Coding4Fun.Toolkit.Controls
 			if (target == null)
 				return;
 
-#if WINDOWS_STORE
-			var hasBinding = target.ReadLocalValue(Shape.FillProperty) as Brush == null;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            var hasBinding = target.ReadLocalValue(Shape.FillProperty) as Brush == null;
 #elif WINDOWS_PHONE
 			var hasBinding = target.GetBindingExpression(Shape.FillProperty) != null;			
 #endif
@@ -90,8 +90,8 @@ namespace Coding4Fun.Toolkit.Controls
 			if (source == null || target == null)
 				return;
 
-#if WINDOWS_STORE
-			var binding = new Windows.UI.Xaml.Data.Binding();
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            var binding = new Windows.UI.Xaml.Data.Binding();
 #elif WINDOWS_PHONE
 			var binding = new System.Windows.Data.Binding();
 #endif

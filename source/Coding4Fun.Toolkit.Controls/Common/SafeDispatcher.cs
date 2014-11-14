@@ -12,15 +12,15 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			if (dispatcher == null)
 				return;
 
-#if WINDOWS_STORE
-			if (!dispatcher.HasThreadAccess)
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            if (!dispatcher.HasThreadAccess)
 #elif WINDOWS_PHONE
 			if (!dispatcher.CheckAccess())
 #endif
-			{
+            {
 
-#if WINDOWS_STORE
-				dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => func());
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => func());
 #elif WINDOWS_PHONE
 				dispatcher.BeginInvoke(func);
 #endif
@@ -41,16 +41,16 @@ namespace Coding4Fun.Toolkit.Controls.Common
 			if (dispatcher == null)
 				return returnData;
 
-#if WINDOWS_STORE
-			if (!dispatcher.HasThreadAccess)
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            if (!dispatcher.HasThreadAccess)
 #elif WINDOWS_PHONE
 			if (!dispatcher.CheckAccess())
 #endif
 			{
 				var holdMutex = new AutoResetEvent(true);
 
-#if WINDOWS_STORE
-				dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
 					returnData = func()
 					);
 #elif WINDOWS_PHONE

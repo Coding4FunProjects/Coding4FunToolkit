@@ -1,0 +1,65 @@
+﻿<Page xmlns:coding4Fun="using:Coding4Fun.Toolkit.Controls" 
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="tests/samples" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <GridView  Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <coding4Fun:Tile 
+				Label="Audio"
+				Style="{StaticResource TileStyle}" 
+				Tapped="AudioWrappersTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Au
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
+				Label="Button"
+				Style="{StaticResource TileStyle}" 
+				Tapped="ButtonControlsTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Bu
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
+				Label="Storage" 
+				Style="{StaticResource TileStyle}"
+				Tapped="StorageTapped" >
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						St
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile Label="SuperImage"
+                             Style="{StaticResource TileStyle}"
+                             Tapped="SuperImageTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Si
+                </TextBlock>
+            </coding4Fun:Tile>
+        </GridView>
+    </Grid>
+</Page>

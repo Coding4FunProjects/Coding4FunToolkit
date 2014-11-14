@@ -79,10 +79,98 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
+      <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ButtonBase.cs">
+      <Link>Buttons\ButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ButtonBaseHelper.cs">
+      <Link>Buttons\ButtonBaseHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\IButtonBase.cs">
+      <Link>Buttons\IButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\Tile.cs">
+      <Link>Buttons\Tile.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\TileNotification.cs">
+      <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
+      <Link>Common\ApplicationHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorExtensions.cs">
+      <Link>Common\ColorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ColorSpace.cs">
+      <Link>Common\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ControlHelper.cs">
+      <Link>Common\ControlHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DevelopmentHelpers.cs">
+      <Link>Common\DevelopmentHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\DoubleExtensions.cs">
+      <Link>Common\DoubleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\FloatExtensions.cs">
+      <Link>Common\FloatExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IImageSource.cs">
+      <Link>Common\IImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ImageSourceExtensions.cs">
+      <Link>Common\ImageSourceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IntExtensions.cs">
+      <Link>Common\IntExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
+      <Link>Common\Numbers.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\SafeDispatcher.cs">
+      <Link>Common\SafeDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TemplatedVisualTreeExtensions.cs">
+      <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\TimeSpanExtensions.cs">
+      <Link>Common\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\VisualTreeExtensions.cs">
+      <Link>Common\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\converters\NumberMultiplierConverter.cs">
+      <Link>Converters\NumberMultiplierConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\SolidColorBrushToColorConverter.cs">
+      <Link>Converters\SolidColorBrushToColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\converters\ValueConverter.cs">
+      <Link>Converters\ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
+      <Link>Other\SuperImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImageSource.cs">
+      <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
+      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Name>Coding4Fun.Toolkit %28Universal%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

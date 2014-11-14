@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit (Win8.1)", "Coding4Fun.Toolkit\Coding4Fun.Toolkit (Win8.1).csproj", "{F9A88602-BB65-4EA8-89B0-5F28D17ACCE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit (Universal)", "Coding4Fun.Toolkit\Coding4Fun.Toolkit (Universal).csproj", "{F9A88602-BB65-4EA8-89B0-5F28D17ACCE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Audio (Win8.1)", "Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio (Win8.1).csproj", "{F78F9EB4-0744-46D1-84FC-1FDB7B20714D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Audio (Universal)", "Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio (Universal).csproj", "{F78F9EB4-0744-46D1-84FC-1FDB7B20714D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls (Win8.1)", "Coding4Fun.Toolkit.Controls.WindowsStore\Coding4Fun.Toolkit.Controls (Win8.1).csproj", "{F0A56304-E80F-4270-85AA-ABC02C8D413F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Net (Win8.1)", "Coding4Fun.Toolkit.Net\Coding4Fun.Toolkit.Net (Win8.1).csproj", "{F278C763-CBE4-4B2E-BAD0-DD5F2C2FAC2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Net (Universal)", "Coding4Fun.Toolkit.Net\Coding4Fun.Toolkit.Net (Universal).csproj", "{F278C763-CBE4-4B2E-BAD0-DD5F2C2FAC2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Storage (Win8.1)", "Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage (Win8.1).csproj", "{0A87FAEE-6318-4454-B7BF-BDCB5CE11783}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Storage (Universal)", "Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage (Universal).csproj", "{0A87FAEE-6318-4454-B7BF-BDCB5CE11783}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Test.WindowsStore (Win8.1)", "Coding4Fun.Toolkit.Test.WindowsStore\Coding4Fun.Toolkit.Test.WindowsStore (Win8.1).csproj", "{82EBD7F2-B58D-4D89-922D-C9D93F489411}"
 EndProject

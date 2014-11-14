@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 

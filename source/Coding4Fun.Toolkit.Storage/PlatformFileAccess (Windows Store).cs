@@ -1,7 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Windows.Storage;
 using Windows.Storage.Search;
 using Windows.Storage.Streams;
@@ -47,11 +47,23 @@ namespace Coding4Fun.Toolkit.Storage
 
 		public async static Task<StorageFile> GetFileAccess(string fileName)
 		{
-			var storageFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            var storageFolder = ApplicationData.Current.LocalFolder;
 
-			var files = await storageFolder.GetFilesAsync(CommonFileQuery.OrderByName);
-			var file = files.FirstOrDefault(x => x.Name == fileName) ??
-			           await storageFolder.CreateFileAsync(fileName, CreationCollisionOption.GenerateUniqueName);
+            StorageFile file = null;
+            
+            try
+            {
+                file = await storageFolder.GetFileAsync(fileName);
+            }
+            catch(Exception)
+            {
+                
+            }
+
+            if (file == null)
+            {
+                file = await storageFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+            }
 
 			return file;
 		}

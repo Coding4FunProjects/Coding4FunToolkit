@@ -400,17 +400,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28Win8.1%29.csproj">
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28Universal%29.csproj">
       <Project>{f78f9eb4-0744-46d1-84fc-1fdb7b20714d}</Project>
-      <Name>Coding4Fun.Toolkit.Audio %28Win8.1%29</Name>
+      <Name>Coding4Fun.Toolkit.Audio %28Universal%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsStore\Coding4Fun.Toolkit.Controls %28Win8.1%29.csproj">
       <Project>{f0a56304-e80f-4270-85aa-abc02c8d413f}</Project>
       <Name>Coding4Fun.Toolkit.Controls %28Win8.1%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Win8.1%29.csproj">
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Universal%29.csproj">
       <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
-      <Name>Coding4Fun.Toolkit.Storage %28Win8.1%29</Name>
+      <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

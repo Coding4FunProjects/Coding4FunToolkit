@@ -1,6 +1,6 @@
 ﻿using System;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;

@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D7A6F84-A595-4F8D-ADC0-2D804C113193}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Test.WinPhone81</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Test.WinPhone81</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Page Include="Common\CustomStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Audio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ButtonControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\Tiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Storage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\SuperImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\Audio.xaml.cs">
+      <DependentUpon>Audio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ButtonControls.xaml.cs">
+      <DependentUpon>ButtonControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\Tiles.xaml.cs">
+      <DependentUpon>Tiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Storage.xaml.cs">
+      <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\SuperImage.xaml.cs">
+      <DependentUpon>SuperImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TestSerializeClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Media\images\0.jpg" />
+    <Content Include="Media\images\1.jpg" />
+    <Content Include="Media\images\10.jpg" />
+    <Content Include="Media\images\11.jpg" />
+    <Content Include="Media\images\12.jpg" />
+    <Content Include="Media\images\13.jpg" />
+    <Content Include="Media\images\14.jpg" />
+    <Content Include="Media\images\15.jpg" />
+    <Content Include="Media\images\16.jpg" />
+    <Content Include="Media\images\17.jpg" />
+    <Content Include="Media\images\18.jpg" />
+    <Content Include="Media\images\19.jpg" />
+    <Content Include="Media\images\2.jpg" />
+    <Content Include="Media\images\20.jpg" />
+    <Content Include="Media\images\21.jpg" />
+    <Content Include="Media\images\22.jpg" />
+    <Content Include="Media\images\23.jpg" />
+    <Content Include="Media\images\24.jpg" />
+    <Content Include="Media\images\25.jpg" />
+    <Content Include="Media\images\26.jpg" />
+    <Content Include="Media\images\27.jpg" />
+    <Content Include="Media\images\28.jpg" />
+    <Content Include="Media\images\29.jpg" />
+    <Content Include="Media\images\3.jpg" />
+    <Content Include="Media\images\30.jpg" />
+    <Content Include="Media\images\31.jpg" />
+    <Content Include="Media\images\32.jpg" />
+    <Content Include="Media\images\33.jpg" />
+    <Content Include="Media\images\34.jpg" />
+    <Content Include="Media\images\4.jpg" />
+    <Content Include="Media\images\5.jpg" />
+    <Content Include="Media\images\6.jpg" />
+    <Content Include="Media\images\7.jpg" />
+    <Content Include="Media\images\8.jpg" />
+    <Content Include="Media\images\9.jpg" />
+    <Content Include="Media\images\lamp.jpg" />
+    <Content Include="Media\images\PlaceholderPhoto.png" />
+    <Content Include="Media\images\robot.jpg" />
+    <Content Include="Media\images\Seattle.jpg" />
+    <Content Include="Media\images\trex_360width.jpg" />
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Media\BackgroundTest.jpg" />
+    <Content Include="Media\c4f_26x26.png" />
+    <Content Include="Media\head.png" />
+    <Content Include="Media\headWhite.png" />
+    <Content Include="Media\headWhite_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28Universal%29.csproj">
+      <Project>{f78f9eb4-0744-46d1-84fc-1fdb7b20714d}</Project>
+      <Name>Coding4Fun.Toolkit.Audio %28Universal%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WinPhone81\Coding4Fun.Toolkit.Controls %28WinPhone8.1%29.csproj">
+      <Project>{5e5224b5-61d3-4280-a9c2-8b5e422743c1}</Project>
+      <Name>Coding4Fun.Toolkit.Controls %28WinPhone8.1%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Universal%29.csproj">
+      <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
+      <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

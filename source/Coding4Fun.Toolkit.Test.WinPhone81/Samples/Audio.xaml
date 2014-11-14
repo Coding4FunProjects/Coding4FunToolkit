@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Audio"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Audio" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <MediaElement Name="playBack" />
+                <ToggleButton Checked="StartRecordingChecked" Unchecked="StartRecordingUnchecked">
+                    Toggle to rec
+                </ToggleButton>
+                <ToggleButton Checked="StartRecordingWithEventChecked" Unchecked="StartRecordingWithEventUnchecked">
+                    Toggle to rec w/ eventing
+                </ToggleButton>
+                <Button Click="RecordForThreeSecondsClick">
+                    Click to record 3 sec
+                </Button>
+                <Button Click="RecordAndAutoTerminateClick">
+                    Click to record 10 sec term after 2
+                </Button>
+                <Button Click="NavTestClick">
+                    Test Nav break test
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Storage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Storage" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel Grid.Row="1">
+                <TextBlock Margin="12, 0">string data</TextBlock>
+                <TextBox Name="stringData" Text="" />
+                <TextBlock Margin="12, 0">int data</TextBlock>
+                <TextBox Name="intData" InputScope="Number"/>
+                <TextBlock Margin="12, 0">date data</TextBlock>
+                <TextBox  Name="dateTimeData" />
+                <!--<slToolkit:DatePicker Name="dateTimeData" Value="" />-->
+                <TextBlock Margin="12, 0">timespan data</TextBlock>
+                <TextBox  Name="timeSpanData" />
+                <!--<c4f:TimeSpanPicker Name="timeSpanData" Value="" />-->
+
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <AppBarButton Click="LoadClick" Label="Load" Icon="OpenFile"/>
+                    <AppBarButton Click="SaveClick" Label="Save" Icon="Save"/>
+                    <AppBarButton Click="ClearClick" Label="Clear" Icon="Clear"/>
+                    <AppBarButton Click="DeleteClick" Label="Delete File" Icon="Delete"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

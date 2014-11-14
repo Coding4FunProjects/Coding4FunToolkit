@@ -1,6 +1,6 @@
 ﻿using System;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -14,7 +14,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 {
     public class ControlHelper
     {
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
         static internal int MagicSpacingNumber = 10;
 #elif WINDOWS_PHONE
 		static internal int MagicSpacingNumber = 12;
@@ -43,8 +43,8 @@ namespace Coding4Fun.Toolkit.Controls.Common
 
 			Storyboard.SetTarget(doubleAni, target);
 
-#if WINDOWS_STORE
-			Storyboard.SetTargetProperty(doubleAni, propertyPath);
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            Storyboard.SetTargetProperty(doubleAni, propertyPath);
 #elif WINDOWS_PHONE
 			Storyboard.SetTargetProperty(doubleAni, new PropertyPath(propertyPath));
 #endif

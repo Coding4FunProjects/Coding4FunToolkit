@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Graphics.Display;
@@ -18,7 +18,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 {
 	public static class ApplicationSpace
 	{
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 		const int DefaultLogicalppi = 96;
 		const int Percent = 100; 
 #endif
@@ -36,6 +36,10 @@ namespace Coding4Fun.Toolkit.Controls.Common
 #elif WINDOWS_STORE
 	// http://code.msdn.microsoft.com/windowsapps/Scaling-sample-cf072f4f/sourcecode?fileId=43958&pathId=589460989
 				return (int) ((DisplayProperties.LogicalDpi * Percent) / DefaultLogicalppi);
+#elif WINDOWS_PHONE_APP
+            var displayInformation = DisplayInformation.GetForCurrentView();
+
+            return (int)(displayInformation.RawPixelsPerViewPixel * Percent);
 #elif WINDOWS_PHONE
 #if WP8
 			return Application.Current.Host.Content.ScaleFactor;
@@ -49,7 +53,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		{
 			get
 			{
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 				var rootFrame = Window.Current.Content as Frame;
 #elif WINDOWS_PHONE
 				var rootFrame = Application.Current.RootVisual as Frame;
@@ -64,7 +68,7 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		{
 			get
 			{
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 				return DesignMode.DesignModeEnabled;
 #elif WINDOWS_PHONE
 				return DesignerProperties.IsInDesignTool;
@@ -73,17 +77,17 @@ namespace Coding4Fun.Toolkit.Controls.Common
 		}
 
 		public static
-#if WINDOWS_STORE
-			CoreDispatcher
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            CoreDispatcher
 #elif WINDOWS_PHONE
 			Dispatcher
 #endif
 		CurrentDispatcher
 		{
 			get
-			{
-#if WINDOWS_STORE
-				var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
+            {
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
 #elif WINDOWS_PHONE
 				var dispatcher = Deployment.Current.Dispatcher;
 #endif

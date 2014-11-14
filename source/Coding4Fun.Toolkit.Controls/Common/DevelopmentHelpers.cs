@@ -1,6 +1,6 @@
 ﻿using System;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using System.Reflection;
 
 #endif

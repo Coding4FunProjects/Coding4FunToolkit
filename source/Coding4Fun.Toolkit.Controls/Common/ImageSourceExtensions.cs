@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using System;
 using System.Linq;
 using Windows.Storage;
