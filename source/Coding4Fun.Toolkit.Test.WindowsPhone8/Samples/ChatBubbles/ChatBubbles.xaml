@@ -26,9 +26,8 @@
                 <local:ChatBubbleTestColor />
             </phone:PivotItem>
 			<phone:PivotItem Header="stress">
-				<Grid>
-					
-					<Controls:ChatBubble Content="testing" Opacity=".3" />
+                <Grid>
+                    <Controls:ChatBubble Content="testing" Opacity=".3" />
 					<Controls:ChatBubble Content="testing" Opacity=".3" IsEnabled="False" />
 					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" />
 					<Controls:ChatBubbleTextBox Text="testing" Opacity=".5" IsEnabled="False" />

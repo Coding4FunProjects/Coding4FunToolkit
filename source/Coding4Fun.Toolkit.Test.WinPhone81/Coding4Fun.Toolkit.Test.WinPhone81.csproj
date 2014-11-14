@@ -105,6 +105,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\ChatBubbleControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ChatBubbles\ChatBubbleTextBoxTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\ColorControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +157,15 @@
     </Compile>
     <Compile Include="Samples\Buttons\Tiles.xaml.cs">
       <DependentUpon>Tiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbleControls.xaml.cs">
+      <DependentUpon>ChatBubbleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTests.xaml.cs">
+      <DependentUpon>ChatBubbleTests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ChatBubbles\ChatBubbleTextBoxTests.xaml.cs">
+      <DependentUpon>ChatBubbleTextBoxTests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\ColorControls.xaml.cs">
       <DependentUpon>ColorControls.xaml</DependentUpon>
@@ -238,6 +259,7 @@
       <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

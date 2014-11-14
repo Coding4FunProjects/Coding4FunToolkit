@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -56,8 +56,8 @@ namespace Coding4Fun.Toolkit.Controls
 		#endregion
 
 		#region overrides
-#if WINDOWS_STORE
-		protected override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
 #elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
 #endif

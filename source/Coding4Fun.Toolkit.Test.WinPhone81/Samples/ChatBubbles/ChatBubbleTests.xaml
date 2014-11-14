@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.ChatBubbles.ChatBubbleTests"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.ChatBubbles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <Pivot Title="{StaticResource AppName}">
+            <PivotItem Header="Basic">
+                <StackPanel>
+                    <c4f:ChatBubble 
+                        Content="testing normal" 
+                        ChatBubbleDirection="UpperRight" />
+                    <c4f:ChatBubble 
+                        Content="testing normal w/ pad" 
+                        Padding="10" 
+                        ChatBubbleDirection="LowerLeft" />
+                    <c4f:ChatBubble 
+                        Content="testing invalid text wrapping: coding4fun coding4fun coding4fun"
+                        ChatBubbleDirection="UpperLeft"/>
+
+                    <c4f:ChatBubble 
+                        ChatBubbleDirection="LowerLeft"
+                        Margin="48, 0, 0, 0">
+                        <TextBlock TextWrapping="Wrap">
+				            testing proper wrapping: coding4fun coding4fun coding4fun coding4fun
+                        </TextBlock>
+                    </c4f:ChatBubble>
+
+                    <c4f:ChatBubble 
+			            Content="testing disabled" 
+			            IsEnabled="False" />
+
+                    <c4f:ChatBubble 
+			            Padding="10"
+			            Content="testing disabled w/ pad" 
+			            IsEnabled="False" />
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="Direction">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="12" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="12" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <c4f:ChatBubble 
+							Grid.Row="0"
+							Grid.Column="0"
+							Content="UpperRight"
+							ChatBubbleDirection="UpperRight" />
+                    <c4f:ChatBubble 
+							Grid.Row="0"
+							Grid.Column="2"
+							Content="UpperLeft"
+							ChatBubbleDirection="UpperLeft" />
+
+                    <c4f:ChatBubble 
+							Grid.Row="2"
+							Grid.Column="0"
+							Content="LowerRight"
+							ChatBubbleDirection="LowerRight" />
+
+                    <c4f:ChatBubble 
+							Grid.Row="2"
+							Grid.Column="2"
+							Content="LowerLeft"
+							ChatBubbleDirection="LowerLeft" />
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Brush">
+                <StackPanel>
+                    <c4f:ChatBubble Background="Aqua" Content="Aqua Background" />
+                    <c4f:ChatBubble Foreground="Aqua" Content="Aqua Foreground" />
+                    <c4f:ChatBubble BorderBrush="Aqua" Content="Aqua BorderBrush" />
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="Stress">
+                <Grid>
+                    <c4f:ChatBubble Content="testing" Opacity=".3" />
+                    <c4f:ChatBubble Content="testing" Opacity=".3" IsEnabled="False" />
+                    <c4f:ChatBubbleTextBox Text="testing" Opacity=".5" />
+                    <c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsEnabled="False" />
+                    <c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" />
+                    <c4f:ChatBubbleTextBox Text="testing" Opacity=".5" IsReadOnly="True" IsEnabled="False" />
+                </Grid>
+            </PivotItem>
+        </Pivot>
+        
+    </Grid>
+</Page>

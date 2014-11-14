@@ -46,6 +46,14 @@
                 </TextBlock>
             </coding4Fun:Tile>
             <coding4Fun:Tile 
+				Label="ChatBubbles"
+				Style="{StaticResource TileStyle}" 
+				Tapped="ChatBubbleTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ch
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
 				Label="Color" 
 				Style="{StaticResource TileStyle}"
 				Tapped="ColorControlsTapped" >
