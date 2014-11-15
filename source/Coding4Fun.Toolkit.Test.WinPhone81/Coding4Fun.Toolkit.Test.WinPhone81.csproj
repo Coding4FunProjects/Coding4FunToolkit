@@ -101,6 +101,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Buttons\OpacityToggleButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\RoundButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Buttons\RoundToggleButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Buttons\Tiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +167,15 @@
     <Compile Include="Samples\Buttons\ImageTiles.xaml.cs">
       <DependentUpon>ImageTiles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Buttons\OpacityToggleButtons.xaml.cs">
+      <DependentUpon>OpacityToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RoundButtons.xaml.cs">
+      <DependentUpon>RoundButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RoundToggleButtons.xaml.cs">
+      <DependentUpon>RoundToggleButtons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Buttons\Tiles.xaml.cs">
       <DependentUpon>Tiles.xaml</DependentUpon>
     </Compile>
@@ -187,6 +208,16 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Media\appbar.add.rest.png" />
+    <Content Include="Media\appbar.check.rest.png" />
+    <Content Include="Media\appbar.minus.rest.png" />
+    <Content Include="Media\appbar.prompt.four.rest.png" />
+    <Content Include="Media\appbar.prompt.three.rest.png" />
+    <Content Include="Media\appbar.prompt.two.rest.png" />
+    <Content Include="Media\appbar.repeat.png" />
+    <Content Include="Media\appbar.share.rest.png" />
+    <Content Include="Media\dark\coding4funLogo.png" />
+    <Content Include="Media\dark\head.png" />
     <Content Include="Media\images\0.jpg" />
     <Content Include="Media\images\1.jpg" />
     <Content Include="Media\images\10.jpg" />
@@ -238,6 +269,12 @@
     <Content Include="Media\head.png" />
     <Content Include="Media\headWhite.png" />
     <Content Include="Media\headWhite_100.png" />
+    <Content Include="Media\light\coding4funLogo.png" />
+    <Content Include="Media\light\head.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -257,6 +294,10 @@
     <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Universal%29.csproj">
       <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
       <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
+      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Name>Coding4Fun.Toolkit %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,129 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons.OpacityToggleButtons"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Opacity Toggle Buttons" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <c4f:OpacityToggleButton />
+                    <c4f:OpacityToggleButton
+						Background="Red"
+						UncheckedOpacity=".5"
+						CheckedOpacity="1"
+						IsChecked="true">
+                        <c4f:OpacityToggleButton.Label>
+                            Checked
+                        </c4f:OpacityToggleButton.Label>
+                    </c4f:OpacityToggleButton>
+                    <c4f:OpacityToggleButton 
+						IsChecked="true"
+						Label="Checked" />
+
+                    <c4f:OpacityToggleButton
+						Background="Red"
+						IsEnabled="False"
+						Label="disabled"/>
+                    <c4f:OpacityToggleButton
+						Background="Red"
+						IsEnabled="False"
+						IsChecked="True"
+						Label="dis + chk"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <c4f:OpacityToggleButton
+						Orientation="Horizontal"
+						Label="hor" />
+                    <c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							IsChecked="true"
+							Label="hor/chk"/>
+                    <c4f:OpacityToggleButton
+						Background="CornflowerBlue"
+						Foreground="lime"
+						UncheckedOpacity=".9"
+						CheckedOpacity=".4"
+						Padding="12" 
+						Label="opa + pad" />
+
+                </StackPanel>
+                <StackPanel Name="DisableViewStateTest">
+                    <TextBlock>Disable Test</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <c4f:OpacityToggleButton 
+							IsChecked="true"
+							Label="Checked" />
+                        <c4f:OpacityToggleButton />
+                        <c4f:OpacityToggleButton 
+							Background="Gold" 
+							IsChecked="true"
+							Label="Checked" />
+                        <c4f:OpacityToggleButton 
+							Background="Gold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							Label="hor"/>
+                        <c4f:OpacityToggleButton
+							Orientation="Horizontal"
+							IsChecked="true"
+							Label="hor/chk"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton 
+							IsChecked="true">
+                            Checked
+                        </ToggleButton>
+                        <ToggleButton />
+                        <ToggleButton 
+							Background="Gold" 
+							IsChecked="true">
+                            Checked
+                        </ToggleButton>
+                        <ToggleButton Background="Gold"/>
+                    </StackPanel>
+                </StackPanel>
+                <CheckBox 
+					x:Name="ToggleCheck"
+					HorizontalAlignment="Right"
+					IsChecked="true" 
+					Unchecked="ToggleChecked"
+					Checked="ToggleChecked" >
+                    Is Enabled
+                </CheckBox>
+            </StackPanel>
+            <Button 
+					Content="Toggle background" 
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Right" 
+					Click="ToggleBackgroundClick" />
+        </Grid>
+    </Grid>
+</Page>

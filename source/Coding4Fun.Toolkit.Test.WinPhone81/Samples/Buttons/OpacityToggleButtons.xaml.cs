@@ -1,5 +1,5 @@
-﻿using Coding4Fun.Toolkit.Test.WinPhone81.Common;
-using Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons;
+﻿using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Test.WinPhone81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +8,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -19,17 +21,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ButtonControls : Page
+    public sealed partial class OpacityToggleButtons : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public ButtonControls()
+        public OpacityToggleButtons()
         {
             this.InitializeComponent();
 
@@ -38,29 +40,37 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        private void ImageTileControls(object sender, TappedRoutedEventArgs e)
+        private async void TileClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ImageTiles));
+            var msg = new MessageDialog("You clicked the tile!");
+            await msg.ShowAsync();
         }
 
-        private void TileControls(object sender, TappedRoutedEventArgs e)
+        bool _isRed;
+        private void ToggleBackgroundClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Tiles));
+            _isRed = !_isRed;
+
+            Background = new SolidColorBrush(_isRed ? Colors.Red : Colors.Transparent);
         }
 
-        private void RoundButtonControls(object sender, TappedRoutedEventArgs e)
+        private void ToggleChecked(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(RoundButtons));
+
+            var isChecked = ToggleCheck != null && ToggleCheck.IsChecked.HasValue && ToggleCheck.IsChecked.Value;
+
+            SetIsEnableToType<ToggleButtonBase>(DisableViewStateTest, isChecked);
         }
 
-        private void RoundToggleButtonControls(object sender, TappedRoutedEventArgs e)
+        private static void SetIsEnableToType<T>(FrameworkElement target, bool isEnabled) where T : Control
         {
-            Frame.Navigate(typeof(RoundToggleButtons));
-        }
+            if (target == null)
+                return;
 
-        private void OpacityToggleButtonControls(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(OpacityToggleButtons));
+            var children = target.GetLogicalChildrenByType<T>(false);
+
+            foreach (var child in children)
+                child.IsEnabled = isEnabled;
         }
 
         /// <summary>

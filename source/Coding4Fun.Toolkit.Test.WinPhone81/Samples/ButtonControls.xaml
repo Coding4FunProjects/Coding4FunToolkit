@@ -39,6 +39,30 @@
                 </TextBlock>
             </Coding4Fun:Tile>
             <Coding4Fun:Tile 
+					Label="Opacity Toggle Buttons" 
+					Tapped="OpacityToggleButtonControls" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ot
+                </TextBlock>
+            </Coding4Fun:Tile>
+            <Coding4Fun:Tile 
+					Label="Round Buttons" 
+					Tapped="RoundButtonControls" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Rb
+                </TextBlock>
+            </Coding4Fun:Tile>
+            <Coding4Fun:Tile 
+					Label="Round Toggle Buttons" 
+					Tapped="RoundToggleButtonControls" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Rt
+                </TextBlock>
+            </Coding4Fun:Tile>
+            <Coding4Fun:Tile 
 					Label="Tiles" 
 					Tapped="TileControls" 
 					Style="{StaticResource TileStyle}">

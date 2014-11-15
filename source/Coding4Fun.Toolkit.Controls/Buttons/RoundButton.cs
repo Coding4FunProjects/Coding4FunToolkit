@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,7 +31,7 @@ namespace Coding4Fun.Toolkit.Controls
 			AppendCheck(Content);
 
 			// content changed, wait a tick
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 			ButtonBaseHelper.ApplyForegroundToFillBinding(
 				GetTemplateChild(ButtonBaseConstants.ContentBodyName) as ContentControl);
 #elif WINDOWS_PHONE
@@ -49,8 +49,8 @@ namespace Coding4Fun.Toolkit.Controls
 			Content = ButtonBaseHelper.CreateXamlCheck(this);
 		}
 
-#if WINDOWS_STORE
-		protected override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
 #elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
 #endif

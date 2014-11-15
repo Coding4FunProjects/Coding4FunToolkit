@@ -1,4 +1,4 @@
-﻿#if WINDOWS_STORE
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
 using System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -59,7 +59,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 			UpdateLayout();
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 			if (ApplicationSpace.IsDesignMode)
 				ButtonBaseHelper.ApplyForegroundToFillBinding(contentBody); 
 			else
@@ -92,8 +92,8 @@ namespace Coding4Fun.Toolkit.Controls
 			Content = ButtonBaseHelper.CreateXamlCheck(this);
 		}
 
-#if WINDOWS_STORE
-		protected override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
 #elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
 #endif
