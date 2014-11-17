@@ -24,26 +24,26 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\Windows Store\AnyCpu</OutputPath>
-    <BaseIntermediateOutputPath>..\..\obj\Core\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_STORE</DefineConstants>
+    <OutputPath>..\..\bin\Debug\Windows Universal\AnyCpu</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Core\Debug\Windows Universal\</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\Windows Store\AnyCpu</OutputPath>
-    <BaseIntermediateOutputPath>..\..\obj\Core\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;WINDOWS_STORE</DefineConstants>
+    <OutputPath>..\..\bin\Release\Windows Universal\AnyCpu</OutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Core\Debug\Windows Universal\</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\Debug\Windows Store\ARM</OutputPath>
+    <OutputPath>..\..\bin\Debug\Windows Universal\ARM\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\ARM\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -52,9 +52,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <OutputPath>..\..\bin\Release\Windows Store\ARM\</OutputPath>
+    <OutputPath>..\..\bin\Release\Windows Universal\ARM\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\ARM\Release\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -65,9 +65,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\Debug\Windows Store\x64\</OutputPath>
+    <OutputPath>..\..\bin\Debug\Windows Universal\x64\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\x64\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -76,9 +76,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\..\bin\Release\Windows Store\x64\</OutputPath>
+    <OutputPath>..\..\bin\Release\Windows Universal\x64\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\x64\Release\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -89,9 +89,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\Debug\Windows Store\x86\</OutputPath>
+    <OutputPath>..\..\bin\Debug\Windows Universal\x86\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\x86\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -100,9 +100,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>..\..\bin\Release\Windows Store\x86\</OutputPath>
+    <OutputPath>..\..\bin\Release\Windows Universal\x86\</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Core\x86\Release\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;WINDOWS_STORE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_STORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>

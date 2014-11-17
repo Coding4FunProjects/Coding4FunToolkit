@@ -284,19 +284,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28Universal%29.csproj">
-      <Project>{f78f9eb4-0744-46d1-84fc-1fdb7b20714d}</Project>
+      <Project>{469b5ca4-25e4-443a-8d52-44b230390ed9}</Project>
       <Name>Coding4Fun.Toolkit.Audio %28Universal%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WinPhone81\Coding4Fun.Toolkit.Controls %28WinPhone8.1%29.csproj">
-      <Project>{5e5224b5-61d3-4280-a9c2-8b5e422743c1}</Project>
-      <Name>Coding4Fun.Toolkit.Controls %28WinPhone8.1%29</Name>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsPhone81\Coding4Fun.Toolkit.Controls %28WP81%29.csproj">
+      <Project>{37393a3c-df37-4e1b-8b8a-2d91d6dc7829}</Project>
+      <Name>Coding4Fun.Toolkit.Controls %28WP81%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Net\Coding4Fun.Toolkit.Net %28Universal%29.csproj">
+      <Project>{a728b8be-e5a7-4489-80a4-82fb61e678cc}</Project>
+      <Name>Coding4Fun.Toolkit.Net %28Universal%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Universal%29.csproj">
-      <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
+      <Project>{8bceeb9d-dff6-40fa-9f03-a062d8af4f37}</Project>
       <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
-      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Project>{260c066d-2db6-4ac1-b69b-138c8c5ce4a8}</Project>
       <Name>Coding4Fun.Toolkit %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>

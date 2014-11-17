@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Coding4Fun.Toolkit.Complete</id>
+		<version>2.0.7</version>
+		<title>Coding4Fun Toolkit - Complete</title>
+		<authors>Coding4Fun, Clint Rutkas</authors>
+		<description>The Coding4Fun Toolkit has multiple controls and useful items such as a GzipWebClient and Audio Recorder for XAML based applications.  This is the complete version which includes the network, storage wrappers, controls, and audio helper libraries.</description>
+		<summary>A toolkit with multiple controls and useful items for Windows Store and Window Phone applications</summary>
+		<language>en-US</language>
+		<licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+		<projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+		<tags>coding4fun silverlight winrt win8 phone wp7 wp8  metro xaml wp timespan picker toast round button message prompt color metroflow chat bubble</tags>
+		<dependencies>
+			<dependency id="Coding4Fun.Toolkit.Audio" />
+			<dependency id="Coding4Fun.Toolkit.Controls" />
+			<dependency id="Coding4Fun.Toolkit.Net" />
+			<dependency id="Coding4Fun.Toolkit.Storage" />
+		</dependencies>
+	</metadata>
+	<files />
+</package>
+<!--
+	http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+-->

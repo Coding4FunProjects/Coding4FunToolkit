@@ -280,7 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
-      <Project>{f9a88602-bb65-4ea8-89b0-5f28d17acce1}</Project>
+      <Project>{260c066d-2db6-4ac1-b69b-138c8c5ce4a8}</Project>
       <Name>Coding4Fun.Toolkit %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>

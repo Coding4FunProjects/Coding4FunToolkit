@@ -12,10 +12,11 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Coding4Fun.Toolkit.Test.WindowsStore_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_TemporaryKey.pfx</PackageCertificateKeyFile>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <TargetFrameworkVersion />
+    <PackageCertificateThumbprint>A30C4B5DE14DCD4147DB9F43EBDD648057341D26</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -167,6 +168,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_TemporaryKey.pfx" />
     <None Include="Coding4Fun.Toolkit.Test.WindowsStore_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -401,16 +403,24 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Audio\Coding4Fun.Toolkit.Audio %28Universal%29.csproj">
-      <Project>{f78f9eb4-0744-46d1-84fc-1fdb7b20714d}</Project>
+      <Project>{469b5ca4-25e4-443a-8d52-44b230390ed9}</Project>
       <Name>Coding4Fun.Toolkit.Audio %28Universal%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Controls.WindowsStore\Coding4Fun.Toolkit.Controls %28Win8.1%29.csproj">
-      <Project>{f0a56304-e80f-4270-85aa-abc02c8d413f}</Project>
+      <Project>{e0296e2d-7b06-432c-9aed-1aa8ac7cf2e7}</Project>
       <Name>Coding4Fun.Toolkit.Controls %28Win8.1%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit.Net\Coding4Fun.Toolkit.Net %28Universal%29.csproj">
+      <Project>{a728b8be-e5a7-4489-80a4-82fb61e678cc}</Project>
+      <Name>Coding4Fun.Toolkit.Net %28Universal%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage %28Universal%29.csproj">
-      <Project>{0a87faee-6318-4454-b7bf-bdcb5ce11783}</Project>
+      <Project>{8bceeb9d-dff6-40fa-9f03-a062d8af4f37}</Project>
       <Name>Coding4Fun.Toolkit.Storage %28Universal%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
+      <Project>{260c066d-2db6-4ac1-b69b-138c8c5ce4a8}</Project>
+      <Name>Coding4Fun.Toolkit %28Universal%29</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

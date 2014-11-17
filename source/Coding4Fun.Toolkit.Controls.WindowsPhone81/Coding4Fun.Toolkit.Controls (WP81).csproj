@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{37393A3C-DF37-4E1B-8B8A-2D91D6DC7829}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Coding4Fun.Toolkit.Controls</RootNamespace>
+    <AssemblyName>Coding4Fun.Toolkit.Controls</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Debug\Windows Phone 81\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Release\Windows Phone 81\AnyCPU\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\coding4fun.toolkit.controls\binding\FrameworkElementBinding.cs">
+      <Link>Binding\FrameworkElementBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ButtonBase.cs">
+      <Link>Buttons\ButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ButtonBaseHelper.cs">
+      <Link>Buttons\ButtonBaseHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\IButtonBase.cs">
+      <Link>Buttons\IButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ImageTile.cs">
+      <Link>Buttons\ImageTile.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ImageTileAnimationTypes.cs">
+      <Link>Buttons\ImageTileAnimationTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ImageTileLayoutStates.cs">
+      <Link>Buttons\ImageTileLayoutStates.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ImageTileState.cs">
+      <Link>Buttons\ImageTileState.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\OpacityToggleButton.cs">
+      <Link>Buttons\OpacityToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\RoundButton %28Windows Store%29.cs">
+      <Link>Buttons\RoundButton %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\RoundButton.cs">
+      <Link>Buttons\RoundButton.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\RoundToggleButton.cs">
+      <Link>Buttons\RoundToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\Tile.cs">
+      <Link>Buttons\Tile.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\TileNotification.cs">
+      <Link>Buttons\TileNotification.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ToggleButtonBase %28Windows Store%29.cs">
+      <Link>Buttons\ToggleButtonBase %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\buttons\ToggleButtonBase.cs">
+      <Link>Buttons\ToggleButtonBase.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\chatbubble\ChatBubble.cs">
+      <Link>ChatBubble\ChatBubble.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\chatbubble\ChatBubbleDirection.cs">
+      <Link>ChatBubble\ChatBubbleDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\chatbubble\ChatBubbleTextBox.cs">
+      <Link>ChatBubble\ChatBubbleTextBox.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\colors\ColorBaseControl.cs">
+      <Link>Colors\ColorBaseControl.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\colors\ColorHexagonPicker %28Windows Store%29.cs">
+      <Link>Colors\ColorHexagonPicker %28Windows Store%29.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\colors\ColorHexagonPicker.cs">
+      <Link>Colors\ColorHexagonPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\ApplicationHelper.cs">
+      <Link>Common\ApplicationHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\ColorExtensions.cs">
+      <Link>Common\ColorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\ColorSpace.cs">
+      <Link>Common\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\ControlHelper.cs">
+      <Link>Common\ControlHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\DevelopmentHelpers.cs">
+      <Link>Common\DevelopmentHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\DoubleExtensions.cs">
+      <Link>Common\DoubleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\FloatExtensions.cs">
+      <Link>Common\FloatExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\IImageSource.cs">
+      <Link>Common\IImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\ImageSourceExtensions.cs">
+      <Link>Common\ImageSourceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\IntExtensions.cs">
+      <Link>Common\IntExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\Numbers.cs">
+      <Link>Common\Numbers.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\SafeDispatcher.cs">
+      <Link>Common\SafeDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\TemplatedVisualTreeExtensions.cs">
+      <Link>Common\TemplatedVisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\TimeSpanExtensions.cs">
+      <Link>Common\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\common\VisualTreeExtensions.cs">
+      <Link>Common\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\converters\NumberMultiplierConverter.cs">
+      <Link>Converters\NumberMultiplierConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\converters\SolidColorBrushToColorConverter.cs">
+      <Link>Converters\SolidColorBrushToColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\converters\ValueConverter.cs">
+      <Link>Converters\ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\other\SuperImage.cs">
+      <Link>Other\SuperImage.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\other\SuperImageSource.cs">
+      <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coding4Fun.Toolkit\Coding4Fun.Toolkit %28Universal%29.csproj">
+      <Project>{260c066d-2db6-4ac1-b69b-138c8c5ce4a8}</Project>
+      <Name>Coding4Fun.Toolkit %28Universal%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

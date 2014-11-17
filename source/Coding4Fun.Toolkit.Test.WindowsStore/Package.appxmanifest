@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="687c035b-2505-40d3-aace-75191cbe69d8" Publisher="CN=crutkas" Version="1.1.0.0" />
+  <Identity Name="687c035b-2505-40d3-aace-75191cbe69d8" Publisher="CN=daveh" Version="1.1.0.0" />
   <Properties>
     <DisplayName>Coding4Fun.Toolkit.Test.WindowsStore</DisplayName>
     <PublisherDisplayName>crutkas</PublisherDisplayName>

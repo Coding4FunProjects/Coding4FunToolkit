@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Coding4Fun.Toolkit.Controls</id>
+        <version>2.0.7</version>
+        <title>Coding4Fun Toolkit - Controls</title>
+        <authors>Coding4Fun,Clint Rutkas</authors>
+        <licenseUrl>http://coding4fun.codeplex.com/license</licenseUrl>
+        <projectUrl>http://coding4fun.codeplex.com/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>The Coding4Fun Toolkit has multiple controls and useful items for XAML based applications.</description>
+        <summary>A toolkit with multiple controls and useful items for Windows Store and Window Phone applications</summary>
+        <language>en-US</language>
+        <tags>coding4fun silverlight winrt win8 phone wp7 wp8 metro xaml wp timespan picker toast round button message prompt color metroflow chat bubble</tags>
+    </metadata>
+    <files>
+        <file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Cancel.png" />
+        <file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\windowsphone8\Toolkit.Content\ApplicationBar.Check.png" />
+        <file src="content\Toolkit.Content\ApplicationBar.Cancel.png" target="content\wp71\Toolkit.Content\ApplicationBar.Cancel.png" />
+        <file src="content\Toolkit.Content\ApplicationBar.Check.png" target="content\wp71\Toolkit.Content\ApplicationBar.Check.png" />
+        <file src="content\ReadMe.Coding4Fun.Toolkit.txt" target="content\ReadMe.Coding4Fun.Toolkit.txt" />
+        <file src="Release\Windows Store\AnyCpu\Themes\Generic.xaml" target="lib\windows8\Coding4Fun.Toolkit.Controls\Themes\Generic.xaml" />
+        <file src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.dll" target="lib\windows8\Coding4Fun.Toolkit.Controls.dll" />
+        <file src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.Controls.pri" target="lib\windows8\Coding4Fun.Toolkit.Controls.pri" />
+        <file src="Release\Windows Store\AnyCpu\Coding4Fun.Toolkit.dll" target="lib\windows8\Coding4Fun.Toolkit.dll" />
+        <file src="Release\Windows Phone 7\cs\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\cs\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\da\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\da\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\de\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\de\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\es\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\es\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\fr\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\fr\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\hu\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\hu\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\it\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\it\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\no\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\no\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\pl\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\pl\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\pt\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\pt\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\ru\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\ru\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\sk\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\sk\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\ko\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\wp71\ko\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 7\Coding4Fun.Toolkit.Controls.dll" target="lib\wp71\Coding4Fun.Toolkit.Controls.dll" />
+        <file src="Release\Windows Phone 7\Coding4Fun.Toolkit.dll" target="lib\wp71\Coding4Fun.Toolkit.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\cs\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\cs\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\da\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\da\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\de\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\de\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\es\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\es\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\hu\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\fr\hu\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\fr\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\fr\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\it\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\it\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\ko\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\ko\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\no\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\no\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\pl\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\pl\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\pt\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\pt\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\ru\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\ru\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCPU\sk\Coding4Fun.Toolkit.Controls.resources.dll" target="lib\windowsphone8\sk\Coding4Fun.Toolkit.Controls.resources.dll" />
+        <file src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.Controls.dll" target="lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll" />
+        <file src="Release\Windows Phone 8\AnyCpu\Coding4Fun.Toolkit.dll" target="lib\windowsphone8\Coding4Fun.Toolkit.dll" />
+    </files>
+</package>
