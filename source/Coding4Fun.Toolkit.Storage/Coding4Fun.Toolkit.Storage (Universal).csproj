@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0A87FAEE-6318-4454-B7BF-BDCB5CE11783}</ProjectGuid>
+    <ProjectGuid>{8BCEEB9D-DFF6-40FA-9F03-A062D8AF4F37}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Coding4Fun.Toolkit.Storage</RootNamespace>

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F78F9EB4-0744-46D1-84FC-1FDB7B20714D}</ProjectGuid>
+    <ProjectGuid>{469B5CA4-25E4-443A-8D52-44B230390ED9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Coding4Fun.Toolkit.Audio</RootNamespace>

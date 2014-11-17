@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82EBD7F2-B58D-4D89-922D-C9D93F489411}</ProjectGuid>
+    <ProjectGuid>{E074438A-B51D-421B-9D36-082027B56B26}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Coding4Fun.Toolkit.Test.WindowsStore</RootNamespace>

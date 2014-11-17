@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Coding4Fun.Toolkit.Controls.Common;
 using Windows.System.Threading;
 using Windows.UI;
 using Windows.UI.Xaml.Input;
 
 using Coding4Fun.Toolkit.Test.WindowsStore.Samples;
 using Windows.UI.Xaml.Media;
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Coding4Fun.Toolkit.Test.WindowsStore
 {
