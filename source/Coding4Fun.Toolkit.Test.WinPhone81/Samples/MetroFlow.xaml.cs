@@ -1,4 +1,5 @@
-﻿using Coding4Fun.Toolkit.Test.WinPhone81.Common;
+﻿using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Test.WinPhone81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,62 +15,47 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MetroFlow : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public MetroFlow()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-        }
 
-        private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Audio));
-        }
+            loadImageAtRunTime.ImageSource = new BitmapImage(new Uri(@"ms-appx:/Media/images/trex_360width.jpg", UriKind.RelativeOrAbsolute));
 
-        private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(Samples.ButtonControls));
-		}
+            loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 1", ImageUri = new Uri(@"ms-appx:/Media/images/Robot.jpg", UriKind.RelativeOrAbsolute) });
+            loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 2", ImageUri = new Uri(@"ms-appx:/Media/images/trex_360width.jpg", UriKind.RelativeOrAbsolute) });
+            loadDataAtRunTime.Items.Add(new MetroFlowData { Title = "Test 3", ImageUri = new Uri(@"ms-appx:/Media/images/lamp.jpg", UriKind.RelativeOrAbsolute) });
+            loadDataAtRunTime.Items.Add(new MetroFlowData
+            {
+                Title = "coding4fun",
+                ImageUri = new Uri(@"ms-appx:/Media/headwhite_100.png", UriKind.RelativeOrAbsolute)
+            });
 
-        private void StorageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Storage));
-        }
+            loadDataAtRunTime.Items.Add(new MetroFlowData
+            {
+                Title = "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+                ImageUri = new Uri(@"ms-appx:/Media/images/Seattle.jpg", UriKind.RelativeOrAbsolute)
+            });
 
-        private void ChatBubbleTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ChatBubbleControls));
-        }
-
-        private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ColorControls));
-        }
-
-        private void MetroFlowTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.MetroFlow));
-        }
-
-        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.SuperImage));
+            //loadDataAtRunTime.SelectedColumnIndex = 2;
         }
 
         /// <summary>
@@ -143,6 +129,5 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81
 
         #endregion
 
-        
     }
 }

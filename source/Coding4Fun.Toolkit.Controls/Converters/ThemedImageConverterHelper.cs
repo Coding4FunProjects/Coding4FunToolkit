@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if WINDOWS_STORE
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
@@ -25,8 +25,8 @@ namespace Coding4Fun.Toolkit.Controls.Converters
                 return null;
 
 			var isDarkTheme =
-#if WINDOWS_STORE
-				Application.Current.RequestedTheme == ApplicationTheme.Dark;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+ Application.Current.RequestedTheme == ApplicationTheme.Dark;
 #elif WINDOWS_PHONE
 				(Application.Current.Resources.Contains("PhoneDarkThemeVisibility") &&
 			                   ((Visibility) Application.Current.Resources["PhoneDarkThemeVisibility"]) == Visibility.Visible);

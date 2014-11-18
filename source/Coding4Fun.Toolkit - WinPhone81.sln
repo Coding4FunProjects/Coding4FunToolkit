@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Net (Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Storage (Universal)", "Coding4Fun.Toolkit.Storage\Coding4Fun.Toolkit.Storage (Universal).csproj", "{8BCEEB9D-DFF6-40FA-9F03-A062D8AF4F37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls.WindowsPhone81", "Coding4Fun.Toolkit.Controls.WindowsPhone81\Coding4Fun.Toolkit.Controls.WindowsPhone81.csproj", "{37393A3C-DF37-4E1B-8B8A-2D91D6DC7829}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding4Fun.Toolkit.Controls (WP81)", "Coding4Fun.Toolkit.Controls.WindowsPhone81\Coding4Fun.Toolkit.Controls (WP81).csproj", "{37393A3C-DF37-4E1B-8B8A-2D91D6DC7829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

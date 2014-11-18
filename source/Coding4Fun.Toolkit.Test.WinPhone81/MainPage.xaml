@@ -61,6 +61,14 @@
 						Co
                 </TextBlock>
             </coding4Fun:Tile>
+            <coding4Fun:Tile
+					Style="{StaticResource TileStyle}"
+					Label="MetroFlow"
+					Tapped="MetroFlowTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Mf
+                </TextBlock>
+            </coding4Fun:Tile>
             <coding4Fun:Tile 
 				Label="Storage" 
 				Style="{StaticResource TileStyle}"

@@ -32,7 +32,61 @@
     <SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource DefaultSubtleBrush}, Converter={StaticResource BrushToBrush}}" />
     <SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource DefaultChromeBrush}, Converter={StaticResource BrushToBrush}}" />
     <SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource DefaultAccentBrush}, Converter={StaticResource BrushToBrush}}" />
-    
+
+    <Style x:Key="MetroFlowItemTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeMediumLarge}" />
+        <Setter Property="Margin" Value="12, 3, 0, 3" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+    <Style x:Key="MetroFlowItemRectangleUnderlay" TargetType="Rectangle">
+        <Setter Property="Fill" Value="{StaticResource DefaultChromeBrush}" />
+        <Setter Property="Margin" Value="0, -.5" />
+        <Setter Property="Opacity" Value=".8" />
+    </Style>
+    <Style x:Key="MetroFlowItemImage" TargetType="Image">
+        <Setter Property="Margin" Value="0, -.5, 0, 0" />
+        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="MetroFlowItemMainBody" TargetType="Panel">
+        <Setter Property="Background" Value="{StaticResource DefaultChromeBrush}" />
+        <Setter Property="Margin" Value="6, 0" />
+    </Style>
+    <Style TargetType="local:MetroFlowItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MetroFlowItem">
+                    <Grid>
+                        <Grid Style="{StaticResource MetroFlowItemMainBody}">
+                            <Rectangle Fill="{StaticResource DefaultAccentBrush}" />
+                            <Image Source="{TemplateBinding ImageSource}" Visibility="{TemplateBinding ImageVisibility}" Opacity="{TemplateBinding ImageOpacity}" Style="{StaticResource MetroFlowItemImage}" />
+                            <Grid VerticalAlignment="Bottom">
+                                <Rectangle Style="{StaticResource MetroFlowItemRectangleUnderlay}" />
+                                <TextBlock Text="{TemplateBinding Title}" Visibility="{TemplateBinding TitleVisibility}" Opacity="{TemplateBinding TitleOpacity}" Style="{StaticResource MetroFlowItemTextBlockStyle}" />
+                                <TextBlock Text="{TemplateBinding ItemIndexString}" Visibility="{TemplateBinding ItemIndexVisibility}" Opacity="{TemplateBinding ItemIndexOpacity}" Style="{StaticResource MetroFlowItemTextBlockStyle}" />
+                            </Grid>
+                        </Grid>
+                        <Rectangle Fill="Transparent" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:MetroFlow">
+        <Setter Property="Height" Value="120" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MetroFlow">
+                    <Grid Name="LayoutRoot">
+                        <local:MetroFlowItem Title="MetroFlow Control" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <ControlTemplate x:Key="DisabledChatBubbleTextBoxTemplate" TargetType="TextBox">
         <ContentControl x:Name="ContentElement" BorderThickness="0" Margin="{TemplateBinding Margin}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
     </ControlTemplate>
@@ -537,7 +591,7 @@
                                                     </VisualStateManager.VisualStateGroups>
                                                     <Border Name="BorderElement" BorderBrush="{StaticResource TextBoxButtonBorderThemeBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
                                                     <Border Name="BackgroundElement" Background="{StaticResource TextBoxButtonBackgroundThemeBrush}" Margin="{TemplateBinding BorderThickness}">
-                                                        <TextBlock Name="GlyphElement" Foreground="{StaticResource TextBoxButtonForegroundThemeBrush}" FontFamily="{StaticResource SymbolThemeFontFamily}" HorizontalAlignment="Center" Text="" VerticalAlignment="Center" />
+                                                        <TextBlock Name="GlyphElement" Foreground="{StaticResource TextBoxButtonForegroundThemeBrush}" HorizontalAlignment="Center" Text="" VerticalAlignment="Center" />
                                                     </Border>
                                                 </Grid>
                                             </ControlTemplate>

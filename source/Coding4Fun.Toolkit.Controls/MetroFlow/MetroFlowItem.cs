@@ -1,12 +1,25 @@
 ﻿using System.Windows;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml;
+
+#elif WINDOWS_PHONE
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+#endif
+
 
 namespace Coding4Fun.Toolkit.Controls
 {
-	[ContentProperty("Title")]
-	public class MetroFlowItem : Control
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+	[ContentProperty(Name = "Title")]
+#elif WINDOWS_PHONE
+    [ContentProperty("Title")]
+#endif
+    public class MetroFlowItem : Control
 	{
 		private const int DefaultStartIndex = 1;
 		public MetroFlowItem()
@@ -24,7 +37,16 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ImageSourceProperty  =
-			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(MetroFlowItem), new PropertyMetadata(OnImageSourceChanged));
+			DependencyProperty.Register(
+                "ImageSource", 
+                typeof(ImageSource), 
+                typeof(MetroFlowItem), 
+                new PropertyMetadata(
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+	                null,
+#endif
+                    OnImageSourceChanged
+                ));
 
 		private static void OnImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{

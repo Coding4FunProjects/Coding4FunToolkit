@@ -153,14 +153,50 @@
     <Compile Include="..\coding4fun.toolkit.controls\common\VisualTreeExtensions.cs">
       <Link>Common\VisualTreeExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\converters\NumberMultiplierConverter.cs">
       <Link>Converters\NumberMultiplierConverter.cs</Link>
     </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\converters\SolidColorBrushToColorConverter.cs">
       <Link>Converters\SolidColorBrushToColorConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\StringToVisibilityConverter.cs">
+      <Link>Converters\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverter.cs">
+      <Link>Converters\ThemedImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedImageConverterHelper.cs">
+      <Link>Converters\ThemedImageConverterHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThemedInverseImageConverter.cs">
+      <Link>Converters\ThemedInverseImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessProperties.cs">
+      <Link>Converters\ThicknessProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\ThicknessToGridLengthConverter.cs">
+      <Link>Converters\ThicknessToGridLengthConverter.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\converters\ValueConverter.cs">
       <Link>Converters\ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Converters\VisibilityToBooleanConverter.cs">
+      <Link>Converters\VisibilityToBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlow.cs">
+      <Link>MetroFlow\MetroFlow.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlowData.cs">
+      <Link>MetroFlow\MetroFlowData.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlowItem.cs">
+      <Link>MetroFlow\MetroFlowItem.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\SelectionTapEventArgs.cs">
+      <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\other\SuperImage.cs">
       <Link>Other\SuperImage.cs</Link>

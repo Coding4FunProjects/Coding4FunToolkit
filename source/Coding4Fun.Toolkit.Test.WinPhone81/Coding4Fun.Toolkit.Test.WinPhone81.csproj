@@ -137,6 +137,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\MetroFlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Storage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +197,9 @@
     </Compile>
     <Compile Include="Samples\Color\ColorHexPicker.xaml.cs">
       <DependentUpon>ColorHexPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\MetroFlow.xaml.cs">
+      <DependentUpon>MetroFlow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>

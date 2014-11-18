@@ -4,10 +4,20 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
+
+#elif WINDOWS_PHONE
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+#endif
+
 
 using Coding4Fun.Toolkit.Controls.Common;
 
@@ -32,7 +42,11 @@ namespace Coding4Fun.Toolkit.Controls
 			DefaultStyleKey = typeof(MetroFlow);
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnItemsChanged(object e)
+#elif WINDOWS_PHONE
 		protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+#endif
 		{
 			base.OnItemsChanged(e);
 
@@ -56,7 +70,11 @@ namespace Coding4Fun.Toolkit.Controls
 			return ((item is MetroFlowData));// || (item is MetroFlowItem));
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
+#endif
 		{
 			base.OnApplyTemplate();
 
@@ -117,11 +135,17 @@ namespace Coding4Fun.Toolkit.Controls
 				var itemAdded = (Items.Count > 0 && SelectedColumnIndex >= 0) ? (MetroFlowData)Items[SelectedColumnIndex] : null;
 				var itemRemoved = (Items.Count > 0 && _minimizingColumnIndex >= 0) ? (MetroFlowData)Items[_minimizingColumnIndex] : null;
 
-				var eventArgs = new SelectionChangedEventArgs(
-					new List<MetroFlowData> { itemRemoved }, // removed
-					new List<MetroFlowData> { itemAdded }); // added
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                var eventArgs = new SelectionChangedEventArgs(
+                new List<object> { itemRemoved }, // removed
+                new List<object> { itemAdded }); // added
+#elif WINDOWS_PHONE
+                var eventArgs = new SelectionChangedEventArgs(
+                new List<MetroFlowData> { itemRemoved }, // removed
+                new List<MetroFlowData> { itemAdded }); // added
+#endif
 
-				SelectionChanged(this, eventArgs);
+                SelectionChanged(this, eventArgs);
 			}
 
 			CreateSb(_layoutGrid, oldIndex);
@@ -138,7 +162,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public static readonly DependencyProperty ExpandingWidthProperty =
 			DependencyProperty.Register("ExpandingWidth", typeof(double), typeof(MetroFlow),
-			new PropertyMetadata(ColumnGrowWidthChanged));
+			new PropertyMetadata(0, ColumnGrowWidthChanged));
 
 		public double CollapsingWidth
 		{
@@ -148,7 +172,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public static readonly DependencyProperty CollapsingWidthProperty =
 			DependencyProperty.Register("CollapsingWidth", typeof(double), typeof(MetroFlow),
-			new PropertyMetadata(ColumnShrinkWidthChanged));
+			new PropertyMetadata(0, ColumnShrinkWidthChanged));
 
 		private static void ColumnGrowWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
@@ -238,15 +262,24 @@ namespace Coding4Fun.Toolkit.Controls
 				};
 
 				control.SetValue(Grid.ColumnProperty, index);
-				control.Tap += ItemTap;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                control.Tapped += ItemTap;
+#elif WINDOWS_PHONE
+                control.Tap += ItemTap;
+#endif
 
-				parentGrid.Children.Add(control);
+
+                parentGrid.Children.Add(control);
 
 				index++;
 			}
 		}
 
-		private void ItemTap(object sender, GestureEventArgs e)
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private void ItemTap(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+#elif WINDOWS_PHONE
+        private void ItemTap(object sender, GestureEventArgs e)
+#endif
 		{
 			var item = sender as MetroFlowItem;
 
@@ -345,7 +378,14 @@ namespace Coding4Fun.Toolkit.Controls
 			};
 
 			Storyboard.SetTarget(doubleAni, target);
-			Storyboard.SetTargetProperty(doubleAni, new PropertyPath(propertyPath));
+			Storyboard.SetTargetProperty(
+                doubleAni, 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                propertyPath
+#elif WINDOWS_PHONE
+                new PropertyPath(propertyPath)
+#endif
+            );
 
 			sb.Children.Add(doubleAni);
 			return doubleAni;
