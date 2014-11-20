@@ -26,7 +26,7 @@
     <Optimize>false</Optimize>
     <OutputPath>..\..\bin\Debug\Windows Store\AnyCPU</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Controls\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_STORE;WIN81</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_STORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -35,7 +35,7 @@
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\Release\Windows Store\AnyCPU</OutputPath>
     <BaseIntermediateOutputPath>..\..\obj\Controls\Debug\Windows Store\</BaseIntermediateOutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE;WIN81</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_STORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -258,6 +258,18 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Effects\TiltEffect.cs">
       <Link>Effects\TiltEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlow.cs">
+      <Link>MetroFlow\MetroFlow.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlowData.cs">
+      <Link>MetroFlow\MetroFlowData.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\MetroFlowItem.cs">
+      <Link>MetroFlow\MetroFlowItem.cs</Link>
+    </Compile>
+    <Compile Include="..\coding4fun.toolkit.controls\metroflow\SelectionTapEventArgs.cs">
+      <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
       <Link>Other\LockScreenPreview.cs</Link>

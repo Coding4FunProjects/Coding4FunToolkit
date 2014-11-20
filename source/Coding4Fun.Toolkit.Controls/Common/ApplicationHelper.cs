@@ -29,13 +29,10 @@ namespace Coding4Fun.Toolkit.Controls.Common
         /// <returns>the scale factor (100 = 100%)</returns>
 		public static int ScaleFactor()
 		{
-#if WIN81
+#if WINDOWS_STORE
             var displayInformation = DisplayInformation.GetForCurrentView();
 
             return (int)displayInformation.ResolutionScale;
-#elif WINDOWS_STORE
-	// http://code.msdn.microsoft.com/windowsapps/Scaling-sample-cf072f4f/sourcecode?fileId=43958&pathId=589460989
-				return (int) ((DisplayProperties.LogicalDpi * Percent) / DefaultLogicalppi);
 #elif WINDOWS_PHONE_APP
             var displayInformation = DisplayInformation.GetForCurrentView();
 

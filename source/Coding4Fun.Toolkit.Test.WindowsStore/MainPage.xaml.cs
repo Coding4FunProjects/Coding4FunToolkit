@@ -64,6 +64,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
 			Frame.Navigate(typeof(Samples.Audio));
 		}
 
+        private void MetroFlowTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.MetroFlow));
+        }
+
 		private void StorageTapped(object sender, TappedRoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(Samples.Storage));
