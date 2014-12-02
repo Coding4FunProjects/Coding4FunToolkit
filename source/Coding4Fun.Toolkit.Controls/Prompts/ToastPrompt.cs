@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Threading;
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Input;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+#endif
 
 using Coding4Fun.Toolkit.Controls.Binding;
 using Coding4Fun.Toolkit.Controls.Common;
@@ -29,7 +38,7 @@ namespace Coding4Fun.Toolkit.Controls
 	        IsOverlayApplied = false;
 
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
-            
+
             ManipulationStarted += ToastPromptManipulationStarted;
             ManipulationDelta += ToastPromptManipulationDelta;
             ManipulationCompleted += ToastPromptManipulationCompleted;
@@ -37,7 +46,13 @@ namespace Coding4Fun.Toolkit.Controls
 			Opened += ToastPromptOpened;
         }
 
-        public override void OnApplyTemplate()
+
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
             
@@ -75,21 +90,46 @@ namespace Coding4Fun.Toolkit.Controls
 		}
         
 		#region Control Events
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void ToastPromptManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+#elif WINDOWS_PHONE
 		void ToastPromptManipulationStarted(object sender, ManipulationStartedEventArgs e)
+#endif
 		{
 			PauseTimer();
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void ToastPromptManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+            _translate.X += e.Delta.Translation.X;
+
+#elif WINDOWS_PHONE
 		void ToastPromptManipulationDelta(object sender, ManipulationDeltaEventArgs e)
-		{
+        {
 			_translate.X += e.DeltaManipulation.Translation.X;
 
+#endif
+        
 			if (_translate.X < 0)
 				_translate.X = 0;
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void ToastPromptManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Cumulative.Translation.X > 200 || e.Velocities.Linear.X > 1000)
+            {
+                OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.UserDismissed });
+            }
+            else if (e.Cumulative.Translation.X < 20)
+            {
+                OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok });
+            }
+#elif WINDOWS_PHONE
 		void ToastPromptManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-		{
+        {
 			if (e.TotalManipulation.Translation.X > 200 || e.FinalVelocities.LinearVelocity.X > 1000)
 			{
 				OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.UserDismissed });
@@ -98,7 +138,9 @@ namespace Coding4Fun.Toolkit.Controls
 			{
 				OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.Ok });
 			}
-			else
+#endif
+
+            else
 			{
 				_translate.X = 0;
 				StartTimer();
@@ -110,9 +152,15 @@ namespace Coding4Fun.Toolkit.Controls
 			StartTimer();
 		}
 
-        void TimerTick(object state)
+        async void TimerTick(object state)
         {
-            Dispatcher.BeginInvoke(() => OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.NoResponse }));
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            await ApplicationSpace.CurrentDispatcher.RunAsync(CoreDispatcherPriority.Normal, 
+#elif WINDOWS_PHONE
+            ApplicationSpace.CurrentDispatcher.BeginInvoke(
+#endif
+                () => OnCompleted(new PopUpEventArgs<string, PopUpResult> { PopUpResult = PopUpResult.NoResponse })
+                );
         }
 
         public override void OnCompleted(PopUpEventArgs<string, PopUpResult> result)
@@ -143,9 +191,7 @@ namespace Coding4Fun.Toolkit.Controls
 		private void StartTimer()
 		{
 			if (_timer == null)
-				_timer = new Timer(TimerTick);
-
-			_timer.Change(TimeSpan.FromMilliseconds(MillisecondsUntilHidden), TimeSpan.FromMilliseconds(-1));
+				_timer = new Timer(TimerTick, null, TimeSpan.FromMilliseconds(MillisecondsUntilHidden), TimeSpan.FromMilliseconds(-1));
 		}
 
 		private void PauseTimer()
@@ -234,7 +280,7 @@ namespace Coding4Fun.Toolkit.Controls
 		// Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty ImageSourceProperty =
 			DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ToastPrompt),
-			new PropertyMetadata(OnImageSource));
+			new PropertyMetadata(null, OnImageSource));
 
 		public Stretch Stretch
 		{

@@ -1,5 +1,10 @@
 ﻿using System.Windows;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
+#elif WINDOWS_PHONE
 using System.Windows.Controls;
+#endif
 
 namespace Coding4Fun.Toolkit.Controls.Binding
 {

@@ -2,16 +2,28 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+#elif WINDOWS_PHONE
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Coding4Fun.Toolkit.Controls.Common;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Navigation;
+#endif
 
 using Coding4Fun.Toolkit.Controls;
 using Coding4Fun.Toolkit.Controls.Binding;
+using Coding4Fun.Toolkit.Controls.Common;
 
 namespace Clarity.Phone.Extensions
 {
@@ -153,7 +165,11 @@ namespace Clarity.Phone.Extensions
 
         private Panel _popupContainer;
         private Frame _rootFrame;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private Page _page;
+#elif WINDOWS_PHONE
         private PhoneApplicationPage _page;
+#endif
         private Grid _childPanel;
 		private Grid _overlay;
 
@@ -183,10 +199,18 @@ namespace Clarity.Phone.Extensions
         // set this to prevent the dialog service from closing on back click
         public bool HasPopup { get; set; }
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        internal Page Page
+        {
+            get { return _page ?? (_page = RootFrame.GetFirstLogicalChildByType<Page>(false)); }
+        }
+#elif WINDOWS_PHONE
         internal PhoneApplicationPage Page
         {
             get { return _page ?? (_page = RootFrame.GetFirstLogicalChildByType<PhoneApplicationPage>(false)); }
         }
+#endif
+
 
         internal Frame RootFrame
         {
@@ -199,35 +223,17 @@ namespace Clarity.Phone.Extensions
             {
                 if (_popupContainer == null)
                 {
-                    //var popups = RootFrame.GetLogicalChildrenByType<Popup>(false).Where(x => x.IsOpen);
+                    var presenters = RootFrame.GetLogicalChildrenByType<ContentPresenter>(false);
 
-                    //if (popups.Any())
-                    //{
-                    //    for (var i = 0; i < popups.Count(); i++)
-                    //    {
-                    //        var child = popups.ElementAt(i).Child as Panel;
-
-                    //        if (child == null)
-                    //            continue;
-
-                    //        _popupContainer = child;
-                    //        break;
-                    //    }
-                    //}
-                    //else
+                    for (var i = 0; i < presenters.Count(); i++)
                     {
-                        var presenters = RootFrame.GetLogicalChildrenByType<ContentPresenter>(false);
+                        var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
 
-                        for (var i = 0; i < presenters.Count(); i++)
-                        {
-                            var panels = presenters.ElementAt(i).GetLogicalChildrenByType<Panel>(false);
+                        if (!panels.Any())
+                            continue;
 
-                            if (!panels.Any())
-                                continue;
-
-                            _popupContainer = panels.First();
-                            break;
-                        }
+                        _popupContainer = panels.First();
+                        break;
                     }
                    
                 }
@@ -305,11 +311,13 @@ namespace Clarity.Phone.Extensions
 
     		var sysTrayVerticalOffset = 0;
 
+#if WINDOWS_PHONE
     		if (SystemTray.IsVisible && SystemTray.Opacity < 1 && SystemTray.Opacity > 0)
-    		{
+                {
 				sysTrayVerticalOffset += 32;
     		}
-
+#endif
+            
 			panel.Margin = new Thickness(0, VerticalOffset + sysTrayVerticalOffset + ControlVerticalOffset, 0, 0);
     	}
 		
@@ -338,7 +346,11 @@ namespace Clarity.Phone.Extensions
 		{
 			lock (Lockobj)
 			{
-				Page.BackKeyPress -= OnBackKeyPress;
+#if WINDOWS_PHONE_APP
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed -= OnBackKeyPress;
+#elif WINDOWS_PHONE
+                Page.BackKeyPress -= OnBackKeyPress;
+#endif 
 
 				IsOpen = true;
 
@@ -347,26 +359,36 @@ namespace Clarity.Phone.Extensions
 				if (_deferredShowToLoaded)
 					return;
 
-				if (!IsBackKeyOverride)
-					Page.BackKeyPress += OnBackKeyPress;
+                if (!IsBackKeyOverride)
+                {
+#if WINDOWS_PHONE_APP
+                    Windows.Phone.UI.Input.HardwareButtons.BackPressed += OnBackKeyPress;
+#elif WINDOWS_PHONE
+                Page.BackKeyPress += OnBackKeyPress;
+#endif 
+                }
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                RootFrame.Navigated += OnNavigated;
+#elif WINDOWS_PHONE
 				Page.NavigationService.Navigated += OnNavigated;
+#endif
 
 				RunShowStoryboard(_overlay, AnimationTypes.Fade);
 				RunShowStoryboard(_childPanel, AnimationType, MainBodyDelay);
 
 				if (Opened != null)
 					Opened.Invoke(this, null);
-
 			}
 		}
 
-	    private void RunShowStoryboard(UIElement grid, AnimationTypes animation)
+        
+        private async void RunShowStoryboard(UIElement grid, AnimationTypes animation)
 	    {
 		    RunShowStoryboard(grid, animation, TimeSpan.MinValue);
 	    }
 
-	    private void RunShowStoryboard(UIElement grid, AnimationTypes animation, TimeSpan delay)
+	    private async void RunShowStoryboard(UIElement grid, AnimationTypes animation, TimeSpan delay)
 		{
 			if (grid == null)
 				return;
@@ -409,7 +431,11 @@ namespace Clarity.Phone.Extensions
 					}
 				}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+#elif WINDOWS_PHONE
 				Page.Dispatcher.BeginInvoke(() =>
+#endif
 					{
 						foreach (var t in storyboard.Children)
 							Storyboard.SetTarget(t, grid);
@@ -419,9 +445,12 @@ namespace Clarity.Phone.Extensions
 			}
 		}
 
-	    void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        void OnNavigated(object sender, NavigationEventArgs e)
 		{
-			if (e.IsNavigationInitiator) //current app initialized navigation?
+            //current app initialized navigation?
+#if WINDOWS_PHONE
+			if (e.IsNavigationInitiator) 
+#endif
 				Hide();
 		}
 
@@ -432,8 +461,17 @@ namespace Clarity.Phone.Extensions
 
             if (Page != null)
             {
+#if WINDOWS_PHONE_APP
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed -= OnBackKeyPress;
+#elif WINDOWS_PHONE
                 Page.BackKeyPress -= OnBackKeyPress;
-                Page.NavigationService.Navigated -= OnNavigated;
+#endif 
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                RootFrame.Navigated -= OnNavigated;
+#elif WINDOWS_PHONE
+				Page.NavigationService.Navigated -= OnNavigated;
+#endif
 				
                 _page = null;
             }
@@ -471,7 +509,7 @@ namespace Clarity.Phone.Extensions
 			{
 				if (storyboard != null)
 				{
-					storyboard.Completed += HideStoryboardCompleted;
+                    storyboard.Completed += HideStoryboardCompleted;
 
 					foreach (var t in storyboard.Children)
 						Storyboard.SetTarget(t, grid);
@@ -489,7 +527,11 @@ namespace Clarity.Phone.Extensions
 			}
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void HideStoryboardCompleted(object sender, object e)
+#elif WINDOWS_PHONE
 	    void HideStoryboardCompleted(object sender, EventArgs e)
+#endif
         {
             IsOpen = false;
 
@@ -528,6 +570,23 @@ namespace Clarity.Phone.Extensions
 			}
         }
 
+#if WINDOWS_PHONE_APP
+        public void OnBackKeyPress(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
+        {
+            if (HasPopup)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (IsOpen)
+            {
+                e.Handled = true;
+                BackButtonPressed = true;
+                Hide();
+            }
+        }
+#elif WINDOWS_PHONE
         public void OnBackKeyPress(object sender, CancelEventArgs e)
         {
             if (HasPopup)
@@ -543,5 +602,6 @@ namespace Clarity.Phone.Extensions
                 Hide();
             }
         }
+#endif
     }
 }

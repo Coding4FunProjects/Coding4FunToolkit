@@ -45,6 +45,12 @@
     <Compile Include="..\coding4fun.toolkit.controls\binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\PreventScrollBinding.cs">
+      <Link>Binding\PreventScrollBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\TextBinding.cs">
+      <Link>Binding\TextBinding.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\buttons\ButtonBase.cs">
       <Link>Buttons\ButtonBase.cs</Link>
     </Compile>
@@ -204,8 +210,23 @@
     <Compile Include="..\coding4fun.toolkit.controls\other\SuperImageSource.cs">
       <Link>Other\SuperImageSource.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
+      <Link>Prompts\PopUp.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpEventArgs.cs">
+      <Link>Prompts\PopUpEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpResult.cs">
+      <Link>Prompts\PopUpResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ToastPrompt.cs">
+      <Link>Prompts\ToastPrompt.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\DialogService.cs">
+      <Link>Unsupported\DialogService.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

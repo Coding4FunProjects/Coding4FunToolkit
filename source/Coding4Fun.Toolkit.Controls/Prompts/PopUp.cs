@@ -1,27 +1,43 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Core;
+#elif WINDOWS_PHONE
 using System.Windows.Controls;
 using System.Windows.Media;
+using Microsoft.Phone.Controls;
+#endif
 
 using Clarity.Phone.Extensions;
 
 using Coding4Fun.Toolkit.Controls.Common;
 
-using Microsoft.Phone.Controls;
 
 namespace Coding4Fun.Toolkit.Controls
 {
     public abstract class PopUp<T, TPopUpResult> : Control
     {
         internal DialogService PopUpService;
-		private PhoneApplicationPage _startingPage;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private Page _startingPage;
+#elif WINDOWS_PHONE
+        private PhoneApplicationPage _startingPage;
+#endif
         private bool _alreadyFired;
 
         public event EventHandler<PopUpEventArgs<T, TPopUpResult>> Completed;
 		public event EventHandler Opened;
-		
-    	public override void OnApplyTemplate()
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -36,7 +52,7 @@ namespace Coding4Fun.Toolkit.Controls
             }
         }
 
-	    public virtual void Show()
+	    public virtual async void Show()
 	    {
 			if (IsOpen)
 				return;
@@ -60,7 +76,11 @@ namespace Coding4Fun.Toolkit.Controls
 		    // something where the DOM hasn't been created yet.
 		    if (PopUpService.Page == null)
 		    {
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Show);
+#elif WINDOWS_PHONE
 			    Dispatcher.BeginInvoke(Show);
+#endif
 
 			    return;
 		    }
@@ -76,13 +96,21 @@ namespace Coding4Fun.Toolkit.Controls
 		    PopUpService.Closed += PopUpClosed;
 		    PopUpService.Opened += PopUpOpened;
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            if (!IsAppBarVisible && PopUpService.Page.BottomAppBar != null && PopUpService.Page.BottomAppBar.Visibility == Visibility.Visible)
+            {
+                PopUpService.Page.BottomAppBar.Visibility = Visibility.Collapsed;
 
+                IsSetAppBarVisibiilty = true;
+            }
+#elif WINDOWS_PHONE
 		    if (!IsAppBarVisible && PopUpService.Page.ApplicationBar != null && PopUpService.Page.ApplicationBar.IsVisible)
 		    {
 			    PopUpService.Page.ApplicationBar.IsVisible = false;
 
 			    IsSetAppBarVisibiilty = true;
 		    }
+#endif
 
 		    _startingPage = PopUpService.Page;
 
@@ -143,7 +171,11 @@ namespace Coding4Fun.Toolkit.Controls
 			{
 				if (!IsAppBarVisible && IsSetAppBarVisibiilty)
 				{
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                    _startingPage.BottomAppBar.Visibility = IsSetAppBarVisibiilty ? Visibility.Visible : Visibility.Collapsed;
+#elif WINDOWS_PHONE
 					_startingPage.ApplicationBar.IsVisible = IsSetAppBarVisibiilty;
+#endif
 				}
 
 				_startingPage = null;
@@ -186,9 +218,14 @@ namespace Coding4Fun.Toolkit.Controls
 
 				if (_isCalculateFrameVerticalOffset)
 				{
-					var bind = new System.Windows.Data.Binding("Y");
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                    var bind = new Windows.UI.Xaml.Data.Binding(); ;
+#elif WINDOWS_PHONE
+					var bind = new System.Windows.Data.Binding();
+#endif
+                    bind.Path = new PropertyPath("Y");
 
-					var rootFrame = ApplicationSpace.RootFrame;
+                    var rootFrame = ApplicationSpace.RootFrame;
 
 					if (rootFrame != null)
 					{

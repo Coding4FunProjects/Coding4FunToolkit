@@ -18,58 +18,23 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class PromptControls : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public PromptControls()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-        }
-
-        private void AudioWrappersTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Audio));
-        }
-
-        private void ButtonControlsTapped(object sender, TappedRoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(Samples.ButtonControls));
-		}
-
-        private void StorageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Storage));
-        }
-
-        private void ChatBubbleTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ChatBubbleControls));
-        }
-
-        private void ColorControlsTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.ColorControls));
-        }
-
-        private void MetroFlowTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.MetroFlow));
-        }
-
-        private void SuperImageTapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.SuperImage));
         }
 
         /// <summary>
@@ -143,11 +108,39 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81
 
         #endregion
 
-        private void PromptsTapped(object sender, TappedRoutedEventArgs e)
+        private void NavToAboutPromptsClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.PromptControls));
+
         }
 
-        
+        private void NavToAppBarPromptsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NavToInputPromptsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NavToMessagePromptsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NavToPasswordInputPromptsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NavToToastPromptsClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Prompts.ToastPrompts));
+        }
+
+        private void NavToToastStressClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
