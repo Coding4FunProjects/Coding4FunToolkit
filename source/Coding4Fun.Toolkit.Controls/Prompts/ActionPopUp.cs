@@ -1,6 +1,14 @@
 ﻿using System.Collections.Generic;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+#endif
+
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -9,9 +17,17 @@ namespace Coding4Fun.Toolkit.Controls
         private const string ActionButtonAreaName = "actionButtonArea";
         protected Panel ActionButtonArea;
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
-            Focus();
+            Focus(
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                FocusState.Programmatic
+#endif
+);
 
             base.OnApplyTemplate();
             ActionButtonArea = GetTemplateChild(ActionButtonAreaName) as Panel;

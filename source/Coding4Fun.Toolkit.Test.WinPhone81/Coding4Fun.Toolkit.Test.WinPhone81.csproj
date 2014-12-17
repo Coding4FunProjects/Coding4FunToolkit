@@ -145,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Samples\Prompts\AboutPrompts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Prompts\ToastPrompts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -211,6 +215,9 @@
     </Compile>
     <Compile Include="Samples\PromptControls.xaml.cs">
       <DependentUpon>PromptControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Prompts\AboutPrompts.xaml.cs">
+      <DependentUpon>AboutPrompts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Prompts\ToastPrompts.xaml.cs">
       <DependentUpon>ToastPrompts.xaml</DependentUpon>

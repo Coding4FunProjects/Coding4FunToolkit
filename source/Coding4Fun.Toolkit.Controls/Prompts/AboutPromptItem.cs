@@ -1,11 +1,18 @@
 ﻿using System;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Microsoft.Phone.Tasks;
+#endif
 
 using Coding4Fun.Toolkit.Controls.Common;
 
-using Microsoft.Phone.Tasks;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -28,7 +35,11 @@ namespace Coding4Fun.Toolkit.Controls
             DefaultStyleKey = typeof(AboutPromptItem);
         }
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -53,9 +64,19 @@ namespace Coding4Fun.Toolkit.Controls
                 _website.ManipulationCompleted += websiteClick_ManipulationCompleted;
         }
 
-		#region Control Events
+        
+        
+        #region Control Events
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private async void email_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            var mailto = new Uri(String.Format("mailto:?to={0}&subject={1} Feedback", EmailAddress, ManifestHelper.GetDisplayName()));
+            await Windows.System.Launcher.LaunchUriAsync(mailto);
+        }
+#elif WINDOWS_PHONE
 		protected internal void email_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-		{
+        {
 			var email = new EmailComposeTask
 			{
 				To = EmailAddress,
@@ -64,23 +85,29 @@ namespace Coding4Fun.Toolkit.Controls
 
 			email.Show();
 		}
+#endif
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private async void websiteClick_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            var web = new Uri(WebSiteUrl);
+            await Windows.System.Launcher.LaunchUriAsync(web);
+        }
+#elif WINDOWS_PHONE
 		protected internal void websiteClick_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-		{
-			NavigateTo(WebSiteUrl);
+        {
+            var web = new WebBrowserTask { Uri = new Uri(WebSiteUrl) };
+
+            web.Show();
 		}
+#endif
 
-		#endregion
 
-		#region helper methods
-		private static void NavigateTo(string uri)
-		{
-			var web = new WebBrowserTask { Uri = new Uri(uri) };
+        #endregion
 
-			web.Show();
-		}
+        #region helper methods
 
-		private static void SetVisibility(TextBlock control)
+        private static void SetVisibility(TextBlock control)
 		{
 			if (control != null)
 				control.Visibility = (string.IsNullOrEmpty(control.Text)) ? Visibility.Collapsed : Visibility.Visible;

@@ -144,6 +144,9 @@
     <Compile Include="..\coding4fun.toolkit.controls\common\IntExtensions.cs">
       <Link>Common\IntExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ManifestHelper.cs">
+      <Link>Common\ManifestHelper.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
     </Compile>
@@ -209,6 +212,15 @@
     </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\other\SuperImageSource.cs">
       <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AboutPrompt.cs">
+      <Link>Prompts\AboutPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AboutPromptItem.cs">
+      <Link>Prompts\AboutPromptItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ActionPopUp.cs">
+      <Link>Prompts\ActionPopUp.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
       <Link>Prompts\PopUp.cs</Link>

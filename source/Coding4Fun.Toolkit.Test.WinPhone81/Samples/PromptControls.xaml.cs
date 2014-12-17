@@ -110,7 +110,7 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 
         private void NavToAboutPromptsClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Samples.Prompts.AboutPrompts));
         }
 
         private void NavToAppBarPromptsClick(object sender, RoutedEventArgs e)

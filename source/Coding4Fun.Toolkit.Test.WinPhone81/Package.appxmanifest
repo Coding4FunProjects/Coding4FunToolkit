@@ -3,7 +3,7 @@
   <Identity Name="72ada7e0-ecdf-4ce9-9dfd-b6d79853095d" Publisher="CN=daveh" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="72ada7e0-ecdf-4ce9-9dfd-b6d79853095d" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Coding4Fun.Toolkit.Test.WinPhone81</DisplayName>
+    <DisplayName>Coding4Fun Toolkit</DisplayName>
     <PublisherDisplayName>daveh</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

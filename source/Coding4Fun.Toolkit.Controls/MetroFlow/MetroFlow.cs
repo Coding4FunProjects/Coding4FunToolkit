@@ -162,7 +162,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public static readonly DependencyProperty ExpandingWidthProperty =
 			DependencyProperty.Register("ExpandingWidth", typeof(double), typeof(MetroFlow),
-			new PropertyMetadata(0, ColumnGrowWidthChanged));
+			new PropertyMetadata(0.0, ColumnGrowWidthChanged));
 
 		public double CollapsingWidth
 		{
@@ -172,7 +172,7 @@ namespace Coding4Fun.Toolkit.Controls
 
 		public static readonly DependencyProperty CollapsingWidthProperty =
 			DependencyProperty.Register("CollapsingWidth", typeof(double), typeof(MetroFlow),
-			new PropertyMetadata(0, ColumnShrinkWidthChanged));
+			new PropertyMetadata(0.0, ColumnShrinkWidthChanged));
 
 		private static void ColumnGrowWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{

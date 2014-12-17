@@ -30,8 +30,8 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <StackPanel HorizontalAlignment="Stretch">
-                <!--Button Click="NavToAboutPromptsClick" HorizontalAlignment="Stretch">About</>
-                <Button Click="NavToAppBarPromptsClick" HorizontalAlignment="Stretch">AppBar</Button>
+                <Button Click="NavToAboutPromptsClick" HorizontalAlignment="Stretch">About</Button>
+                <!--Button Click="NavToAppBarPromptsClick" HorizontalAlignment="Stretch">AppBar</>
                 <Button Click="NavToInputPromptsClick" HorizontalAlignment="Stretch">Input</Button>
                 <Button Click="NavToMessagePromptsClick" HorizontalAlignment="Stretch">Message</Button>
                 <Button Click="NavToPasswordInputPromptsClick" HorizontalAlignment="Stretch">Password Input</Button-->

@@ -1,6 +1,13 @@
 ﻿using System.Collections.Generic;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+#endif
 
 using Coding4Fun.Toolkit.Controls.Common;
 
@@ -18,7 +25,11 @@ namespace Coding4Fun.Toolkit.Controls
             ActionPopUpButtons.Add(okButton);
         }
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -118,7 +129,13 @@ namespace Coding4Fun.Toolkit.Controls
 			set { SetValue(VersionNumberProperty, value); }
 		}
 		public static readonly DependencyProperty VersionNumberProperty =
-			DependencyProperty.Register("VersionNumber", typeof(object), typeof(AboutPrompt), new PropertyMetadata("v" + PhoneHelper.GetAppAttribute("Version").Replace(".0.0", "")));
+			DependencyProperty.Register("VersionNumber", typeof(object), typeof(AboutPrompt), new PropertyMetadata("v" + 
+                #if WINDOWS_STORE || WINDOWS_PHONE_APP
+                ManifestHelper.GetVersion()
+#elif WINDOWS_PHONE
+                PhoneHelper.GetAppAttribute("Version")
+#endif
+                ));
 
 		public object Body
 		{
@@ -148,7 +165,14 @@ namespace Coding4Fun.Toolkit.Controls
 
 		// Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty TitleProperty =
-			DependencyProperty.Register("Title", typeof(string), typeof(AboutPrompt), new PropertyMetadata(PhoneHelper.GetAppAttribute("Title")));
+			DependencyProperty.Register("Title", typeof(string), typeof(AboutPrompt), new PropertyMetadata(
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                ManifestHelper.GetDisplayName()
+#elif WINDOWS_PHONE
+                PhoneHelper.GetAppAttribute("Title")
+#endif
+
+                ));
 		#endregion
     }
 }
