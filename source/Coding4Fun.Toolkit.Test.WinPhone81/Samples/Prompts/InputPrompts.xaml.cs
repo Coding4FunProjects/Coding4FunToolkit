@@ -1,4 +1,5 @@
-﻿using Coding4Fun.Toolkit.Test.WinPhone81.Common;
+﻿using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Test.WinPhone81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,17 +20,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PromptControls : Page
+    public sealed partial class InputPrompts : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public PromptControls()
+        public InputPrompts()
         {
             this.InitializeComponent();
 
@@ -108,39 +110,87 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 
         #endregion
 
-        private void NavToAboutPromptsClick(object sender, RoutedEventArgs e)
+        private readonly SolidColorBrush _aliceBlueSolidColorBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 240, 248, 255));
+        private readonly SolidColorBrush _naturalBlueSolidColorBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 135, 189));
+        private readonly SolidColorBrush _cornFlowerBlueSolidColorBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(200, 100, 149, 237));
+
+        const string LongText = "Testing text body wrapping with a bit of Lorem Ipsum.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at orci felis, in imperdiet tortor.";
+
+        private InputPrompt _prompt;
+
+
+        private void InitializePrompt()
         {
-            Frame.Navigate(typeof(Samples.Prompts.AboutPrompts));
+            //var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+            if (_prompt != null)
+            {
+                _prompt.Completed -= PromptCompleted;
+            }
+
+            //if (!reuseObject || _prompt == null)
+            {
+                _prompt = new InputPrompt();
+            }
+
+            _prompt.Completed += PromptCompleted;
         }
 
-        private void NavToAppBarPromptsClick(object sender, RoutedEventArgs e)
+        private void PromptCompleted(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-
+            Results.Text = string.Format("{0}::{1}", e.PopUpResult, e.Result);
         }
 
-        private void NavToInputPromptsClick(object sender, RoutedEventArgs e)
+        private void InputClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.InputPrompts));
+            InitializePrompt();
+
+            _prompt.Title = "Basic Input";
+            _prompt.Message = "I'm a basic input prompt" + LongText;
+
+            _prompt.Show();
         }
 
-        private void NavToMessagePromptsClick(object sender, RoutedEventArgs e)
+        private void InputNoEnterClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.MessagePrompts));
+            InitializePrompt();
+
+            _prompt.Title = "Enter won't submit";
+            _prompt.Message = "Enter key won't submit now";
+            _prompt.IsSubmitOnEnterKey = false;
+
+            _prompt.Show();
         }
 
-        private void NavToPasswordInputPromptsClick(object sender, RoutedEventArgs e)
+        private void InputAdvancedClick(object sender, RoutedEventArgs e)
         {
+            InitializePrompt();
 
+            _prompt.Title = "TelephoneNum";
+            _prompt.Message = "I'm a message about Telephone numbers!";
+            _prompt.Background = _naturalBlueSolidColorBrush;
+            _prompt.Foreground = _aliceBlueSolidColorBrush;
+            _prompt.Overlay = _cornFlowerBlueSolidColorBrush;
+            _prompt.IsCancelVisible = true;
+            _prompt.InputScope = new InputScope { Names = { new InputScopeName { NameValue = InputScopeNameValue.TelephoneNumber } } };
+
+            _prompt.Show();
         }
 
-        private void NavToToastPromptsClick(object sender, RoutedEventArgs e)
+        private void InputLongMsgClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.ToastPrompts));
+            InitializePrompt();
+
+            _prompt.Title = "Basic Input";
+            _prompt.Message = LongText;
+            _prompt.MessageTextWrapping = TextWrapping.Wrap;
+
+            _prompt.Show();
         }
 
-        private void NavToToastStressClick(object sender, RoutedEventArgs e)
+        private async void DingClick(object sender, RoutedEventArgs e)
         {
-
+            await new MessageDialog("CLICK!", "Testing with Click Event").ShowAsync();
         }
     }
 }

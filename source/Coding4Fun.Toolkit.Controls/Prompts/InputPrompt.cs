@@ -1,9 +1,20 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Core;
+using Windows.System;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+#endif
 
+using Coding4Fun.Toolkit.Controls.Binding;
 using Coding4Fun.Toolkit.Controls.Common;
+using System.Threading.Tasks;
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -18,7 +29,11 @@ namespace Coding4Fun.Toolkit.Controls
             DefaultStyleKey = typeof (InputPrompt);
         }
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override async void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override async void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -30,18 +45,23 @@ namespace Coding4Fun.Toolkit.Controls
                 // GetBindingExpression doesn't seem to respect TemplateBinding
                 // so TextBoxBinding's code doesn't fire
 
-                var binding = new System.Windows.Data.Binding
-                                  {
-                                      Source = InputBox,
-                                      Path = new PropertyPath("Text"),
-                                  };
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                var binding = new Windows.UI.Xaml.Data.Binding();
+#elif WINDOWS_PHONE
+			    var binding = new System.Windows.Data.Binding();
+#endif
+
+                binding.Source = InputBox;
+                binding.Path = new PropertyPath("Text");
 
                 SetBinding(ValueProperty, binding);
+
+                TextBinding.SetUpdateSourceOnChange(InputBox, true);
                 
                 HookUpEventForIsSubmitOnEnterKey();
 
 				if (!ApplicationSpace.IsDesignMode)
-	                ThreadPool.QueueUserWorkItem(DelayInputSelect);
+	                await DelayInputSelect();
             }
         }
 
@@ -49,12 +69,22 @@ namespace Coding4Fun.Toolkit.Controls
 		#endregion
 
 		#region helper methods
-		private void DelayInputSelect(object value)
+		private async Task DelayInputSelect()
 		{
-			Thread.Sleep(250);
-			Dispatcher.BeginInvoke(() =>
+			await Task.Delay(250);
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            await ApplicationSpace.CurrentDispatcher.RunAsync(CoreDispatcherPriority.Normal,
+#elif WINDOWS_PHONE
+            ApplicationSpace.CurrentDispatcher.BeginInvoke(
+#endif
+            () =>
 			{
-				InputBox.Focus();
+				InputBox.Focus
+                    (
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                        FocusState.Programmatic
+#endif
+                    );
 				InputBox.SelectAll();
 			});
 		}
@@ -72,9 +102,20 @@ namespace Coding4Fun.Toolkit.Controls
 				InputBox.KeyDown += InputBoxKeyDown;
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        private void InputBoxKeyDown(object sender, KeyRoutedEventArgs e)
+
+#elif WINDOWS_PHONE
 		void InputBoxKeyDown(object sender, KeyEventArgs e)
+#endif
 		{
-			if (e.Key == Key.Enter)
+			if (e.Key == 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                VirtualKey.Enter
+#elif WINDOWS_PHONE
+                Key.Enter
+#endif
+                )
 				OnCompleted(new PopUpEventArgs<string, PopUpResult> { Result = Value, PopUpResult = PopUpResult.Ok });
 		}
 		#endregion

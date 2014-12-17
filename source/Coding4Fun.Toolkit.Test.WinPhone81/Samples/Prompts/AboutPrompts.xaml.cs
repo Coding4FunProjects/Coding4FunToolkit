@@ -1,4 +1,5 @@
-﻿using Coding4Fun.Toolkit.Test.WinPhone81.Common;
+﻿using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Test.WinPhone81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,17 +20,41 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
+namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PromptControls : Page
+    public sealed partial class AboutPrompts : Page
     {
+        private AboutPrompt _prompt;
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public PromptControls()
+        private void InitializePrompt()
+        {
+            //var reuseObject = ReuseObject.IsChecked.GetValueOrDefault(false);
+
+            if (_prompt != null)
+            {
+                _prompt.Completed -= PromptCompleted;
+            }
+
+            //if (!reuseObject || _prompt == null)
+            {
+                _prompt = new AboutPrompt();
+            }
+
+            _prompt.Completed += PromptCompleted;
+        }
+
+        private void PromptCompleted(object sender, PopUpEventArgs<object, PopUpResult> e)
+        {
+            Results.Text = e.PopUpResult.ToString();
+        }
+
+        public AboutPrompts()
         {
             this.InitializeComponent();
 
@@ -108,39 +134,42 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 
         #endregion
 
-        private void NavToAboutPromptsClick(object sender, RoutedEventArgs e)
+        private void AboutPromptBlankClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.AboutPrompts));
+            InitializePrompt();
+
+            _prompt.Show();
         }
 
-        private void NavToAppBarPromptsClick(object sender, RoutedEventArgs e)
+        private void AboutPromptBasicClick(object sender, RoutedEventArgs e)
         {
+            InitializePrompt();
 
+            _prompt.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
         }
 
-        private void NavToInputPromptsClick(object sender, RoutedEventArgs e)
+        private void AboutPromptLongClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.InputPrompts));
+            InitializePrompt();
+
+            _prompt.Title = "Custom Title";
+            _prompt.VersionNumber = "v3.14159265";
+
+            _prompt.Show(
+                new AboutPromptItem { Role = "dev", AuthorName = "Clint Rutkas" },
+                new AboutPromptItem { Role = "site", WebSiteUrl = "http://coding4fun.com" });
         }
 
-        private void NavToMessagePromptsClick(object sender, RoutedEventArgs e)
+        private void AboutPromptC4FClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Samples.Prompts.MessagePrompts));
+            InitializePrompt();
+
+            _prompt.Show("Clint Rutkas", "ClintRutkas", "Clint@Rutkas.com", "http://betterthaneveryone.com");
         }
 
-        private void NavToPasswordInputPromptsClick(object sender, RoutedEventArgs e)
+        private async void DingClick(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void NavToToastPromptsClick(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Samples.Prompts.ToastPrompts));
-        }
-
-        private void NavToToastStressClick(object sender, RoutedEventArgs e)
-        {
-
+            await new MessageDialog("CLICK!", "Testing with Click Event").ShowAsync();
         }
     }
 }

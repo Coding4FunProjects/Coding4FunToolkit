@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts.MessagePrompts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="message prompts" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <Button Content="Basic" Click="MessageClick" HorizontalAlignment="Stretch" />
+                <Button Content="Advanced" Click="MessageAdvancedClick" HorizontalAlignment="Stretch"/>
+                <Button Content="Custom Button Actions" Click="MessageSuperClick" HorizontalAlignment="Stretch"/>
+                <Button Content="Custom Body" Click="MessageCustomClick" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="test: system tray" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="vis" Click="MsgSysTrayVisClick" />
+                    <Button Content="!vis" Click="MsgSysTrayNotVisClick" />
+                    <Button Content="vis w/ .8 opac" Click="MsgSysTrayVisWithOpacityClick" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Bottom">
+                <Grid>
+                    <TextBlock
+						x:Name="Results"
+						Text="result: ##" />
+                    <Button 
+						HorizontalAlignment="Right"
+						Content="Click Event"
+						Click="DingClick" 
+						Background="Red" 
+						BorderBrush="#FFD11E1E" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

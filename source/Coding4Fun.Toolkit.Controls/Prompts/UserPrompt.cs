@@ -1,5 +1,9 @@
 ﻿using System;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+#elif WINDOWS_PHONE
 using System.Windows;
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -22,7 +26,11 @@ namespace Coding4Fun.Toolkit.Controls
             SetCancelButtonVisibility(IsCancelVisible);
         }
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
+#endif
 		{
 			_cancelButton.Content = ButtonBaseHelper.CreateXamlCancel(_cancelButton);
 

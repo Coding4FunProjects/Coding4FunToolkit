@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts.AboutPrompts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Prompts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="about prompts" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <Button Content="Blank" Click="AboutPromptBlankClick" HorizontalAlignment="Stretch"/>
+                <Button Content="Basic" Click="AboutPromptBasicClick" HorizontalAlignment="Stretch"/>
+                <Button Content="Long" Click="AboutPromptLongClick" HorizontalAlignment="Stretch"/>
+                <Button Content="Advanced" Click="AboutPromptC4FClick" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Bottom" Margin="1,0,-1,0">
+                <Grid>
+                    <TextBlock
+						Name="Results"
+						Text="result: ##" />
+                    <Button 
+						HorizontalAlignment="Right"
+						Content="Click Event"
+						Background="Red" 
+                        Click="DingClick"
+						BorderBrush="#FFD11E1E" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

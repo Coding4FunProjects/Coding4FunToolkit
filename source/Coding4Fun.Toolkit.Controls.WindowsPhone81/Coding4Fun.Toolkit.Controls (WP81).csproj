@@ -222,6 +222,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ActionPopUp.cs">
       <Link>Prompts\ActionPopUp.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\InputPrompt.cs">
+      <Link>Prompts\InputPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\MessagePrompt.cs">
+      <Link>Prompts\MessagePrompt.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
       <Link>Prompts\PopUp.cs</Link>
     </Compile>
@@ -233,6 +239,9 @@
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ToastPrompt.cs">
       <Link>Prompts\ToastPrompt.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\UserPrompt.cs">
+      <Link>Prompts\UserPrompt.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
