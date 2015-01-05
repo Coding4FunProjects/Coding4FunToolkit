@@ -136,7 +136,7 @@
 						    IsEnabled="False"/>
 
                         <c4f:ChatBubbleTextBox 
-						    Name="DynamicTextHintTest"
+						    x:Name="DynamicTextHintTest"
 						    Hint="testing dynamic text"/>
 
                         <Button Click="AddTextClicked">Add text</Button>

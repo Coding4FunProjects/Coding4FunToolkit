@@ -34,7 +34,7 @@
                 <!--Button Click="NavToAppBarPromptsClick" HorizontalAlignment="Stretch">AppBar</-->
                 <Button Click="NavToInputPromptsClick" HorizontalAlignment="Stretch">Input</Button>
                 <Button Click="NavToMessagePromptsClick" HorizontalAlignment="Stretch">Message</Button>
-                <!--Button Click="NavToPasswordInputPromptsClick" HorizontalAlignment="Stretch">Password Input</Button-->
+                <Button Click="NavToPasswordInputPromptsClick" HorizontalAlignment="Stretch">Password Input</Button>
                 <Button Click="NavToToastPromptsClick" HorizontalAlignment="Stretch">Toast</Button>
                 <!--Button Click="NavToToastStressClick" HorizontalAlignment="Stretch">Nav to stress page</Button-->
 

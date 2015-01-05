@@ -36,7 +36,6 @@
 								
 								<TextBox 
                                     Name="inputBox" 
-                                    Binding:TextBinding.UpdateSourceOnChange="True"
                                     InputScope="{TemplateBinding InputScope}"
                                     Text="{TemplateBinding Value}" 
 									Margin="-12, 0" />

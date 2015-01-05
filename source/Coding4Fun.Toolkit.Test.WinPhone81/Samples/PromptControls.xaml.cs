@@ -130,7 +130,7 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
 
         private void NavToPasswordInputPromptsClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Samples.Prompts.PasswordInputPrompts));
         }
 
         private void NavToToastPromptsClick(object sender, RoutedEventArgs e)

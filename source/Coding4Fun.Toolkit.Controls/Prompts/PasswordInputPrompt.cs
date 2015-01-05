@@ -3,8 +3,20 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
+using Coding4Fun.Toolkit.Controls.Common;
+using Coding4Fun.Toolkit.Controls.Binding;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Core;
+using Windows.System;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -18,12 +30,28 @@ namespace Coding4Fun.Toolkit.Controls
             DefaultStyleKey = typeof(PasswordInputPrompt);
         }
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
             
             if (InputBox != null)
 			{
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                var binding = new Windows.UI.Xaml.Data.Binding();
+#elif WINDOWS_PHONE
+			    var binding = new System.Windows.Data.Binding();
+#endif
+
+                binding.Source = InputBox;
+                binding.Path = new PropertyPath("Text");
+
+                SetBinding(ValueProperty, binding);
+
+                TextBinding.SetUpdateSourceOnChange(InputBox, true);
 				InputBox.TextChanged -= InputBoxTextChanged;
 				InputBox.SelectionChanged -= InputBoxSelectionChanged;
 
@@ -44,7 +72,7 @@ namespace Coding4Fun.Toolkit.Controls
 				InputBox.SelectionLength = 0;
 		}
 
-		private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
+		private async void InputBoxTextChanged(object sender, TextChangedEventArgs e)
 		{
 			var diff = InputBox.Text.Length - _inputText.Length;
 
@@ -82,7 +110,7 @@ namespace Coding4Fun.Toolkit.Controls
 				{
 					var replacementString = new StringBuilder();
 
-					replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length);
+					replacementString.Insert(0, PasswordChar.ToString(), InputBox.Text.Length);
 					InputBox.Text = replacementString.ToString();
 				}
 				else
@@ -90,13 +118,13 @@ namespace Coding4Fun.Toolkit.Controls
 					if (InputBox.Text.Length >= 2)
 					{
 						var replacementString = new StringBuilder();
-						replacementString.Insert(0, PasswordChar.ToString(CultureInfo.InvariantCulture), InputBox.Text.Length - diff);
+						replacementString.Insert(0, PasswordChar.ToString(), InputBox.Text.Length - diff);
 						replacementString.Insert(selectionIndex, newChars);
 
 						InputBox.Text = replacementString.ToString();
 					}
 
-					ExecuteDelayedOverwrite();
+					await ExecuteDelayedOverwrite();
 					_lastUpdated = DateTime.Now;
 				}
 
@@ -106,23 +134,26 @@ namespace Coding4Fun.Toolkit.Controls
 		#endregion
 
 		#region helper methods
-		private void ExecuteDelayedOverwrite()
+		private async Task ExecuteDelayedOverwrite()
 		{
-			ThreadPool.QueueUserWorkItem(
-				state =>
-				{
+			await Task.Run(async () =>
+                {
 					var delay = TimeSpan.FromMilliseconds(500);
-					Thread.Sleep(delay);
+					await Task.Delay(delay);
 
 					if (DateTime.Now - _lastUpdated < TimeSpan.FromMilliseconds(500))
 						return;
 
-					Dispatcher.BeginInvoke(
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                    await ApplicationSpace.CurrentDispatcher.RunAsync(CoreDispatcherPriority.Normal,
+#elif WINDOWS_PHONE
+                    ApplicationSpace.CurrentDispatcher.BeginInvoke(
+#endif
 						() =>
 						{
 							var selectionStart = InputBox.SelectionStart;
 
-							InputBox.Text = Regex.Replace(InputBox.Text, ".", PasswordChar.ToString(CultureInfo.InvariantCulture));
+							InputBox.Text = Regex.Replace(InputBox.Text, ".", PasswordChar.ToString());
 
 							InputBox.SelectionStart = selectionStart;
 						});

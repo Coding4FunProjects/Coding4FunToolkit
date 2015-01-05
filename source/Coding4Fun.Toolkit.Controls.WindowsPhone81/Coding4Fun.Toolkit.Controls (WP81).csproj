@@ -228,6 +228,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\MessagePrompt.cs">
       <Link>Prompts\MessagePrompt.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PasswordInputPrompt.cs">
+      <Link>Prompts\PasswordInputPrompt.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
       <Link>Prompts\PopUp.cs</Link>
     </Compile>

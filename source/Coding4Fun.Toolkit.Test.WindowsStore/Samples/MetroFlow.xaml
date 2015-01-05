@@ -51,7 +51,7 @@
 
                 <TextBlock>Load items at runtime</TextBlock>
                 <c4f:MetroFlow 
-						Name="loadDataAtRunTime"
+						x:Name="loadDataAtRunTime"
 						Margin="0, 0, 0, 12" />
             </StackPanel>
         </Grid>
@@ -69,7 +69,7 @@
                 <c4f:MetroFlowItem 
 						Height="120"
 						Margin="0, 12"
-						Name="loadImageAtRunTime"
+						x:Name="loadImageAtRunTime"
 						Title="Loading image at runtime" />
             </StackPanel>
         </Grid>
