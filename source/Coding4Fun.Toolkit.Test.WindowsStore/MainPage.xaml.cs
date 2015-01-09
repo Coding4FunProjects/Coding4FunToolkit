@@ -23,24 +23,11 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
 			Loaded += MainPage_Loaded;
 		}
 
-		void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+		async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
 		{
-			ThreadPool.RunAsync(state =>
+			await SafeDispatcher.Run(() =>
 			{
-				try
-				{
-					LayoutRoot.Background = new SolidColorBrush(Colors.Red);
-
-				}
-				catch (Exception ex0)
-				{
-					Debug.WriteLine("caught: " + ex0);
-				}
-
-				SafeDispatcher.Run(() =>
-				{
-					LayoutRoot.Background = new SolidColorBrush(Colors.Transparent);
-				});
+				LayoutRoot.Background = new SolidColorBrush(Colors.Transparent);
 			});
 		}
 

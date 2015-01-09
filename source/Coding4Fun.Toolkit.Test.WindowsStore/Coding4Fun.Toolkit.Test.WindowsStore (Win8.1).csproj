@@ -12,11 +12,13 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_StoreKey.pfx</PackageCertificateKeyFile>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <TargetFrameworkVersion />
-    <PackageCertificateThumbprint>A30C4B5DE14DCD4147DB9F43EBDD648057341D26</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>D78380F312CBAAE3374464A88936D541ED93BE70</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -171,6 +173,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_StoreKey.pfx" />
     <None Include="Coding4Fun.Toolkit.Test.WindowsStore %28Win8.1%29_TemporaryKey.pfx" />
     <None Include="Coding4Fun.Toolkit.Test.WindowsStore_TemporaryKey.pfx" />
   </ItemGroup>
@@ -321,6 +324,7 @@
     </Content>
     <Compile Include="Test\TestSerializeClass.cs" />
     <Content Include="Media\BackgroundTest.jpg" />
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
