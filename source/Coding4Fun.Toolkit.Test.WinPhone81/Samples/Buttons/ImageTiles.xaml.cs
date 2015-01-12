@@ -1,4 +1,5 @@
-﻿using Coding4Fun.Toolkit.Test.WinPhone81.Common;
+﻿using Coding4Fun.Toolkit.Controls;
+using Coding4Fun.Toolkit.Test.WinPhone81.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +38,8 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
             SetItemSource(15);
+
+            this.data.ValueChanged += DataValueChanged;
         }
 
         private void SetItemSource(int amount)
@@ -121,5 +124,36 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples.Buttons
         }
 
         #endregion
+
+        private void ButtonTapped(object sender, TappedRoutedEventArgs e)
+        {
+            fadeTile.CycleImage();
+        }
+
+        private void DataValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            SetItemSource((int)e.NewValue);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AnimationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.AnimationCombo == null)
+                return;
+
+            fadeTile.AnimationType = (ImageTileAnimationTypes)Enum.Parse(typeof(ImageTileAnimationTypes), (string) (this.AnimationCombo.SelectedItem as ComboBoxItem).Content);
+        }
+
+        private void animationSpeed_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (this.AnimationCombo == null)
+                return;
+
+            fadeTile.AnimationDuration = (int)this.animationSpeed.Value;
+        }
     }
 }

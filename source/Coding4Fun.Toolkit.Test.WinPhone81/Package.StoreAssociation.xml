@@ -237,5 +237,11 @@
     <MainPackageIdentityName>InvokeITLimited.TableClockFree</MainPackageIdentityName>
     <MainPackageIdentityName>InvokeITLimited.Unblurred</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=3797dae9-e5e4-451e-9a22-d09d19b27084" />
+  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=3797dae9-e5e4-451e-9a22-d09d19b27084">
+    <PackageInfo>
+      <OsMinVersion>6.3.0.0</OsMinVersion>
+      <PackageArchitecture>neutral</PackageArchitecture>
+      <PackageMaxArchitectureVersion>8.1.0.0</PackageMaxArchitectureVersion>
+    </PackageInfo>
+  </PackageInfoList>
 </StoreAssociation>

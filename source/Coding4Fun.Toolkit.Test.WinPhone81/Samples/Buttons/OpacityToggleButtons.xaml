@@ -102,6 +102,8 @@
                             Checked
                         </ToggleButton>
                         <ToggleButton />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <ToggleButton 
 							Background="Gold" 
 							IsChecked="true">
@@ -109,6 +111,7 @@
                         </ToggleButton>
                         <ToggleButton Background="Gold"/>
                     </StackPanel>
+                    
                 </StackPanel>
                 <CheckBox 
 					x:Name="ToggleCheck"

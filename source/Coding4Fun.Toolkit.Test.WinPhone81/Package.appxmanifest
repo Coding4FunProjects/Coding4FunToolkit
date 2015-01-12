@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="InvokeITLimited.Coding4FunToolkit" Publisher="CN=67FED6AA-5491-4F37-B955-D890A9B33074" Version="8.1.0.0" />
+  <Identity Name="InvokeITLimited.Coding4FunToolkit" Publisher="CN=67FED6AA-5491-4F37-B955-D890A9B33074" Version="8.1.0.2" />
   <mp:PhoneIdentity PhoneProductId="e78d8214-436f-4a52-b5b4-fcf07f9366f8" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Coding4Fun Toolkit</DisplayName>

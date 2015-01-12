@@ -56,7 +56,8 @@
 							Height="50"
 							PlaceholderImageSource="../Media/head.png" 
 							PlaceholderImageStretch="Uniform" />
-
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
                             <TextBlock>Place w/ valid image</TextBlock>
                             <c4f:SuperImage 
 							Source="../Media/images/1.jpg"
@@ -69,14 +70,8 @@
 							Source="../Media/images/invalid.jpg"
 							PlaceholderImageSource="../Media/head.png" 
 							PlaceholderImageStretch="Uniform" />
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock>Isolated Storage</TextBlock>
-                            <c4f:SuperImage 
-							Source="isostore:/robotIso.jpg" 
-							Stretch="Uniform" 
-							Height="50" />
-
+                            
+                            
                             <TextBlock>Place w/ valid image</TextBlock>
                             <c4f:SuperImage 
 							PlaceholderImageSource="../Media/head.png" 

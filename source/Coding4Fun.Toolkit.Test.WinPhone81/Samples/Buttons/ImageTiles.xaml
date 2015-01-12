@@ -28,14 +28,114 @@
             <TextBlock Text="Image Tiles" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
-        <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <coding4Fun:ImageTile HorizontalAlignment="Left"
-					x:Name="fadeTile"
-					AnimationType="Fade"
-					AnimationDuration="250"
-					ImageCycleInterval="500"
-					Label="Image Tile" />
+        <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <coding4Fun:ImageTile 
+				x:Name="fadeTile" 
+                Width="300" Height="100"
+				HorizontalAlignment="Center" 
+				IsFrozen="{Binding Path=IsChecked, ElementName=IsTileFrozen}" 
+				AnimationType="Fade"
+				AnimationDuration="250"
+				ImageCycleInterval="500"
+				Rows="{Binding ElementName=rows, Path=Value}"
+				Columns="{Binding ElementName=cols, Path=Value}"
+                LargeTileRows="{Binding ElementName=largerows, Path=Value, Mode=TwoWay}"
+				LargeTileColumns="{Binding ElementName=largecols, Path=Value, Mode=TwoWay}"
+				Label="Image Tile" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Slider 
+					Header="Rows" 
+					Name="rows"
+					Value="3" 
+					StepFrequency="1" 
+					Minimum="0"
+					Maximum="10"
+                    Grid.Row="0" Grid.Column="0"/>
+                <Slider 
+					Header="Columns" 
+					Name="cols"
+					Value="3" 
+					StepFrequency="1" 
+					Minimum="0"
+					Maximum="10"
+                    Grid.Row="0" Grid.Column="1"/>
+                <Slider 
+					Header="Large Tile Rows" 
+					Name="largerows"
+					Value="2" 
+					StepFrequency="1" 
+					Minimum="0"
+					Maximum="{Binding Value, ElementName=rows}" 
+                    Grid.Row="1" Grid.Column="0"/>
+                <Slider 
+					Header="Large Tile Columns" 
+					Name="largecols"
+					Value="2" 
+					StepFrequency="1" 
+					Minimum="0"
+					Maximum="{Binding Value, ElementName=cols}" 
+                    Grid.Row="1" Grid.Column="1"/>
+                <Slider 
+					Header="Test Dataset size" 
+					x:Name="data"
+					Value="15" 
+					StepFrequency="1" 
+					Minimum="0"
+					Maximum="40" 
+					Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"/>
+                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <ComboBox Header="Animation Type" Grid.Column="1" x:Name="AnimationCombo" SelectionChanged="AnimationComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Fade" IsSelected="True"/>
+                        <ComboBoxItem Content="HorizontalExpand" />
+                        <ComboBoxItem Content="VerticalExpand" />
+                    </ComboBox>
+
+                    <Slider 
+					    Header="Animation Speed" 
+					    Name="animationSpeed"
+					    Value="1000" 
+					    StepFrequency="50" 
+					    Minimum="500"
+					    Maximum="2000" 
+                        ValueChanged="animationSpeed_ValueChanged"
+                        Grid.Row="0" Grid.Column="2"/>
+
+
+                    <!--CheckBox Name="AdBlanks" Grid.Column="0" Checked="AdBlanks_Checked">Add Blanks</CheckBox-->
+                    <CheckBox Grid.Row="1" Name="IsTileFrozen" Grid.Column="1">Is Frozen</CheckBox>
+                    <Button Grid.Row="1"
+						IsEnabled="{Binding ElementName=IsTileFrozen, Path=IsChecked}"
+						Tapped="ButtonTapped"
+						Grid.Column="2" 
+						HorizontalAlignment="Right">
+                        Cycle
+                    </Button>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

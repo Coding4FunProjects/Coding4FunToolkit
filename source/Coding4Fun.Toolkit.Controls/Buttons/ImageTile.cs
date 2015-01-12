@@ -188,44 +188,47 @@ namespace Coding4Fun.Toolkit.Controls
 			if (_imageContainer == null || ItemsSource == null || ItemsSource.Count <= 0)
 				return;
 
-			int index;
-			bool isLargeImage;
+            try
+            {
+                int index;
+                bool isLargeImage;
 
-			CalculateNextValidItem(out index, ref row, ref col, out isLargeImage);
+                CalculateNextValidItem(out index, ref row, ref col, out isLargeImage);
 
-			var img = CreateImageControl(row, col, isLargeImage);
+                var img = CreateImageControl(row, col, isLargeImage);
 
-			_imageContainer.Children.Add(img);
+                _imageContainer.Children.Add(img);
 
-			SetImageSource(img, index, (int)ActualWidth);
+                SetImageSource(img, index, (int)ActualWidth);
 
-			if (_createAnimation && AnimationType != ImageTileAnimationTypes.None)
-			{
-				var sb = new Storyboard();
-				TrackAnimationForImageRemoval(row, col, sb, isLargeImage);
+                if (_createAnimation && AnimationType != ImageTileAnimationTypes.None)
+                {
+                    var sb = new Storyboard();
+                    TrackAnimationForImageRemoval(row, col, sb, isLargeImage);
 
-				switch (AnimationType)
-				{
-					case
-						ImageTileAnimationTypes.Fade:
-						ControlHelper.CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
-						break;
-					case ImageTileAnimationTypes.HorizontalExpand:
-						img.Projection = new PlaneProjection();
-						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360,
-						                                     AnimationDuration);
-						break;
-					case ImageTileAnimationTypes.VerticalExpand:
-						img.Projection = new PlaneProjection();
-						ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360,
-						                                     AnimationDuration);
-						break;
-				}
+                    switch (AnimationType)
+                    {
+                        case
+                            ImageTileAnimationTypes.Fade:
+                            ControlHelper.CreateDoubleAnimations(sb, img, "Opacity", 0, 1, AnimationDuration);
+                            break;
+                        case ImageTileAnimationTypes.HorizontalExpand:
+                            img.Projection = new PlaneProjection();
+                            ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationY", 270, 360,
+                                                                 AnimationDuration);
+                            break;
+                        case ImageTileAnimationTypes.VerticalExpand:
+                            img.Projection = new PlaneProjection();
+                            ControlHelper.CreateDoubleAnimations(sb, img.Projection, "RotationX", 270, 360,
+                                                                 AnimationDuration);
+                            break;
+                    }
 
-				sb.Completed += AnimationCompleted;
-				sb.Begin();
-			}
-
+                    sb.Completed += AnimationCompleted;
+                    sb.Begin();
+                }
+            }
+            catch { }
 		}
 
 
