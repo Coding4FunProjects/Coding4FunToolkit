@@ -23,5 +23,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
         {
             Frame.Navigate(typeof(Samples.Color.ColorSlider));
         }
+
+        private void ColorPickerTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Color.ColorPicker));
+        }
 	}
 }

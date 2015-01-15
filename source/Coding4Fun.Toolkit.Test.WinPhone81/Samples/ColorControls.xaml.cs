@@ -117,5 +117,10 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
         }
 
         #endregion
+
+        private void ColorPickerTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Color.ColorPicker));
+        }
     }
 }

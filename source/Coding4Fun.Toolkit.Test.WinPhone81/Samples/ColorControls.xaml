@@ -39,6 +39,14 @@
                 </TextBlock>
             </coding4Fun:Tile>
             <coding4Fun:Tile 
+					Label="Color Picker" 
+					Tapped="ColorPickerTapped" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Cp
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
 					Label="Hexagon Picker" 
 					Tapped="ColorHex" 
 					Style="{StaticResource TileStyle}">
