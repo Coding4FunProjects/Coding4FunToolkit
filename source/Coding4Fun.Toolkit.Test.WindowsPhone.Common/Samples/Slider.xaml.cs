@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using Microsoft.Phone.Controls;
+using Coding4Fun.Toolkit.Controls;
 
 namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
 {
@@ -11,12 +12,12 @@ namespace Coding4Fun.Toolkit.Test.WindowsPhone.Samples
             InitializeComponent();
         }
 
-        private void ResultSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void ResultSlider_ValueChanged(object sender, PropertyChangedEventArgs<double> e)
         {
             SliderResult.Text = e.NewValue.ToString();
         }
 
-		private void ResultWithStepSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		private void ResultWithStepSlider_ValueChanged(object sender, PropertyChangedEventArgs<double> e)
         {
 			SliderWithStepResult.Text = e.NewValue.ToString();
         }

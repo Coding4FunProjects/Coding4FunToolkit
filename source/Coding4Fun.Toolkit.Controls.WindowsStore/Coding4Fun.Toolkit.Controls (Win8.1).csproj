@@ -115,6 +115,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\FrameworkElementBinding.cs">
       <Link>Binding\FrameworkElementBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Binding\PreventScrollBinding.cs">
+      <Link>Binding\PreventScrollBinding.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\ButtonBase.cs">
       <Link>Buttons\ButtonBase.cs</Link>
     </Compile>
@@ -208,6 +211,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\IntExtensions.cs">
       <Link>Common\IntExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
+      <Link>Common\MovementMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitorEventArgs.cs">
+      <Link>Common\MovementMonitorEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
     </Compile>
@@ -274,11 +283,17 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
       <Link>Other\LockScreenPreview.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PropertyChangedEventArgs.cs">
+      <Link>Other\PropertyChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
       <Link>Other\SuperImage.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImageSource.cs">
       <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperSlider.cs">
+      <Link>Other\SuperSlider.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>

@@ -147,6 +147,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ManifestHelper.cs">
       <Link>Common\ManifestHelper.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitor.cs">
+      <Link>Common\MovementMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\MovementMonitorEventArgs.cs">
+      <Link>Common\MovementMonitorEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\common\Numbers.cs">
       <Link>Common\Numbers.cs</Link>
     </Compile>
@@ -207,11 +213,17 @@
     <Compile Include="..\coding4fun.toolkit.controls\metroflow\SelectionTapEventArgs.cs">
       <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PropertyChangedEventArgs.cs">
+      <Link>Other\PropertyChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\other\SuperImage.cs">
       <Link>Other\SuperImage.cs</Link>
     </Compile>
     <Compile Include="..\coding4fun.toolkit.controls\other\SuperImageSource.cs">
       <Link>Other\SuperImageSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperSlider.cs">
+      <Link>Other\SuperSlider.cs</Link>
     </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\AboutPrompt.cs">
       <Link>Prompts\AboutPrompt.cs</Link>

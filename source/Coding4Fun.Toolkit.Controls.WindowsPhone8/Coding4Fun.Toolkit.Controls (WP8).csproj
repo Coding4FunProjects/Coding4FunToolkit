@@ -286,6 +286,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
       <Link>Other\ProgressOverlay.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PropertyChangedEventArgs.cs">
+      <Link>Other\PropertyChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperImage.cs">
       <Link>Other\SuperImage.cs</Link>
     </Compile>

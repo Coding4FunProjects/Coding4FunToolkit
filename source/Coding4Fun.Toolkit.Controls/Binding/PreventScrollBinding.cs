@@ -64,6 +64,7 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 			blockingElement.ManipulationStarted += SuspendScroll;
 #if WINDOWS_STORE || WINDOWS_PHONE_APP
             blockingElement.PointerPressed += SuspendScroll;
+            blockingElement.PointerMoved += SuspendScroll;
 #elif WINDOWS_PHONE
             blockingElement.MouseLeftButtonDown += SuspendScroll;
 #endif
@@ -87,12 +88,13 @@ namespace Coding4Fun.Toolkit.Controls.Binding
 
 		private static void SuspendScroll(object sender, RoutedEventArgs e)
 		{
+            
 			var blockingElement = sender as FrameworkElement;
 
 			// Determines the parent Panorama/Pivot control
 			if (_internalPanningControl == null)
 #if WINDOWS_STORE
-                _internalPanningControl = FindAncestor(blockingElement, p => p is Pivot || p is Hub || p is FlipView) as FrameworkElement;
+                _internalPanningControl = FindAncestor(blockingElement, p => p is Hub || p is FlipView) as FrameworkElement;
 #elif WINDOWS_PHONE_APP
                 _internalPanningControl = FindAncestor(blockingElement, p => p is Pivot || p is Hub || p is FlipView) as FrameworkElement;
 #elif WINDOWS_PHONE

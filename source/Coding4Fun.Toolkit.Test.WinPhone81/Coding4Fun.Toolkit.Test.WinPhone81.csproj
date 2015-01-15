@@ -167,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Samples\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Storage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +248,9 @@
     </Compile>
     <Compile Include="Samples\Prompts\ToastPrompts.xaml.cs">
       <DependentUpon>ToastPrompts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Slider.xaml.cs">
+      <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>

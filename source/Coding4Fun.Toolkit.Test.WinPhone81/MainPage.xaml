@@ -77,19 +77,26 @@
 						Pr
                 </TextBlock>
             </coding4Fun:Tile>
+            <coding4Fun:Tile Label="SuperImage"
+                             Style="{StaticResource TileStyle}"
+                             Tapped="SuperImageTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Si
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile Label="SuperSlider"
+                             Style="{StaticResource TileStyle}"
+                             Tapped="SuperSliderTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Sl
+                </TextBlock>
+            </coding4Fun:Tile>
             <coding4Fun:Tile 
 				Label="Storage" 
 				Style="{StaticResource TileStyle}"
 				Tapped="StorageTapped" >
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						St
-                </TextBlock>
-            </coding4Fun:Tile>
-            <coding4Fun:Tile Label="SuperImage"
-                             Style="{StaticResource TileStyle}"
-                             Tapped="SuperImageTapped">
-                <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Si
                 </TextBlock>
             </coding4Fun:Tile>
         </GridView>

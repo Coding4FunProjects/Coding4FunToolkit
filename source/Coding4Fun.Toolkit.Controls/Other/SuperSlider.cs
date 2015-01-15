@@ -1,7 +1,18 @@
 ﻿using System;
+
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Core;
+using Windows.System;
+using Windows.UI.Xaml.Shapes;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Shapes;
+#endif
 
 using Coding4Fun.Toolkit.Controls.Binding;
 
@@ -9,15 +20,10 @@ namespace Coding4Fun.Toolkit.Controls
 {
 	[TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
 	[TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
-//#if WP7
-	public
-//#else
-//	internal 
-//#endif
-		class SuperSlider : Control
+	public class SuperSlider : Control
     {
         bool _isLayoutInit;
-        public event RoutedPropertyChangedEventHandler<double> ValueChanged;
+        public event EventHandler<PropertyChangedEventArgs<double>> ValueChanged;
 
         protected Rectangle BackgroundRectangle;
         private const string BackgroundRectangleName = "BackgroundRectangle";
@@ -57,7 +63,11 @@ namespace Coding4Fun.Toolkit.Controls
 			AdjustAndUpdateLayout();
 		}
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
 		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -117,7 +127,11 @@ namespace Coding4Fun.Toolkit.Controls
 
         // Using a DependencyProperty as the backing store for Thumb.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbProperty =
-            DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(OnLayoutChanged));
+            DependencyProperty.Register("Thumb", typeof(object), typeof(SuperSlider), new PropertyMetadata(
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                null, 
+#endif
+                OnLayoutChanged));
 
         public double BackgroundSize
         {
@@ -257,7 +271,7 @@ namespace Coding4Fun.Toolkit.Controls
             UpdateUserInterface();
 
             if (ValueChanged != null)
-                ValueChanged(this, new RoutedPropertyChangedEventArgs<double>(oldValue, Value));
+                ValueChanged(this, new PropertyChangedEventArgs<double>(oldValue, Value));
         }
 
         private void UpdateUserInterface()

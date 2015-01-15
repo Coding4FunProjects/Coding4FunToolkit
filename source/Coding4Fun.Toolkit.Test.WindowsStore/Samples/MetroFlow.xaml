@@ -49,16 +49,18 @@
                         </c4f:MetroFlow.Items>
                     </c4f:MetroFlow-->
 
-                <TextBlock>Load items at runtime</TextBlock>
+                <TextBlock HorizontalAlignment="Center">Load items at runtime</TextBlock>
                 <c4f:MetroFlow 
 						x:Name="loadDataAtRunTime"
-						Margin="0, 0, 0, 12" />
+                        Width="500"
+						Margin="0, 0, 0, 10" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel>
                 <c4f:MetroFlowItem
 						Height="120"
+                        Width="500"
 						Title="____Loading image at design time"
 						ItemIndex="123"
 						ItemIndexOpacity="1"
@@ -68,6 +70,7 @@
 
                 <c4f:MetroFlowItem 
 						Height="120"
+                        Width="500"
 						Margin="0, 12"
 						x:Name="loadImageAtRunTime"
 						Title="Loading image at runtime" />

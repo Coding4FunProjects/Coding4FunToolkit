@@ -59,7 +59,7 @@ namespace Coding4Fun.Toolkit.Controls
 			IsEnabledVisualStateUpdate();
         }
 
-        void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        void Slider_ValueChanged(object sender, PropertyChangedEventArgs<double> e)
         {
             SetColorFromSlider(e.NewValue);
         }

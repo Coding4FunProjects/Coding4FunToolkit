@@ -100,11 +100,11 @@
             </coding4Fun:Tile>
 
             <coding4Fun:Tile 
-				Label="Storage" 
+				Label="Slider" 
 				Style="{StaticResource TileStyle}"
-				Tapped="StorageTapped" >
+				Tapped="SliderTapped" >
 				<TextBlock Style="{StaticResource TileTextBlockStyle}">
-						St
+						Sl
 				</TextBlock>
 			</coding4Fun:Tile>
             <coding4Fun:Tile Label="SuperImage"
@@ -114,6 +114,15 @@
 						Si
                 </TextBlock>
             </coding4Fun:Tile>
+            <coding4Fun:Tile 
+				Label="Storage" 
+				Style="{StaticResource TileStyle}"
+				Tapped="StorageTapped" >
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						St
+                </TextBlock>
+            </coding4Fun:Tile>
+
         </GridView>
 	</Grid>
 </common:LayoutAwarePage>
