@@ -31,6 +31,14 @@
         <!--TODO: Content should be placed within the following grid-->
         <GridView Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <coding4Fun:Tile 
+					Label="Color Slider" 
+					Tapped="ColorSliderTapped" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Cs
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
 					Label="Hexagon Picker" 
 					Tapped="ColorHex" 
 					Style="{StaticResource TileStyle}">

@@ -181,6 +181,12 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorHexagonPicker.cs">
       <Link>Colors\ColorHexagonPicker.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorSlider.cs">
+      <Link>Colors\ColorSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Colors\ColorSliderThumb.cs">
+      <Link>Colors\ColorSliderThumb.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Common\ApplicationHelper.cs">
       <Link>Common\ApplicationHelper.cs</Link>
     </Compile>

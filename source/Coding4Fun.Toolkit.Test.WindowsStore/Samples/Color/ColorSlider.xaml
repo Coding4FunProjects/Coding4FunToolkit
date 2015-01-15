@@ -1,0 +1,97 @@
+﻿<Page
+    xmlns:Common="using:Coding4Fun.Toolkit.Test.WindowsStore.Common" 
+    x:Class="Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color.ColorSlider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WindowsStore.Samples.Color"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Common:BaseHeader Title="Slider"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="10, 0, 0, 0">
+                <c4f:ColorSlider 
+						x:Name="ColorSliderHorizontal"
+						Orientation="Horizontal" 
+						Height="100"
+						ColorChanged="ColorHorizontalSlider_ColorChanged" />
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Margin="0, 10">
+                            <TextBlock>Via Binding:</TextBlock>
+                            <Rectangle 
+                                Height="100" Width="100"
+                                Fill="{Binding ElementName=ColorSliderHorizontal, Path=SolidColorBrush}" />
+                        </StackPanel>
+                        <StackPanel Margin="10, 10, 0, 10">
+                            <TextBlock>Via Event:</TextBlock>
+                            <Rectangle 
+                                x:Name="ColorSliderHorizontalFromEvent"
+                                Height="100" Width="100"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock  Margin="0, 9.5, 0, 0">Slider position set via Event and custom thumb:</TextBlock>
+                    <c4f:ColorSlider 
+							x:Name="ColorSliderSetViaEvent"
+							Orientation="Horizontal" 
+							Height="100">
+                        <c4f:ColorSlider.Thumb>
+                            <Ellipse 
+									Fill="Red"
+									Width="100" />
+                        </c4f:ColorSlider.Thumb>
+                    </c4f:ColorSlider>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Column="1" Margin="10, 0, 0, 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <c4f:ColorSlider 
+							Width="100"
+							Margin="0, 0, 0, 0"
+							x:Name="ColorSliderVertical" 
+							ColorChanged="ColorVerticalSlider_ColorChanged" />
+
+                    <StackPanel 
+						VerticalAlignment="Top"
+						Orientation="Horizontal">
+                        <StackPanel Margin="20, 0">
+                            <TextBlock>Via Binding:</TextBlock>
+                            <Rectangle 
+								Height="100" 
+                                Width="100"
+								Fill="{Binding ElementName=ColorSliderVertical, Path=SolidColorBrush}" />
+                        </StackPanel>
+                        <StackPanel Margin="20, 0">
+                            <TextBlock>Via Event:</TextBlock>
+                            <Rectangle 
+								x:Name="ColorSliderVerticalFromEvent"
+								Height="100"
+                                Width="100"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <c4f:ColorSlider 
+							Width="100"
+							x:Name="ColorSliderVerticalClone" />
+                </StackPanel>
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

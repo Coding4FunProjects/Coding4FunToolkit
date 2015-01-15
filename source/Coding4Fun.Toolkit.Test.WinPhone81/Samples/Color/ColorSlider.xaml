@@ -1,0 +1,113 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Color.ColorSlider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples.Color"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName }" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="color slider" Margin="0,6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <c4f:ColorSlider 
+						x:Name="ColorSliderHorizontal"
+						Orientation="Horizontal" 
+						Height="50"
+						ColorChanged="ColorHorizontalSlider_ColorChanged" />
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0, 10">
+                            <TextBlock>Via Binding:</TextBlock>
+                            <Rectangle 
+                                Height="20" Width="100"
+                                Fill="{Binding ElementName=ColorSliderHorizontal, Path=SolidColorBrush}" />
+                        </StackPanel>
+                        <StackPanel Margin="10">
+                            <TextBlock>Via Event:</TextBlock>
+                            <Rectangle 
+                                x:Name="ColorSliderHorizontalFromEvent"
+                                Height="20" Width="100"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock  Margin="0, 9.5, 0, 0">Slider position set via Event and custom thumb:</TextBlock>
+                    <c4f:ColorSlider 
+							x:Name="ColorSliderSetViaEvent"
+							Orientation="Horizontal" 
+							Height="50">
+                        <c4f:ColorSlider.Thumb>
+                            <Ellipse 
+									Fill="Red"
+									Width="24" />
+                        </c4f:ColorSlider.Thumb>
+                    </c4f:ColorSlider>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="1" Margin="0, 10, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <c4f:ColorSlider 
+							Width="50"
+							Margin="0, 0, 50, 0"
+							x:Name="ColorSliderVertical" 
+							ColorChanged="ColorVerticalSlider_ColorChanged" />
+
+                    <c4f:ColorSlider 
+							Width="50"
+							x:Name="ColorSliderVerticalClone" />
+                </StackPanel>
+                <StackPanel 
+						Grid.Row="1"
+						VerticalAlignment="Bottom"
+						Orientation="Horizontal">
+                    <StackPanel Margin="0, 10">
+                        <TextBlock>Via Binding:</TextBlock>
+                        <Rectangle 
+								Height="20" 
+                                Width="100"
+								Fill="{Binding ElementName=ColorSliderVertical, Path=SolidColorBrush}" />
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBlock>Via Event:</TextBlock>
+                        <Rectangle 
+								x:Name="ColorSliderVerticalFromEvent"
+								Height="20"
+                                Width="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

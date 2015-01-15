@@ -42,6 +42,11 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
             Frame.Navigate(typeof(Samples.Color.ColorHexPicker));
         }
 
+        private void ColorSliderTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Color.ColorSlider));
+        }
+
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>

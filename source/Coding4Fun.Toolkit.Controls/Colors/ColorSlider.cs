@@ -1,6 +1,15 @@
-﻿using System.Windows;
+﻿#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Shapes;
+#elif WINDOWS_PHONE
+using System.Windows.Media;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
+#endif
+
 
 using Coding4Fun.Toolkit.Controls.Common;
 
@@ -32,7 +41,11 @@ namespace Coding4Fun.Toolkit.Controls
             IsEnabledChanged += SuperSlider_IsEnabledChanged;
         }
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
 
@@ -51,7 +64,7 @@ namespace Coding4Fun.Toolkit.Controls
                 Slider.ValueChanged += Slider_ValueChanged;
 
                 if (Color.A == 0 && Color.R == 0 && Color.G == 0 && Color.B == 0)
-                    Color = System.Windows.Media.Color.FromArgb(255, 6, 255, 0);
+                    Color = Color.FromArgb(255, 6, 255, 0);
                 else
                     UpdateLayoutBasedOnColor();
             }

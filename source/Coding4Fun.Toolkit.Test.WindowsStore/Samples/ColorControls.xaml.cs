@@ -18,5 +18,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 		{
 			Frame.Navigate(typeof(ColorHexPicker));
 		}
+
+        private void ColorSliderTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Color.ColorSlider));
+        }
 	}
 }
