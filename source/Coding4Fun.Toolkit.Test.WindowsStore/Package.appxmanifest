@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="InvokeITLimited.Coding4FunToolkit" Publisher="CN=67FED6AA-5491-4F37-B955-D890A9B33074" Version="8.1.0.1" />
+  <Identity Name="InvokeITLimited.Coding4FunToolkit" Publisher="CN=67FED6AA-5491-4F37-B955-D890A9B33074" Version="8.1.0.2" />
   <Properties>
     <DisplayName>Coding4Fun Toolkit</DisplayName>
     <PublisherDisplayName>Invoke IT Limited</PublisherDisplayName>

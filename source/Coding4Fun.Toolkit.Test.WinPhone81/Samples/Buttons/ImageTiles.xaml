@@ -62,7 +62,7 @@
 					Name="rows"
 					Value="3" 
 					StepFrequency="1" 
-					Minimum="0"
+					Minimum="1"
 					Maximum="10"
                     Grid.Row="0" Grid.Column="0"/>
                 <Slider 
@@ -70,7 +70,7 @@
 					Name="cols"
 					Value="3" 
 					StepFrequency="1" 
-					Minimum="0"
+					Minimum="1"
 					Maximum="10"
                     Grid.Row="0" Grid.Column="1"/>
                 <Slider 
@@ -78,7 +78,7 @@
 					Name="largerows"
 					Value="2" 
 					StepFrequency="1" 
-					Minimum="0"
+					Minimum="1"
 					Maximum="{Binding Value, ElementName=rows}" 
                     Grid.Row="1" Grid.Column="0"/>
                 <Slider 
@@ -86,7 +86,7 @@
 					Name="largecols"
 					Value="2" 
 					StepFrequency="1" 
-					Minimum="0"
+					Minimum="1"
 					Maximum="{Binding Value, ElementName=cols}" 
                     Grid.Row="1" Grid.Column="1"/>
                 <Slider 
@@ -94,7 +94,7 @@
 					x:Name="data"
 					Value="15" 
 					StepFrequency="1" 
-					Minimum="0"
+					Minimum="10"
 					Maximum="40" 
 					Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"/>
                 <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
