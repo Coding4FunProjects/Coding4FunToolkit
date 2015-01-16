@@ -1,7 +1,13 @@
 ﻿using System;
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
+#elif WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+#endif
 
 namespace Coding4Fun.Toolkit.Controls
 {
@@ -30,7 +36,11 @@ namespace Coding4Fun.Toolkit.Controls
         public static readonly DependencyProperty ProgressControlProperty =
             DependencyProperty.Register("ProgressControl", typeof(object), typeof(ProgressOverlay), new PropertyMetadata(null));
 
-        public override void OnApplyTemplate()
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        protected override void OnApplyTemplate()
+#elif WINDOWS_PHONE
+		public override void OnApplyTemplate()
+#endif
         {
             base.OnApplyTemplate();
             
@@ -42,7 +52,11 @@ namespace Coding4Fun.Toolkit.Controls
                 _fadeOut.Completed += FadeOutCompleted;
         }
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+        void FadeOutCompleted(object sender, object o)
+#elif WINDOWS_PHONE
         void FadeOutCompleted(object sender, EventArgs e)
+#endif
         {
             _layoutGrid.Opacity = 1;
             Visibility = Visibility.Collapsed;

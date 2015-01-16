@@ -75,5 +75,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
         {
             Frame.Navigate(typeof(Samples.Slider));
         }
+
+        private void OverlayTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Overlay));
+        }
     }
 }

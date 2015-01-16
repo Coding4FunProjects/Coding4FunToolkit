@@ -153,6 +153,9 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81
             Frame.Navigate(typeof(Samples.Slider));
         }
 
-        
+        private void OverlayTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.Overlay));
+        }
     }
 }

@@ -151,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Overlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\PromptControls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -176,6 +180,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Samples\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\SliderAlt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,6 +253,9 @@
     <Compile Include="Samples\MetroFlow.xaml.cs">
       <DependentUpon>MetroFlow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Overlay.xaml.cs">
+      <DependentUpon>Overlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\PromptControls.xaml.cs">
       <DependentUpon>PromptControls.xaml</DependentUpon>
     </Compile>
@@ -265,6 +276,9 @@
     </Compile>
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\SliderAlt.xaml.cs">
+      <DependentUpon>SliderAlt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>

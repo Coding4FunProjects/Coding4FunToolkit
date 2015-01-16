@@ -27,8 +27,7 @@ namespace Coding4Fun.Toolkit.Controls
         public void MonitorControl(Panel panel)
         {
             Monitor = new Rectangle {Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))};
-            Monitor.ManipulationMode = ManipulationModes.System;
-			Monitor.SetValue(Grid.RowSpanProperty, int.MaxValue - 1);
+            Monitor.SetValue(Grid.RowSpanProperty, int.MaxValue - 1);
 			Monitor.SetValue(Grid.ColumnSpanProperty, int.MaxValue - 1);
 
 #if WINDOWS_STORE || WINDOWS_PHONE_APP

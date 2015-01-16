@@ -222,6 +222,9 @@
     <Compile Include="..\coding4fun.toolkit.controls\metroflow\SelectionTapEventArgs.cs">
       <Link>MetroFlow\SelectionTapEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
+      <Link>Other\ProgressOverlay.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PropertyChangedEventArgs.cs">
       <Link>Other\PropertyChangedEventArgs.cs</Link>
     </Compile>

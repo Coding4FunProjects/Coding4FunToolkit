@@ -23,7 +23,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Margin="10, 0, 0, 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -34,7 +34,7 @@
 					Color="Cyan" 
 					x:Name="ColorPickerSetOnXamlLoadTest"/>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Margin="10, 0, 0, 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />

@@ -292,6 +292,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
       <Link>Other\LockScreenPreview.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
+      <Link>Other\ProgressOverlay.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PropertyChangedEventArgs.cs">
       <Link>Other\PropertyChangedEventArgs.cs</Link>
     </Compile>

@@ -98,7 +98,14 @@
 						Mf
                 </TextBlock>
             </coding4Fun:Tile>
-
+            <coding4Fun:Tile
+					Style="{StaticResource TileStyle}"
+					Label="Overlay"
+					Tapped="OverlayTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Ov
+                </TextBlock>
+            </coding4Fun:Tile>
             <coding4Fun:Tile 
 				Label="Slider" 
 				Style="{StaticResource TileStyle}"

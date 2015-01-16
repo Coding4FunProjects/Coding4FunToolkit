@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="Coding4Fun.Toolkit.Test.WinPhone81.Samples.Overlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c4f="using:Coding4Fun.Toolkit.Controls"
+    xmlns:Converters="using:Coding4Fun.Toolkit.Controls.Converters"
+    xmlns:local="using:Coding4Fun.Toolkit.Test.WinPhone81.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="overlays" Margin="0,6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock>Pay attention to the Threads FPS's --></TextBlock>
+                <TextBlock>Progress Overlay</TextBlock>
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0" Content="Vis" Click="DirectVis" HorizontalAlignment="Stretch"/>
+                    <Button Grid.Column="2" Content="Col" Click="DirectCol" HorizontalAlignment="Stretch" />
+                    <Button Grid.Column="0" Grid.Row="1" Content="Vis (DataBind)" Click="DataBindVis" HorizontalAlignment="Stretch"/>
+                    <Button Grid.Column="2" Grid.Row="1" Content="Col (DataBind)" Click="DataBindCol" HorizontalAlignment="Stretch"/>
+                    <Button Grid.Column="0" Grid.Row="2" Content="Show" Click="ShowOverlay" HorizontalAlignment="Stretch"/>
+                    <Button Grid.Column="2" Grid.Row="2" Content="Hide" Click="HideOverlay" HorizontalAlignment="Stretch"/>
+                </Grid>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <StackPanel Margin="0, 100">
+                    <Button 
+                        Content="Do I work?"
+                        HorizontalAlignment="Stretch"    
+                        Click="Ding_Click" 
+                        Background="Red" 
+                        BorderBrush="#FFD11E1E" />
+                    <Button 
+						Background="Red" 
+                        HorizontalAlignment="Stretch"
+						BorderBrush="#FFD11E1E" 
+						Content="Test With Gestures"
+						Tapped="Button_Tapped">
+                    </Button>
+                </StackPanel>
+                <c4f:ProgressOverlay 
+                    x:Name="progressOverlay" 
+                    Margin="0, 100"
+                    Visibility="{Binding OverlayVis}">
+                    <c4f:ProgressOverlay.Resources>
+                        <Converters:VisibilityToBooleanConverter x:Key="VisToBoolConverter" />
+                    </c4f:ProgressOverlay.Resources>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <TextBlock HorizontalAlignment="Center">Loading</TextBlock>
+                        <ProgressBar
+                            IsIndeterminate="{Binding ElementName=progressOverlay, 
+                            Path=Visibility,
+                            Converter={StaticResource VisToBoolConverter}}"
+                            />
+                    </StackPanel>
+                </c4f:ProgressOverlay>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

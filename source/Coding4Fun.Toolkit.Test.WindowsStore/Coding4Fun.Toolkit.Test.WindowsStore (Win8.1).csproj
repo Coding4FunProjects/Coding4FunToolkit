@@ -167,6 +167,9 @@
     <Compile Include="Samples\LockScreenPreview.xaml.cs">
       <DependentUpon>LockScreenPreview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\Overlay.xaml.cs">
+      <DependentUpon>Overlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
@@ -415,6 +418,10 @@
     <Page Include="Samples\LockScreenPreview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\Overlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\Slider.xaml">
       <SubType>Designer</SubType>

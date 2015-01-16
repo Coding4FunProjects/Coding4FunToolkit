@@ -39,13 +39,14 @@
 	<Thickness x:Key="DefaultTextBoxInnerMargin">1,2</Thickness>
 	<Thickness x:Key="DefaultBorderThickness">3</Thickness>
 
+	<SolidColorBrush x:Key="DefaultSemiTransparentBrush" Color="{Binding Source={StaticResource DefaultChromeBrush}, Converter={StaticResource BrushToBrush}, ConverterParameter=99}" />
+
 	<SolidColorBrush x:Key="DefaultTextBoxBrush" Color="{Binding Source={StaticResource TextBoxBackgroundThemeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxForegroundBrush" Color="{Binding Source={StaticResource TextBoxForegroundThemeBrush}, Converter={StaticResource BrushToBrush}}" />
 
 	<SolidColorBrush x:Key="DefaultTextBoxReadOnlyBrush" Color="{Binding Source={StaticResource DefaultSubtleBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxEditBackgroundBrush" Color="{Binding Source={StaticResource DefaultChromeBrush}, Converter={StaticResource BrushToBrush}}" />
 	<SolidColorBrush x:Key="DefaultTextBoxEditBorderBrush" Color="{Binding Source={StaticResource DefaultAccentBrush}, Converter={StaticResource BrushToBrush}}" />
-
 	<!-- not supported in WinStore currently -->
 	<!--<SolidColorBrush x:Key="DefaultTextBoxSelectionForegroundBrush" Color="{Binding Source={StaticResource PhoneTextBoxSelectionForegroundBrush}, Converter={StaticResource BrushToBrush}}" />-->
 </ResourceDictionary>
