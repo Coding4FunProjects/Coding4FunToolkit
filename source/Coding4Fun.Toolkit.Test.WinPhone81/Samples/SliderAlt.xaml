@@ -129,7 +129,7 @@
                     </Button>
                     <c4f:SuperSlider 
 						Title="We're testing visiblity!"
-						Name="sliderVisTest"
+						x:Name="sliderVisTest"
 						Value="10"
 						Visibility="Visible"/>
                 </StackPanel>
