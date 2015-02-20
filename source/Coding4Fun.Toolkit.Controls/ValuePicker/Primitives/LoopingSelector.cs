@@ -136,6 +136,22 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
 			picker.UpdateData();
 		}
 
+        /// <summary>
+        /// The ItemContainerStyle property
+        /// </summary>
+        public Style ItemContainerStyle
+        {
+            get { return (Style)GetValue(ItemContainerStyleProperty); }
+            set { SetValue(ItemContainerStyleProperty, value); }
+        }
+
+        /// <summary>
+        /// The ItemContainerStyle DependencyProperty
+        /// </summary>
+        public static readonly DependencyProperty ItemContainerStyleProperty =
+            DependencyProperty.Register("ItemContainerStyle", typeof(Style), typeof(LoopingSelector), new PropertyMetadata(null));
+
+
 		/// <summary>
 		/// The ItemTemplate property
 		/// </summary>
@@ -977,10 +993,11 @@ namespace Coding4Fun.Toolkit.Controls.Primitives
 			bool reuse = _temporaryItemsPool != null && _temporaryItemsPool.Count > 0;
 
 			LoopingSelectorItem wrapper = reuse ? _temporaryItemsPool.Dequeue() : new LoopingSelectorItem();
-
+           
 			if (!reuse)
 			{
 				wrapper.ContentTemplate = this.ItemTemplate;
+                wrapper.Style = this.ItemContainerStyle;
 				wrapper.Width = ItemSize.Width;
 				wrapper.Height = ItemSize.Height;
 
