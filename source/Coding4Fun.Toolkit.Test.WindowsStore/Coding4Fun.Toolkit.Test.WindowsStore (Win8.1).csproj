@@ -113,6 +113,9 @@
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -170,6 +173,9 @@
     <Compile Include="Samples\Overlay.xaml.cs">
       <DependentUpon>Overlay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\PlaceImage.xaml.cs">
+      <DependentUpon>PlaceImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
     </Compile>
     <Compile Include="Samples\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\ToastPrompts.xaml.cs">
+      <DependentUpon>ToastPrompts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Test\ThicknessToGridLengthConverterControl.cs" />
   </ItemGroup>
@@ -200,6 +209,7 @@
     <Content Include="Common\ReadMe.txt" />
     <Content Include="Media\c4f_26x26.png" />
     <Content Include="Media\head.png" />
+    <Content Include="Media\headGray.png" />
     <Content Include="Media\headWhite.png" />
     <Content Include="Media\headWhite_100.png" />
     <Content Include="Media\icons\appbar.add.rest.png" />
@@ -423,6 +433,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\PlaceImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -434,6 +448,10 @@
     <Page Include="Samples\Storage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\ToastPrompts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>

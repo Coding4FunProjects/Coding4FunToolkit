@@ -80,5 +80,15 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore
         {
             Frame.Navigate(typeof(Samples.Overlay));
         }
+
+        private void PromptsTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.ToastPrompts));
+        }
+
+        private void PlaceImageTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Samples.PlaceImage));
+        }
     }
 }

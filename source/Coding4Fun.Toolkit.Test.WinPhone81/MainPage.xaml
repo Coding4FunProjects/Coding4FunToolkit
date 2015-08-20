@@ -79,6 +79,14 @@
             </coding4Fun:Tile>
             <coding4Fun:Tile 
 				Style="{StaticResource TileStyle}"
+				Label="PlaceImage"
+				Tapped="PlaceImageTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Pl
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
+				Style="{StaticResource TileStyle}"
 				Label="Prompt"
 				Tapped="PromptsTapped">
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">

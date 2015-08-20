@@ -155,6 +155,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\PlaceImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\PromptControls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -256,6 +260,9 @@
     <Compile Include="Samples\Overlay.xaml.cs">
       <DependentUpon>Overlay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\PlaceImage.xaml.cs">
+      <DependentUpon>PlaceImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\PromptControls.xaml.cs">
       <DependentUpon>PromptControls.xaml</DependentUpon>
     </Compile>
@@ -304,6 +311,7 @@
     <Content Include="Media\appbar.share.rest.png" />
     <Content Include="Media\dark\coding4funLogo.png" />
     <Content Include="Media\dark\head.png" />
+    <Content Include="Media\headGray.png" />
     <Content Include="Media\images\0.jpg" />
     <Content Include="Media\images\1.jpg" />
     <Content Include="Media\images\10.jpg" />

@@ -292,6 +292,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
       <Link>Other\LockScreenPreview.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PlaceImage.cs">
+      <Link>Other\PlaceImage.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
       <Link>Other\ProgressOverlay.cs</Link>
     </Compile>
@@ -307,8 +310,23 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\SuperSlider.cs">
       <Link>Other\SuperSlider.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUp.cs">
+      <Link>Prompts\PopUp.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpEventArgs.cs">
+      <Link>Prompts\PopUpEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\PopUpResult.cs">
+      <Link>Prompts\PopUpResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Prompts\ToastPrompt.cs">
+      <Link>Prompts\ToastPrompt.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Unsupported\DialogService.cs">
+      <Link>Unsupported\DialogService.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

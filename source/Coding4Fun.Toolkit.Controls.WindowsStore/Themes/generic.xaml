@@ -15,6 +15,7 @@
   <SolidColorBrush x:Key="DefaultDisabledBrush" Color="#6FFF" />
   <SolidColorBrush x:Key="DefaultContrastDisabledBrush" Color="#1F1F1F" />
   <x:Double x:Key="DefaultFontSizeExtraSmall">12</x:Double>
+  <x:Double x:Key="DefaultFontSizeSmall">16</x:Double>
   <x:Double x:Key="DefaultFontSizeNormal">20</x:Double>
   <x:Double x:Key="DefaultFontSizeMedium">22.667</x:Double>
   <x:Double x:Key="DefaultFontSizeMediumLarge">25.333</x:Double>
@@ -972,6 +973,33 @@
                 </Grid>
               </Border>
             </Grid>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:ToastPrompt">
+    <Setter Property="FontFamily" Value="{StaticResource FontFamilySegoeNormal}" />
+    <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeSmall}" />
+    <Setter Property="Foreground" Value="White" />
+    <Setter Property="Background" Value="{StaticResource DefaultAccentBrush}" />
+    <Setter Property="VerticalAlignment" Value="Bottom" />
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="MinHeight" Value="100" />
+    <Setter Property="MinWidth" Value="320" />
+    <Setter Property="MaxWidth" Value="500" />
+    <Setter Property="Overlay" Value="Transparent" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:ToastPrompt">
+          <Grid VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" MinHeight="{TemplateBinding MinHeight}" MinWidth="{TemplateBinding MinWidth}" MaxWidth="{TemplateBinding MaxWidth}" Background="{TemplateBinding Background}">
+            <StackPanel VerticalAlignment="Center" Margin="20" Orientation="{TemplateBinding TextOrientation}">
+              <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Image Visibility="Collapsed" Name="ToastImage" VerticalAlignment="Bottom" Width="{TemplateBinding ImageWidth}" Height="{TemplateBinding ImageHeight}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" />
+                <TextBlock Text="{TemplateBinding Title}" FontWeight="Bold" VerticalAlignment="Center" Margin="0" Padding="0" />
+              </StackPanel>
+              <TextBlock Text="{TemplateBinding Message}" Margin="0" Padding="0" TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Center" />
+            </StackPanel>
           </Grid>
         </ControlTemplate>
       </Setter.Value>
