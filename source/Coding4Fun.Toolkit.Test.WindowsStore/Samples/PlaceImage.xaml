@@ -26,7 +26,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <common:BaseHeader Title="PlaceImage" />
+        <common:BaseHeader Title="SuperImage - placeholder demo" />
         <GridView
 			AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
@@ -35,11 +35,11 @@
             Grid.Row="1">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Coding4Fun:PlaceImage
+                    <Coding4Fun:SuperImage
                         Stretch="UniformToFill"
                         Width="360"
                         Height="240"
-                        PlaceholderSource="/Media/headGray.png"
+                        PlaceholderImageSource="/Media/headGray.png"
                         Source="{Binding}"/>
                 </DataTemplate>
             </GridView.ItemTemplate>

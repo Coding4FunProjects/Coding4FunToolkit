@@ -292,9 +292,6 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\LockScreenPreview.cs">
       <Link>Other\LockScreenPreview.cs</Link>
     </Compile>
-    <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\PlaceImage.cs">
-      <Link>Other\PlaceImage.cs</Link>
-    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Other\ProgressOverlay.cs">
       <Link>Other\ProgressOverlay.cs</Link>
     </Compile>

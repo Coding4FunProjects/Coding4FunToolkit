@@ -79,14 +79,6 @@
             </coding4Fun:Tile>
             <coding4Fun:Tile 
 				Style="{StaticResource TileStyle}"
-				Label="PlaceImage"
-				Tapped="PlaceImageTapped">
-                <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Pl
-                </TextBlock>
-            </coding4Fun:Tile>
-            <coding4Fun:Tile 
-				Style="{StaticResource TileStyle}"
 				Label="Prompt"
 				Tapped="PromptsTapped">
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">
@@ -98,6 +90,14 @@
                              Tapped="SuperImageTapped">
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">
 						Si
+                </TextBlock>
+            </coding4Fun:Tile>
+            <coding4Fun:Tile 
+				Style="{StaticResource TileStyle}"
+				Label="Placeholder"
+				Tapped="PlaceImageTapped">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Si2
                 </TextBlock>
             </coding4Fun:Tile>
             <coding4Fun:Tile Label="SuperSlider"

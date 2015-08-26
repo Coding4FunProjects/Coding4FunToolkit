@@ -25,7 +25,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="placeimage" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="SuperImage - placeholder demo" Margin="0,0,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
@@ -36,11 +36,11 @@
             Margin="19,9.5,19,0">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Coding4Fun:PlaceImage
+                    <Coding4Fun:SuperImage
                         Stretch="UniformToFill"
                         Width="360"
                         Height="240"
-                        PlaceholderSource="/Media/headGray.png"
+                        PlaceholderImageSource="/Media/headGray.png"
                         Source="{Binding}"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
