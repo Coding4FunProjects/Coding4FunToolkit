@@ -38,6 +38,10 @@ namespace Coding4Fun.Toolkit.Test.WindowsStore.Samples
 		{
 			Frame.Navigate(typeof(OpacityToggleButtons));
 		}
-		
-	}
+
+        private void RectangularButtonControls(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RectangularButtons));
+        }
+    }
 }

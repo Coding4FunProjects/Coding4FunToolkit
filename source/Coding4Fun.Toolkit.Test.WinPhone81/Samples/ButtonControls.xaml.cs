@@ -133,5 +133,10 @@ namespace Coding4Fun.Toolkit.Test.WinPhone81.Samples
         }
 
         #endregion
+
+        private void RectangularButtonControls(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RectangularButtons));
+        }
     }
 }

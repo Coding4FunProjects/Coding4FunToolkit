@@ -142,6 +142,9 @@
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\OpacityToggleButton.cs">
       <Link>Buttons\OpacityToggleButton.cs</Link>
     </Compile>
+    <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RectangularButton.cs">
+      <Link>Buttons\RectangularButton.cs</Link>
+    </Compile>
     <Compile Include="..\Coding4Fun.Toolkit.Controls\Buttons\RoundButton %28Windows Store%29.cs">
       <Link>Buttons\RoundButton %28Windows Store%29.cs</Link>
     </Compile>

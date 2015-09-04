@@ -47,6 +47,14 @@
                 </TextBlock>
             </Coding4Fun:Tile>
             <Coding4Fun:Tile 
+					Label="Rectangular Button" 
+					Tapped="RectangularButtonControls" 
+					Style="{StaticResource TileStyle}">
+                <TextBlock Style="{StaticResource TileTextBlockStyle}">
+						Rb
+                </TextBlock>
+            </Coding4Fun:Tile>
+            <Coding4Fun:Tile 
 					Label="Round Buttons" 
 					Tapped="RoundButtonControls" 
 					Style="{StaticResource TileStyle}">

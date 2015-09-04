@@ -107,6 +107,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\Buttons\RectangularButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\Buttons\RoundButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +227,9 @@
     </Compile>
     <Compile Include="Samples\Buttons\OpacityToggleButtons.xaml.cs">
       <DependentUpon>OpacityToggleButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Buttons\RectangularButtons.xaml.cs">
+      <DependentUpon>RectangularButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Samples\Buttons\RoundButtons.xaml.cs">
       <DependentUpon>RoundButtons.xaml</DependentUpon>
