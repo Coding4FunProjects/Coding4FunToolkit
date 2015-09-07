@@ -51,7 +51,7 @@
 					Tapped="RectangularButtonControls" 
 					Style="{StaticResource TileStyle}">
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Rb
+						Re
                 </TextBlock>
             </Coding4Fun:Tile>
             <Coding4Fun:Tile 
@@ -59,7 +59,7 @@
 					Tapped="RoundButtonControls" 
 					Style="{StaticResource TileStyle}">
                 <TextBlock Style="{StaticResource TileTextBlockStyle}">
-						Rb
+						Ro
                 </TextBlock>
             </Coding4Fun:Tile>
             <Coding4Fun:Tile 

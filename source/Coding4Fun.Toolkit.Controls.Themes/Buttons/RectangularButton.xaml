@@ -43,8 +43,8 @@
             </VisualStateManager.VisualStateGroups>
             <Border Name="EnabledBackground" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent">
               <StackPanel Orientation="{TemplateBinding Orientation}">
-                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0,-10, 0, 0">
-                  <Rectangle x:Name="ButtonBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="10" />
+                <Grid Width="{TemplateBinding ButtonWidth}" Height="{TemplateBinding ButtonHeight}" Margin="0, 0, 0, 0">
+                  <Rectangle x:Name="ButtonBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Transparent" Fill="{TemplateBinding Background}" Margin="0" />
                   <Grid Name="ContentHost">
                     <ContentControl Name="ContentBody" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                   </Grid>

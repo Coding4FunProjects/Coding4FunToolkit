@@ -183,10 +183,6 @@ namespace Coding4Fun.Toolkit.Controls
         #region Private Methods
 		private static void OnSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
 		{
-			// If the initial source and new values are null, do nothing
-			if (obj == null || e.NewValue == null || e.NewValue == e.OldValue)
-				return;
-
 			var si = obj as SuperImage;
 
 			// If the source isn't a SuperImage or the SuperImage's image in the template is null, do nothing
@@ -200,12 +196,9 @@ namespace Coding4Fun.Toolkit.Controls
 	    {
 			_isPrimaryImageLoaded = false;
 			UpdatePlaceholderImageVisibility();
+        }
 
-			// Set the SuperImage's image's source
-			_primaryImage.Source = Source.ToBitmapImage();
-	    }
-
-	    private static void OnSourcesChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnSourcesChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             // If the initial source and new values are null, do nothing
 			if (obj == null || e.NewValue == null || e.NewValue == e.OldValue) 
@@ -296,7 +289,7 @@ namespace Coding4Fun.Toolkit.Controls
                 _placeholderBorder.Visibility = _isPrimaryImageLoaded ? Visibility.Collapsed : Visibility.Visible;
             }
         }
-        #endregion
+#endregion
         
         public SuperImage()
         {
@@ -333,10 +326,19 @@ namespace Coding4Fun.Toolkit.Controls
                 _primaryImage.ImageFailed += OnPrimaryImageFailed;
             }
 
-	        if (Source != null)
-		        OnSourcePropertyChanged();
-			else
-		        OnSourcesPropertyChanged();
+            if (Source != null)
+            {
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+                _primaryImage.SetBinding(Image.SourceProperty, new Windows.UI.Xaml.Data.Binding() { Path = new PropertyPath("Source"), Source = this });
+#elif WINDOWS_PHONE
+            _primaryImage.SetBinding(Image.SourceProperty, new System.Windows.Data.Binding() { Path = new PropertyPath("Source"), Source = this });
+#endif
+                OnSourcePropertyChanged();
+            }
+            else
+            {
+                OnSourcesPropertyChanged();
+            }
         }
     }
 }
