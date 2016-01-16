@@ -37,6 +37,10 @@ namespace Coding4Fun.Toolkit.Controls
 
 	        IsOverlayApplied = false;
 
+#if WINDOWS_STORE || WINDOWS_PHONE_APP
+            ManipulationMode = ManipulationModes.TranslateX;
+#endif
+
             AnimationType = Clarity.Phone.Extensions.DialogService.AnimationTypes.SlideHorizontal;
 
             ManipulationStarted += ToastPromptManipulationStarted;
