@@ -296,8 +296,12 @@ namespace Coding4Fun.Toolkit.Controls
 
         private void AdjustAndUpdateLayout()
         {
-            AdjustLayout();
-            UpdateUserInterface();
+            try
+            {
+                AdjustLayout();
+                UpdateUserInterface();
+            }
+            catch { }
         }
 
         private void AdjustLayout()
